@@ -1811,6 +1811,8 @@
     renderTestInitialMessage();
   }
   let isProcessing = false;
+  var _overlayTimeout = null;
+
   function handleSelectAnswer(questionWord, correctAnswer, selectedAnswer, vocabIdForAudio) {
     if (isProcessing) return; // chặn spam
     isProcessing = true;
@@ -1848,6 +1850,28 @@
     // Sau khi chọn đáp án thì phát âm thanh từ vựng (nếu có id)
     if (vocabIdForAudio) {
       playVocabAudio(vocabIdForAudio, null);
+
+      var overlay = document.getElementById("soundOverlay");
+
+      // Clear timeout cũ nếu click liên tục
+      if (_overlayTimeout) {
+        clearTimeout(_overlayTimeout);
+      }
+    
+      // Reset về 0 trước (để đảm bảo animation chạy lại)
+      overlay.style.opacity = "0";
+    
+      // Force reflow để animation luôn chạy khi click nhanh
+      void overlay.offsetWidth;
+    
+      // 👉 HIỆN icon
+      overlay.style.opacity = "1";
+    
+      // 👉 Tự ẩn sau 1.3 giây
+      _overlayTimeout = setTimeout(function () {
+        overlay.style.opacity = "0";
+      }, 1300);
+
 
     }
 
