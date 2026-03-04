@@ -53,7 +53,8 @@
       optionCount: 6,
       fromIdx: 0,
       toIdx: null,
-      modes: [4]
+      modes: [4],
+      isStar: false
     },
     kanjiViewMode: "grid",
     selected: {
@@ -353,14 +354,21 @@
     el: null,
     bodyEl: null,
     titleEl: null,
+    navEl: null,
     closeBtn: null
   };
 
-  function openDetailModal(title, htmlContentOrNode) {
+  function openDetailModal(title, htmlContentOrNode, headerNavNode) {
     if (!detailModalState.el) {
       return;
     }
     detailModalState.titleEl.textContent = title || "";
+    if (detailModalState.navEl) {
+      detailModalState.navEl.innerHTML = "";
+      if (headerNavNode && headerNavNode instanceof Node) {
+        detailModalState.navEl.appendChild(headerNavNode);
+      }
+    }
     detailModalState.bodyEl.innerHTML = "";
     if (htmlContentOrNode instanceof Node) {
       detailModalState.bodyEl.appendChild(htmlContentOrNode);
@@ -1299,18 +1307,23 @@
     if (isGrid) {
       // ===== Grid view =====
       const grid = createElement("div", "kanji-grid", "");
-      filtered.forEach(function (raw) {
+      filtered.forEach(function (raw, displayIdx) {
         const globalIndex = kanjiData.indexOf(raw);
         const item = {
+          stt: raw.stt != null ? raw.stt : (displayIdx + 1),
           kanji: raw.kanji,
           name: raw.hanviet
         };
 
         const cell = createElement("div", "kanji-grid-item", "");
 
+        // Số thứ tự
+        const numEl = createElement("div", "kanji-grid-num", String(item.stt));
+        cell.appendChild(numEl);
+
         // Star
         var isKanjiFav = !!state.kanjiFavorites[globalIndex];
-        var starBtn = createElement("button", "star-btn" + (isKanjiFav ? " star-btn--active" : ""), isKanjiFav ? "★" : "☆");
+        var starBtn = createElement("button", "star-btn" + (isKanjiFav ? " star-btn--active" : ""), isKanjiFav ? "⭐" : "☆");
         starBtn.type = "button";
         starBtn.addEventListener("click", function (e) {
           e.stopPropagation();
@@ -1386,7 +1399,7 @@
 
         // Star button
         var isKanjiFav = !!state.kanjiFavorites[globalIndex];
-        var kanjiStarBtn = createElement("button", "star-btn" + (isKanjiFav ? " star-btn--active" : ""), isKanjiFav ? "★" : "☆");
+        var kanjiStarBtn = createElement("button", "star-btn" + (isKanjiFav ? " star-btn--active" : ""), isKanjiFav ? "⭐" : "☆");
         kanjiStarBtn.type = "button";
         kanjiStarBtn.title = "Yêu thích";
         kanjiStarBtn.addEventListener("click", function (e) {
@@ -1444,8 +1457,24 @@
       return;
     }
 
-    // Hero: large kanji + hanviet
+    // Hero: large kanji + hanviet + star
+    const globalIndex = state.selected.kanjiIndex;
+    const isKanjiFav = !!state.kanjiFavorites[globalIndex];
     const hero = createElement("div", "kd-hero", "");
+    const starBtn = createElement("button", "star-btn" + (isKanjiFav ? " star-btn--active" : ""), isKanjiFav ? "⭐" : "☆");
+    starBtn.type = "button";
+    starBtn.title = "Yêu thích";
+    starBtn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      if (state.kanjiFavorites[globalIndex]) {
+        delete state.kanjiFavorites[globalIndex];
+      } else {
+        state.kanjiFavorites[globalIndex] = true;
+      }
+      saveKanjiFavorites();
+      renderKanjiDetail();
+    });
+    hero.appendChild(starBtn);
     const kanjiEl = createElement("div", "kd-char", item.kanji);
     const meaningBadge = createElement("div", "kd-meaning-badge", item.core_meaning || "");
     hero.appendChild(kanjiEl);
@@ -1555,7 +1584,39 @@
       container.appendChild(sec3);
     }
 
-    openDetailModal("Chi tiết Kanji", container.innerHTML);
+    const contentDiv = createElement("div", "kd-detail-content", "");
+    while (container.firstChild) {
+      contentDiv.appendChild(container.firstChild);
+    }
+
+    const filtered = applyKanjiFilter();
+    const currentIdxInFiltered = filtered.findIndex(function (r) {
+      return kanjiData.indexOf(r) === state.selected.kanjiIndex;
+    });
+    const hasPrev = currentIdxInFiltered > 0;
+    const hasNext = currentIdxInFiltered >= 0 && currentIdxInFiltered < filtered.length - 1;
+
+    const navRow = createElement("div", "kd-nav-row kd-nav-row--header", "");
+    const prevBtn = createElement("button", "kd-nav-btn", "‹");
+    prevBtn.type = "button";
+    prevBtn.disabled = !hasPrev;
+    prevBtn.addEventListener("click", function () {
+      if (!hasPrev) return;
+      state.selected.kanjiIndex = kanjiData.indexOf(filtered[currentIdxInFiltered - 1]);
+      renderKanjiDetail();
+    });
+    const nextBtn = createElement("button", "kd-nav-btn", "›");
+    nextBtn.type = "button";
+    nextBtn.disabled = !hasNext;
+    nextBtn.addEventListener("click", function () {
+      if (!hasNext) return;
+      state.selected.kanjiIndex = kanjiData.indexOf(filtered[currentIdxInFiltered + 1]);
+      renderKanjiDetail();
+    });
+    navRow.appendChild(prevBtn);
+    navRow.appendChild(nextBtn);
+
+    openDetailModal("Chi tiết Kanji", contentDiv, navRow);
   }
 
   // ----- Grammar -----
@@ -2089,9 +2150,11 @@
     var toIdx = (config.toIdx != null) ? Math.min(config.toIdx, kanjiData.length - 1) : kanjiData.length - 1;
     var selectedModes = (config.modes && config.modes.length > 0) ? config.modes : [4];
     var count = config.questionCount || 20;
+    var isStar = !!config.isStar;
 
     var candidates = [];
     for (var i = fromIdx; i <= toIdx; i++) {
+      if (isStar && !state.kanjiFavorites[i]) continue;
       var raw = kanjiData[i];
       if (!raw) continue;
       selectedModes.forEach(function (mode) {
@@ -2282,6 +2345,17 @@
     configSection.appendChild(configGrid);
     wrapper.appendChild(configSection);
 
+    // --- Chỉ test chữ có sao ---
+    const isStarField = createElement("div", "field-group", "");
+    const isStarLabel = createElement("label", "kt-mode-label", "");
+    const isStarInput = document.createElement("input");
+    isStarInput.type = "checkbox";
+    isStarInput.checked = ts.isStar || false;
+    isStarLabel.appendChild(isStarInput);
+    isStarLabel.appendChild(document.createTextNode(" Chỉ test chữ có ★"));
+    isStarField.appendChild(isStarLabel);
+    configSection.appendChild(isStarField);
+
     // --- Dạng câu hỏi ---
     const modeSection = createElement("div", "kt-section", "");
     modeSection.appendChild(createElement("div", "kt-section-label", "Dạng câu hỏi"));
@@ -2340,11 +2414,13 @@
         .map(function (cb) { return parseInt(cb.value, 10); });
       if (selectedModes.length === 0) selectedModes = [4];
 
+      var isStarVal = isStarInput.checked || false;
       ts.fromIdx = fromVal - 1;
       ts.toIdx = toVal - 1;
       ts.questionCount = qCount;
       ts.optionCount = optCount;
       ts.modes = selectedModes;
+      ts.isStar = isStarVal;
       ts.isActive = true;
       ts.isFinished = false;
       ts.currentIndex = 0;
@@ -2354,11 +2430,18 @@
         fromIdx: ts.fromIdx,
         toIdx: ts.toIdx,
         modes: selectedModes,
-        questionCount: qCount
+        questionCount: qCount,
+        isStar: isStarVal
       });
 
       if (ts.questions.length === 0) {
-        alert("Không có câu hỏi phù hợp với cài đặt hiện tại. Hãy mở rộng phạm vi hoặc chọn thêm dạng câu hỏi.");
+        var msg = "Không có câu hỏi phù hợp với cài đặt hiện tại.";
+        if (isStarVal) {
+          msg += " Bạn chưa gắn sao chữ nào hoặc phạm vi không có chữ có sao. Hãy gắn sao vài chữ kanji trước.";
+        } else {
+          msg += " Hãy mở rộng phạm vi hoặc chọn thêm dạng câu hỏi.";
+        }
+        alert(msg);
         return;
       }
       renderKanjiTestQuestion();
@@ -2561,6 +2644,7 @@
     const el = document.getElementById("detail-modal");
     const bodyEl = document.getElementById("detail-modal-body");
     const titleEl = document.getElementById("detail-modal-title");
+    const navEl = document.getElementById("detail-modal-nav");
     const closeBtn = document.getElementById("detail-modal-close-btn");
 
     if (!el || !bodyEl || !titleEl || !closeBtn) {
@@ -2570,6 +2654,7 @@
     detailModalState.el = el;
     detailModalState.bodyEl = bodyEl;
     detailModalState.titleEl = titleEl;
+    detailModalState.navEl = navEl || null;
     detailModalState.closeBtn = closeBtn;
 
     closeBtn.addEventListener("click", function () {
