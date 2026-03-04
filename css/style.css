@@ -587,15 +587,19 @@ body {
 }
 .kanji-grid-char {
   font-family: var(--font-jp);
-  font-size: 28px;
-  font-weight: 700;
+  font-size: 32px;
+  font-weight: 300;
   line-height: 1.2;
+  color: #1e1b4b;
 }
 .kanji-grid-name {
-  font-size: 10px;
-  color: var(--text-muted);
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #4338ca;
   text-align: center;
-  margin-top: 2px;
+  margin-top: 3px;
 }
 .kanji-grid-item .star-btn {
   position: absolute;
@@ -1251,6 +1255,13 @@ select:focus {
   color: var(--text-muted);
 }
 
+.test-question-hint {
+  font-size: 13px;
+  color: #6b7280;
+  margin: 4px 0 2px;
+  font-family: var(--font-jp);
+}
+
 .options-grid {
   display: grid;
   grid-template-columns: 1fr;
@@ -1392,9 +1403,13 @@ select:focus {
 .simple-list {
   display: flex;
   flex-direction: column;
-  gap: 6px;
+  gap: 0;
   font-size: 13px;
   padding-bottom: 300px;
+  border-radius: 12px;
+  border: 1px solid rgba(0,0,0,0.08);
+  background: #fff;
+  overflow: hidden;
 }
 
 .simple-item {
@@ -1603,3 +1618,508 @@ select:focus {
     box-shadow: 0 0 0 0 rgba(255,255,255,0);
   }
 }
+
+/* ===== KANJI TEST CONFIG ===== */
+.kt-section {
+  margin-bottom: 12px;
+}
+
+.kt-section-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #9ca3af;
+  margin-bottom: 6px;
+}
+
+.kt-range-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+}
+
+.kt-mode-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px 12px;
+}
+
+.kt-mode-label {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  color: #374151;
+  cursor: pointer;
+  padding: 5px 8px;
+  border-radius: 8px;
+  border: 1px solid rgba(209,213,219,0.8);
+  background: #fff;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.kt-mode-label:hover {
+  border-color: rgba(37,99,235,0.4);
+  background: #eff6ff;
+}
+
+.kt-mode-cb {
+  accent-color: var(--accent);
+  width: 14px;
+  height: 14px;
+  flex-shrink: 0;
+}
+
+.kt-mode-label:has(.kt-mode-cb:checked) {
+  border-color: rgba(37,99,235,0.7);
+  background: rgba(219,234,254,0.4);
+  color: #1d4ed8;
+}
+
+/* Wrong answer mode badge */
+.wrong-mode-badge {
+  display: inline-block;
+  font-size: 10px;
+  font-weight: 600;
+  color: #6366f1;
+  background: rgba(224,231,255,0.7);
+  border: 1px solid rgba(129,140,248,0.4);
+  border-radius: 999px;
+  padding: 1px 8px;
+  margin-bottom: 4px;
+  letter-spacing: 0.04em;
+}
+
+/* ===== KANJI LIST ITEM — Ink Style ===== */
+.kl-item {
+  display: flex;
+  align-items: center;
+  gap: 0;
+  padding: 0;
+  border-radius: 0;
+  border: none;
+  border-bottom: 1px solid rgba(0,0,0,0.07);
+  background: transparent;
+  cursor: pointer;
+  position: relative;
+  transition: background var(--transition-fast);
+  overflow: hidden;
+}
+
+.kl-item::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: #c0392b;
+  transform: scaleY(0);
+  transform-origin: center;
+  transition: transform 0.18s ease;
+  border-radius: 0 2px 2px 0;
+}
+
+.kl-item:hover {
+  background: rgba(192,57,43,0.04);
+}
+
+.kl-item:hover::before {
+  transform: scaleY(1);
+}
+
+.kl-item:last-child {
+  border-bottom: none;
+}
+
+/* Sequential number */
+.kl-num {
+  width: 38px;
+  padding: 14px 0 14px 10px;
+  font-size: 11px;
+  font-weight: 400;
+  font-variant-numeric: tabular-nums;
+  color: #bdbdbd;
+  flex-shrink: 0;
+  text-align: right;
+  letter-spacing: 0.02em;
+  font-family: "SF Mono", "Fira Mono", monospace;
+}
+
+/* Large kanji character */
+.kl-char {
+  font-family: var(--font-jp);
+  font-size: 38px;
+  font-weight: 400;
+  color: #1a1a1a;
+  line-height: 1;
+  width: 56px;
+  text-align: center;
+  flex-shrink: 0;
+  padding: 10px 4px;
+  letter-spacing: -1px;
+}
+
+.kl-item:hover .kl-char {
+  color: #c0392b;
+}
+
+/* Vertical divider */
+.kl-item::after {
+  content: "";
+  position: absolute;
+  left: 94px;
+  top: 20%;
+  height: 60%;
+  width: 1px;
+  background: rgba(0,0,0,0.08);
+}
+
+/* Info: name + readings */
+.kl-info {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 5px;
+  flex: 1;
+  min-width: 0;
+  padding: 10px 8px 10px 12px;
+}
+
+.kl-name {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #1a1a1a;
+  line-height: 1;
+}
+
+.kl-readings {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+}
+
+.kl-pill {
+  font-size: 12px;
+  font-family: var(--font-jp);
+  font-weight: 500;
+  color: #555;
+  background: none;
+  border: none;
+  padding: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 3px;
+}
+
+.kl-pill--on::before {
+  content: "音";
+  font-size: 9px;
+  font-family: var(--font-jp);
+  font-weight: 700;
+  color: #c0392b;
+  opacity: 0.8;
+  letter-spacing: 0;
+}
+
+.kl-pill--kun::before {
+  content: "訓";
+  font-size: 9px;
+  font-family: var(--font-jp);
+  font-weight: 700;
+  color: #2c7a5a;
+  opacity: 0.8;
+  letter-spacing: 0;
+}
+
+/* Core meaning tag */
+.kl-meaning {
+  font-size: 11px;
+  font-weight: 500;
+  font-style: italic;
+  color: #888;
+  padding: 0 12px 0 0;
+  white-space: nowrap;
+  flex-shrink: 0;
+  max-width: 90px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ===== KANJI DETAIL — Rich Layout ===== */
+
+/* Hero block: big kanji + meaning badge */
+.kd-hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 20px 12px 10px;
+  background: radial-gradient(circle at 50% 30%, rgba(191,219,254,0.45), rgba(238,242,255,0.6) 65%);
+  border-radius: 16px;
+  border: 1px solid rgba(148,163,184,0.2);
+  margin-bottom: 6px;
+  position: relative;
+}
+
+.kd-char {
+  font-family: var(--font-jp);
+  font-size: 96px;
+  font-weight: 300;
+  line-height: 1;
+  color: #1e1b4b;
+  letter-spacing: -2px;
+  text-shadow: 0 4px 18px rgba(99,102,241,0.18);
+}
+
+.kd-meaning-badge {
+  margin-top: 8px;
+  padding: 3px 14px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-weight: 600;
+  background: linear-gradient(135deg, #6366f1, #2563eb);
+  color: #fff;
+  letter-spacing: 0.04em;
+  box-shadow: 0 2px 10px rgba(99,102,241,0.35);
+}
+
+.kd-hanviet {
+  text-align: center;
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  background: linear-gradient(135deg, #4338ca, #2563eb);
+  -webkit-background-clip: text;
+  color: transparent;
+  margin-bottom: 10px;
+}
+
+/* Section wrapper */
+.kd-section {
+  border-radius: 14px;
+  padding: 10px 12px 12px;
+  margin-bottom: 8px;
+  border: 1px solid transparent;
+}
+
+.kd-section-title {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-bottom: 8px;
+  opacity: 0.6;
+}
+
+/* Section color themes */
+.kd-section--blue {
+  background: linear-gradient(135deg, rgba(219,234,254,0.55), rgba(238,242,255,0.55));
+  border-color: rgba(147,197,253,0.45);
+}
+.kd-section--blue .kd-section-title { color: #1d4ed8; }
+
+.kd-section--amber {
+  background: linear-gradient(135deg, rgba(254,243,199,0.6), rgba(255,251,235,0.6));
+  border-color: rgba(252,211,77,0.4);
+}
+.kd-section--amber .kd-section-title { color: #b45309; }
+
+.kd-section--green {
+  background: linear-gradient(135deg, rgba(209,250,229,0.55), rgba(236,253,245,0.55));
+  border-color: rgba(110,231,183,0.4);
+}
+.kd-section--green .kd-section-title { color: #065f46; }
+
+/* Pills grid for readings */
+.kd-pills-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.kd-pill-group {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  min-width: 60px;
+}
+
+.kd-pill-label {
+  font-size: 9px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #6b7280;
+}
+
+.kd-pill-values {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.kd-pill {
+  display: inline-block;
+  padding: 4px 10px;
+  border-radius: 999px;
+  font-size: 14px;
+  font-family: var(--font-jp);
+  font-weight: 600;
+  border: 1px solid transparent;
+}
+
+.kd-pill--on {
+  background: rgba(219,234,254,0.9);
+  border-color: rgba(96,165,250,0.6);
+  color: #1d4ed8;
+}
+
+.kd-pill--kun {
+  background: rgba(224,231,255,0.9);
+  border-color: rgba(129,140,248,0.6);
+  color: #4338ca;
+}
+
+.kd-pill--stroke {
+  background: rgba(255,255,255,0.9);
+  border-color: rgba(148,163,184,0.6);
+  color: #374151;
+  font-family: inherit;
+  font-size: 13px;
+}
+
+.kd-pill--radical {
+  background: rgba(243,232,255,0.9);
+  border-color: rgba(192,132,252,0.6);
+  color: #6d28d9;
+  font-size: 13px;
+  font-family: inherit;
+}
+
+/* Story rows */
+.kd-story-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 6px 0;
+  border-bottom: 1px dashed rgba(0,0,0,0.07);
+}
+
+.kd-story-row:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.kd-story-icon {
+  font-size: 16px;
+  line-height: 1.4;
+  flex-shrink: 0;
+}
+
+.kd-story-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1;
+}
+
+.kd-story-label {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  color: #92400e;
+  opacity: 0.7;
+}
+
+.kd-story-value {
+  font-size: 14px;
+  color: #1c1917;
+  line-height: 1.5;
+}
+
+/* Vocabulary section */
+.kd-vocab-sublabel {
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #065f46;
+  opacity: 0.65;
+  margin-bottom: 6px;
+  margin-top: 4px;
+}
+
+.kd-vocab-pills {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.kd-vocab-chip {
+  display: flex;
+  flex-direction: column;
+  padding: 5px 10px;
+  border-radius: 10px;
+  background: rgba(255,255,255,0.85);
+  border: 1px solid rgba(110,231,183,0.5);
+  gap: 1px;
+  min-width: 60px;
+}
+
+.kd-vocab-chip-word {
+  font-family: var(--font-jp);
+  font-size: 13px;
+  font-weight: 600;
+  color: #065f46;
+}
+
+.kd-vocab-chip-meaning {
+  font-size: 11px;
+  color: #6b7280;
+}
+
+.kd-vocab-row {
+  display: flex;
+  align-items: baseline;
+  gap: 6px;
+  padding: 5px 4px;
+  border-bottom: 1px dashed rgba(0,0,0,0.06);
+}
+
+.kd-vocab-row:last-child {
+  border-bottom: none;
+}
+
+.kd-vocab-word {
+  font-family: var(--font-jp);
+  font-size: 16px;
+  font-weight: 700;
+  color: #065f46;
+  flex-shrink: 0;
+}
+
+.kd-vocab-read {
+  font-family: var(--font-jp);
+  font-size: 12px;
+  color: #6b7280;
+  flex-shrink: 0;
+}
+
+.kd-vocab-mean {
+  font-size: 13px;
+  color: #374151;
+  flex: 1;
+}
+
+/* Override detail-modal body for kanji detail rich layout */
+.detail-modal__body .kd-hero { margin-bottom: 8px; }
+.detail-modal__body .kd-char { font-size: 80px; }
+.detail-modal__body .kd-section { margin-bottom: 6px; }

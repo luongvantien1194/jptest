@@ -1,0 +1,119 @@
+Hãy tạo dữ liệu data_kanji.csv cho các kanji tôi cung cấp.
+
+
+
+=====================
+
+YÊU CẦU BẮT BUỘC
+
+Chỉ xuất CSV thuần (plain text).
+Không markdown.
+Không giải thích.
+Không thêm văn bản ngoài CSV.
+Dòng đầu tiên phải là header.
+Không dùng JSON trong bất kỳ ô nào.
+Không thêm khoảng trắng thừa.
+Mỗi kanji đúng 1 dòng.
+Các giá trị nhiều mục phân cách bằng dấu |
+Không có khoảng trắng trước hoặc sau dấu |
+Không sử dụng tiếng Anh trong nội dung dữ liệu.
+Bắt buộc sử dụng tiếng Việt cho toàn bộ phần mô tả và diễn giải.
+
+=====================
+
+SCHEMA CSV
+
+kanji,hanviet,on_reading,kun_reading,stroke_count,radicals,core_meaning,story_image,logic_development,memory_tip,adjectives,vocabulary
+
+=====================
+
+GIẢI THÍCH TỪNG CỘT
+
+
+kanji
+
+→ Chữ kanji gốc.
+
+hanviet
+→ Âm Hán Việt (viết IN HOA cả chữ, có dấu).
+
+on_reading
+→ Âm On (katakana).
+→ Nếu nhiều âm, phân cách bằng |
+→ Ví dụ: ガク|ギョウ
+
+
+
+kun_reading
+→ Âm Kun (hiragana).
+→ Nếu nhiều âm, phân cách bằng |
+→ Ví dụ: たべる|くう
+
+
+
+stroke_count
+→ Số nét (số nguyên).
+
+
+
+radicals
+→ Các bộ cấu thành theo định dạng:
+dạng-tenbo|dạng-tenbo
+→ Ví dụ: 氵-thuy|木-moc
+→ Không dùng tiếng Anh.
+
+→ Dùng tiếng Việt có dấu.
+
+
+
+core_meaning
+→ Nghĩa cốt lõi, ngắn gọn, tối đa 3 từ tiếng Việt.
+
+
+
+story_image
+→ Diễn tả tượng hình của từ vựng, tối đa 20 từ tiếng Việt, không xuống dòng.
+→ có từ kanji đi kèm cho việc diễn giải (từ kanji nằm trong ())
+
+logic_development
+→ Diễn giải cấu tạo: Bộ + bộ -> Nghĩa (bộ phải có kanji diễn tả đi kèm
+→ Ví dụ: thuy (kanji) + moc (kanji) -> (kanji) go troi tren nuoc
+→ Không dùng tiếng Anh.
+
+memory_tip
+→ Mẹo nhớ ngắn gọn, tối đa 15 từ tiếng Việt, memory_tip phải khác story_image
+
+
+adjectives
+→ Tính từ thường đi kèm.
+→ Định dạng:
+
+tu(reading):nghia
+→ Nếu nhiều mục, phân cách bằng |
+→ Không dùng tiếng Anh.
+
+vocabulary
+→ Từ vựng phổ biến, lấy từ "basic kanji book vol 1"
+→ Định dạng:
+tu(reading): nghia
+→ Nếu nhiều mục, phân cách bằng |
+→ Không dùng dấu phẩy trong nghĩa.
+→ Không dùng tiếng Anh.
+
+=====================
+
+RÀNG BUỘC CHẤT LƯỢNG
+
+Không được để trống cột.
+Không được sai định dạng phân cách.
+Không được thêm dấu cách thừa.
+Không viết giải thích.
+Không thêm dòng trống cuối file.
+Bắt buộc toàn bộ nội dung mô tả bằng tiếng Việt có dấu.
+
+=====================
+
+INPUT
+
+Tạo dữ liệu cho các kanji sau:
+@listkanji.txt (2 từ đầu tiên)

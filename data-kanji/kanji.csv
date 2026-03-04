@@ -1,0 +1,251 @@
+kanji,hanviet,on_reading,kun_reading,stroke_count,radicals,core_meaning,story_image,logic_development,memory_tip,adjectives,vocabulary
+日,NHẬT,ニチ|ジツ,ひ|び|か,4,日-nhật,Ngày|Mặt trời,Hình ảnh mặt trời (日) tỏa sáng trên bầu trời,Mặt trời (日) -> Ngày,Hình chữ nhật có gạch ngang là mặt trời,không có,日本(にほん):Nhật Bản|日曜日(にちようび):Chủ nhật
+月,NGUYỆT,ゲツ|ガツ,つき,4,月-nguyệt,Tháng|Mặt trăng,Hình ảnh mặt trăng (月) khuyết,Mặt trăng (月) -> Tháng,Mặt trăng khuyết có hai gạch ngang,không có,月曜日(げつようび):Thứ hai|一月(いちがつ):Tháng một
+木,MỘC,モク|ボク,き|こ,4,木-mộc,Cây|Gỗ,Hình ảnh cái cây (木) có cành và rễ,Cây (木) -> Gỗ,Cây có tán lá và rễ cắm đất,không có,木曜日(もくようび):Thứ năm|木(き):Cây
+山,SƠN,サン,やま,3,山-sơn,Núi,Hình ảnh ba ngọn núi (山) nhô lên,Núi (山) -> Sơn,Ba nét dựng đứng như ba đỉnh núi,không có,富士山(ふじさん):Núi Phú Sĩ|山(やま):Núi
+川,XUYÊN,セン,かわ,3,川-xuyên,Sông,Hình ảnh dòng sông (川) đang chảy,Dòng chảy (川) -> Sông,Ba nét sổ dọc như dòng nước chảy,không có,小川(おがわ):Suối nhỏ|川(かわ):Sông
+田,ĐIỀN,デン,た,5,田-điền,Ruộng,Hình ảnh thửa ruộng (田) chia ô,Đất (田) -> Ruộng,Ô vuông chia bốn là thửa ruộng,không có,田舎(いなか):Quê hương|田中(たなか):Tanaka
+人,NHÂN,ジン|ニン,ひと,2,人-nhân,Người,Hình ảnh người (人) đang đứng nghiêng,Người (人) -> Nhân,Hai nét như đôi chân đang đi,không có,日本人(にほんじん):Người Nhật|大人(おとな):Người lớn
+口,KHẨU,コウ|ク,くち,3,口-khẩu,Miệng,Hình ảnh cái miệng (口) mở ra,Miệng (口) -> Lối vào,Ô vuông tượng trưng cho cái miệng,không có,入口(いりぐち):Lối vào|人口(じんこう):Dân số
+車,XA,シャ,くるま,7,車-xa,Xe,Hình ảnh chiếc xe (車) nhìn từ trên xuống,Xe (車) -> Phương tiện,Trục xe xuyên qua các bánh xe,không có,電車(でんしゃ):Tàu điện|自動車(じどうしゃ):Ô tô
+門,MÔN,モン,かど,8,門-môn,Cổng,Hình ảnh cánh cổng (門) hai cánh,Cổng (門) -> Cửa chính,Hai cánh cửa lớn đối xứng nhau,không có,専門(せんもん):Chuyên môn|門(かど):Cổng
+火,HỎA,カ,ひ|ほ,4,火-hỏa,Lửa,Hình ảnh ngọn lửa (火) đang cháy,Lửa (火) -> Hỏa,Đống củi đang bốc cháy bùng lên,không có,火曜日(かようび):Thứ ba|火(ひ):Lửa
+水,THỦY,スイ,みず,4,水-thủy,Nước,Hình ảnh dòng nước (水) bắn ra,Nước (水) -> Thủy,Dòng chảy ở giữa và giọt nước hai bên,không có,水曜日(すいようび):Thứ tư|水(みず):Nước
+金,KIM,キン|コン,かね,8,金-kim,Vàng|Tiền,Hình ảnh vàng (金) chôn dưới đất,Đất (土) + vàng -> Kim,Vàng quý ẩn giấu dưới mái nhà,không có,お金(おかね):Tiền|金曜日(きんようび):Thứ sáu
+土,THỔ,ド|ト,つち,3,土-thổ,Đất,Hình ảnh mầm cây mọc từ đất (土),Mặt đất (土) -> Thổ,Cây mọc lên từ mặt đất,không có,土曜日(どようび):Thứ bảy|土地(とち):Đất đai
+子,TỬ,シ|ス,こ,3,子-tử,Con,Hình ảnh đứa bé (子) quấn tã,Đứa trẻ (子) -> Con,Em bé đang dang tay ra,không có,子供(こども):Trẻ con|女子(じょし):Bé gái
+女,NỮ,ジョ,おんな,3,女-nữ,Phụ nữ,Hình ảnh người phụ nữ (女) đang ngồi,Phụ nữ (女) -> Nữ,Người phụ nữ ngồi khoanh chân,không có,女の子(おんなのこ):Bé gái|彼女(かのじょ):Cô ấy
+学,HỌC,ガク,まなぶ,8,子-tử,Học,Đứa trẻ (子) học dưới mái nhà,Mái nhà + trẻ con (子) -> Học,Trẻ em đội mũ đi học,không có,学校(がっこう):Trường học|学生(がくせい):Sinh viên
+生,SINH,セイ|ショウ,いきる|うまれる,5,生-sinh,Sống|Sinh,Cây cỏ (生) mọc lên từ đất,Mầm mọc lên -> Sinh,Mầm xanh vươn lên từ mặt đất,không có,先生(せんせい):Thầy cô|生きる(いきる):Sống
+先,TIÊN,セン,さき,6,儿-nhi,Trước,Người đi trước (先) trên con đường,Đi (先) -> Trước,Người đi trước dẫn đường,không có,先生(せんせい):Thầy cô|先月(せんげつ):Tháng trước
+私,TƯ,シ,わたし|わたくし,7,禾-hòa,Tôi|Riêng,Người cầm lúa (禾) cho riêng mình,Lúa (禾) + riêng -> Tôi,Cây lúa của riêng tôi,không có,私(わたし):Tôi|私立(しりつ):Dân lập
+一,NHẤT,イチ,ひと,1,一-nhất,Một,Một (一) gạch ngang,Một vạch -> Nhất,Một ngón tay nằm ngang,không có,一人(ひとり):Một người|一月(いちがつ):Tháng một
+二,NHỊ,ニ,ふた,2,二-nhị,Hai,Hai (二) gạch ngang,Hai vạch -> Nhị,Hai ngón tay nằm ngang,không có,二つ(ふたつ):Hai cái|二月(にがつ):Tháng hai
+三,TAM,サン,み,3,三-tam,Ba,Ba (三) gạch ngang,Ba vạch -> Tam,Ba ngón tay nằm ngang,không có,三つ(みっつ):Ba cái|三月(さんがつ):Tháng ba
+四,TỨ,シ,よ|よん,5,囗-vi,Bốn,Cửa sổ (四) có rèm che,Trong khung (囗) có hai chân -> Bốn,Hình vuông có hai chân bên trong,không có,四月(しがつ):Tháng tư|四つ(よっつ):Bốn cái
+五,NGŨ,ゴ,いつ,4,二-nhị,Năm,Bàn tay có năm (五) ngón,Năm vạch nối -> Ngũ,Số năm viết cách điệu,không có,五月(ごがつ):Tháng năm|五つ(いつつ):Năm cái
+六,LỤC,ロク,む,4,八-bát,Sáu,Người đội mũ (六) sáu cạnh,Mũ + chân -> Lục,Người đứng dang chân đội mũ,không có,六月(ろくがつ):Tháng sáu|六つ(むっつ):Sáu cái
+七,THẤT,シチ,なな,2,一-nhất,Bảy,Số bảy (七) viết ngược,Cắt ngang -> Thất,Số bảy lộn ngược đầu,không có,七月(しちがつ):Tháng bảy|七つ(ななつ):Bảy cái
+八,BÁT,ハツ,や,2,八-bát,Tám,Hai nét (八) tách rời,Mở ra -> Bát,Hai nét phẩy hai bên,không có,八月(はちがつ):Tháng tám|八つ(やっつ):Tám cái
+九,CỬU,キュウ|ク,ここの,2,乙-ất,Chín,Số chín (九) uốn lượn,Gập khúc -> Cửu,Giống chữ n cách điệu,không có,九月(くがつ):Tháng chín|九つ(ここのつ):Chín cái
+十,THẬP,ジュウ,とお,2,十-thập,Mười,Dấu cộng (十) mười điểm,Ngang dọc -> Thập,Một gạch ngang một gạch dọc,không có,十月(じゅうがつ):Tháng mười|十(とお):Mười
+百,BÁCH,ヒャク,không có,6,白-bạch,Trăm,Số một trên chữ trắng (白),Một (一) + trắng (白) -> Trăm,Chữ trắng có thêm một gạch,không có,百(ひゃく):Một trăm|三百(さんびゃく):Ba trăm
+千,THIÊN,セン,ち,3,十-thập,Nghìn,Số một (一) trên số mười (十),Một (一) + mười (十) -> Nghìn,Số mười có thêm nét phẩy,không có,千(せん):Một nghìn|三千(さんぜん):Ba nghìn
+万,VẠN,マン|バン,không có,3,一-nhất,Vạn|Mười nghìn,Số vạn (万) lớn lao,Vạn vật -> Vạn,Giống số mười nghìn,không có,一万円(いちまんえん):Một vạn yên|万国(ばんこく):Vạn quốc
+円,VIÊN,エン,まる,4,冂-quynh,Tròn|Yên,Đồng xu (円) hình tròn,Trong khung có tiền -> Yên,Hình chữ nhật bo góc,không có,円(えん):Yên|円い(まるい):Tròn
+年,NIÊN,ネン,とし,6,干-can,Năm,Lúa chín (年) theo năm,Mùa vụ -> Năm,Cây lúa thu hoạch hàng năm,không có,今年(ことし):Năm nay|来年(らいねん):Năm sau
+上,THƯỢNG,ジョウ,うえ|あがる,3,一-nhất,Trên,Vật ở phía trên (上) đường kẻ,Phía trên -> Thượng,Gạch đứng nằm trên gạch ngang,không có,上手(じょうず):Giỏi|上(うえ):Trên
+下,HẠ,カ|ゲ,した|さがる,3,一-nhất,Dưới,Vật ở phía dưới (下) đường kẻ,Phía dưới -> Hạ,Gạch đứng nằm dưới gạch ngang,không có,地下鉄(ちかてつ):Tàu điện ngầm|下(した):Dưới
+中,TRUNG,チュウ,なか,4,丨-sổ,Trong,Đường thẳng xuyên giữa (中) tâm,Ở giữa -> Trung,Vạch đứng xuyên qua ô vuông,không có,中国(ちゅうごく):Trung Quốc|中(なか):Trong
+大,ĐẠI,ダイ|タイ,おおきい,3,大-đại,Lớn,Người (大) dang tay rộng,Người dang tay -> Đại,Người đứng dang rộng hai tay,大きい(おおきい):Lớn,大学(だいがく):Đại học|大きい(おおきい):Lớn
+小,TIỂU,ショウ,ちいさい,3,小-tiểu,Nhỏ,Ba hạt cát (小) nhỏ bé,Nhỏ bé -> Tiểu,Ba nét nhỏ nhắn xinh xinh,小さい(ちいさい):Nhỏ,小学校(しょうがっこう):Trường tiểu học|小さい(ちいさい):Nhỏ
+本,BẢN,ホン,もと,5,木-mộc,Sách|Gốc,Gốc cây (木) có gạch ngang,Cây (木) + gốc -> Bản,Cây có gạch ở gốc,không có,本(ほん):Sách|日本(にほん):Nhật Bản
+半,BÁN,ハン,なかば,5,十-thập,Nửa,Cái bánh bị cắt đôi (半),Cắt đôi -> Bán,Số mười bị cắt ở trên,không có,半分(はんぶん):Một nửa|三時半(さんじはん):Ba giờ rưỡi
+分,PHÂN,ブン|フン,わける,4,刀-đao,Phần|Phút,Dùng dao (刀) chia (八) ra,Tám (八) + dao (刀) -> Phân,Con dao chia vật làm đôi,không có,五分(ごふん):Năm phút|分かる(わかる):Hiểu
+力,LỰC,リョク|リ,ちから,2,力-lực,Sức lực,Cánh tay (力) cơ bắp,Sức mạnh -> Lực,Hình cánh tay đang gồng lên,không có,体力(たいりょく):Thể lực|力(ちから):Sức lực
+何,HÀ,カ,なに|なん,7,人-nhân,Cái gì,Người (人) vác cái gì (何) trên vai,Người (人) + khả (可) -> Hà,Người đang hỏi cái gì đó,không có,何(なに):Cái gì|何人(なんにん):Mấy người
+明,MINH,メイ,あかるい,8,日-nhật,Sáng,Mặt trời (日) và trăng (月) cùng chiếu,Nhật (日) + nguyệt (月) -> Minh,Sự kết hợp của hai nguồn sáng,明るい(あかるい):Sáng,明日(あした):Ngày mai|説明(せつめい):Giải thích
+休,HƯU,キュウ,やすむ,6,人-nhân,Nghỉ ngơi,Người (人) tựa vào gốc cây (木),Người (人) + cây (木) -> Hưu,Người đứng cạnh cây để nghỉ,không có,休み(やすみ):Nghỉ ngơi|休日(きゅうじつ):Ngày nghỉ
+体,THỂ,タイ,からだ,7,人-nhân,Thân thể,Người (人) có gốc (本) gác,Người (人) + gốc (本) -> Thể,Thân thể là gốc của người,không có,体(からだ):Thân thể|体力(たいりょく):Thể lực
+好,HẢO,コウ,すき,6,女-nữ,Thích,Phụ nữ (女) thích con cái (子),Nữ (女) + tử (子) -> Hảo,Mẹ bồng con là điều tốt,không có,好き(すき):Thích|大好き(だいすき):Rất thích
+男,NAM,ダン|ナン,おとこ,7,田-điền,Nam giới,Người làm ruộng (田) dùng lực (力),Ruộng (田) + lực (力) -> Nam,Dùng sức lực làm trên ruộng,không có,男の子(おとこのこ):Bé trai|男性(だんせい):Nam giới
+林,LÂM,リン,はやし,8,木-mộc,Rừng thưa,Hai cái cây (木) đứng cạnh,Cây (木) + cây (木) -> Lâm,Hai cây tạo thành rừng nhỏ,không có,林(はやし):Rừng thưa|小林(こばやし):Kobayashi
+森,SÂM,シン,もり,12,木-mộc,Rừng rậm,Ba cái cây (木) tạo thành rừng,Cây (木) + lâm (林) -> Sâm,Ba cây chụm lại thành rừng,không có,森(もり):Rừng rậm|森田(もりた):Morita
+間,GIAN,カン|ケン,あいだ|ま,12,門-môn,Khoảng trống,Ánh nắng (日) xuyên qua cửa (門),Cửa (門) + nhật (日) -> Gian,Khoảng hở giữa hai cánh cửa,không có,時間(じかん):Thời gian|間(あいだ):Ở giữa
+畑,VIỆN,không có,はたけ,9,田-điền,Cánh đồng,Đốt lửa (火) làm ruộng (田),Lửa (火) + ruộng (田) -> Viện,Ruộng khô cần đốt cỏ,không có,畑(はたけ):Cánh đồng|花畑(はなばたけ):Cánh đồng hoa
+岩,NHAM,ガン,いわ,8,山-sơn,Đá tảng,Đá (石) trên núi (山),Núi (山) + đá (石) -> Nham,Tảng đá lớn ở trên núi,không có,岩(いわ):Đá tảng|岩石(がんせき):Nham thạch
+目,MỤC,モク,め,5,目-mục,Mắt,Hình ảnh con mắt (目) nằm dọc,Mắt (目) -> Mục,Con mắt có hai đồng tử,không có,目(め):Mắt|目的(もくてき):Mục đích
+耳,NHĨ,ジ,みみ,6,耳-nhĩ,Tai,Hình ảnh vành tai (耳),Tai (耳) -> Nhĩ,Vành tai có những nếp gấp,không có,耳(みみ):Tai|耳鼻科(じびか):Khoa tai mũi họng
+手,THỦ,シュ,て,4,手-thủ,Tay,Hình ảnh bàn tay (手) năm ngón,Bàn tay (手) -> Thủ,Các ngón tay đang xòe ra,không có,手(て):Tay|上手(じょうず):Giỏi
+足,TÚC,ソク,あし|たる,7,足-túc,Chân,Hình ảnh cái chân (足) đang bước,Cái chân (足) -> Túc,Có đùi và bàn chân phía dưới,không có,足(あし):Chân|遠足(えんそく):Dã ngoại
+雨,VŨ,ウ,あめ,8,雨-vũ,Mưa,Nước rơi từ đám mây (雨),Trời + nước rơi -> Vũ,Các giọt nước rơi từ trời,không có,雨(あめ):Mưa|大雨(おおあめ):Mưa lớn
+竹,TRÚC,チク,たけ,6,竹-trúc,Tre,Hình ảnh hai lá tre (竹) rủ,Cây tre (竹) -> Trúc,Hai cành tre đứng cạnh nhau,không có,竹(たけ):Tre|竹の子(たけのこ):Măng
+米,MỄ,ベイ|マイ,こめ,6,米-mễ,Gạo,Hạt gạo (米) tỏa ra tám hướng,Hạt lúa (米) -> Mễ,Sáu hạt gạo vây quanh tâm,không có,米(こめ):Gạo|米国(べいこく):Nước Mỹ
+貝,BỐI,バイ,かい,7,貝-bối,Vỏ sò,Hình ảnh vỏ sò (貝) cổ xưa,Sò (貝) -> Bối,Con sò dùng làm tiền tệ,không có,貝(かい):Con sò|貝がら(かいがら):Vỏ sò
+石,THẠCH,セキ,いし,5,石-thạch,Đá,Tảng đá (石) dưới sườn núi,Dưới núi + đá -> Thạch,Viên đá vuông vức dưới vách,không có,石(いし):Viên đá|石油(せきゆ):Dầu mỏ
+糸,MỊCH,シ,いと,6,糸-mịch,Sợi chỉ,Cuộn chỉ (糸) có tơ rơi,Sợi tơ (糸) -> Mịch,Những sợi chỉ nhỏ đan vào,không có,糸(いと):Sợi chỉ|毛糸(けいと):Len
+花,HOA,カ,はな,7,艹-thảo,Hoa,Cỏ (艹) biến hóa (化) thành hoa,Cỏ (艹) + hóa (化) -> Hoa,Cây cỏ nở hoa rực rỡ,không có,花(はな):Hoa|花火(はなび):Pháo hoa
+茶,TRÀ,チャ|サ,không có,9,艹-thảo,Trà,Cây cỏ (艹) làm trà uống,Cỏ (艹) + nhân (人) + cây (木) -> Trà,Lá cây người ta hái uống,không có,お茶(おちゃ):Trà|茶店(ちゃみせ):Quán trà
+肉,NHỤC,ニク,không có,6,肉-nhục,Thịt,Miếng thịt (肉) có gân,Thịt (肉) -> Nhục,Miếng thịt xẻ có vân mỡ,không có,肉(にく):Thịt|牛肉(ぎゅうにく):Thịt bò
+文,VĂN,ブン|モン,ふみ,4,文-văn,Văn chương,Người mang văn (文) tự,Văn (文) -> Chữ,Nét chữ viết chéo nhau độc đáo,không có,文学(ぶんがく):Văn học|作文(さくぶん):Tập làm văn
+字,TỰ,ジ,あざ,6,宀-miên,Chữ,Đứa trẻ (子) học chữ dưới mái nhà (宀),Nhà (宀) + con (子) -> Tự,Trẻ em học mặt chữ trong nhà,không có,漢字(かんじ):Chữ Hán|文字(もじ):Ký tự
+物,VẬT,ブツ|モツ,もの,8,牛-ngưu,Vật thể,Con bò (牛) là sinh vật,Bò (牛) + không (勿) -> Vật,Mọi thứ tồn tại trên đời,không có,食べ物(たべもの):Đồ ăn|買い物(かいもの):Mua sắm
+牛,NGƯU,ギュウ,うし,4,牛-ngưu,Con bò,Hình ảnh đầu bò (牛) có sừng,Đầu bò (牛) -> Ngưu,Sừng bò nhô lên phía trên,không có,牛肉(ぎゅうにく):Thịt bò|牛(うし):Con bò
+馬,MÃ,バ,うま,10,馬-mã,Con ngựa,Con ngựa (馬) có bờm dài,Ngựa (馬) -> Mã,Bốn chân đang phi nước đại,không có,馬(うま):Con ngựa|馬車(ばしゃ):Xe ngựa
+鳥,ĐIỂU,チョウ,とり,11,鳥-điểu,Con chim,Con chim (鳥) có mào và đuôi,Chim (鳥) -> Điểu,Con chim đang đậu trên cành,không có,鳥(とり):Con chim|小鳥(ことり):Chim nhỏ
+魚,NGƯ,ギョ,さかな,11,魚-ngư,Con cá,Con cá (魚) có vây và đuôi,Cá (魚) -> Ngư,Cá bơi dưới nước có vảy,không có,魚(さかな):Con cá|金魚(きんぎょ):Cá vàng
+新,TÂN,シン,あたらしい,13,斤-cân,Mới,Dùng rìu (斤) chặt cây (木) mới,Cây (木) + đứng (立) + rìu (斤) -> Tân,Cây vừa chặt xong còn mới,新しい(あたらしい):Mới,新聞(しんぶん):Tờ báo|新年(しんねん):Năm mới
+古,CỔ,コ,ふるい,5,口-khẩu,Cũ,Lời nói (口) mười (十) đời trước,Mười (十) + miệng (口) -> Cổ,Chuyện qua mười miệng đã cũ,古い(ふるい):Cũ,中古(ちゅうこ):Đồ cũ|古本(ふるほん):Sách cũ
+長,TRƯỜNG,チョウ,ながい,8,長-trường,Dài,Người tóc dài (長) chống gậy,Dài (長) -> Trường,Người già tóc dài và gậy,長い(ながい):Dài,社長(しゃちょう):Giám đốc|校長(こうちょう):Hiệu trưởng
+短,ĐOẢN,タン,みじかい,12,矢-thỉ,Ngắn,Mũi tên (矢) ngắn hơn hạt đậu (豆),Tên (矢) + đậu (豆) -> Đoản,Mũi tên so với cây đậu,短い(みじかい):Ngắn,短大(たんだい):Trường đoản kỳ|短時間(たんじかん):Thời gian ngắn
+高,CAO,コウ,たかい,10,高-cao,Cao,Tòa tháp (高) cao tầng,Cao (高) -> Tháp,Nhà nhiều tầng xây cao lên,高い(たかい):Cao|Đắt,高校(こうこう):Trường cấp 3|高い(たかい):Cao
+安,AN,アン,やすい,6,宀-miên,Rẻ|An,Người phụ nữ (女) dưới mái nhà (宀) thì an,Nhà (宀) + nữ (女) -> An,Phụ nữ ở trong nhà an toàn,安い(やすい):Rẻ,安い(やすい):Rẻ|安全(あんぜん):An toàn
+低,ĐÊ,テイ,ひくい,7,人-nhân,Thấp,Người (人) đứng ở nơi thấp,Người (人) + gốc (氐) -> Đê,Người đứng dưới chân đồi thấp,低い(ひくい):Thấp,低い(ひくい):Thấp|低下(ていか):Sự giảm sút
+暗,ÁM,アン,くらい,13,日-nhật,Tối,Mặt trời (日) bị âm (音) thanh che,Nhật (日) + âm (音) -> Ám,Không có mặt trời nên tối,暗い(くらい):Tối,暗い(くらい):Tối|暗号(あんごう):Mật mã
+多,ĐA,タ,おおい,6,夕-tịch,Nhiều,Nhiều đêm (夕) trôi qua,Đêm (夕) + đêm (夕) -> Đa,Hai mặt trăng xếp chồng lên,多い(おおい):Nhiều,多い(おおい):Nhiều|多分(たぶん):Có lẽ
+少,THIẾU,ショウ,すこし|すくない,4,小-tiểu,Ít,Cái nhỏ (小) bị cắt bớt,Nhỏ (小) + phẩy -> Thiếu,Chỉ có một chút xíu thôi,少ない(すくない):Ít,少し(すこし):Một chút|少ない(すくない):Ít
+行,HÀNH,コウ|ギョウ,いく|おこなう,6,行-hành,Đi,Ngã tư đường (行) người đi,Đi (行) -> Hành,Hai người đang bước đi tới,không có,行く(いく):Đi|旅行(りょこう):Du lịch
+来,LAI,ライ,くる,7,木-mộc,Đến,Cây lúa (木) đang đến mùa,Đến (来) -> Lai,Cây có nhiều quả chín đến,không có,来る(くる):Đến|来年(らいねん):Năm sau
+帰,QUY,キ,かえる,10,止-chỉ,Về,Vợ cầm chổi (帚) về nhà,Về (帰) -> Quy,Về nhà sau khi làm việc,không có,帰る(かえる):Về|帰国(きこく):Về nước
+食,THỰC,ショク,たべる,9,食-thực,Ăn,Dưới mái nhà có người ăn (食),Ăn (食) -> Thực,Cái bát có nắp đậy thức ăn,không có,食べる(たべる):Ăn|食堂(しょくどう):Nhà ăn
+飲,ẨM,イン,のむ,12,食-thực,Uống,Người (欠) đang ăn (食) và uống,Ăn (食) + thiếu (欠) -> Ẩm,Ăn xong thì phải uống nước,không có,飲む(のむ):Uống|飲み物(のみもの):Đồ uống
+見,KIẾN,ケン,みる,7,見-kiến,Nhìn,Mắt (目) trên đôi chân (儿) đi nhìn,Mắt (目) + chân (儿) -> Kiến,Dùng mắt để quan sát vật,không có,見る(みる):Nhìn|見学(けんがく):Tham quan học tập
+聞,VĂN,ブン|モン,きく,14,門-môn,Nghe,Tai (耳) đặt sát cửa (門) nghe,Cửa (門) + tai (耳) -> Văn,Lắng nghe âm thanh qua cửa,không có,聞く(きく):Nghe|新聞(しんぶん):Tờ báo
+読,ĐỘC,ドク,よむ,14,言-ngôn,Đọc,Dùng lời (言) đọc sách bán (売),Lời (言) + bán (売) -> Độc,Lời nói phát ra khi đọc,không có,読む(よむ):Đọc|読書(どくしょ):Đọc sách
+書,THƯ,ショ,かく,10,曰-viết,Viết,Tay cầm bút viết lời (曰),Bút + lời (曰) -> Thư,Dùng bút ghi chép lại lời,không có,書く(かく):Viết|辞書(じしょ):Từ điển
+話,THOẠI,ワ,はなす,13,言-ngôn,Nói chuyện,Dùng lưỡi (舌) nói lời (言),Lời (言) + lưỡi (舌) -> Thoại,Lời nói phát ra từ lưỡi,không có,話す(はなす):Nói|電話(でんわ):Điện thoại
+買,MÃI,バイ,かう,12,貝-bối,Mua,Dùng tiền vỏ sò (貝) để mua,Lưới (罒) + sò (貝) -> Mãi,Dùng tiền để sở hữu vật,không có,買う(かう):Mua|買い物(かいもの):Mua sắm
+教,GIÁO,キョウ,おしえる,11,攵-phốc,Dạy,Dùng roi (攵) dạy trẻ (子) học,Trẻ (子) + đánh (攵) -> Giáo,Thầy giáo đang dạy học sinh,không có,教える(おしえる):Dạy|教室(きょうしつ):Lớp học
+朝,TRIỀU,チョウ,あさ,12,月-nguyệt,Buổi sáng,Mặt trời mọc trên cỏ buổi sáng,Cỏ + nhật + cỏ + nguyệt -> Triều,Sáng sớm trăng vẫn còn hiện,không có,朝(あさ):Buổi sáng|朝食(ちょうしょく):Bữa sáng
+昼,TRÚ,チュウ,ひる,9,日-nhật,Buổi trưa,Mặt trời (日) đứng bóng trên đầu,Mái nhà + nhật (日) -> Trú,Thời gian mặt trời cao nhất,không có,昼(ひる):Buổi trưa|昼休み(ひるやすみ):Nghỉ trưa
+夜,DẠ,ヤ,よる|よ,8,夕-tịch,Buổi đêm,Người (人) đứng dưới trăng đêm (夕),Người + đêm (夕) -> Dạ,Thời điểm trăng lên cao tối,không có,夜(よる):Ban đêm|今夜(こんや):Tối nay
+晩,VÃN,バン,không có,12,日-nhật,Buổi tối,Mặt trời (日) đã lặn xuống đất,Nhật (日) + miễn -> Vãn,Trời đã tối muộn rồi đó,không có,晩(ばん):Buổi tối|今晩(こんばん):Tối nay
+夕,TỊCH,セキ,ゆう,3,夕-tịch,Chiều tà,Mặt trăng khuyết xuất hiện buổi chiều,Trăng khuyết -> Tịch,Mặt trăng hiện lên lúc chiều,không có,夕方(ゆうがた):Chiều tối|夕食(ゆうしょく):Bữa tối
+方,PHƯƠNG,ホウ,かた,4,方-phương,Hướng|Cách,Hướng (方) đi của người cầm cày,Hướng (方) -> Phương,Chỉ một hướng hoặc cách thức,không có,書き方(かきかた):Cách viết|方法(ほうほう):Phương pháp
+午,NGỌ,ゴ,không có,4,十-thập,Trưa,Cái chày (午) giã gạo buổi trưa,Số mười (十) biến điệu -> Ngọ,Giữa trưa lúc mặt trời đứng,không có,午前(ごぜん):Sáng|午後(ごご):Chiều
+前,TIỀN,ゼン,まえ,9,刀-đao,Trước,Thịt (月) cắt bằng dao (刀) trước mặt,Đất + trăng + dao -> Tiền,Ở phía trước hoặc thời gian,không có,名前(なまえ):Tên|前(まえ):Trước
+後,HẬU,ゴ|コウ,うしろ|あと,9,彳-xích,Sau,Người đi chậm bước theo sau,Đi chậm + chân -> Hậu,Ở phía sau hoặc muộn hơn,không có,午後(ごご):Chiều|後で(あとで):Sau đó
+毎,MỖI,マイ,ごと,6,母-mẫu,Mỗi,Mỗi (毎) người mẹ (母) đều đội mũ,Người + mẹ (母) -> Mỗi,Lặp đi lặp lại hàng ngày,không có,毎日(まいにち):Mỗi ngày|毎週(まいしゅう):Mỗi tuần
+週,CHU,シュウ,không có,11,⻌-sước,Tuần,Đi (⻌) vòng quanh một vòng,Đi (⻌) + vòng -> Chu,Bảy ngày trong một chu kỳ,không có,来週(らいしゅう):Tuần sau|一週間(いっしゅうかん):Một tuần
+曜,DIỆU,ヨウ,không có,18,日-nhật,Ngày thứ,Mặt trời (日) chiếu sáng lông chim,Nhật (日) + chim -> Diệu,Các ngày trong một tuần lễ,không có,日曜日(にちようび):Chủ nhật|何曜日(なんようび):Thứ mấy
+作,TÁC,サク|サ,つくる,7,人-nhân,Làm|Chế tạo,Người (人) đang làm (作) việc,Người (人) + làm -> Tác,Tạo ra một vật gì mới,không có,作る(つくる):Làm|作文(さくぶん):Tập làm văn
+泳,VỊNH,エイ,およぐ,8,氵-thủy,Bơi,Nước (氵) cho người bơi lội,Nước (氵) + vĩnh -> Vịnh,Bơi lội tung tăng trong nước,không có,泳ぐ(およぐ):Bơi|水泳(すいえい):Bơi lội
+油,DU,ユ,あぶら,8,氵-thủy,Dầu,Nước (氵) trơn như dầu,Nước (氵) + do -> Du,Chất lỏng trơn dùng nấu ăn,không có,石油(せきゆ):Dầu mỏ|油(あぶら):Dầu
+海,HẢI,カイ,うみ,9,氵-thủy,Biển,Nước (氵) của mỗi (毎) người,Nước (氵) + mỗi (毎) -> Hải,Nơi chứa nước khổng lồ xanh,không có,海(うみ):Biển|海外(かいがい):Hải ngoại
+酒,TỬU,シュ,さけ,10,氵-thủy,Rượu,Nước (氵) trong bình (酉) rượu,Nước (氵) + bình rượu -> Tửu,Đồ uống làm từ men gạo,không có,お酒(おさけ):Rượu|日本酒(にほんしゅ):Rượu Nhật
+待,ĐÃI,タイ,まつ,9,彳-xích,Chờ,Người đi (彳) đến chùa (寺) chờ,Đi (彳) + chùa (寺) -> Đãi,Đứng đợi ai đó ở chùa,không có,待つ(まつ):Chờ|期待(きたい):Kỳ vọng
+校,HIỆU,コウ,không có,10,木-mộc,Trường học,Trường học có cây (木) và cổng,Cây (木) + giao -> Hiệu,Nơi học sinh đến học tập,không có,学校(がっこう):Trường học|高校(こうこう):Trường cấp 3
+時,THỜI,ジ,とき,10,日-nhật,Thời gian,Mặt trời (日) qua chùa (寺) đo giờ,Nhật (日) + chùa (寺) -> Thời,Thời gian trôi qua từng giờ,không có,時間(じかん):Thời gian|時(とき):Khi
+言,NGÔN,ゲン|ゴン,いう,7,言-ngôn,Nói,Lời nói (言) phát ra từ miệng,Lời nói (言) -> Ngôn,Dùng lời để truyền đạt ý,không có,言う(いう):Nói|言葉(ことば):Từ vựng
+計,KẾ,ケイ,はかる,9,言-ngôn,Kế hoạch|Đo,Nói (言) ra số mười (十) để tính,Lời (言) + mười (十) -> Kế,Tính toán các con số cụ thể,không có,時計(とけい):Đồng hồ|計画(けいかく):Kế hoạch
+語,NGỮ,ゴ,かたる,14,言-ngôn,Ngôn ngữ,Tôi (五+口) nói lời (言) ngôn ngữ,Lời (言) + tôi (吾) -> Ngữ,Tiếng nói của một dân tộc,không có,日本語(にほんご):Tiếng Nhật|英語(えいご):Tiếng Anh
+飯,PHẠN,ハン,めし,12,食-thực,Cơm,Đồ ăn (食) làm cho phản (反) ứng,Ăn (食) + phản (反) -> Phạn,Bữa cơm hàng ngày của mình,không có,ご飯(ごはん):Cơm|朝飯(あさめし):Bữa sáng
+宅,TRẠCH,タク,không có,6,宀-miên,Nhà ở,Nhà (宀) có người cư ngụ,Mái nhà (宀) -> Trạch,Nơi ở cố định của ai đó,không có,お宅(おたく):Nhà ngài|住宅(じゅうたく):Nhà ở
+客,KHÁCH,キャク,không có,9,宀-miên,Khách,Người lạ đến nhà (宀) là khách,Nhà (宀) + mỗi -> Khách,Người đến thăm hoặc mua hàng,không có,お客さん(おきゃくさん):Khách hàng|乗客(じょうきゃく):Hành khách
+室,THẤT,シツ,むろ,9,宀-miên,Phòng,Mái nhà (宀) có đất (土) bên dưới,Nhà (宀) + đến -> Thất,Căn phòng nhỏ trong tòa nhà,không có,教室(きょうしつ):Lớp học|待合室(まちあいしつ):Phòng chờ
+家,GIA,カ|ケ,いえ|や,10,宀-miên,Nhà,Dưới mái nhà (宀) nuôi heo (豕),Nhà (宀) + heo (豕) -> Gia,Tổ ấm của một gia đình,không có,家族(かぞく):Gia đình|家(いえ):Nhà
+英,ANH,エイ,không có,8,艹-thảo,Anh (nước)|Tài,Cỏ (艹) nở hoa đẹp tinh anh,Cỏ (艹) + trung -> Anh,Người tài giỏi hoặc nước Anh,không có,英語(えいご):Tiếng Anh|英国(えいこく):Nước Anh
+薬,ƯỢC,ヤク,くすり,16,艹-thảo,Thuốc,Làm từ cỏ (艹) giúp vui (楽),Cỏ (艹) + vui (楽) -> Ược,Thứ dùng để chữa bệnh tật,không có,薬(くすり):Thuốc|薬局(やっきょく):Hiệu thuốc
+会,HỘI,カイ,あう,6,人-nhân,Gặp gỡ,Mọi người (人) gặp nhau dưới mái,Người + gặp -> Hội,Gặp gỡ bạn bè hoặc họp,không có,会う(あう):Gặp|会社(かいしゃ):Công ty
+今,KIM,コン,いま,4,人-nhân,Bây giờ,Mọi người (人) họp ngay bây giờ,Bây giờ -> Kim,Thời điểm hiện tại lúc này,không có,今日(きょう):Hôm nay|今月(こんげつ):Tháng này
+雪,TUYẾT,セツ,ゆき,11,雨-vũ,Tuyết,Mưa (雨) đông lại rơi xuống,Mưa (雨) + quét -> Tuyết,Những bông trắng rơi khi lạnh,không có,雪(ゆき):Tuyết|大雪(おおゆき):Tuyết rơi nhiều
+雲,VÂN,ウン,くも,12,雨-vũ,Mây,Mưa (雨) tụ lại thành mây,Mưa (雨) + nói -> Vân,Đám mây bay trên bầu trời,không có,雲(くも):Mây|雨雲(あまぐも):Mây mưa
+電,ĐIỆN,デン,không có,13,雨-vũ,Điện,Sấm sét (雨) tạo ra luồng điện,Mưa (雨) + ruộng -> Điện,Nguồn năng lượng chạy máy móc,không có,電車(でんしゃ):Tàu điện|電話(でんわ):Điện thoại
+売,MẠI,バイ,うる,7,士-sĩ,Bán,Người sĩ (士) bán đồ đạc,Sĩ (士) + chân -> Mại,Trao đổi vật lấy tiền bạc,không có,売る(うる):Bán|売店(ばいてん):Quầy bán hàng
+広,QUẢNG,コウ,ひろい,5,广-nghiễm,Rộng,Dưới mái hiên (广) rất rộng,Mái (广) -> Quảng,Không gian bao la rộng lớn,広い(ひろい):Rộng,広島(ひろしま):Hiroshima|広い(ひろい):Rộng
+店,ĐIẾM,テン,みせ,8,广-nghiễm,Cửa hàng,Dưới mái (广) có bục chiếm (占),Mái (广) + chiếm -> Điếm,Nơi bán hàng hóa cho khách,không có,店(みせ):Cửa hàng|売店(ばいてん):Quầy bán hàng
+度,ĐỘ,ド,たび,9,广-nghiễm,Lần|Mức độ,Dưới mái (广) đo bằng tay,Mái (广) + tay -> Độ,Đo lường nhiệt độ hoặc lần,không có,今度(こんど):Lần tới|温度(おんど):Nhiệt độ
+病,BỆNH,ビョウ,やまい,10,疒-nạch,Bệnh,Người nằm (疒) vì bị bệnh,Nạch (疒) + bính -> Bệnh,Trạng thái cơ thể không khỏe,không có,病院(びょういん):Bệnh viện|病気(びょうき):Bệnh tật
+疲,BÌ,ヒ,つかれる,10,疒-nạch,Mệt mỏi,Người nằm (疒) mệt vì da (皮),Nạch (疒) + da (皮) -> Bì,Cảm thấy hết sức lực rồi,không có,疲れる(つかれる):Mệt mỏi|疲れ(つかれ):Sự mệt mỏi
+痛,THỐNG,ツウ,いたい,12,疒-nạch,Đau,Người nằm (疒) thấy đau nhói,Nạch (疒) + dụng -> Thống,Cảm giác đau đớn trên thân,痛い(いたい):Đau,痛い(いたい):Đau|頭痛(ずつう):Đau đầu
+屋,ỐC,オク,や,9,尸-thi,Cửa hàng|Mái nhà,Dưới mái (尸) có đất (至),Thi (尸) + đến -> Ốc,Cái nhà hoặc tiệm bán,không có,本屋(ほんや):Hiệu sách|屋上(おくじょう):Sân thượng
+国,QUỐC,コク,くに,8,囗-vi,Quốc gia,Vua (玉) cai trị trong biên giới (囗),Vòng (囗) + ngọc (玉) -> Quốc,Vùng lãnh thổ có chủ quyền,không có,国(くに):Đất nước|外国人(がいこくじん):Người nước ngoài
+回,HỒI,カイ,まわる,6,囗-vi,Vòng|Lần,Vòng tròn trong vòng tròn (囗),Vòng lớn + vòng nhỏ -> Hồi,Xoay quanh hoặc lặp lại lần,không có,回る(まわる):Xoay quanh|一回(いっかい):Một lần
+困,KHỐN,コン,こまる,7,囗-vi,Khó khăn,Cây (木) bị nhốt trong khung (囗),Vòng (囗) + cây (木) -> Khốn,Cảm thấy lúng túng bế tắc,không có,困る(こまる):Khó khăn|困難(こんなん):Khó khăn
+開,KHAI,カイ,あける|ひらく,12,門-môn,Mở,Dùng tay mở cửa (門) ra,Cửa (門) + mở -> Khai,Mở cửa hoặc bắt đầu gì,không có,開ける(あける):Mở|開始(かいし):Bắt đầu
+閉,BẾ,ヘイ,しめる|とじる,11,門-môn,Đóng,Cánh cửa (門) bị đóng lại,Cửa (門) + đóng -> Bế,Khép lại không cho vào nữa,không có,閉める(しめる):Đóng|閉店(へいてん):Đóng cửa hàng
+近,CẬN,キン,ちかい,7,⻌-sước,Gần,Đi (⻌) một quãng rìu (斤) là gần,Đi (⻌) + rìu (斤) -> Cận,Khoảng cách không xa lắm đâu,近い(ちかい):Gần,近く(ちかく):Ở gần|最近(さいきん):Gần đây
+遠,VIỄN,エン,とおい,13,⻌-sước,Xa,Đi (⻌) mãi mới đến nơi xa,Đi (⻌) + viên -> Viễn,Khoảng cách rất dài và xa,遠い(とおい):Xa,遠い(とおい):Xa|遠足(えんそく):Dã ngoại
+速,TỐC,ソク,はやい,10,⻌-sước,Nhanh,Đi (⻌) với tốc độ nhanh,Đi (⻌) + bó -> Tốc,Chuyển động trong thời gian ngắn,速い(はやい):Nhanh,速い(はやい):Nhanh|速度(そくど):Tốc độ
+遅,TRÌ,チ,おそい|おく stretch,12,⻌-sước,Chậm|Muộn,Con cừu đi (⻌) chậm chạp,Đi (⻌) + chậm -> Trì,Không nhanh hoặc bị trễ giờ,遅い(おそい):Chậm,遅い(おそい):Chậm|遅刻(ちこく):Đến muộn
+道,ĐẠO,ドウ,みち,12,⻌-sước,Đường đi,Người (首) đi (⻌) trên đường,Đi (⻌) + đầu -> Đạo,Lối đi hoặc đạo lý sống,không có,道(みち):Con đường|水道(すいどう):Nước máy
+青,THANH,セイ,あおい,8,青-thanh,Xanh dương,Màu của bầu trời (青) trong,Xanh (青) -> Thanh,Màu xanh của nước và trời,青い(あおい):Xanh,青い(あおい):Xanh|青年(せいねん):Thanh niên
+晴,TÌNH,セイ,はれる,12,日-nhật,Nắng|Tạnh,Mặt trời (日) lên trời xanh (青),Nhật (日) + xanh (青) -> Tình,Trời quang đãng không mưa,không có,晴れ(はれ):Trời nắng|晴天(せいてん):Trời quang
+静,TĨNH,セイ,しずか,14,青-thanh,Yên tĩnh,Xanh (青) lặng và không tranh (争),Xanh (青) + tranh -> Tĩnh,Không gian vắng lặng im lìm,静か(しずか):Yên tĩnh,静か(しずか):Yên tĩnh|静止(せいし):Tĩnh lặng
+寺,TỰ,ジ,てら,6,寸-thốn,Chùa,Nơi đo (寸) đất (土) làm chùa,Đất (土) + thốn (寸) -> Tự,Nơi tu hành của các sư,không có,お寺(おてら):Ngôi chùa|寺院(じいん):Chùa chiền
+持,TRÌ,ジ,持つ,9,扌-thủ,Cầm|Nắm,Tay (扌) cầm vật ở chùa (寺),Tay (扌) + chùa (寺) -> Trì,Giữ vật gì đó trong tay,không có,持つ(まつ):Cầm|気持ち(きもち):Cảm giác
+荷,HÀ,カ,に,10,艹-thảo,Hàng hóa,Người vác cỏ (艹) làm hàng,Cỏ (艹) + hà -> Hà,Đồ đạc mang theo khi đi,không có,荷物(にもつ):Hành lý|重荷(おもに):Gánh nặng
+歌,CA,カ,うたう,14,欠-khiếm,Hát,Người mở miệng (欠) hát ca,Khả + khả + khiếm -> Ca,Giai điệu phát ra từ miệng,không có,歌う(うたう):Hát|歌(うた):Bài hát
+友,HỮU,ユウ,とも,4,又-hựu,Bạn bè,Hai cái tay (又) nắm lấy nhau,Bạn bè (友) -> Hữu,Người đồng hành thân thiết nhất,không có,友達(ともだち):Bạn bè|友人(ゆうじん):Bạn thân
+父,PHỤ,フ,ちち,4,父-phụ,Cha,Người đàn ông (父) quyền lực,Cha (父) -> Phụ,Người trụ cột trong gia đình,không có,父(ちち):Cha tôi|お父さん(おとうさん):Cha
+母,MẪU,ボ,はは,5,母-mẫu,Mẹ,Người phụ nữ (母) có sữa,Mẹ (母) -> Mẫu,Người phụ nữ sinh ra mình,không có,母(はは):Mẹ tôi|お母さん(おかあさん):Mẹ
+兄,HUYNH,ケイ|キョウ,あに,5,儿-nhi,Anh trai,Người (儿) có miệng (口) lớn,Miệng (口) + chân (儿) -> Huynh,Người anh trong gia đình mình,không có,兄(あに):Anh tôi|お兄さん(おにいさん):Anh
+姉,TỶ,シ,あね,8,女-nữ,Chị gái,Người phụ nữ (女) của thị (市),Nữ (女) + thị -> Tỷ,Người chị trong gia đình mình,không có,姉(あね):Chị tôi|お姉さん(おねえさん):Chị
+弟,ĐỆ,テイ,おとうと,7,弓-cung,Em trai,Dùng cung (弓) cho em trai,Em trai (弟) -> Đệ,Người em trai trong gia đình,không có,弟(おとうと):Em trai tôi|兄弟(きょうだい):Anh em
+妹,MUỘI,マイ,いもうと,8,女-nữ,Em gái,Người phụ nữ (女) chưa (未) lớn,Nữ (女) + chưa -> Muội,Người em gái trong gia đình,không có,妹(いもうと):Em gái tôi|妹さん(いもうとさん):Em gái
+夫,PHU,フ,おっと,4,大-đại,Chồng,Người đàn ông (大) đội mũ,Đại (大) + gạch -> Phu,Người chồng trong gia đình mình,không có,夫(おっと):Chồng tôi|夫婦(ふうふ):Vợ chồng
+妻,THÊ,サイ,つま,8,女-nữ,Vợ,Người phụ nữ (女) cầm chổi,Vợ (妻) -> Thê,Người vợ trong gia đình mình,không có,妻(つま):Vợ tôi|夫妻(ふさい):Vợ chồng
+彼,BỈ,ヒ,かれ,8,彳-xích,Anh ấy,Người đi (彳) bên cạnh anh ấy,Đi (彳) + bì -> Bỉ,Người nam được nhắc tới,không có,彼(かれ):Anh ấy|彼女(かのじょ):Cô ấy
+主,CHỦ,シュ,ぬし,5,丶-chủ,Chủ nhân,Ngọn lửa trên giá nến,Chủ (主) -> Chủ,Người đứng đầu một nơi,không có,主人(しゅじん):Chồng|持ち主(もちぬし):Chủ sở hữu
+奥,ÁO,オウ,おく,12,大-đại,Sâu bên trong,Người (大) ở sâu trong nhà,Nhà + đại (大) -> Áo,Nơi kín đáo hoặc bên trong,không có,奥(おく):Bên trong|奥さん(おくさん):Vợ người khác
+元,NGUYÊN,ゲン|ガン,もと,4,儿-nhi,Gốc|Nguyên,Người (儿) có hai (二) chân,Hai (二) + chân (儿) -> Nguyên,Gốc rễ hoặc sự bắt đầu,không có,元気(げんき):Khỏe mạnh|元日(がんじつ):Ngày đầu năm
+気,KHÍ,キ,không có,6,气-khí,Khí|Tinh thần,Hơi nước (气) bốc lên,Khí (気) -> Khí,Năng lượng hoặc cảm xúc người,không có,元気(げんき):Khỏe mạnh|天気(てんき):Thời tiết
+有,HỮU,ユウ,ある,6,月-nguyệt,Có,Bàn tay cầm miếng thịt (月),Tay + trăng (月) -> Hữu,Sở hữu hoặc đang tồn tại,không có,有名(ゆうめい):Nổi tiếng|有料(ゆうりょう):Trả phí
+名,DANH,メイ,な,6,口-khẩu,Tên,Đêm (夕) gọi tên bằng miệng (口),Đêm (夕) + miệng (口) -> Danh,Tên gọi của một người,không có,名前(なまえ):Tên|有名(ゆうめい):Nổi tiếng
+親,THÂN,シン,おや|したしい,16,見-kiến,Bố mẹ|Thân,Đứng (立) trên cây (木) nhìn (見),Cây + đứng + nhìn -> Thân,Bố mẹ luôn dõi theo con,親しい(したしい):Thân thiện,親(おや):Bố mẹ|父親(ちちおや):Cha
+切,THIẾT,セツ,きる,4,刀-đao,Cắt,Dùng dao (刀) cắt số bảy (七),Bảy (七) + dao (刀) -> Thiết,Hành động chia cắt vật gì,không có,切る(きる):Cắt|大切(たいせつ):Quan trọng
+便,TIỆN,ベン|ビン,たより,9,人-nhân,Tiện lợi|Thư,Người (人) làm việc tiện lợi,Người (人) + canh -> Tiện,Sự thuận tiện hoặc bưu kiện,không có,便利(べんり):Tiện lợi|郵便局(ゆうびんきょく):Bưu điện
+利,LỢI,リ,きく,7,禾-hòa,Lợi ích,Dùng dao (刀) cắt lúa (禾),Lúa (禾) + dao (刀) -> Lợi,Có lợi hoặc sắc bén,không có,便利(べんり):Tiện lợi|利用(りよう):Sử dụng
+不,BẤT,フ|ブ,không có,4,一-nhất,Không,Chim bay lên không trở lại,Không (不) -> Bất,Từ phủ định một điều gì,không có,不便(ふべん):Bất tiện|不足(ふそく):Thiếu thốn
+若,NHƯỢC,ジャク,わかい,8,艹-thảo,Trẻ trung,Cỏ (艹) còn xanh và trẻ,Cỏ (艹) + phải -> Nhược,Sức sống của tuổi thanh xuân,若い(わかい):Trẻ,若い(わかい):Trẻ trung|若者(わかもの):Người trẻ
+早,TẢO,ソウ,はやい,6,日-nhật,Sớm,Mặt trời (日) mọc trên cây,Nhật (日) + mười (十) -> Tảo,Thời điểm bắt đầu ngày mới,早い(はやい):Sớm,早い(はやい):Sớm|早朝(そうちょう):Sáng sớm
+忙,MANG,ボウ,いそがしい,6,忄-tâm,Bận rộn,Tâm (忄) bị mất đi vì bận,Tâm (忄) + mất -> Mang,Nhiều việc phải làm một lúc,忙しい(いそがしい):Bận,忙しい(いそがしい):Bận rộn|多忙(たぼう):Rất bận
+出,XUẤT,シュツ,でる|だす,5,凵-khảm,Ra ngoài,Cây mọc ra khỏi mặt đất,Ra ngoài -> Xuất,Đi ra từ bên trong nơi,không có,出る(でる):Ra|出口(でぐち):Lối ra
+入,NHẬP,ニュウ,はいる|いれる,2,入-nhập,Vào,Người bước vào trong cửa,Vào -> Nhập,Đi vào bên trong một nơi,không có,入る(はいる):Vào|入口(いりぐち):Lối vào
+乗,THỪA,ジョウ,のる,9,丿-phiệt,Lên xe,Người đứng trên cây (木) lên,Lên -> Thừa,Lên các phương tiện giao thông,không có,乗る(のる):Lên xe|乗客(じょうきゃく):Hành khách
+降,HÀNG|GIÁNG,コウ,ふる|おりる,10,阝-phụ,Xuống,Người đi xuống từ đồi (阝),Đồi (阝) + xuống -> Giáng,Đi xuống xe hoặc mưa rơi,không có,降りる(おりる):Xuống xe|降る(ふる):Mưa rơi
+着,TRƯỚC,チャク,きる|つく,12,羊-dương,Mặc|Đến,Con cừu (羊) mặc áo len,Cừu (羊) + mắt -> Trước,Mặc quần áo hoặc đến nơi,không có,着る(きる):Mặc|着く(つく):Đến nơi
+渡,ĐỘ,ト,わたる,12,氵-thủy,Băng qua,Dùng nước (氵) để vượt qua,Nước (氵) + độ -> Độ,Đi qua cầu hoặc đường xá,không có,渡る(わたる):Băng qua|渡航(とこう):Đi thuyền
+通,THÔNG,ツウ,とおる,10,⻌-sước,Đi qua,Đi (⻌) thông suốt mọi nơi,Đi (⻌) + dùng -> Thông,Đi lại hàng ngày hoặc hiểu,không có,通る(とおる):Đi qua|交通(こうつう):Giao thông
+走,TẨU,ソウ,はしる,7,走-tẩu,Chạy,Người (土) dang chân chạy nhanh,Chạy (走) -> Tẩu,Hành động di chuyển rất nhanh,không có,走る(はしる):Chạy|競走(きょうそう):Chạy đua
+歩,BỘ,ホ,あるく,8,止-chỉ,Đi bộ,Dừng lại (止) rồi bước tiếp,Dừng (止) + ít -> Bộ,Đi bằng hai chân thong thả,không có,歩く(あるく):Đi bộ|散歩(さんぽ):Đi dạo
+止,CHỈ,シ,とまる,4,止-chỉ,Dừng lại,Hình ảnh bàn chân dừng lại,Dừng lại -> Chỉ,Không di chuyển thêm chút nào,không có,止まる(とまる):Dừng lại|中止(ちゅうし):Hủy bỏ
+動,ĐỘNG,ドウ,うごく,11,力-lực,Chuyển động,Dùng lực (力) làm vật nặng,Nặng + lực (力) -> Động,Sự thay đổi vị trí vật,không có,動く(うごく):Chuyển động|自動車(じどうしゃ):Ô tô
+右,HỮU,ウ|ユウ,みぎ,5,口-khẩu,Bên phải,Tay đưa đồ vào miệng (口),Tay + miệng (口) -> Hữu,Phía tay cầm đũa ăn cơm,không có,右(みぎ):Bên phải|右手(みぎて):Tay phải
+左,TẢ,サ,ひだり,5,工-công,Bên trái,Tay cầm công cụ (工) làm,Tay + công (工) -> Tả,Phía tay không thuận của người,không có,左(ひだり):Bên trái|左手(ひだりて):Tay trái
+東,ĐÔNG,トウ,ひがし,8,木-mộc,Phía đông,Mặt trời mọc sau cây (木),Mặt trời + cây (木) -> Đông,Hướng mặt trời mọc buổi sáng,không có,東(ひがし):Phía đông|東京(とうきょう):Tokyo
+西,TÂY,セイ|サイ,にし,6,西-tây,Phía tây,Chim bay về tổ khi tối,Tổ chim -> Tây,Hướng mặt trời lặn buổi chiều,không có,西(にし):Phía tây|関西(かんさい):Vùng Kansai
+北,BẮC,ホク,きた,5,匕-chủy,Phía bắc,Hai người ngồi quay lưng lại,Hai người -> Bắc,Hướng lạnh nhất trong bốn hướng,không có,北(きた):Phía bắc|北海道(ほっかいどう):Hokkaido
+南,NAM,ナン,みなみ,9,十-thập,Phía nam,Cây cối tươi tốt dưới nắng,Nam (南) -> Nam,Hướng ấm áp có nhiều nắng,không có,南(みなみ):Phía nam|南の方(みなみのほう):Hướng nam
+外,NGOẠI,ガイ,そと,5,夕-tịch,Bên ngoài,Đêm (夕) dùng gậy đi ngoài,Đêm (夕) + gậy -> Ngoại,Không ở trong một phạm vi,không có,外(そと):Bên ngoài|外国(がいこく):Nước ngoài
+内,NỘI,ナイ,うち,4,冂-quynh,Bên trong,Người đi vào trong khung (冂),Vào + khung -> Nội,Ở phía trong một không gian,không có,内(うち):Bên trong|国内(こくない):Trong nước
+部,BỘ,ブ,không có,11,⻏-ấp,Bộ phận,Mỗi người ở một khu vực,Đứng + miệng + ấp -> Bộ,Một phần của một tổng thể,không có,部屋(へや):Căn phòng|学部(がくぶ):Khoa đại học
+駅,DỊCH,エキ,không có,14,馬-mã,Nhà ga,Nơi ngựa (馬) dừng lại nghỉ,Ngựa (馬) + thước -> Dịch,Nơi tàu xe dừng đón khách,không có,駅(えき):Nhà ga|駅員(えきいん):Nhân viên ga
+社,XÃ,シャ,やしろ,7,礻-thị,Công ty,Nơi thờ thần đất của dân,Thần (礻) + đất (土) -> Xã,Tổ chức làm việc chung nhau,không có,会社(かいしゃ):Công ty|神社(じんじゃ):Đền thờ
+院,VIỆN,イン,không có,10,阝-phụ,Tòa nhà,Nơi có tường bao quanh (阝),Đồi (阝) + hoàn -> Viện,Công trình lớn như bệnh viện,không có,病院(びょういん):Bệnh viện|大学院(だいがくいん):Cao học
+地,ĐỊA,チ|ジ,không có,6,土-thổ,Đất đai,Đất (土) có sâu bọ bò,Đất (土) + cũng -> Địa,Mặt đất hoặc một khu vực,không có,地下鉄(ちかてつ):Tàu điện ngầm|地図(ちず):Bản đồ
+鉄,THIẾT,テツ,không có,13,金-kim,Sắt,Kim loại (金) dùng làm mất,Vàng (金) + mất -> Thiết,Chất liệu sắt cứng dùng xây,không có,地下鉄(ちかてつ):Tàu điện ngầm|鉄道(てつどう):Đường sắt
+工,CÔNG,コウ|ク,không có,3,工-công,Công việc,Hình ảnh cái đục của thợ,Công cụ -> Công,Lao động tạo ra sản phẩm,không có,工場(こうじょう):Nhà máy|工事(こうじ):Công trường
+場,TRƯỜNG,ジョウ,ば,12,土-thổ,Địa điểm,Đất (土) có mặt trời chiếu,Đất (土) + dương -> Trường,Nơi diễn ra một sự kiện,không có,場所(ばしょ):Địa điểm|工場(こうじょう):Nhà máy
+図,ĐỒ,ズ|ト,はかる,7,囗-vi,Bản đồ,Trong khung (囗) có hình vẽ,Vòng (囗) + vẽ -> Đồ,Hình vẽ minh họa hoặc sơ đồ,không có,地図(ちず):Bản đồ|図書館(としょかん):Thư viện
+館,QUÁN,カン,không có,16,食-thực,Tòa nhà lớn,Nơi mọi người đến ăn (食),Ăn (食) + quan -> Quán,Công trình phục vụ cộng đồng,không có,図書館(としょかん):Thư viện|大使館(たいしかん):Đại sứ quán
+公,CÔNG,コウ,おおやけ,4,八-bát,Công cộng,Chia (八) đều cho mọi người,Tám (八) + riêng -> Công,Thuộc về tất cả mọi người,không có,公園(こうえん):Công viên|公立(こうりつ):Công lập
+園,VIÊN,エン,その,13,囗-vi,Vườn,Trong khung (囗) có cây hoa,Vòng (囗) + vườn -> Viên,Nơi trồng cây để thư giãn,không có,公園(こうえん):Công viên|動物園(どうぶつえん):Vườn bách thú
+住,TRÚ,ジュウ,すむ,7,人-nhân,Sinh sống,Người (人) ở nơi có đèn (主),Người (人) + chủ (主) -> Trú,Cư trú lâu dài một nơi,không có,住む(すむ):Sống|住所(じゅうしょ):Địa chỉ
+所,SỞ,ショ,ところ,8,戸-hộ,Địa điểm,Dùng rìu (斤) ở cửa (戸),Cửa (戸) + rìu (斤) -> Sở,Nơi chốn hoặc vị trí nào,không có,場所(ばしょ):Địa điểm|台所(だいどころ):Nhà bếp
+番,PHIÊN,バン,không có,12,田-điền,Số thứ tự,Làm ruộng (田) theo lượt,Lượt + ruộng (田) -> Phiên,Thứ tự của một vật gì,không có,番号(ばんごう):Số điện thoại|一番(いちばん):Số một
+号,HIỆU,ゴウ,không có,5,口-khẩu,Số hiệu,Dùng miệng (口) hô to số,Hô + miệng (口) -> Hiệu,Ký hiệu để phân biệt vật,không có,番号(ばんごう):Số điện thoại|信号(しんごう):Đèn giao thông
+市,THỊ,シ,いち,5,巾-cân,Thành phố,Nơi mua bán có treo khăn,Chợ -> Thị,Khu vực đông dân cư sống,không có,市場(いちば):Chợ|市民(しみん):Thành phố
+町,ĐINH,チョウ,まち,7,田-điền,Thị trấn,Ruộng (田) ở cạnh phố đinh,Ruộng (田) + đinh -> Đinh,Khu phố nhỏ hơn thành phố,không có,町(まち):Thị trấn|町長(ちょうちょう):Thị trưởng
+村,THÔN,ソン,むら,7,木-mộc,Làng quê,Cây (木) mọc ở vùng thôn,Cây (木) + tấc -> Thôn,Khu vực nông thôn yên bình,không có,村(むら):Ngôi làng|村長(そんちょう):Thôn trưởng
+区,KHU,ク,không có,4,匸-hệ,Quận,Trong khung (匸) chia khu vực,Khung + vùng -> Khu,Đơn vị hành chính của phố,không có,区(く):Quận|区役所(くやくしょ):Ủy ban quận
+都,ĐÔ,ト|ツ,みやこ,11,⻏-ấp,Thủ đô,Nơi đông người ở vùng ấp (⻏),Người + ấp (⻏) -> Đô,Trung tâm của một đất nước,không có,京都(きょうと):Kyoto|都会(とかい):Thành thị
+府,PHỦ,フ,không có,8,广-nghiễm,Phủ,Dưới mái (广) có quan giữ,Mái (广) + phó -> Phủ,Đơn vị hành chính cấp tỉnh,không có,政府(せいふ):Chính phủ|大阪府(おおさかふ):Phủ Osaka
+県,HUYỆN,ケン,không có,9,目-mục,Tỉnh,Dùng mắt (目) trông coi vùng,Mắt (目) + treo -> Huyện,Đơn vị hành chính ở Nhật,không có,県(けん):Tỉnh|青森県(あおもりけん):Tỉnh Aomori
+島,ĐẢO,トウ,しま,10,山-sơn,Hòn đảo,Con chim đậu trên núi (山) biển,Chim + núi (山) -> Đảo,Vùng đất nằm giữa biển khơi,không có,島(しま):Hòn đảo|半島(はんとう):Bán đảo
+京,KINH,キョウ|ケイ,みやこ,8,亠-đầu,Thủ đô,Tòa nhà lớn ở trung tâm,Cao + nhỏ -> Kinh,Nơi ở của vua ngày xưa,không có,東京(とうきょう):Tokyo|京都(きょうと):Kyoto
+様,DẠNG,ヨウ,さま,14,木-mộc,Ngài|Hình dạng,Cây (木) có hình dạng đẹp,Cây (木) + dạng -> Dạng,Từ lịch sự gọi tên người,không có,皆様(みなさま):Mọi người|様子(ようす):Tình hình
+练,LUYỆN,レン,ねる,12,糸-mịch,Luyện tập,Dùng tơ (糸) để rèn luyện,Tơ (糸) + luyện -> Luyện,Học tập nhiều lần cho giỏi,không có,練習(れんしゅう):Luyện tập|訓練(くんれん):Huấn luyện
+習,TẬP,シュウ,ならう,11,羽-vũ,Học tập,Chim non tập bay bằng cánh,Cánh (羽) + trắng -> Tập,Tự mình học hỏi rèn luyện,không có,習う(ならう):Học|練習(れんしゅう):Luyện tập
+勉,MIỄN,ベン,つとめる,10,力-lực,Cố gắng,Dùng lực (力) để miễn cưỡng,Lực (力) + miễn -> Miễn,Nỗ lực làm việc hoặc học,không có,勉強(べんきょう):Học tập|勤勉(きんべん):Chăm chỉ
+強,CƯỜNG,キョウ,つよい,11,弓-cung,Mạnh,Cái cung (弓) rất mạnh mẽ,Cung (弓) + côn trùng -> Cường,Sức mạnh vượt trội hơn hẳn,強い(つよい):Mạnh,強い(つよい):Mạnh|勉強(べんきょう):Học tập
+研,NGHIÊN,ケン,とぐ,9,石-thạch,Nghiên cứu,Dùng đá (石) mài cho sắc,Đá (石) + mài -> Nghiên,Tìm hiểu kỹ một vấn đề,không có,研究(けんきゅう):Nghiên cứu|研修(けんしゅう):Tu nghiệp
+究,CỨU,キュウ,きわめる,7,穴-huyệt,Nghiên cứu,Tìm tòi trong hang (穴) sâu,Hang (穴) + chín -> Cứu,Truy tìm tận cùng sự thật,không có,研究(けんきゅう):Nghiên cứu|探究(たんきゅう):Tìm tòi
+留,LƯU,リュウ|ル,とまる,10,田-điền,Ở lại,Ở lại làm ruộng (田) lâu,Ở lại + ruộng (田) -> Lưu,Giữ lại hoặc đi du học,không có,留学生(りゅうがくせい):Du học sinh|留守(るす):Vắng nhà
+質,CHẤT,シツ,không có,15,貝-bối,Chất lượng,Dùng tiền (貝) đo giá trị,Tiền (貝) + chất -> Chất,Đặc tính của một vật gì,không có,質問(しつもん):Câu hỏi|品質(ひんしつ):Chất lượng
+問,VẤN,モン,とう,11,門-môn,Hỏi,Dùng miệng (口) hỏi tại cửa,Cửa (門) + miệng (口) -> Vấn,Đưa ra thắc mắc cần giải,không có,質問(しつもん):Câu hỏi|問題(もんだい):Vấn đề
+題,ĐỀ,ダイ,không có,18,頁-hiệt,Chủ đề,Cái đầu (頁) nghĩ về đề,Đúng + đầu (頁) -> Đề,Nội dung chính cần bàn tới,không có,宿題(しゅだい):Bài tập về nhà|問題(もんだい):Vấn đề
+答,ĐÁP,トウ,こたえる,12,竹-trúc,Trả lời,Dùng tre (竹) viết lời đáp,Tre (竹) + hợp -> Đáp,Phản hồi lại một câu hỏi,không có,答える(こたえる):Trả lời|回答(かいとう):Giải đáp
+宿,TÚC,シュク,やど,11,宀-miên,Chỗ ở,Người ngủ lại dưới mái nhà,Nhà (宀) + người + trăm -> Túc,Nơi dừng chân nghỉ ngơi lại,không có,宿題(しゅだい):Bài tập về nhà|新宿(しんじゅく):Shinjuku
+政,CHÍNH,セイ,まつりごと,9,攵-phốc,Chính trị,Dùng roi (攵) làm việc chính,Chính + đánh (攵) -> Chính,Việc quản lý một quốc gia,không có,政治(せいじ):Chính trị|政府(せいふ):Chính phủ
+治,TRỊ,ジ|チ,なおる,8,氵-thủy,Chữa trị,Dùng nước (氵) để cai trị,Nước (氵) + trị -> Trị,Khỏi bệnh hoặc quản lý tốt,không có,政治(せいじ):Chính trị|治る(なおる):Khỏi bệnh
+制,CHẾ,セイ,không có,8,刀-đao,Chế độ,Dùng dao (刀) cắt theo luật,Dao (刀) -> Chế,Quy định chung của tổ chức,không có,制度(せいど):Chế độ|制作(せいさく):Sản xuất
+済,TẾ,サイ,すむ,11,氵-thủy,Kết thúc,Dùng nước (氵) để thanh toán,Nước (氵) + tế -> Tế,Đã hoàn thành một việc gì,không có,経済(けいざい):Kinh tế|済む(すむ):Xong
+業,NGHIỆP,ギョウ,わざ,13,木-mộc,Nghề nghiệp,Làm việc trên các thanh gỗ,Công việc -> Nghiệp,Lĩnh vực lao động chuyên môn,không có,工業(こうじょう):Công nghiệp|授業(じゅぎょう):Tiết học
+歴,LỊCH,レキ,không có,14,止-chỉ,Lịch sử,Dưới mái (厂) chân (止) đi qua,Mái (厂) + lúa + chân -> Lịch,Những chuyện đã xảy ra rồi,không có,歴史(れきし):Lịch sử|学歴(がくれき):Học vấn
+育,DỤC,イク,そだてる,8,肉-nhục,Nuôi dưỡng,Dùng thịt (肉) nuôi đứa trẻ,Trẻ con + thịt (肉) -> Dục,Chăm sóc cho lớn khôn lên,không có,教育(きょういく):Giáo dục|育つ(そだつ):Lớn lên
+変,BIẾN,ヘン,かえる,9,夂-truy,Thay đổi,Người thay đổi cách đi đứng,Thay đổi -> Biến,Trở nên khác so với trước,không có,大変(たいへん):Vất vả|変わる(かわる):Thay đổi
+理,LÝ,リ,không có,11,玉-ngọc,Lý do,Dùng ngọc (玉) để lý giải,Ngọc (玉) + làng -> Lý,Quy luật tự nhiên của vật,không có,料理(りょうり):Món ăn|理由(りゆう):Lý do
+科,KHOA,カ,không có,9,禾-hòa,Khoa học,Dùng đấu đo lúa (禾) gạo,Lúa (禾) + đấu -> Khoa,Một lĩnh vực nghiên cứu riêng,không có,科学(かがく):Khoa học|教科書(きょうかしょ):Sách giáo khoa
+数,SỐ,スウ,かず,13,攵-phốc,Con số,Dùng roi (攵) đếm số phụ nữ,Phụ nữ + gạo + đánh -> Số,Đại lượng dùng để đo đếm,không có,数学(すうがく):Toán học|数(かず):Con số
+医,Y,イ,không có,7,匸-hệ,Y học,Dùng mũi tên trong hộp thuốc,Khung + tên -> Y,Ngành chăm sóc sức khỏe người,không có,医者(いしゃ):Bác sĩ|医学(いがく):Y học

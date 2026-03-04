@@ -50,7 +50,10 @@
       correctCount: 0,
       answers: [],
       questionCount: 20,
-      optionCount: 6
+      optionCount: 6,
+      fromIdx: 0,
+      toIdx: null,
+      modes: [4]
     },
     kanjiViewMode: "grid",
     selected: {
@@ -575,7 +578,7 @@
         // Thêm event cho các thẻ <b> bên trong
         kanjiEl.querySelectorAll("b").forEach(b => {
           b.addEventListener("click", function () {
-              const index = kanjiData.findIndex(item => item.Kanji === this.textContent);
+              const index = kanjiData.findIndex(item => item.kanji === this.textContent);
 
               if (index > 0) {
                 state.selected.kanjiIndex = index;
@@ -1243,17 +1246,25 @@
   function applyKanjiFilter() {
     return kanjiData.filter(function (item) {
       if (state.filter.kanjiRadical !== "all" &&
-          item.bo_thu !== state.filter.kanjiRadical) {
+          item.radicals !== state.filter.kanjiRadical) {
         return false;
       }
-      // Search by kanji or name (Han Viet)
+      // Search across all fields
       var search = String(state.filter.kanjiSearch || "").trim().toLowerCase();
       if (search) {
-        var kanjiVal = String(item.kanji != null ? item.kanji : item.Kanji || "").toLowerCase();
-        var nameVal = String(item.name || "").toLowerCase();
-        var kunVal = String(item.kun != null ? item.kun : item.Kun || "").toLowerCase();
-        var onVal = String(item.on != null ? item.on : item.On || "").toLowerCase();
-        var textAll = kanjiVal + " " + nameVal + " " + kunVal + " " + onVal;
+        var textAll = [
+          item.kanji,
+          item.hanviet,
+          item.on_reading,
+          item.kun_reading,
+          item.radicals,
+          item.core_meaning,
+          item.story_image,
+          item.logic_development,
+          item.memory_tip,
+          item.adjectives,
+          item.vocabulary
+        ].map(function (v) { return String(v || "").toLowerCase(); }).join(" ");
         if (textAll.indexOf(search) === -1) {
           return false;
         }
@@ -1291,8 +1302,8 @@
       filtered.forEach(function (raw) {
         const globalIndex = kanjiData.indexOf(raw);
         const item = {
-          kanji: raw.kanji != null ? raw.kanji : raw.Kanji,
-          name: raw.name
+          kanji: raw.kanji,
+          name: raw.hanviet
         };
 
         const cell = createElement("div", "kanji-grid-item", "");
@@ -1329,19 +1340,48 @@
     } else {
       // ===== List view (default) =====
       const list = createElement("div", "simple-list", "");
-      filtered.forEach(function (raw) {
+      filtered.forEach(function (raw, displayIdx) {
         const globalIndex = kanjiData.indexOf(raw);
         const item = {
-          stt: raw.stt != null ? raw.stt : raw.STT,
-          kanji: raw.kanji != null ? raw.kanji : raw.Kanji,
-          name: raw.name,
-          kun: raw.kun != null ? raw.kun : raw.Kun,
-          on: raw.on != null ? raw.on : raw.On,
-          bo_thu: raw.bo_thu != null ? raw.bo_thu : raw.bo_thu,
-          example: raw.example != null ? raw.example : raw.Example
+          kanji: raw.kanji,
+          name: raw.hanviet,
+          kun: raw.kun_reading,
+          on: raw.on_reading,
+          core_meaning: raw.core_meaning
         };
-        const row = createElement("div", "simple-item", "");
+        const row = createElement("div", "kl-item", "");
         row.setAttribute("data-kanji-index", String(globalIndex));
+
+        // Sequential number badge
+        const numEl = createElement("div", "kl-num", String(displayIdx + 1));
+        row.appendChild(numEl);
+
+        // Large kanji character
+        const charEl = createElement("div", "kl-char", item.kanji || "");
+        row.appendChild(charEl);
+
+        // Info block: hanviet + readings
+        const infoEl = createElement("div", "kl-info", "");
+        const nameEl = createElement("div", "kl-name", item.name || "");
+        infoEl.appendChild(nameEl);
+
+        const readingsEl = createElement("div", "kl-readings", "");
+        if (item.on) {
+          const onPill = createElement("span", "kl-pill kl-pill--on", item.on.replace(/\|/g, " · "));
+          readingsEl.appendChild(onPill);
+        }
+        if (item.kun) {
+          const kunPill = createElement("span", "kl-pill kl-pill--kun", item.kun.replace(/\|/g, " · "));
+          readingsEl.appendChild(kunPill);
+        }
+        infoEl.appendChild(readingsEl);
+        row.appendChild(infoEl);
+
+        // Core meaning tag (right side)
+        if (item.core_meaning) {
+          const meaningEl = createElement("div", "kl-meaning", item.core_meaning);
+          row.appendChild(meaningEl);
+        }
 
         // Star button
         var isKanjiFav = !!state.kanjiFavorites[globalIndex];
@@ -1358,38 +1398,7 @@
           saveKanjiFavorites();
           renderKanjiList();
         });
-
-        const main = createElement("div", "simple-main", "");
-        main.style.cssText = "display:flex;align-items:center;gap:4px;flex:1";
-        var kanjiMainContent = createElement("div", "", "");
-        kanjiMainContent.style.flex = "1";
-        const left = createElement("div", "simple-main-text", item.kanji + " (" + item.name + ")");
-        const right = createElement("div", "simple-sub-text", "Bộ: " + item.bo_thu);
-        kanjiMainContent.appendChild(left);
-        kanjiMainContent.appendChild(right);
-        main.appendChild(kanjiMainContent);
-        main.appendChild(kanjiStarBtn);
-
-        const sub = createElement(
-          "div",
-          "simple-sub-text",
-          "Kun: " + item.kun + " · On: " + item.on
-        );
-        row.appendChild(main);
-        row.appendChild(sub);
-
-        if (item.example) {
-          var exampleText = String(item.example);
-          if (exampleText.length > 80) {
-            exampleText = exampleText.slice(0, 77) + "...";
-          }
-          const ex = createElement(
-            "div",
-            "simple-sub-text",
-            "Example: " + exampleText
-          );
-          row.appendChild(ex);
-        }
+        row.appendChild(kanjiStarBtn);
 
         row.addEventListener("click", function () {
           state.selected.kanjiIndex = globalIndex;
@@ -1415,49 +1424,135 @@
 
     const raw = kanjiData[state.selected.kanjiIndex];
     const item = {
-      stt: raw.stt != null ? raw.stt : raw.STT,
-      kanji: raw.kanji != null ? raw.kanji : raw.Kanji,
-      name: raw.name,
-      kun: raw.kun != null ? raw.kun : raw.Kun,
-      on: raw.on != null ? raw.on : raw.On,
-      bo_thu: raw.bo_thu != null ? raw.bo_thu : raw.bo_thu,
-      example: raw.example != null ? raw.example : raw.Example
+      kanji: raw.kanji,
+      hanviet: raw.hanviet,
+      kun_reading: raw.kun_reading,
+      on_reading: raw.on_reading,
+      stroke_count: raw.stroke_count,
+      radicals: raw.radicals,
+      core_meaning: raw.core_meaning,
+      story_image: raw.story_image,
+      logic_development: raw.logic_development,
+      memory_tip: raw.memory_tip,
+      adjectives: raw.adjectives,
+      vocabulary: raw.vocabulary
     };
-    if (!item) {
+    if (!item.kanji) {
       const notFound = createElement("div", "detail-empty", "Không tìm thấy dữ liệu Kanji.");
       container.appendChild(notFound);
       return;
     }
 
-    const kanjiEl = createElement("div", "kanji-large", item.kanji);
-    container.appendChild(kanjiEl);
+    // Hero: large kanji + hanviet
+    const hero = createElement("div", "kd-hero", "");
+    const kanjiEl = createElement("div", "kd-char", item.kanji);
+    const meaningBadge = createElement("div", "kd-meaning-badge", item.core_meaning || "");
+    hero.appendChild(kanjiEl);
+    if (item.core_meaning) hero.appendChild(meaningBadge);
+    container.appendChild(hero);
 
-    const nameEl = createElement("div", "detail-sub");
-    nameEl.innerHTML = "Hán Việt: <b>" + item.name + "</b>";
-    container.appendChild(nameEl);
+    const hanvietEl = createElement("div", "kd-hanviet", item.hanviet || "");
+    container.appendChild(hanvietEl);
 
-    const grid = createElement("div", "detail-grid", "");
+    // Section 1: Phát âm & Cấu tạo
+    const sec1 = createElement("div", "kd-section kd-section--blue", "");
+    const sec1Title = createElement("div", "kd-section-title", "Phát âm & Cấu tạo");
+    sec1.appendChild(sec1Title);
+    const sec1Grid = createElement("div", "kd-pills-grid", "");
 
-    function addRow(label, value) {
-      if (!value) {
-        return;
-      }
-      const row = createElement("div", "detail-row", "");
-      const labelEl = createElement("div", "detail-label", label);
-      const valueEl = createElement("div", "detail-value", value);
-      valueEl.style.whiteSpace = "pre-line";
-      row.appendChild(labelEl);
-      row.appendChild(valueEl);
-      grid.appendChild(row);
+    function addPillGroup(label, value, mod) {
+      if (!value) return;
+      const group = createElement("div", "kd-pill-group", "");
+      const lbl = createElement("div", "kd-pill-label", label);
+      const valWrap = createElement("div", "kd-pill-values", "");
+      value.split("|").forEach(function (v) {
+        const pill = createElement("span", "kd-pill" + (mod ? " kd-pill--" + mod : ""), v.trim());
+        valWrap.appendChild(pill);
+      });
+      group.appendChild(lbl);
+      group.appendChild(valWrap);
+      sec1Grid.appendChild(group);
     }
 
-    addRow("Kun", item.kun);
-    addRow("On", item.on);
-    addRow("Bộ thủ", item.bo_thu);
-    const formattedExample = item.example.replace(/;/g, '\n');
-    addRow("Example", formattedExample);
+    addPillGroup("Âm On", item.on_reading, "on");
+    addPillGroup("Âm Kun", item.kun_reading, "kun");
 
-    container.appendChild(grid);
+    if (item.stroke_count != null) {
+      const strokeGroup = createElement("div", "kd-pill-group", "");
+      const strokeLbl = createElement("div", "kd-pill-label", "Số nét");
+      const strokeVal = createElement("span", "kd-pill kd-pill--stroke", String(item.stroke_count) + " nét");
+      strokeGroup.appendChild(strokeLbl);
+      strokeGroup.appendChild(strokeVal);
+      sec1Grid.appendChild(strokeGroup);
+    }
+
+    addPillGroup("Bộ thủ", item.radicals, "radical");
+    sec1.appendChild(sec1Grid);
+    container.appendChild(sec1);
+
+    // Section 2: Ký ức & Hình ảnh
+    function addStoryRow(sec, icon, label, value) {
+      if (!value) return;
+      const row = createElement("div", "kd-story-row", "");
+      const rowIcon = createElement("span", "kd-story-icon", icon);
+      const rowBody = createElement("div", "kd-story-body", "");
+      const rowLabel = createElement("div", "kd-story-label", label);
+      const rowValue = createElement("div", "kd-story-value", value);
+      rowBody.appendChild(rowLabel);
+      rowBody.appendChild(rowValue);
+      row.appendChild(rowIcon);
+      row.appendChild(rowBody);
+      sec.appendChild(row);
+    }
+
+    const sec2 = createElement("div", "kd-section kd-section--amber", "");
+    const sec2Title = createElement("div", "kd-section-title", "Ký ức & Hình ảnh");
+    sec2.appendChild(sec2Title);
+    addStoryRow(sec2, "🖼️", "Tượng hình", item.story_image);
+    addStoryRow(sec2, "🔗", "Cấu tạo", item.logic_development);
+    addStoryRow(sec2, "💡", "Mẹo nhớ", item.memory_tip);
+    container.appendChild(sec2);
+
+    // Section 3: Từ vựng ứng dụng
+    if (item.adjectives || item.vocabulary) {
+      const sec3 = createElement("div", "kd-section kd-section--green", "");
+      const sec3Title = createElement("div", "kd-section-title", "Từ vựng ứng dụng");
+      sec3.appendChild(sec3Title);
+
+      if (item.adjectives) {
+        const adjLabel = createElement("div", "kd-vocab-sublabel", "Tính từ thường đi kèm");
+        sec3.appendChild(adjLabel);
+        const adjWrap = createElement("div", "kd-vocab-pills", "");
+        item.adjectives.split("|").forEach(function (a) {
+          var parts = a.split(":");
+          const chip = createElement("div", "kd-vocab-chip", "");
+          const word = createElement("span", "kd-vocab-chip-word", parts[0] || "");
+          const meaning = createElement("span", "kd-vocab-chip-meaning", parts[1] || "");
+          chip.appendChild(word);
+          chip.appendChild(meaning);
+          adjWrap.appendChild(chip);
+        });
+        sec3.appendChild(adjWrap);
+      }
+
+      if (item.vocabulary) {
+        const vocabLabel = createElement("div", "kd-vocab-sublabel", "Từ vựng tiêu biểu");
+        sec3.appendChild(vocabLabel);
+        item.vocabulary.split("|").forEach(function (v) {
+          var parts = v.split(":");
+          const row = createElement("div", "kd-vocab-row", "");
+          const wordEl = createElement("span", "kd-vocab-word", parts[0] || "");
+          const readEl = createElement("span", "kd-vocab-read", parts[1] ? "(" + parts[1] + ")" : "");
+          const meanEl = createElement("span", "kd-vocab-mean", parts[2] || "");
+          row.appendChild(wordEl);
+          row.appendChild(readEl);
+          row.appendChild(meanEl);
+          sec3.appendChild(row);
+        });
+      }
+
+      container.appendChild(sec3);
+    }
 
     openDetailModal("Chi tiết Kanji", container.innerHTML);
   }
@@ -1901,149 +1996,199 @@
   }
 
   // ----- Kanji Test -----
-  function buildKanjiTestQuestions(count) {
-    var total = kanjiData.length;
-    var n = (typeof count === "number" && count >= 1) ? count : 20;
-    const indices = pickUniqueIndices(n, total);
-    return indices.map(function (idx) {
-      return { index: idx };
-    });
+
+  function parseKanjiVocab(vocabStr) {
+    if (!vocabStr) return [];
+    return vocabStr.split("|").map(function (v) {
+      var p = v.split(":");
+      return { word: (p[0] || "").trim(), reading: (p[1] || "").trim(), meaning: (p[2] || "").trim() };
+    }).filter(function (v) { return v.word || v.reading; });
+  }
+
+  function kanjiModeAvailable(raw, mode) {
+    if (mode === 1) return !!(raw.kanji && raw.on_reading);
+    if (mode === 2) return !!(raw.kanji && raw.kun_reading);
+    if (mode === 3) return !!(raw.hanviet && raw.kanji);
+    if (mode === 4) return !!(raw.kanji && raw.hanviet);
+    if (mode >= 5 && mode <= 9) return !!(raw.vocabulary && parseKanjiVocab(raw.vocabulary).length > 0);
+    return false;
+  }
+
+  function buildKanjiPool(mode) {
+    if (mode === 1) {
+      return kanjiData.map(function (r) {
+        return r.on_reading ? r.on_reading.split("|")[0].trim() : "";
+      }).filter(Boolean);
+    }
+    if (mode === 2) {
+      return kanjiData.map(function (r) {
+        return r.kun_reading ? r.kun_reading.split("|")[0].trim() : "";
+      }).filter(Boolean);
+    }
+    if (mode === 3) {
+      return kanjiData.map(function (r) { return r.kanji; }).filter(Boolean);
+    }
+    if (mode === 6 || mode === 8) {
+      var pool = [];
+      kanjiData.forEach(function (r) {
+        parseKanjiVocab(r.vocabulary).forEach(function (v) { if (v.word) pool.push(v.word); });
+      });
+      return pool;
+    }
+    if (mode === 4) {
+      return kanjiData.map(function (r) { return r.hanviet; }).filter(Boolean);
+    }
+    if (mode === 5 || mode === 9) {
+      var pool = [];
+      kanjiData.forEach(function (r) {
+        parseKanjiVocab(r.vocabulary).forEach(function (v) { if (v.meaning) pool.push(v.meaning); });
+      });
+      return pool;
+    }
+    if (mode === 7) {
+      var pool = [];
+      kanjiData.forEach(function (r) {
+        parseKanjiVocab(r.vocabulary).forEach(function (v) { if (v.reading) pool.push(v.reading); });
+      });
+      return pool;
+    }
+    return [];
+  }
+
+  function buildKanjiTestQuestions(config) {
+    var fromIdx = (config.fromIdx != null) ? config.fromIdx : 0;
+    var toIdx = (config.toIdx != null) ? Math.min(config.toIdx, kanjiData.length - 1) : kanjiData.length - 1;
+    var selectedModes = (config.modes && config.modes.length > 0) ? config.modes : [4];
+    var count = config.questionCount || 20;
+
+    var candidates = [];
+    for (var i = fromIdx; i <= toIdx; i++) {
+      var raw = kanjiData[i];
+      if (!raw) continue;
+      selectedModes.forEach(function (mode) {
+        if (!kanjiModeAvailable(raw, mode)) return;
+        if (mode >= 5 && mode <= 9) {
+          parseKanjiVocab(raw.vocabulary).forEach(function (v) {
+            candidates.push({ kanjiIdx: i, mode: mode, vocabEntry: v });
+          });
+        } else {
+          candidates.push({ kanjiIdx: i, mode: mode, vocabEntry: null });
+        }
+      });
+    }
+    return shuffleArray(candidates).slice(0, count);
   }
 
   function renderKanjiTestQuestion() {
     const testState = state.kanjiTestState;
 
     if (!testState.isActive || testState.questions.length === 0) {
-      renderKanjiTestInitialMessage();
-      return;
+      renderKanjiTestInitialMessage(); return;
     }
-
     if (testState.isFinished || testState.currentIndex >= testState.questions.length) {
-      renderKanjiTestResult();
-      return;
+      renderKanjiTestResult(); return;
     }
 
     const qMeta = testState.questions[testState.currentIndex];
-    const raw = kanjiData[qMeta.index];
-    if (!raw) {
-      renderKanjiTestInitialMessage();
-      return;
-    }
+    const raw = kanjiData[qMeta.kanjiIdx];
+    if (!raw) { renderKanjiTestInitialMessage(); return; }
 
-    const item = {
-      kanji: raw.kanji != null ? raw.kanji : raw.Kanji,
-      name: raw.name,
-      kun: raw.kun != null ? raw.kun : raw.Kun,
-      on: raw.on != null ? raw.on : raw.On,
-      bo_thu: raw.bo_thu,
-      example: raw.example != null ? raw.example : raw.Example
-    };
+    const mode = qMeta.mode;
+    const ve = qMeta.vocabEntry; // vocab entry for modes 5–9
 
-    // Các mode:
-    // 0: hiển thị Kanji -> chọn name
-    // 1: hiển thị name -> chọn Kanji
-    // 2: hiển thị Kanji -> chọn âm Kun
-    // 3: hiển thị Kanji -> chọn âm On
-    var availableModes = [];
-    if (item.kanji && item.name) {
-      availableModes.push(0, 1);
-    }
-    if (item.kanji && item.kun) {
-      availableModes.push(2);
-    }
-    if (item.kanji && item.on) {
-      availableModes.push(3);
-    }
-    if (availableModes.length === 0) {
-      renderKanjiTestInitialMessage();
-      return;
-    }
-
-    var mode = availableModes[Math.floor(Math.random() * availableModes.length)];
     var questionText = "";
+    var questionHint = "";
+    var questionSub = "";
     var correct = "";
     var pool = [];
 
-    if (mode === 0) {
-      questionText = item.kanji;
-      correct = item.name;
-      pool = kanjiData
-        .map(function (r) { return r.name; })
-        .filter(function (x) { return x; });
-    } else if (mode === 1) {
-      questionText = item.name;
-      correct = item.kanji;
-      pool = kanjiData
-        .map(function (r) { return r.kanji != null ? r.kanji : r.Kanji; })
-        .filter(function (x) { return x; });
+    if (mode === 1) {
+      questionText = raw.kanji;
+      questionSub = "Âm On của kanji này là gì?";
+      correct = raw.on_reading.split("|")[0].trim();
+      pool = buildKanjiPool(1);
     } else if (mode === 2) {
-      questionText = item.kanji + " (Kun?)";
-      correct = item.kun;
-      pool = kanjiData
-        .map(function (r) { return r.kun != null ? r.kun : r.Kun; })
-        .filter(function (x) { return x; });
-    } else {
-      questionText = item.kanji + " (On?)";
-      correct = item.on;
-      pool = kanjiData
-        .map(function (r) { return r.on != null ? r.on : r.On; })
-        .filter(function (x) { return x; });
+      questionText = raw.kanji;
+      questionSub = "Âm Kun của kanji này là gì?";
+      correct = raw.kun_reading.split("|")[0].trim();
+      pool = buildKanjiPool(2);
+    } else if (mode === 3) {
+      questionText = raw.hanviet;
+      questionSub = "Hán Việt này là của kanji nào?";
+      correct = raw.kanji;
+      pool = buildKanjiPool(3);
+    } else if (mode === 4) {
+      questionText = raw.kanji;
+      questionSub = "Hán Việt của kanji này là gì?";
+      correct = raw.hanviet;
+      pool = buildKanjiPool(4);
+    } else if (mode === 5) {
+      questionText = ve.word;
+      questionHint = ve.reading + "　[" + raw.kanji + " " + raw.hanviet + "]";
+      questionSub = "Nghĩa tiếng Việt của từ này là gì?";
+      correct = ve.meaning;
+      pool = buildKanjiPool(5);
+    } else if (mode === 6) {
+      questionText = ve.meaning;
+      questionHint = "";
+      questionSub = "Từ vựng kanji nào có nghĩa này?";
+      correct = ve.word;
+      pool = buildKanjiPool(6);
+    } else if (mode === 7) {
+      questionText = ve.meaning;
+      questionHint = "";
+      questionSub = "Hiragana của từ vựng này là gì?";
+      correct = ve.reading;
+      pool = buildKanjiPool(7);
+    } else if (mode === 8) {
+      questionText = ve.reading;
+      questionHint = "";
+      questionSub = "Từ vựng kanji nào có cách đọc này?";
+      correct = ve.word;
+      pool = buildKanjiPool(8);
+    } else if (mode === 9) {
+      questionText = ve.reading;
+      questionHint = "";
+      questionSub = "Nghĩa tiếng Việt của từ vựng này là gì?";
+      correct = ve.meaning;
+      pool = buildKanjiPool(9);
     }
 
-    var kanjiOptCount = testState.optionCount != null ? testState.optionCount : 6;
-    const shuffledOthers = shuffleArray(pool.filter(function (x) { return x && x !== correct; }));
-    const wrongOptions = shuffledOthers.slice(0, kanjiOptCount - 1);
-    const rawOptions = [correct].concat(wrongOptions);
-    const uniqueOptions = Array.from(new Set(rawOptions));
-    let options = uniqueOptions;
-    if (options.length < kanjiOptCount) {
-      const additional = shuffledOthers.filter(function (m) {
-        return options.indexOf(m) === -1;
-      });
-      const need = kanjiOptCount - options.length;
-      options = options.concat(additional.slice(0, need));
+    var optCount = testState.optionCount || 6;
+    var others = shuffleArray(pool.filter(function (x) { return x && x !== correct; }));
+    var options = Array.from(new Set([correct].concat(others.slice(0, optCount - 1))));
+    if (options.length < optCount) {
+      var more = others.filter(function (x) { return options.indexOf(x) === -1; });
+      options = options.concat(more.slice(0, optCount - options.length));
     }
-    options = options.slice(0, kanjiOptCount);
-    if (options.indexOf(correct) === -1) {
-      options[0] = correct;
-    }
-    const shuffledOptions = shuffleArray(options);
+    if (options.indexOf(correct) === -1) options[0] = correct;
+    options = shuffleArray(options).slice(0, optCount);
 
+    // Build UI
     const wrapper = createElement("div", "test-question", "");
     const header = createElement("div", "test-question-header", "");
-    const left = createElement("div", "", "Câu " + (testState.currentIndex + 1) + " / " + testState.questions.length);
-    const right = createElement("div", "", "Đã đúng: " + testState.correctCount);
-    header.appendChild(left);
-    header.appendChild(right);
+    header.appendChild(createElement("div", "", "Câu " + (testState.currentIndex + 1) + " / " + testState.questions.length));
+    header.appendChild(createElement("div", "", "Đúng: " + testState.correctCount));
     wrapper.appendChild(header);
 
     const qMain = createElement("div", "test-question-main", "");
-    const qText = createElement("div", "test-question-text", questionText || "");
-    const qSub = createElement("div", "test-question-sub", "Chọn đáp án đúng cho Kanji");
-    qMain.appendChild(qText);
-    qMain.appendChild(qSub);
+    qMain.appendChild(createElement("div", "test-question-text", questionText || ""));
+    if (questionHint) {
+      qMain.appendChild(createElement("div", "test-question-hint", questionHint));
+    }
+    qMain.appendChild(createElement("div", "test-question-sub", questionSub));
     wrapper.appendChild(qMain);
 
     const optionsGrid = createElement("div", "options-grid", "");
-    shuffledOptions.forEach(function (opt, idx) {
+    options.forEach(function (opt, idx) {
       const btn = createElement("button", "option-btn", "");
-      const idxSpan = createElement("span", "option-index", String(idx + 1));
-      const textSpan = createElement("span", "", opt);
-      btn.appendChild(idxSpan);
-      btn.appendChild(textSpan);
+      btn.appendChild(createElement("span", "option-index", String(idx + 1)));
+      btn.appendChild(createElement("span", "", opt));
       btn.addEventListener("click", function () {
-        handleKanjiSelectAnswer({
-          kanji: item.kanji,
-          name: item.name,
-          kun: item.kun,
-          on: item.on,
-          bo_thu: item.bo_thu,
-          example: item.example
-        }, mode, correct, opt);
+        handleKanjiSelectAnswer({ kanji: raw.kanji, name: raw.hanviet, ve: ve }, mode, correct, opt);
       });
       optionsGrid.appendChild(btn);
     });
-
     wrapper.appendChild(optionsGrid);
 
     if (detailModalState.bodyEl) {
@@ -2054,71 +2199,145 @@
   }
 
   function renderKanjiTestInitialMessage() {
-    const wrapper = createElement("div", "test-result", "");
-    const title = createElement("div", "score-main", "Cấu hình Test Kanji");
-    const desc = createElement(
-      "div",
-      "score-detail",
-      "Kanji ↔ Nghĩa, Kun, On. Chọn số câu và số đáp án."
-    );
-    wrapper.appendChild(title);
-    wrapper.appendChild(desc);
+    const ts = state.kanjiTestState;
+    const total = kanjiData.length;
 
+    const wrapper = createElement("div", "test-result", "");
+    wrapper.appendChild(createElement("div", "score-main", "Cấu hình Test Kanji"));
+
+    // --- Range ---
+    const rangeSection = createElement("div", "kt-section", "");
+    rangeSection.appendChild(createElement("div", "kt-section-label", "Phạm vi kanji"));
+    const rangeRow = createElement("div", "kt-range-row", "");
+
+    const fromField = createElement("div", "field-group", "");
+    fromField.appendChild(createElement("div", "field-label", "Từ số"));
+    const fromInput = createElement("input", "input-text", "");
+    fromInput.type = "number"; fromInput.min = 1; fromInput.max = total;
+    fromInput.value = String((ts.fromIdx != null ? ts.fromIdx : 0) + 1);
+    fromField.appendChild(fromInput);
+
+    const toField = createElement("div", "field-group", "");
+    toField.appendChild(createElement("div", "field-label", "Đến số"));
+    const toInput = createElement("input", "input-text", "");
+    toInput.type = "number"; toInput.min = 1; toInput.max = total;
+    toInput.value = String((ts.toIdx != null ? ts.toIdx : total - 1) + 1);
+    toField.appendChild(toInput);
+
+    rangeRow.appendChild(fromField);
+    rangeRow.appendChild(toField);
+    rangeSection.appendChild(rangeRow);
+    wrapper.appendChild(rangeSection);
+
+    // --- Số câu / Số đáp án ---
+    const configSection = createElement("div", "kt-section", "");
+    configSection.appendChild(createElement("div", "kt-section-label", "Cài đặt câu hỏi"));
     const configGrid = createElement("div", "test-config-fields", "");
 
-    // Số câu hỏi
     const qCountField = createElement("div", "field-group", "");
-    const qCountLabel = createElement("div", "field-label", "Số câu hỏi (5–100)");
+    qCountField.appendChild(createElement("div", "field-label", "Số câu hỏi (5–100)"));
     const qCountInput = createElement("input", "input-text", "");
-    qCountInput.type = "number";
-    qCountInput.min = 5;
-    qCountInput.max = 100;
-    qCountInput.value = String(state.kanjiTestState.questionCount != null ? state.kanjiTestState.questionCount : 20);
-    qCountField.appendChild(qCountLabel);
+    qCountInput.type = "number"; qCountInput.min = 5; qCountInput.max = 100;
+    qCountInput.value = String(ts.questionCount || 20);
     qCountField.appendChild(qCountInput);
-    configGrid.appendChild(qCountField);
 
-    // Số đáp án
     const optCountField = createElement("div", "field-group", "");
-    const optCountLabel = createElement("div", "field-label", "Số đáp án (4–14)");
+    optCountField.appendChild(createElement("div", "field-label", "Số đáp án (4–14)"));
     const optCountInput = createElement("input", "input-text", "");
-    optCountInput.type = "number";
-    optCountInput.min = 4;
-    optCountInput.max = 14;
-    optCountInput.value = String(state.kanjiTestState.optionCount != null ? state.kanjiTestState.optionCount : 6);
-    optCountField.appendChild(optCountLabel);
+    optCountInput.type = "number"; optCountInput.min = 4; optCountInput.max = 14;
+    optCountInput.value = String(ts.optionCount || 6);
     optCountField.appendChild(optCountInput);
+
+    configGrid.appendChild(qCountField);
     configGrid.appendChild(optCountField);
+    configSection.appendChild(configGrid);
+    wrapper.appendChild(configSection);
 
-    wrapper.appendChild(configGrid);
+    // --- Dạng câu hỏi ---
+    const modeSection = createElement("div", "kt-section", "");
+    modeSection.appendChild(createElement("div", "kt-section-label", "Dạng câu hỏi"));
+    const modeGrid = createElement("div", "kt-mode-grid", "");
 
+    var savedModes = ts.modes || [4];
+    var modeDefs = [
+      { id: 4, label: "Kanji → Hán Việt" },
+      { id: 3, label: "Hán Việt → Kanji" },
+      { id: 1, label: "Kanji → Âm On" },
+      { id: 2, label: "Kanji → Âm Kun" },
+      { id: 5, label: "Từ vựng → Nghĩa" },
+      { id: 6, label: "Nghĩa → Kanji" },
+      { id: 7, label: "Nghĩa → Hiragana" },
+      { id: 8, label: "Hiragana → Kanji" },
+      { id: 9, label: "Hiragana → Nghĩa" }
+    ];
+    var modeCheckboxes = [];
+    modeDefs.forEach(function (def) {
+      const lbl = createElement("label", "kt-mode-label", "");
+      const cb = document.createElement("input");
+      cb.type = "checkbox";
+      cb.value = String(def.id);
+      cb.checked = savedModes.indexOf(def.id) !== -1;
+      cb.className = "kt-mode-cb";
+      lbl.appendChild(cb);
+      lbl.appendChild(document.createTextNode(" " + def.label));
+      modeCheckboxes.push(cb);
+      modeGrid.appendChild(lbl);
+    });
+    modeSection.appendChild(modeGrid);
+    wrapper.appendChild(modeSection);
+
+    // --- Buttons ---
     const btnRow = createElement("div", "btn-row", "");
     const startBtn = createElement("button", "btn", "Bắt đầu test");
     startBtn.type = "button";
     startBtn.addEventListener("click", function () {
-      var questionCount = parseInt(qCountInput.value, 10);
-      if (isNaN(questionCount) || questionCount < 5) questionCount = 5;
-      if (questionCount > 100) questionCount = 100;
-      var optionCount = parseInt(optCountInput.value, 10);
-      if (isNaN(optionCount) || optionCount < 4) optionCount = 4;
-      if (optionCount > 14) optionCount = 14;
+      var fromVal = parseInt(fromInput.value, 10);
+      var toVal = parseInt(toInput.value, 10);
+      if (isNaN(fromVal) || fromVal < 1) fromVal = 1;
+      if (isNaN(toVal) || toVal < fromVal) toVal = fromVal;
+      if (fromVal > total) fromVal = total;
+      if (toVal > total) toVal = total;
 
-      state.kanjiTestState.isActive = true;
-      state.kanjiTestState.isFinished = false;
-      state.kanjiTestState.questions = buildKanjiTestQuestions(questionCount);
-      state.kanjiTestState.currentIndex = 0;
-      state.kanjiTestState.correctCount = 0;
-      state.kanjiTestState.answers = [];
-      state.kanjiTestState.questionCount = questionCount;
-      state.kanjiTestState.optionCount = optionCount;
+      var qCount = parseInt(qCountInput.value, 10);
+      if (isNaN(qCount) || qCount < 5) qCount = 5;
+      if (qCount > 100) qCount = 100;
+
+      var optCount = parseInt(optCountInput.value, 10);
+      if (isNaN(optCount) || optCount < 4) optCount = 4;
+      if (optCount > 14) optCount = 14;
+
+      var selectedModes = modeCheckboxes
+        .filter(function (cb) { return cb.checked; })
+        .map(function (cb) { return parseInt(cb.value, 10); });
+      if (selectedModes.length === 0) selectedModes = [4];
+
+      ts.fromIdx = fromVal - 1;
+      ts.toIdx = toVal - 1;
+      ts.questionCount = qCount;
+      ts.optionCount = optCount;
+      ts.modes = selectedModes;
+      ts.isActive = true;
+      ts.isFinished = false;
+      ts.currentIndex = 0;
+      ts.correctCount = 0;
+      ts.answers = [];
+      ts.questions = buildKanjiTestQuestions({
+        fromIdx: ts.fromIdx,
+        toIdx: ts.toIdx,
+        modes: selectedModes,
+        questionCount: qCount
+      });
+
+      if (ts.questions.length === 0) {
+        alert("Không có câu hỏi phù hợp với cài đặt hiện tại. Hãy mở rộng phạm vi hoặc chọn thêm dạng câu hỏi.");
+        return;
+      }
       renderKanjiTestQuestion();
     });
 
     const cancelBtn = createElement("button", "btn-ghost", "Đóng");
     cancelBtn.type = "button";
-    cancelBtn.addEventListener("click", function () {
-      closeDetailModal();
-    });
+    cancelBtn.addEventListener("click", function () { closeDetailModal(); });
 
     btnRow.appendChild(startBtn);
     btnRow.appendChild(cancelBtn);
@@ -2152,51 +2371,30 @@
       wrapper.appendChild(wrongHeader);
 
       const wrongContainer = createElement("div", "wrong-list", "");
+      var modeLabels = {
+        1: "Kanji → Âm On", 2: "Kanji → Âm Kun",
+        3: "Hán Việt → Kanji", 4: "Kanji → Hán Việt",
+        5: "Từ vựng → Nghĩa", 6: "Nghĩa → Kanji",
+        7: "Nghĩa → Hiragana", 8: "Hiragana → Kanji", 9: "Hiragana → Nghĩa"
+      };
       wrongList.forEach(function (w, idx) {
         const itemBox = createElement("div", "wrong-item", "");
-
         const k = w.item || {};
-        const titleParts = [];
-        if (k.kanji) {
-          titleParts.push(k.kanji);
-        }
-        if (k.name) {
-          titleParts.push("(" + k.name + ")");
-        }
-        const titleText = titleParts.length > 0 ? titleParts.join(" ") : "Câu " + (idx + 1);
-        const titleEl = createElement("div", "wrong-q", titleText);
-        itemBox.appendChild(titleEl);
 
-        // Hiển thị đầy đủ thông tin Kanji để ôn lại
-        const info = createElement("div", "wrong-a", "");
-        if (k.kun) {
-          info.appendChild(createElement("div", "", "Kun: " + k.kun));
-        }
-        if (k.on) {
-          info.appendChild(createElement("div", "", "On: " + k.on));
-        }
-        if (k.bo_thu) {
-          info.appendChild(createElement("div", "", "Bộ thủ: " + k.bo_thu));
-        }
-        if (k.example) {
-          info.appendChild(createElement("div", "", "Ví dụ: " + k.example));
-        }
-        if (info.childNodes.length > 0) {
-          itemBox.appendChild(info);
+        const titleText = (k.kanji ? k.kanji : "") + (k.name ? " (" + k.name + ")" : "") || ("Câu " + (idx + 1));
+        itemBox.appendChild(createElement("div", "wrong-q", titleText));
+
+        const modeBadge = createElement("div", "wrong-mode-badge", modeLabels[w.mode] || "");
+        itemBox.appendChild(modeBadge);
+
+        if (k.ve && (k.ve.word || k.ve.reading)) {
+          const veInfo = createElement("div", "wrong-a", k.ve.word + " (" + k.ve.reading + "): " + k.ve.meaning);
+          itemBox.appendChild(veInfo);
         }
 
-        const correctRow = createElement(
-          "div",
-          "wrong-a wrong-a--correct",
-          "Đáp án đúng: "
-        );
+        const correctRow = createElement("div", "wrong-a wrong-a--correct", "Đúng: ");
         correctRow.appendChild(createElement("span", "", w.correct));
-
-        const selectedRow = createElement(
-          "div",
-          "wrong-a wrong-a--selected",
-          "Bạn chọn: "
-        );
+        const selectedRow = createElement("div", "wrong-a wrong-a--selected", "Bạn chọn: ");
         selectedRow.appendChild(createElement("span", "", w.selected || "(không chọn)"));
 
         itemBox.appendChild(correctRow);
@@ -2211,12 +2409,13 @@
     const retryBtn = createElement("button", "btn", "Làm lại");
     retryBtn.type = "button";
     retryBtn.addEventListener("click", function () {
-      state.kanjiTestState.isActive = false;
-      state.kanjiTestState.isFinished = false;
-      state.kanjiTestState.questions = [];
-      state.kanjiTestState.currentIndex = 0;
-      state.kanjiTestState.correctCount = 0;
-      state.kanjiTestState.answers = [];
+      var ts = state.kanjiTestState;
+      ts.isActive = false;
+      ts.isFinished = false;
+      ts.questions = [];
+      ts.currentIndex = 0;
+      ts.correctCount = 0;
+      ts.answers = [];
       renderKanjiTestInitialMessage();
     });
     const closeBtn = createElement("button", "btn-ghost", "Đóng");
@@ -2238,16 +2437,8 @@
   function handleKanjiSelectAnswer(item, mode, correct, selected) {
     const testState = state.kanjiTestState;
     const isCorrect = selected === correct;
-    if (isCorrect) {
-      testState.correctCount += 1;
-    }
-    testState.answers.push({
-      item: item,
-      mode: mode,
-      correct: correct,
-      selected: selected,
-      isCorrect: isCorrect
-    });
+    if (isCorrect) testState.correctCount += 1;
+    testState.answers.push({ item: item, mode: mode, correct: correct, selected: selected, isCorrect: isCorrect });
 
     if (testState.currentIndex < testState.questions.length - 1) {
       testState.currentIndex += 1;
@@ -2261,7 +2452,7 @@
   function setupKanjiFilters() {
     const radicalSelect = document.getElementById("kanji-radical-filter");
     const radicals = getUniqueSorted(
-      kanjiData.map(function (k) { return k.bo_thu; }).filter(function (b) { return b; })
+      kanjiData.map(function (k) { return k.radicals; }).filter(function (b) { return b; })
     );
     radicals.forEach(function (radical) {
       const opt = createElement("option", "", radical);
