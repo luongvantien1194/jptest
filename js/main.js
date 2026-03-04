@@ -1343,6 +1343,7 @@
       filtered.forEach(function (raw, displayIdx) {
         const globalIndex = kanjiData.indexOf(raw);
         const item = {
+          stt: raw.stt != null ? raw.stt : (displayIdx + 1),
           kanji: raw.kanji,
           name: raw.hanviet,
           kun: raw.kun_reading,
@@ -1352,8 +1353,8 @@
         const row = createElement("div", "kl-item", "");
         row.setAttribute("data-kanji-index", String(globalIndex));
 
-        // Sequential number badge
-        const numEl = createElement("div", "kl-num", String(displayIdx + 1));
+        // Sequential number badge (ưu tiên dùng stt trong dữ liệu)
+        const numEl = createElement("div", "kl-num", String(item.stt));
         row.appendChild(numEl);
 
         // Large kanji character
@@ -1999,10 +2000,38 @@
 
   function parseKanjiVocab(vocabStr) {
     if (!vocabStr) return [];
-    return vocabStr.split("|").map(function (v) {
-      var p = v.split(":");
-      return { word: (p[0] || "").trim(), reading: (p[1] || "").trim(), meaning: (p[2] || "").trim() };
-    }).filter(function (v) { return v.word || v.reading; });
+    return vocabStr.split("|").map(function (raw) {
+      var s = String(raw || "").trim();
+      if (!s) return { word: "", reading: "", meaning: "" };
+
+      // Định dạng thực tế trong data:
+      //   "日本(にほん):Nhật Bản"
+      //   "木(き):Cây"
+      // => word = phần trước "(", reading = trong ngoặc, meaning = sau ":"
+      var openIdx = s.indexOf("(");
+      var closeIdx = s.indexOf(")", openIdx + 1);
+      var colonIdx = s.indexOf(":");
+
+      var word = "";
+      var reading = "";
+      var meaning = "";
+
+      if (openIdx !== -1 && closeIdx !== -1 && closeIdx > openIdx) {
+        word = s.slice(0, openIdx).trim();
+        reading = s.slice(openIdx + 1, closeIdx).trim();
+      } else {
+        // Fallback: không có hiragana trong ngoặc, coi toàn bộ trước ":" là "word"
+        word = (colonIdx !== -1 ? s.slice(0, colonIdx) : s).trim();
+      }
+
+      if (colonIdx !== -1 && colonIdx + 1 < s.length) {
+        meaning = s.slice(colonIdx + 1).trim();
+      }
+
+      return { word: word, reading: reading, meaning: meaning };
+    }).filter(function (v) {
+      return v.word || v.reading || v.meaning;
+    });
   }
 
   function kanjiModeAvailable(raw, mode) {
