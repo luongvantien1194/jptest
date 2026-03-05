@@ -1547,13 +1547,13 @@
     container.appendChild(sec2);
 
     // Section 3: Tính từ (ẩn nếu không có)
-    if (item.adjectives && String(item.adjectives).trim()) {
+    if (item.adjectives && String(item.adjectives).trim() && String(item.adjectives).toLowerCase() !== "không có") {
       const sec3 = createElement("div", "kd-section kd-section--green", "");
 
       const adjWrap = createElement("div", "kd-vocab-pills", "");
       item.adjectives.split("|").forEach(function (a) {
         var trimmed = String(a).trim();
-        if (!trimmed) return;
+        if (!trimmed || trimmed.toLowerCase() === "không có") return;
         var parts = trimmed.split(":");
         const chip = createElement("div", "kd-vocab-chip", "");
         const word = createElement("span", "kd-vocab-chip-word", parts[0] || "");
@@ -1571,12 +1571,12 @@
     }
 
     // Section 4: Từ vựng ứng dụng (ẩn nếu không có)
-    if (item.vocabulary && String(item.vocabulary).trim()) {
+    if (item.vocabulary && String(item.vocabulary).trim() && String(item.vocabulary).toLowerCase() !== "không có") {
       const sec4 = createElement("div", "kd-section kd-section--purple", "");
 
       item.vocabulary.split("|").forEach(function (v) {
         var trimmed = String(v).trim();
-        if (!trimmed) return;
+        if (!trimmed || trimmed.toLowerCase() === "không có") return;
         var parts = trimmed.split(":");
         const row = createElement("div", "kd-vocab-row", "");
         const wordEl = createElement("span", "kd-vocab-word", parts[0] || "");
