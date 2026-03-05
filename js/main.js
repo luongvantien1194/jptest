@@ -1457,11 +1457,15 @@
       return;
     }
 
-    // Hero: large kanji + hanviet + star
+    // Hero: Kanji + Nghĩa + Hán Việt + sao
     const globalIndex = state.selected.kanjiIndex;
     const isKanjiFav = !!state.kanjiFavorites[globalIndex];
     const hero = createElement("div", "kd-hero", "");
-    const starBtn = createElement("button", "star-btn" + (isKanjiFav ? " star-btn--active" : ""), isKanjiFav ? "⭐" : "☆");
+    const starBtn = createElement(
+      "button",
+      "star-btn" + (isKanjiFav ? " star-btn--active" : ""),
+      isKanjiFav ? "⭐" : "☆"
+    );
     starBtn.type = "button";
     starBtn.title = "Yêu thích";
     starBtn.addEventListener("click", function (e) {
@@ -1477,12 +1481,11 @@
     hero.appendChild(starBtn);
     const kanjiEl = createElement("div", "kd-char", item.kanji);
     const meaningBadge = createElement("div", "kd-meaning-badge", item.core_meaning || "");
+    const hanvietEl = createElement("div", "kd-hanviet", item.hanviet || "");
     hero.appendChild(kanjiEl);
     if (item.core_meaning) hero.appendChild(meaningBadge);
+    if (item.hanviet) hero.appendChild(hanvietEl);
     container.appendChild(hero);
-
-    const hanvietEl = createElement("div", "kd-hanviet", item.hanviet || "");
-    container.appendChild(hanvietEl);
 
     // Section 1: Phát âm & Cấu tạo
     const sec1 = createElement("div", "kd-section kd-section--blue", "");
@@ -1540,48 +1543,55 @@
     sec2.appendChild(sec2Title);
     addStoryRow(sec2, "🖼️", "Tượng hình", item.story_image);
     addStoryRow(sec2, "🔗", "Cấu tạo", item.logic_development);
-    addStoryRow(sec2, "💡", "Mẹo nhớ", item.memory_tip);
+    // Bỏ hiển thị "Mẹo nhớ" để tiết kiệm không gian
     container.appendChild(sec2);
 
-    // Section 3: Từ vựng ứng dụng
-    if (item.adjectives || item.vocabulary) {
+    // Section 3: Tính từ (ẩn nếu không có)
+    if (item.adjectives && String(item.adjectives).trim()) {
       const sec3 = createElement("div", "kd-section kd-section--green", "");
-      const sec3Title = createElement("div", "kd-section-title", "Từ vựng ứng dụng");
-      sec3.appendChild(sec3Title);
 
-      if (item.adjectives) {
-        const adjLabel = createElement("div", "kd-vocab-sublabel", "Tính từ thường đi kèm");
-        sec3.appendChild(adjLabel);
-        const adjWrap = createElement("div", "kd-vocab-pills", "");
-        item.adjectives.split("|").forEach(function (a) {
-          var parts = a.split(":");
-          const chip = createElement("div", "kd-vocab-chip", "");
-          const word = createElement("span", "kd-vocab-chip-word", parts[0] || "");
-          const meaning = createElement("span", "kd-vocab-chip-meaning", parts[1] || "");
-          chip.appendChild(word);
-          chip.appendChild(meaning);
-          adjWrap.appendChild(chip);
-        });
+      const adjWrap = createElement("div", "kd-vocab-pills", "");
+      item.adjectives.split("|").forEach(function (a) {
+        var trimmed = String(a).trim();
+        if (!trimmed) return;
+        var parts = trimmed.split(":");
+        const chip = createElement("div", "kd-vocab-chip", "");
+        const word = createElement("span", "kd-vocab-chip-word", parts[0] || "");
+        const meaning = createElement("span", "kd-vocab-chip-meaning", parts[1] || "");
+        chip.appendChild(word);
+        chip.appendChild(meaning);
+        adjWrap.appendChild(chip);
+      });
+      
+      // Chỉ thêm section nếu có ít nhất 1 chip
+      if (adjWrap.children.length > 0) {
         sec3.appendChild(adjWrap);
+        container.appendChild(sec3);
       }
+    }
 
-      if (item.vocabulary) {
-        const vocabLabel = createElement("div", "kd-vocab-sublabel", "Từ vựng tiêu biểu");
-        sec3.appendChild(vocabLabel);
-        item.vocabulary.split("|").forEach(function (v) {
-          var parts = v.split(":");
-          const row = createElement("div", "kd-vocab-row", "");
-          const wordEl = createElement("span", "kd-vocab-word", parts[0] || "");
-          const readEl = createElement("span", "kd-vocab-read", parts[1] ? "(" + parts[1] + ")" : "");
-          const meanEl = createElement("span", "kd-vocab-mean", parts[2] || "");
-          row.appendChild(wordEl);
-          row.appendChild(readEl);
-          row.appendChild(meanEl);
-          sec3.appendChild(row);
-        });
+    // Section 4: Từ vựng ứng dụng (ẩn nếu không có)
+    if (item.vocabulary && String(item.vocabulary).trim()) {
+      const sec4 = createElement("div", "kd-section kd-section--purple", "");
+
+      item.vocabulary.split("|").forEach(function (v) {
+        var trimmed = String(v).trim();
+        if (!trimmed) return;
+        var parts = trimmed.split(":");
+        const row = createElement("div", "kd-vocab-row", "");
+        const wordEl = createElement("span", "kd-vocab-word", parts[0] || "");
+        const readEl = createElement("span", "kd-vocab-read", parts[1] ? "(" + parts[1] + ")" : "");
+        const meanEl = createElement("span", "kd-vocab-mean", parts[2] || "");
+        row.appendChild(wordEl);
+        row.appendChild(readEl);
+        row.appendChild(meanEl);
+        sec4.appendChild(row);
+      });
+
+      // Chỉ thêm section nếu có ít nhất 1 row
+      if (sec4.children.length > 0) {
+        container.appendChild(sec4);
       }
-
-      container.appendChild(sec3);
     }
 
     const contentDiv = createElement("div", "kd-detail-content", "");
@@ -1616,7 +1626,8 @@
     navRow.appendChild(prevBtn);
     navRow.appendChild(nextBtn);
 
-    openDetailModal("Chi tiết Kanji", contentDiv, navRow);
+    // Không hiển thị tiêu đề để header gọn hơn, chỉ còn nút điều hướng
+    openDetailModal("", contentDiv, navRow);
   }
 
   // ----- Grammar -----

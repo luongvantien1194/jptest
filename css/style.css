@@ -1928,10 +1928,11 @@ select:focus {
 .kd-hero {
   position: relative;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
-  padding: 20px 12px 10px;
+  gap: 12px;
+  padding: 16px 12px 12px;
   background: radial-gradient(circle at 50% 30%, rgba(191,219,254,0.45), rgba(238,242,255,0.6) 65%);
   border-radius: 16px;
   border: 1px solid rgba(148,163,184,0.2);
@@ -1950,16 +1951,16 @@ select:focus {
 
 .kd-char {
   font-family: var(--font-jp);
-  font-size: 96px;
+  font-size: 72px;
   font-weight: 300;
   line-height: 1;
   color: #1e1b4b;
   letter-spacing: -2px;
   text-shadow: 0 4px 18px rgba(99,102,241,0.18);
+  flex-shrink: 0;
 }
 
 .kd-meaning-badge {
-  margin-top: 8px;
   padding: 3px 14px;
   border-radius: 999px;
   font-size: 13px;
@@ -1968,18 +1969,18 @@ select:focus {
   color: #fff;
   letter-spacing: 0.04em;
   box-shadow: 0 2px 10px rgba(99,102,241,0.35);
+  flex-shrink: 0;
 }
 
 .kd-hanviet {
-  text-align: center;
-  font-size: 18px;
+  font-size: 16px;
   font-weight: 800;
   letter-spacing: 0.12em;
   text-transform: uppercase;
   background: linear-gradient(135deg, #4338ca, #2563eb);
   -webkit-background-clip: text;
   color: transparent;
-  margin-bottom: 10px;
+  flex-shrink: 0;
 }
 
 /* Section wrapper */
@@ -2017,6 +2018,12 @@ select:focus {
   border-color: rgba(110,231,183,0.4);
 }
 .kd-section--green .kd-section-title { color: #065f46; }
+
+.kd-section--purple {
+  background: linear-gradient(135deg, rgba(233,213,255,0.55), rgba(243,232,255,0.55));
+  border-color: rgba(192,132,252,0.4);
+}
+.kd-section--purple .kd-section-title { color: #6b21a8; }
 
 /* Pills grid for readings */
 .kd-pills-grid {
