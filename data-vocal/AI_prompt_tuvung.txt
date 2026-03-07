@@ -1,0 +1,25 @@
+Hãy đóng vai một người tổng hợp data theo giáo trình. Tôi cần bạn tạo dữ liệu từ vựng theo định dạng CSV (phân tách bằng dấu phẩy) dựa trên cấu trúc sau:
+
+Cấu trúc cột: id, Lesson, Hiragana, Romaji, Kanji, Meaning, Vru, Vt, Vnai, Vrare, type, note, category
+Quy tắc điền dữ liệu:
+id: Bắt đầu từ 1
+Lesson: Bài trong giáo trình minanonihongo
+Hiragana: Từ vựng hiragana, nếu là katakana thì cũng là cột này
+romaji: cach doc romaji cua hiragana
+Kanji: Từ vựng viết bằng kanji
+Meaning: Nghĩa tiếng việt
+Vru, Vt, Vnai, Vrare: Nếu là động từ, hãy chia đầy đủ các thể (Từ điển, Te, Nai, Khả năng). Nếu không phải động từ, hãy để trống.
+type: phân loại động từng (Nhóm I, Nhóm II, Nhóm III) (chỉ có ở động từ, để rỗng) 
+note: Tha động từ hoặc Tự động từ, hoặc để rỗng nếu không phải động từ
+Category: Phân loại như 'verb', 'noun', 'Adjective', 'adverb', 'conjunctions',
+verb: Động từ
+noun: Danh từ
+Adjective: Tính từ
+adverb: Trạng từ
+conjunctions: Liên từ
+question: Từ để hỏi
+
+Chủ đề cần tạo: Từ vựng đầy đủ từ bài 1 đến 50 của minanonihongo N4 và N5, liệt kê theo thứ tự từng bài tăng dần
+
+Yêu cầu đầu ra: Trả về khối code CSV để tôi có thể copy trực tiếp vào Excel hoặc file .csv.
+Yêu cầu quan trọng: Hãy liệt kê 1 cách đầy đủ nhất

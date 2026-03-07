@@ -1,0 +1,1251 @@
+﻿id,Lesson,Hiragana,Romazi,Kanji,Meaning,Vru,Vt,Vnai,Vrare,type,note,category
+1,1,わたし,watashi,私,tôi,,,,,,,noun
+2,1,あなた,anata,あなた,bạn,,,,,,,noun
+3,1,あのひと,ano hito,あの人,người kia,,,,,,,noun
+4,1,あのかた,ano kata,あの方,vị kia (lịch sự),,,,,,,noun
+5,1,みなさん,minasan,皆さん,mọi người,,,,,,,noun
+6,1,～さん,~san,～さん,anh/chị/ông/bà (hậu tố),,,,,,,noun
+7,1,～ちゃん,~chan,～ちゃん,hậu tố thân mật,,,,,,,noun
+8,1,～くん,~kun,～君,hậu tố cho nam trẻ,,,,,,,noun
+9,1,せんせい,sensei,先生,giáo viên,,,,,,,noun
+10,1,きょうし,kyoushi,教師,giáo viên (nghề nghiệp),,,,,,,noun
+11,1,がくせい,gakusei,学生,sinh viên,,,,,,,noun
+12,1,かいしゃいん,kaishain,会社員,nhân viên công ty,,,,,,,noun
+13,1,しゃいん,shain,社員,nhân viên,,,,,,,noun
+14,1,ぎんこういん,ginkouin,銀行員,nhân viên ngân hàng,,,,,,,noun
+15,1,いしゃ,isha,医者,bác sĩ,,,,,,,noun
+16,1,けんきゅうしゃ,kenkyuusha,研究者,nhà nghiên cứu,,,,,,,noun
+17,1,エンジニア,enjinia,エンジニア,kỹ sư,,,,,,,noun
+18,1,だいがく,daigaku,大学,đại học,,,,,,,noun
+19,1,びょういん,byouin,病院,bệnh viện,,,,,,,noun
+20,1,でんき,denki,電気,điện/điện lực,,,,,,,noun
+21,1,だれ,dare,誰,ai,,,,,,,question
+22,1,どなた,donata,どなた,ai (lịch sự),,,,,,,question
+23,1,～さい,~sai,～歳,~ tuổi,,,,,,,noun
+24,1,なんさい,nansai,何歳,mấy tuổi,,,,,,,question
+25,1,おいくつ,oikutsu,おいくつ,bao nhiêu tuổi (lịch sự),,,,,,,question
+26,1,はい,hai,はい,vâng,,,,,,,adverb
+27,1,いいえ,iie,いいえ,không,,,,,,,adverb
+28,1,はじめまして,hajimemashite,初めまして,rất hân hạnh,,,,,,,conjunctions
+29,1,どうぞよろしく,douzo yoroshiku,どうぞよろしく,rất mong được giúp đỡ,,,,,,,conjunctions
+30,1,こちらこそ,kochira koso,こちらこそ,tôi mới phải,,,,,,,conjunctions
+31,2,これ,kore,これ,cái này,,,,,,,noun
+32,2,それ,sore,それ,cái đó,,,,,,,noun
+33,2,あれ,are,あれ,cái kia,,,,,,,noun
+34,2,この,kono,この,cái này (bổ nghĩa),,,,,,,noun
+35,2,その,sono,その,cái đó (bổ nghĩa),,,,,,,noun
+36,2,あの,ano,あの,cái kia (bổ nghĩa),,,,,,,noun
+37,2,ほん,hon,本,sách,,,,,,,noun
+38,2,じしょ,jisho,辞書,từ điển,,,,,,,noun
+39,2,ざっし,zasshi,雑誌,tạp chí,,,,,,,noun
+40,2,しんぶん,shinbun,新聞,báo,,,,,,,noun
+41,2,ノート,nooto,ノート,vở,,,,,,,noun
+42,2,てちょう,techou,手帳,sổ tay,,,,,,,noun
+43,2,めいし,meishi,名刺,danh thiếp,,,,,,,noun
+44,2,カード,kaado,カード,thẻ,,,,,,,noun
+45,2,えんぴつ,enpitsu,鉛筆,bút chì,,,,,,,noun
+46,2,ボールペン,boorupen,ボールペン,bút bi,,,,,,,noun
+47,2,シャープペンシル,shaapupenshiru,シャープペンシル,bút chì kim,,,,,,,noun
+48,2,かぎ,kagi,鍵,chìa khóa,,,,,,,noun
+49,2,とけい,tokei,時計,đồng hồ,,,,,,,noun
+50,2,かさ,kasa,傘,dù,,,,,,,noun
+51,2,かばん,kaban,鞄,cặp/túi,,,,,,,noun
+52,2,テープ,teepu,テープ,băng,,,,,,,noun
+53,2,テープレコーダー,teepurekoodaa,テープレコーダー,máy ghi âm,,,,,,,noun
+54,2,テレビ,terebi,テレビ,tivi,,,,,,,noun
+55,2,ラジオ,rajio,ラジオ,radio,,,,,,,noun
+56,2,カメラ,kamera,カメラ,máy ảnh,,,,,,,noun
+57,2,コンピューター,konpyuutaa,コンピューター,máy tính,,,,,,,noun
+58,2,くるま,kuruma,車,xe hơi,,,,,,,noun
+59,2,つくえ,tsukue,机,bàn,,,,,,,noun
+60,2,いす,isu,椅子,ghế,,,,,,,noun
+61,2,チョコレート,chokoreeto,チョコレート,sô cô la,,,,,,,noun
+62,2,コーヒー,koohii,コーヒー,cà phê,,,,,,,noun
+63,2,おみやげ,omiyage,お土産,quà lưu niệm,,,,,,,noun
+64,2,えいご,eigo,英語,tiếng Anh,,,,,,,noun
+65,2,にほんご,nihongo,日本語,tiếng Nhật,,,,,,,noun
+66,2,～ご,~go,～語,~ ngôn ngữ,,,,,,,noun
+67,2,なん,nan,何,cái gì,,,,,,,question
+68,2,そう,sou,そう,đúng vậy,,,,,,,adverb
+69,2,ちがいます,chigaimasu,違います,không đúng,,,,,,,verb
+70,2,そうですか,sou desu ka,そうですか,vậy à,,,,,,,conjunctions
+71,2,あのう,anou,あのう,ờ...,à..., ,,,,,,adverb
+72,2,ほんのきもちです,honno kimochi desu,ほんの気持ちです,chỉ là chút lòng thành,,,,,,,conjunctions
+73,2,どうぞ,douzo,どうぞ,xin mời,,,,,,,adverb
+74,2,どうも,doumo,どうも,cảm ơn / rất,,,,,,,adverb
+75,2,ありがとう,arigatou,ありがとう,cảm ơn,,,,,,,conjunctions
+76,3,ここ,koko,ここ,ở đây,,,,,,,noun
+77,3,そこ,soko,そこ,ở đó,,,,,,,noun
+78,3,あそこ,asoko,あそこ,ở kia,,,,,,,noun
+79,3,どこ,doko,どこ,ở đâu,,,,,,,question
+80,3,こちら,kochira,こちら,phía này (lịch sự),,,,,,,noun
+81,3,そちら,sochira,そちら,phía đó,,,,,,,noun
+82,3,あちら,achira,あちら,phía kia,,,,,,,noun
+83,3,どちら,dochira,どちら,phía nào,,,,,,,question
+84,3,きょうしつ,kyoushitsu,教室,lớp học,,,,,,,noun
+85,3,しょくどう,shokudou,食堂,nhà ăn,,,,,,,noun
+86,3,じむしょ,jimusho,事務所,văn phòng,,,,,,,noun
+87,3,かいぎしつ,kaigishitsu,会議室,phòng họp,,,,,,,noun
+88,3,うけつけ,uketsuke,受付,quầy tiếp tân,,,,,,,noun
+89,3,ロビー,robii,ロビー,sảnh,,,,,,,noun
+90,3,へや,heya,部屋,phòng,,,,,,,noun
+91,3,トイレ,toire,トイレ,nhà vệ sinh,,,,,,,noun
+92,3,おてあらい,otearai,お手洗い,nhà vệ sinh (lịch sự),,,,,,,noun
+93,3,かいだん,kaidan,階段,cầu thang,,,,,,,noun
+94,3,エレベーター,erebeetaa,エレベーター,thang máy,,,,,,,noun
+95,3,エスカレーター,esukareetaa,エスカレーター,thang cuốn,,,,,,,noun
+96,3,じどうはんばいき,jidouhanbaiki,自動販売機,máy bán hàng tự động,,,,,,,noun
+97,3,でんわ,denwa,電話,điện thoại,,,,,,,noun
+98,3,くに,kuni,国,đất nước,,,,,,,noun
+99,3,かいしゃ,kaisha,会社,công ty,,,,,,,noun
+100,3,うち,uchi,うち,nhà,,,,,,,noun
+101,4,おきます,okimasu,起きます,thức dậy,おきる,おきて,おきない,おきられる,Nhóm II,Tự động từ,verb
+102,4,ねます,nemasu,寝ます,ngủ,ねる,ねて,ねない,ねられる,Nhóm II,Tự động từ,verb
+103,4,はたらきます,hatarakimasu,働きます,làm việc,はたらく,はたらいて,はたらかない,はたらける,Nhóm I,Tự động từ,verb
+104,4,やすみます,yasumimasu,休みます,nghỉ ngơi,やすむ,やすんで,やすまない,やすめる,Nhóm I,Tự động từ,verb
+105,4,べんきょうします,benkyoushimasu,勉強します,học,べんきょうする,べんきょうして,べんきょうしない,べんきょうできる,Nhóm III,,verb
+106,4,おわります,owarimasu,終わります,kết thúc,おわる,おわって,おわらない,おわれる,Nhóm I,Tự động từ,verb
+107,4,デパート,depaato,デパート,trung tâm thương mại,,,,,,,noun
+108,4,ぎんこう,ginkou,銀行,ngân hàng,,,,,,,noun
+109,4,ゆうびんきょく,yuubinkyoku,郵便局,bưu điện,,,,,,,noun
+110,4,としょかん,toshokan,図書館,thư viện,,,,,,,noun
+111,4,びじゅつかん,bijutsukan,美術館,bảo tàng mỹ thuật,,,,,,,noun
+112,4,いま,ima,今,bây giờ,,,,,,,adverb
+113,4,～じ,~ji,～時,~ giờ,,,,,,,noun
+114,4,～ふん,~fun,～分,~ phút,,,,,,,noun
+115,4,はん,han,半,rưỡi,,,,,,,noun
+116,4,なんじ,nanji,何時,mấy giờ,,,,,,,question
+117,4,なんぷん,nanpun,何分,mấy phút,,,,,,,question
+118,4,ごぜん,gozen,午前,sáng (AM),,,,,,,noun
+119,4,ごご,gogo,午後,chiều (PM),,,,,,,noun
+120,4,きょう,kyou,今日,hôm nay,,,,,,,noun
+121,4,あした,ashita,明日,ngày mai,,,,,,,noun
+122,4,きのう,kinou,昨日,hôm qua,,,,,,,noun
+123,4,あさ,asa,朝,buổi sáng,,,,,,,noun
+124,4,ひる,hiru,昼,buổi trưa,,,,,,,noun
+125,4,ばん,ban,晩,buổi tối,,,,,,,noun
+126,4,まいあさ,maiasa,毎朝,mỗi sáng,,,,,,,adverb
+127,4,まいばん,maiban,毎晩,mỗi tối,,,,,,,adverb
+128,4,まいにち,mainichi,毎日,mỗi ngày,,,,,,,adverb
+129,4,げつようび,getsuuyoubi,月曜日,thứ hai,,,,,,,noun
+130,4,かようび,kayoubi,火曜日,thứ ba,,,,,,,noun
+131,5,いきます,ikimasu,行きます,đi,いく,いって,いかない,いける,Nhóm I,,verb
+132,5,きます,kimasu,来ます,đến,くる,きて,こない,こられる,Nhóm III,,verb
+133,5,かえります,kaerimasu,帰ります,về,かえる,かえって,かえらない,かえれる,Nhóm I,,verb
+134,5,がっこう,gakkou,学校,trường học,,,,,,,noun
+135,5,スーパー,suupaa,スーパー,siêu thị,,,,,,,noun
+136,5,えき,eki,駅,nhà ga,,,,,,,noun
+137,5,ひこうき,hikouki,飛行機,máy bay,,,,,,,noun
+138,5,ふね,fune,船,tàu thủy,,,,,,,noun
+139,5,でんしゃ,densha,電車,tàu điện,,,,,,,noun
+140,5,ちかてつ,chikatetsu,地下鉄,tàu điện ngầm,,,,,,,noun
+141,5,しんかんせん,shinkansen,新幹線,tàu cao tốc,,,,,,,noun
+142,5,バス,basu,バス,xe buýt,,,,,,,noun
+143,5,タクシー,takushii,タクシー,taxi,,,,,,,noun
+144,5,じてんしゃ,jitensha,自転車,xe đạp,,,,,,,noun
+145,5,あるいて,aruite,歩いて,đi bộ,,,,,,,verb
+146,5,ひと,hito,人,người,,,,,,,noun
+147,5,ともだち,tomodachi,友達,bạn bè,,,,,,,noun
+148,5,かれ,kare,彼,anh ấy,,,,,,,noun
+149,5,かのじょ,kanojo,彼女,cô ấy,,,,,,,noun
+150,5,かぞく,kazoku,家族,gia đình,,,,,,,noun
+151,6,たべます,tabemasu,食べます,ăn,たべる,たべて,たべない,たべられる,Nhóm II,Tha động từ,verb
+152,6,のみます,nomimasu,飲みます,uống,のむ,のんで,のまない,のめる,Nhóm I,Tha động từ,verb
+153,6,すいます,suimasu,吸います,hút (thuốc),すう,すって,すわない,すえる,Nhóm I,Tha động từ,verb
+154,6,みます,mimasu,見ます,xem/nhìn,みる,みて,みない,みられる,Nhóm II,Tha động từ,verb
+155,6,ききます,kikimasu,聞きます,nghe/hỏi,きく,きいて,きかない,きける,Nhóm I,Tha động từ,verb
+156,6,よみます,yomimasu,読みます,đọc,よむ,よんで,よまない,よめる,Nhóm I,Tha động từ,verb
+157,6,かきます,kakimasu,書きます,viết,かく,かいて,かかない,かける,Nhóm I,Tha động từ,verb
+158,6,かいます,kaimasu,買います,mua,かう,かって,かわない,かえる,Nhóm I,Tha động từ,verb
+159,6,とります,torimasu,撮ります,chụp (ảnh),とる,とって,とらない,とれる,Nhóm I,Tha động từ,verb
+160,6,します,shimasu,します,làm,する,して,しない,できる,Nhóm III,,verb
+161,6,あいます,aimasu,会います,gặp,あう,あって,あわない,あえる,Nhóm I,,verb
+162,6,ごはん,gohan,ご飯,cơm/bữa ăn,,,,,,,noun
+163,6,あさごはん,asagohan,朝ご飯,bữa sáng,,,,,,,noun
+164,6,ひるごはん,hirugohan,昼ご飯,bữa trưa,,,,,,,noun
+165,6,ばんごはん,bangohan,晩ご飯,bữa tối,,,,,,,noun
+166,6,パン,pan,パン,bánh mì,,,,,,,noun
+167,6,たまご,tamago,卵,trứng,,,,,,,noun
+168,6,にく,niku,肉,thịt,,,,,,,noun
+169,6,さかな,sakana,魚,cá,,,,,,,noun
+170,6,やさい,yasai,野菜,rau,,,,,,,noun
+171,6,みず,mizu,水,nước,,,,,,,noun
+172,6,おちゃ,ocha,お茶,trà,,,,,,,noun
+173,6,こうちゃ,koucha,紅茶,trà đen,,,,,,,noun
+174,6,ぎゅうにゅう,gyuunyuu,牛乳,sữa,,,,,,,noun
+175,6,ジュース,juusu,ジュース,nước ép,,,,,,,noun
+176,6,ビール,biiru,ビール,bia,,,,,,,noun
+177,6,たばこ,tabako,たばこ,thuốc lá,,,,,,,noun
+178,6,てがみ,tegami,手紙,thư,,,,,,,noun
+179,6,レポート,repooto,レポート,báo cáo,,,,,,,noun
+180,6,しゃしん,shashin,写真,ảnh,,,,,,,noun
+181,7,きります,kirimasu,切ります,cắt,きる,きって,きらない,きれる,Nhóm I,Tha động từ,verb
+182,7,おくります,okurimasu,送ります,gửi,おくる,おくって,おくらない,おくれる,Nhóm I,Tha động từ,verb
+183,7,あげます,agemasu,上げます,tặng (cho),あげる,あげて,あげない,あげられる,Nhóm II,Tha động từ,verb
+184,7,もらいます,moraimasu,もらいます,nhận,もらう,もらって,もらわない,もらえる,Nhóm I,Tha động từ,verb
+185,7,かします,kashimasu,貸します,cho mượn,かす,かして,かさない,かせる,Nhóm I,Tha động từ,verb
+186,7,かります,karimasu,借ります,mượn,かりる,かりて,かりない,かりられる,Nhóm II,Tha động từ,verb
+187,7,おしえます,oshiemasu,教えます,dạy/chỉ,おしえる,おしえて,おしえない,おしえられる,Nhóm II,Tha động từ,verb
+188,7,ならいます,naraimasu,習います,học (từ ai),ならう,ならって,ならわない,ならえる,Nhóm I,Tha động từ,verb
+189,7,でんわします,denwashimasu,電話します,gọi điện thoại,でんわする,でんわして,でんわしない,でんわできる,Nhóm III,,verb
+190,7,はし,hashi,橋,cây cầu,,,,,,,noun
+191,7,みち,michi,道,con đường,,,,,,,noun
+192,7,こうばん,kouban,交番,đồn cảnh sát nhỏ,,,,,,,noun
+193,7,しやくしょ,shiyakusho,市役所,tòa thị chính,,,,,,,noun
+194,7,けいたいでんわ,keitaidenwa,携帯電話,điện thoại di động,,,,,,,noun
+195,7,かぎ,kagi,鍵,chìa khóa,,,,,,,noun
+196,7,ほん,hon,本,sách,,,,,,,noun
+197,7,ざっし,zasshi,雑誌,tạp chí,,,,,,,noun
+198,7,てちょう,techou,手帳,sổ tay,,,,,,,noun
+199,7,えんぴつ,enpitsu,鉛筆,bút chì,,,,,,,noun
+200,7,はさみ,hasami,はさみ,cái kéo,,,,,,,noun
+201,8,あります,arimasu,あります,có (đồ vật),ある,あって,あらない,ありえる,Nhóm I,Tự động từ,verb
+202,8,います,imasu,います,có (người/động vật),いる,いて,いない,いられる,Nhóm II,Tự động từ,verb
+203,8,いろいろ,iroiro,色々,nhiều loại,,,,,,,adverb
+204,8,おとこのひと,otokonohito,男の人,người đàn ông,,,,,,,noun
+205,8,おんなのひと,onnanohito,女の人,người phụ nữ,,,,,,,noun
+206,8,おとこのこ,otokonoko,男の子,bé trai,,,,,,,noun
+207,8,おんなのこ,onnanoko,女の子,bé gái,,,,,,,noun
+208,8,いぬ,inu,犬,chó,,,,,,,noun
+209,8,ねこ,neko,猫,mèo,,,,,,,noun
+210,8,き,ki,木,cây,,,,,,,noun
+211,8,もの,mono,物,đồ vật,,,,,,,noun
+212,8,フィルム,firumu,フィルム,phim (máy ảnh),,,,,,,noun
+213,8,でんち,denchi,電池,pin,,,,,,,noun
+214,8,はこ,hako,箱,hộp,,,,,,,noun
+215,8,スイッチ,suicchi,スイッチ,công tắc,,,,,,,noun
+216,8,れいぞうこ,reizouko,冷蔵庫,tủ lạnh,,,,,,,noun
+217,8,テーブル,teeburu,テーブル,bàn,,,,,,,noun
+218,8,ベッド,beddo,ベッド,giường,,,,,,,noun
+219,8,たな,tana,棚,kệ,,,,,,,noun
+220,8,ドア,doa,ドア,cửa,,,,,,,noun
+221,8,まど,mado,窓,cửa sổ,,,,,,,noun
+222,8,ポスト,posuto,ポスト,hộp thư,,,,,,,noun
+223,8,ビル,biru,ビル,tòa nhà,,,,,,,noun
+224,8,こうえん,kouen,公園,công viên,,,,,,,noun
+225,8,きっさてん,kissaten,喫茶店,quán cà phê,,,,,,,noun
+226,8,ほんや,honya,本屋,hiệu sách,,,,,,,noun
+227,8,～や,~ya,～屋,cửa hàng ~,,,,,,,noun
+228,8,のりば,noriba,乗り場,bến xe,,,,,,,noun
+229,8,うえ,ue,上,ở trên,,,,,,,noun
+230,8,した,shita,下,ở dưới,,,,,,,noun
+231,8,まえ,mae,前,phía trước,,,,,,,noun
+232,8,うしろ,ushiro,後ろ,phía sau,,,,,,,noun
+233,8,みぎ,migi,右,bên phải,,,,,,,noun
+234,8,ひだり,hidari,左,bên trái,,,,,,,noun
+235,8,なか,naka,中,bên trong,,,,,,,noun
+236,8,そと,soto,外,bên ngoài,,,,,,,noun
+237,8,となり,tonari,隣,bên cạnh,,,,,,,noun
+238,8,ちかく,chikaku,近く,gần,,,,,,,noun
+239,8,あいだ,aida,間,ở giữa,,,,,,,noun
+240,9,わかります,wakarimasu,分かります,hiểu,わかる,わかって,わからない,わかれる,Nhóm I,Tự động từ,verb
+241,9,あります,arimasu,あります,có/sở hữu,ある,あって,あらない,ありえる,Nhóm I,,verb
+242,9,すきです,sukidesu,好きです,thích,,,,,,,Adjective
+243,9,きらいです,kiraidesu,嫌いです,ghét,,,,,,,Adjective
+244,9,じょうずです,jouzu desu,上手です,giỏi,,,,,,,Adjective
+245,9,へたです,heta desu,下手です,dở,,,,,,,Adjective
+246,9,りょうり,ryouri,料理,món ăn/nấu ăn,,,,,,,noun
+247,9,スポーツ,supootsu,スポーツ,thể thao,,,,,,,noun
+248,9,やきゅう,yakyuu,野球,bóng chày,,,,,,,noun
+249,9,ダンス,dansu,ダンス,khiêu vũ,,,,,,,noun
+250,9,おんがく,ongaku,音楽,âm nhạc,,,,,,,noun
+251,9,うた,uta,歌,bài hát,,,,,,,noun
+252,9,クラシック,kurashikku,クラシック,nhạc cổ điển,,,,,,,noun
+253,9,ジャズ,jazu,ジャズ,nhạc jazz,,,,,,,noun
+254,9,コンサート,konsaato,コンサート,buổi hòa nhạc,,,,,,,noun
+255,9,カラオケ,karaoke,カラオケ,karaoke,,,,,,,noun
+256,9,え,e,絵,tranh,,,,,,,noun
+257,9,じ,ji,字,chữ cái,,,,,,,noun
+258,9,かんじ,kanji,漢字,chữ Hán,,,,,,,noun
+259,9,ひらがな,hiragana,ひらがな,chữ hiragana,,,,,,,noun
+260,9,カタカナ,katakana,カタカナ,chữ katakana,,,,,,,noun
+261,10,あります,arimasu,あります,có (đồ vật),ある,あって,あらない,ありえる,Nhóm I,Tự động từ,verb
+262,10,います,imasu,います,có (người/động vật),いる,いて,いない,いられる,Nhóm II,Tự động từ,verb
+263,10,いろいろな,iroirona,色々な,nhiều loại,,,,,,,Adjective
+264,10,おとこのひと,otokonohito,男の人,người đàn ông,,,,,,,noun
+265,10,おんなのひと,onnanohito,女の人,người phụ nữ,,,,,,,noun
+266,10,おとこのこ,otokonoko,男の子,bé trai,,,,,,,noun
+267,10,おんなのこ,onnanoko,女の子,bé gái,,,,,,,noun
+268,10,いぬ,inu,犬,chó,,,,,,,noun
+269,10,ねこ,neko,猫,mèo,,,,,,,noun
+270,10,き,ki,木,cây,,,,,,,noun
+271,10,もの,mono,物,đồ vật,,,,,,,noun
+272,10,フィルム,firumu,フィルム,phim,,,,,,,noun
+273,10,でんち,denchi,電池,pin,,,,,,,noun
+274,10,はこ,hako,箱,hộp,,,,,,,noun
+275,10,スイッチ,suicchi,スイッチ,công tắc,,,,,,,noun
+276,10,れいぞうこ,reizouko,冷蔵庫,tủ lạnh,,,,,,,noun
+277,10,テーブル,teeburu,テーブル,bàn,,,,,,,noun
+278,10,ベッド,beddo,ベッド,giường,,,,,,,noun
+279,10,たな,tana,棚,kệ,,,,,,,noun
+280,10,ドア,doa,ドア,cửa,,,,,,,noun
+281,10,まど,mado,窓,cửa sổ,,,,,,,noun
+282,10,ポスト,posuto,ポスト,hộp thư,,,,,,,noun
+283,10,ビル,biru,ビル,tòa nhà,,,,,,,noun
+284,10,こうえん,kouen,公園,công viên,,,,,,,noun
+285,10,きっさてん,kissaten,喫茶店,quán cà phê,,,,,,,noun
+286,10,ほんや,honya,本屋,hiệu sách,,,,,,,noun
+287,10,～や,~ya,～屋,cửa hàng ~,,,,,,,noun
+288,10,のりば,noriba,乗り場,bến xe,,,,,,,noun
+289,10,ちかく,chikaku,近く,gần,,,,,,,noun
+290,10,あいだ,aida,間,ở giữa,,,,,,,noun
+291,11,います,imasu,います,có/một số (người),いる,いて,いない,いられる,Nhóm II,Tự động từ,verb
+292,11,あります,arimasu,あります,có (đồ vật),ある,あって,あらない,ありえる,Nhóm I,Tự động từ,verb
+293,11,いろいろ,iroiro,色々,nhiều loại,,,,,,,adverb
+294,11,おとこのひと,otokonohito,男の人,người đàn ông,,,,,,,noun
+295,11,おんなのひと,onnanohito,女の人,người phụ nữ,,,,,,,noun
+296,11,おとこのこ,otokonoko,男の子,bé trai,,,,,,,noun
+297,11,おんなのこ,onnanoko,女の子,bé gái,,,,,,,noun
+298,11,いぬ,inu,犬,chó,,,,,,,noun
+299,11,ねこ,neko,猫,mèo,,,,,,,noun
+300,11,き,ki,木,cây,,,,,,,noun
+301,12,かかります,kakarimasu,かかります,tốn (thời gian/tiền),かかる,かかって,かからない,かかれる,Nhóm I,Tự động từ,verb
+302,12,やすみます,yasumimasu,休みます,nghỉ,やすむ,やすんで,やすまない,やすめる,Nhóm I,Tự động từ,verb
+303,12,ひとつ,hitotsu,一つ,một cái,,,,,,,noun
+304,12,ふたつ,futatsu,二つ,hai cái,,,,,,,noun
+305,12,みっつ,mittsu,三つ,ba cái,,,,,,,noun
+306,12,よっつ,yottsu,四つ,bốn cái,,,,,,,noun
+307,12,いつつ,itsutsu,五つ,năm cái,,,,,,,noun
+308,12,むっつ,muttsu,六つ,sáu cái,,,,,,,noun
+309,12,ななつ,nanatsu,七つ,bảy cái,,,,,,,noun
+310,12,やっつ,yattsu,八つ,tám cái,,,,,,,noun
+311,12,ここのつ,kokonotsu,九つ,chín cái,,,,,,,noun
+312,12,とお,too,十,mười cái,,,,,,,noun
+313,12,いくつ,ikutsu,いくつ,bao nhiêu cái,,,,,,,question
+314,12,ひとり,hitori,一人,một người,,,,,,,noun
+315,12,ふたり,futari,二人,hai người,,,,,,,noun
+316,12,～にん,~nin,～人,~ người,,,,,,,noun
+317,12,～だい,~dai,～台,đếm máy móc/xe,,,,,,,noun
+318,12,～まい,~mai,～枚,đếm đồ mỏng,,,,,,,noun
+319,12,～かい,~kai,～回,~ lần,,,,,,,noun
+320,12,りんご,ringo,りんご,táo,,,,,,,noun
+321,12,みかん,mikan,みかん,quýt,,,,,,,noun
+322,12,サンドイッチ,sandoicchi,サンドイッチ,bánh sandwich,,,,,,,noun
+323,12,カレー, karee,カレー,cà ri,,,,,,,noun
+324,12,アイスクリーム,aisukuriimu,アイスクリーム,kem,,,,,,,noun
+325,12,きって,kitte,切手,tem,,,,,,,noun
+326,12,はがき,hagaki,葉書,bưu thiếp,,,,,,,noun
+327,12,ふうとう,fuutou,封筒,phong bì,,,,,,,noun
+328,12,りょうしん,ryoushin,両親,bố mẹ,,,,,,,noun
+329,12,きょうだい,kyoudai,兄弟,anh chị em,,,,,,,noun
+330,12,あに,ani,兄,anh trai (của mình),,,,,,,noun
+331,13,あそびます,asobimasu,遊びます,chơi,あそぶ,あそんで,あそばない,あそべる,Nhóm I,,verb
+332,13,およぎます,oyogimasu,泳ぎます,bơi,およぐ,およいで,およがない,およげる,Nhóm I,,verb
+333,13,むかえます,mukaemasu,迎えます,đón,むかえる,むかえて,むかえない,むかえられる,Nhóm II,Tha động từ,verb
+334,13,つかれます,tsukaremasu,疲れます,mệt,つかれる,つかれて,つかれない,つかれられる,Nhóm II,Tự động từ,verb
+335,13,だします,dashimasu,出します,gửi/đưa ra,だす,だして,ださない,だせる,Nhóm I,Tha động từ,verb
+336,13,はいります,hairimasu,入ります,vào,はいる,はいって,はいらない,はいれる,Nhóm I,Tự động từ,verb
+337,13,でます,demasu,出ます,ra khỏi,でる,でて,でない,でられる,Nhóm II,Tự động từ,verb
+338,13,でかけます,dekakemasu,出かけます,ra ngoài,でかける,でかけて,でかけない,でかけられる,Nhóm II,,verb
+339,13,かいものします,kaimonoshimasu,買い物します,mua sắm,かいものする,かいものして,かいものしない,かいものできる,Nhóm III,,verb
+340,13,しょくじします,shokujishimasu,食事します,dùng bữa,しょくじする,しょくじして,しょくじしない,しょくじできる,Nhóm III,,verb
+341,13,こうえん,kouen,公園,công viên,,,,,,,noun
+342,13,みなと,minato,港,cảng,,,,,,,noun
+343,13,プール,puuru,プール,hồ bơi,,,,,,,noun
+344,13,えいが,eiga,映画,phim,,,,,,,noun
+345,13,えいがかん,eigakan,映画館,rạp chiếu phim,,,,,,,noun
+346,13,てんき,tenki,天気,thời tiết,,,,,,,noun
+347,13,あめ,ame,雨,mưa,,,,,,,noun
+348,13,あさって,asatte,明後日,ngày kia,,,,,,,noun
+349,13,まいしゅう,maishuu,毎週,mỗi tuần,,,,,,,adverb
+350,13,ひとりで,hitoride,一人で,một mình,,,,,,,adverb
+351,14,つけます,tsukemasu,つけます,bật (điện),つける,つけて,つけない,つけられる,Nhóm II,Tha động từ,verb
+352,14,けします,keshimasu,消します,tắt,けす,けして,けさない,けせる,Nhóm I,Tha động từ,verb
+353,14,あけます,akemasu,開けます,mở (tha động),あける,あけて,あけない,あけられる,Nhóm II,Tha động từ,verb
+354,14,しめます,shimemasu,閉めます,đóng (tha động),しめる,しめて,しめない,しめられる,Nhóm II,Tha động từ,verb
+355,14,いそぎます,isogimasu,急ぎます,vội vàng,いそぐ,いそいで,いそがない,いそげる,Nhóm I,,verb
+356,14,まちます,machimasu,待ちます,chờ,まつ,まって,またない,まてる,Nhóm I,,verb
+357,14,とめます,tomemasu,止めます,dừng/đỗ,とめる,とめて,とめない,とめられる,Nhóm II,Tha động từ,verb
+358,14,まがります,magarimasu,曲がります,rẽ,まがる,まがって,まがらない,まがれる,Nhóm I,Tự động từ,verb
+359,14,もちます,mochimasu,持ちます,cầm/nắm,もつ,もって,もたない,もてる,Nhóm I,Tha động từ,verb
+360,14,とります,torimasu,取ります,lấy,とる,とって,とらない,とれる,Nhóm I,Tha động từ,verb
+361,14,てつだいます,tetsudaimasu,手伝います,giúp đỡ,てつだう,てつだって,てつだわない,てつだける,Nhóm I,Tha động từ,verb
+362,14,よびます,yobimasu,呼びます,gọi,よぶ,よんで,よばない,よべる,Nhóm I,Tha động từ,verb
+363,14,はなします,hanashimasu,話します,nói chuyện,はなす,はなして,はなさない,はなせる,Nhóm I,,verb
+364,14,みせます,misemasu,見せます,cho xem,みせる,みせて,みせない,みせられる,Nhóm II,Tha động từ,verb
+365,14,おしえます,oshiemasu,教えます,chỉ/dạy,おしえる,おしえて,おしえない,おしえられる,Nhóm II,Tha động từ,verb
+366,14,はじめます,hajimemasu,始めます,bắt đầu,はじめる,はじめて,はじめない,はじめられる,Nhóm II,Tha động từ,verb
+367,14,ふります,furi masu,降ります,mưa rơi/tuyết rơi,ふる,ふって,ふらない,ふれる,Nhóm I,Tự động từ,verb
+368,14,コピーします,kopiishimasu,コピーします,sao chép,コピーする,コピーして,コピーしない,コピーできる,Nhóm III,Tha động từ,verb
+369,14,エアコン,eakon,エアコン,điều hòa,,,,,,,noun
+370,14,パスポート,pasupooto,パスポート,hộ chiếu,,,,,,,noun
+371,14,なまえ,name,名前,tên,,,,,,,noun
+372,14,じゅうしょ,juusho,住所,địa chỉ,,,,,,,noun
+373,14,ちず,chizu,地図,bản đồ,,,,,,,noun
+374,14,しお,shio,塩,muối,,,,,,,noun
+375,14,さとう,satou,砂糖,đường,,,,,,,noun
+376,14,もんだい,mondai,問題,vấn đề,,,,,,,noun
+377,14,こたえ,kotae,答え,câu trả lời,,,,,,,noun
+378,14,よみかた,yomikata,読み方,cách đọc,,,,,,,noun
+379,14,まっすぐ, massugu,まっすぐ,thẳng,,,,,,,adverb
+380,14,ゆっくり,yukkuri,ゆっくり,chậm rãi,,,,,,,adverb
+381,15,おきます,okimasu,起きます,thức dậy,おきる,おきて,おきない,おきられる,Nhóm II,Tự động từ,verb
+382,15,ねます,nemasu,寝ます,ngủ,ねる,ねて,ねない,ねられる,Nhóm II,Tự động từ,verb
+383,15,はたらきます,hatarakimasu,働きます,làm việc,はたらく,はたらいて,はたらかない,はたらける,Nhóm I,,verb
+384,15,やすみます,yasumimasu,休みます,nghỉ,やすむ,やすんで,やすまない,やすめる,Nhóm I,,verb
+385,15,べんきょうします,benkyoushimasu,勉強します,học,べんきょうする,べんきょうして,べんきょうしない,べんきょうできる,Nhóm III,,verb
+386,15,おわります,owarimasu,終わります,kết thúc,おわる,おわって,おわらない,おわれる,Nhóm I,,verb
+387,15,デパート,depaato,デパート,trung tâm thương mại,,,,,,,noun
+388,15,ぎんこう,ginkou,銀行,ngân hàng,,,,,,,noun
+389,15,ゆうびんきょく,yuubinkyoku,郵便局,bưu điện,,,,,,,noun
+390,15,としょかん,toshokan,図書館,thư viện,,,,,,,noun
+391,15,びじゅつかん,bijutsukan,美術館,bảo tàng mỹ thuật,,,,,,,noun
+392,15,いま,ima,今,bây giờ,,,,,,,adverb
+393,15,～じ,~ji,～時,~ giờ,,,,,,,noun
+394,15,～ふん,~fun,～分,~ phút,,,,,,,noun
+395,15,はん,han,半,rưỡi,,,,,,,noun
+396,15,なんじ,nanji,何時,mấy giờ,,,,,,,question
+397,15,なんぷん,nanpun,何分,mấy phút,,,,,,,question
+398,15,ごぜん,gozen,午前,sáng (AM),,,,,,,noun
+399,15,ごご,gogo,午後,chiều (PM),,,,,,,noun
+400,15,きょう,kyou,今日,hôm nay,,,,,,,noun
+401,16,のります,norimasu,乗ります,lên (xe),のる,のって,のらない,のれる,Nhóm I,,verb
+402,16,おります,orimasu,降ります,xuống (xe),おりる,おりて,おりない,おりられる,Nhóm II,,verb
+403,16,のりかえます,norikaemasu,乗り換えます,đổi xe,のりかえる,のりかえて,のりかえない,のりかえられる,Nhóm II,,verb
+404,16,あびます,abimasu,浴びます,tắm (vòi sen),あびる,あびて,あびない,あびられる,Nhóm II,Tha động từ,verb
+405,16,いれます,iremasu,入れます,cho vào,いれる,いれて,いれない,いれられる,Nhóm II,Tha động từ,verb
+406,16,だします,dashimasu,出します,lấy ra/gửi ra,だす,だして,ださない,だせる,Nhóm I,Tha động từ,verb
+407,16,おろします,oroshimasu,下ろします,rút (tiền),おろす,おろして,おろさない,おろせる,Nhóm I,Tha động từ,verb
+408,16,はいります,hairimasu,入ります,vào,はいる,はいって,はいらない,はいれる,Nhóm I,Tự động từ,verb
+409,16,でます,demasu,出ます,ra,でる,でて,でない,でられる,Nhóm II,Tự động từ,verb
+410,16,おします,oshimasu,押します,ấn/đẩy,おす,おして,おさない,おせる,Nhóm I,Tha động từ,verb
+411,16,わかい,wakai,若い,trẻ,,,,,,,Adjective
+412,16,ながい,nagai,長い,dài,,,,,,,Adjective
+413,16,みじかい,mijikai,短い,ngắn,,,,,,,Adjective
+414,16,あかるい,akarui,明るい,sáng,,,,,,,Adjective
+415,16,くらい,kurai,暗い,tối,,,,,,,Adjective
+416,16,からだ,karada,体,cơ thể,,,,,,,noun
+417,16,あたま,atama,頭,đầu,,,,,,,noun
+418,16,かみ,kami,髪,tóc,,,,,,,noun
+419,16,かお,kao,顔,khuôn mặt,,,,,,,noun
+420,16,め,me,目,mắt,,,,,,,noun
+421,17,おぼえます,oboemasu,覚えます,ghi nhớ,おぼえる,おぼえて,おぼえない,おぼえられる,Nhóm II,Tha động từ,verb
+422,17,わすれます,wasuremasu,忘れます,quên,わすれる,わすれて,わすれない,わすれられる,Nhóm II,Tha động từ,verb
+423,17,なくします,nakushimasu,なくします,làm mất,なくす,なくして,なくさない,なくせる,Nhóm I,Tha động từ,verb
+424,17,だします,dashimasu,出します,nộp/gửi ra,だす,だして,ださない,だせる,Nhóm I,Tha động từ,verb
+425,17,はらいます,haraimasu,払います,trả tiền,はらう,はらって,はらわない,はらえる,Nhóm I,Tha động từ,verb
+426,17,かえします,kaeshimasu,返します,trả lại,かえす,かえして,かえさない,かえせる,Nhóm I,Tha động từ,verb
+427,17,でかけます,dekakemasu,出かけます,ra ngoài,でかける,でかけて,でかけない,でかけられる,Nhóm II,,verb
+428,17,ぬぎます,nugimasu,脱ぎます,cởi (quần áo),ぬぐ,ぬいで,ぬがない,ぬげる,Nhóm I,Tha động từ,verb
+429,17,もっていきます,motteikimasu,持って行きます,mang đi,もっていく,もっていって,もっていかない,もっていける,Nhóm I,Tha động từ,verb
+430,17,もってきます,mottekimasu,持って来ます,mang đến,もってくる,もってきて,もってこない,もってこられる,Nhóm III,Tha động từ,verb
+431,17,しんぱいします,shinpai shimasu,心配します,lo lắng,しんぱいする,しんぱいして,しんぱいしない,しんぱいできる,Nhóm III,,verb
+432,17,ざんぎょうします,zangyou shimasu,残業します,làm thêm giờ,ざんぎょうする,ざんぎょうして,ざんぎょうしない,ざんぎょうできる,Nhóm III,,verb
+433,17,しつもんします,shitsumon shimasu,質問します,đặt câu hỏi,しつもんする,しつもんして,しつもんしない,しつもんできる,Nhóm III,,verb
+434,17,コート,kooto,コート,áo khoác,,,,,,,noun
+435,17,セーター,seetaa,セーター,áo len,,,,,,,noun
+436,17,スーツ,suutsu,スーツ,bộ vest,,,,,,,noun
+437,17,ぼうし,boushi,帽子,mũ,,,,,,,noun
+438,17,めがね,megane,眼鏡,kính,,,,,,,noun
+439,17,ケータイ,keitai,携帯,điện thoại di động,,,,,,,noun
+440,17,パソコン,pasokon,パソコン,máy tính cá nhân,,,,,,,noun
+441,18,できます,dekimasu,出来ます,có thể/làm được,できる,できて,できない,,Nhóm II,,verb
+442,18,あらいます,araimasu,洗います,rửa,あらう,あらって,あらわない,あらえる,Nhóm I,Tha động từ,verb
+443,18,ひきます,hikimasu,弾きます,chơi (nhạc cụ dây/phím),ひく,ひいて,ひかない,ひける,Nhóm I,Tha động từ,verb
+444,18,うたいます,utaimasu,歌います,hát,うたう,うたって,うたわない,うたえる,Nhóm I,,verb
+445,18,あつめます,atsumemasu,集めます,sưu tầm/thu thập,あつめる,あつめて,あつめない,あつめられる,Nhóm II,Tha động từ,verb
+446,18,すてます,sutemasu,捨てます,vứt bỏ,すてる,すてて,すてない,すてられる,Nhóm II,Tha động từ,verb
+447,18,かえます,kaemasu,換えます,đổi,かえる,かえて,かえない,かえられる,Nhóm II,Tha động từ,verb
+448,18,うんてんします,unten shimasu,運転します,lái xe,うんてんする,うんてんして,うんてんしない,うんてんできる,Nhóm III,,verb
+449,18,よやくします,yoyaku shimasu,予約します,đặt trước,よやくする,よやくして,よやくしない,よやくできる,Nhóm III,,verb
+450,18,けんがくします,kengaku shimasu,見学します,tham quan học tập,けんがくする,けんがくして,けんがくしない,けんがくできる,Nhóm III,,verb
+451,18,ピアノ,piano,ピアノ,đàn piano,,,,,,,noun
+452,18,メートル,meetoru,メートル,mét,,,,,,,noun
+453,18,こくさい,kokusai,国際,quốc tế,,,,,,,noun
+454,18,げんきん,genkin,現金,tiền mặt,,,,,,,noun
+455,18,しゅみ,shumi,趣味,sở thích,,,,,,,noun
+456,18,にっき,nikki,日記,nhật ký,,,,,,,noun
+457,18,おいのり,oinori,お祈り,cầu nguyện,,,,,,,noun
+458,18,かちょう,kachou,課長,trưởng phòng,,,,,,,noun
+459,18,ぶちょう,buchou,部長,trưởng bộ phận,,,,,,,noun
+460,18,しゃちょう,shachou,社長,giám đốc công ty,,,,,,,noun
+461,19,のぼります,noborimasu,登ります,leo/lên,のぼる,のぼって,のぼらない,のぼれる,Nhóm I,,verb
+462,19,とまります,tomarimasu,泊まります,ở trọ,とまる,とまって,とまらない,とまれる,Nhóm I,,verb
+463,19,そうじします,souji shimasu,掃除します,dọn dẹp,そうじする,そうじして,そうじしない,そうじできる,Nhóm III,,verb
+464,19,せんたくします,sentaku shimasu,洗濯します,giặt giũ,せんたくする,せんたくして,せんたくしない,せんたくできる,Nhóm III,,verb
+465,19,なります,narimasu,なります,trở nên,なる,なって,ならない,なれる,Nhóm I,,verb
+466,19,ねむい,nemui,眠い,buồn ngủ,,,,,,,Adjective
+467,19,つよい,tsuyoi,強い,mạnh,,,,,,,Adjective
+468,19,よわい,yowai,弱い,yếu,,,,,,,Adjective
+469,19,ちょうし,choshi,調子,tình trạng,,,,,,,noun
+470,19,しあい,shiai,試合,trận đấu,,,,,,,noun
+471,19,ゴルフ,gorufu,ゴルフ,golf,,,,,,,noun
+472,19,すもう,sumou,相撲,sumo,,,,,,,noun
+473,19,パチンコ,pachinko,パチンコ,pachinko,,,,,,,noun
+474,19,おちゃ,ocha,お茶,trà,,,,,,,noun
+475,19,ひ,hi,日,ngày,,,,,,,noun
+476,19,いちど,ichido,一度,một lần,,,,,,,adverb
+477,19,いちども,ichidomo,一度も,chưa lần nào,,,,,,,adverb
+478,19,だんだん,dandan,段々,dần dần,,,,,,,adverb
+479,19,もうすぐ,mousugu,もうすぐ,sắp,,,,,,,adverb
+480,19,おかげさまで,okagesamade,おかげさまで,nhờ ơn bạn,,,,,,,conjunctions
+481,20,いります,irimasu,要ります,cần,いる,いって,いらない,いれる,Nhóm I,,verb
+482,20,しらべます,shirabemasu,調べます,tìm hiểu/tra cứu,しらべる,しらべて,しらべない,しらべられる,Nhóm II,Tha động từ,verb
+483,20,しゅうりします,shuuri shimasu,修理します,sửa chữa,しゅうりする,しゅうりして,しゅうりしない,しゅうりできる,Nhóm III,,verb
+484,20,ぼく,boku,僕,tôi (nam),,,,,,,noun
+485,20,きみ,kimi,君,bạn (thân mật),,,,,,,noun
+486,20,うん,un,うん,ừ,,,,,,,conjunctions
+487,20,ううん,uun,ううん,không (thân mật),,,,,,,conjunctions
+488,20,ことば,kotoba,言葉,từ/ngôn ngữ,,,,,,,noun
+489,20,ぶっか,bukka,物価,giá cả,,,,,,,noun
+490,20,きもの,kimono,着物,kimono,,,,,,,noun
+491,20,ビザ,biza,ビザ,visa,,,,,,,noun
+492,20,はじめ, hajime,初め,ban đầu,,,,,,,noun
+493,20,おわり,owari,終わり,kết thúc,,,,,,,noun
+494,20,こっち,kocchi,こっち,phía này,,,,,,,noun
+495,20,そっち,socchi,そっち,phía đó (gần người nghe),,,,,,,noun
+496,20,あっち,acchi,あっち,phía kia,,,,,,,noun
+497,20,どっち,docchi,どっち,phía nào,,,,,,,question
+498,20,みんな,minna,皆,mọi người,,,,,,,noun
+499,20,〜けど,~kedo,けど,nhưng,,,,,,,conjunctions
+500,20,どうして,doushite,どうして,tại sao,,,,,,,question
+501,21,おもいます,omoimasu,思います,nghĩ rằng,おもう,おもって,おもわない,おもえる,Nhóm I,,verb
+502,21,いいます,iimasu,言います,nói,いう,いって,いわない,いえる,Nhóm I,Tha động từ,verb
+503,21,かちます,kachimasu,勝ちます,thắng,かつ,かって,かたない,かてる,Nhóm I,,verb
+504,21,まけます,makemasu,負けます,thua,まける,まけて,まけない,まけられる,Nhóm II,,verb
+505,21,あります,arimasu,あります,có (đồ vật),ある,あって,ない,,Nhóm I,,verb
+506,21,やくにたちます,yaku ni tachimasu,役に立ちます,có ích,やくにたつ,やくにたって,やくにたたない,,Nhóm I,,verb
+507,21,むだ, muda,無駄,lãng phí,,,,,,,Adjective
+508,21,ふべん,fuben,不便,bất tiện,,,,,,,Adjective
+509,21,すごい,sugoi,凄い,tuyệt vời,,,,,,,Adjective
+510,21,ほんとう,hontou,本当,thật sự,,,,,,,Adjective
+511,21,うそ,uso,嘘,dối trá,,,,,,,noun
+512,21,じどうしゃ,jidousha,自動車,xe ô tô,,,,,,,noun
+513,21,こうつう,koutsuu,交通,giao thông,,,,,,,noun
+514,21,ぶっか,bukka,物価,giá cả,,,,,,,noun
+515,21,ニュース,nyuusu,ニュース,tin tức,,,,,,,noun
+516,21,アニメ,anime,アニメ,anime,,,,,,,noun
+517,21,マンガ,manga,漫画,truyện tranh,,,,,,,noun
+518,21,デザイン,dezain,デザイン,thiết kế,,,,,,,noun
+519,21,ゆめ,yume,夢,giấc mơ,,,,,,,noun
+520,21,てんさい,tensai,天才,thiên tài,,,,,,,noun
+521,22,きます,kimasu,着ます,mặc (áo),きる,きて,きない,きられる,Nhóm II,Tha động từ,verb
+522,22,はきます,hakimasu,履きます,mặc (quần/giày),はく,はいて,はかない,はける,Nhóm I,Tha động từ,verb
+523,22,かぶります,kaburimasu,被ります,đội (mũ),かぶる,かぶって,かぶらない,かぶれる,Nhóm I,Tha động từ,verb
+524,22,かけます,kakemasu,掛けます,đeo (kính),かける,かけて,かけない,かけられる,Nhóm II,Tha động từ,verb
+525,22,うまれます,umaremasu,生まれます,được sinh ra,うまれる,うまれて,うまれない,うまれられる,Nhóm II,Tự động từ,verb
+526,22,コート,kooto,コート,áo khoác,,,,,,,noun
+527,22,スーツ,suutsu,スーツ,bộ vest,,,,,,,noun
+528,22,セーター,seetaa,セーター,áo len,,,,,,,noun
+529,22,ぼうし,boushi,帽子,mũ,,,,,,,noun
+530,22,めがね,megane,眼鏡,kính,,,,,,,noun
+531,22,よく,yoku,よく,thường xuyên,,,,,,,adverb
+532,22,ときどき,tokidoki,時々,thỉnh thoảng,,,,,,,adverb
+533,22,たいてい,taitei,大抵,thường thường,,,,,,,adverb
+534,22,たまに,tamani,たまに,thỉnh thoảng hiếm khi,,,,,,,adverb
+535,22,まったく,mattaku,全く,hoàn toàn không,,,,,,,adverb
+536,22,どうやって,douyatte,どうやって,bằng cách nào,,,,,,,question
+537,22,どのくらい,donokurai,どのくらい,bao lâu/bao nhiêu,,,,,,,question
+538,22,どれくらい,dorekurai,どれくらい,bao nhiêu,,,,,,,question
+539,22,こちら,kochira,こちら,phía này (lịch sự),,,,,,,noun
+540,22,そちら,sochira,そちら,phía đó (lịch sự),,,,,,,noun
+541,23,ききます,kikimasu,聞きます,hỏi/nghe,きく,きいて,きかない,きける,Nhóm I,Tha động từ,verb
+542,23,まわします,mawashimasu,回します,xoay,まわす,まわして,まわさない,まわせる,Nhóm I,Tha động từ,verb
+543,23,ひきます,hikimasu,引きます,kéo,ひく,ひいて,ひかない,ひける,Nhóm I,Tha động từ,verb
+544,23,かえます,kaemasu,変えます,thay đổi,かえる,かえて,かえない,かえられる,Nhóm II,Tha động từ,verb
+545,23,さわります,sawarimasu,触ります,chạm vào,さわる,さわって,さわらない,さわれる,Nhóm I,,verb
+546,23,でます,demasu,出ます,ra ngoài,でる,でて,でない,でられる,Nhóm II,Tự động từ,verb
+547,23,うごきます,ugokimasu,動きます,di chuyển,うごく,うごいて,うごかない,うごける,Nhóm I,Tự động từ,verb
+548,23,あるきます,arukimasu,歩きます,đi bộ,あるく,あるいて,あるかない,あるける,Nhóm I,,verb
+549,23,わたります,watarimasu,渡ります,băng qua,わたる,わたって,わたらない,わたれる,Nhóm I,,verb
+550,23,まがります,magarimasu,曲がります,rẽ,まがる,まがって,まがらない,まがれる,Nhóm I,,verb
+551,23,さびしい,sabishii,寂しい,cô đơn,,,,,,,Adjective
+552,23,つごう,tsugou,都合,thuận tiện/tình huống,,,,,,,noun
+553,23,いろいろ,iroiro,色々,nhiều loại,,,,,,,adverb
+554,23,まだ,mada,まだ,vẫn chưa,,,,,,,adverb
+555,23,あとで,atode,後で,sau đó,,,,,,,adverb
+556,23,もう,mou,もう,đã/rồi,,,,,,,adverb
+557,23,どう,dou,どう,như thế nào,,,,,,,question
+558,23,どうして,doushite,どうして,tại sao,,,,,,,question
+559,23,だから,dakara,だから,vì vậy,,,,,,,conjunctions
+560,23,それで,sorede,それで,do đó,,,,,,,conjunctions
+561,24,くれます,kuremasu,くれます,cho tôi/cho (từ người khác),くれる,くれて,くれない,くれられる,Nhóm II,Tha động từ,verb
+562,24,つれていきます,tsureteikimasu,連れて行きます,dẫn đi,つれていく,つれていって,つれていかない,つれていける,Nhóm I,Tha động từ,verb
+563,24,つれてきます,tsuretekimasu,連れて来ます,dẫn đến,つれてくる,つれてきて,つれてこない,つれてこられる,Nhóm III,Tha động từ,verb
+564,24,おくります,okurimasu,送ります,đưa/tiễn/gửi,おくる,おくって,おくらない,おくれる,Nhóm I,Tha động từ,verb
+565,24,しょうかいします,shoukai shimasu,紹介します,giới thiệu,しょうかいする,しょうかいして,しょうかいしない,しょうかいできる,Nhóm III,Tha động từ,verb
+566,24,あんないします,annai shimasu,案内します,hướng dẫn,dẫn đường,あんないする,あんないして,あんないしない,あんないできる,Nhóm III,Tha động từ,verb
+567,24,せつめいします,setsumei shimasu,説明します,giải thích,せつめいする,せつめいして,せつめいしない,せつめいできる,Nhóm III,Tha động từ,verb
+568,24,おじいさん,ojiisan,お祖父さん,ông,,,,,,,noun
+569,24,おばあさん,obaasan,お祖母さん,bà,,,,,,,noun
+570,24,じゅんび,junbi,準備,chuẩn bị,,,,,,,noun
+571,24,いみ,imi,意味,ý nghĩa,,,,,,,noun
+572,24,おかし,okashi,お菓子,bánh kẹo,,,,,,,noun
+573,24,ぜんぶ,zenbu,全部,tất cả,,,,,,,noun
+574,24,じぶんで,jibun de,自分で,tự mình,,,,,,,adverb
+575,24,ほかに,hoka ni,他に,ngoài ra,,,,,,,adverb
+576,24,はやく,hayaku,早く,nhanh,,,,,,,adverb
+577,24,ゆっくり,yukkuri,ゆっくり,chậm rãi,,,,,,,adverb
+578,24,すぐ,sugu,すぐ,ngay lập tức,,,,,,,adverb
+579,24,それから,sorekara,それから,sau đó,,,,,,,conjunctions
+580,24,それに,soreni,それに,hơn nữa,,,,,,,conjunctions
+581,25,かんがえます,kangaemasu,考えます,suy nghĩ,かんがえる,かんがえて,かんがえない,かんがえられる,Nhóm II,,verb
+582,25,つきます,tsukimasu,着きます,đến nơi,つく,ついて,つかない,つける,Nhóm I,Tự động từ,verb
+583,25,とります,torimasu,取ります,lấy/chụp (ảnh),とる,とって,とらない,とれる,Nhóm I,Tha động từ,verb
+584,25,たります,tarimasu,足ります,đủ,たる,たって,たらない,たれる,Nhóm I,,verb
+585,25,いなか,inaka,田舎,quê/vùng quê,,,,,,,noun
+586,25,チャンス,chansu,チャンス,cơ hội,,,,,,,noun
+587,25,もしもし,moshi moshi,もしもし,alo (điện thoại),,,,,,,noun
+588,25,よてい,yotei,予定,kế hoạch,,,,,,,noun
+589,25,りょこう,ryokou,旅行,du lịch,,,,,,,noun
+590,25,おみやげ,omiyage,お土産,quà lưu niệm,,,,,,,noun
+591,25,しんぶん,shinbun,新聞,báo,,,,,,,noun
+592,25,ざっし,zasshi,雑誌,tạp chí,,,,,,,noun
+593,25,アニメ,anime,アニメ,anime,,,,,,,noun
+594,25,マンガ,manga,漫画,truyện tranh,,,,,,,noun
+595,25,きょうみ,kyoumi,興味,hứng thú,,,,,,,noun
+596,25,もうすぐ,mousugu,もうすぐ,sắp,,,,,,,adverb
+597,25,たぶん,tabun,多分,có lẽ,,,,,,,adverb
+598,25,きっと,kitto,きっと,chắc chắn,,,,,,,adverb
+599,25,ほんとうに,hontou ni,本当に,thật sự,,,,,,,adverb
+600,25,ぜひ,zehi,是非,nhất định,,,,,,,adverb
+601,26,みます,mimasu,見ます,xem/nhìn,みる,みて,みない,みられる,Nhóm II,Tha động từ,verb
+602,26,さがします,sagashimasu,探します,tìm kiếm,さがす,さがして,さがさない,さがせる,Nhóm I,Tha động từ,verb
+603,26,おくれます,okuremasu,遅れます,trễ,おくれる,おくれて,おくれない,おくれられる,Nhóm II,Tự động từ,verb
+604,26,まにあいます,maniaimasu,間に合います,kịp,まにあう,まにあって,まにあわない,まにあえる,Nhóm I,Tự động từ,verb
+605,26,やります,yarimasu,やります,làm,やる,やって,やらない,やれる,Nhóm I,,verb
+606,26,そうじします,souji shimasu,掃除します,dọn dẹp,そうじする,そうじして,そうじしない,そうじできる,Nhóm III,,verb
+607,26,れんらくします,renraku shimasu,連絡します,liên lạc,れんらくする,れんらくして,れんらくしない,れんらくできる,Nhóm III,,verb
+608,26,きぶん,kibun,気分,tâm trạng,,,,,,,noun
+609,26,よてい,yotei,予定,kế hoạch,,,,,,,noun
+610,26,ニュース,nyuusu,ニュース,tin tức,,,,,,,noun
+611,26,イベント,ibento,イベント,sự kiện,,,,,,,noun
+612,26,アルバイト,arubaito,アルバイト,việc làm thêm,,,,,,,noun
+613,26,てんき,tenki,天気,thời tiết,,,,,,,noun
+614,26,つごう,tsugou,都合,sự thuận tiện,,,,,,,noun
+615,26,もう,mou,もう,đã rồi,,,,,,,adverb
+616,26,まだ,mada,まだ,vẫn chưa,,,,,,,adverb
+617,26,とくに,tokuni,特に,đặc biệt,,,,,,,adverb
+618,26,まず,mazu,まず,trước tiên,,,,,,,adverb
+619,26,あとで,atode,後で,sau đó,,,,,,,adverb
+620,26,それから,sorekara,それから,sau đó,,,,,,,conjunctions
+621,27,かいます,kaimasu,飼います,nuôi (động vật),かう,かって,かわない,かえる,Nhóm I,Tha động từ,verb
+622,27,たてます,tatemasu,建てます,xây dựng,たてる,たてて,たてない,たてられる,Nhóm II,Tha động từ,verb
+623,27,はしります,hashirimasu,走ります,chạy,はしる,はしって,はしらない,はしれる,Nhóm I,,verb
+624,27,とまります,tomarimasu,止まります,dừng lại,とまる,とまって,とまらない,とまれる,Nhóm I,Tự động từ,verb
+625,27,みえます,miemasu,見えます,nhìn thấy,みえる,みえて,みえない,みえられる,Nhóm II,,verb
+626,27,きこえます,kikoemasu,聞こえます,nghe thấy,きこえる,きこえて,きこえない,きこえられる,Nhóm II,,verb
+627,27,できます,dekimasu,出来ます,được xây/hoàn thành,できる,できて,できない,,Nhóm II,Tự động từ,verb
+628,27,ひらきます,hirakimasu,開きます,mở (sự kiện/cửa),ひらく,ひらいて,ひらかない,ひらける,Nhóm I,,verb
+629,27,ペット,petto,ペット,thú cưng,,,,,,,noun
+630,27,とり,tori,鳥,chim,,,,,,,noun
+631,27,こえ,koe,声,giọng nói,,,,,,,noun
+632,27,なみ, nami,波,sóng,,,,,,,noun
+633,27,はなび,hanabi,花火,pháo hoa,,,,,,,noun
+634,27,けしき,keshiki,景色,phong cảnh,,,,,,,noun
+635,27,みち,michi,道,con đường,,,,,,,noun
+636,27,ゆうめい,yuumei,有名,nổi tiếng,,,,,,,Adjective
+637,27,にぎやか,nigiyaka,賑やか,nhộn nhịp,,,,,,,Adjective
+638,27,ひま,hima,暇,rảnh rỗi,,,,,,,Adjective
+639,27,どんな, donna,どんな,loại nào,,,,,,,question
+640,27,どう,dou,どう,như thế nào,,,,,,,question
+641,28,うれます,uremasu,売れます,bán chạy,うれる,うれて,うれない,うれられる,Nhóm II,Tự động từ,verb
+642,28,うります,urimasu,売ります,bán,うる,うって,うらない,うれる,Nhóm I,Tha động từ,verb
+643,28,おきます,okimasu,起きます,thức dậy,おきる,おきて,おきない,おきられる,Nhóm II,,verb
+644,28,ねます,nemasu,寝ます,ngủ,ねる,ねて,ねない,ねられる,Nhóm II,,verb
+645,28,はたらきます,hatarakimasu,働きます,làm việc,はたらく,はたらいて,はたらかない,はたらける,Nhóm I,,verb
+646,28,やすみます,yasumimasu,休みます,nghỉ,やすむ,やすんで,やすまない,やすめる,Nhóm I,,verb
+647,28,べんきょうします,benkyou shimasu,勉強します,học,べんきょうする,べんきょうして,べんきょうしない,べんきょうできる,Nhóm III,,verb
+648,28,おわります,owarimasu,終わります,kết thúc,おわる,おわって,おわらない,おわれる,Nhóm I,Tự động từ,verb
+649,28,デパート,depaato,デパート,cửa hàng bách hóa,,,,,,,noun
+650,28,ぎんこう,ginkou,銀行,ngân hàng,,,,,,,noun
+651,28,ゆうびんきょく,yuubinkyoku,郵便局,bưu điện,,,,,,,noun
+652,28,としょかん,toshokan,図書館,thư viện,,,,,,,noun
+653,28,びょういん,byouin,病院,bệnh viện,,,,,,,noun
+654,28,えき,eki,駅,nhà ga,,,,,,,noun
+655,28,こうえん,kouen,公園,công viên,,,,,,,noun
+656,28,スーパー, suupaa,スーパー,siêu thị,,,,,,,noun
+657,28,まいにち,mainichi,毎日,mỗi ngày,,,,,,,adverb
+658,28,まいあさ,maiasa,毎朝,mỗi sáng,,,,,,,adverb
+659,28,まいばん,maiban,毎晩,mỗi tối,,,,,,,adverb
+660,28,とても,totemo,とても,rất,,,,,,,adverb
+661,29,あきます,akimasu,開きます,(cửa) mở,あく,あいて,あかない,あけられる,Nhóm I,Tự động từ,verb
+662,29,しまります,shimarimasu,閉まります,(cửa) đóng,しまる,しまって,しまらない,しまれる,Nhóm I,Tự động từ,verb
+663,29,つきます,tsukimasu,つきます,(điện) bật,つく,ついて,つかない,つけられる,Nhóm I,Tự động từ,verb
+664,29,きえます,kiemasu,消えます,(điện) tắt,きえる,きえて,きえない,きえられる,Nhóm II,Tự động từ,verb
+665,29,こわれます,kowaremasu,壊れます,bị hỏng,こわれる,こわれて,こわれない,こわれられる,Nhóm II,Tự động từ,verb
+666,29,われます,waremasu,割れます,vỡ,われる,われて,われない,われられる,Nhóm II,Tự động từ,verb
+667,29,やぶれます,yaburemasu,破れます,rách,やぶれる,やぶれて,やぶれない,やぶれられる,Nhóm II,Tự động từ,verb
+668,29,よごれます,yogoremasu,汚れます,bẩn,よごれる,よごれて,よごれない,よごれられる,Nhóm II,Tự động từ,verb
+669,29,つきます,tsukimasu,付きます,được gắn vào,つく,ついて,つかない,つけられる,Nhóm I,Tự động từ,verb
+670,29,はずれます,hazuremasu,外れます,bị tuột,はずれる,はずれて,はずれない,はずれられる,Nhóm II,Tự động từ,verb
+671,29,とまります,tomarimasu,止まります,dừng lại,とまる,とまって,とまらない,とまれる,Nhóm I,Tự động từ,verb
+672,29,まちがえます,machigaemasu,間違えます,làm sai,まちがえる,まちがえて,まちがえない,まちがえられる,Nhóm II,Tha động từ,verb
+673,29,おとします,otoshimasu,落とします,làm rơi,おとす,おとして,おとさない,おとせる,Nhóm I,Tha động từ,verb
+674,29,かかります,kakarimasu,掛かります,mất (thời gian/tiền),かかる,かかって,かからない,かかれる,Nhóm I,,verb
+675,29,ポケット,poketto,ポケット,túi áo/quần,,,,,,,noun
+676,29,かぎ,kagi,鍵,chìa khóa,,,,,,,noun
+677,29,さいふ,saifu,財布,ví tiền,,,,,,,noun
+678,29,ガラス,garasu,ガラス,kính/thủy tinh,,,,,,,noun
+679,29,えだ,eda,枝,cành cây,,,,,,,noun
+680,29,このくらい,konokurai,このくらい,cỡ này,,,,,,,adverb
+681,30,はります,harimasu,貼ります,dán,はる,はって,はらない,はれる,Nhóm I,Tha động từ,verb
+682,30,かけます,kakemasu,掛けます,treo,かける,かけて,かけない,かけられる,Nhóm II,Tha động từ,verb
+683,30,ならべます,narabemasu,並べます,xếp (hàng),ならべる,ならべて,ならべない,ならべられる,Nhóm II,Tha động từ,verb
+684,30,おきます,okimasu,置きます,đặt/để,おく,おいて,おかない,おける,Nhóm I,Tha động từ,verb
+685,30,しまいます,shimaimasu,しまいます,cất đi,しまう,しまって,しまわない,しまえる,Nhóm I,Tha động từ,verb
+686,30,まとめます,matomemasu,まとめます,thu xếp/tóm lại,まとめる,まとめて,まとめない,まとめられる,Nhóm II,Tha động từ,verb
+687,30,かたづけます,katazukemasu,片付けます,dọn dẹp,かたづける,かたづけて,かたづけない,かたづけられる,Nhóm II,Tha động từ,verb
+688,30,もどします,modoshimasu,戻します,đặt lại/trả lại,もどす,もどして,もどさない,もどせる,Nhóm I,Tha động từ,verb
+689,30,ほんだな,hondana,本棚,giá sách,,,,,,,noun
+690,30,つくえ,tsukue,机,bàn làm việc,,,,,,,noun
+691,30,いす,isu,椅子,ghế,,,,,,,noun
+692,30,かべ,kabe,壁,tường,,,,,,,noun
+693,30,スイッチ,suicchi,スイッチ,công tắc,,,,,,,noun
+694,30,ゆか,yuka,床,sàn nhà,,,,,,,noun
+695,30,ドア,doa,ドア,cửa,,,,,,,noun
+696,30,まど,mado,窓,cửa sổ,,,,,,,noun
+697,30,すぐ,sugu,すぐ,ngay lập tức,,,,,,,adverb
+698,30,ちゃんと,chanto,ちゃんと,đàng hoàng,,,,,,,adverb
+699,30,まだ,mada,まだ,vẫn chưa,,,,,,,adverb
+700,30,もう,mou,もう,đã rồi,,,,,,,adverb
+701,31,つづけます,tsuzukemasu,続けます,tiếp tục,つづける,つづけて,つづけない,つづけられる,Nhóm II,,verb
+702,31,みつけます,mitsukemasu,見つけます,tìm thấy,みつける,みつけて,みつけない,みつけられる,Nhóm II,Tha động từ,verb
+703,31,とります,torimasu,取ります,đặt/chọn (kỳ nghỉ),とる,とって,とらない,とれる,Nhóm I,Tha động từ,verb
+704,31,うけます,ukemasu,受けます,thi (tham gia),うける,うけて,うけない,うけられる,Nhóm II,,verb
+705,31,もうしこみます,moushikomimasu,申し込みます,đăng ký,もうしこむ,もうしこんで,もうしこまない,もうしこめる,Nhóm I,,verb
+706,31,きゅうけいします,kyuukei shimasu,休憩します,nghỉ giải lao,きゅうけいする,きゅうけいして,きゅうけいしない,きゅうけいできる,Nhóm III,,verb
+707,31,れんきゅう,renkyuu,連休,kỳ nghỉ dài,,,,,,,noun
+708,31,さくぶん,sakubun,作文,bài văn,,,,,,,noun
+709,31,てんらんかい,tenrankai,展覧会,triển lãm,,,,,,,noun
+710,31,けっこんしき,kekkonshiki,結婚式,lễ cưới,,,,,,,noun
+711,31,しき,shiki,式,nghi lễ,,,,,,,noun
+712,31,ほんしゃ,honsha,本社,trụ sở chính,,,,,,,noun
+713,31,してん,shiten,支店,chi nhánh,,,,,,,noun
+714,31,きょうかい,kyoukai,教会,nhà thờ,,,,,,,noun
+715,31,だれでも,daredemo,誰でも,bất kỳ ai,,,,,,,noun
+716,31,いつでも,itsudemo,いつでも,bất cứ lúc nào,,,,,,,adverb
+717,31,どこでも,dokodemo,どこでも,bất cứ đâu,,,,,,,adverb
+718,31,いくらでも,ikurademo,いくらでも,bao nhiêu cũng được,,,,,,,adverb
+719,31,ぜひ,zehi,是非,nhất định,,,,,,,adverb
+720,31,なるほど,naruhodo,なるほど,ra vậy,,,,,,,conjunctions
+721,32,うんどうします,undou shimasu,運動します,tập thể dục,うんどうする,うんどうして,うんどうしない,うんどうできる,Nhóm III,,verb
+722,32,せいこうします,seikou shimasu,成功します,thành công,せいこうする,せいこうして,せいこうしない,せいこうできる,Nhóm III,,verb
+723,32,しっぱいします,shippai shimasu,失敗します,thất bại,しっぱいする,しっぱいして,しっぱいしない,しっぱいできる,Nhóm III,,verb
+724,32,ごうかくします,goukaku shimasu,合格します,đỗ (kỳ thi),ごうかくする,ごうかくして,ごうかくしない,ごうかくできる,Nhóm III,,verb
+725,32,やみます,yamimasu,止みます,(mưa) tạnh,やむ,やんで,やまない,やめる,Nhóm I,Tự động từ,verb
+726,32,はれます,haremasu,晴れます,trời nắng,はれる,はれて,はれない,はれられる,Nhóm II,Tự động từ,verb
+727,32,くもります,kumorimasu,曇ります,trời nhiều mây,くもる,くもって,くもらない,くもれる,Nhóm I,Tự động từ,verb
+728,32,ふきます,fukimasu,吹きます,(gió) thổi,ふく,ふいて,ふかない,ふける,Nhóm I,Tự động từ,verb
+729,32,ゆき,yuki,雪,tuyết,,,,,,,noun
+730,32,くもり,kumori,曇り,trời nhiều mây,,,,,,,noun
+731,32,かぜ,kaze,風,gió,,,,,,,noun
+732,32,たいふう,taifuu,台風,bão,,,,,,,noun
+733,32,きた,kita,北,bắc,,,,,,,noun
+734,32,みなみ,minami,南,nam,,,,,,,noun
+735,32,ひがし,higashi,東,đông,,,,,,,noun
+736,32,にし,nishi,西,tây,,,,,,,noun
+737,32,だいたい,daitai,大体,đại khái,,,,,,,adverb
+738,32,ずっと,zutto,ずっと,liên tục,,,,,,,adverb
+739,32,こんど,kondo,今度,lần này/lần tới,,,,,,,adverb
+740,32,たぶん,tabun,多分,có lẽ,,,,,,,adverb
+741,33,にげます,nigemasu,逃げます,chạy trốn,にげる,にげて,にげない,にげられる,Nhóm II,,verb
+742,33,さわぎます,sawagimasu,騒ぎます,làm ồn,さわぐ,さわいで,さわがない,さわげる,Nhóm I,,verb
+743,33,あきらめます,akiramesu,諦めます,từ bỏ,あきらめる,あきらめて,あきらめない,あきらめられる,Nhóm II,,verb
+744,33,なげます,nagemasu,投げます,ném,なげる,なげて,なげない,なげられる,Nhóm II,Tha động từ,verb
+745,33,まもります,mamorimasu,守ります,bảo vệ/tuân thủ,まもる,まもって,まもらない,まもれる,Nhóm I,,verb
+746,33,あげます,agemasu,上げます,nâng lên/tăng lên,あげる,あげて,あげない,あげられる,Nhóm II,Tha động từ,verb
+747,33,さげます,sagemasu,下げます,hạ xuống,さげる,さげて,さげない,さげられる,Nhóm II,Tha động từ,verb
+748,33,つたえます,tsutaemasu,伝えます,truyền đạt,つたえる,つたえて,つたえない,つたえられる,Nhóm II,Tha động từ,verb
+749,33,ちゅうい,chuu i,注意,chú ý/cảnh báo,,,,,,,noun
+750,33,せき,seki,席,chỗ ngồi,,,,,,,noun
+751,33,マーク,maaku,マーク,ký hiệu,,,,,,,noun
+752,33,ボール,booru,ボール,quả bóng,,,,,,,noun
+753,33,せんせい, sensei,先生,giáo viên,,,,,,,noun
+754,33,けいさつ,keisatsu,警察,cảnh sát,,,,,,,noun
+755,33,せきにん,sekinin,責任,trách nhiệm,,,,,,,noun
+756,33,きけん,kiken,危険,nguy hiểm,,,,,,,Adjective
+757,33,だいじょうぶ,daijoubu,大丈夫,ổn/không sao,,,,,,,Adjective
+758,33,もちろん,mochiron,もちろん,dĩ nhiên,,,,,,,adverb
+759,33,どうしても,doushitemo,どうしても,dù thế nào cũng,,,,,,,adverb
+760,33,いけません,ikemasen,いけません,không được phép,,,,,,,conjunctions
+761,34,みがきます,migakimasu,磨きます,đánh/bóng (răng, giày),みがく,みがいて,みがかない,みがける,Nhóm I,Tha động từ,verb
+762,34,くみたてます,kumitatemasu,組み立てます,lắp ráp,くみたてる,くみたてて,くみたてない,くみたてられる,Nhóm II,Tha động từ,verb
+763,34,おります,orimasu,折ります,gấp (giấy),おる,おって,おらない,おれる,Nhóm I,Tha động từ,verb
+764,34,きがつきます,kigatsukimasu,気が付きます,nhận ra,きがつく,きがついて,きがつかない,きがつける,Nhóm I,,verb
+765,34,つけます,tsukemasu,付けます,gắn vào/bật,つける,つけて,つけない,つけられる,Nhóm II,Tha động từ,verb
+766,34,みつかります,mitsukarimasu,見つかります,được tìm thấy,みつかる,みつかって,みつからない,みつかれる,Nhóm I,Tự động từ,verb
+767,34,しつもんします,shitsumon shimasu,質問します,đặt câu hỏi,しつもんする,しつもんして,しつもんしない,しつもんできる,Nhóm III,,verb
+768,34,けんさします,kensa shimasu,検査します,kiểm tra,けんさする,けんさして,けんさしない,けんさできる,Nhóm III,,verb
+769,34,しりょう,shiryou,資料,tài liệu,,,,,,,noun
+770,34,カタログ,katarogu,カタログ,catelog,,,,,,,noun
+771,34,じこ,jiko,事故,tai nạn,,,,,,,noun
+772,34,いけん,iken,意見,ý kiến,,,,,,,noun
+773,34,かんそう,kansou,感想,cảm tưởng,,,,,,,noun
+774,34,いけんこうかん,ikenkoukan,意見交換,trao đổi ý kiến,,,,,,,noun
+775,34,きかい,kikai,機械,máy móc,,,,,,,noun
+776,34,どうぐ,dougu,道具,dụng cụ,,,,,,,noun
+777,34,とくに,tokuni,特に,đặc biệt,,,,,,,adverb
+778,34,ちゃんと,chanto,ちゃんと,đàng hoàng,,,,,,,adverb
+779,34,かなり,kanari,かなり,khá là,,,,,,,adverb
+780,34,やっと,yatto,やっと,cuối cùng,,,,,,,adverb
+781,35,さきます,sakimasu,咲きます,(hoa) nở,さく,さいて,さかない,さける,Nhóm I,Tự động từ,verb
+782,35,かわります,kawarimasu,変わります,thay đổi,かわる,かわって,かわらない,かわれる,Nhóm I,Tự động từ,verb
+783,35,こまります,komarimasu,困ります,khó khăn/rắc rối,こまる,こまって,こまらない,こまれる,Nhóm I,,verb
+784,35,つけます,tsukemasu,点けます,bật (điện),つける,つけて,つけない,つけられる,Nhóm II,Tha động từ,verb
+785,35,けします,keshimasu,消します,tắt (điện),けす,けして,けさない,けせる,Nhóm I,Tha động từ,verb
+786,35,あきます,akimasu,開きます,mở (cửa),あく,あいて,あかない,あけられる,Nhóm I,Tự động từ,verb
+787,35,しまります,shimarimasu,閉まります,đóng (cửa),しまる,しまって,しまらない,しまれる,Nhóm I,Tự động từ,verb
+788,35,つづきます,tsuzukimasu,続きます,tiếp tục,つづく,つづいて,つづかない,つづけられる,Nhóm I,Tự động từ,verb
+789,35,けっこん,kekkon,結婚,kết hôn,,,,,,,noun
+790,35,りこん,rikon,離婚,ly hôn,,,,,,,noun
+791,35,じゅぎょう,jugyou,授業,giờ học,,,,,,,noun
+792,35,かいぎ,kaigi,会議,cuộc họp,,,,,,,noun
+793,35,しあい,shiai,試合,trận đấu,,,,,,,noun
+794,35,パーティー,paatii,パーティー,bữa tiệc,,,,,,,noun
+795,35,イベント,ibento,イベント,sự kiện,,,,,,,noun
+796,35,もうすぐ,mousugu,もうすぐ,sắp,,,,,,,adverb
+797,35,だんだん,dandan,段々,dần dần,,,,,,,adverb
+798,35,それでも,soredemo,それでも,tuy vậy,,,,,,,conjunctions
+799,35,そして,soshite,そして,và sau đó,,,,,,,conjunctions
+800,35,それから,sorekara,それから,sau đó,,,,,,,conjunctions
+801,36,とどきます,todokimasu,届きます,được gửi đến/đến nơi,とどく,とどいて,とどかない,とどける,Nhóm I,Tự động từ,verb
+802,36,でます,demasu,出ます,rời khỏi/ra ngoài,でる,でて,でない,でられる,Nhóm II,Tự động từ,verb
+803,36,でかけます,dekakemasu,出かけます,đi ra ngoài,でかける,でかけて,でかけない,でかけられる,Nhóm II,Tự động từ,verb
+804,36,もどります,modorimasu,戻ります,trở về,もどる,もどって,もどらない,もどれる,Nhóm I,Tự động từ,verb
+805,36,はいります,hairimasu,入ります,vào,はいる,はいって,はいらない,はいれる,Nhóm I,Tự động từ,verb
+806,36,でます,demasu,出ます,ra khỏi,でる,でて,でない,でられる,Nhóm II,Tự động từ,verb
+807,36,やみます,yamimasu,止みます,(mưa) tạnh,やむ,やんで,やまない,やめる,Nhóm I,Tự động từ,verb
+808,36,はれます,haremasu,晴れます,trời quang,はれる,はれて,はれない,はれられる,Nhóm II,Tự động từ,verb
+809,36,くもります,kumorimasu,曇ります,trời nhiều mây,くもる,くもって,くもらない,くもれる,Nhóm I,Tự động từ,verb
+810,36,ふきます,fukimasu,吹きます,(gió) thổi,ふく,ふいて,ふかない,ふける,Nhóm I,Tự động từ,verb
+811,36,なおします,naoshimasu,直します,sửa chữa,なおす,なおして,なおさない,なおせる,Nhóm I,Tha động từ,verb
+812,36,ひきます,hikimasu,引きます,kéo,ひく,ひいて,ひかない,ひける,Nhóm I,Tha động từ,verb
+813,36,こわします,kowashimasu,壊します,làm hỏng,こわす,こわして,こわさない,こわせる,Nhóm I,Tha động từ,verb
+814,36,こわれます,kowaremasu,壊れます,bị hỏng,こわれる,こわれて,こわれない,こわれられる,Nhóm II,Tự động từ,verb
+815,36,なくします,nakushimasu,無くします,làm mất,なくす,なくして,なくさない,なくせる,Nhóm I,Tha động từ,verb
+816,36,みつかります,mitsukarimasu,見つかります,được tìm thấy,みつかる,みつかって,みつからない,みつかれる,Nhóm I,Tự động từ,verb
+817,36,かぎ,kagi,鍵,chìa khóa,,,,,,,noun
+818,36,さいふ,saifu,財布,ví tiền,,,,,,,noun
+819,36,かばん,kaban,鞄,túi xách,,,,,,,noun
+820,36,き,ki,木,cây,,,,,,,noun
+821,36,えだ,eda,枝,cành cây,,,,,,,noun
+822,36,は,ha,葉,lá cây,,,,,,,noun
+823,36,ゆき,yuki,雪,tuyết,,,,,,,noun
+824,36,かぜ,kaze,風,gió,,,,,,,noun
+825,36,てんき,tenki,天気,thời tiết,,,,,,,noun
+826,36,たいふう,taifuu,台風,bão,,,,,,,noun
+827,36,もうすぐ,mousugu,もうすぐ,sắp,,,,,,,adverb
+828,36,やっと,yatto,やっと,cuối cùng,,,,,,,adverb
+829,36,すぐ,sugu,すぐ,ngay lập tức,,,,,,,adverb
+830,36,しかし,shikashi,しかし,tuy nhiên,,,,,,,conjunctions
+831,37,ほめます,homemasu,褒めます,khen,ほめる,ほめて,ほめない,ほめられる,Nhóm II,Tha động từ,verb
+832,37,しかります,shikarimasu,叱ります,mắng,しかる,しかって,しからない,しかれる,Nhóm I,Tha động từ,verb
+833,37,さそいます,sasoimasu,誘います,rủ/mời,さそう,さそって,さそわない,さそえる,Nhóm I,Tha động từ,verb
+834,37,おこします,okoshimasu,起こします,đánh thức,おこす,おこして,おこさない,おこせる,Nhóm I,Tha động từ,verb
+835,37,まねきます,manekimasu,招きます,mời/chiêu đãi,まねく,まねいて,まねかない,まねける,Nhóm I,Tha động từ,verb
+836,37,たのみます,tanomimasu,頼みます,nhờ/vai nhờ,たのむ,たのんで,たのまない,たのめる,Nhóm I,Tha động từ,verb
+837,37,ちゅういします,chuui shimasu,注意します,chú ý/cảnh báo,ちゅういする,ちゅういして,ちゅういしない,ちゅういできる,Nhóm III,,verb
+838,37,とります,torimasu,取ります,lấy/nhận,とる,とって,とらない,とれる,Nhóm I,Tha động từ,verb
+839,37,ふみます,fumimasu,踏みます,dẫm lên,ふむ,ふんで,ふまない,ふめる,Nhóm I,Tha động từ,verb
+840,37,こわします,kowashimasu,壊します,làm vỡ/làm hỏng,こわす,こわして,こわさない,こわせる,Nhóm I,Tha động từ,verb
+841,37,ぬすみます,nusumimasu,盗みます,ăn cắp,ぬすむ,ぬすんで,ぬすまない,ぬすめる,Nhóm I,Tha động từ,verb
+842,37,おこります,okorimasu,怒ります,tức giận,おこる,おこって,おこらない,おこれる,Nhóm I,Tự động từ,verb
+843,37,しょうたいします,shoutai shimasu,招待します,mời (đến dự),しょうたいする,しょうたいして,しょうたいしない,しょうたいできる,Nhóm III,,verb
+844,37,そうだんします,soudan shimasu,相談します,trao đổi/tham khảo ý kiến,そうだんする,そうだんして,そうだんしない,そうだんできる,Nhóm III,,verb
+845,37,ちゅうい,chuui,注意,chú ý,,,,,,,noun
+846,37,せき,seki,席,chỗ ngồi,,,,,,,noun
+847,37,しつれい,shitsurei,失礼,thất lễ,,,,,,,noun
+848,37,おくりもの,okurimono,贈り物,quà tặng,,,,,,,noun
+849,37,しょうたいじょう,shoutaijou,招待状,thiệp mời,,,,,,,noun
+850,37,けっこんしき,kekkonshiki,結婚式,lễ cưới,,,,,,,noun
+851,37,そうべつかい,soubetsukai,送別会,tiệc chia tay,,,,,,,noun
+852,37,あいさつ,aisatsu,挨拶,lời chào/bài phát biểu,,,,,,,noun
+853,37,じゅんび,junbi,準備,chuẩn bị,,,,,,,noun
+854,37,きぶん,kibun,気分,tâm trạng,,,,,,,noun
+855,37,さすが,sasuga,さすが,đúng là/quả nhiên,,,,,,,adverb
+856,37,ぜひ,zehi,ぜひ,nhất định,,,,,,,adverb
+857,37,わざと,wazato,わざと,cố ý,,,,,,,adverb
+858,37,うっかり,ukkari,うっかり,lỡ/đãng trí,,,,,,,adverb
+859,37,それに,soreni,それに,hơn nữa,,,,,,,conjunctions
+860,37,それで,sorede,それで,vì vậy,,,,,,,conjunctions
+861,38,そだてます,sodatemasu,育てます,nuôi dưỡng/trồng,そだてる,そだてて,そだてない,そだてられる,Nhóm II,Tha động từ,verb
+862,38,はこびます,hakobimasu,運びます,vận chuyển,はこぶ,はこんで,はこばない,はこべる,Nhóm I,Tha động từ,verb
+863,38,にゅういんします,nyuuin shimasu,入院します,nhập viện,にゅういんする,にゅういんして,にゅういんしない,にゅういんできる,Nhóm III,,verb
+864,38,たいいんします,taiin shimasu,退院します,xuất viện,たいいんする,たいいんして,たいいんしない,たいいんできる,Nhóm III,,verb
+865,38,いれます,iremasu,入れます,cho vào,いれる,いれて,いれない,いれられる,Nhóm II,Tha động từ,verb
+866,38,だします,dashimasu,出します,lấy ra,だす,だして,ださない,だせる,Nhóm I,Tha động từ,verb
+867,38,いれます,iremasu,入れます,bật (điện),いれる,いれて,いれない,いれられる,Nhóm II,Tha động từ,verb
+868,38,きります,kirimasu,切ります,tắt/cắt,きる,きって,きらない,きれる,Nhóm I,Tha động từ,verb
+869,38,ひろいます,hiroimasu,拾います,nhặt,ひろう,ひろって,ひろわない,ひろえる,Nhóm I,Tha động từ,verb
+870,38,すてます,sutemasu,捨てます,vứt bỏ,すてる,すてて,すてない,すてられる,Nhóm II,Tha động từ,verb
+871,38,みつかります,mitsukarimasu,見つかります,được tìm thấy,みつかる,みつかって,みつからない,みつかれる,Nhóm I,Tự động từ,verb
+872,38,しらせます,shirasemasu,知らせます,báo cho biết,しらせる,しらせて,しらせない,しらせられる,Nhóm II,Tha động từ,verb
+873,38,かぞえます,kazoemasu,数えます,đếm,かぞえる,かぞえて,かぞえない,かぞえられる,Nhóm II,Tha động từ,verb
+874,38,たしかめます,tashikamemasu,確かめます,xác nhận,たしかめる,たしかめて,たしかめない,たしかめられる,Nhóm II,Tha động từ,verb
+875,38,しゅうりします,shuuri shimasu,修理します,sửa chữa,しゅうりする,しゅうりして,しゅうりしない,しゅうりできる,Nhóm III,,verb
+876,38,れんらくします,renraku shimasu,連絡します,liên lạc,れんらくする,れんらくして,れんらくしない,れんらくできる,Nhóm III,,verb
+877,38,ごみ,gomi,ごみ,rác,,,,,,,noun
+878,38,ばこ,bako,箱,hộp,,,,,,,noun
+879,38,ふくろ,fukuro,袋,túi,,,,,,,noun
+880,38,びょういん,byouin,病院,bệnh viện,,,,,,,noun
+881,38,かんごし,kangoshi,看護師,y tá,,,,,,,noun
+882,38,いしゃ,isha,医者,bác sĩ,,,,,,,noun
+883,38,くすり,kusuri,薬,thuốc,,,,,,,noun
+884,38,けが,kega,怪我,vết thương,,,,,,,noun
+885,38,びょうき,byouki,病気,bệnh,,,,,,,noun
+886,38,れんらく,renraku,連絡,liên lạc,,,,,,,noun
+887,38,しばらく,shibaraku,しばらく,một lúc/lâu rồi,,,,,,,adverb
+888,38,すぐに,suguni,すぐに,ngay lập tức,,,,,,,adverb
+889,38,たぶん,tabun,多分,có lẽ,,,,,,,adverb
+890,38,それなら,sorenara,それなら,nếu vậy thì,,,,,,,conjunctions
+891,39,こたえます,kotaemasu,答えます,trả lời,こたえる,こたえて,こたえない,こたえられる,Nhóm II,Tha động từ,verb
+892,39,たおれます,taoremasu,倒れます,ngã/đổ,たおれる,たおれて,たおれない,たおれられる,Nhóm II,Tự động từ,verb
+893,39,たおします,taoshimasu,倒します,làm đổ,たおす,たおして,たおさない,たおせる,Nhóm I,Tha động từ,verb
+894,39,なくなります,nakunari masu,亡くなります,qua đời,なくなる,なくなって,なくならない,なくなれる,Nhóm I,Tự động từ,verb
+895,39,きゅうきゅうしゃをよびます,kyuukyuusha o yobimasu,救急車を呼びます,gọi xe cấp cứu,よぶ,よんで,よばない,よべる,Nhóm I,Tha động từ,verb
+896,39,いしゃにみてもらいます,isha ni mite moraimasu,医者に診てもらいます,được bác sĩ khám,みる,みて,みない,みられる,Nhóm II,,verb
+897,39,あいます,aimasu,遭います,gặp (tai nạn),あう,あって,あわない,あえる,Nhóm I,,verb
+898,39,びっくりします,bikkuri shimasu,びっくりします,giật mình,びっくりする,びっくりして,びっくりしない,びっくりできる,Nhóm III,,verb
+899,39,あんしんします,anshin shimasu,安心します,yên tâm,あんしんする,あんしんして,あんしんしない,あんしんできる,Nhóm III,,verb
+900,39,がっかりします,gakkari shimasu,がっかりします,thất vọng,がっかりする,がっかりして,がっかりしない,がっかりできる,Nhóm III,,verb
+901,39,つかれます,tsukaremasu,疲れます,mệt,つかれる,つかれて,つかれない,つかれられる,Nhóm II,,verb
+902,39,びょうきになります,byouki ni narimasu,病気になります,bị bệnh,なる,なって,ならない,なれる,Nhóm I,,verb
+903,39,けがをします,kega o shimasu,怪我をします,bị thương,する,して,しない,できる,Nhóm III,,verb
+904,39,じこにあいます,jiko ni aimasu,事故に遭います,gặp tai nạn,あう,あって,あわない,あえる,Nhóm I,,verb
+905,39,しにます,shinimasu,死にます,chết,しぬ,しんで,しなない,しねる,Nhóm I,,verb
+906,39,たすかります,tasukarimasu,助かります,được cứu,たすかる,たすかって,たすからない,たすかれる,Nhóm I,Tự động từ,verb
+907,39,いのち,inochi,命,sinh mạng,,,,,,,noun
+908,39,びょういん,byouin,病院,bệnh viện,,,,,,,noun
+909,39,いしゃ,isha,医者,bác sĩ,,,,,,,noun
+910,39,かんじゃ,kanja,患者,bệnh nhân,,,,,,,noun
+911,39,けが,kega,怪我,vết thương,,,,,,,noun
+912,39,びょうき,byouki,病気,bệnh,,,,,,,noun
+913,39,じこ,jiko,事故,tai nạn,,,,,,,noun
+914,39,きゅうきゅうしゃ,kyuukyuusha,救急車,xe cấp cứu,,,,,,,noun
+915,39,しょうぼうしゃ,shoubousha,消防車,xe cứu hỏa,,,,,,,noun
+916,39,けいさつ,keisatsu,警察,cảnh sát,,,,,,,noun
+917,39,びっくり,bikkuri,びっくり,giật mình,,,,,,,noun
+918,39,あんしん,anshin,安心,yên tâm,,,,,,,noun
+919,39,がっかり,gakkari,がっかり,thất vọng,,,,,,,noun
+920,39,それで,sorede,それで,vì vậy,,,,,,,conjunctions
+921,40,かぞえます,kazoemasu,数えます,đếm,かぞえる,かぞえて,かぞえない,かぞえられる,Nhóm II,Tha động từ,verb
+922,40,はかります,hakarimasu,測ります,đo,はかる,はかって,はからない,はかれる,Nhóm I,Tha động từ,verb
+923,40,たしかめます,tashikamemasu,確かめます,xác nhận,たしかめる,たしかめて,たしかめない,たしかめられる,Nhóm II,Tha động từ,verb
+924,40,あいます,aimasu,合います,phù hợp/khớp,あう,あって,あわない,あえる,Nhóm I,,verb
+925,40,しらべます,shirabemasu,調べます,tìm hiểu/tra cứu,しらべる,しらべて,しらべない,しらべられる,Nhóm II,Tha động từ,verb
+926,40,いいます,iimasu,言います,nói,いう,いって,いわない,いえる,Nhóm I,Tha động từ,verb
+927,40,かきます,kakimasu,書きます,viết,かく,かいて,かかない,かける,Nhóm I,Tha động từ,verb
+928,40,よみます,yomimasu,読みます,đọc,よむ,よんで,よまない,よめる,Nhóm I,Tha động từ,verb
+929,40,おぼえます,oboemasu,覚えます,ghi nhớ,おぼえる,おぼえて,おぼえない,おぼえられる,Nhóm II,Tha động từ,verb
+930,40,わすれます,wasuremasu,忘れます,quên,わすれる,わすれて,わすれない,わすれられる,Nhóm II,Tha động từ,verb
+931,40,くらべます,kurabemasu,比べます,so sánh,くらべる,くらべて,くらべない,くらべられる,Nhóm II,Tha động từ,verb
+932,40,えらびます,erabimasu,選びます,lựa chọn,えらぶ,えらんで,えらばない,えらべる,Nhóm I,Tha động từ,verb
+933,40,けいさんします,keisan shimasu,計算します,tính toán,けいさんする,けいさんして,けいさんしない,けいさんできる,Nhóm III,,verb
+934,40,テストします,tesuto shimasu,テストします,kiểm tra/test,テストする,テストして,テストしない,テストできる,Nhóm III,,verb
+935,40,けっか,kekka,結果,kết quả,,,,,,,noun
+936,40,せいせき,seiseki,成績,thành tích/kết quả học,,,,,,,noun
+937,40,てんすう,tensuu,点数,điểm số,,,,,,,noun
+938,40,もんだい,mondai,問題,vấn đề/câu hỏi,,,,,,,noun
+939,40,こたえ,kotae,答え,đáp án,,,,,,,noun
+940,40,いみ,imi,意味,ý nghĩa,,,,,,,noun
+941,40,ぶんしょう,bunshou,文章,đoạn văn,,,,,,,noun
+942,40,ことば,kotoba,言葉,từ ngữ,,,,,,,noun
+943,40,はつおん,hatsuon,発音,phát âm,,,,,,,noun
+944,40,ぶんぽう,bunpou,文法,ngữ pháp,,,,,,,noun
+945,40,れんしゅう,renshuu,練習,luyện tập,,,,,,,noun
+946,40,もういちど,mou ichido,もう一度,một lần nữa,,,,,,,adverb
+947,40,よく,yoku,よく,tốt/rõ,,,,,,,adverb
+948,40,だいたい,daitai,大体,đại khái,,,,,,,adverb
+949,40,それから,sorekara,それから,sau đó,,,,,,,conjunctions
+950,40,ですから,desukara,ですから,vì vậy,,,,,,,conjunctions
+951,41,もらいます,moraimasu,もらいます,nhận,もらう,もらって,もらわない,もらえる,Nhóm I,Tha động từ,verb
+952,41,くれます,kuremasu,くれます,cho (người nói),くれる,くれて,くれない,くれられる,Nhóm II,Tha động từ,verb
+953,41,あげます,agemasu,あげます,cho/tặng,あげる,あげて,あげない,あげられる,Nhóm II,Tha động từ,verb
+954,41,かします,kashimasu,貸します,cho mượn,かす,かして,かさない,かせる,Nhóm I,Tha động từ,verb
+955,41,かります,karimasu,借ります,mượn,かりる,かりて,かりない,かりられる,Nhóm II,Tha động từ,verb
+956,41,おしえます,oshiemasu,教えます,dạy/chỉ,おしえる,おしえて,おしえない,おしえられる,Nhóm II,Tha động từ,verb
+957,41,ならいます,naraimasu,習います,học (từ ai),ならう,ならって,ならわない,ならえる,Nhóm I,,verb
+958,41,てつだいます,tetsudaimasu,手伝います,giúp đỡ,てつだう,てつだって,てつだわない,てつだえる,Nhóm I,,verb
+959,41,よびます,yobimasu,呼びます,gọi,よぶ,よんで,よばない,よべる,Nhóm I,Tha động từ,verb
+960,41,つれていきます,tsurete ikimasu,連れて行きます,dẫn đi,つれていく,つれていって,つれていかない,つれていける,Nhóm I,Tha động từ,verb
+961,41,つれてきます,tsurete kimasu,連れて来ます,dẫn đến,つれてくる,つれてきて,つれてこない,つれてこられる,Nhóm III,Tha động từ,verb
+962,41,しょうかいします,shoukai shimasu,紹介します,giới thiệu,しょうかいする,しょうかいして,しょうかいしない,しょうかいできる,Nhóm III,,verb
+963,41,あんないします,annai shimasu,案内します,hướng dẫn,あんないする,あんないして,あんないしない,あんないできる,Nhóm III,,verb
+964,41,せつめいします,setsumei shimasu,説明します,giải thích,せつめいする,せつめいして,せつめいしない,せつめいできる,Nhóm III,,verb
+965,41,おじいさん,ojiisan,おじいさん,ông,,,,,,,noun
+966,41,おばあさん,obaasan,おばあさん,bà,,,,,,,noun
+967,41,おじ,oji,伯父/叔父,chú/bác trai,,,,,,,noun
+968,41,おば,oba,伯母/叔母,cô/dì/bác gái,,,,,,,noun
+969,41,いとこ,itoko,いとこ,anh/chị/em họ,,,,,,,noun
+970,41,しょうかい,shoukai,紹介,sự giới thiệu,,,,,,,noun
+971,41,あんない,annai,案内,sự hướng dẫn,,,,,,,noun
+972,41,せつめい,setsumei,説明,sự giải thích,,,,,,,noun
+973,41,ちず,chizu,地図,bản đồ,,,,,,,noun
+974,41,じゅうしょ,juusho,住所,địa chỉ,,,,,,,noun
+975,41,れんらくさき,renrakusaki,連絡先,thông tin liên lạc,,,,,,,noun
+976,41,しんせつ,shinsetsu,親切,tốt bụng,,,,,,,Adjective
+977,41,ていねい,teinei,丁寧,lịch sự,,,,,,,Adjective
+978,41,いろいろ,iroiro,色々,nhiều loại,,,,,,,adverb
+979,41,それに,soreni,それに,hơn nữa,,,,,,,conjunctions
+980,41,それで,sorede,それで,vì vậy,,,,,,,conjunctions
+981,42,つつみます,tsutsumimasu,包みます,gói/bọc,つつむ,つつんで,つつまない,つつめる,Nhóm I,Tha động từ,verb
+982,42,わかします,wakashimasu,沸かします,đun sôi,わかす,わかして,わかさない,わかせる,Nhóm I,Tha động từ,verb
+983,42,まぜます,mazemasu,混ぜます,trộn,まぜる,まぜて,まぜない,まぜられる,Nhóm II,Tha động từ,verb
+984,42,けいさんします,keisan shimasu,計算します,tính toán,けいさんする,けいさんして,けいさんしない,けいさんできる,Nhóm III,,verb
+985,42,きります,kirimasu,切ります,cắt,きる,きって,きらない,きれる,Nhóm I,Tha động từ,verb
+986,42,はります,harimasu,貼ります,dán,はる,はって,はらない,はれる,Nhóm I,Tha động từ,verb
+987,42,かざります,kazarimasu,飾ります,trang trí,かざる,かざって,かざらない,かざれる,Nhóm I,Tha động từ,verb
+988,42,ならべます,narabemasu,並べます,xếp/sắp xếp,ならべる,ならべて,ならべない,ならべられる,Nhóm II,Tha động từ,verb
+989,42,しまいます,shimaimasu,しまいます,cất đi,しまう,しまって,しまわない,しまえる,Nhóm I,Tha động từ,verb
+990,42,きめます,kimemasu,決めます,quyết định,きめる,きめて,きめない,きめられる,Nhóm II,Tha động từ,verb
+991,42,しらせます,shirasemasu,知らせます,báo cho biết,しらせる,しらせて,しらせない,しらせられる,Nhóm II,Tha động từ,verb
+992,42,そうだんします,soudan shimasu,相談します,trao đổi/thảo luận,そうだんする,そうだんして,そうだんしない,そうだんできる,Nhóm III,,verb
+993,42,よやくします,yoyaku shimasu,予約します,đặt trước,よやくする,よやくして,よやくしない,よやくできる,Nhóm III,,verb
+994,42,ちゅうもんします,chuumon shimasu,注文します,đặt hàng,ちゅうもんする,ちゅうもんして,ちゅうもんしない,ちゅうもんできる,Nhóm III,,verb
+995,42,よういします,youi shimasu,用意します,chuẩn bị,よういする,よういして,よういしない,よういできる,Nhóm III,,verb
+996,42,かいぎ,kaigi,会議,cuộc họp,,,,,,,noun
+997,42,よてい,yotei,予定,kế hoạch/dự định,,,,,,,noun
+998,42,じゅんび,junbi,準備,sự chuẩn bị,,,,,,,noun
+999,42,しりょう,shiryou,資料,tài liệu,,,,,,,noun
+1000,42,つごう,tsugou,都合,sự thuận tiện,,,,,,,noun
+1001,42,ばしょ,basho,場所,địa điểm,,,,,,,noun
+1002,42,じかん,jikan,時間,thời gian,,,,,,,noun
+1003,42,よやく,yoyaku,予約,sự đặt trước,,,,,,,noun
+1004,42,ちゅうもん,chuumon,注文,đơn đặt hàng,,,,,,,noun
+1005,42,ようい,youi,用意,sự chuẩn bị,,,,,,,noun
+1006,42,しばらく,shibaraku,しばらく,một lát/lâu rồi,,,,,,,adverb
+1007,42,やっと,yatto,やっと,cuối cùng,,,,,,,adverb
+1008,42,ぜひ,zehi,ぜひ,nhất định,,,,,,,adverb
+1009,42,それでは,soredewa,それでは,vậy thì,,,,,,,conjunctions
+1010,42,それから,sorekara,それから,sau đó,,,,,,,conjunctions
+1011,43,ふえます,fue masu,増えます,tăng lên,ふえる,ふえて,ふえない,ふえられる,Nhóm II,Tự động từ,verb
+1012,43,へります,herimasu,減ります,giảm xuống,へる,へって,へらない,へれる,Nhóm I,Tự động từ,verb
+1013,43,あがります,agarimasu,上がります,tăng/lên,あがる,あがって,あがらない,あがれる,Nhóm I,Tự động từ,verb
+1014,43,さがります,sagarimasu,下がります,giảm/xuống,さがる,さがって,さがらない,さがれる,Nhóm I,Tự động từ,verb
+1015,43,きれます,kiremasu,切れます,đứt/hết,きれる,きれて,きれない,きれられる,Nhóm II,Tự động từ,verb
+1016,43,とれます,toremasu,取れます,rơi ra/lấy được,とれる,とれて,とれない,とれられる,Nhóm II,Tự động từ,verb
+1017,43,おちます,ochimasu,落ちます,rơi,おちる,おちて,おちない,おちられる,Nhóm II,Tự động từ,verb
+1018,43,なくなります,nakunarimasu,無くなります,hết/mất đi,なくなる,なくなって,なくならない,なくなれる,Nhóm I,Tự động từ,verb
+1019,43,あまります,amarimasu,余ります,dư/thừa,あまる,あまって,あまらない,あまれる,Nhóm I,Tự động từ,verb
+1020,43,たりません,tarimasen,足りません,không đủ,たりる,たりて,たりない,たりられる,Nhóm II,,verb
+1021,43,ふえます,fue masu,増えます,(số lượng) tăng,ふえる,ふえて,ふえない,ふえられる,Nhóm II,Tự động từ,verb
+1022,43,へらします,herashimasu,減らします,làm giảm,へらす,へらして,へらさない,へらせる,Nhóm I,Tha động từ,verb
+1023,43,あげます,agemasu,上げます,tăng lên,あげる,あげて,あげない,あげられる,Nhóm II,Tha động từ,verb
+1024,43,さげます,sagemasu,下げます,giảm xuống,さげる,さげて,さげない,さげられる,Nhóm II,Tha động từ,verb
+1025,43,とめます,tomemasu,止めます,dừng,とめる,とめて,とめない,とめられる,Nhóm II,Tha động từ,verb
+1026,43,ガソリン,gasorin,ガソリン,xăng,,,,,,,noun
+1027,43,ねだん,nedan,値段,giá cả,,,,,,,noun
+1028,43,りょう,ryou,量,số lượng,,,,,,,noun
+1029,43,きゅうりょう,kyuuryou,給料,lương,,,,,,,noun
+1030,43,ボーナス,boonasu,ボーナス,tiền thưởng,,,,,,,noun
+1031,43,じんこう,jinkou,人口,dân số,,,,,,,noun
+1032,43,へやだい,heyadai,部屋代,tiền phòng,,,,,,,noun
+1033,43,でんきだい,denkidai,電気代,tiền điện,,,,,,,noun
+1034,43,みずだい,mizudai,水代,tiền nước,,,,,,,noun
+1035,43,こうつうひ,koutsuuhi,交通費,chi phí đi lại,,,,,,,noun
+1036,43,だいぶ,daibu,だいぶ,khá nhiều,,,,,,,adverb
+1037,43,かなり,kanari,かなり,khá là,,,,,,,adverb
+1038,43,すこしも,sukoshi mo,少しも,không chút nào,,,,,,,adverb
+1039,43,それで,sorede,それで,vì vậy,,,,,,,conjunctions
+1040,43,それなのに,sorenanoni,それなのに,thế nhưng,,,,,,,conjunctions
+1041,44,なきます,nakimasu,泣きます,khóc,なく,ないて,なかない,なける,Nhóm I,,verb
+1042,44,わらいます,waraimasu,笑います,cười,わらう,わらって,わらわない,わらえる,Nhóm I,,verb
+1043,44,かわきます,kawakimasu,乾きます,khô,かわく,かわいて,かわかない,かわける,Nhóm I,Tự động từ,verb
+1044,44,ぬれます,nuremasu,濡れます,ướt,ぬれる,ぬれて,ぬれない,ぬれられる,Nhóm II,Tự động từ,verb
+1045,44,すべります,suberimasu,滑ります,trượt,すべる,すべって,すべらない,すべれる,Nhóm I,,verb
+1046,44,ころびます,korobimasu,転びます,ngã,ころぶ,ころんで,ころばない,ころべる,Nhóm I,,verb
+1047,44,おきます,okimasu,起きます,xảy ra,おきる,おきて,おきない,おきられる,Nhóm II,Tự động từ,verb
+1048,44,ちょうせつします,chousetsu shimasu,調節します,điều chỉnh,ちょうせつする,ちょうせつして,ちょうせつしない,ちょうせつできる,Nhóm III,,verb
+1049,44,あんしんします,anshin shimasu,安心します,yên tâm,あんしんする,あんしんして,あんしんしない,あんしんできる,Nhóm III,,verb
+1050,44,しんぱいします,shinpai shimasu,心配します,lo lắng,しんぱいする,しんぱいして,しんぱいしない,しんぱいできる,Nhóm III,,verb
+1051,44,あんぜん,anzen,安全,an toàn,,,,,,,Adjective
+1052,44,きけん,kiken,危険,nguy hiểm,,,,,,,Adjective
+1053,44,だめ,dame,だめ,không được/vô ích,,,,,,,Adjective
+1054,44,ひつよう,hitsuyou,必要,cần thiết,,,,,,,Adjective
+1055,44,たいせつ,taisetsu,大切,quan trọng,,,,,,,Adjective
+1056,44,ばあい,baai,場合,trường hợp,,,,,,,noun
+1057,44,じこ,jiko,事故,tai nạn,,,,,,,noun
+1058,44,てんき,tenki,天気,thời tiết,,,,,,,noun
+1059,44,ゆき,yuki,雪,tuyết,,,,,,,noun
+1060,44,あめ,ame,雨,mưa,,,,,,,noun
+1061,44,かぜ,kaze,風,gió,,,,,,,noun
+1062,44,ちゅうい,chuui,注意,chú ý,,,,,,,noun
+1063,44,ルール,ruuru,ルール,quy tắc,,,,,,,noun
+1064,44,マナー,manaa,マナー,phép lịch sự,,,,,,,noun
+1065,44,きそく,kisoku,規則,nội quy,,,,,,,noun
+1066,44,とくに,tokuni,特に,đặc biệt,,,,,,,adverb
+1067,44,たしかに,tashikani,確かに,quả thật,,,,,,,adverb
+1068,44,もし,moshi,もし,nếu,,,,,,,conjunctions
+1069,44,それなら,sorenara,それなら,nếu vậy,,,,,,,conjunctions
+1070,44,それでも,soredemo,それでも,tuy vậy,,,,,,,conjunctions
+1071,45,しんじます,shinjimasu,信じます,tin tưởng,しんじる,しんじて,しんじない,しんじられる,Nhóm II,,verb
+1072,45,おもいだします,omoidasimasu,思い出します,nhớ lại,おもいだす,おもいだして,おもいださない,おもいだせる,Nhóm I,,verb
+1073,45,あきらめます,akirame masu,諦めます,từ bỏ,あきらめる,あきらめて,あきらめない,あきらめられる,Nhóm II,,verb
+1074,45,ねむります,nemurimasu,眠ります,ngủ,ねむる,ねむって,ねむらない,ねむれる,Nhóm I,,verb
+1075,45,ゆめをみます,yume o mimasu,夢を見ます,nằm mơ,みる,みて,みない,みられる,Nhóm II,,verb
+1076,45,めがさめます,me ga samemasu,目が覚めます,tỉnh dậy,さめる,さめて,さめない,さめられる,Nhóm II,Tự động từ,verb
+1077,45,かよいます,kayoimasu,通います,đi lại/thường xuyên đến,かよう,かよって,かよわない,かよえる,Nhóm I,,verb
+1078,45,つづけます,tsuzukemasu,続けます,tiếp tục,つづける,つづけて,つづけない,つづけられる,Nhóm II,Tha động từ,verb
+1079,45,やめます,yamemasu,やめます,bỏ/dừng,やめる,やめて,やめない,やめられる,Nhóm II,,verb
+1080,45,きがつきます,kigatsukimasu,気が付きます,nhận ra,きがつく,きがついて,きがつかない,きがつける,Nhóm I,,verb
+1081,45,けんこう,kenkou,健康,sức khỏe,,,,,,,noun
+1082,45,びょうき,byouki,病気,bệnh,,,,,,,noun
+1083,45,ねむり,nemuri,眠り,giấc ngủ,,,,,,,noun
+1084,45,ゆめ,yume,夢,giấc mơ,,,,,,,noun
+1085,45,しゅうかん,shuukan,習慣,thói quen,,,,,,,noun
+1086,45,せいかつ,seikatsu,生活,cuộc sống,,,,,,,noun
+1087,45,けいけん,keiken,経験,kinh nghiệm,,,,,,,noun
+1088,45,きおく,kioku,記憶,trí nhớ,,,,,,,noun
+1089,45,きぶん,kibun,気分,tâm trạng,,,,,,,noun
+1090,45,りゆう,riyuu,理由,lý do,,,,,,,noun
+1091,45,もちろん,mochiron,もちろん,tất nhiên,,,,,,,adverb
+1092,45,たしかに,tashikani,確かに,quả thật,,,,,,,adverb
+1093,45,とつぜん,totsuzen,突然,đột nhiên,,,,,,,adverb
+1094,45,やっと,yatto,やっと,cuối cùng,,,,,,,adverb
+1095,45,それで,sorede,それで,vì vậy,,,,,,,conjunctions
+1096,45,それなのに,sorenanoni,それなのに,thế nhưng,,,,,,,conjunctions
+1097,45,それでも,soredemo,それでも,tuy vậy,,,,,,,conjunctions
+1098,45,もしもし,moshi moshi,もしもし,alo (điện thoại),,,,,,,interjection
+1099,45,ああ,aa,ああ,à/ồ,,,,,,,interjection
+1100,45,へえ,hee,へえ,ồ/thật sao,,,,,,,interjection
+1101,46,わたします,watashimasu,渡します,trao/chuyển,わたす,わたして,わたさない,わたせる,Nhóm I,,verb
+1102,46,かえってきます,kaette kimasu,帰って来ます,trở về,かえってくる,かえってきて,かえってこない,かえってこられる,Nhóm III,,verb
+1103,46,でかけます,dekakemasu,出かけます,đi ra ngoài,でかける,でかけて,でかけない,でかけられる,Nhóm II,,verb
+1104,46,りょこうします,ryokou shimasu,旅行します,du lịch,りょこうする,りょこうして,りょこうしない,りょこうできる,Nhóm III,,verb
+1105,46,しゅっちょうします,shucchou shimasu,出張します,đi công tác,しゅっちょうする,しゅっちょうして,しゅっちょうしない,しゅっちょうできる,Nhóm III,,verb
+1106,46,いらっしゃいます,irasshaimasu,いらっしゃいます,đến/ở (kính ngữ),いらっしゃる,いらっしゃって,いらっしゃらない,,Nhóm I,Kính ngữ,verb
+1107,46,めしあがります,meshiagarimasu,召し上がります,ăn/uống (kính ngữ),めしあがる,めしあがって,めしあがらない,,Nhóm I,Kính ngữ,verb
+1108,46,おっしゃいます,osshaimasu,おっしゃいます,nói (kính ngữ),おっしゃる,おっしゃって,おっしゃらない,,Nhóm I,Kính ngữ,verb
+1109,46,なさいます,nasaimasu,なさいます,làm (kính ngữ),なさる,なさって,なさらない,,Nhóm I,Kính ngữ,verb
+1110,46,ごらんになります,goran ni narimasu,ご覧になります,xem (kính ngữ),ごらんになる,ごらんになって,ごらんにならない,,Kính ngữ,,verb
+1111,46,ごぞんじです,gozonji desu,ご存じです,biết (kính ngữ),,,,,,,expression
+1112,46,おみやげ,omiyage,お土産,quà lưu niệm,,,,,,,noun
+1113,46,かた,katа,方,ngài/vị (cách nói lịch sự của 人),,,,,,,noun
+1114,46,どなた,donata,どなた,ai (lịch sự),,,,,,,pronoun
+1115,46,どちら,dōchira,どちら,ở đâu/bên nào (lịch sự),,,,,,,pronoun
+1116,46,いつごろ,itsugoro,いつごろ,khoảng khi nào,,,,,,,adverb
+1117,46,どのぐらい,dono gurai,どのぐらい,bao lâu/bao nhiêu,,,,,,,adverb
+1118,46,たしか,tashika,確か,hình như/chắc là,,,,,,,adverb
+1119,46,たぶん,tabun,多分,có lẽ,,,,,,,adverb
+1120,46,ぜひ,zehi,ぜひ,nhất định,,,,,,,adverb
+1121,46,よろしければ,yoroshikereba,よろしければ,nếu được,,,,,,,expression
+1122,46,ありがとうございます,arigatou gozaimasu,ありがとうございます,xin cảm ơn,,,,,,,expression
+1123,46,どういたしまして,dou itashimashite,どういたしまして,không có gì,,,,,,,expression
+1124,46,おげんきで,ogenki de,お元気で,chúc khỏe,,,,,,,expression
+1125,46,きをつけて,ki o tsukete,気を付けて,cẩn thận nhé,,,,,,,expression
+1126,46,またあいましょう,mata aimashou,また会いましょう,hẹn gặp lại,,,,,,,expression
+1127,46,おさきにしつれいします,osaki ni shitsurei shimasu,お先に失礼します,xin phép về trước,,,,,,,expression
+1128,46,おつかれさまでした,otsukaresama deshita,お疲れ様でした,cảm ơn vì đã vất vả,,,,,,,expression
+1129,46,しつれいします,shitsurei shimasu,失礼します,xin phép/làm phiền,,,,,,,expression
+1130,46,では,では,では,vậy thì,,,,,,,conjunctions
+1131,47,まいります,mairimasu,参ります,đi/đến (khiêm nhường),まいる,まいって,まいらない,,Nhóm I,Khiêm nhường,verb
+1132,47,おります,orimasu,おります,ở/có (khiêm nhường),おる,おって,おらない,,Nhóm I,Khiêm nhường,verb
+1133,47,いただきます,itadakimasu,いただきます,nhận/ăn/uống (khiêm nhường),いただく,いただいて,いただかない,,Nhóm I,Khiêm nhường,verb
+1134,47,もうします,moushimasu,申します,nói/tên là (khiêm nhường),もうす,もうして,もうさない,,Nhóm I,Khiêm nhường,verb
+1135,47,もうしあげます,moushiagemasu,申し上げます,nói (khiêm nhường),もうしあげる,もうしあげて,もうしあげない,,Nhóm II,Khiêm nhường,verb
+1136,47,いたします,itashimasu,致します,làm (khiêm nhường),いたす,いたして,いたさない,,Nhóm I,Khiêm nhường,verb
+1137,47,はいけんします,haiken shimasu,拝見します,xem (khiêm nhường),はいけんする,はいけんして,はいけんしない,,Nhóm III,Khiêm nhường,verb
+1138,47,うかがいます,ukagaimasu,伺います,đến/thăm/hỏi (khiêm nhường),うかがう,うかがって,うかがわない,,Nhóm I,Khiêm nhường,verb
+1139,47,おめにかかります,ome ni kakarimasu,お目にかかります,gặp (khiêm nhường),おめにかかる,おめにかかって,おめにかからない,,Khiêm nhường,,verb
+1140,47,ごあんないします,goannai shimasu,ご案内します,dẫn đường (khiêm nhường),ごあんないする,ごあんないして,ごあんないしない,,Nhóm III,,verb
+1141,47,ぶちょう,buchou,部長,trưởng phòng,,,,,,,noun
+1142,47,しゃちょう,shachou,社長,giám đốc công ty,,,,,,,noun
+1143,47,おきゃくさま,okyakusama,お客様,khách hàng (kính ngữ),,,,,,,noun
+1144,47,かいしゃ,kaisha,会社,công ty,,,,,,,noun
+1145,47,うけつけ,uketsuke,受付,quầy lễ tân,,,,,,,noun
+1146,47,かいぎしつ,kaigishitsu,会議室,phòng họp,,,,,,,noun
+1147,47,えいぎょうぶ,eigyoubu,営業部,phòng kinh doanh,,,,,,,noun
+1148,47,しりょう,shiryou,資料,tài liệu,,,,,,,noun
+1149,47,ごせつめい,gosetsumei,ご説明,giải thích (lịch sự),,,,,,,noun
+1150,47,ごしょうかい,goshoukai,ご紹介,giới thiệu (lịch sự),,,,,,,noun
+1151,47,それでは,soredewa,それでは,vậy thì,,,,,,,conjunctions
+1152,47,のちほど,nochihodo,後ほど,lát nữa/sau đó,,,,,,,adverb
+1153,47,さきほど,sakihodo,先ほど,lúc nãy,,,,,,,adverb
+1154,47,ただいま,tadaima,ただいま,ngay bây giờ (lịch sự),,,,,,,adverb
+1155,47,もうしわけありません,moushiwake arimasen,申し訳ありません,xin lỗi (rất lịch sự),,,,,,,expression
+1156,47,しょうしょうおまちください,shoushou omachi kudasai,少々お待ちください,xin chờ một chút,,,,,,,expression
+1157,47,かしこまりました,kashikomarimashita,かしこまりました,đã hiểu (rất lịch sự),,,,,,,expression
+1158,47,おまたせしました,omatase shimashita,お待たせしました,xin lỗi vì đã để chờ,,,,,,,expression
+1159,47,よろしくおねがいします,yoroshiku onegaishimasu,よろしくお願いします,nhờ giúp đỡ,,,,,,,expression
+1160,47,こちらへどうぞ,kochira e douzo,こちらへどうぞ,xin mời vào đây,,,,,,,expression
+1161,48,つけます,tsukemasu,付けます,gắn/đính,つける,つけて,つけない,つけられる,Nhóm II,,verb
+1162,48,はずします,hazushimasu,外します,tháo ra,はずす,はずして,はずさない,はずせる,Nhóm I,,verb
+1163,48,とめます,tomemasu,止めます,dừng/đỗ,とめる,とめて,とめない,とめられる,Nhóm II,,verb
+1164,48,かけます,kakemasu,掛けます,treo/đeo,かける,かけて,かけない,かけられる,Nhóm II,,verb
+1165,48,ならびます,narabimasu,並びます,xếp hàng,ならぶ,ならんで,ならばない,ならべる,Nhóm I,Tự động từ,verb
+1166,48,ならべます,narabemasu,並べます,xếp/sắp xếp,ならべる,ならべて,ならべない,ならべられる,Nhóm II,Tha động từ,verb
+1167,48,まとめます,matomemasu,まとめます,tổng hợp/gom lại,まとめる,まとめて,まとめない,まとめられる,Nhóm II,,verb
+1168,48,しまいます,shimaimasu,しまいます,cất đi/kết thúc,しまう,しまって,しまわない,しまえる,Nhóm I,,verb
+1169,48,よごれます,yogoremasu,汚れます,bị bẩn,よごれる,よごれて,よごれない,よごれられる,Nhóm II,Tự động từ,verb
+1170,48,よごします,yogoshimasu,汚します,làm bẩn,よごす,よごして,よごさない,よごせる,Nhóm I,Tha động từ,verb
+1171,48,たてます,tatemasu,立てます,dựng lên,たてる,たてて,たてない,たてられる,Nhóm II,,verb
+1172,48,はります,harimasu,貼ります,dán,はる,はって,はらない,はれる,Nhóm I,,verb
+1173,48,かざります,kazarimasu,飾ります,trang trí,かざる,かざって,かざらない,かざれる,Nhóm I,,verb
+1174,48,おきます,okimasu,置きます,đặt/để,おく,おいて,おかない,おける,Nhóm I,,verb
+1175,48,つみます,tsumimasu,積みます,chất lên,つむ,つんで,つまない,つめる,Nhóm I,,verb
+1176,48,ならび,narabi,並び,hàng/sự xếp hàng,,,,,,,noun
+1177,48,じゅんばん,junban,順番,thứ tự,,,,,,,noun
+1178,48,ばしょ,basho,場所,địa điểm,,,,,,,noun
+1179,48,かべ,kabe,壁,tường,,,,,,,noun
+1180,48,まど,mado,窓,cửa sổ,,,,,,,noun
+1181,48,ドア,doa,ドア,cửa,,,,,,,noun
+1182,48,ポスター,posutaa,ポスター,poster,,,,,,,noun
+1183,48,しゃしん,shashin,写真,hình ảnh,,,,,,,noun
+1184,48,にもつ,nimotsu,荷物,hành lý,,,,,,,noun
+1185,48,だんボール,danbooru,段ボール,thùng carton,,,,,,,noun
+1186,48,テーブル,teeburu,テーブル,bàn,,,,,,,noun
+1187,48,いす,isu,椅子,ghế,,,,,,,noun
+1188,48,ちゃんと,chanto,ちゃんと,đàng hoàng/cẩn thận,,,,,,,adverb
+1189,48,きちんと,kichinto,きちんと,gọn gàng/nghiêm chỉnh,,,,,,,adverb
+1190,48,すぐに,suguni,すぐに,ngay lập tức,,,,,,,adverb
+1191,49,つきます,tsukimasu,付きます,gắn/kèm theo,つく,ついて,つかない,つける,Nhóm I,Tự động từ,verb
+1192,49,つけます,tsukemasu,付けます,gắn/đính,つける,つけて,つけない,つけられる,Nhóm II,Tha động từ,verb
+1193,49,きまります,kimarimasu,決まります,được quyết định,きまる,きまって,きまらない,きめられる,Nhóm I,Tự động từ,verb
+1194,49,きめます,kimemasu,決めます,quyết định,きめる,きめて,きめない,きめられる,Nhóm II,Tha động từ,verb
+1195,49,あきます,akimasu,開きます,mở (tự động),あく,あいて,あかない,あけられる,Nhóm I,Tự động từ,verb
+1196,49,あけます,akemasu,開けます,mở (tha động),あける,あけて,あけない,あけられる,Nhóm II,Tha động từ,verb
+1197,49,しまります,shimarimasu,閉まります,đóng (tự động),しまる,しまって,しまらない,しめられる,Nhóm I,Tự động từ,verb
+1198,49,しめます,shimemasu,閉めます,đóng (tha động),しめる,しめて,しめない,しめられる,Nhóm II,Tha động từ,verb
+1199,49,つきます,tsukimasu,点きます,bật sáng (đèn),つく,ついて,つかない,つけられる,Nhóm I,Tự động từ,verb
+1200,49,つけます,tsukemasu,点けます,bật (đèn),つける,つけて,つけない,つけられる,Nhóm II,Tha động từ,verb
+1201,49,こわれます,kowaremasu,壊れます,bị hỏng,こわれる,こわれて,こわれない,こわれられる,Nhóm II,Tự động từ,verb
+1202,49,こわします,kowashimasu,壊します,làm hỏng,こわす,こわして,こわさない,こわせる,Nhóm I,Tha động từ,verb
+1203,49,よごれます,yogoremasu,汚れます,bị bẩn,よごれる,よごれて,よごれない,よごれられる,Nhóm II,Tự động từ,verb
+1204,49,よごします,yogoshimasu,汚します,làm bẩn,よごす,よごして,よごさない,よごせる,Nhóm I,Tha động từ,verb
+1205,49,おちます,ochimasu,落ちます,rơi,おちる,おちて,おちない,おちられる,Nhóm II,Tự động từ,verb
+1206,49,おとします,otoshimasu,落とします,làm rơi,おとす,おとして,おとさない,おとせる,Nhóm I,Tha động từ,verb
+1207,49,なくなります,nakunari masu,なくなります,mất/hết,なくなる,なくなって,なくならない,,Nhóm I,Tự động từ,verb
+1208,49,なくします,nakushimasu,なくします,làm mất,なくす,なくして,なくさない,,Nhóm I,Tha động từ,verb
+1209,49,ふえます,fue masu,増えます,tăng lên,ふえる,ふえて,ふえない,ふえられる,Nhóm II,Tự động từ,verb
+1210,49,ふやします,fuyashimasu,増やします,tăng thêm,ふやす,ふやして,ふやさない,ふやせる,Nhóm I,Tha động từ,verb
+1211,49,へります,herimasu,減ります,giảm xuống,へる,へって,へらない,へれる,Nhóm I,Tự động từ,verb
+1212,49,へらします,herashimasu,減らします,giảm bớt,へらす,へらして,へらさない,へらせる,Nhóm I,Tha động từ,verb
+1213,49,かたづきます,katazukimasu,片付きます,được dọn gọn,かたづく,かたづいて,かたづかない,,Nhóm I,Tự động từ,verb
+1214,49,かたづけます,katazukemasu,片付けます,dọn dẹp,かたづける,かたづけて,かたづけない,かたづけられる,Nhóm II,Tha động từ,verb
+1215,49,はじまります,hajimarimasu,始まります,bắt đầu (tự động),はじまる,はじまって,はじまらない,,Nhóm I,Tự động từ,verb
+1216,49,はじめます,hajimemasu,始めます,bắt đầu (tha động),はじめる,はじめて,はじめない,はじめられる,Nhóm II,Tha động từ,verb
+1217,49,つづきます,tsuzukimasu,続きます,tiếp tục (tự động),つづく,つづいて,つづかない,,Nhóm I,Tự động từ,verb
+1218,49,つづけます,tsuzukemasu,続けます,tiếp tục (tha động),つづける,つづけて,つづけない,つづけられる,Nhóm II,Tha động từ,verb
+1219,49,みつかります,mitsukarimasu,見つかります,được tìm thấy,みつかる,みつかって,みつからない,,Nhóm I,Tự động từ,verb
+1220,49,みつけます,mitsukemasu,見つけます,tìm thấy,みつける,みつけて,みつけない,みつけられる,Nhóm II,Tha động từ,verb
+1221,50,あいます,aimasu,会います,gặp,あう,あって,あわない,あえる,Nhóm I,,verb
+1222,50,わかれます,wakaremasu,別れます,chia tay/tạm biệt,わかれる,わかれて,わかれない,わかれられる,Nhóm II,,verb
+1223,50,いきます,ikimasu,行きます,đi,いく,いって,いかない,いける,Nhóm I,,verb
+1224,50,きます,kimasu,来ます,đến,くる,きて,こない,こられる,Nhóm III,,verb
+1225,50,かえります,kaerimasu,帰ります,trở về,かえる,かえって,かえらない,かえれる,Nhóm I,,verb
+1226,50,すごします,sugoshimasu,過ごします,trải qua (thời gian),すごす,すごして,すごさない,すごせる,Nhóm I,,verb
+1227,50,いのります,inorimasu,祈ります,cầu nguyện/chúc,いのる,いのって,いのらない,いのれる,Nhóm I,,verb
+1228,50,いわいます,iwaimasu,祝います,chúc mừng,いわう,いわって,いわわない,いわえる,Nhóm I,,verb
+1229,50,おくります,okurimasu,送ります,gửi/tiễn,おくる,おくって,おくらない,おくれる,Nhóm I,,verb
+1230,50,むかえます,mukaemasu,迎えます,đón,むかえる,むかえて,むかえない,むかえられる,Nhóm II,,verb
+1231,50,おもいで,omoide,思い出,kỷ niệm,,,,,,,noun
+1232,50,さよなら,sayonara,さよなら,tạm biệt,,,,,,,expression
+1233,50,またあいましょう,mata aimashou,また会いましょう,hẹn gặp lại,,,,,,,expression
+1234,50,おげんきで,ogenki de,お元気で,chúc khỏe,,,,,,,expression
+1235,50,きをつけて,ki o tsukete,気を付けて,cẩn thận nhé,,,,,,,expression
+1236,50,いってきます,ittekimasu,行ってきます,tôi đi rồi sẽ về,,,,,,,expression
+1237,50,いってらっしゃい,itterasshai,行ってらっしゃい,đi nhé (và về),,,,,,,expression
+1238,50,ただいま,tadaima,ただいま,tôi đã về,,,,,,,expression
+1239,50,おかえりなさい,okaerinasai,お帰りなさい,mừng bạn về,,,,,,,expression
+1240,50,おめでとうございます,omedetou gozaimasu,おめでとうございます,chúc mừng,,,,,,,expression
+1241,50,ありがとうございます,arigatou gozaimasu,ありがとうございます,xin cảm ơn,,,,,,,expression
+1242,50,こちらこそ,kochira koso,こちらこそ,phía tôi mới phải cảm ơn,,,,,,,expression
+1243,50,どうぞおげんきで,douzo ogenki de,どうぞお元気で,giữ gìn sức khỏe nhé,,,,,,,expression
+1244,50,いつまでも,itsumademo,いつまでも,mãi mãi,,,,,,,adverb
+1245,50,これからも,korekara mo,これからも,từ nay về sau nữa,,,,,,,adverb
+1246,50,ほんとうに,hontou ni,本当に,thật sự,,,,,,,adverb
+1247,50,とても,totemo,とても,rất,,,,,,,adverb
+1248,50,たいへん,taihen,大変,rất/vô cùng,,,,,,,adverb
+1249,50,すばらしい,subarashii,素晴らしい,tuyệt vời,,,,,,,adjective
+1250,50,しあわせ,shiawase,幸せ,hạnh phúc,,,,,,,noun

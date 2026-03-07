@@ -385,8 +385,112 @@
       return;
     }
     detailModalState.el.classList.remove("detail-modal--open");
+    detailModalState.el.classList.remove("detail-modal--practice");
     detailModalState.el.setAttribute("aria-hidden", "true");
     state.ui.detailModal.isOpen = false;
+  }
+
+  function openKanjiPracticeModal(kanjiChar) {
+    if (!kanjiChar) return;
+
+    const wrap = createElement("div", "kd-writing-modal", "");
+
+    const canvasWrap = createElement("div", "kd-writing-canvas-wrap", "");
+    const canvas = document.createElement("canvas");
+    canvas.className = "kd-writing-canvas";
+    canvas.width = 520;
+    canvas.height = 520;
+    canvas.setAttribute("aria-label", "Vùng tập viết kanji");
+
+    const referenceDiv = createElement("div", "kd-writing-reference", String(kanjiChar));
+    referenceDiv.style.pointerEvents = "none";
+    canvasWrap.appendChild(referenceDiv);
+    canvasWrap.appendChild(canvas);
+
+    const actions = createElement("div", "kd-writing-actions", "");
+    const toggleRefBtn = createElement("button", "kd-writing-btn", "Ẩn kanji mẫu");
+    toggleRefBtn.type = "button";
+    const clearBtn = createElement("button", "kd-writing-btn", "Clear");
+    clearBtn.type = "button";
+
+    toggleRefBtn.addEventListener("click", function () {
+      var hidden = referenceDiv.style.visibility === "hidden";
+      referenceDiv.style.visibility = hidden ? "visible" : "hidden";
+      toggleRefBtn.textContent = hidden ? "Ẩn kanji mẫu" : "Hiện kanji mẫu";
+    });
+    clearBtn.addEventListener("click", function () {
+      var ctx = canvas.getContext("2d");
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+    });
+
+    actions.appendChild(toggleRefBtn);
+    actions.appendChild(clearBtn);
+
+    wrap.appendChild(canvasWrap);
+    wrap.appendChild(actions);
+
+    (function initCanvasDrawing() {
+      var ctx = canvas.getContext("2d");
+      var drawing = false;
+
+      ctx.strokeStyle = "#1f2937";
+      ctx.lineWidth = 4;
+      ctx.lineCap = "round";
+      ctx.lineJoin = "round";
+
+      function getPos(e) {
+        var rect = canvas.getBoundingClientRect();
+        var scaleX = canvas.width / rect.width;
+        var scaleY = canvas.height / rect.height;
+        var clientX = e.touches ? e.touches[0].clientX : e.clientX;
+        var clientY = e.touches ? e.touches[0].clientY : e.clientY;
+        return {
+          x: (clientX - rect.left) * scaleX,
+          y: (clientY - rect.top) * scaleY
+        };
+      }
+
+      function startDraw(e) {
+        e.preventDefault();
+        drawing = true;
+        var pos = getPos(e);
+        ctx.beginPath();
+        ctx.moveTo(pos.x, pos.y);
+      }
+      function moveDraw(e) {
+        if (!drawing) return;
+        e.preventDefault();
+        var pos = getPos(e);
+        ctx.lineTo(pos.x, pos.y);
+        ctx.stroke();
+      }
+      function endDraw() {
+        drawing = false;
+      }
+
+      canvas.addEventListener("mousedown", startDraw);
+      canvas.addEventListener("mousemove", moveDraw);
+      canvas.addEventListener("mouseup", endDraw);
+      canvas.addEventListener("mouseleave", endDraw);
+
+      canvas.addEventListener("touchstart", startDraw, { passive: false });
+      canvas.addEventListener("touchmove", moveDraw, { passive: false });
+      canvas.addEventListener("touchend", endDraw);
+    })();
+
+    const navRow = createElement("div", "kd-nav-row kd-nav-row--header", "");
+    const backBtn = createElement("button", "kd-nav-btn kd-nav-btn--back", "‹");
+    backBtn.type = "button";
+    backBtn.title = "Quay lại chi tiết Kanji";
+    backBtn.addEventListener("click", function () {
+      renderKanjiDetail();
+    });
+    navRow.appendChild(backBtn);
+
+    openDetailModal("Tập viết", wrap, navRow);
+    if (detailModalState.el) {
+      detailModalState.el.classList.add("detail-modal--practice");
+    }
   }
 
   // ========================
@@ -463,7 +567,16 @@
            kanji = String(item.kanji || item.Kanji || "").trim();
          }
 
-         var textAll = (hira + " " + kanji + " " + meaning).toLowerCase();
+         var romazi = "";
+         if (Object.prototype.hasOwnProperty.call(item, "romazi")) {
+           romazi = String(item.romazi || "").trim();
+         } else if (Object.prototype.hasOwnProperty.call(item, "Romazi")) {
+           romazi = String(item.Romazi || "").trim();
+         } else {
+           romazi = String(item.romazi || item.Romazi || "").trim();
+         }
+
+         var textAll = (hira + " " + kanji + " " + meaning + " " + romazi).toLowerCase();
          if (textAll.indexOf(search) === -1) {
            return false;
          }
@@ -559,6 +672,7 @@
       const item = {
         lesson: raw.lesson != null ? raw.lesson : raw.Lesson,
         hiragana: raw.hiragana != null ? raw.hiragana : raw.Hiragana,
+        romazi: raw.romazi != null ? raw.romazi : raw.Romazi,
         kanji: raw.kanji != null ? raw.kanji : raw.Kanji,
         meaning: raw.meaning != null ? raw.meaning : raw.Meaning,
         vru: raw.vru != null ? raw.vru : raw.Vru,
@@ -575,6 +689,12 @@
       if (state.displaySettings.hiragana && item.hiragana) {
         const hiraEl = createElement("div", "vocab-hira", item.hiragana);
         fields.push(hiraEl);
+      }
+
+      // Romazi hiển thị ngay sau hiragana
+      if (item.romazi) {
+        const romaziEl = createElement("div", "vocab-romazi", "(" + item.romazi + ")");
+        fields.push(romaziEl);
       }
       
       if (state.displaySettings.kanji && item.kanji) {
@@ -1593,6 +1713,20 @@
         container.appendChild(sec4);
       }
     }
+
+    // Section: Kanji writing practice (open modal)
+    const secWrite = createElement("div", "kd-section kd-section--writing", "");
+    const secWriteTitle = createElement("div", "kd-section-title", "Tập viết");
+    const openWriteBtn = createElement("button", "kd-writing-toggle-btn", "✏️ Tập viết");
+    openWriteBtn.type = "button";
+    secWrite.appendChild(secWriteTitle);
+    secWrite.appendChild(openWriteBtn);
+    openWriteBtn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      openKanjiPracticeModal(item.kanji);
+    });
+
+    container.appendChild(secWrite);
 
     const contentDiv = createElement("div", "kd-detail-content", "");
     while (container.firstChild) {

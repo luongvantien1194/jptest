@@ -23,12 +23,13 @@ Bắt buộc sử dụng tiếng Việt cho toàn bộ phần mô tả và diễ
 
 SCHEMA CSV
 
-kanji,hanviet,on_reading,kun_reading,stroke_count,radicals,core_meaning,story_image,logic_development,memory_tip,adjectives,vocabulary
+stt,kanji,hanviet,on_reading,kun_reading,stroke_count,radicals,core_meaning,story_image,logic_development,memory_tip,adjectives,vocabulary
 
 =====================
 
 GIẢI THÍCH TỪNG CỘT
-
+stt
+→ trong data mà tôi cung cấp.
 
 kanji
 
@@ -72,16 +73,15 @@ core_meaning
 
 
 story_image
-→ Diễn tả tượng hình của từ vựng, tối đa 20 từ tiếng Việt, không xuống dòng.
-→ có từ kanji đi kèm cho việc diễn giải (từ kanji nằm trong ())
+→ Diễn tả tượng hình của từ vựng, tối đa 40 từ tiếng Việt, không xuống dòng. Nguyên nhân hình thành của chữ tượng hình này, nếu được giải thích là ghép từ nhiều từ kanji lại với nhau thì từ kanji đi kèm cho việc diễn giải sẽ nằm trong dấu ()
 
 logic_development
 → Diễn giải cấu tạo: Bộ + bộ -> Nghĩa (bộ phải có kanji diễn tả đi kèm
-→ Ví dụ: thuy (kanji) + moc (kanji) -> (kanji) go troi tren nuoc
+→ Ví dụ: 氵-thuy + 木-moc -> (kanji) go troi tren nuoc
 → Không dùng tiếng Anh.
 
 memory_tip
-→ Mẹo nhớ ngắn gọn, tối đa 15 từ tiếng Việt, memory_tip phải khác story_image
+→ Mẹo nhớ ngắn gọn, tối đa 30 từ tiếng Việt, memory_tip phải khác story_image
 
 
 adjectives
@@ -94,6 +94,7 @@ tu(reading):nghia
 
 vocabulary
 → Từ vựng phổ biến, lấy từ "basic kanji book vol 1"
+→ Ít nhất 5 chữ
 → Định dạng:
 tu(reading): nghia
 → Nếu nhiều mục, phân cách bằng |
@@ -115,5 +116,255 @@ Bắt buộc toàn bộ nội dung mô tả bằng tiếng Việt có dấu.
 
 INPUT
 
-Tạo dữ liệu cho các kanji sau:
-@listkanji.txt (2 từ đầu tiên)
+STT, Kanji
+1, 日
+2, 月
+3, 木
+4, 山
+5, 川
+6, 田
+7, 人
+8, 口
+9, 車
+10, 門
+11, 火
+12, 水
+13, 金
+14, 土
+15, 子
+16, 女
+17, 学
+18, 生
+19, 先
+20, 私
+21, 一
+22, 二
+23, 三
+24, 四
+25, 五
+26, 六
+27, 七
+28, 八
+29, 九
+30, 十
+31, 百
+32, 千
+33, 万
+34, 円
+35, 年
+36, 上
+37, 下
+38, 中
+39, 大
+40, 小
+41, 本
+42, 半
+43, 分
+44, 力
+45, 何
+46, 明
+47, 休
+48, 体
+49, 好
+50, 男
+51, 林
+52, 森
+53, 間
+54, 畑
+55, 岩
+56, 目
+57, 耳
+58, 手
+59, 足
+60, 雨
+61, 竹
+62, 米
+63, 貝
+64, 石
+65, 糸
+66, 花
+67, 茶
+68, 肉
+69, 文
+70, 字
+71, 物
+72, 牛
+73, 馬
+74, 鳥
+75, 魚
+76, 新
+77, 古
+78, 長
+79, 短
+80, 高
+81, 安
+82, 低
+83, 暗
+84, 多
+85, 少
+86, 行
+87, 来
+88, 帰
+89, 食
+90, 飲
+91, 見
+92, 聞
+93, 読
+94, 書
+95, 話
+96, 買
+97, 教
+98, 朝
+99, 昼
+100, 夜
+101, 晩
+102, 夕
+103, 方
+104, 午
+105, 前
+106, 後
+107, 毎
+108, 週
+109, 曜
+110, 作
+111, 泳
+112, 油
+113, 海
+114, 酒
+115, 待
+116, 校
+117, 時
+118, 言
+119, 計
+120, 語
+121, 飯
+122, 宅
+123, 客
+124, 室
+125, 家
+126, 英
+127, 薬
+128, 会
+129, 今
+130, 雪
+131, 雲
+132, 電
+133, 売
+134, 広
+135, 店
+136, 度
+137, 病
+138, 疲
+139, 痛
+140, 屋
+141, 国
+142, 回
+143, 困
+144, 開
+145, 閉
+146, 近
+147, 遠
+148, 速
+149, 遅
+150, 道
+151, 青
+152, 晴
+153, 静
+154, 寺
+155, 持
+156, 荷
+157, 歌
+158, 友
+159, 父
+160, 母
+161, 兄
+162, 姉
+163, 弟
+164, 妹
+165, 夫
+166, 妻
+167, 彼
+168, 主
+169, 奥
+170, 元
+171, 気
+172, 有
+173, 名
+174, 親
+175, 切
+176, 便
+177, 利
+178, 不
+179, 若
+180, 早
+181, 忙
+182, 出
+183, 入
+184, 乗
+185, 降
+186, 着
+187, 渡
+188, 通
+189, 走
+190, 歩
+191, 止
+192, 動
+193, 動
+194, 右
+195, 左
+196, 東
+197, 西
+198, 北
+199, 南
+200, 外
+201, 内
+202, 部
+203, 駅
+204, 社
+205, 院
+206, 地
+207, 鉄
+208, 工
+209, 場
+210, 図
+211, 館
+212, 公
+213, 園
+214, 住
+215, 所
+216, 番
+217, 号
+218, 市
+219, 町
+220, 村
+221, 区
+222, 都
+223, 府
+224, 県
+225, 島
+226, 京
+227, 様
+228, 練
+229, 習
+230, 勉
+231, 強
+232, 研
+233, 究
+234, 留
+235, 質
+236, 問
+237, 題
+238, 答
+239, 宿
+240, 政
+241, 治
+242, 制
+243, 済
+244, 業
+245, 歴
+246, 育
+247, 変
+248, 理
+249, 科
+250, 数
+251, 医

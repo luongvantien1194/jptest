@@ -1082,6 +1082,13 @@ select:focus {
   color: #111827;
 }
 
+.vocab-romazi {
+  font-size: 13px;
+  font-weight: 400;
+  color: #6b7280;
+  font-style: italic;
+}
+
 .vocab-meaning {
   padding-left: 5px;
   font-size: 16px;
@@ -1567,6 +1574,10 @@ select:focus {
 }
 .detail-modal__nav .kd-nav-btn:last-child {
   grid-column: 3;
+  justify-self: start;
+}
+.detail-modal__nav .kd-nav-btn--back {
+  grid-column: 1;
   justify-self: start;
 }
 .detail-modal__title {
@@ -2219,6 +2230,7 @@ select:focus {
 .kd-detail-content > .kd-section--blue { grid-column: 1; }
 .kd-detail-content > .kd-section--amber { grid-column: 2; }
 .kd-detail-content > .kd-section--green { grid-column: 1 / -1; }
+.kd-detail-content > .kd-section--writing { grid-column: 1 / -1; }
 @media (max-width: 420px) {
   .kd-detail-content { grid-template-columns: 1fr; }
   .kd-detail-content > .kd-section--blue,
@@ -2228,14 +2240,14 @@ select:focus {
   padding: 12px 10px 8px;
   margin-bottom: 4px;
 }
-.detail-modal__body .kd-char { font-size: 56px; }
+.detail-modal__body .kd-char { font-size: 72px; }
 .detail-modal__body .kd-meaning-badge {
   margin-top: 4px;
-  padding: 2px 10px;
-  font-size: 11px;
+  padding: 3px 12px;
+  font-size: 14px;
 }
 .detail-modal__body .kd-hanviet {
-  font-size: 14px;
+  font-size: 18px;
   margin-bottom: 6px;
 }
 .detail-modal__body .kd-section {
@@ -2244,16 +2256,18 @@ select:focus {
 }
 .detail-modal__body .kd-section-title { margin-bottom: 4px; }
 .detail-modal__body .kd-pills-grid { gap: 6px; }
-.detail-modal__body .kd-pill { padding: 3px 8px; font-size: 12px; }
-.detail-modal__body .kd-pill--stroke { font-size: 11px; }
-.detail-modal__body .kd-pill--radical { font-size: 11px; }
+.detail-modal__body .kd-pill { padding: 4px 10px; font-size: 15px; }
+.detail-modal__body .kd-pill--stroke { font-size: 14px; }
+.detail-modal__body .kd-pill--radical { font-size: 14px; }
 .detail-modal__body .kd-story-row { padding: 4px 0; }
-.detail-modal__body .kd-story-label { font-size: 9px; }
-.detail-modal__body .kd-story-value { font-size: 12px; }
+.detail-modal__body .kd-story-label { font-size: 10px; }
+.detail-modal__body .kd-story-value { font-size: 15px; }
 .detail-modal__body .kd-vocab-row { padding: 3px 0; }
-.detail-modal__body .kd-vocab-word { font-size: 14px; }
-.detail-modal__body .kd-vocab-read { font-size: 11px; }
-.detail-modal__body .kd-vocab-mean { font-size: 12px; }
+.detail-modal__body .kd-vocab-word { font-size: 17px; }
+.detail-modal__body .kd-vocab-read { font-size: 13px; }
+.detail-modal__body .kd-vocab-mean { font-size: 14px; }
+.detail-modal__body .kd-vocab-chip-word { font-size: 16px; }
+.detail-modal__body .kd-vocab-chip-meaning { font-size: 13px; }
 .kd-nav-row--header {
   margin-top: 0;
   padding-top: 0;
@@ -2262,4 +2276,112 @@ select:focus {
 .kd-nav-row--header button:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+/* Kanji writing practice */
+.kd-section--writing {
+  padding: 10px 12px 12px;
+}
+.kd-writing-toggle-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 8px 14px;
+  margin-top: 4px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--bg-card);
+  color: var(--accent);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+.kd-writing-toggle-btn:hover {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+}
+.kd-writing-panel {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid var(--border);
+}
+.kd-writing-canvas-wrap {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 10px;
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  background: #fefefe;
+  box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06);
+}
+.kd-writing-canvas {
+  display: block;
+  width: 240px;
+  height: 240px;
+  border-radius: 9px;
+  cursor: crosshair;
+  touch-action: none;
+}
+.kd-writing-reference {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-jp);
+  font-size: 140px;
+  color: rgba(0, 0, 0, 0.12);
+  pointer-events: none;
+  user-select: none;
+}
+.kd-writing-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.kd-writing-btn {
+  padding: 6px 12px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  background: var(--bg-card);
+  color: var(--text);
+  font-size: 13px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+.kd-writing-btn:hover {
+  background: var(--accent-soft);
+  border-color: var(--accent);
+  color: var(--accent);
+}
+.detail-modal__body .kd-section--writing { padding: 8px 10px 10px; }
+.detail-modal__body .kd-writing-canvas { width: 200px; height: 200px; }
+.detail-modal__body .kd-writing-reference { font-size: 100px; }
+
+/* Practice mode: use detail modal but larger + centered */
+.detail-modal--practice .detail-modal__dialog {
+  max-width: 920px;
+}
+.detail-modal--practice .detail-modal__body {
+  display: flex;
+  justify-content: center;
+}
+.kd-writing-modal {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  padding-bottom: 4px;
+}
+.detail-modal--practice .kd-writing-canvas-wrap {
+  margin-bottom: 0;
+}
+.detail-modal--practice .kd-writing-canvas {
+  width: min(86vmin, 520px);
+  height: min(86vmin, 520px);
+}
+.detail-modal--practice .kd-writing-reference {
+  font-size: clamp(180px, 42vmin, 360px);
 }
