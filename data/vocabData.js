@@ -1,4 +1,4 @@
-const vocalData = [
+const vocabData = [
   {
     "id": 1,
     "Lesson": 1,
