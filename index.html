@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <title>JP Study App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+  <script>
+	var t = new Date().getTime();
+	document.write('<script src="js/version.js?t=' + t + '"><\/script>');
+	document.write('<script src="data/kanjiData.js?v=' + VERSION + '"><\/script>');
+	document.write('<script src="data/vocabData.js?v=' + VERSION + '"><\/script>');
+	document.write('<script src="data/grammarData.js?v=' + VERSION + '"><\/script>');
+</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+document.write('<link rel="stylesheet" href="css/style.css?v=' + VERSION + '">');
+
+  </script>
+</head>
+<body>
+  <div class="app-shell">
+    <header class="app-header">
+      <div class="header-top">
+        <div class="title-block">
+          <div class="app-title">
+            <span class="title-ja">日本語ラボ</span>
+          </div>
+        </div>
+      </div>
+      <nav class="tabs" aria-label="Sections">
+        <button class="tab" data-tab="vocab" type="button">
+          <span class="tab-label-main">TỪ VỰNG</span>
+          <span class="tab-label-sub">Vocab</span>
+          <span class="tab-indicator"></span>
+        </button>
+        <button class="tab" data-tab="kanji" type="button">
+          <span class="tab-label-main">KANJI</span>
+          <span class="tab-label-sub">Characters</span>
+          <span class="tab-indicator"></span>
+        </button>
+        <button class="tab" data-tab="grammar" type="button">
+          <span class="tab-label-main">NGỮ PHÁP</span>
+          <span class="tab-label-sub">Grammar</span>
+          <span class="tab-indicator"></span>
+        </button>
+      </nav>
+    </header>
+
+    <main class="app-body">
+      <!-- Vocab Section -->
+      <section class="section" id="section-vocab" aria-labelledby="section-vocab-title">
+        <div class="section-inner">
+          <div class="section-header">
+            <div class="section-title">
+              <span id="section-vocab-title" class="section-title-main">Từ vựng</span>
+              <span class="section-title-sub">Danh sách &amp; luyện tập</span>
+            </div>
+            <div class="chip"><span id="vocab-count-label">0 từ</span></div>
+          </div>
+
+          <div>
+            <div class="field-group" style="margin-bottom:6px;display:flex;flex-direction:row;align-items:center;gap:6px">
+              <div class="field-label" style="margin-bottom:0;white-space:nowrap">Search</div>
+              <input id="vocab-search-input" type="text" placeholder="Hiragana / Kanji / Romazi / Meaning" class="input-text" />
+              <button type="button" class="star-filter-btn" id="vocab-fav-filter" title="Chỉ hiện yêu thích">☆</button>
+            </div>
+            <div class="filters-toggle-row">
+              <button type="button" class="filters-toggle" id="vocab-filters-toggle">Hiện bộ lọc</button>
+              <button type="button" class="filters-toggle" id="display-settings-toggle-link">Hiện tuỳ chọn cột</button>
+            </div>
+            <div class="filters-row filters-row--hidden" id="vocab-filters-row">
+              <div class="field-group">
+                <div class="field-label">Lọc theo Bài</div>
+                <select id="vocab-lesson-filter">
+                  <option value="all">Tất cả</option>
+                </select>
+              </div>
+              <div class="field-group">
+                <div class="field-label">Lọc theo Category</div>
+                <select id="vocab-category-filter">
+                  <option value="all">Tất cả</option>
+                </select>
+              </div>
+            </div>
+            <div class="settings-panel">
+              <div class="settings-header" id="display-settings-toggle">
+                <div class="settings-title">
+                  <span>Settings hiển thị</span>
+                  <span class="settings-subtitle">Chọn trường muốn hiển thị trong list</span>
+                </div>
+                <div class="settings-toggle" id="display-settings-toggle-btn">
+                  <span class="settings-toggle-icon">▼</span>
+                  <span>Thu nhỏ</span>
+                </div>
+              </div>
+              <div class="settings-body settings-body--open" id="display-settings-body">
+                <label class="checkbox-chip checkbox-chip--active">
+                  <input type="checkbox" data-display-field="hiragana" checked />
+                  <span>Hiragana</span>
+                </label>
+                <label class="checkbox-chip checkbox-chip--active">
+                  <input type="checkbox" data-display-field="kanji" checked />
+                  <span>Kanji</span>
+                </label>
+                <label class="checkbox-chip checkbox-chip--active">
+                  <input type="checkbox" data-display-field="meaning" checked />
+                  <span>Nghĩa</span>
+                </label>
+                <label class="checkbox-chip">
+                  <input type="checkbox" data-display-field="vru" />
+                  <span>Vる</span>
+                </label>
+                <label class="checkbox-chip">
+                  <input type="checkbox" data-display-field="vt" />
+                  <span>Vて</span>
+                </label>
+                <label class="checkbox-chip">
+                  <input type="checkbox" data-display-field="vnai" />
+                  <span>Vない</span>
+                </label>
+                <label class="checkbox-chip">
+                  <input type="checkbox" data-display-field="vrare" />
+                  <span>Vられる</span>
+                </label>
+                <label class="checkbox-chip">
+                  <input type="checkbox" data-display-field="type"/>
+                  <span>Nhóm</span>
+                </label>
+                <label class="checkbox-chip">
+                  <input type="checkbox" data-display-field="note" />
+                  <span>Note</span>
+                </label>
+              </div>
+            </div>
+
+            <div class="vocab-actions">
+              <div class="btn-row">
+                <button class="btn" type="button" id="start-vocab-test-btn">
+                  <span>Test từ vựng</span>
+                </button>
+                <button class="btn-ghost" type="button" id="reset-vocab-filter-btn">
+                  <span>Reset filter</span>
+                </button>
+              </div>
+            </div>
+          </div>
+
+          <div class="content-grid">
+            <div class="card">
+              <div class="card-header">
+                <div>
+                  <div class="card-title">Danh sách từ</div>
+                </div>
+                <button type="button" class="autoplay-btn" id="vocab-autoplay-btn" title="Phát tự động">▶</button>
+                <div class="chip" id="vocab-filter-summary">Tất cả</div>
+              </div>
+              <div class="card-body scroll-thin" id="vocab-list-container">
+                <!-- Rendered vocab list -->
+              </div>
+            </div>
+
+            <div class="card card--vocab-detail-hidden">
+              <div class="card-header">
+                <div>
+                  <div class="card-title">Chi tiết từ vựng</div>
+                  <div class="card-subtitle">Hiển thị đầy đủ thông tin</div>
+                </div>
+              </div>
+              <div class="card-body scroll-thin" id="vocab-detail-container">
+                <div class="detail-empty">
+                  Chọn một từ vựng ở danh sách bên trái để xem chi tiết.
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="card card--vocab-test-hidden">
+            <div class="card-header">
+              <div>
+                <div class="card-title">Test từ vựng</div>
+                <div class="card-subtitle">Random 20 câu hỏi · Không reload trang</div>
+              </div>
+              <button class="btn-ghost btn-ghost--danger" type="button" id="reset-test-btn">
+                <span>Reset test</span>
+              </button>
+            </div>
+            <div class="card-body card-body--test scroll-thin" id="vocab-test-container">
+              <div class="detail-empty">
+                Bấm "Test từ vựng" để bắt đầu bài test 20 câu. Sau khi kết thúc sẽ xem được điểm và danh sách câu sai.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Kanji Section -->
+      <section class="section" id="section-kanji" aria-labelledby="section-kanji-title">
+        <div class="section-inner">
+          <div class="section-header">
+            <div class="section-title">
+              <span id="section-kanji-title" class="section-title-main">Kanji</span>
+              <span class="section-title-sub">Bộ thủ · Âm đọc · Ví dụ</span>
+            </div>
+            <div class="chip"><span id="kanji-count-label">0 chữ</span></div>
+          </div>
+
+          <div class="field-group" style="margin-bottom:6px;display:flex;flex-direction:row;align-items:center;gap:6px">
+            <div class="field-label" style="margin-bottom:0;white-space:nowrap">Search</div>
+            <input id="kanji-search-input" type="text" placeholder="Kanji / Hán Việt" class="input-text" />
+            <button type="button" class="star-filter-btn" id="kanji-fav-filter" title="Chỉ hiện yêu thích">☆</button>
+            <div class="view-toggle-row">
+              <button type="button" class="view-toggle-btn" id="kanji-view-list" title="Danh sách">☰</button>
+              <button type="button" class="view-toggle-btn view-toggle-btn--active" id="kanji-view-grid" title="Lưới">▦</button>
+            </div>
+          </div>
+          <div class="filters-toggle-row">
+            <button type="button" class="filters-toggle" id="kanji-filters-toggle">Hiện bộ lọc</button>
+          </div>
+          <div class="filters-row filters-row--hidden" id="kanji-filters-row">
+            <div class="field-group">
+              <div class="field-label">Lọc theo bộ thủ</div>
+              <select id="kanji-radical-filter">
+                <option value="all">Tất cả</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="content-grid">
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">Danh sách Kanji</div>
+              </div>
+              <div class="card-body scroll-thin" id="kanji-list-container">
+                <!-- Kanji list -->
+              </div>
+            </div>
+            <div class="card card--kanji-detail-hidden">
+              <div class="card-header">
+                <div class="card-title"></div>
+              </div>
+              <div class="card-body scroll-thin" id="kanji-detail-container">
+                <div class="detail-empty">
+                  Chọn 1 Kanji từ danh sách để xem chi tiết (Kun, On, ví dụ).
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="vocab-actions">
+            <div class="btn-row">
+              <button class="btn" type="button" id="start-kanji-test-btn">
+                <span>Test Kanji</span>
+              </button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Grammar Section -->
+      <section class="section" id="section-grammar" aria-labelledby="section-grammar-title">
+        <div class="section-inner">
+          <div class="section-header">
+            <div class="section-title">
+              <span id="section-grammar-title" class="section-title-main">Ngữ pháp</span>
+              <span class="section-title-sub">Cấu trúc · Ý nghĩa · Cách dùng</span>
+            </div>
+            <div class="chip"><span id="grammar-count-label">0 mẫu</span></div>
+          </div>
+
+          <div class="filters-toggle-row">
+            <button type="button" class="filters-toggle" id="grammar-filters-toggle">Ẩn bộ lọc</button>
+          </div>
+          <div class="filters-row" id="grammar-filters-row">
+            <div class="field-group">
+              <div class="field-label">Lọc theo Lesson</div>
+              <select id="grammar-lesson-filter">
+                <option value="all">Tất cả</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="content-grid">
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title">Danh sách ngữ pháp</div>
+              </div>
+              <div class="card-body scroll-thin" id="grammar-list-container">
+                <!-- Grammar list -->
+              </div>
+            </div>
+            <div class="card card--grammar-detail-hidden">
+              <div class="card-header">
+                <div class="card-title">Chi tiết ngữ pháp</div>
+              </div>
+              <div class="card-body scroll-thin" id="grammar-detail-container">
+                <div class="detail-empty">
+                  Chọn một cấu trúc ngữ pháp để xem nội dung chi tiết.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="app-footer">
+      <span>Make by Lương Văn Tiến</span>
+    </footer>
+  </div>
+
+  <!-- Detail modal for small screens -->
+  <div class="detail-modal" id="detail-modal" aria-hidden="true">
+    <div class="detail-modal__backdrop"></div>
+    <div class="detail-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="detail-modal-title">
+      <button class="detail-modal__close" type="button" id="detail-modal-close-btn" aria-label="Close detail">
+        ×
+      </button>
+      <div class="detail-modal__header">
+        <div class="detail-modal__nav" id="detail-modal-nav"></div>
+        <div class="detail-modal__title" id="detail-modal-title"></div>
+      </div>
+      <div class="detail-modal__body scroll-thin" id="detail-modal-body"></div>
+    </div>
+  </div>
+  <div id="soundOverlay">🔊</div>
+<script>
+  document.write('<script src="js/main.js?v=' + VERSION + '"><\/script>');
+</script>
+</body>
+</html>
