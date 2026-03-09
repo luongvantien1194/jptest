@@ -1,1 +1,0 @@
-const VERSION = "v1";
