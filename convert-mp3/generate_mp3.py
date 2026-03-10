@@ -3,7 +3,7 @@ import json
 import os
 
 input_file = "data.json"
-output_folder = "mp3"
+output_folder = "./sounds/"
 
 # Tạo thư mục mp3 nếu chưa có
 os.makedirs(output_folder, exist_ok=True)
