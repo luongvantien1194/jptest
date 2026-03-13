@@ -2626,7 +2626,7 @@ const kanjiData = [
   },
   {
     "stt": 176,
-    "kanji": "TIỆN",
+    "kanji": "便",
     "hanviet": "TIỆN",
     "on_reading": "ベン|ビン",
     "kun_reading": "たより",
