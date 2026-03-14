@@ -2926,7 +2926,7 @@ const kanjiData = [
   },
   {
     "stt": 196,
-    "kanji": "ĐÔNG",
+    "kanji": "東",
     "hanviet": "ĐÔNG",
     "on_reading": "トウ",
     "kun_reading": "ひがし",
@@ -2941,7 +2941,7 @@ const kanjiData = [
   },
   {
     "stt": 197,
-    "kanji": "TÂY",
+    "kanji": "西",
     "hanviet": "TÂY",
     "on_reading": "セイ|サイ",
     "kun_reading": "にし",
@@ -2956,7 +2956,7 @@ const kanjiData = [
   },
   {
     "stt": 198,
-    "kanji": "BẮC",
+    "kanji": "北",
     "hanviet": "BẮC",
     "on_reading": "ホク",
     "kun_reading": "きた",
@@ -2971,7 +2971,7 @@ const kanjiData = [
   },
   {
     "stt": 199,
-    "kanji": "NAM",
+    "kanji": "南",
     "hanviet": "NAM",
     "on_reading": "ナン",
     "kun_reading": "みなみ",
