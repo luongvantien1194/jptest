@@ -98,10 +98,10 @@
   // HELPER FUNCTIONS
   // ========================
 
-  // Play vocab audio from sounds/vocab/{id}.mp3
+  // Play vocab audio từ sounds/vol/{romaji}.mp3
   var _currentAudio = null;
-  function playVocabAudio(vocabId, btn) {
-    if (!vocabId) return;
+  function playVocabAudio(audioKey, btn) {
+    if (!audioKey) return;
     // Stop current if playing
     if (_currentAudio) {
       _currentAudio.pause();
@@ -109,7 +109,7 @@
       var prevBtn = document.querySelector(".audio-btn--playing");
       if (prevBtn) prevBtn.classList.remove("audio-btn--playing");
     }
-    var audio = new Audio("sounds/vocab/" + vocabId + ".mp3");
+    var audio = new Audio("sounds/vol/" + audioKey + ".mp3");
     _currentAudio = audio;
     if (btn) btn.classList.add("audio-btn--playing");
     audio.addEventListener("ended", function () {
@@ -126,13 +126,13 @@
     });
   }
 
-  function createAudioBtn(vocabId) {
+  function createAudioBtn(audioKey) {
     var btn = createElement("button", "audio-btn", "🔊");
     btn.type = "button";
     btn.title = "Phát âm thanh";
     btn.addEventListener("click", function (e) {
       e.stopPropagation();
-      playVocabAudio(vocabId, btn);
+      playVocabAudio(audioKey, btn);
     });
     return btn;
   }
@@ -186,13 +186,19 @@
     // Scroll into view
     currentItem.scrollIntoView({ behavior: "smooth", block: "center" });
 
-    // Find audio button inside this item and play
+    // Find audio button inside this item and play (nếu có file)
     var audioBtn = currentItem.querySelector(".audio-btn");
     var vocabIdx = currentItem.getAttribute("data-vocab-index");
     var raw = vocabIdx != null ? vocabData[parseInt(vocabIdx)] : null;
-    var vocabId = raw ? (raw.id != null ? raw.id : raw.Id) : null;
+    var hiraAuto = raw
+      ? (raw.hiragana != null ? raw.hiragana : raw.Hiragana)
+      : "";
+    var audioKeyAuto = audioFileNameFromHiragana(hiraAuto || "");
+    var hasAudioAuto = typeof listMp3 !== "undefined" &&
+      Array.isArray(listMp3) &&
+      listMp3.indexOf(audioKeyAuto) !== -1;
 
-    if (vocabId) {
+    if (hasAudioAuto && audioKeyAuto) {
       // Play audio and wait for it to finish, then move to next
       if (_currentAudio) {
         _currentAudio.pause();
@@ -201,7 +207,7 @@
       var prevBtn = document.querySelector(".audio-btn--playing");
       if (prevBtn) prevBtn.classList.remove("audio-btn--playing");
 
-      var audio = new Audio("sounds/vocab/" + vocabId + ".mp3");
+      var audio = new Audio("sounds/vol/" + audioKeyAuto + ".mp3");
       _currentAudio = audio;
       if (audioBtn) audioBtn.classList.add("audio-btn--playing");
 
@@ -303,6 +309,119 @@
     }
     const shuffled = shuffleArray(indices);
     return shuffled.slice(0, n);
+  }
+
+  // Hiragana → Romaji để đặt tên file âm thanh
+  const _HIRA_DIGRAPHS = {
+    "きゃ": "kya", "きゅ": "kyu", "きょ": "kyo",
+    "しゃ": "sha", "しゅ": "shu", "しょ": "sho",
+    "ちゃ": "cha", "ちゅ": "chu", "ちょ": "cho",
+    "にゃ": "nya", "にゅ": "nyu", "にょ": "nyo",
+    "ひゃ": "hya", "ひゅ": "hyu", "ひょ": "hyo",
+    "みゃ": "mya", "みゅ": "myu", "みょ": "myo",
+    "りゃ": "rya", "りゅ": "ryu", "りょ": "ryo",
+    "ぎゃ": "gya", "ぎゅ": "gyu", "ぎょ": "gyo",
+    "じゃ": "ja",  "じゅ": "ju",  "じょ": "jo",
+    "びゃ": "bya", "びゅ": "byu", "びょ": "byo",
+    "ぴゃ": "pya", "ぴゅ": "pyu", "ぴょ": "pyo"
+  };
+
+  const _HIRA_TABLE = {
+    "あ":"a","い":"i","う":"u","え":"e","お":"o",
+    "か":"ka","き":"ki","く":"ku","け":"ke","こ":"ko",
+    "さ":"sa","し":"shi","す":"su","せ":"se","そ":"so",
+    "た":"ta","ち":"chi","つ":"tsu","て":"te","と":"to",
+    "な":"na","に":"ni","ぬ":"nu","ね":"ne","の":"no",
+    "は":"ha","ひ":"hi","ふ":"fu","へ":"he","ほ":"ho",
+    "ま":"ma","み":"mi","む":"mu","め":"me","も":"mo",
+    "や":"ya","ゆ":"yu","よ":"yo",
+    "ら":"ra","り":"ri","る":"ru","れ":"re","ろ":"ro",
+    "わ":"wa","を":"o",
+    "ん":"n",
+    "が":"ga","ぎ":"gi","ぐ":"gu","げ":"ge","ご":"go",
+    "ざ":"za","じ":"ji","ず":"zu","ぜ":"ze","ぞ":"zo",
+    "だ":"da","ぢ":"ji","づ":"zu","で":"de","ど":"do",
+    "ば":"ba","び":"bi","ぶ":"bu","べ":"be","ぼ":"bo",
+    "ぱ":"pa","ぴ":"pi","ぷ":"pu","ぺ":"pe","ぽ":"po",
+    "ぁ":"a","ぃ":"i","ぅ":"u","ぇ":"e","ぉ":"o",
+    "ゃ":"ya","ゅ":"yu","ょ":"yo",
+    "っ":"",   // xử lý riêng (nhân đôi phụ âm)
+    "ー":""    // xử lý riêng (kéo dài âm)
+  };
+
+  function _lastVowel(str) {
+    var match = String(str || "").match(/[aeiou](?!.*[aeiou])/);
+    return match ? match[0] : "";
+  }
+
+  function extractHiragana(text) {
+    return String(text || "").replace(/[^\p{Script=Hiragana}ー]/gu, "");
+  }
+
+  function hiraganaToRomaji(hiraRaw) {
+    var hira = extractHiragana(hiraRaw);
+    var result = "";
+    var i = 0;
+
+    while (i < hira.length) {
+      var ch = hira[i];
+      var next = hira[i + 1] || "";
+      var pair = ch + next;
+
+      // Digraph きゃ, しゃ, ちゃ, ...
+      if (_HIRA_DIGRAPHS[pair]) {
+        result += _HIRA_DIGRAPHS[pair];
+        i += 2;
+        continue;
+      }
+
+      // Small-tsu っ: nhân đôi phụ âm đầu âm tiếp theo
+      if (ch === "っ") {
+        var after = hira[i + 1] || "";
+        var afterNext = hira[i + 2] || "";
+        var afterPair = after + afterNext;
+        var romNext = "";
+
+        if (_HIRA_DIGRAPHS[afterPair]) {
+          romNext = _HIRA_DIGRAPHS[afterPair];
+        } else if (_HIRA_TABLE[after] != null) {
+          romNext = _HIRA_TABLE[after];
+        }
+
+        if (romNext) {
+          var firstChar = romNext.charAt(0);
+          if (/[bcdfghjklmnpqrstvwxyz]/.test(firstChar)) {
+            result += firstChar;
+          }
+        }
+        i += 1;
+        continue;
+      }
+
+      // Ký tự thường
+      if (_HIRA_TABLE[ch] != null) {
+        var rom = _HIRA_TABLE[ch];
+
+        // Kéo dài âm nếu sau là ー
+        if (next === "ー") {
+          var v = _lastVowel(rom);
+          if (v) {
+            rom += v;
+          }
+        }
+
+        result += rom;
+      }
+
+      i += 1;
+    }
+
+    return result;
+  }
+
+  function audioFileNameFromHiragana(text) {
+    var romaji = hiraganaToRomaji(text);
+    return romaji.toLowerCase().replace(/[^a-z]/g, "");
   }
 
   function getCategoryLabel(rawCategory) {
@@ -744,9 +863,12 @@
         mainRow.appendChild(fieldEl);
       });
 
-      // Audio button
-      var vocabId = raw.id != null ? raw.id : raw.Id;
-      var audioBtn = vocabId ? createAudioBtn(vocabId) : null;
+      // Audio button: chỉ hiện nếu có file trong listMp3
+      var audioKey = audioFileNameFromHiragana(item.hiragana || "");
+      var hasAudio = typeof listMp3 !== "undefined" &&
+        Array.isArray(listMp3) &&
+        listMp3.indexOf(audioKey) !== -1;
+      var audioBtn = hasAudio && audioKey ? createAudioBtn(audioKey) : null;
 
       var vocabTopRow = createElement("div", "", "");
       vocabTopRow.style.cssText = "display:flex;align-items:center;gap:4px";
@@ -1145,13 +1267,14 @@
       meaning: rawQuestion.meaning != null ? rawQuestion.meaning : rawQuestion.Meaning
     };
 
-    // Lấy vocabId để phát audio sau khi chọn đáp án
+    // Lấy audioKey (romaji) để phát audio sau khi chọn đáp án
     var vocabIdForAudio = null;
-    if (rawQuestion) {
-      if (rawQuestion.id != null) {
-        vocabIdForAudio = rawQuestion.id;
-      } else if (rawQuestion.Id != null) {
-        vocabIdForAudio = rawQuestion.Id;
+    if (questionWord.hiragana) {
+      var keyFromHira = audioFileNameFromHiragana(questionWord.hiragana);
+      if (typeof listMp3 !== "undefined" &&
+        Array.isArray(listMp3) &&
+        listMp3.indexOf(keyFromHira) !== -1) {
+        vocabIdForAudio = keyFromHira;
       }
     }
 
@@ -1700,9 +1823,24 @@
         const wordEl = createElement("span", "kd-vocab-word", parts[0] || "");
         const readEl = createElement("span", "kd-vocab-read", parts[1] ? "(" + parts[1] + ")" : "");
         const meanEl = createElement("span", "kd-vocab-mean", parts[2] || "");
+
         row.appendChild(wordEl);
         row.appendChild(readEl);
         row.appendChild(meanEl);
+
+        // Nếu hiragana trong ví dụ (phần trong ngoặc) tồn tại trong listMp3 thì thêm icon loa
+        // Ví dụ: "川(かわ):sông" -> audioFileNameFromHiragana sẽ lấy "かわ"
+        var hiraRead = parts[0] || "";
+        var audioKeyVocab = audioFileNameFromHiragana(hiraRead);
+        var hasAudioVocab = audioKeyVocab &&
+          typeof listMp3 !== "undefined" &&
+          Array.isArray(listMp3) &&
+          listMp3.indexOf(audioKeyVocab) !== -1;
+        if (hasAudioVocab) {
+          var audioBtnVocab = createAudioBtn(audioKeyVocab);
+          row.appendChild(audioBtnVocab);
+        }
+
         sec4.appendChild(row);
       });
 
@@ -2694,6 +2832,18 @@
     const isCorrect = selected === correct;
     if (isCorrect) testState.correctCount += 1;
     testState.answers.push({ item: item, mode: mode, correct: correct, selected: selected, isCorrect: isCorrect });
+
+    // Nếu câu hỏi dựa trên từ vựng (mode 5–9) thì sau khi chọn đáp án mới phát âm (nếu có file)
+    if (item && item.ve && item.ve.reading) {
+      var vocabAudioKey = audioFileNameFromHiragana(item.ve.reading);
+      var hasVocabAudio = vocabAudioKey &&
+        typeof listMp3 !== "undefined" &&
+        Array.isArray(listMp3) &&
+        listMp3.indexOf(vocabAudioKey) !== -1;
+      if (hasVocabAudio) {
+        playVocabAudio(vocabAudioKey, null);
+      }
+    }
 
     if (testState.currentIndex < testState.questions.length - 1) {
       testState.currentIndex += 1;
