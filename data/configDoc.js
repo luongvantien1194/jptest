@@ -55,6 +55,11 @@ window.DOC_CONFIG = {
       key: "niOGa",
       file: "niOGa",
       label: "N1: に (ni) / を (wo) / が (ga)"
+    },
+    {
+      key: "note",
+      file: "note",
+      label: "Note bài 36"
     }
   ]
 };
