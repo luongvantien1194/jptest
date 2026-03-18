@@ -1,26 +1,29 @@
 # 📝 TỔNG HỢP ÔN TẬP: MINNA NO NIHONGO BÀI 35 (N4)
 
-## 1. 語彙 (Từ vựng, Từ đồng nghĩa & Đối nghĩa)
+## 1. 語彙 (Từ vựng, Từ đối nghĩa & Từ liên quan)
 
-| STT | Kanji | Hiragana | Nghĩa Việt | Đồng nghĩa (Same same) | Đối nghĩa |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| 1 | **咲きます** | さきます | Nở (hoa) | **開きます** (hirakimasu) | **散ります** (chiri-masu): Rụng, tàn |
-| 2 | **変わります** | かわります | Thay đổi | **変化します** (henka-shimasu) | **維持します** (iji-shimasu): Duy trì |
-| 3 | **困ります** | こまります | Rắc rối, khó khăn | **大変です** (taihen-desu) | **安心します** (anshin-shimasu): Yên tâm |
-| 4 | **付けます** | つけます | Vẽ, đánh dấu | **記します** (shirushimasu) | **消します** (keshimasu): Xóa |
-| 5 | **拾います** | ひろいます | Nhặt lên | **手に取ります** | **捨てます** (sutemasu): Vứt đi |
-| 6 | **楽[な]** | らく[な] | Nhàn hạ, thoải mái | **簡単 / 快適** | **大変 / 苦しい** (vất vả, khổ) |
-| 7 | **正しい** | ただしい | Đúng, chính xác | **正確[な]** (seikaku) | **間違い / 正しくない** (sai) |
-| 8 | **珍しい** | めずらしい | Hiếm, lạ | **稀[な]** (mare) | **普通 / どこにでもある** (phổ biến) |
-| 9 | **向こう** | むこう | Phía bên kia | **反対側** (hantaigawa) | **手前** (temae): Phía bên này |
-| 10 | **島** | しま | Đảo | **島嶼** (tousho) | **大陸** (tairiku): Lục địa |
-| 11 | **村** | むら | Làng | **里** (sato) | **都会 / 町** (thành thị) |
-| 12 | **屋上** | おくじょう | Sân thượng | **テラス** (terrace) | **地下** (chika): Tầng hầm |
-| 13 | **海外** | かいがい | Nước ngoài | **外国** (gaikoku) | **国内** (kokunai): Trong nước |
-| 14 | **許可** | きょか | Cho phép | **認可 / ＯＫ** | **禁止** (kinshi): Cấm |
-| 15 | **出席します** | しゅっせき | Tham gia | **参加します** (sanka) | **欠席します** (kesseki): Vắng mặt |
-| 16 | **もっと** | もっと | Hơn nữa | **さらに** (sarani) | **少し** (sukoshi): Một chút |
-| 17 | **はじめに** | はじめに | Đầu tiên | **まず / 最初** | **最後に** (saigo ni): Cuối cùng |
+| STT | Kanji | Hiragana | Nghĩa Việt | Từ đối nghĩa / Liên quan (Kanji - Hiragana - Nghĩa) |
+| :--- | :--- | :--- | :--- | :--- |
+| 1 | **咲きます** | さきます | Nở (hoa) | **散ります** (ちります): Rụng, tàn |
+| 2 | **変わります** | かわります | Thay đổi | **維持します** (いじします): Duy trì, giữ nguyên |
+| 3 | **困ります** | こまります | Rắc rối, khó khăn | **安心します** (あんしんします): Yên tâm |
+| 4 | **付けます** | つけます | Vẽ, đánh dấu | **消します** (けします): Xóa, tẩy |
+| 5 | **拾います** | ひろいます | Nhặt lên | **捨てます** (すてます): Vứt đi |
+| 6 | **楽[な]** | らく[な] | Nhàn hạ, thoải mái | **大変[な]** (たいへん): Vất vả, khó khăn |
+| 7 | **正しい** | ただしい | Đúng, chính xác | **間違い** (まちがい): Sai sót, nhầm lẫn |
+| 8 | **珍しい** | めずらしい | Hiếm, lạ | **普通** (ふつう): Bình thường, phổ biến |
+| 9 | **向こう** | むこう | Phía bên kia | **手前** (てまえ): Phía bên này |
+| 10 | **島** | しま | Đảo | **大陸** (たいりく): Lục địa |
+| 11 | **村** | むら | Làng | **都会** (とかい): Thành thị, phố thị |
+| 12 | **屋上** | おくじょう | Sân thượng | **地下** (ちか): Tầng hầm |
+| 13 | **海外** | かいがい | Nước ngoài | **国内** (こくない): Trong nước |
+| 14 | **許可** | きょか | Cho phép | **禁止** (きんし): Cấm đoán |
+| 15 | **出席します** | しゅっせき | Tham gia, có mặt | **欠席します** (けっせきします): Vắng mặt |
+| 16 | **もっと** | もっと | Hơn nữa | **少し** (すこし): Một chút, ít |
+| 17 | **はじめに** | はじめに | Đầu tiên | **最後に** (さいごに): Cuối cùng |
+| 18 | **丸** | まる | Vòng tròn | **罰 / ❌** (ばつ): Dấu nhân, điểm sai |
+| 19 | **操作** | そうさ | Thao tác | **方法** (ほうほう): Phương pháp |
+| 20 | **故障** | こしょう | Hỏng hóc | **修理** (しゅうり): Sửa chữa |
 
 ---
 
@@ -28,11 +31,11 @@
 
 ### A. Thể điều kiện (条件形 - Jouken-kei)
 
-* **Nhóm 1:** Đuôi `-i` -> `-e` + `ば`. (Ví dụ: *kaki-masu* -> **kakeba**)
-* **Nhóm 2:** Thêm `-reba` vào sau thân động từ. (Ví dụ: *tabe-masu* -> **tabereba**)
+* **Nhóm 1:** Đuôi `-i` -> `-e` + `ば`. (Ví dụ: 書きます -> **書けば**)
+* **Nhóm 2:** Thêm `-reba` vào sau thân động từ. (Ví dụ: 食べます -> **食べれば**)
 * **Nhóm 3:** します -> **すれば** / 来ます -> **来れば** (kureba)
-* **Tính từ -i:** Bỏ `-i` thêm `-kereba`. (Ví dụ: *yasui* -> **yasukereba**)
-* **Tính từ -na / Danh từ:** Thêm **nara**. (Ví dụ: *hima* -> **hima-nara**)
+* **Tính từ -i:** Bỏ `-i` thêm `-kereba`. (Ví dụ: 安い -> **安ければ**)
+* **Tính từ -na / Danh từ:** Thêm **nara**. (Ví dụ: 暇 -> **暇なら**)
 
 ---
 
