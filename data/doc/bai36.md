@@ -48,6 +48,6 @@
 * **V ように します:** Thể hiện quyết tâm thực hiện một hành động (nhất thời).
 * **V ように しています:** Đang duy trì một thói quen (đều đặn, lâu dài).
 > **Ví dụ:** 毎日運動する**ように しています**。  
-> (Tôi đang **cố gắng** vận động mỗi ngày.)
+> (Tôi đang **cố gắng** vận động mỗi ngày.).
 
 ---
