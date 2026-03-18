@@ -1,6 +1,6 @@
 # 📝 TỔNG HỢP ÔN TẬP: MINNA NO NIHONGO BÀI 35 (N4)
 
-## 1. 語彙 (Từ vựng, Từ đối nghĩa & Từ liên quan)
+## 1. 語彙 (Từ vựng, Từ đồng nghĩa & Đối nghĩa)
 
 | STT | Kanji | Hiragana | Nghĩa Việt | Từ đối nghĩa / Liên quan (Kanji - Hiragana - Nghĩa) |
 | :--- | :--- | :--- | :--- | :--- |
@@ -21,9 +21,9 @@
 | 15 | **出席します** | しゅっせき | Tham gia, có mặt | **欠席します** (けっせきします): Vắng mặt |
 | 16 | **もっと** | もっと | Hơn nữa | **少し** (すこし): Một chút, ít |
 | 17 | **はじめに** | はじめに | Đầu tiên | **最後に** (さいごに): Cuối cùng |
-| 18 | **丸** | まる | Vòng tròn | **罰 / ❌** (ばつ): Dấu nhân, điểm sai |
+| 18 | **故障** | こしょう | Hỏng hóc | **修理** (しゅうり): Sửa chữa |
 | 19 | **操作** | そうさ | Thao tác | **方法** (ほうほう): Phương pháp |
-| 20 | **故障** | こしょう | Hỏng hóc | **修理** (しゅうり): Sửa chữa |
+| 20 | **丸** | まる | Vòng tròn | **罰** (ばつ): Dấu nhân, điểm sai |
 
 ---
 
@@ -31,8 +31,9 @@
 
 ### A. Thể điều kiện (条件形 - Jouken-kei)
 
-* **Nhóm 1:** Đuôi `-i` -> `-e` + `ば`. (Ví dụ: 書きます -> **書けば**)
-* **Nhóm 2:** Thêm `-reba` vào sau thân động từ. (Ví dụ: 食べます -> **食べれば**)
+**Cách chia:**
+* **Nhóm 1:** Đuôi `-i` chuyển thành `-e` + `ば`. (Ví dụ: 書きます -> **書けば**)
+* **Nhóm 2:** Thêm `-reba` sau thân động từ. (Ví dụ: 食べます -> **食べれば**)
 * **Nhóm 3:** します -> **すれば** / 来ます -> **来れば** (kureba)
 * **Tính từ -i:** Bỏ `-i` thêm `-kereba`. (Ví dụ: 安い -> **安ければ**)
 * **Tính từ -na / Danh từ:** Thêm **nara**. (Ví dụ: 暇 -> **暇なら**)
@@ -43,15 +44,19 @@
 
 #### 1. [Thể điều kiện], ~ (Nếu... thì...)
 Diễn tả điều kiện cần thiết để một kết quả xảy ra.
-> **Ví dụ:** ボタンを**押せば**、窓が開きます。 (Nếu ấn nút thì cửa sổ sẽ mở.)
+> **Ví dụ:** ボタンを**押せば**、窓が開きます。  
+> (Nếu ấn nút thì cửa sổ sẽ mở.)
 
 #### 2. Danh từ + なら, ~ (Nếu là N thì...)
 Đưa ra lời khuyên hoặc gợi ý dựa trên chủ đề đối phương vừa nhắc tới.
-> **Ví dụ:** 日本料理**なら**、すしが一番有名です。 (Nếu là món Nhật thì Sushi là nổi tiếng nhất.)
+> **Ví dụ:** 日本料理**なら**、すしが一番有名です。  
+> (Nếu là món Nhật thì Sushi là nổi tiếng nhất.)
 
 #### 3. Từ để hỏi + [Thể điều kiện] + いいですか
 Dùng để xin lời khuyên (Tôi nên làm gì?).
-> **Ví dụ:** どこでカメラを**買えばいいですか**。 (Tôi nên mua máy ảnh ở đâu thì được?)
+> **Ví dụ:** どこでカメラを**買えばいいですか**。  
+> (Tôi nên mua máy ảnh ở đâu thì được?)
 
 #### 4. V-eba + V-jisho + ほど (Càng... càng...)
-> **Ví dụ:** 日本語は**勉強すれば勉強するほど**、面白くなります。 (Tiếng Nhật càng học càng thấy thú vị.)
+> **Ví dụ:** 日本語は**勉強すれば勉強するほど**、面白くなります。  
+> (Tiếng Nhật càng học càng thấy thú vị.)
