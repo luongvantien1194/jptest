@@ -60,6 +60,21 @@ window.DOC_CONFIG = {
       key: "bai35",
       file: "bai35",
       label: "Note bài 35"
+    },
+    {
+      key: "bai36",
+      file: "bai36",
+      label: "Note bài 36"
+    },
+    {
+      key: "bai37",
+      file: "bai37",
+      label: "Note bài 37"
+    },
+    {
+      key: "bai38",
+      file: "bai38",
+      label: "Note bài 38"
     }
   ]
 };
