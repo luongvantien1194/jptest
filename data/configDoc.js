@@ -57,9 +57,9 @@ window.DOC_CONFIG = {
       label: "N1: に (ni) / を (wo) / が (ga)"
     },
     {
-      key: "note",
-      file: "note",
-      label: "Note bài 36"
+      key: "bai35",
+      file: "bai35",
+      label: "Note bài 35"
     }
   ]
 };
