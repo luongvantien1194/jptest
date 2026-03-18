@@ -2,6 +2,11 @@ window.DOC_CONFIG = {
   defaultKey: "theT",
   docs: [
     {
+      key: "tongHop",
+      file: "tongHop",
+      label: "Tổng hợp 1 số từ"
+    },
+	{
       key: "theT",
       file: "theT",
       label: "Thể て (て形)"
