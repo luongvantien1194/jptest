@@ -1,41 +1,26 @@
-# 📝 TỔNG HỢP TỪ VỰNG & NGỮ PHÁP BÀI 35 (FULL)
+# 📝 TỔNG HỢP ÔN TẬP: MINNA NO NIHONGO BÀI 35 (N4)
 
-## 1. 語彙 (Từ vựng đầy đủ)
+## 1. 語彙 (Từ vựng, Từ đồng nghĩa & Đối nghĩa)
 
-| STT | Kanji | Hiragana | Nghĩa Việt | Từ đối nghĩa / Ghi chú |
-| :--- | :--- | :--- | :--- | :--- |
-| 1 | **咲きます** | さきます | Nở (hoa) | **散ります** (chiri-masu): Rụng, tàn |
-| 2 | **変わります** | かわります | Thay đổi (màu sắc) | **維持します** (iji-shimasu): Duy trì |
-| 3 | **困ります** | こまります | Rắc rối, khó khăn | **安心します** (anshin-shimasu): Yên tâm |
-| 4 | **付けます** | つけます | Vẽ, đánh dấu (vòng tròn) | **消します** (keshimasu): Xóa |
-| 5 | **拾います** | ひろいます | Nhặt lên | **捨てます** (sutemasu): Vứt đi |
-| 6 | **かかります** | かかります | Có điện thoại [電話が～] | - |
-| 7 | **楽[な]** | らく[な] | Nhàn hạ, thoải mái | **大変[な]** (taihen): Vất vả |
-| 8 | **正しい** | ただしい | Đúng, chính xác | **間違い / 正しくない** : Sai |
-| 9 | **珍しい** | めずらしい | Hiếm, lạ | **普通** (futsuu): Bình thường |
-| 10 | **向こう** | むこう | Phía bên kia, đối diện | **手前** (temae): Phía bên này |
-| 11 | **島** | しま | Đảo | **大陸** (tairiku): Lục địa |
-| 12 | **村** | むら | Làng | **都会 / 町** : Thành phố |
-| 13 | **港** | みnato | Cảng | - |
-| 14 | **近所** | きんじょ | Hàng xóm, vùng lân cận | - |
-| 15 | **屋上** | おくじょう | Sân thượng | **地下** (chika): Tầng hầm |
-| 16 | **海外** | かいがい | Nước ngoài | **国内** (kokunai): Trong nước |
-| 17 | **山登り** | やまのぼり | Leo núi | - |
-| 18 | **ハイキング** | ハイキング | Đi bộ đường dài | - |
-| 19 | **機会** | きかい | Cơ hội | - |
-| 20 | **許可** | きょか | Cho phép | **禁止** (kinshi): Cấm |
-| 21 | **丸** | まる | Vòng tròn | **罰 / ❌** (batsu): Dấu nhân |
-| 22 | **操作** | そうさ | Thao tác | - |
-| 23 | **方法** | ほうほう | Phương pháp | - |
-| 24 | **設備** | せつび | Thiết bị | - |
-| 25 | **カーテン** | カーテン | Cái rèm | - |
-| 26 | **ひも** | ひも | Sợi dây | - |
-| 27 | **ふた** | ふた | Cái nắp | - |
-| 28 | **葉** | は | Cái lá | - |
-| 29 | **曲** | きょく | Bản nhạc | - |
-| 30 | **楽しみ** | たのしみ | Niềm vui, sự mong đợi | **苦しみ** (kurushimi): Nỗi khổ |
-| 31 | **もっと** | もっと | Hơn nữa | - |
-| 32 | **はじめに** | はじめに | Đầu tiên | **最後に** (saigo ni): Cuối cùng |
+| STT | Kanji | Hiragana | Nghĩa Việt | Đồng nghĩa (Same same) | Đối nghĩa |
+| :--- | :--- | :--- | :--- | :--- | :--- |
+| 1 | **咲きます** | さきます | Nở (hoa) | **開きます** (hirakimasu) | **散ります** (chiri-masu): Rụng, tàn |
+| 2 | **変わります** | かわります | Thay đổi | **変化します** (henka-shimasu) | **維持します** (iji-shimasu): Duy trì |
+| 3 | **困ります** | こまります | Rắc rối, khó khăn | **大変です** (taihen-desu) | **安心します** (anshin-shimasu): Yên tâm |
+| 4 | **付けます** | つけます | Vẽ, đánh dấu | **記します** (shirushimasu) | **消します** (keshimasu): Xóa |
+| 5 | **拾います** | ひろいます | Nhặt lên | **手に取ります** | **捨てます** (sutemasu): Vứt đi |
+| 6 | **楽[な]** | らく[な] | Nhàn hạ, thoải mái | **簡単 / 快適** | **大変 / 苦しい** (vất vả, khổ) |
+| 7 | **正しい** | ただしい | Đúng, chính xác | **正確[な]** (seikaku) | **間違い / 正しくない** (sai) |
+| 8 | **珍しい** | めずらしい | Hiếm, lạ | **稀[な]** (mare) | **普通 / どこにでもある** (phổ biến) |
+| 9 | **向こう** | むこう | Phía bên kia | **反対側** (hantaigawa) | **手前** (temae): Phía bên này |
+| 10 | **島** | しま | Đảo | **島嶼** (tousho) | **大陸** (tairiku): Lục địa |
+| 11 | **村** | むら | Làng | **里** (sato) | **都会 / 町** (thành thị) |
+| 12 | **屋上** | おくじょう | Sân thượng | **テラス** (terrace) | **地下** (chika): Tầng hầm |
+| 13 | **海外** | かいがい | Nước ngoài | **外国** (gaikoku) | **国内** (kokunai): Trong nước |
+| 14 | **許可** | きょか | Cho phép | **認可 / ＯＫ** | **禁止** (kinshi): Cấm |
+| 15 | **出席します** | しゅっせき | Tham gia | **参加します** (sanka) | **欠席します** (kesseki): Vắng mặt |
+| 16 | **もっと** | もっと | Hơn nữa | **さらに** (sarani) | **少し** (sukoshi): Một chút |
+| 17 | **はじめに** | はじめに | Đầu tiên | **まず / 最初** | **最後に** (saigo ni): Cuối cùng |
 
 ---
 
@@ -58,7 +43,7 @@ Diễn tả điều kiện cần thiết để một kết quả xảy ra.
 > **Ví dụ:** ボタンを**押せば**、窓が開きます。 (Nếu ấn nút thì cửa sổ sẽ mở.)
 
 #### 2. Danh từ + なら, ~ (Nếu là N thì...)
-Đưa ra lời khuyên hoặc giới thiệu dựa trên chủ đề đối phương vừa nhắc tới.
+Đưa ra lời khuyên hoặc gợi ý dựa trên chủ đề đối phương vừa nhắc tới.
 > **Ví dụ:** 日本料理**なら**、すしが一番有名です。 (Nếu là món Nhật thì Sushi là nổi tiếng nhất.)
 
 #### 3. Từ để hỏi + [Thể điều kiện] + いいですか
