@@ -31,6 +31,11 @@ window.DOC_CONFIG = {
       file: "theDieuKien",
       label: "Thể điều kiện"
     },
+{
+      key: "theCamChi",
+      file: "theCamChi",
+      label: "Thể Cấm Chỉ"
+    },
     {
       key: "theYDinh",
       file: "theYDinh",
