@@ -2216,6 +2216,19 @@
     container.appendChild(list);
   }
 
+  function splitGrammarExampleLines(text) {
+    const lines = [];
+    String(text || "").split(/\r?\n/).forEach(function (block) {
+      block.split("|").forEach(function (seg) {
+        const t = String(seg).trim();
+        if (t) {
+          lines.push(t);
+        }
+      });
+    });
+    return lines;
+  }
+
   function renderGrammarDetail() {
     const container = document.getElementById("grammar-detail-container");
     container.innerHTML = "";
@@ -2240,21 +2253,23 @@
       return;
     }
 
+    const root = createElement("div", "grammar-detail", "");
+
     const structure = createElement("div", "grammar-structure", item.structure);
-    container.appendChild(structure);
+    root.appendChild(structure);
 
     const lessonInfo = createElement(
       "div",
       "detail-sub grammar-lesson-chip",
       "Lesson " + (item.lesson != null ? item.lesson : item.Lesson)
     );
-    container.appendChild(lessonInfo);
+    root.appendChild(lessonInfo);
 
     // Meaning section
     if (item.content) {
       const meaningSection = createElement("div", "grammar-section grammar-section--meaning", "");
       const meaningHeader = createElement("div", "grammar-section__header", "");
-      const meaningLabel = createElement("div", "grammar-section__title", "Ý nghĩa (Meaning)");
+      const meaningLabel = createElement("div", "grammar-section__title", "Ý nghĩa");
       meaningHeader.appendChild(meaningLabel);
       meaningSection.appendChild(meaningHeader);
 
@@ -2266,14 +2281,14 @@
       });
       meaningSection.appendChild(meaningBody);
 
-      container.appendChild(meaningSection);
+      root.appendChild(meaningSection);
     }
 
     // Explanation section
     if (item.explain) {
       const explainSection = createElement("div", "grammar-section grammar-section--explanation", "");
       const explainHeader = createElement("div", "grammar-section__header", "");
-      const explainLabel = createElement("div", "grammar-section__title", "Giải thích (Explanation)");
+      const explainLabel = createElement("div", "grammar-section__title", "Giải thích");
       explainHeader.appendChild(explainLabel);
       explainSection.appendChild(explainHeader);
 
@@ -2285,29 +2300,29 @@
       });
       explainSection.appendChild(explainBody);
 
-      container.appendChild(explainSection);
+      root.appendChild(explainSection);
     }
 
-    // Example section
+    // Example section (each segment after | becomes its own line)
     if (item.example) {
       const exampleSection = createElement("div", "grammar-section grammar-section--example", "");
       const exampleHeader = createElement("div", "grammar-section__header", "");
-      const exampleLabel = createElement("div", "grammar-section__title", "Ví dụ (Example)");
+      const exampleLabel = createElement("div", "grammar-section__title", "Ví dụ");
       exampleHeader.appendChild(exampleLabel);
       exampleSection.appendChild(exampleHeader);
 
       const exampleBody = createElement("div", "grammar-section__body", "");
-      const exampleLines = String(item.example).split("\n");
+      const exampleLines = splitGrammarExampleLines(item.example);
       exampleLines.forEach(function (line) {
-        const p = createElement("div", "detail-value grammar-section__line", line);
+        const p = createElement("div", "detail-value grammar-section__line grammar-section__line--example", line);
         exampleBody.appendChild(p);
       });
       exampleSection.appendChild(exampleBody);
 
-      container.appendChild(exampleSection);
+      root.appendChild(exampleSection);
     }
 
-    openDetailModal("Chi tiết ngữ pháp", container.innerHTML);
+    openDetailModal("Chi tiết ngữ pháp", root);
   }
 
   // ----- Note -----
