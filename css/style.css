@@ -1318,119 +1318,167 @@ select:focus {
   color: #111827;
 }
 
-/* Grammar detail – layout rõ ràng hơn */
+/* Grammar detail (modal) — thanh lịch, gọn, ưu tiên hiển thị nhiều nội dung */
+.detail-modal__dialog:has(.grammar-detail) {
+  max-width: min(860px, calc(100vw - 12px));
+  max-height: calc(100vh - 8px);
+  padding: 8px 10px 6px;
+  gap: 4px;
+  border-radius: 12px;
+  background: #fafafa;
+  border-color: rgba(203, 213, 225, 0.85);
+  box-shadow: 0 12px 40px rgba(15, 23, 42, 0.18);
+}
+
+.detail-modal__dialog:has(.grammar-detail) .detail-modal__header {
+  min-height: 32px;
+  margin-bottom: 0;
+}
+
+.detail-modal__dialog:has(.grammar-detail) .detail-modal__title {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.06em;
+  color: #64748b;
+}
+
+.detail-modal__body .grammar-detail {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0 0 4px;
+}
+
 .detail-modal__body .grammar-structure {
   font-family: var(--font-jp);
-  font-size: 24px;
-  font-weight: 800;
-  color: #111827;
+  font-size: clamp(16px, 3.2vw, 19px);
+  font-weight: 600;
+  line-height: 1.32;
+  color: #1e293b;
   padding: 8px 10px;
-  border-radius: 12px;
-  background:
-    radial-gradient(circle at 0 0, #e0f2fe, #eef2ff),
-    radial-gradient(circle at 100% 100%, #fee2e2, transparent 70%);
-  border: 1px solid rgba(59, 130, 246, 0.5);
-  box-shadow: 0 10px 25px rgba(148, 163, 184, 0.5);
+  border-radius: 8px;
+  background: #ffffff;
+  border: 1px solid #e2e8f0;
+  box-shadow: none;
 }
 
 .detail-modal__body .grammar-lesson-chip {
   align-self: flex-start;
-  font-size: 11px;
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.03em;
   padding: 2px 8px;
   border-radius: 999px;
-  background: rgba(59, 130, 246, 0.08);
-  border: 1px solid rgba(59, 130, 246, 0.35);
-  color: #1d4ed8;
+  background: #f1f5f9;
+  border: 1px solid #e2e8f0;
+  color: #475569;
 }
 
 .detail-modal__body .grammar-section__title,
-.detail-modal__body .detail-sub {
-  font-size: 13px;
-  text-transform: uppercase;
-  letter-spacing: 0.08em;
-  color: #6b7280;
-  margin-top: 10px;
-  margin-bottom: 1px;
-}
-
-.detail-modal__body .detail-sub::after {
-  content: "";
-  display: block;
-  width: 46px;
-  height: 2px;
-  margin-top: 3px;
-  border-radius: 999px;
-  background: linear-gradient(to right, #a855f7, #fb7185, transparent);
+.detail-modal__body .grammar-detail > .detail-sub {
+  font-size: 11px;
+  font-weight: 600;
+  text-transform: none;
+  letter-spacing: 0.02em;
+  color: #64748b;
+  margin: 0;
 }
 
 .detail-modal__body .grammar-section__body .detail-value,
 .detail-modal__body .grammar-section__line {
-  font-size: 15px;
-  line-height: 1.65;
-  padding: 2px 0;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #334155;
 }
 
 .detail-modal__body .grammar-section {
-  padding: 10px 12px;
-  border-radius: 12px;
-  background: rgba(255, 255, 255, 0.96);
-  border: 1px solid rgba(209, 213, 219, 0.9);
-  box-shadow: 0 8px 18px rgba(148, 163, 184, 0.35);
-  position: relative;
-  overflow: hidden;
+  padding: 8px 10px 9px;
+  border-radius: 8px;
+  background: #ffffff;
+  border: 1px solid #e8ecf1;
+  box-shadow: none;
 }
 
 .detail-modal__body .grammar-section + .grammar-section {
-  margin-top: 10px;
+  margin-top: 0;
 }
 
 .detail-modal__body .grammar-section__line {
-  padding: 3px 0;
+  padding: 2px 0;
 }
 
 .detail-modal__body .grammar-section--meaning {
-  border-left: 4px solid #16a34a;
-  background:
-    linear-gradient(to right, rgba(22, 163, 74, 0.18), rgba(240, 253, 244, 0.9));
+  border-left: 2px solid #86efac;
+  background: #ffffff;
 }
 
 .detail-modal__body .grammar-section--explanation {
-  border-left: 4px solid #2563eb;
-  background:
-    linear-gradient(to right, rgba(37, 99, 235, 0.18), rgba(239, 246, 255, 0.9));
+  border-left: 2px solid #93c5fd;
+  background: #ffffff;
 }
 
 .detail-modal__body .grammar-section--example {
-  border-left: 4px solid #db2777;
-  background:
-    linear-gradient(to right, rgba(219, 39, 119, 0.2), rgba(255, 241, 242, 0.9));
+  border-left: 2px solid #fda4af;
+  background: #ffffff;
 }
 
 .detail-modal__body .grammar-section__header {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 6px;
+  margin-bottom: 4px;
+  padding-bottom: 4px;
+  border-bottom: 1px solid #f1f5f9;
 }
 
 .detail-modal__body .grammar-section__title {
   display: flex;
   align-items: center;
   gap: 6px;
-  margin-bottom: 4px;
+  color: #475569;
 }
 
 .detail-modal__body .grammar-section__title::before {
   content: "";
-  width: 8px;
-  height: 8px;
-  border-radius: 999px;
+  width: 3px;
+  height: 12px;
+  border-radius: 2px;
   background: currentColor;
+  opacity: 0.45;
 }
 
-.detail-modal__body .grammar-section--example .grammar-section__line {
+.detail-modal__body .grammar-section--meaning .grammar-section__title {
+  color: #166534;
+}
+
+.detail-modal__body .grammar-section--explanation .grammar-section__title {
+  color: #1d4ed8;
+}
+
+.detail-modal__body .grammar-section--example .grammar-section__title {
+  color: #9f1239;
+}
+
+.detail-modal__body .grammar-section__body {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.detail-modal__body .grammar-section--example .grammar-section__body {
+  gap: 4px;
+}
+
+.detail-modal__body .grammar-section--example .grammar-section__line--example {
   font-family: var(--font-jp);
-  font-size: 16px;
+  font-size: 13px;
+  line-height: 1.48;
+  margin: 0;
+  padding: 5px 8px;
+  border-radius: 6px;
+  background: #fafafa;
+  border: 1px solid #f1f5f9;
+  box-shadow: none;
 }
 
 /* Bỏ scroll lồng nhau bên trong popup (vocab detail/card-body) */
