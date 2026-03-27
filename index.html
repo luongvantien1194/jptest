@@ -4,13 +4,13 @@
   <meta charset="UTF-8" />
   <title>JP Study App</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <script src="data/kanjiData.js?v=20260317"></script>
-  <script src="data/vocabData.js?v=20260317"></script>
+  <script src="data/kanjiData.js?v=20260327"></script>
+  <script src="data/vocabData.js?v=20260327"></script>
   <script src="data/grammarData.js?v=20260322"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=20260322">
+  <link rel="stylesheet" href="css/style.css?v=20260328">
 </head>
 <body>
   <div class="app-shell">
@@ -206,10 +206,8 @@
           </div>
           <div class="filters-row filters-row--hidden" id="kanji-filters-row">
             <div class="field-group">
-              <div class="field-label">Lọc theo bộ thủ</div>
-              <select id="kanji-radical-filter">
-                <option value="all">Tất cả</option>
-              </select>
+              <div class="field-label">Lọc theo bộ thủ (giữ Ctrl/Shift để chọn nhiều)</div>
+              <select id="kanji-radical-filter" multiple size="6"></select>
             </div>
           </div>
 
@@ -333,7 +331,7 @@
     </main>
 
     <footer class="app-footer">
-      <span>Made by Lương Văn Tiến</span>
+      <span>Make by Lương Văn Tiến</span>
     </footer>
   </div>
 
@@ -353,8 +351,8 @@
   </div>
   <div id="soundOverlay">🔊</div>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-  <script src="data/configDoc.js?v=20260319"></script>
-  <script src="sounds/listMp3.js?v=20260317"></script>
-  <script src="js/main.js?v=20260322"></script>
+  <script src="data/configDoc.js?v=20260327"></script>
+  <script src="sounds/listMp3.js?v=20260327"></script>
+  <script src="js/main.js?v=20260328"></script>
 </body>
 </html>
