@@ -11,7 +11,7 @@
     filter: {
       vocabLesson: "all",
       vocabCategory: "all",
-      kanjiRadical: "all",
+      kanjiRadical: [],
       grammarLesson: "all",
       vocabSearch: "",
       kanjiSearch: "",
@@ -111,6 +111,41 @@
       .toLowerCase()
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "");
+  }
+
+  function getRadicalVietnameseLabel(radicalText) {
+    var raw = String(radicalText || "").trim();
+    if (!raw) return "";
+    var dashIdx = raw.indexOf("-");
+    if (dashIdx === -1) {
+      return normalizeText(raw);
+    }
+    return normalizeText(raw.slice(dashIdx + 1).trim());
+  }
+
+  function selectKanjiRadicalsByVietnamese(vietnameseLabel) {
+    var radicalSelect = document.getElementById("kanji-radical-filter");
+    if (!radicalSelect) {
+      return;
+    }
+    var targetLabel = normalizeText(vietnameseLabel || "");
+    if (!targetLabel) {
+      return;
+    }
+
+    var selectedValues = [];
+    Array.prototype.forEach.call(radicalSelect.options, function (opt) {
+      var optLabel = getRadicalVietnameseLabel(opt.value);
+      var isMatch = optLabel && optLabel === targetLabel;
+      opt.selected = !!isMatch;
+      if (isMatch) {
+        selectedValues.push(opt.value);
+      }
+    });
+
+    state.filter.kanjiRadical = selectedValues;
+    renderKanjiList();
+    closeDetailModal();
   }
 
   // Map radicals / variant forms to canonical kanji for linking
@@ -1636,9 +1671,18 @@
   // ----- Kanji -----
   function applyKanjiFilter() {
     return kanjiData.filter(function (item) {
-      if (state.filter.kanjiRadical !== "all") {
-        var itemRadicals = String(item.radicals || "");
-        if (itemRadicals.indexOf(state.filter.kanjiRadical) === -1) {
+      var selectedRadicals = Array.isArray(state.filter.kanjiRadical)
+        ? state.filter.kanjiRadical
+        : [];
+      if (selectedRadicals.length > 0) {
+        var itemRadicals = String(item.radicals || "")
+          .split("|")
+          .map(function (rad) { return rad.trim(); })
+          .filter(function (rad) { return rad; });
+        var matched = selectedRadicals.some(function (rad) {
+          return itemRadicals.indexOf(rad) !== -1;
+        });
+        if (!matched) {
           return false;
         }
       }
@@ -1895,6 +1939,13 @@
         var trimmed = String(v || "").trim();
         if (!trimmed) return;
         const pill = createElement("span", "kd-pill" + (mod ? " kd-pill--" + mod : ""), trimmed);
+        if (mod === "radical") {
+          pill.classList.add("kd-pill--radical-clickable");
+          pill.title = "Click để lọc các bộ thủ cùng nghĩa tiếng Việt";
+          pill.addEventListener("click", function () {
+            selectKanjiRadicalsByVietnamese(getRadicalVietnameseLabel(trimmed));
+          });
+        }
         valWrap.appendChild(pill);
       });
       group.appendChild(lbl);
@@ -3221,22 +3272,25 @@
 
   function setupKanjiFilters() {
     const radicalSelect = document.getElementById("kanji-radical-filter");
-    const radicals = getUniqueSorted(
-      kanjiData
-        .map(function (k) { return k.radicals; })
-        .filter(function (b) { return b; })
-        .reduce(function (all, rads) {
-          return all.concat(String(rads).split("|"));
-        }, [])
-        .map(function (rad) { return rad.trim(); })
-        .filter(function (rad) { return rad; })
-    );
+    const radicals = kanjiData
+      .map(function (k) { return k.radicals; })
+      .filter(function (b) { return b; })
+      .reduce(function (all, rads) {
+        return all.concat(String(rads).split("|"));
+      }, [])
+      .map(function (rad) { return rad.trim(); })
+      .filter(function (rad) { return rad; })
+      .filter(function (rad, idx, arr) { return arr.indexOf(rad) === idx; })
+      .sort(function (a, b) {
+        return getRadicalVietnameseLabel(a).localeCompare(
+          getRadicalVietnameseLabel(b),
+          "vi",
+          { sensitivity: "base" }
+        );
+      });
 
-    // Xóa các option bộ thủ cũ (giữ lại "Tất cả")
     if (radicalSelect) {
-      while (radicalSelect.options.length > 1) {
-        radicalSelect.remove(1);
-      }
+      radicalSelect.innerHTML = "";
     }
     radicals.forEach(function (radical) {
       const opt = createElement("option", "", radical);
@@ -3245,7 +3299,10 @@
     });
 
     radicalSelect.addEventListener("change", function () {
-      state.filter.kanjiRadical = radicalSelect.value;
+      state.filter.kanjiRadical = Array.prototype.map.call(
+        radicalSelect.selectedOptions,
+        function (opt) { return opt.value; }
+      );
       renderKanjiList();
     });
 
@@ -3260,11 +3317,13 @@
     var resetKanjiFilterBtn = document.getElementById("reset-kanji-filter-btn");
     if (resetKanjiFilterBtn) {
       resetKanjiFilterBtn.addEventListener("click", function () {
-        state.filter.kanjiRadical = "all";
+        state.filter.kanjiRadical = [];
         state.filter.kanjiSearch = "";
         state.kanjiFavOnly = false;
         if (radicalSelect) {
-          radicalSelect.value = "all";
+          Array.prototype.forEach.call(radicalSelect.options, function (opt) {
+            opt.selected = false;
+          });
         }
         if (kanjiSearchInput) {
           kanjiSearchInput.value = "";
