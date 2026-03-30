@@ -200,7 +200,7 @@
         u2 = new SpeechSynthesisUtterance("có nghĩa là: " + meanClean);
         u2.lang = "vi-VN";
         u2.rate = 1;
-        u2.volume = 0.85;
+        u2.volume = 0.75;
         var viVoice = findBestVoiceByLang("vi");
         if (viVoice) u2.voice = viVoice;
       }
