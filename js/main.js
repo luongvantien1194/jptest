@@ -163,8 +163,8 @@
     function speakNext() {
       if (!state.tts.active) return;
       if (idx >= list.length) {
-        stopVocabTts();
-        return;
+        // đọc lại từ đầu khi hết danh sách
+        idx = 0;
       }
 
       var fields = getItemFields(list[idx]);
@@ -200,7 +200,7 @@
         u2 = new SpeechSynthesisUtterance("có nghĩa là: " + meanClean);
         u2.lang = "vi-VN";
         u2.rate = 1;
-        u2.volume = 0.5;
+        u2.volume = 0.4;
         var viVoice = findBestVoiceByLang("vi");
         if (viVoice) u2.voice = viVoice;
       }
