@@ -40,6 +40,9 @@
       answerField: "meaning",
       isStar: false,
     },
+    tts: {
+      active: false
+    },
     kanjiTestState: {
       isActive: false,
       isFinished: false,
@@ -84,6 +87,135 @@
       filteredIndices: []
     }
   };
+
+  function stopVocabTts() {
+    state.tts.active = false;
+    try { window.speechSynthesis.cancel(); } catch (e) {}
+    var btn = document.getElementById("vocab-tts-btn");
+    if (btn) {
+      btn.textContent = "Đọc danh sách";
+      btn.classList.remove("autoplay-btn--active");
+      btn.title = "Đọc toàn bộ danh sách đang lọc";
+    }
+  }
+
+  function findBestVoiceByLang(langPrefix) {
+    try {
+      var voices = window.speechSynthesis && window.speechSynthesis.getVoices
+        ? window.speechSynthesis.getVoices()
+        : [];
+      if (!voices || !voices.length) return null;
+      var pref = String(langPrefix || "").toLowerCase();
+      // ưu tiên voice đúng prefix lang (vi / ja)
+      for (var i = 0; i < voices.length; i++) {
+        var v = voices[i];
+        if (v && v.lang && String(v.lang).toLowerCase().indexOf(pref) === 0) {
+          return v;
+        }
+      }
+      return null;
+    } catch (e) {
+      return null;
+    }
+  }
+
+  function startVocabTts() {
+    // TTS cần user gesture (click). Button này là gesture hợp lệ.
+    if (!("speechSynthesis" in window) || typeof SpeechSynthesisUtterance === "undefined") {
+      return;
+    }
+    stopAutoPlay(); // tránh 2 luồng audio chạy cùng lúc
+    stopVocabTts();
+
+    state.tts.active = true;
+    var btn = document.getElementById("vocab-tts-btn");
+    if (btn) {
+      btn.textContent = "Dừng đọc";
+      btn.classList.add("autoplay-btn--active");
+      btn.title = "Dừng đọc";
+    }
+
+    var list = applyVocabFilters();
+    var idx = 0;
+
+    function getItemFields(raw) {
+      return {
+        hiragana: raw && (raw.hiragana != null ? raw.hiragana : raw.Hiragana),
+        // Ưu tiên đúng cột Meaning (dữ liệu chuẩn), fallback cho dữ liệu cũ
+        meaning: raw && (raw.Meaning != null ? raw.Meaning : raw.meaning)
+      };
+    }
+
+    function speakUtterance(utter, onDone) {
+      if (!utter) {
+        onDone();
+        return;
+      }
+      utter.onend = function () { onDone(); };
+      utter.onerror = function () { onDone(); };
+      try {
+        window.speechSynthesis.speak(utter);
+      } catch (e) {
+        onDone();
+      }
+    }
+
+    function speakNext() {
+      if (!state.tts.active) return;
+      if (idx >= list.length) {
+        stopVocabTts();
+        return;
+      }
+
+      var fields = getItemFields(list[idx]);
+      idx += 1;
+
+      var hira = String(fields.hiragana || "").trim();
+      var mean = String(fields.meaning || "").trim();
+      if (!hira && !mean) {
+        speakNext();
+        return;
+      }
+
+      // Preload voices (một số browser chỉ populate sau lần gọi đầu)
+      try { window.speechSynthesis.getVoices(); } catch (e) {}
+
+      var u1 = null;
+      if (hira) {
+        u1 = new SpeechSynthesisUtterance(hira);
+        u1.lang = "ja-JP";
+        u1.rate = 1;
+        var jaVoice = findBestVoiceByLang("ja");
+        if (jaVoice) u1.voice = jaVoice;
+      }
+
+      var u2 = null;
+      if (mean) {
+        u2 = new SpeechSynthesisUtterance("có nghĩa là: " + mean);
+        u2.lang = "vi-VN";
+        u2.rate = 1;
+        var viVoice = findBestVoiceByLang("vi");
+        if (viVoice) u2.voice = viVoice;
+      }
+
+      // Chain: JP -> VI -> next
+      speakUtterance(u1, function () {
+        speakUtterance(u2, function () {
+          setTimeout(speakNext, 120);
+        });
+      });
+    }
+
+    speakNext();
+  }
+
+  function toggleVocabTts() {
+    if (state.tts.active) {
+      stopVocabTts();
+    } else {
+      startVocabTts();
+    }
+  }
 
   // Load favorites from localStorage
   try {
@@ -934,6 +1066,9 @@
     // Stop auto-play when list re-renders
     if (state.autoPlay.active) {
       stopAutoPlay();
+    }
+    if (state.tts.active) {
+      stopVocabTts();
     }
 
     const listContainer = document.getElementById("vocab-list-container");
@@ -2629,6 +2764,13 @@
     if (autoPlayBtn) {
       autoPlayBtn.addEventListener("click", function () {
         toggleAutoPlay();
+      });
+    }
+
+    var ttsBtn = document.getElementById("vocab-tts-btn");
+    if (ttsBtn) {
+      ttsBtn.addEventListener("click", function () {
+        toggleVocabTts();
       });
     }
   }
