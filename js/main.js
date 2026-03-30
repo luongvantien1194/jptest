@@ -41,7 +41,9 @@
       isStar: false,
     },
     tts: {
-      active: false
+      active: false,
+      index: 0,
+      lastKey: ""
     },
     kanjiTestState: {
       isActive: false,
@@ -75,7 +77,8 @@
       detailModal: {
         isOpen: false,
         lastType: null
-      }
+      },
+      vocabListKey: ""
     },
     vocabFavorites: {},
     kanjiFavorites: {},
@@ -88,14 +91,32 @@
     }
   };
 
+  function clearVocabTtsFocus() {
+    state.tts.index = 0;
+    state.tts.lastKey = "";
+    var highlighted = document.querySelectorAll(".vocab-item--highlight");
+    highlighted.forEach(function (el) {
+      el.classList.remove("vocab-item--highlight");
+    });
+    // Nếu không đang đọc, reset text nút về đúng trạng thái
+    if (!state.tts.active) {
+      var btn = document.getElementById("vocab-tts-btn");
+      if (btn) {
+        btn.textContent = "Đọc danh sách";
+        btn.classList.remove("autoplay-btn--active");
+        btn.title = "Đọc toàn bộ danh sách đang lọc";
+      }
+    }
+  }
+
   function stopVocabTts() {
     state.tts.active = false;
     try { window.speechSynthesis.cancel(); } catch (e) {}
     var btn = document.getElementById("vocab-tts-btn");
     if (btn) {
-      btn.textContent = "Đọc danh sách";
+      btn.textContent = state.tts.lastKey ? "Đọc tiếp" : "Đọc danh sách";
       btn.classList.remove("autoplay-btn--active");
-      btn.title = "Đọc toàn bộ danh sách đang lọc";
+      btn.title = state.tts.lastKey ? "Đọc tiếp danh sách" : "Đọc toàn bộ danh sách đang lọc";
     }
   }
 
@@ -125,6 +146,7 @@
       return;
     }
     stopAutoPlay(); // tránh 2 luồng audio chạy cùng lúc
+    // Không clear highlight ở đây để có thể đọc tiếp
     stopVocabTts();
 
     state.tts.active = true;
@@ -136,7 +158,14 @@
     }
 
     var list = applyVocabFilters();
-    var idx = 0;
+    var key = list.map(function (r) { return String(vocabData.indexOf(r)); }).join(",");
+    if (key !== state.tts.lastKey) {
+      // Danh sách thay đổi -> reset lại từ đầu và clear focus
+      state.tts.index = 0;
+      clearVocabTtsFocus();
+      state.tts.lastKey = key;
+    }
+    var idx = state.tts.index || 0;
 
     function getItemFields(raw) {
       return {
@@ -167,7 +196,23 @@
         idx = 0;
       }
 
+      // Focus + scroll theo từ đang đọc
+      var vocabIndexForFocus = vocabData.indexOf(list[idx]);
+      if (vocabIndexForFocus !== -1) {
+        var listContainer = document.getElementById("vocab-list-container");
+        var prev = listContainer ? listContainer.querySelector(".vocab-item--highlight") : null;
+        if (prev) prev.classList.remove("vocab-item--highlight");
+        var el = listContainer
+          ? listContainer.querySelector('.vocab-item[data-vocab-index="' + vocabIndexForFocus + '"]')
+          : null;
+        if (el) {
+          el.classList.add("vocab-item--highlight");
+          el.scrollIntoView({ behavior: "smooth", block: "center" });
+        }
+      }
+
       var fields = getItemFields(list[idx]);
+      state.tts.index = idx;
       idx += 1;
 
       var hira = String(fields.hiragana || "").trim();
@@ -1076,6 +1121,12 @@
     const countLabel = document.getElementById("vocab-count-label");
 
     const filtered = applyVocabFilters();
+    // Nếu danh sách thay đổi (filter/search/reset) thì reset focus/highlight
+    var newKey = filtered.map(function (r) { return String(vocabData.indexOf(r)); }).join(",");
+    if (newKey !== state.ui.vocabListKey) {
+      clearVocabTtsFocus();
+      state.ui.vocabListKey = newKey;
+    }
     countLabel.textContent = filtered.length + " từ";
     renderVocabFilterSummary(filtered);
 
@@ -2667,6 +2718,7 @@
       if (searchInput) {
         searchInput.value = "";
       }
+      clearVocabTtsFocus();
       renderVocabList();
     });
   }
