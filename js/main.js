@@ -185,15 +185,22 @@
         u1 = new SpeechSynthesisUtterance(hira);
         u1.lang = "ja-JP";
         u1.rate = 1;
+        u1.volume = 1;
         var jaVoice = findBestVoiceByLang("ja");
         if (jaVoice) u1.voice = jaVoice;
       }
 
       var u2 = null;
       if (mean) {
-        u2 = new SpeechSynthesisUtterance("có nghĩa là: " + mean);
+        var meanClean = String(mean)
+          .replace(/\s*\/\s*/g, ", ")
+          .replace(/\s*,\s*/g, ", ")
+          .replace(/,\s*,+/g, ", ")
+          .trim();
+        u2 = new SpeechSynthesisUtterance("có nghĩa là: " + meanClean);
         u2.lang = "vi-VN";
         u2.rate = 1;
+        u2.volume = 0.85;
         var viVoice = findBestVoiceByLang("vi");
         if (viVoice) u2.voice = viVoice;
       }
@@ -406,41 +413,50 @@
     return result;
   }
 
-  // Play vocab audio từ sounds/vol/{romaji}.mp3
-  var _currentAudio = null;
-  function playVocabAudio(audioKey, btn) {
-    if (!audioKey) return;
-    // Stop current if playing
-    if (_currentAudio) {
-      _currentAudio.pause();
-      _currentAudio = null;
-      var prevBtn = document.querySelector(".audio-btn--playing");
-      if (prevBtn) prevBtn.classList.remove("audio-btn--playing");
+  // Vocab audio: dùng TTS tiếng Nhật (không dùng mp3)
+  function speakJapanese(text, btn) {
+    var t = String(text || "").trim();
+    if (!t) return;
+    if (!("speechSynthesis" in window) || typeof SpeechSynthesisUtterance === "undefined") {
+      return;
     }
-    var audio = new Audio("sounds/vol/" + audioKey + ".mp3");
-    _currentAudio = audio;
+
+    // Stop any current speech
+    try { window.speechSynthesis.cancel(); } catch (e) {}
+
+    var prevBtn = document.querySelector(".audio-btn--playing");
+    if (prevBtn) prevBtn.classList.remove("audio-btn--playing");
     if (btn) btn.classList.add("audio-btn--playing");
-    audio.addEventListener("ended", function () {
+
+    // Preload voices
+    try { window.speechSynthesis.getVoices(); } catch (e) {}
+
+    var u = new SpeechSynthesisUtterance(t);
+    u.lang = "ja-JP";
+    u.rate = 1;
+    u.volume = 1;
+    var jaVoice = findBestVoiceByLang("ja");
+    if (jaVoice) u.voice = jaVoice;
+    u.onend = function () {
       if (btn) btn.classList.remove("audio-btn--playing");
-      _currentAudio = null;
-    });
-    audio.addEventListener("error", function () {
+    };
+    u.onerror = function () {
       if (btn) btn.classList.remove("audio-btn--playing");
-      _currentAudio = null;
-    });
-    audio.play().catch(function () {
+    };
+    try {
+      window.speechSynthesis.speak(u);
+    } catch (e) {
       if (btn) btn.classList.remove("audio-btn--playing");
-      _currentAudio = null;
-    });
+    }
   }
 
-  function createAudioBtn(audioKey) {
+  function createAudioBtn(textToSpeak) {
     var btn = createElement("button", "audio-btn", "🔊");
     btn.type = "button";
-    btn.title = "Phát âm thanh";
+    btn.title = "Đọc tiếng Nhật";
     btn.addEventListener("click", function (e) {
       e.stopPropagation();
-      playVocabAudio(audioKey, btn);
+      speakJapanese(textToSpeak, btn);
     });
     return btn;
   }
@@ -452,10 +468,7 @@
 
   function stopAutoPlay() {
     state.autoPlay.active = false;
-    if (_currentAudio) {
-      _currentAudio.pause();
-      _currentAudio = null;
-    }
+    try { window.speechSynthesis.cancel(); } catch (e) {}
     // Remove all highlights
     var highlighted = document.querySelectorAll(".vocab-item--highlight");
     highlighted.forEach(function (el) {
@@ -494,66 +507,54 @@
     // Scroll into view
     currentItem.scrollIntoView({ behavior: "smooth", block: "center" });
 
-    // Find audio button inside this item and play (nếu có file)
+    // Find audio button inside this item and speak (TTS)
     var audioBtn = currentItem.querySelector(".audio-btn");
     var vocabIdx = currentItem.getAttribute("data-vocab-index");
     var raw = vocabIdx != null ? vocabData[parseInt(vocabIdx)] : null;
     var hiraAuto = raw
       ? (raw.hiragana != null ? raw.hiragana : raw.Hiragana)
       : "";
-    var audioKeyAuto = audioFileNameFromHiragana(hiraAuto || "");
-    var hasAudioAuto = typeof listMp3 !== "undefined" &&
-      Array.isArray(listMp3) &&
-      listMp3.indexOf(audioKeyAuto) !== -1;
-
-    if (hasAudioAuto && audioKeyAuto) {
-      // Play audio and wait for it to finish, then move to next
-      if (_currentAudio) {
-        _currentAudio.pause();
-        _currentAudio = null;
-      }
-      var prevBtn = document.querySelector(".audio-btn--playing");
-      if (prevBtn) prevBtn.classList.remove("audio-btn--playing");
-
-      var audio = new Audio("sounds/vol/" + audioKeyAuto + ".mp3");
-      _currentAudio = audio;
+    if (hiraAuto) {
       if (audioBtn) audioBtn.classList.add("audio-btn--playing");
-
-      audio.addEventListener("ended", function () {
+      try { window.speechSynthesis.cancel(); } catch (e) {}
+      // Preload voices
+      try { window.speechSynthesis.getVoices(); } catch (e) {}
+      var u = new SpeechSynthesisUtterance(String(hiraAuto));
+      u.lang = "ja-JP";
+      u.rate = 1;
+      u.volume = 1;
+      var jaVoice = findBestVoiceByLang("ja");
+      if (jaVoice) u.voice = jaVoice;
+      u.onend = function () {
         if (audioBtn) audioBtn.classList.remove("audio-btn--playing");
-        _currentAudio = null;
-        if (!state.autoPlay.active) return;
-        // Small delay before next word
-        setTimeout(function () {
-          _autoPlayIndex++;
-          autoPlayNext();
-        }, 500);
-      });
-      audio.addEventListener("error", function () {
-        if (audioBtn) audioBtn.classList.remove("audio-btn--playing");
-        _currentAudio = null;
-        if (!state.autoPlay.active) return;
-        // Skip to next on error after short delay
-        setTimeout(function () {
-          _autoPlayIndex++;
-          autoPlayNext();
-        }, 300);
-      });
-      audio.play().catch(function () {
-        if (audioBtn) audioBtn.classList.remove("audio-btn--playing");
-        _currentAudio = null;
         if (!state.autoPlay.active) return;
         setTimeout(function () {
           _autoPlayIndex++;
           autoPlayNext();
-        }, 300);
-      });
+        }, 350);
+      };
+      u.onerror = function () {
+        if (audioBtn) audioBtn.classList.remove("audio-btn--playing");
+        if (!state.autoPlay.active) return;
+        setTimeout(function () {
+          _autoPlayIndex++;
+          autoPlayNext();
+        }, 200);
+      };
+      try {
+        window.speechSynthesis.speak(u);
+      } catch (e) {
+        if (audioBtn) audioBtn.classList.remove("audio-btn--playing");
+        setTimeout(function () {
+          _autoPlayIndex++;
+          autoPlayNext();
+        }, 200);
+      }
     } else {
-      // No audio, move to next after short delay
       setTimeout(function () {
         _autoPlayIndex++;
         autoPlayNext();
-      }, 800);
+      }, 500);
     }
   }
 
@@ -1175,12 +1176,8 @@
         mainRow.appendChild(fieldEl);
       });
 
-      // Audio button: chỉ hiện nếu có file trong listMp3
-      var audioKey = audioFileNameFromHiragana(item.hiragana || "");
-      var hasAudio = typeof listMp3 !== "undefined" &&
-        Array.isArray(listMp3) &&
-        listMp3.indexOf(audioKey) !== -1;
-      var audioBtn = hasAudio && audioKey ? createAudioBtn(audioKey) : null;
+      // Audio button: dùng TTS đọc tiếng Nhật (hiragana)
+      var audioBtn = item.hiragana ? createAudioBtn(item.hiragana) : null;
 
       var vocabTopRow = createElement("div", "", "");
       vocabTopRow.style.cssText = "display:flex;align-items:center;gap:4px";
@@ -1579,16 +1576,8 @@
       meaning: rawQuestion.meaning != null ? rawQuestion.meaning : rawQuestion.Meaning
     };
 
-    // Lấy audioKey (romaji) để phát audio sau khi chọn đáp án
-    var vocabIdForAudio = null;
-    if (questionWord.hiragana) {
-      var keyFromHira = audioFileNameFromHiragana(questionWord.hiragana);
-      if (typeof listMp3 !== "undefined" &&
-        Array.isArray(listMp3) &&
-        listMp3.indexOf(keyFromHira) !== -1) {
-        vocabIdForAudio = keyFromHira;
-      }
-    }
+    // Sau khi chọn đáp án: đọc lại từ vựng bằng TTS (tiếng Nhật)
+    var vocabTextForTts = questionWord.hiragana || "";
 
     // Lấy field câu hỏi và đáp án từ setting
     const qField = testState.questionField || "hiragana";
@@ -2212,16 +2201,10 @@
           }
         });
 
-        // Nếu hiragana trong ví dụ (phần trong ngoặc) tồn tại trong listMp3 thì thêm icon loa
-        // Ví dụ: "川(かわ):sông" -> audioFileNameFromHiragana sẽ lấy "かわ"
-        var hiraRead = parts[0] || "";
-        var audioKeyVocab = audioFileNameFromHiragana(hiraRead);
-        var hasAudioVocab = audioKeyVocab &&
-          typeof listMp3 !== "undefined" &&
-          Array.isArray(listMp3) &&
-          listMp3.indexOf(audioKeyVocab) !== -1;
-        if (hasAudioVocab) {
-          var audioBtnVocab = createAudioBtn(audioKeyVocab);
+        // Chỉ đọc phần Kanji (không đọc hiragana trong ngoặc)
+        var kanjiWordOnly = String(parts[0] || "").split("(")[0].trim();
+        if (kanjiWordOnly) {
+          var audioBtnVocab = createAudioBtn(kanjiWordOnly);
           row.appendChild(audioBtnVocab);
         }
 
@@ -2843,32 +2826,9 @@
       isCorrect: isCorrect
     });
 
-    // Sau khi chọn đáp án thì phát âm thanh từ vựng (nếu có id)
-    if (vocabIdForAudio) {
-      playVocabAudio(vocabIdForAudio, null);
-
-      var overlay = document.getElementById("soundOverlay");
-
-      // Clear timeout cũ nếu click liên tục
-      if (_overlayTimeout) {
-        clearTimeout(_overlayTimeout);
-      }
-    
-      // Reset về 0 trước (để đảm bảo animation chạy lại)
-      overlay.style.opacity = "0";
-    
-      // Force reflow để animation luôn chạy khi click nhanh
-      void overlay.offsetWidth;
-    
-      // 👉 HIỆN icon
-      overlay.style.opacity = "1";
-    
-      // 👉 Tự ẩn sau 1.3 giây
-      _overlayTimeout = setTimeout(function () {
-        overlay.style.opacity = "0";
-      }, 1300);
-
-
+    // Sau khi chọn đáp án thì đọc lại từ vựng (hiragana) bằng TTS
+    if (vocabTextForTts) {
+      speakJapanese(vocabTextForTts, null);
     }
 
     setTimeout(() => {
@@ -3391,16 +3351,9 @@
     if (isCorrect) testState.correctCount += 1;
     testState.answers.push({ item: item, mode: mode, correct: correct, selected: selected, isCorrect: isCorrect });
 
-    // Nếu câu hỏi dựa trên từ vựng (mode 5–9) thì sau khi chọn đáp án mới phát âm (nếu có file)
+    // Nếu câu hỏi dựa trên từ vựng (mode 5–9) thì sau khi chọn đáp án: đọc reading bằng TTS
     if (item && item.ve && item.ve.reading) {
-      var vocabAudioKey = audioFileNameFromHiragana(item.ve.reading);
-      var hasVocabAudio = vocabAudioKey &&
-        typeof listMp3 !== "undefined" &&
-        Array.isArray(listMp3) &&
-        listMp3.indexOf(vocabAudioKey) !== -1;
-      if (hasVocabAudio) {
-        playVocabAudio(vocabAudioKey, null);
-      }
+      speakJapanese(item.ve.reading, null);
     }
 
     if (testState.currentIndex < testState.questions.length - 1) {
