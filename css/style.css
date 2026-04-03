@@ -426,6 +426,54 @@ body {
   color: #eab308;
   -webkit-text-fill-color: #eab308;
 }
+
+/* Đã thuộc (từ vựng) */
+.mastered-btn {
+  border: 1px solid var(--border-subtle, #e5e7eb);
+  background: var(--surface-elevated, #f9fafb);
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 600;
+  padding: 2px 6px;
+  line-height: 1.2;
+  border-radius: 6px;
+  color: #9ca3af;
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+  flex-shrink: 0;
+}
+.mastered-btn:hover {
+  color: #22c55e;
+  border-color: #86efac;
+}
+.mastered-btn--active {
+  color: #16a34a;
+  border-color: #4ade80;
+  background: #ecfdf5;
+}
+
+.test-mastered-row {
+  margin: 10px 0 6px;
+}
+.test-mastered-btn {
+  border: 1px solid var(--border-subtle, #e5e7eb);
+  background: var(--surface-elevated, #f9fafb);
+  cursor: pointer;
+  font-size: 13px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  color: var(--text-muted, #6b7280);
+  transition: color 0.15s, border-color 0.15s, background 0.15s;
+}
+.test-mastered-btn:hover {
+  color: #16a34a;
+  border-color: #86efac;
+}
+.test-mastered-btn--active {
+  color: #15803d;
+  border-color: #4ade80;
+  background: #ecfdf5;
+}
+
 .star-filter-btn {
   border: none;
   background: none;
