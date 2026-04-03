@@ -24,22 +24,18 @@
       </div>
       <nav class="tabs" aria-label="Sections">
         <button class="tab" data-tab="vocab" type="button">
-          <span class="tab-label-main">TỪ VỰNG</span>
-          <span class="tab-label-sub">Vocab</span>
+          <span class="tab-label-main">Từ vựng</span>
           <span class="tab-indicator"></span>
         </button>
         <button class="tab" data-tab="kanji" type="button">
-          <span class="tab-label-main">KANJI</span>
-          <span class="tab-label-sub">Characters</span>
+          <span class="tab-label-main">Kanji</span>
           <span class="tab-indicator"></span>
         </button>
         <button class="tab" data-tab="grammar" type="button">
-          <span class="tab-label-main">NGỮ PHÁP</span>
-          <span class="tab-label-sub">Grammar</span>
+          <span class="tab-label-main">Ngữ pháp</span>
           <span class="tab-indicator"></span>
         </button>
         <button class="tab" data-tab="note" type="button">
-          <span class="tab-label-main">NOTE</span>
           <span class="tab-label-sub">Ghi chú</span>
           <span class="tab-indicator"></span>
         </button>
@@ -60,7 +56,7 @@
 
           <div>
             <div class="field-group" style="margin-bottom:6px;display:flex;flex-direction:row;align-items:center;gap:6px">
-              <div class="field-label" style="margin-bottom:0;white-space:nowrap">Search</div>
+              <div class="field-label" style="margin-bottom:0;white-space:nowrap">Tìm kiếm</div>
               <input id="vocab-search-input" type="text" placeholder="Hiragana / Kanji / Romaji / Meaning" class="input-text" />
               <button type="button" class="star-filter-btn" id="vocab-fav-filter" title="Chỉ hiện yêu thích">☆</button>
             </div>
@@ -76,9 +72,17 @@
                 </select>
               </div>
               <div class="field-group">
-                <div class="field-label">Lọc theo Category</div>
+                <div class="field-label">Lọc theo danh mục</div>
                 <select id="vocab-category-filter">
                   <option value="all">Tất cả</option>
+                </select>
+              </div>
+              <div class="field-group">
+                <div class="field-label">Đã thuộc</div>
+                <select id="vocab-mastered-filter">
+                  <option value="all">Tất cả</option>
+                  <option value="mastered">Đã thuộc</option>
+                  <option value="not">Chưa thuộc</option>
                 </select>
               </div>
             </div>
@@ -116,7 +120,7 @@
                 </label>
                 <label class="checkbox-chip">
                   <input type="checkbox" data-display-field="note" />
-                  <span>Note</span>
+                  <span>Ghi chú</span>
                 </label>
               </div>
             </div>
@@ -130,7 +134,7 @@
                   <span>Đọc danh sách</span>
                 </button>
                 <button class="btn-ghost" type="button" id="reset-vocab-filter-btn">
-                  <span>Reset filter</span>
+                  <span>Reset bộ lọc</span>
                 </button>
               </div>
             </div>
@@ -168,7 +172,7 @@
           <div class="card card--vocab-test-hidden">
             <div class="card-header">
               <div>
-                <div class="card-title">Test từ vựng</div>
+                <div class="card-title">Test</div>
                 <div class="card-subtitle">Random 20 câu hỏi · Không reload trang</div>
               </div>
               <button class="btn-ghost btn-ghost--danger" type="button" id="reset-test-btn">
@@ -270,7 +274,7 @@
               </select>
             </div>
             <div class="field-group">
-              <div class="field-label">Search</div>
+              <div class="field-label">Tìm kiếm</div>
               <input
                 id="grammar-search-input"
                 type="text"
@@ -283,7 +287,7 @@
           <div class="vocab-actions">
             <div class="btn-row">
               <button class="btn-ghost" type="button" id="reset-grammar-filter-btn">
-                <span>Reset filter</span>
+                <span>Reset bộ lọc</span>
               </button>
             </div>
           </div>
@@ -316,7 +320,7 @@
         <div class="section-inner">
           <div class="section-header">
             <div class="section-title">
-              <span id="section-note-title" class="section-title-main">Note</span>
+              <span id="section-note-title" class="section-title-main">Ghi chú</span>
             </div>
             <div class="note-doc-select">
               <select id="note-doc-select"></select>
@@ -355,6 +359,6 @@
   <!-- soundOverlay removed (no mp3 audio) -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script src="data/configDoc.js?v=20260327"></script>
-  <script src="js/main.js?v=20260404111"></script>
+  <script src="js/main.js?v=20260412"></script>
 </body>
 </html>
