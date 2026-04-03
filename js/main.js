@@ -14,6 +14,7 @@
       kanjiRadical: [],
       grammarLesson: "all",
       vocabSearch: "",
+      vocabMastered: "all",
       kanjiSearch: "",
       grammarSearch: ""
     },
@@ -81,6 +82,7 @@
       vocabListKey: ""
     },
     vocabFavorites: {},
+    vocabMastered: {},
     kanjiFavorites: {},
     vocabFavOnly: false,
     kanjiFavOnly: false,
@@ -227,7 +229,8 @@
 
       var u1 = null;
       if (hira) {
-        u1 = new SpeechSynthesisUtterance(hira);
+        var hiraClean = String(hira).replace(/、/g, ",");
+        u1 = new SpeechSynthesisUtterance(hiraClean);
         u1.lang = "ja-JP";
         u1.rate = 1;
         u1.volume = 1;
@@ -273,6 +276,8 @@
   try {
     var savedVF = localStorage.getItem("jp_vocab_favorites");
     if (savedVF) state.vocabFavorites = JSON.parse(savedVF);
+    var savedVM = localStorage.getItem("jp_vocab_mastered");
+    if (savedVM) state.vocabMastered = JSON.parse(savedVM);
     var savedKF = localStorage.getItem("jp_kanji_favorites");
     if (savedKF) state.kanjiFavorites = JSON.parse(savedKF);
   } catch (e) {
@@ -281,6 +286,9 @@
 
   function saveVocabFavorites() {
     try { localStorage.setItem("jp_vocab_favorites", JSON.stringify(state.vocabFavorites)); } catch (e) {}
+  }
+  function saveVocabMastered() {
+    try { localStorage.setItem("jp_vocab_mastered", JSON.stringify(state.vocabMastered)); } catch (e) {}
   }
   function saveKanjiFavorites() {
     try { localStorage.setItem("jp_kanji_favorites", JSON.stringify(state.kanjiFavorites)); } catch (e) {}
@@ -460,7 +468,7 @@
 
   // Vocab audio: dùng TTS tiếng Nhật (không dùng mp3)
   function speakJapanese(text, btn) {
-    var t = String(text || "").trim();
+    var t = String(text || "").trim().replace(/、/g, ",");
     if (!t) return;
     if (!("speechSynthesis" in window) || typeof SpeechSynthesisUtterance === "undefined") {
       return;
@@ -564,7 +572,7 @@
       try { window.speechSynthesis.cancel(); } catch (e) {}
       // Preload voices
       try { window.speechSynthesis.getVoices(); } catch (e) {}
-      var u = new SpeechSynthesisUtterance(String(hiraAuto));
+      var u = new SpeechSynthesisUtterance(String(hiraAuto).replace(/、/g, ","));
       u.lang = "ja-JP";
       u.rate = 1;
       u.volume = 1;
@@ -1075,12 +1083,21 @@
         return false;
       }
 
+      var vIdx = vocabData.indexOf(item);
+
       // Filter favorites only
       if (state.vocabFavOnly) {
-        var idx = vocabData.indexOf(item);
-        if (!state.vocabFavorites[idx]) {
+        if (!state.vocabFavorites[vIdx]) {
           return false;
         }
+      }
+
+      var mastered = !!state.vocabMastered[vIdx];
+      if (state.filter.vocabMastered === "mastered" && !mastered) {
+        return false;
+      }
+      if (state.filter.vocabMastered === "not" && mastered) {
+        return false;
       }
 
       return true;
@@ -1105,7 +1122,14 @@
       ? "Tất cả loại từ"
       : state.filter.vocabCategory + (categoriesSet.size === 1 ? "" : " (filtered)");
 
-    el.textContent = lessonLabel + " · " + categoryLabel;
+    var masteredLabel = "Tất cả (đã/chưa thuộc)";
+    if (state.filter.vocabMastered === "mastered") {
+      masteredLabel = "Chỉ đã thuộc";
+    } else if (state.filter.vocabMastered === "not") {
+      masteredLabel = "Chỉ chưa thuộc";
+    }
+
+    el.textContent = lessonLabel + " · " + categoryLabel + " · " + masteredLabel;
   }
 
   function renderVocabList() {
@@ -1158,6 +1182,25 @@
           state.vocabFavorites[vocabIndex] = true;
         }
         saveVocabFavorites();
+        renderVocabList();
+      });
+
+      var isMastered = !!state.vocabMastered[vocabIndex];
+      var masteredBtn = createElement(
+        "button",
+        "mastered-btn" + (isMastered ? " mastered-btn--active" : ""),
+        isMastered ? "✓" : "○"
+      );
+      masteredBtn.type = "button";
+      masteredBtn.title = isMastered ? "Đã thuộc — bấm để bỏ đánh dấu" : "Đánh dấu đã thuộc";
+      masteredBtn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        if (state.vocabMastered[vocabIndex]) {
+          delete state.vocabMastered[vocabIndex];
+        } else {
+          state.vocabMastered[vocabIndex] = true;
+        }
+        saveVocabMastered();
         renderVocabList();
       });
 
@@ -1234,6 +1277,7 @@
       vocabTopRow.style.cssText = "display:flex;align-items:center;gap:4px";
       vocabTopRow.appendChild(mainRow);
       if (audioBtn) vocabTopRow.appendChild(audioBtn);
+      vocabTopRow.appendChild(masteredBtn);
       vocabTopRow.appendChild(starBtn);
       mainRow.style.flex = "1";
       row.appendChild(vocabTopRow);
@@ -1725,6 +1769,30 @@
 
     questionWrapper.appendChild(qMain);
 
+    var vocabIdxForTest = vocabData.indexOf(rawQuestion);
+    if (vocabIdxForTest >= 0) {
+      var testMasteredRow = createElement("div", "test-mastered-row", "");
+      var testMasteredBtn = createElement(
+        "button",
+        "test-mastered-btn" + (state.vocabMastered[vocabIdxForTest] ? " test-mastered-btn--active" : ""),
+        state.vocabMastered[vocabIdxForTest] ? "Đã đánh dấu thuộc" : "Đánh dấu đã thuộc"
+      );
+      testMasteredBtn.type = "button";
+      testMasteredBtn.title = "Chỉ khi bạn bấm mới lưu; không tự động khi trả lời đúng/sai.";
+      testMasteredBtn.addEventListener("click", function () {
+        if (state.vocabMastered[vocabIdxForTest]) {
+          delete state.vocabMastered[vocabIdxForTest];
+        } else {
+          state.vocabMastered[vocabIdxForTest] = true;
+        }
+        saveVocabMastered();
+        testMasteredBtn.textContent = state.vocabMastered[vocabIdxForTest] ? "Đã đánh dấu thuộc" : "Đánh dấu đã thuộc";
+        testMasteredBtn.classList.toggle("test-mastered-btn--active", !!state.vocabMastered[vocabIdxForTest]);
+      });
+      testMasteredRow.appendChild(testMasteredBtn);
+      questionWrapper.appendChild(testMasteredRow);
+    }
+
     const optionsGrid = createElement("div", "options-grid", "");
     shuffledOptions.forEach(function (opt, idx) {
       const btn = createElement("button", "option-btn", "");
@@ -1733,7 +1801,7 @@
       btn.appendChild(idxSpan);
       btn.appendChild(textSpan);
       btn.addEventListener("click", function () {
-        handleSelectAnswer(questionWord, correctAnswer, opt, vocabIdForAudio);
+        handleSelectAnswer(questionWord, correctAnswer, opt, vocabTextForTts);
       });
       optionsGrid.appendChild(btn);
     });
@@ -2669,6 +2737,7 @@
   function setupVocabFilters() {
     const lessonSelect = document.getElementById("vocab-lesson-filter");
     const categorySelect = document.getElementById("vocab-category-filter");
+    const masteredSelect = document.getElementById("vocab-mastered-filter");
     const searchInput = document.getElementById("vocab-search-input");
 
     const lessons = getUniqueSorted(
@@ -2701,6 +2770,14 @@
       renderVocabList();
     });
 
+    if (masteredSelect) {
+      masteredSelect.value = state.filter.vocabMastered || "all";
+      masteredSelect.addEventListener("change", function () {
+        state.filter.vocabMastered = masteredSelect.value || "all";
+        renderVocabList();
+      });
+    }
+
     if (searchInput) {
       searchInput.addEventListener("input", function () {
         state.filter.vocabSearch = searchInput.value || "";
@@ -2713,8 +2790,12 @@
       state.filter.vocabLesson = "all";
       state.filter.vocabCategory = "all";
       state.filter.vocabSearch = "";
+      state.filter.vocabMastered = "all";
       lessonSelect.value = "all";
       categorySelect.value = "all";
+      if (masteredSelect) {
+        masteredSelect.value = "all";
+      }
       if (searchInput) {
         searchInput.value = "";
       }
@@ -2844,7 +2925,7 @@
   let isProcessing = false;
   var _overlayTimeout = null;
 
-  function handleSelectAnswer(questionWord, correctAnswer, selectedAnswer, vocabIdForAudio) {
+  function handleSelectAnswer(questionWord, correctAnswer, selectedAnswer, ttsText) {
     if (isProcessing) return; // chặn spam
     isProcessing = true;
 
@@ -2854,6 +2935,7 @@
     if (isCorrect) {
       testState.correctCount += 1;
     }
+    // Không tự động đánh dấu đã thuộc — chỉ khi người dùng bấm nút trong bài test / danh sách.
 
     // Hiển thị cả hiragana và kanji trong kết quả
     var labelParts = [];
@@ -2879,8 +2961,8 @@
     });
 
     // Sau khi chọn đáp án thì đọc lại từ vựng (hiragana) bằng TTS
-    if (vocabTextForTts) {
-      speakJapanese(vocabTextForTts, null);
+    if (ttsText) {
+      speakJapanese(ttsText, null);
     }
 
     setTimeout(() => {
