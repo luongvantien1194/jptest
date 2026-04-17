@@ -1011,7 +1011,7 @@
 
   // ----- Vocab -----
   function applyVocabFilters() {
-    return vocabData.filter(function (item) {
+    var filtered = vocabData.filter(function (item) {
       if (!item) {
         return false;
       }
@@ -1102,6 +1102,24 @@
 
       return true;
     });
+    // Danh sách: bài (Lesson) tăng dần, trong cùng bài thì id tăng dần
+    filtered.sort(function (a, b) {
+      var la = a.lesson != null ? a.lesson : a.Lesson;
+      var lb = b.lesson != null ? b.lesson : b.Lesson;
+      var na = Number(la);
+      var nb = Number(lb);
+      if (isNaN(na)) na = 0;
+      if (isNaN(nb)) nb = 0;
+      if (na !== nb) {
+        return na - nb;
+      }
+      var ia = Number(a.id);
+      var ib = Number(b.id);
+      if (isNaN(ia)) ia = 0;
+      if (isNaN(ib)) ib = 0;
+      return ia - ib;
+    });
+    return filtered;
   }
 
   function renderVocabFilterSummary(filteredList) {
