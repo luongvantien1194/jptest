@@ -79,11 +79,15 @@
         isOpen: false,
         lastType: null
       },
-      vocabListKey: ""
+      vocabListKey: "",
+      kanjiVocabFavOnly: false,
+      /** Khi mở chi tiết Kanji từ tab ⭐(kanji), đóng modal thì quay lại tab này */
+      kanjiDetailReturnTab: null
     },
     vocabFavorites: {},
     vocabMastered: {},
     kanjiFavorites: {},
+    kanjiVocabFavorites: {},
     vocabFavOnly: false,
     kanjiFavOnly: false,
     autoPlay: {
@@ -280,6 +284,8 @@
     if (savedVM) state.vocabMastered = JSON.parse(savedVM);
     var savedKF = localStorage.getItem("jp_kanji_favorites");
     if (savedKF) state.kanjiFavorites = JSON.parse(savedKF);
+    var savedKVF = localStorage.getItem("jp_kanji_vocab_favorites");
+    if (savedKVF) state.kanjiVocabFavorites = JSON.parse(savedKVF);
   } catch (e) {
     // ignore parse errors
   }
@@ -293,6 +299,9 @@
   function saveKanjiFavorites() {
     try { localStorage.setItem("jp_kanji_favorites", JSON.stringify(state.kanjiFavorites)); } catch (e) {}
   }
+  function saveKanjiVocabFavorites() {
+    try { localStorage.setItem("jp_kanji_vocab_favorites", JSON.stringify(state.kanjiVocabFavorites)); } catch (e) {}
+  }
 
   // ========================
   // HELPER FUNCTIONS
@@ -303,6 +312,50 @@
       .toLowerCase()
       .normalize("NFD")
       .replace(/[\u0300-\u036f]/g, "");
+  }
+
+  function getKanjiVocabFavKey(kanjiIndex, parts) {
+    // parts: [word, reading, meaning]
+    // Key includes kanjiIndex to avoid collisions between different kanji
+    var w = String(parts && parts[0] != null ? parts[0] : "").trim();
+    var r = String(parts && parts[1] != null ? parts[1] : "").trim();
+    var m = String(parts && parts[2] != null ? parts[2] : "").trim();
+    return String(kanjiIndex) + "|" + w + "|" + r + "|" + m;
+  }
+
+  /** Parse key lưu trong localStorage (jp_kanji_vocab_favorites) */
+  function parseKanjiVocabFavKeyStorage(key) {
+    var s = String(key || "");
+    var i0 = s.indexOf("|");
+    if (i0 === -1) {
+      return null;
+    }
+    var ki = parseInt(s.slice(0, i0), 10);
+    if (isNaN(ki) || ki < 0) {
+      return null;
+    }
+    var rest = s.slice(i0 + 1);
+    var p = rest.split("|");
+    return {
+      kanjiIndex: ki,
+      word: p[0] != null ? p[0] : "",
+      read: p[1] != null ? p[1] : "",
+      mean: p[2] != null ? p[2] : ""
+    };
+  }
+
+  function refreshStarsTabIfActive() {
+    if (state.currentTab === "stars") {
+      renderStarsTab();
+    }
+  }
+
+  /**
+   * Chuỗi đưa vào TTS cho từ trong list ⭐(kanji) — giống chi tiết Kanji:
+   * chỉ đọc phần trước "(" của cột word (không đọc hiragana trong ngoặc).
+   */
+  function getStarsKanjiVocabSpeakText(parsed) {
+    return String(parsed.word || "").split("(")[0].trim();
   }
 
   function getRadicalVietnameseLabel(radicalText) {
@@ -872,6 +925,16 @@
     detailModalState.el.classList.remove("detail-modal--practice");
     detailModalState.el.setAttribute("aria-hidden", "true");
     state.ui.detailModal.isOpen = false;
+    var ret = state.ui.kanjiDetailReturnTab;
+    state.ui.kanjiDetailReturnTab = null;
+    if (ret === "stars") {
+      state.currentTab = "stars";
+      if (window.location.hash !== "#stars") {
+        window.location.hash = "#stars";
+      }
+      renderTabs();
+      renderStarsTab();
+    }
   }
 
   function openKanjiPracticeModal(kanjiChar) {
@@ -996,6 +1059,7 @@
       { id: "section-vocab", tab: "vocab" },
       { id: "section-kanji", tab: "kanji" },
       { id: "section-grammar", tab: "grammar" },
+      { id: "section-stars", tab: "stars" },
       { id: "section-note", tab: "note" }
     ];
 
@@ -1201,6 +1265,7 @@
         }
         saveVocabFavorites();
         renderVocabList();
+        refreshStarsTabIfActive();
       });
 
       var isMastered = !!state.vocabMastered[vocabIndex];
@@ -1978,6 +2043,30 @@
     });
   }
 
+  /** Số trên ô lưới = raw.stt hoặc thứ tự trong danh sách đang lọc (1-based) */
+  function findGlobalKanjiIndexByGridStt(nRaw) {
+    var nNum = parseInt(String(nRaw).trim(), 10);
+    if (isNaN(nNum) || nNum < 1) {
+      return -1;
+    }
+    var filtered = applyKanjiFilter();
+    for (var di = 0; di < filtered.length; di++) {
+      var raw = filtered[di];
+      var shown = raw.stt != null ? Number(raw.stt) : di + 1;
+      if (!isNaN(shown) && shown === nNum) {
+        return kanjiData.indexOf(raw);
+      }
+    }
+    return -1;
+  }
+
+  function clearKanjiGridJumpFocus() {
+    var nodes = document.querySelectorAll(".kanji-grid-item--jump-focus");
+    nodes.forEach(function (n) {
+      n.classList.remove("kanji-grid-item--jump-focus");
+    });
+  }
+
   function renderKanjiList() {
     const container = document.getElementById("kanji-list-container");
     const countLabel = document.getElementById("kanji-count-label");
@@ -1992,130 +2081,57 @@
       return;
     }
 
-    var isGrid = state.kanjiViewMode === "grid";
+    // Chỉ dùng grid view
+    state.kanjiViewMode = "grid";
 
-    if (isGrid) {
-      // ===== Grid view =====
-      const grid = createElement("div", "kanji-grid", "");
-      filtered.forEach(function (raw, displayIdx) {
-        const globalIndex = kanjiData.indexOf(raw);
-        const item = {
-          stt: raw.stt != null ? raw.stt : (displayIdx + 1),
-          kanji: raw.kanji,
-          name: raw.hanviet
-        };
+    const grid = createElement("div", "kanji-grid", "");
+    filtered.forEach(function (raw, displayIdx) {
+      const globalIndex = kanjiData.indexOf(raw);
+      const item = {
+        stt: raw.stt != null ? raw.stt : (displayIdx + 1),
+        kanji: raw.kanji,
+        name: raw.hanviet
+      };
 
-        const cell = createElement("div", "kanji-grid-item", "");
+      const cell = createElement("div", "kanji-grid-item", "");
+      cell.setAttribute("data-kanji-index", String(globalIndex));
 
-        // Số thứ tự
-        const numEl = createElement("div", "kanji-grid-num", String(item.stt));
-        cell.appendChild(numEl);
+      // Số thứ tự
+      const numEl = createElement("div", "kanji-grid-num", String(item.stt));
+      cell.appendChild(numEl);
 
-        // Star
-        var isKanjiFav = !!state.kanjiFavorites[globalIndex];
-        var starBtn = createElement("button", "star-btn" + (isKanjiFav ? " star-btn--active" : ""), isKanjiFav ? "⭐" : "☆");
-        starBtn.type = "button";
-        starBtn.addEventListener("click", function (e) {
-          e.stopPropagation();
-          if (state.kanjiFavorites[globalIndex]) {
-            delete state.kanjiFavorites[globalIndex];
-          } else {
-            state.kanjiFavorites[globalIndex] = true;
-          }
-          saveKanjiFavorites();
-          renderKanjiList();
-        });
-        cell.appendChild(starBtn);
-
-        const charEl = createElement("div", "kanji-grid-char", item.kanji || "");
-        const nameEl = createElement("div", "kanji-grid-name", item.name || "");
-        cell.appendChild(charEl);
-        cell.appendChild(nameEl);
-
-        cell.addEventListener("click", function () {
-          state.kanjiHistory = [];
-          state.selected.kanjiIndex = globalIndex;
-          renderKanjiDetail();
-        });
-
-        grid.appendChild(cell);
+      // Star
+      var isKanjiFav = !!state.kanjiFavorites[globalIndex];
+      var starBtn = createElement("button", "star-btn" + (isKanjiFav ? " star-btn--active" : ""), isKanjiFav ? "⭐" : "☆");
+      starBtn.type = "button";
+      starBtn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        if (state.kanjiFavorites[globalIndex]) {
+          delete state.kanjiFavorites[globalIndex];
+        } else {
+          state.kanjiFavorites[globalIndex] = true;
+        }
+        saveKanjiFavorites();
+        renderKanjiList();
+        refreshStarsTabIfActive();
       });
-      container.appendChild(grid);
-    } else {
-      // ===== List view (default) =====
-      const list = createElement("div", "simple-list", "");
-      filtered.forEach(function (raw, displayIdx) {
-        const globalIndex = kanjiData.indexOf(raw);
-        const item = {
-          stt: raw.stt != null ? raw.stt : (displayIdx + 1),
-          kanji: raw.kanji,
-          name: raw.hanviet,
-          kun: raw.kun_reading,
-          on: raw.on_reading,
-          core_meaning: raw.core_meaning
-        };
-        const row = createElement("div", "kl-item", "");
-        row.setAttribute("data-kanji-index", String(globalIndex));
+      cell.appendChild(starBtn);
 
-        // Sequential number badge (ưu tiên dùng stt trong dữ liệu)
-        const numEl = createElement("div", "kl-num", String(item.stt));
-        row.appendChild(numEl);
+      const charEl = createElement("div", "kanji-grid-char", item.kanji || "");
+      const nameEl = createElement("div", "kanji-grid-name", item.name || "");
+      cell.appendChild(charEl);
+      cell.appendChild(nameEl);
 
-        // Large kanji character
-        const charEl = createElement("div", "kl-char", item.kanji || "");
-        row.appendChild(charEl);
-
-        // Info block: hanviet + readings
-        const infoEl = createElement("div", "kl-info", "");
-        const nameEl = createElement("div", "kl-name", item.name || "");
-        infoEl.appendChild(nameEl);
-
-        const readingsEl = createElement("div", "kl-readings", "");
-        if (item.on) {
-          const onPill = createElement("span", "kl-pill kl-pill--on", item.on.replace(/\|/g, " · "));
-          readingsEl.appendChild(onPill);
-        }
-        if (item.kun) {
-          const kunPill = createElement("span", "kl-pill kl-pill--kun", item.kun.replace(/\|/g, " · "));
-          readingsEl.appendChild(kunPill);
-        }
-        infoEl.appendChild(readingsEl);
-        row.appendChild(infoEl);
-
-        // Core meaning tag (right side)
-        if (item.core_meaning) {
-          const meaningEl = createElement("div", "kl-meaning", item.core_meaning);
-          row.appendChild(meaningEl);
-        }
-
-        // Star button
-        var isKanjiFav = !!state.kanjiFavorites[globalIndex];
-        var kanjiStarBtn = createElement("button", "star-btn" + (isKanjiFav ? " star-btn--active" : ""), isKanjiFav ? "⭐" : "☆");
-        kanjiStarBtn.type = "button";
-        kanjiStarBtn.title = "Yêu thích";
-        kanjiStarBtn.addEventListener("click", function (e) {
-          e.stopPropagation();
-          if (state.kanjiFavorites[globalIndex]) {
-            delete state.kanjiFavorites[globalIndex];
-          } else {
-            state.kanjiFavorites[globalIndex] = true;
-          }
-          saveKanjiFavorites();
-          renderKanjiList();
-        });
-        row.appendChild(kanjiStarBtn);
-
-        row.addEventListener("click", function () {
-          state.kanjiHistory = [];
-          state.selected.kanjiIndex = globalIndex;
-          renderKanjiDetail();
-        });
-
-        list.appendChild(row);
+      cell.addEventListener("click", function () {
+        clearKanjiGridJumpFocus();
+        state.kanjiHistory = [];
+        state.selected.kanjiIndex = globalIndex;
+        renderKanjiDetail();
       });
 
-      container.appendChild(list);
-    }
+      grid.appendChild(cell);
+    });
+    container.appendChild(grid);
   }
 
   function renderKanjiDetail() {
@@ -2149,6 +2165,12 @@
       return;
     }
 
+    if (state.currentTab === "stars") {
+      state.ui.kanjiDetailReturnTab = "stars";
+    } else {
+      state.ui.kanjiDetailReturnTab = null;
+    }
+
     // Hero: Kanji + Nghĩa + Hán Việt + sao
     const globalIndex = state.selected.kanjiIndex;
     const isKanjiFav = !!state.kanjiFavorites[globalIndex];
@@ -2169,6 +2191,7 @@
       }
       saveKanjiFavorites();
       renderKanjiDetail();
+      refreshStarsTabIfActive();
     });
     hero.appendChild(starBtn);
     const indexLabel = createElement(
@@ -2300,11 +2323,32 @@
     // Section 4: Từ vựng ứng dụng (ẩn nếu không có)
     if (item.vocabulary && String(item.vocabulary).trim() && String(item.vocabulary).toLowerCase() !== "không có") {
       const sec4 = createElement("div", "kd-section kd-section--purple", "");
+      const sec4TitleRow = createElement("div", "kd-section-title-row", "");
+      const sec4Title = createElement("div", "kd-section-title", "Từ vựng ứng dụng");
+      const sec4StarToggle = createElement("button", "star-filter-btn" + (state.ui.kanjiVocabFavOnly ? " star-filter-btn--active" : ""), state.ui.kanjiVocabFavOnly ? "⭐" : "☆");
+      sec4StarToggle.type = "button";
+      sec4StarToggle.title = state.ui.kanjiVocabFavOnly ? "Đang lọc: chỉ hiện từ đã gắn sao" : "Chỉ hiện từ đã gắn sao";
+      sec4StarToggle.addEventListener("click", function (e) {
+        e.stopPropagation();
+        state.ui.kanjiVocabFavOnly = !state.ui.kanjiVocabFavOnly;
+        renderKanjiDetail();
+      });
+      sec4TitleRow.appendChild(sec4Title);
+      sec4TitleRow.appendChild(sec4StarToggle);
+      sec4.appendChild(sec4TitleRow);
 
       item.vocabulary.split("|").forEach(function (v) {
         var trimmed = String(v).trim();
         if (!trimmed || trimmed.toLowerCase() === "không có") return;
         var parts = trimmed.split(":");
+
+        var kanjiIndexForFav = state.selected.kanjiIndex;
+        var favKey = getKanjiVocabFavKey(kanjiIndexForFav, parts);
+        var isFav = !!state.kanjiVocabFavorites[favKey];
+        if (state.ui.kanjiVocabFavOnly && !isFav) {
+          return;
+        }
+
         const row = createElement("div", "kd-vocab-row", "");
         const wordEl = createElement("span", "kd-vocab-word", "");
         var wordText = parts[0] || "";
@@ -2317,6 +2361,23 @@
         row.appendChild(wordEl);
         row.appendChild(readEl);
         row.appendChild(meanEl);
+
+        // Star vocab (per-kanji)
+        var rowStarBtn = createElement("button", "star-btn kd-vocab-star" + (isFav ? " star-btn--active" : ""), isFav ? "⭐" : "☆");
+        rowStarBtn.type = "button";
+        rowStarBtn.title = isFav ? "Bỏ gắn sao từ vựng" : "Gắn sao từ vựng";
+        rowStarBtn.addEventListener("click", function (e) {
+          e.stopPropagation();
+          if (state.kanjiVocabFavorites[favKey]) {
+            delete state.kanjiVocabFavorites[favKey];
+          } else {
+            state.kanjiVocabFavorites[favKey] = true;
+          }
+          saveKanjiVocabFavorites();
+          renderKanjiDetail();
+          refreshStarsTabIfActive();
+        });
+        row.appendChild(rowStarBtn);
 
         // Click vào Kanji trong từ vựng để mở chi tiết Kanji
         wordEl.addEventListener("click", function (e) {
@@ -2522,6 +2583,88 @@
     container.appendChild(list);
   }
 
+  function renderStarsTab() {
+    var kvBox = document.getElementById("stars-kanji-vocab-list");
+    if (!kvBox) {
+      return;
+    }
+
+    kvBox.innerHTML = "";
+
+    var kvKeys = Object.keys(state.kanjiVocabFavorites || {}).filter(function (k) {
+      return !!state.kanjiVocabFavorites[k];
+    });
+    kvKeys.sort(function (a, b) {
+      var pa = parseKanjiVocabFavKeyStorage(a);
+      var pb = parseKanjiVocabFavKeyStorage(b);
+      if (!pa || !pb) {
+        return String(a).localeCompare(String(b));
+      }
+      if (pa.kanjiIndex !== pb.kanjiIndex) {
+        return pa.kanjiIndex - pb.kanjiIndex;
+      }
+      return String(pa.word).localeCompare(String(pb.word));
+    });
+    if (kvKeys.length === 0) {
+      kvBox.appendChild(createElement("div", "detail-empty", "Chưa gắn sao từ nào trong phần “Từ vựng ứng dụng” của chi tiết Kanji."));
+    } else {
+      var kvList = createElement("div", "simple-list", "");
+      kvKeys.forEach(function (key) {
+        var parsed = parseKanjiVocabFavKeyStorage(key);
+        if (!parsed) {
+          return;
+        }
+        var rawK = kanjiData[parsed.kanjiIndex];
+        var kj = rawK && rawK.kanji ? rawK.kanji : "#" + parsed.kanjiIndex;
+        var row = createElement("div", "stars-fav-row", "");
+        var main = createElement("div", "stars-fav-row-main", "");
+        var line1 = createElement("div", "", "");
+        line1.textContent = "【" + kj + "】 " + (parsed.word || "");
+        main.appendChild(line1);
+        var sub = [];
+        if (parsed.read) {
+          sub.push("(" + parsed.read + ")");
+        }
+        if (parsed.mean) {
+          sub.push(parsed.mean);
+        }
+        if (sub.length) {
+          main.appendChild(createElement("div", "stars-fav-row-meta", sub.join(" — ")));
+        }
+        var speakText = getStarsKanjiVocabSpeakText(parsed);
+        var starBtn = createElement("button", "star-btn star-btn--active", "⭐");
+        starBtn.type = "button";
+        starBtn.title = "Bỏ sao";
+        starBtn.addEventListener("click", function (e) {
+          e.preventDefault();
+          e.stopPropagation();
+          delete state.kanjiVocabFavorites[key];
+          saveKanjiVocabFavorites();
+          // Chỉ bỏ sao — không gọi renderKanjiDetail (tránh mở modal chi tiết Kanji)
+          renderStarsTab();
+        });
+        row.appendChild(main);
+        if (speakText) {
+          row.appendChild(createAudioBtn(speakText));
+        }
+        row.appendChild(starBtn);
+        row.addEventListener("click", function () {
+          state.kanjiHistory = [];
+          state.selected.kanjiIndex = parsed.kanjiIndex;
+          state.currentTab = "stars";
+          if (window.location.hash !== "#stars") {
+            window.location.hash = "#stars";
+          }
+          renderTabs();
+          renderKanjiList();
+          renderKanjiDetail();
+        });
+        kvList.appendChild(row);
+      });
+      kvBox.appendChild(kvList);
+    }
+  }
+
   function splitGrammarExampleLines(text) {
     const lines = [];
     String(text || "").split(/\r?\n/).forEach(function (block) {
@@ -2719,6 +2862,8 @@
       tabName = "kanji";
     } else if (hash === "#grammar") {
       tabName = "grammar";
+    } else if (hash === "#stars") {
+      tabName = "stars";
     } else if (hash === "#note") {
       tabName = "note";
     } else {
@@ -2728,6 +2873,8 @@
     renderTabs();
     if (tabName === "note") {
       renderNoteContent();
+    } else if (tabName === "stars") {
+      renderStarsTab();
     }
   }
 
@@ -3561,6 +3708,28 @@
       });
     }
 
+    var kanjiSttJumpInput = document.getElementById("kanji-stt-jump-input");
+    if (kanjiSttJumpInput) {
+      kanjiSttJumpInput.addEventListener("change", function () {
+        var v = kanjiSttJumpInput.value;
+        if (!v || !String(v).trim()) {
+          return;
+        }
+        var gIdx = findGlobalKanjiIndexByGridStt(v);
+        if (gIdx < 0) {
+          return;
+        }
+        requestAnimationFrame(function () {
+          var el = document.querySelector('.kanji-grid-item[data-kanji-index="' + gIdx + '"]');
+          clearKanjiGridJumpFocus();
+          if (el) {
+            el.scrollIntoView({ block: "nearest", behavior: "smooth" });
+            el.classList.add("kanji-grid-item--jump-focus");
+          }
+        });
+      });
+    }
+
     var resetKanjiFilterBtn = document.getElementById("reset-kanji-filter-btn");
     if (resetKanjiFilterBtn) {
       resetKanjiFilterBtn.addEventListener("click", function () {
@@ -3580,31 +3749,16 @@
           kanjiFavBtn.textContent = "☆";
           kanjiFavBtn.classList.remove("star-filter-btn--active");
         }
+        var kanjiSttJumpClear = document.getElementById("kanji-stt-jump-input");
+        if (kanjiSttJumpClear) {
+          kanjiSttJumpClear.value = "";
+        }
         renderKanjiList();
       });
     }
 
-    // View mode toggle (list / grid)
-    var listBtn = document.getElementById("kanji-view-list");
-    var gridBtn = document.getElementById("kanji-view-grid");
-    function updateViewToggle() {
-      if (listBtn) listBtn.classList.toggle("view-toggle-btn--active", state.kanjiViewMode === "list");
-      if (gridBtn) gridBtn.classList.toggle("view-toggle-btn--active", state.kanjiViewMode === "grid");
-    }
-    if (listBtn) {
-      listBtn.addEventListener("click", function () {
-        state.kanjiViewMode = "list";
-        updateViewToggle();
-        renderKanjiList();
-      });
-    }
-    if (gridBtn) {
-      gridBtn.addEventListener("click", function () {
-        state.kanjiViewMode = "grid";
-        updateViewToggle();
-        renderKanjiList();
-      });
-    }
+    // Kanji chỉ dùng grid view (không toggle mode)
+    state.kanjiViewMode = "grid";
 
     const startKanjiTestBtn = document.getElementById("start-kanji-test-btn");
     if (startKanjiTestBtn) {
