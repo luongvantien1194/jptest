@@ -4,24 +4,17 @@
   <meta charset="UTF-8" />
   <title>JP Study App</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
-  <script src="data/kanjiData.js?v=20260401"></script>
-  <script src="data/vocabData.js?v=202600401"></script>
+  <script src="data/kanjiData.js?v=20260327"></script>
+  <script src="data/vocabData.js?v=20260327"></script>
   <script src="data/grammarData.js?v=20260322"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=20260328">
+  <link rel="stylesheet" href="css/style.css?v=20260420">
 </head>
 <body>
   <div class="app-shell">
     <header class="app-header">
-      <div class="header-top">
-        <div class="title-block">
-          <div class="app-title">
-            <span class="title-ja">日本語ラボ</span>
-          </div>
-        </div>
-      </div>
       <nav class="tabs" aria-label="Sections">
         <button class="tab" data-tab="vocab" type="button">
           <span class="tab-label-main">Từ vựng</span>
@@ -31,12 +24,16 @@
           <span class="tab-label-main">Kanji</span>
           <span class="tab-indicator"></span>
         </button>
+        <button class="tab" data-tab="stars" type="button">
+          <span class="tab-label-main">⭐(kanji)</span>
+          <span class="tab-indicator"></span>
+        </button>
         <button class="tab" data-tab="grammar" type="button">
           <span class="tab-label-main">Ngữ pháp</span>
           <span class="tab-indicator"></span>
         </button>
         <button class="tab" data-tab="note" type="button">
-          <span class="tab-label-sub">Ghi chú</span>
+          <span class="tab-label-main">Ghi chú</span>
           <span class="tab-indicator"></span>
         </button>
       </nav>
@@ -46,14 +43,6 @@
       <!-- Vocab Section -->
       <section class="section" id="section-vocab" aria-labelledby="section-vocab-title">
         <div class="section-inner">
-          <div class="section-header">
-            <div class="section-title">
-              <span id="section-vocab-title" class="section-title-main">Từ vựng</span>
-              <span class="section-title-sub">Danh sách &amp; luyện tập</span>
-            </div>
-            <div class="chip"><span id="vocab-count-label">0 từ</span></div>
-          </div>
-
           <div>
             <div class="field-group" style="margin-bottom:6px;display:flex;flex-direction:row;align-items:center;gap:6px">
               <div class="field-label" style="margin-bottom:0;white-space:nowrap">Tìm kiếm</div>
@@ -61,8 +50,11 @@
               <button type="button" class="star-filter-btn" id="vocab-fav-filter" title="Chỉ hiện yêu thích">☆</button>
             </div>
             <div class="filters-toggle-row">
-              <button type="button" class="filters-toggle" id="vocab-filters-toggle">Hiện bộ lọc</button>
-              <button type="button" class="filters-toggle" id="display-settings-toggle-link">Hiện tuỳ chọn cột</button>
+              <div class="chip"><span id="vocab-count-label">0 từ</span></div>
+              <div class="filters-toggle-row-actions">
+                <button type="button" class="filters-toggle" id="vocab-filters-toggle">Hiện bộ lọc</button>
+                <button type="button" class="filters-toggle" id="display-settings-toggle-link">Hiện tuỳ chọn cột</button>
+              </div>
             </div>
             <div class="filters-row filters-row--hidden" id="vocab-filters-row">
               <div class="field-group">
@@ -191,25 +183,29 @@
       <!-- Kanji Section -->
       <section class="section" id="section-kanji" aria-labelledby="section-kanji-title">
         <div class="section-inner">
-          <div class="section-header">
-            <div class="section-title">
-              <span id="section-kanji-title" class="section-title-main">Kanji</span>
-              <span class="section-title-sub">Bộ thủ · Âm đọc · Ví dụ</span>
-            </div>
-            <div class="chip"><span id="kanji-count-label">0 chữ</span></div>
-          </div>
-
           <div class="field-group" style="margin-bottom:6px;display:flex;flex-direction:row;align-items:center;gap:6px">
             <div class="field-label" style="margin-bottom:0;white-space:nowrap">Search</div>
             <input id="kanji-search-input" type="text" placeholder="Kanji / Hán Việt" class="input-text" />
             <button type="button" class="star-filter-btn" id="kanji-fav-filter" title="Chỉ hiện yêu thích">☆</button>
-            <div class="view-toggle-row">
-              <button type="button" class="view-toggle-btn" id="kanji-view-list" title="Danh sách">☰</button>
-              <button type="button" class="view-toggle-btn view-toggle-btn--active" id="kanji-view-grid" title="Lưới">▦</button>
-            </div>
           </div>
           <div class="filters-toggle-row">
-            <button type="button" class="filters-toggle" id="kanji-filters-toggle">Hiện bộ lọc</button>
+            <div class="kanji-count-jump-wrap">
+              <div class="chip"><span id="kanji-count-label">0 chữ</span></div>
+              <input
+                id="kanji-stt-jump-input"
+                type="number"
+                min="1"
+                step="1"
+                class="input-kanji-stt-jump"
+                inputmode="numeric"
+                placeholder="STT"
+                title="Nhập số thứ tự (như trên ô lưới), đổi giá trị để cuộn tới Kanji đó"
+                aria-label="Nhảy tới Kanji theo số thứ tự"
+              />
+            </div>
+            <div class="filters-toggle-row-actions">
+              <button type="button" class="filters-toggle" id="kanji-filters-toggle">Hiện bộ lọc</button>
+            </div>
           </div>
           <div class="filters-row filters-row--hidden" id="kanji-filters-row">
             <div class="field-group">
@@ -255,18 +251,13 @@
       <!-- Grammar Section -->
       <section class="section" id="section-grammar" aria-labelledby="section-grammar-title">
         <div class="section-inner">
-          <div class="section-header">
-            <div class="section-title">
-              <span id="section-grammar-title" class="section-title-main">Ngữ pháp</span>
-              <span class="section-title-sub">Cấu trúc · Ý nghĩa · Cách dùng</span>
-            </div>
-            <div class="chip"><span id="grammar-count-label">0 mẫu</span></div>
-          </div>
-
           <div class="filters-toggle-row">
-            <button type="button" class="filters-toggle" id="grammar-filters-toggle">Ẩn bộ lọc</button>
+            <div class="chip"><span id="grammar-count-label">0 mẫu</span></div>
+            <div class="filters-toggle-row-actions">
+              <button type="button" class="filters-toggle" id="grammar-filters-toggle">Hiện bộ lọc</button>
+            </div>
           </div>
-          <div class="filters-row" id="grammar-filters-row">
+          <div class="filters-row filters-row--hidden" id="grammar-filters-row">
             <div class="field-group">
               <div class="field-label">Lọc theo Lesson</div>
               <select id="grammar-lesson-filter">
@@ -310,6 +301,20 @@
                   Chọn một cấu trúc ngữ pháp để xem nội dung chi tiết.
                 </div>
               </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Từ vựng trong chi tiết Kanji đã gắn sao -->
+      <section class="section" id="section-stars" aria-labelledby="section-stars-title">
+        <div class="section-inner">
+          <div class="stars-tab-stack">
+            <div class="card">
+              <div class="card-header">
+                <div class="card-title" id="section-stars-title">Từ vựng Kanji đã gắn sao</div>
+              </div>
+              <div class="card-body scroll-thin" id="stars-kanji-vocab-list"></div>
             </div>
           </div>
         </div>
@@ -359,6 +364,6 @@
   <!-- soundOverlay removed (no mp3 audio) -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script src="data/configDoc.js?v=20260327"></script>
-  <script src="js/main.js?v=2026041301"></script>
+  <script src="js/main.js?v=20260420"></script>
 </body>
 </html>
