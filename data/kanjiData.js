@@ -5806,7 +5806,7 @@ const kanjiData = [
     },
     {
       "stt": 388,
-      "kanji": "|雑",
+      "kanji": "雑",
       "hanviet": "TẠP",
       "on_reading": "ザツ|ゾウ",
       "kun_reading": "まじ.る",
@@ -7426,7 +7426,7 @@ const kanjiData = [
     },
     {
       "stt": 496,
-      "kanji": "ĐÍCH",
+      "kanji": "的",
       "hanviet": "テキ",
       "on_reading": "まと",
       "kun_reading": 8,
