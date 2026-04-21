@@ -2822,11 +2822,149 @@
       return;
     }
 
-    var filePath = String(target.file || "");
-    if (filePath.indexOf("/") === -1 && filePath.slice(-3).toLowerCase() !== ".md") {
-      filePath = "data/doc/" + filePath + ".md";
+    function getNoteFilePath(doc) {
+      const type = String(doc.type || "md").toLowerCase();
+      var filePath = String(doc.file || "");
+      if (filePath.indexOf("/") === -1) {
+        // Keep old behavior: `file: "theT"` => `data/doc/theT.md` (default)
+        const hasExt = /\.[a-z0-9]+$/i.test(filePath);
+        if (!hasExt) {
+          if (type === "pdf") {
+            filePath = filePath + ".pdf";
+          } else if (type === "xlsx") {
+            filePath = filePath + ".xlsx";
+          } else if (type === "img") {
+            // For images, `file` should usually include extension (e.g. a.jpg)
+            filePath = filePath;
+          } else {
+            filePath = filePath + ".md";
+          }
+        }
+        filePath = "data/doc/" + filePath;
+      }
+      return filePath;
     }
 
+    const type = String(target.type || "md").toLowerCase();
+    const filePath = getNoteFilePath(target);
+
+    container.classList.remove("note-content-markdown");
+
+    if (type === "img") {
+      const img = document.createElement("img");
+      img.src = filePath;
+      img.alt = target.label || "image";
+      img.loading = "lazy";
+      img.style.maxWidth = "100%";
+      img.style.height = "auto";
+      img.style.display = "block";
+      container.innerHTML = "";
+      container.appendChild(img);
+      return;
+    }
+
+    if (type === "pdf") {
+      const wrap = document.createElement("div");
+      const link = document.createElement("a");
+      link.href = filePath;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.textContent = "Mở PDF: " + filePath;
+      link.style.display = "inline-block";
+      link.style.marginBottom = "10px";
+
+      const iframe = document.createElement("iframe");
+      iframe.src = filePath;
+      iframe.title = target.label || "PDF";
+      iframe.style.width = "100%";
+      iframe.style.height = "75vh";
+      iframe.style.border = "1px solid rgba(255,255,255,0.12)";
+      iframe.loading = "lazy";
+
+      wrap.appendChild(link);
+      wrap.appendChild(iframe);
+      container.innerHTML = "";
+      container.appendChild(wrap);
+      return;
+    }
+
+    if (type === "xlsx") {
+      const wrap = document.createElement("div");
+      const link = document.createElement("a");
+      link.href = filePath;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.textContent = "Mở / tải file Excel: " + filePath;
+      link.style.display = "inline-block";
+      link.style.marginBottom = "10px";
+
+      const content = document.createElement("div");
+
+      wrap.appendChild(link);
+      wrap.appendChild(content);
+      container.innerHTML = "";
+      container.appendChild(wrap);
+
+      if (typeof XLSX === "undefined" || !XLSX || !XLSX.read) {
+        const hint = document.createElement("div");
+        hint.className = "detail-empty";
+        hint.textContent = "Chưa load được thư viện đọc Excel (XLSX).";
+        content.appendChild(hint);
+        return;
+      }
+
+      fetch(filePath)
+        .then(function (res) {
+          if (!res.ok) {
+            throw new Error("HTTP " + res.status);
+          }
+          return res.arrayBuffer();
+        })
+        .then(function (buf) {
+          const wb = XLSX.read(buf, { type: "array" });
+          const firstSheetName = wb.SheetNames && wb.SheetNames[0];
+          if (!firstSheetName) {
+            content.innerHTML = "<span class=\"detail-empty\">File Excel không có sheet.</span>";
+            return;
+          }
+
+          const sheet = wb.Sheets[firstSheetName];
+          // Render as HTML table (simple + fast). You can swap to sheet_to_json if needed.
+          const html = XLSX.utils.sheet_to_html(sheet, {
+            id: "xlsx-preview-table",
+            editable: false
+          });
+          content.innerHTML = html;
+
+          const table = content.querySelector("table");
+          if (table) {
+            table.style.width = "100%";
+            table.style.borderCollapse = "collapse";
+            table.style.background = "rgba(0,0,0,0.15)";
+          }
+
+          // minimal cell styling
+          const cells = content.querySelectorAll("td, th");
+          for (var i = 0; i < cells.length; i++) {
+            cells[i].style.border = "1px solid rgba(255,255,255,0.12)";
+            cells[i].style.padding = "6px 8px";
+            cells[i].style.verticalAlign = "top";
+          }
+        })
+        .catch(function (err) {
+          const msg = err && err.message ? err.message : "unknown";
+          content.innerHTML =
+            "<span class=\"detail-empty\">Không đọc được file: " +
+            filePath +
+            " (" +
+            msg +
+            ").</span>";
+        });
+
+      return;
+    }
+
+    // default: markdown
     fetch(filePath)
       .then(function (res) {
         if (!res.ok) {
