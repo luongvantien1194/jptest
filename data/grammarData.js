@@ -740,7 +740,7 @@ const grammarData = [
     "Lesson": 17,
     "Structure": "Thể ない",
     "Meaning": "Động từ thể phủ định ngắn",
-    "Explanation": "Cách chia động từ sang thể ない (Nhóm 1: cột i -> cột a + nai; Nhóm 2: bỏ masu + nai; Nhóm 3: konai、 shinai)。",
+    "Explanation": "Cách chia động từ sang thể ない (Nhóm 1: cột i → cột a + nai; Nhóm 2: bỏ masu + nai; Nhóm 3: konai、 shinai)。",
     "Example": "書[か]かない [kakanai] (không viết) | 食[た]べない [tabenai] (không ăn) | しない [shinai] (không làm)"
   },
   {
@@ -1108,7 +1108,7 @@ const grammarData = [
     "Lesson": 27,
     "Structure": "Thể khả năng của động từ",
     "Meaning": "Có thể làm V",
-    "Explanation": "Nhóm 1: Chuyển đuôi [i] sang [e] + masu。 Nhóm 2: Bỏ [masu] thêm [raremasu]。 Nhóm 3: kuru -> koraremasu; suru -> dekimasu。",
+    "Explanation": "Nhóm 1: Chuyển đuôi [i] sang [e] + masu。 Nhóm 2: Bỏ [masu] thêm [raremasu]。 Nhóm 3: kuru → koraremasu; suru → dekimasu。",
     "Example": "書[か]けます [kakemasu] (có thể viết) | 食[た]べられます [taberaremasu] (có thể ăn) | 来[こ]られます [koraremasu] (có thể đến)"
   },
   {
@@ -1284,7 +1284,7 @@ const grammarData = [
     "Lesson": 31,
     "Structure": "Thể ý chí （Vよう）",
     "Meaning": "Sẽ làm V / Hãy cùng làm V",
-    "Explanation": "Dạng thông thường của Vましょう。 Nhóm 1: [i] -> [o] + u。 Nhóm 2: bỏ [masu] + you。 Nhóm 3: kuru -> koyou; suru -> shiyou。",
+    "Explanation": "Dạng thông thường của Vましょう。 Nhóm 1: [i] → [o] + u。 Nhóm 2: bỏ [masu] + you。 Nhóm 3: kuru → koyou; suru → shiyou。",
     "Example": "書[か]こう [kakou] (sẽ viết) | 食[た]べよう [tabeyou] (sẽ ăn) | 来[こ]よう [koyou] (sẽ đến)"
   },
   {
@@ -1380,7 +1380,7 @@ const grammarData = [
     "Lesson": 33,
     "Structure": "Thể mệnh lệnh và thể cấm đoán:",
     "Meaning": "Ra lệnh / Cấm đoán",
-    "Explanation": "Mệnh lệnh (Nhóm 1: i->e; Nhóm 2: bỏ masu + ro; Nhóm 3: koi/shiro)。 Cấm đoán: V-từ điển + na。",
+    "Explanation": "Mệnh lệnh (Nhóm 1: i→e; Nhóm 2: bỏ masu + ro; Nhóm 3: koi/shiro)。 Cấm đoán: V-từ điển + na。",
     "Example": "書[か]け [kake] (Viết mau！) | 食べるな [taberu na] (Cấm ăn！)"
   },
   {
@@ -1452,7 +1452,7 @@ const grammarData = [
     "Lesson": 35,
     "Structure": "Thể điều kiện (Vえば / Adjければ / Nなら)",
     "Meaning": "Thể điều kiện (Nếu...)",
-    "Explanation": "Nhóm 1: [i] -> [e] + ba。 Nhóm 2: bỏ [masu] + reba。 Nhóm 3: kuru -> kureba; suru -> sureba。 Tính từ đuôi い bỏ い thêm kereba。",
+    "Explanation": "Nhóm 1: [i] → [e] + ba。 Nhóm 2: bỏ [masu] + reba。 Nhóm 3: kuru → kureba; suru → sureba。 Tính từ đuôi い bỏ い thêm kereba。",
     "Example": "安[やす]ければ　買[か]います。[Yasukereba kaimasu.] (Nếu rẻ tôi sẽ mua。)"
   },
   {
@@ -1516,7 +1516,7 @@ const grammarData = [
     "Lesson": 37,
     "Structure": "Thể bị động (Vられる)",
     "Meaning": "Thể bị động (Bị / Được)",
-    "Explanation": "Nhóm 1: [i] -> [a] + reru。 Nhóm 2: bỏ [masu] + rareru。 Nhóm 3: kuru -> korareru; suru -> sareru。",
+    "Explanation": "Nhóm 1: [i] → [a] + reru。 Nhóm 2: bỏ [masu] + rareru。 Nhóm 3: kuru → korareru; suru → sareru。",
     "Example": "褒[ほ]められました [homeraremashita] (được khen) | 叱[しか]られました [shikararemashita] (bị mắng)"
   },
   {
@@ -1762,7 +1762,7 @@ const grammarData = [
   {
     "STT": 221,
     "Lesson": 44,
-    "Structure": "Adj (bỏ い -> く) / Adj (bỏ な -> に) + します",
+    "Structure": "Adj (bỏ い → く) / Adj (bỏ な → に) + します",
     "Meaning": "Làm cho trở nên...",
     "Explanation": "Diễn tả việc tác động để làm thay đổi trạng thái của đối tượng (tha động từ)。",
     "Example": "音[おと]を　大きく[おおきく]　します。[Oto o ookiku shimasu.] (Tôi vặn âm thanh to lên。)"
@@ -1860,7 +1860,7 @@ const grammarData = [
     "Lesson": 48,
     "Structure": "Thể sai khiến (Vさせる)",
     "Meaning": "Bắt / Cho phép làm V",
-    "Explanation": "Nhóm 1: [i] -> [a] + seru。 Nhóm 2: bỏ [masu] + saseru。 Nhóm 3: kuru -> kosaseru; suru -> saseru。",
+    "Explanation": "Nhóm 1: [i] → [a] + seru。 Nhóm 2: bỏ [masu] + saseru。 Nhóm 3: kuru → kosaseru; suru → saseru。",
     "Example": "書[か]かせる [kakaseru] (bắt viết) | 食べ[たべ]させる [tabesaseru] (cho ăn)"
   },
   {
