@@ -9,9 +9,8 @@ const kanjiData = [
     "radicals": "日-nhật",
     "core_meaning": "Mặt trời",
     "story_image": "Hình ảnh mặt trời hình tròn với một dấu gạch ngang ở giữa biểu thị ánh sáng.",
-    "logic_development": "日-nhật -> (日) mặt trời tỏa sáng",
+    "logic_development": "日-nhật → (日) mặt trời tỏa sáng",
     "memory_tip": "Nhìn giống như một cửa sổ có nắng chiếu vào.",
-    "adjectives": "なし",
     "vocabulary": "日(ひ):mặt trời|日本(にほん):nhật bản|休日(きゅうじつ):ngày nghỉ|毎日(まいにち):mỗi ngày|誕生日(たんじょうび):sinh nhật"
   },
   {
@@ -24,9 +23,8 @@ const kanjiData = [
     "radicals": "月-nguyệt",
     "core_meaning": "Mặt trăng",
     "story_image": "Hình ảnh mặt trăng khuyết với hai vạch mây trôi qua.",
-    "logic_development": "月-nguyệt -> (月) mặt trăng trên cao",
+    "logic_development": "月-nguyệt → (月) mặt trăng trên cao",
     "memory_tip": "Giống hình lưỡi liềm có hai gạch bên trong.",
-    "adjectives": "なし",
     "vocabulary": "月(つき):mặt trăng|一月(いちがつ):tháng một|今月(こんげつ):tháng này|毎月(まいつき):mỗi tháng|月曜日(げつようび):thứ hai"
   },
   {
@@ -39,9 +37,8 @@ const kanjiData = [
     "radicals": "木-mộc",
     "core_meaning": "Cây cối",
     "story_image": "Hình ảnh một cái cây có tán lá và rễ đâm xuống đất.",
-    "logic_development": "木-mộc -> (木) thân cây và cành rễ",
+    "logic_development": "木-mộc → (木) thân cây và cành rễ",
     "memory_tip": "Chữ giống hình một cái cây thẳng đứng.",
-    "adjectives": "なし",
     "vocabulary": "木(き):cây|木曜日(もくようび):thứ năm|大木(たいぼく):cây lớn|木刀(ぼくとう):kiếm gỗ|木綿(もめん):bông cotton"
   },
   {
@@ -54,9 +51,8 @@ const kanjiData = [
     "radicals": "山-sơn",
     "core_meaning": "Núi",
     "story_image": "Hình ảnh ba ngọn núi nhấp nhô cạnh nhau.",
-    "logic_development": "山-sơn -> (山) ba đỉnh núi cao",
+    "logic_development": "山-sơn → (山) ba đỉnh núi cao",
     "memory_tip": "Ba vạch thẳng đứng giống như ba đỉnh núi.",
-    "adjectives": "なし",
     "vocabulary": "山(やま):núi|富士山(ふじさん):núi phú sĩ|火山(かざん):núi lửa|登山(とざん):leo núi|山道(やまみち):đường núi"
   },
   {
@@ -69,9 +65,8 @@ const kanjiData = [
     "radicals": "川-xuyên",
     "core_meaning": "Sông",
     "story_image": "Hình ảnh dòng nước chảy giữa hai bờ sông.",
-    "logic_development": "川-xuyên -> (川) dòng nước chảy",
+    "logic_development": "川-xuyên → (川) dòng nước chảy",
     "memory_tip": "Ba nét vẽ như dòng nước đang chảy xuôi.",
-    "adjectives": "なし",
     "vocabulary": "川(かわ):sông|小川(おがわ):suối nhỏ|ナイル川(ないるがわ):sông nile|河川(かせん):sông ngòi|川岸(かわぎし):bờ sông"
   },
   {
@@ -84,9 +79,8 @@ const kanjiData = [
     "radicals": "田-điền",
     "core_meaning": "Ruộng lúa",
     "story_image": "Hình ảnh thửa ruộng được chia thành bốn ô vuông nhỏ bằng bờ bao.",
-    "logic_development": "田-điền -> (田) đất canh tác",
+    "logic_development": "田-điền → (田) đất canh tác",
     "memory_tip": "Một ô vuông lớn chia làm bốn phần bằng dấu thập.",
-    "adjectives": "なし",
     "vocabulary": "田(た):ruộng|田中(たなか):họ tanaka|水田(すいでん):ruộng lúa nước|田舎(いなか):quê hương|山田(やまだ):họ yamada"
   },
   {
@@ -99,9 +93,8 @@ const kanjiData = [
     "radicals": "人-nhân",
     "core_meaning": "Con người",
     "story_image": "Hình ảnh một người đang đứng nghiêng với hai chân choãi ra.",
-    "logic_development": "人-nhân -> (人) người đứng thẳng",
+    "logic_development": "人-nhân → (人) người đứng thẳng",
     "memory_tip": "Giống như một người đang bước đi.",
-    "adjectives": "なし",
     "vocabulary": "人(ひと):người|日本人(にほんじん):người nhật|大人(おとな):người lớn|三人(さんにん):ba người|恋人(こいびと):người yêu"
   },
   {
@@ -114,9 +107,8 @@ const kanjiData = [
     "radicals": "口-khẩu",
     "core_meaning": "Cái miệng",
     "story_image": "Hình ảnh cái miệng đang mở rộng.",
-    "logic_development": "口-khẩu -> (口) cơ quan phát ngôn",
+    "logic_development": "口-khẩu → (口) cơ quan phát ngôn",
     "memory_tip": "Một hình vuông đơn giản giống như khuôn miệng.",
-    "adjectives": "なし",
     "vocabulary": "口(くち):miệng|入口(いりぐち):lối vào|出口(でぐち):lối ra|人口(じんこう):dân số|窓口(まどぐち):quầy giao dịch"
   },
   {
@@ -129,9 +121,8 @@ const kanjiData = [
     "radicals": "車-xa",
     "core_meaning": "Xe cộ",
     "story_image": "Hình ảnh chiếc xe nhìn từ trên xuống với hai bánh xe và trục.",
-    "logic_development": "車-xa -> (車) phương tiện di chuyển",
+    "logic_development": "車-xa → (車) phương tiện di chuyển",
     "memory_tip": "Giống hình một chiếc xe bò thời xưa.",
-    "adjectives": "なし",
     "vocabulary": "車(くるま):xe hơi|電車(でんしゃ):tàu điện|自動車(じどうしゃ):xe ô tô|自転車(じてんしゃ):xe đạp|停車(ていしゃ):dừng xe"
   },
   {
@@ -144,9 +135,8 @@ const kanjiData = [
     "radicals": "門-môn",
     "core_meaning": "Cổng",
     "story_image": "Hình ảnh hai cánh cổng lớn có bản lề hai bên.",
-    "logic_development": "門-môn -> (門) cửa vào nhà",
+    "logic_development": "門-môn → (門) cửa vào nhà",
     "memory_tip": "Giống như cánh cổng song sắt ở các phủ đệ.",
-    "adjectives": "なし",
     "vocabulary": "門(もん):cổng|専門(せんもん):chuyên môn|校門(こうもん):cổng trường|門松(かどまつ):cây thông trang trí tết|門限(もんげん):giờ giới nghiêm"
   },
   {
@@ -159,9 +149,8 @@ const kanjiData = [
     "radicals": "火-hỏa",
     "core_meaning": "Lửa",
     "story_image": "Hình ảnh ngọn lửa đang bùng cháy với các tia lửa bắn ra xung quanh.",
-    "logic_development": "火-hỏa -> (火) đống lửa cháy",
+    "logic_development": "火-hỏa → (火) đống lửa cháy",
     "memory_tip": "Nhìn giống như một người đang giơ tay chạy khỏi đống lửa.",
-    "adjectives": "なし",
     "vocabulary": "火(ひ):lửa|火曜日(かようび):thứ ba|火山(かざん):núi lửa|火事(かじ):hỏa hoạn|花火(はなび):pháo hoa"
   },
   {
@@ -174,9 +163,8 @@ const kanjiData = [
     "radicals": "水-thủy",
     "core_meaning": "Nước",
     "story_image": "Hình ảnh dòng nước đang chảy xiết với những tia nước bắn ra.",
-    "logic_development": "水-thủy -> (水) chất lỏng chảy",
+    "logic_development": "水-thủy → (水) chất lỏng chảy",
     "memory_tip": "Giống như một dòng sông có sóng nước hai bên.",
-    "adjectives": "なし",
     "vocabulary": "水(みず):nước|水曜日(すいようび):thứ tư|水道(すいどう):nước máy|水泳(すいえい):bơi lội|海水(かいすい):nước biển"
   },
   {
@@ -189,9 +177,8 @@ const kanjiData = [
     "radicals": "金-kim",
     "core_meaning": "Vàng|Tiền",
     "story_image": "Hình ảnh vàng nằm sâu dưới đất dưới mái nhà.",
-    "logic_development": "人-nhân + 王-vương -> (金) vàng của vua cất trong nhà",
+    "logic_development": "人-nhân + 王-vương → (金) vàng của vua cất trong nhà",
     "memory_tip": "Mái nhà che chở cho những thỏi vàng quý giá.",
-    "adjectives": "なし",
     "vocabulary": "金(かね):tiền|金曜日(きんようび):thứ sáu|お金(おかね):tiền bạc|現金(げんきん):tiền mặt|貯金(ちょきん):tiết kiệm tiền"
   },
   {
@@ -204,9 +191,8 @@ const kanjiData = [
     "radicals": "土-thổ",
     "core_meaning": "Đất",
     "story_image": "Hình ảnh mầm cây đang mọc lên từ mặt đất.",
-    "logic_development": "土-thổ -> (土) lớp đất đai",
+    "logic_development": "土-thổ → (土) lớp đất đai",
     "memory_tip": "Vạch ngang dưới là đất、vạch trên là mầm cây.",
-    "adjectives": "なし",
     "vocabulary": "土(つち):đất|土曜日(どようび):thứ bảy|土地(とち):đất đai|土木(どぼく):xây dựng|土産(みやげ):quà lưu niệm"
   },
   {
@@ -219,9 +205,8 @@ const kanjiData = [
     "radicals": "子-tử",
     "core_meaning": "Đứa trẻ",
     "story_image": "Hình ảnh một đứa trẻ sơ sinh đang quấn tã và dang hai tay.",
-    "logic_development": "子-tử -> (子) con cái",
+    "logic_development": "子-tử → (子) con cái",
     "memory_tip": "Giống một em bé đang ngồi chơi.",
-    "adjectives": "なし",
     "vocabulary": "子(こ):con|子供(こども):trẻ em|女子(じょし):con gái|男子(だんし):con trai|様子(ようす):tình hình"
   },
   {
@@ -234,9 +219,8 @@ const kanjiData = [
     "radicals": "女-nữ",
     "core_meaning": "Phụ nữ",
     "story_image": "Hình ảnh người phụ nữ đang ngồi quỳ gối khép nép theo lễ nghi xưa.",
-    "logic_development": "女-nữ -> (女) phái yếu",
+    "logic_development": "女-nữ → (女) phái yếu",
     "memory_tip": "Giống hình người phụ nữ đang vắt chéo chân ngồi.",
-    "adjectives": "なし",
     "vocabulary": "女(おんな):phụ nữ|女子(じょし):con gái|彼女(かのじょ):cô ấy|長女(ちょうじょ):con gái lớn|女性(じょせい):phụ nữ (trang trọng)"
   },
   {
@@ -249,9 +233,8 @@ const kanjiData = [
     "radicals": "子-tử|冖-mịch",
     "core_meaning": "Học tập",
     "story_image": "Đứa trẻ (子) đang học dưới mái nhà có ánh sáng chiếu vào.",
-    "logic_development": "冖-mịch + 子-tử -> (学) trẻ em học trong nhà",
+    "logic_development": "冖-mịch + 子-tử → (学) trẻ em học trong nhà",
     "memory_tip": "Đứa trẻ ngồi học trong ngôi trường.",
-    "adjectives": "なし",
     "vocabulary": "学校(がっこう):trường học|学生(がくせい):sinh viên|大学(だいがく):đại học|学部(がくぶ):khoa|見学(けんがく):kiến tập"
   },
   {
@@ -264,9 +247,8 @@ const kanjiData = [
     "radicals": "生-sinh",
     "core_meaning": "Sống|Sinh",
     "story_image": "Hình ảnh một mầm cây đang mọc lên từ mặt đất đầy sức sống.",
-    "logic_development": "生-sinh -> (生) sự sống nảy mầm",
+    "logic_development": "生-sinh → (生) sự sống nảy mầm",
     "memory_tip": "Một cái cây mọc thêm cành mới.",
-    "adjectives": "なし",
     "vocabulary": "先生(せんせい):thầy giáo|学生(学せい):học sinh|生まれる(うまれる):được sinh ra|生きる(いきる):sống|一生(いっしょう):cả đời"
   },
   {
@@ -279,9 +261,8 @@ const kanjiData = [
     "radicals": "儿-nhi",
     "core_meaning": "Trước",
     "story_image": "Hình ảnh một người đang đi bộ về phía trước.",
-    "logic_development": "儿-nhi + 土-thổ -> (先) đi lên phía trước",
+    "logic_development": "儿-nhi + 土-thổ → (先) đi lên phía trước",
     "memory_tip": "Người đi trước sẽ dẫn đường.",
-    "adjectives": "なし",
     "vocabulary": "先生(せんせい):thầy giáo|先日(せんじつ):hôm trước|先週(せんしゅう):tuần trước|先に(さきに):trước đây|先月(せんげつ):tháng trước"
   },
   {
@@ -294,9 +275,8 @@ const kanjiData = [
     "radicals": "禾-hòa|ム-khứ",
     "core_meaning": "Riêng tư|Tôi",
     "story_image": "Người nông dân ôm cây lúa (禾) coi đó là tài sản riêng của mình.",
-    "logic_development": "禾-hòa + ム-khứ -> (私) của riêng tôi",
+    "logic_development": "禾-hòa + ム-khứ → (私) của riêng tôi",
     "memory_tip": "Cây lúa của tôi là tài sản riêng.",
-    "adjectives": "なし",
     "vocabulary": "私(わたし):tôi|私立(しりつ):dân lập|私用(しよう):việc riêng|私利(しり):tư lợi|私服(しふく):quần áo thường"
   },
   {
@@ -309,9 +289,8 @@ const kanjiData = [
     "radicals": "一-nhất",
     "core_meaning": "Số một",
     "story_image": "Hình ảnh một ngón tay hoặc một thanh ngang biểu thị đơn vị đầu tiên.",
-    "logic_development": "一-nhất -> (一) một đơn vị",
+    "logic_development": "一-nhất → (一) một đơn vị",
     "memory_tip": "Một gạch ngang đơn giản.",
-    "adjectives": "なし",
     "vocabulary": "一人(ひとり):một người|一日(ついたち):ngày mồng một|一つ(ひとつ):một cái|一年(いちねん):một năm|一月(いちがつ):tháng một"
   },
   {
@@ -324,9 +303,8 @@ const kanjiData = [
     "radicals": "二-nhị",
     "core_meaning": "Số hai",
     "story_image": "Hình ảnh hai ngón tay hoặc hai thanh ngang song song.",
-    "logic_development": "二-nhị -> (二) hai đơn vị",
+    "logic_development": "二-nhị → (二) hai đơn vị",
     "memory_tip": "Hai gạch ngang chồng lên nhau.",
-    "adjectives": "なし",
     "vocabulary": "二月(にがつ):tháng hai|二人(ふたり):hai người|二つ(ふたつ):hai cái|二十日(はつか):ngày hai mươi|二日(ふつか):ngày mồng hai"
   },
   {
@@ -339,9 +317,8 @@ const kanjiData = [
     "radicals": "三-tam",
     "core_meaning": "Số ba",
     "story_image": "Hình ảnh ba ngón tay hoặc ba thanh ngang song song.",
-    "logic_development": "三-tam -> (三) ba đơn vị",
+    "logic_development": "三-tam → (三) ba đơn vị",
     "memory_tip": "Ba gạch ngang xếp tầng.",
-    "adjectives": "なし",
     "vocabulary": "三月(さんがつ):tháng ba|三人(さんにん):ba người|三つ(みっつ):ba cái|三日(みっか):ngày mồng ba|三角形(さんかくけい):hình tam giác"
   },
   {
@@ -354,9 +331,8 @@ const kanjiData = [
     "radicals": "囗-vi",
     "core_meaning": "Số bốn",
     "story_image": "Hình ảnh một chiếc miệng (囗) bên trong có hai nét nhỏ chia ra.",
-    "logic_development": "囗-vi + 儿-nhi -> (四) bốn hướng",
+    "logic_development": "囗-vi + 儿-nhi → (四) bốn hướng",
     "memory_tip": "Hình vuông chia làm bốn phần.",
-    "adjectives": "なし",
     "vocabulary": "四月(しがつ):tháng tư|四人(よにん):bốn người|四つ(よっつ):bốn cái|四日(よっか):ngày mồng bốn|四季(しき):bốn mùa"
   },
   {
@@ -369,9 +345,8 @@ const kanjiData = [
     "radicals": "二-nhị",
     "core_meaning": "Số năm",
     "story_image": "Hình ảnh bàn tay với năm ngón tay co lại hoặc hai thanh ngang giới hạn không gian.",
-    "logic_development": "二-nhị + 乂-nghệ -> (五) năm yếu tố",
+    "logic_development": "二-nhị + 乂-nghệ → (五) năm yếu tố",
     "memory_tip": "Giống hình chữ X nằm giữa hai gạch.",
-    "adjectives": "なし",
     "vocabulary": "五月(ごがつ):tháng năm|五人(ごにん):năm người|五つ(いつつ):năm cái|五日(いつか):ngày mồng năm|五感(ごかん):năm giác quan"
   },
   {
@@ -384,9 +359,8 @@ const kanjiData = [
     "radicals": "八-bát",
     "core_meaning": "Số sáu",
     "story_image": "Hình ảnh một chiếc mũ bên trên và hai chân bên dưới.",
-    "logic_development": "亠-đầu + 八-bát -> (六) số sáu",
+    "logic_development": "亠-đầu + 八-bát → (六) số sáu",
     "memory_tip": "Giống một người đang đội mũ giang tay.",
-    "adjectives": "なし",
     "vocabulary": "六月(ろくがつ):tháng sáu|六人(ろくにん):sáu người|六つ(むっつ):sáu cái|六日(むいか):ngày mồng sáu|六角形(ろっかくけい):hình lục giác"
   },
   {
@@ -399,9 +373,8 @@ const kanjiData = [
     "radicals": "一-nhất",
     "core_meaning": "Số bảy",
     "story_image": "Hình ảnh một đường cắt ngang biểu thị sự phân chia.",
-    "logic_development": "一-nhất -> (七) số bảy",
+    "logic_development": "一-nhất → (七) số bảy",
     "memory_tip": "Giống số 7 viết ngược.",
-    "adjectives": "なし",
     "vocabulary": "七月(しちがつ):tháng bảy|七人(しちにん):bảy người|七つ(ななつ):bảy cái|七日(なのか):ngày mồng bảy|七夕(たなばた):lễ thất tịch"
   },
   {
@@ -414,9 +387,8 @@ const kanjiData = [
     "radicals": "八-bát",
     "core_meaning": "Số tám",
     "story_image": "Hình ảnh hai nét mở rộng ra hai bên biểu thị sự chia tách.",
-    "logic_development": "八-bát -> (八) tám hướng",
+    "logic_development": "八-bát → (八) tám hướng",
     "memory_tip": "Giống hai râu của con mèo.",
-    "adjectives": "なし",
     "vocabulary": "八月(はちがつ):tháng tám|八人(はちにん):tám người|八つ(やっつ):tám cái|八日(ようか):ngày mồng tám|八百屋(やおや):cửa hàng rau"
   },
   {
@@ -429,9 +401,8 @@ const kanjiData = [
     "radicals": "乙-ất",
     "core_meaning": "Số chín",
     "story_image": "Hình ảnh một đường cong uốn lượn biểu thị con số gần cuối.",
-    "logic_development": "九-cửu -> (九) số chín",
+    "logic_development": "九-cửu → (九) số chín",
     "memory_tip": "Giống như một cái móc hoặc chân người.",
-    "adjectives": "なし",
     "vocabulary": "九月(くがつ):tháng chín|九人(きゅうにん):chín người|九つ(ここのつ):chín cái|九日(ここのか):ngày mồng chín|九州(きゅうしゅう):đảo kyushu"
   },
   {
@@ -444,9 +415,8 @@ const kanjiData = [
     "radicals": "十-thập",
     "core_meaning": "Số mười",
     "story_image": "Hình ảnh một thanh dọc và một thanh ngang giao nhau tạo thành dấu thập.",
-    "logic_development": "十-thập -> (十) số mười",
+    "logic_development": "十-thập → (十) số mười",
     "memory_tip": "Biểu tượng chữ thập đơn giản.",
-    "adjectives": "なし",
     "vocabulary": "十月(じゅうがつ):tháng mười|十人(じゅうにん):mười người|十日(とおか):ngày mồng mười|十分(じゅうぶん):đầy đủ|十字架(じゅうじか):thánh giá"
   },
   {
@@ -459,9 +429,8 @@ const kanjiData = [
     "radicals": "白-bạch",
     "core_meaning": "Một trăm",
     "story_image": "Hình ảnh số một (一) nằm trên chữ trắng (白).",
-    "logic_development": "一-nhất + 白-bạch -> (百) một trăm",
+    "logic_development": "一-nhất + 白-bạch → (百) một trăm",
     "memory_tip": "Thêm một gạch trên chữ trắng thành một trăm.",
-    "adjectives": "なし",
     "vocabulary": "百(ひゃく):một trăm|三百(さんびゃく):ba trăm|六百(ろっぴゃく):sáu trăm|八百(はっぴゃく):tám trăm|百科事典(ひゃっかじてん):từ điển bách khoa"
   },
   {
@@ -474,9 +443,8 @@ const kanjiData = [
     "radicals": "十-thập",
     "core_meaning": "Một nghìn",
     "story_image": "Hình ảnh chữ nhân (人) nằm trên chữ thập (十).",
-    "logic_development": "ノ-phiệt + 十-thập -> (千) một nghìn",
+    "logic_development": "ノ-phiệt + 十-thập → (千) một nghìn",
     "memory_tip": "Một gạch chéo trên chữ thập thành một nghìn.",
-    "adjectives": "なし",
     "vocabulary": "千(せん):một nghìn|三千(さんぜん):ba nghìn|八千(はっせん):tám nghìn|千円(せんえん):một nghìn yên|千葉(ちば):tỉnh chiba"
   },
   {
@@ -489,9 +457,8 @@ const kanjiData = [
     "radicals": "一-nhất",
     "core_meaning": "Mười nghìn",
     "story_image": "Hình ảnh một ký hiệu lớn biểu thị số lượng cực đại.",
-    "logic_development": "一-nhất + 刀-đao -> (万) một vạn",
+    "logic_development": "一-nhất + 刀-đao → (万) một vạn",
     "memory_tip": "Giống hình người đang chạy nhanh.",
-    "adjectives": "なし",
     "vocabulary": "一万(いちまん):mười nghìn|万歳(ばんざい):vạn tuế|万一(まんいち):ngộ nhỡ|万国(ばんこく):vạn quốc|万年筆(まんねんひつ):bút máy"
   },
   {
@@ -504,10 +471,9 @@ const kanjiData = [
     "radicals": "囗-vi",
     "core_meaning": "Vòng tròn|Yên",
     "story_image": "Hình ảnh một vật hình tròn được bao quanh bởi khung hình vuông.",
-    "logic_development": "囗-vi -> (円) tiền yên nhật",
+    "logic_development": "囗-vi → (円) tiền yên nhật",
     "memory_tip": "Giống một chiếc ví đựng tiền tròn.",
-    "adjectives": "丸い(まるい):tròn",
-    "vocabulary": "円(えん):tiền yên|円い(まるい):tròn|百円(ひゃくえん):một trăm yên|円高(えんだか):yên tăng giá|円盤(えんばん):đĩa tròn"
+    "vocabulary": "丸い(まるい):tròn|円(えん):tiền yên|円い(まるい):tròn|百円(ひゃくえん):một trăm yên|円高(えんだか):yên tăng giá|円盤(えんばん):đĩa tròn"
   },
   {
     "stt": 35,
@@ -519,9 +485,8 @@ const kanjiData = [
     "radicals": "干-can",
     "core_meaning": "Năm",
     "story_image": "Hình ảnh người nông dân gánh lúa (禾) về sau một mùa vụ.",
-    "logic_development": "禾-hòa + 干-can -> (年) thời gian thu hoạch",
+    "logic_development": "禾-hòa + 干-can → (年) thời gian thu hoạch",
     "memory_tip": "Mỗi năm thu hoạch lúa một lần.",
-    "adjectives": "なし",
     "vocabulary": "年(とし):năm|今年(ことし):năm nay|来年(らいねん):năm sau|去年(きょねん):năm ngoái|年生(ねんせい):sinh viên năm"
   },
   {
@@ -534,9 +499,8 @@ const kanjiData = [
     "radicals": "一-nhất",
     "core_meaning": "Trên",
     "story_image": "Hình ảnh một vật nằm phía trên một mặt phẳng.",
-    "logic_development": "一-nhất -> (上) vị trí phía trên",
+    "logic_development": "一-nhất → (上) vị trí phía trên",
     "memory_tip": "Vạch dọc hướng lên trên gạch ngang.",
-    "adjectives": "なし",
     "vocabulary": "上(うえ):trên|上がる(あがる):tăng lên|上手(じょうず):giỏi|上着(うわぎ):áo khoác|屋上(おくじょう):sân thượng"
   },
   {
@@ -549,9 +513,8 @@ const kanjiData = [
     "radicals": "一-nhất",
     "core_meaning": "Dưới",
     "story_image": "Hình ảnh một vật nằm phía dưới một mặt phẳng.",
-    "logic_development": "一-nhất -> (下) vị trí phía dưới",
+    "logic_development": "一-nhất → (下) vị trí phía dưới",
     "memory_tip": "Vạch dọc hướng xuống dưới gạch ngang.",
-    "adjectives": "なし",
     "vocabulary": "下(した):dưới|下がる(さがる):giảm xuống|下手(へた):dở|地下鉄(ちかてつ):tàu điện ngầm|廊下(ろうか):hành lang"
   },
   {
@@ -564,9 +527,8 @@ const kanjiData = [
     "radicals": "丨-cổn",
     "core_meaning": "Ở giữa",
     "story_image": "Hình ảnh một mũi tên xuyên qua tâm của một hình tròn hoặc hình vuông.",
-    "logic_development": "口-khẩu + 丨-cổn -> (中) trung tâm",
+    "logic_development": "口-khẩu + 丨-cổn → (中) trung tâm",
     "memory_tip": "Một vạch dọc đâm xuyên qua giữa ô vuông.",
-    "adjectives": "なし",
     "vocabulary": "中(なか):trong|中国(ちゅうごく):trung quốc|一日中(いちにちじゅう):suốt cả ngày|中学校(ちゅうがっこう):trường cấp hai|中心(ちゅうしん):trung tâm"
   },
   {
@@ -579,10 +541,9 @@ const kanjiData = [
     "radicals": "大-đại",
     "core_meaning": "Lớn",
     "story_image": "Hình ảnh một người đang đứng giang rộng tay chân hết cỡ.",
-    "logic_development": "大-đại -> (大) kích thước khổng lồ",
+    "logic_development": "大-đại → (大) kích thước khổng lồ",
     "memory_tip": "Một người dang tay ra thật to.",
-    "adjectives": "大きい(おおきい):lớn",
-    "vocabulary": "大きい(おおきい):lớn|大学(だいがく):đại học|大人(おとな):người lớn|大切(たいせつ):quan trọng|大会(たいかい):đại hội"
+    "vocabulary": "大きい(おおきい):lớn|大きい(おおきい):lớn|大学(だいがく):đại học|大人(おとな):người lớn|大切(たいせつ):quan trọng|大会(たいかい):đại hội"
   },
   {
     "stt": 40,
@@ -594,10 +555,9 @@ const kanjiData = [
     "radicals": "小-tiểu",
     "core_meaning": "Nhỏ",
     "story_image": "Hình ảnh hạt cát hoặc những mảnh nhỏ văng ra.",
-    "logic_development": "小-tiểu -> (小) kích thước bé",
+    "logic_development": "小-tiểu → (小) kích thước bé",
     "memory_tip": "Vạch giữa và hai dấu phẩy hai bên.",
-    "adjectives": "小さい(ちいさい):nhỏ",
-    "vocabulary": "小さい(ちいさい):nhỏ|小学生(しょうがくせい):học sinh tiểu học|小説(しょうせつ):tiểu thuyết|小屋(こや):túp lều|小川(おがわ):suối nhỏ"
+    "vocabulary": "小さい(ちいさい):nhỏ|小さい(ちいさい):nhỏ|小学生(しょうがくせい):học sinh tiểu học|小説(しょうせつ):tiểu thuyết|小屋(こや):túp lều|小川(おがわ):suối nhỏ"
   },
   {
     "stt": 41,
@@ -609,9 +569,8 @@ const kanjiData = [
     "radicals": "木-mộc|一-nhất",
     "core_meaning": "Gốc|Sách",
     "story_image": "Hình ảnh gốc cây (木) với một vạch ngang (一) đánh dấu phần rễ bên dưới.",
-    "logic_development": "木-mộc + 一-nhất -> (本) gốc rễ của cây",
+    "logic_development": "木-mộc + 一-nhất → (本) gốc rễ của cây",
     "memory_tip": "Gạch dưới gốc cây để chỉ nguồn gốc.",
-    "adjectives": "なし",
     "vocabulary": "本(ほん):sách|日本語(にほんご):tiếng nhật|山本(やまもと):họ yamamoto|本日(ほんじつ):hôm nay|本当(ほんとう):thật sự"
   },
   {
@@ -624,9 +583,8 @@ const kanjiData = [
     "radicals": "十-thập",
     "core_meaning": "Một nửa",
     "story_image": "Hình ảnh một vật được chia đôi bởi một đường thẳng ở giữa.",
-    "logic_development": "八-bát + 二-nhị + 丨-cổn -> (半) chia làm hai",
+    "logic_development": "八-bát + 二-nhị + 丨-cổn → (半) chia làm hai",
     "memory_tip": "Cái cân chia đều hai bên.",
-    "adjectives": "なし",
     "vocabulary": "半分(はんぶん):một nửa|半年(はんとし):nửa năm|半日(はんにち):nửa ngày|三時半(さんじはん):ba giờ rưỡi|前半(ぜんはん):hiệp đầu"
   },
   {
@@ -639,9 +597,8 @@ const kanjiData = [
     "radicals": "八-bát|刀-đao",
     "core_meaning": "Phần|Phút",
     "story_image": "Dùng con dao (刀) để chia (八) vật gì đó ra thành nhiều phần.",
-    "logic_development": "八-bát + 刀-đao -> (分) chia nhỏ vật",
+    "logic_development": "八-bát + 刀-đao → (分) chia nhỏ vật",
     "memory_tip": "Con dao chia vật ra làm đôi.",
-    "adjectives": "なし",
     "vocabulary": "自分(じぶん):tự mình|五分(ごふん):năm phút|分かる(わかる):hiểu|半分(はんぶん):một nửa|気分(きぶん):tâm trạng"
   },
   {
@@ -654,9 +611,8 @@ const kanjiData = [
     "radicals": "力-lực",
     "core_meaning": "Sức mạnh",
     "story_image": "Hình ảnh cánh tay đang gồng cơ bắp hoặc cái cày dùng sức để kéo.",
-    "logic_development": "力-lực -> (力) năng lượng cơ bắp",
+    "logic_development": "力-lực → (力) năng lượng cơ bắp",
     "memory_tip": "Giống hình một cánh tay khỏe mạnh.",
-    "adjectives": "なし",
     "vocabulary": "力(ちから):sức mạnh|火力(かりょく):hỏa lực|実力(じつりょく):thực lực|努力(どりょく):nỗ lực|体力(たいりょく):thể lực"
   },
   {
@@ -669,9 +625,8 @@ const kanjiData = [
     "radicals": "人-nhân|可-khả",
     "core_meaning": "Cái gì",
     "story_image": "Một người (人) đang vác một cái gánh (可) trên vai và hỏi đường.",
-    "logic_development": "人-nhân + 可-khả -> (何) nghi vấn",
+    "logic_development": "人-nhân + 可-khả → (何) nghi vấn",
     "memory_tip": "Người gánh đồ hỏi \"Cái gì thế?",
-    "adjectives": "なし",
     "vocabulary": "何(なに):cái gì|何時(なんじ):mấy giờ|何人(なんにん):mấy người|何曜日(なんようび):thứ mấy|何か(なにか):cái gì đó"
   },
   {
@@ -684,10 +639,9 @@ const kanjiData = [
     "radicals": "日-nhật|月-nguyệt",
     "core_meaning": "Sáng sủa",
     "story_image": "Sự kết hợp giữa ánh sáng mặt trời (日) và mặt trăng (月).",
-    "logic_development": "日-nhật + 月-nguyệt -> (明) ánh sáng rực rỡ",
+    "logic_development": "日-nhật + 月-nguyệt → (明) ánh sáng rực rỡ",
     "memory_tip": "Cả ngày và trăng cùng chiếu sáng.",
-    "adjectives": "明るい(あかるい):sáng|明らか(あきらか):rõ ràng",
-    "vocabulary": "明日(あした):ngày mai|説明(せつめい):giải thích|発明(はつめい):phát minh|明るい(あかるい):sáng sủa|明後日(あさって):ngày kia"
+    "vocabulary": "明るい(あかるい):sáng|明らか(あきらか):rõ ràng|明日(あした):ngày mai|説明(せつめい):giải thích|発明(はつめい):phát minh|明るい(あかるい):sáng sủa|明後日(あさって):ngày kia"
   },
   {
     "stt": 47,
@@ -699,9 +653,8 @@ const kanjiData = [
     "radicals": "人-nhân|木-mộc",
     "core_meaning": "Nghỉ ngơi",
     "story_image": "Hình ảnh một người (人) đang ngồi tựa vào gốc cây (木) để nghỉ.",
-    "logic_development": "人-nhân + 木-mộc -> (休) dừng làm việc",
+    "logic_development": "人-nhân + 木-mộc → (休) dừng làm việc",
     "memory_tip": "Người dựa vào cây là đang nghỉ.",
-    "adjectives": "なし",
     "vocabulary": "休み(やすみ):nghỉ phép|休日(きゅうじつ):ngày nghỉ|休みむ(やすむ):nghỉ ngơi|夏休み(なつやすみ):nghỉ hè|昼休み(ひるやすみ):nghỉ trưa"
   },
   {
@@ -714,9 +667,8 @@ const kanjiData = [
     "radicals": "人-nhân|本-bản",
     "core_meaning": "Cơ thể",
     "story_image": "Cơ thể của con người (人) là gốc rễ (本) của sự sống.",
-    "logic_development": "人-nhân + 本-bản -> (体) thân thể",
+    "logic_development": "人-nhân + 本-bản → (体) thân thể",
     "memory_tip": "Con người và cái gốc tạo thành cơ thể.",
-    "adjectives": "なし",
     "vocabulary": "体(からだ):cơ thể|体力(たいりょく):thể lực|体育(たいいく):thể dục|全体(ぜんたい):toàn thể|体重(たいじゅう):cân nặng"
   },
   {
@@ -729,10 +681,9 @@ const kanjiData = [
     "radicals": "女-nữ|子-tử",
     "core_meaning": "Thích",
     "story_image": "Hình ảnh người mẹ (女) đang ôm ấp đứa con (子) yêu quý.",
-    "logic_development": "女-nữ + 子-tử -> (好) yêu thích",
+    "logic_development": "女-nữ + 子-tử → (好) yêu thích",
     "memory_tip": "Phụ nữ có con là điều tốt đẹp.",
-    "adjectives": "好き(すき):thích",
-    "vocabulary": "好き(すき):thích|大好き(だいすき):rất thích|好物(こうぶつ):món ăn ưa thích|お好み焼き(おこのみやき):bánh xèo nhật|好意(こうい):thiện cảm"
+    "vocabulary": "好き(すき):thích|好き(すき):thích|大好き(だいすき):rất thích|好物(こうぶつ):món ăn ưa thích|お好み焼き(おこのみやき):bánh xèo nhật|好意(こうい):thiện cảm"
   },
   {
     "stt": 50,
@@ -744,9 +695,8 @@ const kanjiData = [
     "radicals": "田-điền|力-lực",
     "core_meaning": "Đàn ông",
     "story_image": "Người dùng sức lực (力) để làm việc trên đồng ruộng (田).",
-    "logic_development": "田-điền + 力-lực -> (男) phái mạnh",
+    "logic_development": "田-điền + 力-lực → (男) phái mạnh",
     "memory_tip": "Dùng sức ngoài đồng là đàn ông.",
-    "adjectives": "なし",
     "vocabulary": "男(おとこ):đàn ông|男の子(おとこのこ):bé trai|長男(ちょうなん):con trai trưởng|男子(だんし):nam giới|男性(だんせい):nam tính"
   },
   {
@@ -759,9 +709,8 @@ const kanjiData = [
     "radicals": "木-mộc|木-mộc",
     "core_meaning": "Rừng thưa",
     "story_image": "Hai cái cây (木) đứng cạnh nhau tạo thành một khu rừng nhỏ.",
-    "logic_development": "木-mộc + 木-mộc -> (林) nhóm cây",
+    "logic_development": "木-mộc + 木-mộc → (林) nhóm cây",
     "memory_tip": "Hai cây tạo thành rừng thưa.",
-    "adjectives": "なし",
     "vocabulary": "林(はやし):rừng thưa|小林(こばやし):họ kobayashi|森林(しんりん):rừng rú|山林(さんりん):sơn lâm|林道(りんどう):đường rừng"
   },
   {
@@ -774,9 +723,8 @@ const kanjiData = [
     "radicals": "木-mộc",
     "core_meaning": "Rừng rậm",
     "story_image": "Ba cái cây (木) xếp chồng lên nhau tạo thành khu rừng rậm rạp.",
-    "logic_development": "木-mộc + 木-mộc + 木-mộc -> (森) rừng sâu",
+    "logic_development": "木-mộc + 木-mộc + 木-mộc → (森) rừng sâu",
     "memory_tip": "Ba cây tạo thành rừng rậm.",
-    "adjectives": "なし",
     "vocabulary": "森(もり):rừng rậm|森田(もりた):họ morita|青森(あおもり):tỉnh aomori|森林(しんりん):rừng già|森厳(しんげん):nghiêm trang"
   },
   {
@@ -789,9 +737,8 @@ const kanjiData = [
     "radicals": "門-môn|日-nhật",
     "core_meaning": "Khoảng trống",
     "story_image": "Ánh sáng mặt trời (日) lọt qua khe hở của cánh cửa (門).",
-    "logic_development": "門-môn + 日-nhật -> (間) khoảng cách",
+    "logic_development": "門-môn + 日-nhật → (間) khoảng cách",
     "memory_tip": "Mặt trời chiếu qua cửa tạo khoảng không.",
-    "adjectives": "なし",
     "vocabulary": "間(あいだ):ở giữa|時間(じかん):thời gian|間に合う(まにあう):kịp lúc|間違い(まちがい):sai sót|客間(きゃくま):phòng khách"
   },
   {
@@ -804,9 +751,8 @@ const kanjiData = [
     "radicals": "火-hỏa|田-điền",
     "core_meaning": "Cánh đồng",
     "story_image": "Ruộng (田) được đốt lửa (火) để làm sạch cỏ chuẩn bị canh tác.",
-    "logic_development": "火-hỏa + 田-điền -> (畑) đất trồng trọt",
+    "logic_development": "火-hỏa + 田-điền → (畑) đất trồng trọt",
     "memory_tip": "Đốt cỏ trên ruộng thành đất vườn.",
-    "adjectives": "なし",
     "vocabulary": "畑(はたけ):cánh đồng|田畑(たはた):ruộng vườn|花畑(はなばたけ):cánh đồng hoa|麦畑(むぎばたけ):cánh đồng lúa mạch|薬草畑(やくそうばたけ):vườn dược liệu"
   },
   {
@@ -819,9 +765,8 @@ const kanjiData = [
     "radicals": "山-sơn|石-thạch",
     "core_meaning": "Đá tảng",
     "story_image": "Những hòn đá (石) lớn nằm chồng chất trên núi (山).",
-    "logic_development": "山-sơn + 石-thạch -> (岩) đá núi",
+    "logic_development": "山-sơn + 石-thạch → (岩) đá núi",
     "memory_tip": "Đá trên núi gọi là đá tảng.",
-    "adjectives": "なし",
     "vocabulary": "岩(いわ):đá tảng|岩石(がんせき):nham thạch|岩山(いわやま):núi đá|溶岩(ようがん):dung nham|岩場(いわば):chỗ nhiều đá"
   },
   {
@@ -834,9 +779,8 @@ const kanjiData = [
     "radicals": "目-mục",
     "core_meaning": "Mắt",
     "story_image": "Hình ảnh con mắt xoay dọc với các đường gân bên trong.",
-    "logic_development": "目-mục -> (目) cơ quan thị giác",
+    "logic_development": "目-mục → (目) cơ quan thị giác",
     "memory_tip": "Nhìn giống như một con mắt dựng đứng.",
-    "adjectives": "なし",
     "vocabulary": "目(め):mắt|目次(もくじ):mục lục|目的(もくてき):mục đích|目立つ(めだつ):nổi bật|目上(めうえ):cấp trên"
   },
   {
@@ -849,9 +793,8 @@ const kanjiData = [
     "radicals": "耳-nhĩ",
     "core_meaning": "Tai",
     "story_image": "Hình ảnh vành tai của con người với các nếp gấp.",
-    "logic_development": "耳-nhĩ -> (耳) cơ quan thính giác",
+    "logic_development": "耳-nhĩ → (耳) cơ quan thính giác",
     "memory_tip": "Vẽ giống hình cái lỗ tai.",
-    "adjectives": "なし",
     "vocabulary": "耳(みみ):tai|耳鼻科(じびか):khoa tai mũi họng|耳鳴り(みみなり):ù tai|早耳(はやみみ):thính tai|耳飾り(みみかざり):hoa tai"
   },
   {
@@ -864,9 +807,8 @@ const kanjiData = [
     "radicals": "手-thủ",
     "core_meaning": "Bàn tay",
     "story_image": "Hình ảnh bàn tay với các ngón tay đang xòe ra.",
-    "logic_development": "手-thủ -> (手) bộ phận cơ thể",
+    "logic_development": "手-thủ → (手) bộ phận cơ thể",
     "memory_tip": "Nét vẽ mô phỏng bàn tay năm ngón.",
-    "adjectives": "なし",
     "vocabulary": "手(て):tay|手紙(てがみ):thư|上手(じょうず):giỏi|下手(へた):dở|切手(きって):tem"
   },
   {
@@ -879,9 +821,8 @@ const kanjiData = [
     "radicals": "足-túc",
     "core_meaning": "Chân|Đủ",
     "story_image": "Hình ảnh cái chân từ đầu gối trở xuống với bàn chân.",
-    "logic_development": "口-khẩu + 止-chỉ -> (足) bộ phận đi lại",
+    "logic_development": "口-khẩu + 止-chỉ → (足) bộ phận đi lại",
     "memory_tip": "Cái chân dùng để dừng lại hoặc đi.",
-    "adjectives": "なし",
     "vocabulary": "足(あし):chân|一足(いっそく):một đôi giày|遠足(えんそく):dã ngoại|不足(ふそく):thiếu thốn|足首(あしくび):cổ chân"
   },
   {
@@ -894,9 +835,8 @@ const kanjiData = [
     "radicals": "雨-vũ",
     "core_meaning": "Mưa",
     "story_image": "Hình ảnh những giọt nước đang rơi xuống từ đám mây dưới bầu trời.",
-    "logic_development": "雨-vũ -> (雨) hiện tượng thời tiết",
+    "logic_development": "雨-vũ → (雨) hiện tượng thời tiết",
     "memory_tip": "Các giọt nước rơi dưới mái nhà trời.",
-    "adjectives": "なし",
     "vocabulary": "雨(あめ):mưa|大雨(おおあめ):mưa lớn|雨天(うてん):trời mưa|雨水(あまみず):nước mưa|梅雨(つゆ):mùa mưa"
   },
   {
@@ -909,9 +849,8 @@ const kanjiData = [
     "radicals": "竹-trúc",
     "core_meaning": "Cây tre",
     "story_image": "Hình ảnh hai nhánh tre với lá rủ xuống cạnh nhau.",
-    "logic_development": "竹-trúc -> (竹) loài cây thân đốt",
+    "logic_development": "竹-trúc → (竹) loài cây thân đốt",
     "memory_tip": "Hai cành tre mọc song song.",
-    "adjectives": "なし",
     "vocabulary": "竹(たけ):cây tre|竹林(ちくりん):rừng tre|竹の子(たけのこ):măng|竹馬(たけうま):cà kheo|竹材(ちくざい):vật liệu tre"
   },
   {
@@ -924,9 +863,8 @@ const kanjiData = [
     "radicals": "米-mễ",
     "core_meaning": "Gạo",
     "story_image": "Hình ảnh những hạt gạo tung ra từ bông lúa khi đập.",
-    "logic_development": "米-mễ -> (米) lương thực chính",
+    "logic_development": "米-mễ → (米) lương thực chính",
     "memory_tip": "Tám hạt gạo rơi xung quanh một điểm.",
-    "adjectives": "なし",
     "vocabulary": "米(こめ):gạo|新米(しんまい):gạo mới|米国(べいこく):nước mỹ|白米(はくまい):gạo trắng|玄米(げんまい):gạo lứt"
   },
   {
@@ -939,9 +877,8 @@ const kanjiData = [
     "radicals": "貝-bối",
     "core_meaning": "Vỏ sò",
     "story_image": "Hình ảnh một con sò đang mở vỏ với hai sợi râu đưa ra.",
-    "logic_development": "貝-bối -> (貝) vật quý giá xưa",
+    "logic_development": "貝-bối → (貝) vật quý giá xưa",
     "memory_tip": "Giống một chiếc hộp có chân.",
-    "adjectives": "なし",
     "vocabulary": "貝(かい):con sò|貝殻(かいがら):vỏ sò|赤貝(あかがい):sò huyết|ムール貝(むーるがい):vẹm xanh|貝類(かいるい):loài sò ốc"
   },
   {
@@ -954,9 +891,8 @@ const kanjiData = [
     "radicals": "石-thạch",
     "core_meaning": "Hòn đá",
     "story_image": "Hình ảnh một tảng đá nằm dưới chân vách núi (厂).",
-    "logic_development": "厂-hán + 口-khẩu -> (石) vật cứng",
+    "logic_development": "厂-hán + 口-khẩu → (石) vật cứng",
     "memory_tip": "Một vật hình vuông nằm dưới mái che vách đá.",
-    "adjectives": "なし",
     "vocabulary": "石(いし):đá|石鹸(せっけん):xà phòng|石油(せきゆ):dầu mỏ|磁石(じしゃく):nam châm|宝石(ほうせき):đá quý"
   },
   {
@@ -969,9 +905,8 @@ const kanjiData = [
     "radicals": "糸-mịch",
     "core_meaning": "Sợi chỉ",
     "story_image": "Hình ảnh các sợi tơ kết lại với nhau thành bó chỉ.",
-    "logic_development": "糸-mịch -> (糸) vật liệu may mặc",
+    "logic_development": "糸-mịch → (糸) vật liệu may mặc",
     "memory_tip": "Giống hình một cuộn chỉ có dây rủ xuống.",
-    "adjectives": "なし",
     "vocabulary": "糸(いと):chỉ|毛糸(けいと):len|絹糸(けんし):chỉ tơ tằm|釣り糸(つりいと):dây câu|抜糸(ばっし):cắt chỉ"
   },
   {
@@ -984,9 +919,8 @@ const kanjiData = [
     "radicals": "艹-thảo|化-hóa",
     "core_meaning": "Bông hoa",
     "story_image": "Cây cỏ (艹) biến hóa (化) nở rộ thành những bông hoa đẹp.",
-    "logic_development": "艹-thảo + 化-hóa -> (花) thực vật có sắc",
+    "logic_development": "艹-thảo + 化-hóa → (花) thực vật có sắc",
     "memory_tip": "Cỏ biến đổi thành hoa.",
-    "adjectives": "なし",
     "vocabulary": "花(はな):hoa|花火(はなび):pháo hoa|生け花(いけばな):nghệ thuật cắm hoa|花瓶(かびん):bình hoa|花屋(はなや):cửa hàng hoa"
   },
   {
@@ -999,9 +933,8 @@ const kanjiData = [
     "radicals": "艹-thảo|人-nhân|木-mộc",
     "core_meaning": "Trà",
     "story_image": "Cây cỏ (艹) mà con người (人) hái từ cây gỗ (木) về uống.",
-    "logic_development": "艹-thảo + 人-nhân + 木-mộc -> (茶) thức uống",
+    "logic_development": "艹-thảo + 人-nhân + 木-mộc → (茶) thức uống",
     "memory_tip": "Người hái lá trên cây trà.",
-    "adjectives": "なし",
     "vocabulary": "お茶(おちゃ):trà|紅茶(こうちゃ):trà đen|茶道(さどう):trà đạo|茶色(ちゃいろ):màu nâu|喫茶店(きっさてん):quán cà phê"
   },
   {
@@ -1014,9 +947,8 @@ const kanjiData = [
     "radicals": "肉-nhục",
     "core_meaning": "Thịt",
     "story_image": "Hình ảnh những thớ thịt nằm bên trong lớp da.",
-    "logic_development": "肉-nhục -> (肉) phần bắp thịt",
+    "logic_development": "肉-nhục → (肉) phần bắp thịt",
     "memory_tip": "Giống như khung xương có thịt bên trong.",
-    "adjectives": "なし",
     "vocabulary": "肉(にく):thịt|牛肉(ぎゅうにく):thịt bò|豚肉(ぶたにく):thịt lợn|鳥肉(とりにく):thịt gà|筋肉(きんにく):cơ bắp"
   },
   {
@@ -1029,9 +961,8 @@ const kanjiData = [
     "radicals": "文-văn",
     "core_meaning": "Văn chương",
     "story_image": "Hình ảnh người có hình xăm hoặc các đường nét đan chéo.",
-    "logic_development": "文-văn -> (文) chữ viết",
+    "logic_development": "文-văn → (文) chữ viết",
     "memory_tip": "Một người dang tay múa chữ.",
-    "adjectives": "なし",
     "vocabulary": "文字(もじ):chữ cái|作文(さくぶん):bài văn|文化(ぶんか):văn hóa|注文(ちゅうもん):đặt món|文学(ぶんがく):văn học"
   },
   {
@@ -1044,9 +975,8 @@ const kanjiData = [
     "radicals": "宀-miên|子-tử",
     "core_meaning": "Chữ cái",
     "story_image": "Đứa trẻ (子) học chữ dưới mái nhà (宀).",
-    "logic_development": "宀-miên + 子-tử -> (字) ký tự",
+    "logic_development": "宀-miên + 子-tử → (字) ký tự",
     "memory_tip": "Trẻ em ngồi trong nhà viết chữ.",
-    "adjectives": "なし",
     "vocabulary": "字(じ):chữ|漢字(かんじ):chữ hán|名字(みょうじ):họ|習字(しゅうじ):luyện viết|ローマ字(ろーまじ):chữ romaji"
   },
   {
@@ -1059,9 +989,8 @@ const kanjiData = [
     "radicals": "牛-ngưu|勿-vật",
     "core_meaning": "Đồ vật",
     "story_image": "Hình ảnh con bò (牛) và một cái nơm cá (勿).",
-    "logic_development": "牛-ngưu + 勿-vật -> (物) mọi thứ",
+    "logic_development": "牛-ngưu + 勿-vật → (物) mọi thứ",
     "memory_tip": "Con bò là một sinh vật hữu hình.",
-    "adjectives": "なし",
     "vocabulary": "物(もの):đồ vật|荷物(にもつ):hành lý|食べ物(たべもの):đồ ăn|建物(たてもの):tòa nhà|動物(どうぶつ):động vật"
   },
   {
@@ -1074,9 +1003,8 @@ const kanjiData = [
     "radicals": "牛-ngưu",
     "core_meaning": "Con bò",
     "story_image": "Hình ảnh đầu con bò với hai cái sừng hướng lên.",
-    "logic_development": "牛-ngưu -> (牛) gia súc",
+    "logic_development": "牛-ngưu → (牛) gia súc",
     "memory_tip": "Giống hình đầu bò có sừng dài.",
-    "adjectives": "なし",
     "vocabulary": "牛(うし):con bò|牛乳(ぎゅうにゅう):sữa bò|和牛(わぎゅう):bò nhật|牛肉(ぎゅうにく):thịt bò|子牛(こうし):bê"
   },
   {
@@ -1089,9 +1017,8 @@ const kanjiData = [
     "radicals": "馬-mã",
     "core_meaning": "Con ngựa",
     "story_image": "Hình ảnh con ngựa với chiếc bờm dài và bốn chân đang chạy.",
-    "logic_development": "馬-mã -> (馬) loài phi nhanh",
+    "logic_development": "馬-mã → (馬) loài phi nhanh",
     "memory_tip": "Có cái bờm và bốn cái chân.",
-    "adjectives": "なし",
     "vocabulary": "馬(うま):con ngựa|乗馬(じょうば):cưỡi ngựa|馬車(ばしゃ):xe ngựa|競走馬(きょうそうば):ngựa đua|木馬(もくば):ngựa gỗ"
   },
   {
@@ -1104,9 +1031,8 @@ const kanjiData = [
     "radicals": "鳥-điểu",
     "core_meaning": "Con chim",
     "story_image": "Hình ảnh một con chim với chiếc mỏ và đôi cánh đang bay.",
-    "logic_development": "鳥-điểu -> (鳥) loài có lông vũ",
+    "logic_development": "鳥-điểu → (鳥) loài có lông vũ",
     "memory_tip": "Nhìn giống một chú chim đậu trên cành.",
-    "adjectives": "なし",
     "vocabulary": "鳥(とり):con chim|小鳥(ことり):chim nhỏ|焼き鳥(やきとり):thịt gà nướng|白鳥(はくちょう):thiên nga|一石二鳥(いっせきにちょう):một mũi tên trúng hai đích"
   },
   {
@@ -1119,9 +1045,8 @@ const kanjiData = [
     "radicals": "魚-ngư",
     "core_meaning": "Con cá",
     "story_image": "Hình ảnh một con cá với vảy và cái đuôi phía dưới.",
-    "logic_development": "魚-ngư -> (魚) loài dưới nước",
+    "logic_development": "魚-ngư → (魚) loài dưới nước",
     "memory_tip": "Giống con cá bơi lội trong hồ.",
-    "adjectives": "なし",
     "vocabulary": "魚(さかな):con cá|金魚(きんぎょ):cá vàng|人魚(にんぎょ):người cá|鮮魚(せんぎょ):cá tươi|魚屋(さかなや):cửa hàng cá"
   },
   {
@@ -1134,9 +1059,8 @@ const kanjiData = [
     "radicals": "斤-cân|立-lập|木-mộc",
     "core_meaning": "Mới mẻ",
     "story_image": "Dùng rìu (斤) chặt cây (木) để làm nên những thứ mới (新).",
-    "logic_development": "立-lập + 木-mộc + 斤-cân -> (新) sự đổi mới",
+    "logic_development": "立-lập + 木-mộc + 斤-cân → (新) sự đổi mới",
     "memory_tip": "Cái cây được rìu đẽo thành đồ mới.",
-    "adjectives": "新しい(あたらしい):mới",
     "vocabulary": "新しい(あたらしい):mới|新聞(しんぶん):báo|新年(しんねん):năm mới|新入生(しんにゅうせい):tân sinh viên|新幹線(しんかんせん):tàu cao tốc"
   },
   {
@@ -1149,9 +1073,8 @@ const kanjiData = [
     "radicals": "古-cổ",
     "core_meaning": "Cũ kỹ",
     "story_image": "Những lời nói qua mười (十) cái miệng (口) thì trở nên cổ xưa.",
-    "logic_development": "十-thập + 口-khẩu -> (古) xưa cũ",
+    "logic_development": "十-thập + 口-khẩu → (古) xưa cũ",
     "memory_tip": "Chuyện mười đời truyền miệng là chuyện cũ.",
-    "adjectives": "古い(ふるい):cũ",
     "vocabulary": "古い(ふるい):cũ|中古(ちゅうこ):đồ cũ|古本(ふるほん):sách cũ|古都(こと):cố đô|考古学(こうこがく):khảo cổ học"
   },
   {
@@ -1164,9 +1087,8 @@ const kanjiData = [
     "radicals": "長-trường",
     "core_meaning": "Dài",
     "story_image": "Hình ảnh một người già tóc dài (長) chống gậy.",
-    "logic_development": "長-trường -> (長) kích thước dọc",
+    "logic_development": "長-trường → (長) kích thước dọc",
     "memory_tip": "Một người có mái tóc dài bay trong gió.",
-    "adjectives": "長い(ながい):dài",
     "vocabulary": "長い(ながい):dài|校長(こうちょう):hiệu trưởng|身長(しんちょう):chiều cao|部長(ぶちょう):trưởng phòng|長期(ちょうき):dài hạn"
   },
   {
@@ -1179,9 +1101,8 @@ const kanjiData = [
     "radicals": "矢-thỉ|豆-đậu",
     "core_meaning": "Ngắn",
     "story_image": "Mũi tên (矢) dù dài cũng không bằng hạt đậu (豆).",
-    "logic_development": "矢-thỉ + 豆-đậu -> (短) kém độ dài",
+    "logic_development": "矢-thỉ + 豆-đậu → (短) kém độ dài",
     "memory_tip": "Cái mũi tên ngắn như hạt đậu.",
-    "adjectives": "短い(みじかい):ngắn",
     "vocabulary": "短い(みじかい):ngắn|短所(たんしょ):nhược điểm|短大(たんだい):trường cao đẳng|短期間(たんきかん):thời gian ngắn|短文(たんぶん):câu ngắn"
   },
   {
@@ -1194,10 +1115,9 @@ const kanjiData = [
     "radicals": "高-cao",
     "core_meaning": "Cao lớn",
     "story_image": "Hình ảnh một tòa tháp cao có mái nhà và cửa sổ.",
-    "logic_development": "高-cao -> (高) vị trí trên cao",
+    "logic_development": "高-cao → (高) vị trí trên cao",
     "memory_tip": "Giống ngôi nhà hai tầng cao vút.",
-    "adjectives": "高い(たかい):cao|đắt",
-    "vocabulary": "高い(たかい):cao|高校(こうこう):trường cấp ba|最高(さいこう):tuyệt vời|高級(こうきゅう):cao cấp|高値(たかね):giá cao"
+    "vocabulary": "高い(たかい):cao, đắt|高校(こうこう):trường cấp ba|最高(さいこう):tuyệt vời|高級(こうきゅう):cao cấp|高値(たかね):giá cao"
   },
   {
     "stt": 81,
@@ -1209,9 +1129,8 @@ const kanjiData = [
     "radicals": "女-nữ|宀-miên",
     "core_meaning": "Rẻ|An tâm",
     "story_image": "Người phụ nữ (女) ngồi dưới mái nhà (宀) thì cảm thấy an tâm và giá cả cũng rẻ.",
-    "logic_development": "宀-miên + 女-nữ -> (安) bình an",
+    "logic_development": "宀-miên + 女-nữ → (安) bình an",
     "memory_tip": "Phụ nữ ở trong nhà là an toàn nhất.",
-    "adjectives": "安い(やすい):rẻ",
     "vocabulary": "安い(やすい):rẻ|安全(あんぜん):an toàn|安心(あんしん):an tâm|不安(ふあん):bất an|目安(めやす):tiêu chuẩn"
   },
   {
@@ -1224,9 +1143,8 @@ const kanjiData = [
     "radicals": "人-nhân|氏-thị",
     "core_meaning": "Thấp",
     "story_image": "Một người (人) đứng cạnh một gốc cây thấp bé (氏).",
-    "logic_development": "人-nhân + 氏-thị -> (低) không cao",
+    "logic_development": "人-nhân + 氏-thị → (低) không cao",
     "memory_tip": "Người đứng thấp hơn gốc rễ.",
-    "adjectives": "低い(ひくい):thấp",
     "vocabulary": "低い(ひくい):thấp|最低(さいてい):thấp nhất|低下(ていか):suy giảm|低気圧(ていきあつ):áp suất thấp|低音(ていおん):âm thấp"
   },
   {
@@ -1239,9 +1157,8 @@ const kanjiData = [
     "radicals": "日-nhật|音-âm",
     "core_meaning": "Tối tăm",
     "story_image": "Mặt trời (日) lặn xuống chỉ còn nghe thấy âm thanh (音) trong bóng tối.",
-    "logic_development": "日-nhật + 音-âm -> (暗) thiếu ánh sáng",
+    "logic_development": "日-nhật + 音-âm → (暗) thiếu ánh sáng",
     "memory_tip": "Mặt trời đi ngủ thì trời tối.",
-    "adjectives": "暗い(くらい):tối",
     "vocabulary": "暗い(くらい):tối|暗記(あんき):học thuộc lòng|真っ暗(まっくら):tối om|暗号(あんごう):mật mã|暗室(あんしつ):phòng tối"
   },
   {
@@ -1254,9 +1171,8 @@ const kanjiData = [
     "radicals": "夕-tịch|夕-tịch",
     "core_meaning": "Nhiều",
     "story_image": "Hai buổi chiều (夕) chồng lên nhau nghĩa là có nhiều thời gian trôi qua.",
-    "logic_development": "夕-tịch + 夕-tịch -> (多) số lượng lớn",
+    "logic_development": "夕-tịch + 夕-tịch → (多) số lượng lớn",
     "memory_tip": "Nhiều buổi chiều gộp lại là nhiều.",
-    "adjectives": "多い(おおい):nhiều",
     "vocabulary": "多い(おおい):nhiều|多少(たしょう):ít nhiều|多分(たぶん):có lẽ|多数(たすう):đa số|多忙(たぼう):rất bận"
   },
   {
@@ -1269,9 +1185,8 @@ const kanjiData = [
     "radicals": "小-tiểu|ノ-phiệt",
     "core_meaning": "Ít",
     "story_image": "Cái nhỏ (小) còn bị cắt bớt một nét (ノ) nên trở thành rất ít.",
-    "logic_development": "小-tiểu + ノ-phiệt -> (少) số lượng nhỏ",
+    "logic_development": "小-tiểu + ノ-phiệt → (少) số lượng nhỏ",
     "memory_tip": "Cái nhỏ bị gạt đi một phần.",
-    "adjectives": "少ない(すくない):ít",
     "vocabulary": "少し(すこし):một chút|少ない(すくない):ít|少年(しょうねん):thiếu niên|少女(しょうじょ):thiếu nữ|少々(しょうしょう):một chút"
   },
   {
@@ -1284,9 +1199,8 @@ const kanjiData = [
     "radicals": "行-hành",
     "core_meaning": "Đi",
     "story_image": "Hình ảnh một ngã tư đường nơi mọi người qua lại.",
-    "logic_development": "彳-xích + 亍-xúc -> (行) di chuyển",
+    "logic_development": "彳-xích + 亍-xúc → (行) di chuyển",
     "memory_tip": "Hai bước chân đi trên đường.",
-    "adjectives": "なし",
     "vocabulary": "行く(いく):đi|銀行(ぎんこう):ngân hàng|旅行(りょこう):du lịch|行事(ぎょうじ):sự kiện|行う(おこなう):tiến hành"
   },
   {
@@ -1299,9 +1213,8 @@ const kanjiData = [
     "radicals": "来-lai",
     "core_meaning": "Đến",
     "story_image": "Hình ảnh một cây lúa mì (来) từ phương xa được mang đến.",
-    "logic_development": "木-mộc + 米-mễ -> (来) di chuyển tới",
+    "logic_development": "木-mộc + 米-mễ → (来) di chuyển tới",
     "memory_tip": "Người từ phương xa đến dưới gốc cây.",
-    "adjectives": "なし",
     "vocabulary": "来る(くる):đến|来年(らいねん):năm sau|来月(らいげつ):tháng sau|将来(しょうらい):tương lai|本来(ほんらい):vốn dĩ"
   },
   {
@@ -1314,9 +1227,8 @@ const kanjiData = [
     "radicals": "止-chỉ|巾-cân",
     "core_meaning": "Về",
     "story_image": "Người phụ nữ mang khăn (巾) dừng chân (止) quay về nhà.",
-    "logic_development": "リ-đao + 止-chỉ + 巾-cân -> (帰) trở về",
+    "logic_development": "リ-đao + 止-chỉ + 巾-cân → (帰) trở về",
     "memory_tip": "Dùng dao cắt vải rồi quay về.",
-    "adjectives": "なし",
     "vocabulary": "帰る(かえる):về|帰り道(かえりみち):đường về|帰国(きこく):về nước|日帰り(ひがえり):đi về trong ngày|帰宅(きたく):về nhà"
   },
   {
@@ -1329,9 +1241,8 @@ const kanjiData = [
     "radicals": "食-thực",
     "core_meaning": "Ăn",
     "story_image": "Hình ảnh một cái bát có nắp đậy (良) chứa đồ ăn.",
-    "logic_development": "人-nhân + 良-lương -> (食) nạp năng lượng",
+    "logic_development": "人-nhân + 良-lương → (食) nạp năng lượng",
     "memory_tip": "Người tìm thấy thứ tốt để ăn.",
-    "adjectives": "なし",
     "vocabulary": "食べる(たべる):ăn|食堂(しょくどう):nhà ăn|食事(しょくじ):bữa ăn|食べ物(たべもの):đồ ăn|朝食(ちょうしょく):bữa sáng"
   },
   {
@@ -1344,9 +1255,8 @@ const kanjiData = [
     "radicals": "食-thực|欠-khiếm",
     "core_meaning": "Uống",
     "story_image": "Khi ăn (食) mà thấy thiếu (欠) nước thì phải uống.",
-    "logic_development": "食-thực + 欠-khiếm -> (飲) nuốt chất lỏng",
+    "logic_development": "食-thực + 欠-khiếm → (飲) nuốt chất lỏng",
     "memory_tip": "Mở miệng thật to để uống nước.",
-    "adjectives": "なし",
     "vocabulary": "飲む(のむ):uống|飲み物(のみもの):đồ uống|飲食店(いんしょくてん):cửa hàng ăn uống|飲み会(のみかい):tiệc rượu|缶入り飲料(かんいりいんりょう):đồ uống đóng lon"
   },
   {
@@ -1359,9 +1269,8 @@ const kanjiData = [
     "radicals": "目-mục|儿-nhi",
     "core_meaning": "Nhìn",
     "story_image": "Hình ảnh con mắt (目) nằm trên đôi chân (儿) đang đi xem xét.",
-    "logic_development": "目-mục + 儿-nhi -> (見) quan sát",
+    "logic_development": "目-mục + 儿-nhi → (見) quan sát",
     "memory_tip": "Dùng mắt trên đôi chân để nhìn.",
-    "adjectives": "なし",
     "vocabulary": "見る(みる):nhìn|見学(けんがく):kiến tập|意見(いけん):ý kiến|見本(みほん):hàng mẫu|花見(はなみ):ngắm hoa"
   },
   {
@@ -1374,9 +1283,8 @@ const kanjiData = [
     "radicals": "門-môn|耳-nhĩ",
     "core_meaning": "Nghe",
     "story_image": "Ghé tai (耳) vào khe cửa (門) để nghe ngóng tin tức.",
-    "logic_development": "門-môn + 耳-nhĩ -> (聞) tiếp nhận âm thanh",
+    "logic_development": "門-môn + 耳-nhĩ → (聞) tiếp nhận âm thanh",
     "memory_tip": "Tai đặt ở cửa để nghe trộm.",
-    "adjectives": "なし",
     "vocabulary": "聞く(きく):nghe|新聞(しんぶん):báo|聞こえる(きこえる):nghe thấy|聞き取り(ききとり):nghe hiểu|前代未聞(ぜんだいみもん):chưa từng nghe thấy"
   },
   {
@@ -1389,9 +1297,8 @@ const kanjiData = [
     "radicals": "言-ngôn|売-mại",
     "core_meaning": "Đọc",
     "story_image": "Dùng lời nói (言) để bán (売) những kiến thức đã đọc được.",
-    "logic_development": "言-ngôn + 売-mại -> (読) xem sách",
+    "logic_development": "言-ngôn + 売-mại → (読) xem sách",
     "memory_tip": "Lời nói bán ra từ việc đọc sách.",
-    "adjectives": "なし",
     "vocabulary": "読む(よむ):đọc|読書(どくしょ):đọc sách|読解(どっかい):đọc hiểu|句読点(くとうてん):dấu phẩy và dấu chấm|読み物(よみもの):tài liệu đọc"
   },
   {
@@ -1404,9 +1311,8 @@ const kanjiData = [
     "radicals": "曰-viết|聿-duật",
     "core_meaning": "Viết",
     "story_image": "Tay cầm cây bút (聿) đang viết lời nói (曰) xuống giấy.",
-    "logic_development": "聿-duật + 曰-viết -> (書) ghi chép",
+    "logic_development": "聿-duật + 曰-viết → (書) ghi chép",
     "memory_tip": "Cây bút viết ra những lời hay.",
-    "adjectives": "なし",
     "vocabulary": "書く(かく):viết|教科書(きょうかしょ):sách giáo khoa|図書館(としょかん):thư viện|辞書(じしょ):từ điển|書き直す(かきなおす):viết lại"
   },
   {
@@ -1419,9 +1325,8 @@ const kanjiData = [
     "radicals": "言-ngôn|舌-thiệt",
     "core_meaning": "Nói chuyện",
     "story_image": "Dùng lời nói (言) và cái lưỡi (舌) để trò chuyện với nhau.",
-    "logic_development": "言-ngôn + 舌-thiệt -> (話) đàm thoại",
+    "logic_development": "言-ngôn + 舌-thiệt → (話) đàm thoại",
     "memory_tip": "Lời nói phát ra từ cái lưỡi.",
-    "adjectives": "なし",
     "vocabulary": "話す(はなす):nói|電話(でんわ):điện thoại|会話(かいわ):hội thoại|世話(せわ):chăm sóc|昔話(むかしばなし):chuyện cổ tích"
   },
   {
@@ -1434,9 +1339,8 @@ const kanjiData = [
     "radicals": "貝-bối|网-võng",
     "core_meaning": "Mua",
     "story_image": "Dùng lưới (网) để thu gom tiền vỏ sò (貝) đi mua đồ.",
-    "logic_development": "网-võng + 貝-bối -> (買) giao dịch",
+    "logic_development": "网-võng + 貝-bối → (買) giao dịch",
     "memory_tip": "Dùng tiền vỏ sò để mua hàng.",
-    "adjectives": "なし",
     "vocabulary": "買う(かう):mua|買い物(かいもの):mua sắm|売買(ばいばい):mua bán|買収(ばいしゅう):mua chuộc|買い占める(かいしめる):mua sạch"
   },
   {
@@ -1449,9 +1353,8 @@ const kanjiData = [
     "radicals": "子-tử|攵-phộc",
     "core_meaning": "Dạy",
     "story_image": "Dùng roi (攵) để dạy bảo đứa trẻ (子) học hành.",
-    "logic_development": "孝-hiếu + 攵-phộc -> (教) giáo dục",
+    "logic_development": "孝-hiếu + 攵-phộc → (教) giáo dục",
     "memory_tip": "Dạy đứa trẻ biết hiếu thảo.",
-    "adjectives": "なし",
     "vocabulary": "教える(おしえる):dạy|教室(きょうしつ):lớp học|教会(きょうかい):nhà thờ|教育(きょういく):giáo dục|教師(きょうし):giáo viên"
   },
   {
@@ -1464,9 +1367,8 @@ const kanjiData = [
     "radicals": "十-thập|日-nhật|月-nguyệt",
     "core_meaning": "Buổi sáng",
     "story_image": "Mặt trời (日) mọc giữa đám cỏ trong khi mặt trăng (月) chưa lặn.",
-    "logic_development": "十-thập + 日-nhật + 十-thập + 月-nguyệt -> (朝) bình minh",
+    "logic_development": "十-thập + 日-nhật + 十-thập + 月-nguyệt → (朝) bình minh",
     "memory_tip": "Sáng sớm trăng và nắng cùng xuất hiện.",
-    "adjectives": "なし",
     "vocabulary": "朝(あさ):buổi sáng|朝食(ちょうしょく):bữa sáng|今朝(けさ):sáng nay|毎朝(まいあさ):mỗi sáng|朝日(あさひ):nắng sớm"
   },
   {
@@ -1479,9 +1381,8 @@ const kanjiData = [
     "radicals": "日-nhật",
     "core_meaning": "Buổi trưa",
     "story_image": "Khi mặt trời (日) ở trên đỉnh đầu che khuất bóng râm.",
-    "logic_development": "尸-thi + 日-nhật -> (昼) ban ngày",
+    "logic_development": "尸-thi + 日-nhật → (昼) ban ngày",
     "memory_tip": "Mặt trời chiếu sáng cả ngày.",
-    "adjectives": "なし",
     "vocabulary": "昼(ひる):buổi trưa|昼休み(ひるやすみ):nghỉ trưa|昼食(ちゅうしょく):bữa trưa|昼寝(ひるね):ngủ trưa|昼間(ひるま):ban ngày"
   },
   {
@@ -1494,9 +1395,8 @@ const kanjiData = [
     "radicals": "夕-tịch|人-nhân",
     "core_meaning": "Ban đêm",
     "story_image": "Con người (人) nghỉ ngơi dưới mái hiên khi trăng (夕) lên.",
-    "logic_development": "亠-đầu + 亻-nhân + 夕-tịch -> (夜) buổi tối",
+    "logic_development": "亠-đầu + 亻-nhân + 夕-tịch → (夜) buổi tối",
     "memory_tip": "Trăng lên là lúc mọi người đi ngủ.",
-    "adjectives": "なし",
     "vocabulary": "夜(よる):đêm|夜中(よなか):nửa đêm|今夜(こんや):tối nay|夜食(やしょく):ăn đêm|昨夜(さくや):đêm qua"
   },
   {
@@ -1509,9 +1409,8 @@ const kanjiData = [
     "radicals": "日-nhật|免-miễn",
     "core_meaning": "Buổi tối",
     "story_image": "Mặt trời (日) đã được miễn (免) nhiệm vụ để nhường chỗ cho bóng đêm.",
-    "logic_development": "日-nhật + 免-miễn -> (晩) chiều tối",
+    "logic_development": "日-nhật + 免-miễn → (晩) chiều tối",
     "memory_tip": "Mặt trời đi nghỉ sau một ngày.",
-    "adjectives": "なし",
     "vocabulary": "晩(ばん):buổi tối|今晩(こんばん):tối nay|毎晩(まいばん):mỗi tối|晩ご飯(ばんごはん):cơm tối|晩年(ばんねん):tuổi già"
   },
   {
@@ -1524,9 +1423,8 @@ const kanjiData = [
     "radicals": "夕-tịch",
     "core_meaning": "Buổi chiều",
     "story_image": "Hình ảnh mặt trăng (月) khuyết mất một nét vì vừa mới mọc lúc hoàng hôn.",
-    "logic_development": "夕-tịch -> (夕) xế chiều",
+    "logic_development": "夕-tịch → (夕) xế chiều",
     "memory_tip": "Giống chữ trăng nhưng thiếu một gạch.",
-    "adjectives": "なし",
     "vocabulary": "夕方(ゆうがた):chiều tà|夕食(ゆうしょく):bữa tối|夕日(ゆうひ):nắng chiều|夕立(ゆうだち):mưa rào chiều|七夕(たなばた):lễ thất tịch"
   },
   {
@@ -1539,9 +1437,8 @@ const kanjiData = [
     "radicals": "方-phương",
     "core_meaning": "Hướng",
     "story_image": "Hình ảnh một chiếc cày đang định hướng đường đi trên cánh đồng.",
-    "logic_development": "方-phương -> (方) phương hướng",
+    "logic_development": "方-phương → (方) phương hướng",
     "memory_tip": "Một người đang chỉ hướng đi.",
-    "adjectives": "なし",
     "vocabulary": "方(かた):người|読み方(よみかた):cách đọc|方向(ほうこう):phương hướng|地方(ちほう):địa phương|味方(みかた):đồng minh"
   },
   {
@@ -1554,9 +1451,8 @@ const kanjiData = [
     "radicals": "十-thập",
     "core_meaning": "Buổi trưa",
     "story_image": "Hình ảnh chiếc chày giã gạo dừng lại ở vị trí thẳng đứng vào giữa trưa.",
-    "logic_development": "十-thập -> (午) giờ chính ngọ",
+    "logic_development": "十-thập → (午) giờ chính ngọ",
     "memory_tip": "Một vạch đâm ngang qua số mười.",
-    "adjectives": "なし",
     "vocabulary": "午前(ごぜん):buổi sáng|午後(ごご):buổi chiều|正午(しょうご):đúng giữa trưa|午前中(ごぜんちゅう):suốt buổi sáng|子午線(しごせん):đường kinh tuyến"
   },
   {
@@ -1569,9 +1465,8 @@ const kanjiData = [
     "radicals": "刀-đao|月-nguyệt",
     "core_meaning": "Trước",
     "story_image": "Dùng dao (刀) cắt cỏ trước khi mặt trăng (月) mọc.",
-    "logic_development": "止-chỉ + 月-nguyệt + 刂-đao -> (前) phía trước",
+    "logic_development": "止-chỉ + 月-nguyệt + 刂-đao → (前) phía trước",
     "memory_tip": "Người đứng cầm dao ở phía trước.",
-    "adjectives": "なし",
     "vocabulary": "前(まえ):trước|名前(なまえ):tên|午前(ごぜん):buổi sáng|三日前(みっかまえ):ba ngày trước|前方(ぜんぽう):phía trước"
   },
   {
@@ -1584,9 +1479,8 @@ const kanjiData = [
     "radicals": "彳-xích|夂-truy",
     "core_meaning": "Sau",
     "story_image": "Một người đi chậm (彳) kéo theo sợi dây (糸) đi về phía sau.",
-    "logic_development": "彳-xích + 幺-yêu + 夂-truy -> (後) phía sau",
+    "logic_development": "彳-xích + 幺-yêu + 夂-truy → (後) phía sau",
     "memory_tip": "Người đi sau cùng bị trói dây.",
-    "adjectives": "なし",
     "vocabulary": "後(うしろ):phía sau|午後(ごご):buổi chiều|最後(さいご):cuối cùng|後ろ向き(うしろむき):quay lưng|後で(あとで):lát nữa"
   },
   {
@@ -1599,9 +1493,8 @@ const kanjiData = [
     "radicals": "毋-vô",
     "core_meaning": "Mỗi",
     "story_image": "Người phụ nữ (母) đội mũ mỗi ngày để đi làm.",
-    "logic_development": "人-nhân + 母-mẫu -> (毎) lặp lại",
+    "logic_development": "人-nhân + 母-mẫu → (毎) lặp lại",
     "memory_tip": "Mỗi bà mẹ đều lặp lại công việc.",
-    "adjectives": "なし",
     "vocabulary": "毎日(まいにち):mỗi ngày|毎月(まいつき):mỗi tháng|毎年(まいねん):mỗi năm|毎朝(まいあさ):mỗi sáng|毎晩(まいばん):mỗi tối"
   },
   {
@@ -1614,9 +1507,8 @@ const kanjiData = [
     "radicals": "辶-sước|周-chu",
     "core_meaning": "Tuần",
     "story_image": "Đi vòng quanh (辶) hết một chu vi (周) là hết một tuần.",
-    "logic_development": "周-chu + 辶-sước -> (週) chu kỳ",
+    "logic_development": "周-chu + 辶-sước → (週) chu kỳ",
     "memory_tip": "Đi bộ quanh vòng tròn hết một tuần.",
-    "adjectives": "なし",
     "vocabulary": "一週間(いっしゅうかん):một tuần|先週(せんしゅう):tuần trước|今週(こんしゅう):tuần này|来週(らいしゅう):tuần sau|毎週(まいしゅう):mỗi tuần"
   },
   {
@@ -1629,9 +1521,8 @@ const kanjiData = [
     "radicals": "日-nhật|隹-chuy",
     "core_meaning": "Ngày lễ",
     "story_image": "Mặt trời (日) chiếu sáng lên con chim (隹) đang nhảy múa vào ngày lễ.",
-    "logic_development": "日-nhật + 翟-địch -> (曜) các thứ trong tuần",
+    "logic_development": "日-nhật + 翟-địch → (曜) các thứ trong tuần",
     "memory_tip": "Mặt trời chiếu sáng ngày vui.",
-    "adjectives": "なし",
     "vocabulary": "曜日(ようび):thứ trong tuần|月曜日(げつようび):thứ hai|火曜日(かようび):thứ ba|水曜日(すいようび):thứ tư|木曜日(もくようび):thứ năm"
   },
   {
@@ -1644,9 +1535,8 @@ const kanjiData = [
     "radicals": "人-nhân|乍-sạ",
     "core_meaning": "Chế tạo",
     "story_image": "Con người (人) dùng tay làm ra các vật dụng một cách nhanh chóng.",
-    "logic_development": "人-nhân + 乍-sạ -> (作) tạo ra",
+    "logic_development": "人-nhân + 乍-sạ → (作) tạo ra",
     "memory_tip": "Người làm ra sản phẩm.",
-    "adjectives": "なし",
     "vocabulary": "作る(つくる):làm|作文(さくぶん):bài văn|作家(さっか):tác giả|作品(さくひん):tác phẩm|動作(どうさ):động tác"
   },
   {
@@ -1659,9 +1549,8 @@ const kanjiData = [
     "radicals": "氵-thủy|永-vĩnh",
     "core_meaning": "Bơi lội",
     "story_image": "Dòng nước (氵) chảy mãi mãi (永) cho người bơi lội.",
-    "logic_development": "氵-thủy + 永-vĩnh -> (泳) bơi",
+    "logic_development": "氵-thủy + 永-vĩnh → (泳) bơi",
     "memory_tip": "Nước chảy mãi để ta bơi.",
-    "adjectives": "なし",
     "vocabulary": "泳ぐ(およぐ):bơi|水泳(すいえい):bơi lội|競泳(きょうえい):bơi thi|平泳ぎ(ひらおよぎ):bơi ếch|泳法(えいほう):kiểu bơi"
   },
   {
@@ -1674,9 +1563,8 @@ const kanjiData = [
     "radicals": "氵-thủy|由-do",
     "core_meaning": "Dầu",
     "story_image": "Chất lỏng (氵) chiết xuất từ nguyên liệu (由) có độ trơn.",
-    "logic_development": "氵-thủy + 由-do -> (油) dung dịch trơn",
+    "logic_development": "氵-thủy + 由-do → (油) dung dịch trơn",
     "memory_tip": "Nước chảy ra từ gốc vật chất.",
-    "adjectives": "なし",
     "vocabulary": "油(あぶら):dầu|石油(せきゆ):dầu mỏ|醤油(しょうゆ):nước tương|油絵(あぶらえ):tranh sơn dầu|サラダ油(さらだゆ):dầu ăn"
   },
   {
@@ -1689,9 +1577,8 @@ const kanjiData = [
     "radicals": "氵-thủy|毎-mỗi",
     "core_meaning": "Biển",
     "story_image": "Dòng nước (氵) mà mỗi (毎) ngày mọi người đều đổ về.",
-    "logic_development": "氵-thủy + 毎-mỗi -> (海) đại dương",
+    "logic_development": "氵-thủy + 毎-mỗi → (海) đại dương",
     "memory_tip": "Nước có ở khắp mọi nơi mỗi ngày.",
-    "adjectives": "なし",
     "vocabulary": "海(うみ):biển|海外(かいがい):nước ngoài|海水(かいすい):nước biển|北海道(ほっかいどう):hokkaido|日本海(にほんかい):biển nhật bản"
   },
   {
@@ -1704,9 +1591,8 @@ const kanjiData = [
     "radicals": "氵-thủy|酉-dậu",
     "core_meaning": "Rượu",
     "story_image": "Nước (氵) được ủ trong bình (酉) lâu ngày thành rượu.",
-    "logic_development": "氵-thủy + 酉-dậu -> (酒) đồ uống có cồn",
+    "logic_development": "氵-thủy + 酉-dậu → (酒) đồ uống có cồn",
     "memory_tip": "Nước trong bình ủ lâu ngày.",
-    "adjectives": "なし",
     "vocabulary": "酒(さけ):rượu|日本酒(にほんしゅ):rượu sake|酒屋(さかや):tiệm rượu|飲酒(いんしゅ):uống rượu|居酒屋(いざかや):quán nhậu"
   },
   {
@@ -1719,9 +1605,8 @@ const kanjiData = [
     "radicals": "彳-xích|寺-tự",
     "core_meaning": "Chờ đợi",
     "story_image": "Một người đi bộ (彳) đến chùa (寺) để chờ đợi.",
-    "logic_development": "彳-xích + 寺-tự -> (待) đợi",
+    "logic_development": "彳-xích + 寺-tự → (待) đợi",
     "memory_tip": "Người đi đến chùa để đợi ai đó.",
-    "adjectives": "なし",
     "vocabulary": "待つ(まつ):đợi|待合室(まちあいしつ):phòng chờ|招待(しょうたい):chiêu đãi|期待(きたい):kỳ vọng|待ち合わせ(まちあわせ):hẹn gặp"
   },
   {
@@ -1734,9 +1619,8 @@ const kanjiData = [
     "radicals": "木-mộc|交-giao",
     "core_meaning": "Trường học",
     "story_image": "Nơi có nhiều cây (木) và mọi người giao lưu (交) để học tập.",
-    "logic_development": "木-mộc + 交-giao -> (校) ngôi trường",
+    "logic_development": "木-mộc + 交-giao → (校) ngôi trường",
     "memory_tip": "Cây gỗ và sự giao lưu tạo thành trường.",
-    "adjectives": "なし",
     "vocabulary": "学校(がっこう):trường học|校長(こうちょう):hiệu trưởng|高校生(こうこうせい):học sinh cấp ba|校門(こうもん):cổng trường|小学校(しょうがっこう):trường tiểu học"
   },
   {
@@ -1749,9 +1633,8 @@ const kanjiData = [
     "radicals": "日-nhật|寺-tự",
     "core_meaning": "Thời gian",
     "story_image": "Mặt trời (日) chiếu lên bóng của ngôi chùa (寺) để xem giờ.",
-    "logic_development": "日-nhật + 寺-tự -> (時) giờ giấc",
+    "logic_development": "日-nhật + 寺-tự → (時) giờ giấc",
     "memory_tip": "Mặt trời và ngôi chùa cho biết thời gian.",
-    "adjectives": "なし",
     "vocabulary": "時(とき):khi|時間(じかん):thời gian|時計(とけい):đồng hồ|一時(いちじ):một giờ|時々(ときどき):thỉnh thoảng"
   },
   {
@@ -1764,9 +1647,8 @@ const kanjiData = [
     "radicals": "言-ngon",
     "core_meaning": "Lời nói",
     "story_image": "Lời nói phát ra từ miệng (口) qua các vạch sóng âm.",
-    "logic_development": "言-ngôn -> (言) ngôn từ",
+    "logic_development": "言-ngôn → (言) ngôn từ",
     "memory_tip": "Cái miệng phát ra bốn luồng âm thanh.",
-    "adjectives": "なし",
     "vocabulary": "言う(いう):nói|言葉(ことば):từ vựng|言語(げんご):ngôn ngữ|方言(ほうげん):tiếng địa phương|伝言(でんごん):lời nhắn"
   },
   {
@@ -1779,9 +1661,8 @@ const kanjiData = [
     "radicals": "言-ngôn|十-thập",
     "core_meaning": "Kế hoạch",
     "story_image": "Dùng lời nói (言) để đếm đến mười (十) nhằm tính toán.",
-    "logic_development": "言-ngôn + 十-thập -> (計) đo lường",
+    "logic_development": "言-ngôn + 十-thập → (計) đo lường",
     "memory_tip": "Nói ra con số mười để tính.",
-    "adjectives": "なし",
     "vocabulary": "時計(とけい):đồng hồ|計画(けいかく):kế hoạch|合計(ごうけい):tổng cộng|計算(けいさん):tính toán|家計(かけい):kinh tế gia đình"
   },
   {
@@ -1794,9 +1675,8 @@ const kanjiData = [
     "radicals": "言-ngôn|五-ngũ|口-khẩu",
     "core_meaning": "Ngôn ngữ",
     "story_image": "Dùng lời nói (言) từ năm (五) cái miệng (口) để tạo thành ngôn ngữ.",
-    "logic_development": "言-ngôn + 五-ngũ + 口-khẩu -> (語) tiếng nói",
+    "logic_development": "言-ngôn + 五-ngũ + 口-khẩu → (語) tiếng nói",
     "memory_tip": "Năm cái miệng cùng nói một thứ tiếng.",
-    "adjectives": "なし",
     "vocabulary": "語る(かたる):kể chuyện|日本語(にほんご):tiếng nhật|単語(たんご):từ đơn|物語(ものがたり):truyện kể|敬語(けいご):kính ngữ"
   },
   {
@@ -1809,9 +1689,8 @@ const kanjiData = [
     "radicals": "食-thực|反-phản",
     "core_meaning": "Cơm",
     "story_image": "Đồ ăn (食) được nấu chín từ gạo (反) để làm bữa ăn chính.",
-    "logic_development": "食-thực + 反-phản -> (飯) bữa cơm",
+    "logic_development": "食-thực + 反-phản → (飯) bữa cơm",
     "memory_tip": "Thức ăn được xới ngược lên từ nồi.",
-    "adjectives": "なし",
     "vocabulary": "ご飯(ごはん):cơm|夕飯(ゆうはん):cơm tối|朝飯(あさめし):cơm sáng|炊飯器(すいはんき):nồi cơm điện|昼飯(ひるめし):cơm trưa"
   },
   {
@@ -1824,9 +1703,8 @@ const kanjiData = [
     "radicals": "宀-miên|乇-thác",
     "core_meaning": "Nhà ở",
     "story_image": "Người sống dưới mái nhà (宀) như một cái cây (乇) bám rễ.",
-    "logic_development": "宀-miên + 乇-thác -> (宅) dinh thự",
+    "logic_development": "宀-miên + 乇-thác → (宅) dinh thự",
     "memory_tip": "Mái nhà che chở cho người cư trú.",
-    "adjectives": "なし",
     "vocabulary": "住宅(じゅうたく):nhà ở|自宅(じたく):nhà mình|帰宅(きたく):về nhà|お宅(おたく):nhà ngài|宅配(たくはい):giao hàng tận nhà"
   },
   {
@@ -1839,9 +1717,8 @@ const kanjiData = [
     "radicals": "宀-miên|各-các",
     "core_meaning": "Khách hàng",
     "story_image": "Mỗi (各) người khách đều đến thăm dưới mái nhà (宀).",
-    "logic_development": "宀-miên + 各-các -> (客) khách khứa",
+    "logic_development": "宀-miên + 各-các → (客) khách khứa",
     "memory_tip": "Mọi người đều đến nhà là khách.",
-    "adjectives": "なし",
     "vocabulary": "客(きゃく):khách|乗客(じょうぎゃく):hành khách|来客(らいきゃく):khách đến chơi|観客(かんきゃく):khán giả|お客様(おきゃくさま):quý khách"
   },
   {
@@ -1854,9 +1731,8 @@ const kanjiData = [
     "radicals": "宀-miên|至-chí",
     "core_meaning": "Phòng",
     "story_image": "Nơi con người đi đến (至) để ở dưới mái nhà (宀).",
-    "logic_development": "宀-miên + 至-chí -> (室) căn phòng",
+    "logic_development": "宀-miên + 至-chí → (室) căn phòng",
     "memory_tip": "Đi đến điểm cuối trong nhà là phòng.",
-    "adjectives": "なし",
     "vocabulary": "教室(きょうしつ):lớp học|室内(しつない):trong phòng|図書室(としょしつ):phòng đọc sách|和室(わしつ):phòng kiểu nhật|待合室(まちあいしつ):phòng chờ"
   },
   {
@@ -1869,9 +1745,8 @@ const kanjiData = [
     "radicals": "宀-miên|豕-thỉ",
     "core_meaning": "Gia đình|Nhà",
     "story_image": "Ngày xưa người ta nuôi con lợn (豕) dưới mái nhà (宀).",
-    "logic_development": "宀-miên + 豕-thỉ -> (家) ngôi nhà",
+    "logic_development": "宀-miên + 豕-thỉ → (家) ngôi nhà",
     "memory_tip": "Dưới mái nhà có nuôi lợn.",
-    "adjectives": "なし",
     "vocabulary": "家(いえ):nhà|家族(かぞく):gia đình|家内(かない):vợ mình|画家(がか):họa sĩ|大家(おおや):chủ nhà"
   },
   {
@@ -1884,9 +1759,8 @@ const kanjiData = [
     "radicals": "艹-thảo|央-ương",
     "core_meaning": "Anh hùng",
     "story_image": "Bông hoa (艹) nở rực rỡ ở trung tâm (央) biểu tượng cho tài năng.",
-    "logic_development": "艹-thảo + 央-ương -> (英) tài giỏi",
+    "logic_development": "艹-thảo + 央-ương → (英) tài giỏi",
     "memory_tip": "Hoa cỏ nở rực giữa trời.",
-    "adjectives": "なし",
     "vocabulary": "英語(えいご):tiếng anh|英国(えいこく):nước anh|英会話(えいかいわ):hội thoại tiếng anh|英才(えいさい):anh tài|英雄(えいゆう):anh hùng"
   },
   {
@@ -1899,9 +1773,8 @@ const kanjiData = [
     "radicals": "艹-thảo|楽-lạc",
     "core_meaning": "Thuốc",
     "story_image": "Loại cỏ (艹) mang lại niềm vui (楽) bằng cách chữa khỏi bệnh.",
-    "logic_development": "艹-thảo + 楽-lạc -> (薬) dược phẩm",
+    "logic_development": "艹-thảo + 楽-lạc → (薬) dược phẩm",
     "memory_tip": "Cỏ thảo mộc làm cho người ta vui vẻ.",
-    "adjectives": "なし",
     "vocabulary": "薬(くすり):thuốc|目薬(めぐすり):thuốc nhỏ mắt|薬局(やっきょく):hiệu thuốc|飲み薬(のみぐすり):thuốc uống|薬品(やくひん):dược phẩm"
   },
   {
@@ -1914,9 +1787,8 @@ const kanjiData = [
     "radicals": "人-nhân|云-vân",
     "core_meaning": "Gặp gỡ",
     "story_image": "Nhiều người (人) tụ họp lại để nói chuyện (云) với nhau.",
-    "logic_development": "人-nhân + 云-vân -> (会) hội họp",
+    "logic_development": "人-nhân + 云-vân → (会) hội họp",
     "memory_tip": "Mọi người tụ họp dưới một mái nhà.",
-    "adjectives": "なし",
     "vocabulary": "会う(あう):gặp|会社(かいしゃ):công ty|会話(かいわ):hội thoại|大会(たいかい):đại hội|新年会(しんねんかい):tiệc tân niên"
   },
   {
@@ -1929,9 +1801,8 @@ const kanjiData = [
     "radicals": "人-nhân",
     "core_meaning": "Bây giờ",
     "story_image": "Hình ảnh cái nắp đậy lại biểu thị thời điểm hiện tại này.",
-    "logic_development": "人-nhân -> (今) lúc này",
+    "logic_development": "人-nhân → (今) lúc này",
     "memory_tip": "Mọi người đang tụ họp lúc này.",
-    "adjectives": "なし",
     "vocabulary": "今(いま):bây giờ|今日(きょう):hôm nay|今月(こんげつ):tháng này|今年(ことし):năm nay|今朝(けさ):sáng nay"
   },
   {
@@ -1944,9 +1815,8 @@ const kanjiData = [
     "radicals": "雨-vũ|ヨ-kệ",
     "core_meaning": "Tuyết",
     "story_image": "Những giọt mưa (雨) đông cứng lại khi chạm tay (ヨ) vào.",
-    "logic_development": "雨-vũ + ヨ-kệ -> (雪) tuyết rơi",
+    "logic_development": "雨-vũ + ヨ-kệ → (雪) tuyết rơi",
     "memory_tip": "Nước từ trời rơi xuống như lông trắng.",
-    "adjectives": "なし",
     "vocabulary": "雪(ゆき):tuyết|大雪(おおゆき):tuyết rơi dày|初雪(はつゆき):tuyết đầu mùa|新雪(しんせつ):tuyết mới|雪まつり(ゆきまつり):lễ hội tuyết"
   },
   {
@@ -1959,9 +1829,8 @@ const kanjiData = [
     "radicals": "雨-vũ|云-vân",
     "core_meaning": "Mây",
     "story_image": "Hiện tượng trên trời liên quan đến mưa (雨) và lời nói (云) của gió.",
-    "logic_development": "雨-vũ + 云-vân -> (雲) đám mây",
+    "logic_development": "雨-vũ + 云-vân → (雲) đám mây",
     "memory_tip": "Mưa đang hình thành từ những lời nói của trời.",
-    "adjectives": "なし",
     "vocabulary": "雲(くも):mây|青雲(せいうん):mây xanh|雲海(うんかい):biển mây|雨雲(あまぐも):mây mưa|積乱雲(せきらんうん):mây tích điện"
   },
   {
@@ -1974,9 +1843,8 @@ const kanjiData = [
     "radicals": "雨-vũ|申-thân",
     "core_meaning": "Điện",
     "story_image": "Sấm sét xuất hiện khi trời mưa (雨) kéo dài (申).",
-    "logic_development": "雨-vũ + 申-thân -> (電) năng lượng điện",
+    "logic_development": "雨-vũ + 申-thân → (電) năng lượng điện",
     "memory_tip": "Tia chớp từ trên trời phóng xuống.",
-    "adjectives": "なし",
     "vocabulary": "電気(でんき):điện|電車(でんしゃ):tàu điện|電話(でんわ):điện thoại|電力(でんりょく):điện lực|電子(でんし):điện tử"
   },
   {
@@ -1989,9 +1857,8 @@ const kanjiData = [
     "radicals": "士-sĩ|冖-mịch|儿-nhi",
     "core_meaning": "Bán",
     "story_image": "Người sĩ tử (士) mang đồ đi bán trên đôi chân (儿) của mình.",
-    "logic_development": "士-sĩ + 冖-mịch + 儿-nhi -> (売) thương mại",
+    "logic_development": "士-sĩ + 冖-mịch + 儿-nhi → (売) thương mại",
     "memory_tip": "Người đội mũ đi bộ đi bán hàng.",
-    "adjectives": "なし",
     "vocabulary": "売る(うる):bán|売店(ばいてん):quầy bán hàng|売り場(うりば):nơi bán hàng|売買(ばいばい):mua bán|特売(とくばい):bán giảm giá"
   },
   {
@@ -2004,10 +1871,9 @@ const kanjiData = [
     "radicals": "广-nghiễm|ム-khứ",
     "core_meaning": "Rộng rãi",
     "story_image": "Một cái hang lớn (广) có không gian riêng (ム) rộng lớn.",
-    "logic_development": "广-nghiễm + ム-khứ -> (広) bao la",
+    "logic_development": "广-nghiễm + ム-khứ → (広) bao la",
     "memory_tip": "Ngôi nhà ở vách núi rất rộng.",
-    "adjectives": "広い(ひろい):rộng",
-    "vocabulary": "広い(ひろい):rộng|広島(ひろしま):hiroshima|広場(ひろば):quảng trường|広告(こうこく):quảng cáo|広大(こうだい):rộng lớn"
+    "vocabulary": "広い(ひろい):rộng|広い(ひろい):rộng|広島(ひろしま):hiroshima|広場(ひろば):quảng trường|広告(こうこく):quảng cáo|広大(こうだい):rộng lớn"
   },
   {
     "stt": 135,
@@ -2019,9 +1885,8 @@ const kanjiData = [
     "radicals": "广-nghiễm|占-chiêm",
     "core_meaning": "Cửa hàng",
     "story_image": "Nơi chiếm (占) một góc dưới mái hiên (广) để buôn bán.",
-    "logic_development": "广-nghiễm + 占-chiêm -> (店) tiệm",
+    "logic_development": "广-nghiễm + 占-chiêm → (店) tiệm",
     "memory_tip": "Cái bói toán đặt trong nhà làm tiệm.",
-    "adjectives": "なし",
     "vocabulary": "店(みせ):cửa hàng|店員(てんいん):nhân viên|売店(ばいてん):quầy bán hàng|喫茶店(きっさてん):quán cà phê|支店(してん):chi nhánh"
   },
   {
@@ -2034,9 +1899,8 @@ const kanjiData = [
     "radicals": "广-nghiễm|廿-nhập|又-hựu",
     "core_meaning": "Lần|Mức độ",
     "story_image": "Dùng tay (又) đo đạc nhiều lần dưới mái nhà (广).",
-    "logic_development": "广-nghiễm + 廿-nhập + 又-hựu -> (度) số lần",
+    "logic_development": "广-nghiễm + 廿-nhập + 又-hựu → (度) số lần",
     "memory_tip": "Đo đạc trong nhà từng lần một.",
-    "adjectives": "なし",
     "vocabulary": "一度(いちど):một lần|今度(こんど):lần tới|温度(おんど):nhiệt độ|速度(そくど):tốc độ|程度(ていど):trình độ"
   },
   {
@@ -2049,9 +1913,8 @@ const kanjiData = [
     "radicals": "疒-nạch|丙-bính",
     "core_meaning": "Bệnh tật",
     "story_image": "Người bị bệnh nằm trong lều (疒) với lửa (丙) đốt trong người.",
-    "logic_development": "疒-nạch + 丙-bính -> (病) đau ốm",
+    "logic_development": "疒-nạch + 丙-bính → (病) đau ốm",
     "memory_tip": "Người nằm trong mái che bị sốt.",
-    "adjectives": "なし",
     "vocabulary": "病院(びょういん):bệnh viện|病気(びょうき):bệnh|病室(びょうしつ):phòng bệnh|重病(じゅうびょう):bệnh nặng|看病(かんびょう):chăm sóc bệnh nhân"
   },
   {
@@ -2064,9 +1927,8 @@ const kanjiData = [
     "radicals": "疒-nạch|皮-bì",
     "core_meaning": "Mệt mỏi",
     "story_image": "Người bị ốm (疒) đến mức da (皮) dẻ nhăn nheo mệt mỏi.",
-    "logic_development": "疒-nạch + 皮-bì -> (疲) kiệt sức",
+    "logic_development": "疒-nạch + 皮-bì → (疲) kiệt sức",
     "memory_tip": "Cơ thể trong mái che mệt mỏi như lột da.",
-    "adjectives": "なし",
     "vocabulary": "疲れる(つかれる):mệt|疲れ(つかれ):sự mệt mỏi|疲労(ひろう):mệt nhọc|疲れ目(つかれめ):mỏi mắt|お疲れ様(おつかれさま):vất vả rồi"
   },
   {
@@ -2079,10 +1941,9 @@ const kanjiData = [
     "radicals": "疒-nạch|甬-dũng",
     "core_meaning": "Đau đớn",
     "story_image": "Cơn đau xuyên qua (甬) cơ thể người đang ốm (疒).",
-    "logic_development": "疒-nạch + 甬-dũng -> (痛) nhức nhối",
+    "logic_development": "疒-nạch + 甬-dũng → (痛) nhức nhối",
     "memory_tip": "Cái đau như dao đâm trong người bệnh.",
-    "adjectives": "痛い(いたい):đau",
-    "vocabulary": "痛い(いたい):đau|頭痛(ずつう):đau đầu|腹痛(ふくつう):đau bụng|痛み止め(いたみどめ):thuốc giảm đau|苦痛(くつう):khổ đau"
+    "vocabulary": "痛い(いたい):đau|痛い(いたい):đau|頭痛(ずつう):đau đầu|腹痛(ふくつう):đau bụng|痛み止め(いたみどめ):thuốc giảm đau|苦痛(くつう):khổ đau"
   },
   {
     "stt": 140,
@@ -2094,9 +1955,8 @@ const kanjiData = [
     "radicals": "尸-thi|至-chí",
     "core_meaning": "Cửa hàng|Nhà",
     "story_image": "Cái xác (尸) đi đến (至) điểm cuối là ngôi nhà.",
-    "logic_development": "尸-thi + 至-chí -> (屋) mái nhà",
+    "logic_development": "尸-thi + 至-chí → (屋) mái nhà",
     "memory_tip": "Nơi người ta đến để ở hoặc bán đồ.",
-    "adjectives": "なし",
     "vocabulary": "屋上(おくじょう):sân thượng|部屋(へや):phòng|本屋(ほんや):tiệm sách|魚屋(さかなや):tiệm cá|パン屋(ぱんや):tiệm bánh mì"
   },
   {
@@ -2109,9 +1969,8 @@ const kanjiData = [
     "radicals": "囗-vi|玉-ngọc",
     "core_meaning": "Quốc gia",
     "story_image": "Viên ngọc (玉) quý giá được bảo vệ trong bốn bức tường (囗) của biên giới.",
-    "logic_development": "囗-vi + 玉-ngọc -> (国) đất nước",
+    "logic_development": "囗-vi + 玉-ngọc → (国) đất nước",
     "memory_tip": "Vua và ngọc quý được bao quanh bởi biên giới.",
-    "adjectives": "なし",
     "vocabulary": "国(くに):đất nước|外国人(がいこくじん):người nước ngoài|中国(ちゅうごく):trung quốc|国籍(こくせき):quốc tịch|韓国(かんこく):hàn quốc"
   },
   {
@@ -2124,9 +1983,8 @@ const kanjiData = [
     "radicals": "囗-vi|口-khẩu",
     "core_meaning": "Lần|Vòng quanh",
     "story_image": "Hình ảnh vòng tròn nhỏ (口) nằm trong vòng tròn lớn (囗) đang xoay.",
-    "logic_development": "囗-vi + 口-khẩu -> (回) xoay chuyển",
+    "logic_development": "囗-vi + 口-khẩu → (回) xoay chuyển",
     "memory_tip": "Vòng tròn trong vòng tròn biểu thị sự lặp lại.",
-    "adjectives": "なし",
     "vocabulary": "回る(まわる):xoay quanh|一回(いっかい):một lần|今回(こんど):lần này|回る(まわる):quay|回答(かいとう):hồi đáp"
   },
   {
@@ -2139,9 +1997,8 @@ const kanjiData = [
     "radicals": "囗-vi|木-mộc",
     "core_meaning": "Khó khăn",
     "story_image": "Cây (木) bị nhốt trong không gian hẹp (囗) nên không lớn được.",
-    "logic_development": "囗-vi + 木-mộc -> (困) khốn đốn",
+    "logic_development": "囗-vi + 木-mộc → (困) khốn đốn",
     "memory_tip": "Cây trong nhà chật chội nên khó khăn.",
-    "adjectives": "なし",
     "vocabulary": "困る(こまる):khó khăn|困難(こんなん):khốn khó|困窮(こんきゅう):túng quẫn|貧困(ひんこん):nghèo khổ|困り果てる(こまりはてる):vô cùng bối rối"
   },
   {
@@ -2154,9 +2011,8 @@ const kanjiData = [
     "radicals": "門-môn|开-nghiên",
     "core_meaning": "Mở ra",
     "story_image": "Dùng hai tay nâng thanh chốt (开) để mở cánh cổng (門).",
-    "logic_development": "門-môn + 开-nghiên -> (開) bắt đầu",
+    "logic_development": "門-môn + 开-nghiên → (開) bắt đầu",
     "memory_tip": "Mở hai cánh cửa cổng ra.",
-    "adjectives": "なし",
     "vocabulary": "開ける(あける):mở|開く(ひらく):mở tiệc|開始(かいし):bắt đầu|開店(かいてん):mở cửa hàng|開発(かいはつ):khai phá"
   },
   {
@@ -2169,9 +2025,8 @@ const kanjiData = [
     "radicals": "門-môn|才-tài",
     "core_meaning": "Đóng lại",
     "story_image": "Dùng thanh gỗ (才) chốt chặt cửa cổng (門) lại.",
-    "logic_development": "門-môn + 才-tài -> (閉) khép cửa",
+    "logic_development": "門-môn + 才-tài → (閉) khép cửa",
     "memory_tip": "Chặn thanh gỗ vào cửa để đóng.",
-    "adjectives": "なし",
     "vocabulary": "閉める(しめる):đóng cửa|閉じる(とじる):nhắm mắt|閉会(へいかい):bế mạc|閉店(へいてん):đóng cửa hàng|閉鎖(へいさ):phong tỏa"
   },
   {
@@ -2184,10 +2039,9 @@ const kanjiData = [
     "radicals": "辶-sước|斤-cân",
     "core_meaning": "Gần",
     "story_image": "Đi bộ (辶) bằng một cái rìu (斤) ngắn là khoảng cách rất gần.",
-    "logic_development": "辶-sước + 斤-cân -> (近) lân cận",
+    "logic_development": "辶-sước + 斤-cân → (近) lân cận",
     "memory_tip": "Bước chân đi một quãng ngắn bằng cái rìu.",
-    "adjectives": "近い(ちかい):gần",
-    "vocabulary": "近い(ちかい):gần|近所(きんじょ):hàng xóm|最近(さいきん):gần đây|近道(ちかみち):đường tắt|付近(ふきん):vùng phụ cận"
+    "vocabulary": "近い(ちかい):gần|近い(ちかい):gần|近所(きんじょ):hàng xóm|最近(さいきん):gần đây|近道(ちかみち):đường tắt|付近(ふきん):vùng phụ cận"
   },
   {
     "stt": 147,
@@ -2199,10 +2053,9 @@ const kanjiData = [
     "radicals": "辶-sước|袁-viên",
     "core_meaning": "Xa xôi",
     "story_image": "Người mặc áo dài (袁) đi bộ (辶) trên con đường dài dằng dặc.",
-    "logic_development": "辶-sước + 袁-viên -> (遠) xa cách",
+    "logic_development": "辶-sước + 袁-viên → (遠) xa cách",
     "memory_tip": "Bước chân đi mãi trên đường dài.",
-    "adjectives": "遠い(とおい):xa",
-    "vocabulary": "遠い(とおい):xa|遠足(えんそく):dã ngoại|遠慮(えんりょ):ngần ngại|遠国(えんごく):viễn xứ|遠回り(とおまわり):đi đường vòng"
+    "vocabulary": "遠い(とおい):xa|遠い(とおい):xa|遠足(えんそく):dã ngoại|遠慮(えんりょ):ngần ngại|遠国(えんごく):viễn xứ|遠回り(とおまわり):đi đường vòng"
   },
   {
     "stt": 148,
@@ -2214,10 +2067,9 @@ const kanjiData = [
     "radicals": "辶-sước|束-thúc",
     "core_meaning": "Nhanh",
     "story_image": "Bó củi (束) được mang đi bộ (辶) một cách nhanh chóng.",
-    "logic_development": "辶-sước + 束-thúc -> (速) tốc độ",
+    "logic_development": "辶-sước + 束-thúc → (速) tốc độ",
     "memory_tip": "Người vác bó củi chạy nhanh trên đường.",
-    "adjectives": "速い(はやい):nhanh",
-    "vocabulary": "速い(はやい):nhanh|速度(そくど):tốc độ|高速道路(こうそくどうろ):đường cao tốc|速達(そくたつ):chuyển phát nhanh|速記(そっき):tốc ký"
+    "vocabulary": "速い(はやい):nhanh|速い(はやい):nhanh|速度(そくど):tốc độ|高速道路(こうそくどうろ):đường cao tốc|速達(そくたつ):chuyển phát nhanh|速記(そっき):tốc ký"
   },
   {
     "stt": 149,
@@ -2229,10 +2081,9 @@ const kanjiData = [
     "radicals": "辶-sước|犀-tê",
     "core_meaning": "Chậm",
     "story_image": "Con tê giác (犀) đi bộ (辶) rất lù đù và chậm chạp.",
-    "logic_development": "辶-sước + 犀-tê -> (遅) muộn",
+    "logic_development": "辶-sước + 犀-tê → (遅) muộn",
     "memory_tip": "Con vật to xác đi bộ nên bị trễ.",
-    "adjectives": "遅い(おそい):chậm",
-    "vocabulary": "遅い(おそい):chậm|遅れる(おくれる):muộn|遅刻(ちこく):đến muộn|遅延(ちえん):trì hoãn|遅まきながら(おそまきながら):dù đã muộn"
+    "vocabulary": "遅い(おそい):chậm|遅い(おそい):chậm|遅れる(おくれる):muộn|遅刻(ちこく):đến muộn|遅延(ちえん):trì hoãn|遅まきながら(おそまきながら):dù đã muộn"
   },
   {
     "stt": 150,
@@ -2244,9 +2095,8 @@ const kanjiData = [
     "radicals": "辶-sước|首-thủ",
     "core_meaning": "Con đường",
     "story_image": "Người dẫn đầu (首) đang đi bộ (辶) trên con đường chính đạo.",
-    "logic_development": "辶-sước + 首-thủ -> (道) đạo lộ",
+    "logic_development": "辶-sước + 首-thủ → (道) đạo lộ",
     "memory_tip": "Cái đầu dẫn dắt đôi chân đi trên đường.",
-    "adjectives": "なし",
     "vocabulary": "道(みち):đường|水道(すいどう):nước máy|書道(しょどう):thư pháp|茶道(さどう):trà đạo|北海道(ほっかいどう):hokkaido"
   },
   {
@@ -2259,10 +2109,9 @@ const kanjiData = [
     "radicals": "青-thanh",
     "core_meaning": "Xanh",
     "story_image": "Hình ảnh mầm cây xanh tốt mọc lên từ giếng nước trong vắt.",
-    "logic_development": "青-thanh -> (青) màu da trời",
+    "logic_development": "青-thanh → (青) màu da trời",
     "memory_tip": "Cỏ mọc trên đất xanh mướt.",
-    "adjectives": "青い(あおい):xanh",
-    "vocabulary": "青(あお):màu xanh|青空(あおぞら):bầu trời xanh|青年(せいねん):thanh niên|青森(あおもり):tỉnh aomori|青信号(あおしんご):đèn xanh"
+    "vocabulary": "青い(あおい):xanh|青(あお):màu xanh|青空(あおぞら):bầu trời xanh|青年(せいねん):thanh niên|青森(あおもり):tỉnh aomori|青信号(あおしんご):đèn xanh"
   },
   {
     "stt": 152,
@@ -2274,9 +2123,8 @@ const kanjiData = [
     "radicals": "日-nhật|青-thanh",
     "core_meaning": "Nắng",
     "story_image": "Mặt trời (日) làm cho bầu trời trở nên xanh trong (青).",
-    "logic_development": "日-nhật + 青-thanh -> (晴) trời quang",
+    "logic_development": "日-nhật + 青-thanh → (晴) trời quang",
     "memory_tip": "Mặt trời lên thì trời xanh.",
-    "adjectives": "なし",
     "vocabulary": "晴れる(はれる):trời nắng|晴れ(はれ):thời tiết đẹp|快晴(かいせい):nắng ráo|晴天(せいてん):ngày nắng|晴れ着(はれぎ):quần áo đẹp"
   },
   {
@@ -2289,10 +2137,9 @@ const kanjiData = [
     "radicals": "青-thanh|争-tranh",
     "core_meaning": "Yên tĩnh",
     "story_image": "Sắc xanh (青) giúp ngăn chặn cuộc tranh đấu (争) ồn ào.",
-    "logic_development": "青-thanh + 争-tranh -> (静) tĩnh lặng",
+    "logic_development": "青-thanh + 争-tranh → (静) tĩnh lặng",
     "memory_tip": "Ngừng tranh giành để giữ màu xanh bình yên.",
-    "adjectives": "静か(しずか):yên tĩnh",
-    "vocabulary": "静か(しずか):yên tĩnh|静止(せいし):đứng yên|冷静(れいせい):bình tĩnh|静養(せいよう):tĩnh dưỡng|安静(あんせい):an nghỉ"
+    "vocabulary": "静か(しずか):yên tĩnh|静か(しずか):yên tĩnh|静止(せいし):đứng yên|冷静(れいせい):bình tĩnh|静養(せいよう):tĩnh dưỡng|安静(あんせい):an nghỉ"
   },
   {
     "stt": 154,
@@ -2304,9 +2151,8 @@ const kanjiData = [
     "radicals": "土-thổ|寸-thốn",
     "core_meaning": "Chùa",
     "story_image": "Nơi đo đạc (寸) đất đai (土) để xây dựng ngôi đền chùa.",
-    "logic_development": "土-thổ + 寸-thốn -> (寺) đình chùa",
+    "logic_development": "土-thổ + 寸-thốn → (寺) đình chùa",
     "memory_tip": "Đất và sự chuẩn mực tạo nên chùa.",
-    "adjectives": "なし",
     "vocabulary": "寺(てら):chùa|お寺(おてら):ngôi chùa|寺院(じい院):tự viện|金閣寺(きんかくじ):chùa vàng|清水寺(きよみずでら):chùa kiyomizu"
   },
   {
@@ -2319,9 +2165,8 @@ const kanjiData = [
     "radicals": "扌-thủ|寺-tự",
     "core_meaning": "Cầm|Nắm",
     "story_image": "Dùng bàn tay (扌) để giữ lấy ngôi chùa (寺) hoặc tài sản.",
-    "logic_development": "扌-thủ + 寺-tự -> (持) duy trì",
+    "logic_development": "扌-thủ + 寺-tự → (持) duy trì",
     "memory_tip": "Tay cầm vật gì đó mang đi.",
-    "adjectives": "なし",
     "vocabulary": "持つ(まつ):cầm|金持ち(かねもち):người giàu|持ち物(もちもの):đồ mang theo|気持ち(きもち):tâm trạng|支持(しじ):duy trì"
   },
   {
@@ -2334,9 +2179,8 @@ const kanjiData = [
     "radicals": "艹-thảo|何-hà",
     "core_meaning": "Hành lý",
     "story_image": "Cây cỏ (艹) mang theo cái gì (何) trên vai làm hành lý.",
-    "logic_development": "艹-thảo + 何-hà -> (荷) hàng hóa",
+    "logic_development": "艹-thảo + 何-hà → (荷) hàng hóa",
     "memory_tip": "Cỏ gánh trên vai là hành lý.",
-    "adjectives": "なし",
     "vocabulary": "荷物(にもつ):hành lý|重荷(おもに):gánh nặng|出荷(しゅっか):xuất hàng|入荷(にゅうか):nhập hàng|手荷物(てにもつ):hành lý xách tay"
   },
   {
@@ -2349,9 +2193,8 @@ const kanjiData = [
     "radicals": "可-khả|欠-khiếm",
     "core_meaning": "Hát",
     "story_image": "Mở miệng thật to (欠) để hát những lời khả ái (可) lặp lại.",
-    "logic_development": "可-khả + 欠-khiếm -> (歌) bài hát",
+    "logic_development": "可-khả + 欠-khiếm → (歌) bài hát",
     "memory_tip": "Lời nói hay phát ra từ miệng.",
-    "adjectives": "なし",
     "vocabulary": "歌(うた):bài hát|歌う(うたう):hát|歌手(かしゅ):ca sĩ|国歌(こっか):quốc ca|短歌(たんか):thơ tanka"
   },
   {
@@ -2364,9 +2207,8 @@ const kanjiData = [
     "radicals": "又-hựu",
     "core_meaning": "Bạn bè",
     "story_image": "Hai bàn tay (又) nắm lấy nhau biểu thị tình bạn gắn kết.",
-    "logic_development": "又-hựu -> (友) bằng hữu",
+    "logic_development": "又-hựu → (友) bằng hữu",
     "memory_tip": "Hai cái tay bắt lấy nhau.",
-    "adjectives": "なし",
     "vocabulary": "友だち(ともだち):bạn bè|友人(ゆうじん):bạn thân|親友(しんゆう):bạn chí cốt|友情(ゆうじょう):tình bạn|友好(ゆうこう):hữu nghị"
   },
   {
@@ -2379,9 +2221,8 @@ const kanjiData = [
     "radicals": "父-phụ",
     "core_meaning": "Bố",
     "story_image": "Hình ảnh người cha cầm hai cây roi để dạy bảo con cái.",
-    "logic_development": "父-phụ -> (父) người cha",
+    "logic_development": "父-phụ → (父) người cha",
     "memory_tip": "Người đàn ông có uy quyền trong nhà.",
-    "adjectives": "なし",
     "vocabulary": "父(ちち):bố mình|お父さん(おとうさん):bố người khác|父親(ちちおや):phụ thân|祖父(そふ):ông nội ngoại|父母(ふぼ):bố mẹ"
   },
   {
@@ -2394,9 +2235,8 @@ const kanjiData = [
     "radicals": "母-mẫu",
     "core_meaning": "Mẹ",
     "story_image": "Hình ảnh người phụ nữ (女) có thêm hai điểm biểu thị bầu sữa mẹ.",
-    "logic_development": "母-mẫu -> (母) người mẹ",
+    "logic_development": "母-mẫu → (母) người mẹ",
     "memory_tip": "Người phụ nữ cho con bú.",
-    "adjectives": "なし",
     "vocabulary": "母(はは):mẹ mình|お母さん(おかあさん):mẹ người khác|母親(ははおや):mẫu thân|祖母(そぼ):bà nội ngoại|母国語(ぼこくご):tiếng mẹ đẻ"
   },
   {
@@ -2409,9 +2249,8 @@ const kanjiData = [
     "radicals": "儿-nhi|口-khẩu",
     "core_meaning": "Anh trai",
     "story_image": "Một cái miệng (口) lớn nằm trên đôi chân (儿) đang ra lệnh cho em.",
-    "logic_development": "口-khẩu + 儿-nhi -> (兄) người anh",
+    "logic_development": "口-khẩu + 儿-nhi → (兄) người anh",
     "memory_tip": "Người anh dùng miệng dạy bảo các em.",
-    "adjectives": "なし",
     "vocabulary": "兄(あに):anh mình|お兄さん(おにいさん):anh người khác|兄弟(きょうだい):anh em|長兄(ちょうけい):anh cả|義兄(ぎけい):anh rể"
   },
   {
@@ -2424,9 +2263,8 @@ const kanjiData = [
     "radicals": "女-nữ|市-thị",
     "core_meaning": "Chị gái",
     "story_image": "Người phụ nữ (女) đi ra chợ (市) mua đồ cho gia đình.",
-    "logic_development": "女-nữ + 市-thị -> (姉) người chị",
+    "logic_development": "女-nữ + 市-thị → (姉) người chị",
     "memory_tip": "Người phụ nữ quyền lực ở chợ là chị.",
-    "adjectives": "なし",
     "vocabulary": "姉(あね):chị mình|お姉さん(おねえさん):chị người khác|姉妹(しまい):chị em|長姉(ちょうし):chị cả|義姉(ぎし):chị dâu"
   },
   {
@@ -2439,9 +2277,8 @@ const kanjiData = [
     "radicals": "弓-cung|丿-phiệt",
     "core_meaning": "Em trai",
     "story_image": "Hình ảnh sợi dây quấn quanh cái cung (弓) như người em nhỏ.",
-    "logic_development": "弓-cung + 丷-bát -> (弟) người em",
+    "logic_development": "弓-cung + 丷-bát → (弟) người em",
     "memory_tip": "Người cầm cung đi theo sau anh.",
-    "adjectives": "なし",
     "vocabulary": "弟(おとうと):em trai mình|兄弟(きょうだい):anh em|子弟(してい):đệ tử|弟子(でし):đệ tử|末弟(まってい):em út"
   },
   {
@@ -2454,9 +2291,8 @@ const kanjiData = [
     "radicals": "女-nữ|未-vị",
     "core_meaning": "Em gái",
     "story_image": "Người phụ nữ (女) chưa (未) trưởng thành trong gia đình.",
-    "logic_development": "女-nữ + 未-vị -> (妹) em gái nhỏ",
+    "logic_development": "女-nữ + 未-vị → (妹) em gái nhỏ",
     "memory_tip": "Phụ nữ còn chưa lớn là em gái.",
-    "adjectives": "なし",
     "vocabulary": "妹(いもうと):em gái mình|妹さん(いもうとさん):em gái người khác|姉妹(しまい):chị em|義妹(ぎまい):em dâu|従妹(じゅうまい):em họ nữ"
   },
   {
@@ -2469,9 +2305,8 @@ const kanjiData = [
     "radicals": "大-đại|一-nhất",
     "core_meaning": "Chồng",
     "story_image": "Người đàn ông lớn (大) đeo một cái trâm (一) trên đầu.",
-    "logic_development": "大-đại + 一-nhất -> (夫) người chồng",
+    "logic_development": "大-đại + 一-nhất → (夫) người chồng",
     "memory_tip": "Người đàn ông đội mũ làm trụ cột.",
-    "adjectives": "なし",
     "vocabulary": "夫(おっと):chồng mình|ご主人(ごしゅじん):chồng người khác|夫婦(ふうふ):vợ chồng|丈夫(じょうぶ):bền chắc|夫人(ふじん):phu nhân"
   },
   {
@@ -2484,9 +2319,8 @@ const kanjiData = [
     "radicals": "女-nữ|ヨ-kệ",
     "core_meaning": "Vợ",
     "story_image": "Người phụ nữ (女) cầm cái chổi (ヨ) để dọn dẹp nhà cửa.",
-    "logic_development": "女-nữ + ヨ-kệ -> (妻) người vợ",
+    "logic_development": "女-nữ + ヨ-kệ → (妻) người vợ",
     "memory_tip": "Phụ nữ làm việc nhà bằng tay.",
-    "adjectives": "なし",
     "vocabulary": "妻(つま):vợ mình|奥さん(おくさん):vợ người khác|夫妻(ふさい):vợ chồng|妻子(さいし):vợ con|愛妻(あいさい):vợ yêu"
   },
   {
@@ -2499,9 +2333,8 @@ const kanjiData = [
     "radicals": "彳-xích|皮-bì",
     "core_meaning": "Anh ấy",
     "story_image": "Người (彳) khoác lớp da (皮) đứng ở phía kia.",
-    "logic_development": "彳-xích + 皮-bì -> (彼) đối phương",
+    "logic_development": "彳-xích + 皮-bì → (彼) đối phương",
     "memory_tip": "Người đứng đằng xa là anh ấy.",
-    "adjectives": "なし",
     "vocabulary": "彼(かれ):anh ấy|彼女(かのじょ):cô ấy|彼ら(かれら):họ|彼岸(ひがん):tiết bỉ ngạn|彼氏(かれし):bạn trai"
   },
   {
@@ -2514,9 +2347,8 @@ const kanjiData = [
     "radicals": "主-chủ",
     "core_meaning": "Chủ nhân",
     "story_image": "Hình ảnh ngọn lửa đang cháy trên cái đèn đứng.",
-    "logic_development": "主-chủ -> (主) người đứng đầu",
+    "logic_development": "主-chủ → (主) người đứng đầu",
     "memory_tip": "Ngọn đèn soi sáng ngôi nhà.",
-    "adjectives": "なし",
     "vocabulary": "主人(しゅじん):chồng|主に(おもに):chủ yếu|持ち主(もちぬし):người sở hữu|主要(しゅよう):chủ yếu|店主(てんしゅ):chủ tiệm"
   },
   {
@@ -2529,9 +2361,8 @@ const kanjiData = [
     "radicals": "大-đại|釆-biện",
     "core_meaning": "Bên trong",
     "story_image": "Người lớn (大) đi sâu vào bên trong hang động kín.",
-    "logic_development": "宀-miên + 釆-biện + 大-đại -> (奥) sâu thẳm",
+    "logic_development": "宀-miên + 釆-biện + 大-đại → (奥) sâu thẳm",
     "memory_tip": "Vào sâu trong nhà là nơi kín đáo.",
-    "adjectives": "なし",
     "vocabulary": "奥(おく):bên trong|奥さん(おくさん):vợ người khác|奥地(おくち):vùng sâu vùng xa|奥行き(おくゆき):chiều sâu|奥義(おうぎ):bí thuật"
   },
   {
@@ -2544,9 +2375,8 @@ const kanjiData = [
     "radicals": "儿-nhi|二-nhị",
     "core_meaning": "Nguồn gốc",
     "story_image": "Hình ảnh con người (儿) đứng dưới hai gạch (二) của trời đất.",
-    "logic_development": "二-nhị + 儿-nhi -> (元) căn bản",
+    "logic_development": "二-nhị + 儿-nhi → (元) căn bản",
     "memory_tip": "Phần đầu của một con người.",
-    "adjectives": "なし",
     "vocabulary": "元気(げんき):khỏe mạnh|足元(あしもと):dưới chân|地元(じもと):địa phương|元日(がんじつ):ngày mồng một|紀元前(きげんぜん):trước công nguyên"
   },
   {
@@ -2559,9 +2389,8 @@ const kanjiData = [
     "radicals": "气-khí|メ-mê",
     "core_meaning": "Tinh thần",
     "story_image": "Hình ảnh hơi nước bốc lên từ nồi cơm đang nấu.",
-    "logic_development": "气-khí + メ-mê -> (気) năng lượng",
+    "logic_development": "气-khí + メ-mê → (気) năng lượng",
     "memory_tip": "Hơi thở hoặc luồng khí vô hình.",
-    "adjectives": "なし",
     "vocabulary": "元気(げんき):khỏe mạnh|電気(電き):điện|気持ち(きもち):tâm trạng|人気(にんき):ưa chuộng|天気(てんき):thời tiết"
   },
   {
@@ -2574,9 +2403,8 @@ const kanjiData = [
     "radicals": "月-nguyệt|ナ-tả",
     "core_meaning": "Có",
     "story_image": "Bàn tay (ナ) đang cầm miếng thịt (月) để sở hữu.",
-    "logic_development": "ナ-tả + 月-nguyệt -> (有) sở hữu",
+    "logic_development": "ナ-tả + 月-nguyệt → (有) sở hữu",
     "memory_tip": "Tay nắm giữ vật chất là có.",
-    "adjectives": "なし",
     "vocabulary": "有名(ゆうめい):nổi tiếng|有力(ゆうりょく):có quyền lực|所有(しょゆう):sở hữu|有り難い(ありがたい):biết ơn|共有(きょうゆう):chia sẻ"
   },
   {
@@ -2590,9 +2418,8 @@ const kanjiData = [
     "core_meaning": "Tên",
     "story_image": "Trong bóng tối (夕)",
     "logic_development": "phải dùng miệng (口) nói tên để nhận diện.",
-    "memory_tip": "夕-tịch + 口-khẩu -> (名) danh tính",
-    "adjectives": "Nói tên vào buổi tối để biết nhau.",
-    "vocabulary": "なし"
+    "memory_tip": "夕-tịch + 口-khẩu → (名) danh tính",
+    "vocabulary": "Nói tên vào buổi tối để biết nhau.|なし"
   },
   {
     "stt": 174,
@@ -2604,10 +2431,9 @@ const kanjiData = [
     "radicals": "立-lập|木-mộc|見-kiến",
     "core_meaning": "Bố mẹ",
     "story_image": "Bố mẹ đứng (立) trên cây (木) để nhìn (見) theo con.",
-    "logic_development": "立-lập + 木-mộc + 見-kiến -> (親) thân thiết",
+    "logic_development": "立-lập + 木-mộc + 見-kiến → (親) thân thiết",
     "memory_tip": "Người đứng trên cây nhìn con cái.",
-    "adjectives": "親しい(したしい):thân thiết",
-    "vocabulary": "親(おや):bố mẹ|両親(りょうしん):cả bố và mẹ|親切(しんせつ):tốt bụng|親友(しんゆう):bạn thân|父親(ちちおや):phụ thân"
+    "vocabulary": "親しい(したしい):thân thiết|親(おや):bố mẹ|両親(りょうしん):cả bố và mẹ|親切(しんせつ):tốt bụng|親友(しんゆう):bạn thân|父親(ちちおや):phụ thân"
   },
   {
     "stt": 175,
@@ -2619,9 +2445,8 @@ const kanjiData = [
     "radicals": "刀-đao|七-thất",
     "core_meaning": "Cắt",
     "story_image": "Dùng con dao (刀) để cắt bảy (七) nhát vào vật gì đó.",
-    "logic_development": "七-thất + 刀-đao -> (切) phân chia",
+    "logic_development": "七-thất + 刀-đao → (切) phân chia",
     "memory_tip": "Dùng dao để thái lát mỏng.",
-    "adjectives": "なし",
     "vocabulary": "切る(きる):cắt|大切(たいせつ):quan trọng|切手(きって):tem|親切(しんせつ):tốt bụng|締め切り(しめきり):hạn chót"
   },
   {
@@ -2634,9 +2459,8 @@ const kanjiData = [
     "radicals": "人-nhân|更-canh",
     "core_meaning": "Thuận tiện",
     "story_image": "Con người (人) thay đổi (更) để làm mọi việc dễ dàng hơn.",
-    "logic_development": "人-nhân + 更-canh -> (便) tiện lợi",
+    "logic_development": "人-nhân + 更-canh → (便) tiện lợi",
     "memory_tip": "Người đưa tin mang lại sự thuận tiện.",
-    "adjectives": "なし",
     "vocabulary": "便利(べんり):tiện lợi|郵便局(ゆうびんきょく):bưu điện|航空便(こうくうびん):thư máy bay|小便(しょうべん):tiểu tiện|便り(たより):tin tức"
   },
   {
@@ -2649,9 +2473,8 @@ const kanjiData = [
     "radicals": "禾-hòa|刀-đao",
     "core_meaning": "Lợi nhuận",
     "story_image": "Dùng dao (刀) thu hoạch lúa (禾) mang lại lợi ích.",
-    "logic_development": "禾-hòa + 刀-đao -> (利) lợi ích",
+    "logic_development": "禾-hòa + 刀-đao → (利) lợi ích",
     "memory_tip": "Cắt lúa bằng dao đem lại tiền bạc.",
-    "adjectives": "なし",
     "vocabulary": "便利(べんり):tiện lợi|利用(りよう):sử dụng|利益(りえき):lợi nhuận|利口(りこう):thông minh|権利(けんり):quyền lợi"
   },
   {
@@ -2664,9 +2487,8 @@ const kanjiData = [
     "radicals": "一-nhất",
     "core_meaning": "Không",
     "story_image": "Hình ảnh một con chim bay lên trời mà không quay lại.",
-    "logic_development": "一-nhất + 小-tiểu -> (不) phủ định",
+    "logic_development": "一-nhất + 小-tiểu → (不) phủ định",
     "memory_tip": "Một gạch ngăn cản sự phát triển.",
-    "adjectives": "なし",
     "vocabulary": "不便(ふべん):bất tiện|不足(ふそく):thiếu thốn|不安(ふあん):bất an|不可(ふか):không thể|不幸(ふこう):bất hạnh"
   },
   {
@@ -2679,10 +2501,9 @@ const kanjiData = [
     "radicals": "艹-thảo|右-hữu",
     "core_meaning": "Trẻ trung",
     "story_image": "Người trẻ dùng tay (右) hái cỏ (艹) mềm mại.",
-    "logic_development": "艹-thảo + 右-hữu -> (若) thanh xuân",
+    "logic_development": "艹-thảo + 右-hữu → (若) thanh xuân",
     "memory_tip": "Cỏ non mọc dưới sự bảo vệ.",
-    "adjectives": "若い(わかい):trẻ",
-    "vocabulary": "若い(わかい):trẻ trung|若者(わかもの):người trẻ|若草(わかくさ):cỏ non|若干(じゃっかん):ít nhiều|若々しい(わかわかしい):trẻ trung mơn mởn"
+    "vocabulary": "若い(わかい):trẻ|若い(わかい):trẻ trung|若者(わかもの):người trẻ|若草(わかくさ):cỏ non|若干(じゃっかん):ít nhiều|若々しい(わかわかしい):trẻ trung mơn mởn"
   },
   {
     "stt": 180,
@@ -2694,10 +2515,9 @@ const kanjiData = [
     "radicals": "日-nhật|十-thập",
     "core_meaning": "Sớm",
     "story_image": "Mặt trời (日) mọc lên trên đỉnh cây (十) vào buổi sáng sớm.",
-    "logic_development": "日-nhật + 十-thập -> (早) tốc độ",
+    "logic_development": "日-nhật + 十-thập → (早) tốc độ",
     "memory_tip": "Mặt trời vừa lên khỏi mặt đất.",
-    "adjectives": "早い(はやい):sớm",
-    "vocabulary": "早い(はやい):sớm|早朝(そうちょう):sáng sớm|早速(さっそく):ngay lập tức|早退(そうたい):về sớm|早起き(はやおき):dậy sớm"
+    "vocabulary": "早い(はやい):sớm|早い(はやい):sớm|早朝(そうちょう):sáng sớm|早速(さっそく):ngay lập tức|早退(そうたい):về sớm|早起き(はやおき):dậy sớm"
   },
   {
     "stt": 181,
@@ -2709,10 +2529,9 @@ const kanjiData = [
     "radicals": "忄-tâm|亡-vong",
     "core_meaning": "Bận rộn",
     "story_image": "Tâm trí (忄) như bị mất đi (亡) vì quá nhiều việc.",
-    "logic_development": "忄-tâm + 亡-vong -> (忙) không rảnh rỗi",
+    "logic_development": "忄-tâm + 亡-vong → (忙) không rảnh rỗi",
     "memory_tip": "Tim bị đánh mất vì quá bận.",
-    "adjectives": "忙しい(いそがしい):bận",
-    "vocabulary": "忙しい(いそがしい):bận rộn|多忙(たぼう):rất bận|繁忙期(はんぼうき):mùa bận rộn|忙殺(ぼうさつ):bận tối mắt|公私多忙(こうしたぼう):bận việc công tư"
+    "vocabulary": "忙しい(いそがしい):bận|忙しい(いそがしい):bận rộn|多忙(たぼう):rất bận|繁忙期(はんぼうき):mùa bận rộn|忙殺(ぼうさつ):bận tối mắt|公私多忙(こうしたぼう):bận việc công tư"
   },
   {
     "stt": 182,
@@ -2724,9 +2543,8 @@ const kanjiData = [
     "radicals": "凵-khảm",
     "core_meaning": "Ra ngoài",
     "story_image": "Hình ảnh hai ngọn núi chồng lên nhau hoặc mầm cây nhú ra khỏi đất.",
-    "logic_development": "山-sơn + 山-sơn -> (出) di chuyển ra",
+    "logic_development": "山-sơn + 山-sơn → (出) di chuyển ra",
     "memory_tip": "Hai ngọn núi vươn ra ngoài.",
-    "adjectives": "なし",
     "vocabulary": "出る(でる):đi ra|出す(だす):lấy ra|出口(でぐち):lối ra|外出(がいしゅつ):ra ngoài|出発(しゅっぱつ):xuất phát"
   },
   {
@@ -2739,9 +2557,8 @@ const kanjiData = [
     "radicals": "入-nhập",
     "core_meaning": "Vào",
     "story_image": "Hình ảnh hai nét chụm vào nhau như lối vào căn lều.",
-    "logic_development": "入-nhập -> (入) đi vào",
+    "logic_development": "入-nhập → (入) đi vào",
     "memory_tip": "Ngược lại với chữ nhân là lối vào.",
-    "adjectives": "なし",
     "vocabulary": "入る(はいる):vào|入れる(いれる):cho vào|入口(いりぐち):lối vào|入学(にゅうがく):nhập học|入院(にゅういん):nhập viện"
   },
   {
@@ -2754,9 +2571,8 @@ const kanjiData = [
     "radicals": "丿-phiệt|木-mộc",
     "core_meaning": "Lên xe",
     "story_image": "Một người (人) đứng trên cây (木) để leo lên phương tiện.",
-    "logic_development": "千-thiên + 木-mộc -> (乗) cưỡi lên",
+    "logic_development": "千-thiên + 木-mộc → (乗) cưỡi lên",
     "memory_tip": "Người đứng trên cây để lên xe.",
-    "adjectives": "なし",
     "vocabulary": "乗る(のる):lên xe|乗り物(のりもの):phương tiện|乗客(じょうぎゃく):hành khách|乗馬(じょうば):cưỡi ngựa|乗り換える(のりかえる):đổi xe"
   },
   {
@@ -2769,9 +2585,8 @@ const kanjiData = [
     "radicals": "阝-phụ|夅-giáng",
     "core_meaning": "Rơi xuống",
     "story_image": "Người đi xuống (夅) từ trên đồi cao (阝).",
-    "logic_development": "阝-phụ + 夅-giáng -> (降) hạ xuống",
+    "logic_development": "阝-phụ + 夅-giáng → (降) hạ xuống",
     "memory_tip": "Bước chân đi xuống từ dốc núi.",
-    "adjectives": "なし",
     "vocabulary": "降りる(おりる):xuống xe|降る(ふる):tuyết rơi|降車(こうしゃ):xuống xe|以降(いこう):sau đó|降雨(こうう):mưa rơi"
   },
   {
@@ -2784,9 +2599,8 @@ const kanjiData = [
     "radicals": "羊-dương|目-mục",
     "core_meaning": "Mặc|Đến",
     "story_image": "Lấy lông cừu (羊) che mắt (目) để mặc quần áo.",
-    "logic_development": "羊-dương + 目-mục -> (着) chạm tới",
+    "logic_development": "羊-dương + 目-mục → (着) chạm tới",
     "memory_tip": "Con cừu nhìn vào bộ đồ đang mặc.",
-    "adjectives": "なし",
     "vocabulary": "着る(きる):mặc|着く(つく):đến nơi|下着(したぎ):đồ lót|到着(とうちゃく):đến nơi|水着(みずぎ):đồ bơi"
   },
   {
@@ -2799,9 +2613,8 @@ const kanjiData = [
     "radicals": "氵-thủy|度-độ",
     "core_meaning": "Băng qua",
     "story_image": "Dùng nước (氵) để đo (度) khoảng cách khi qua sông.",
-    "logic_development": "氵-thủy + 度-độ -> (渡) vượt qua",
+    "logic_development": "氵-thủy + 度-độ → (渡) vượt qua",
     "memory_tip": "Dùng nước để đưa người sang sông.",
-    "adjectives": "なし",
     "vocabulary": "渡る(わたる):băng qua|渡す(わたす):trao cho|渡り鳥(わたりどり):chim di cư|渡航(とこう):đi du lịch xa|譲渡(じょうと):chuyển nhượng"
   },
   {
@@ -2814,9 +2627,8 @@ const kanjiData = [
     "radicals": "辶-sước|甬-dũng",
     "core_meaning": "Thông qua",
     "story_image": "Đi bộ (辶) xuyên qua con đường nhỏ (甬).",
-    "logic_development": "甬-dũng + 辶-sước -> (通) giao thông",
+    "logic_development": "甬-dũng + 辶-sước → (通) giao thông",
     "memory_tip": "Đi lại thông suốt trên đường.",
-    "adjectives": "なし",
     "vocabulary": "通る(とおる):đi ngang qua|通う(かよう):đi học|交通(こうつう):giao thông|通り(どおり):con phố|普通(ふつう):thông thường"
   },
   {
@@ -2829,9 +2641,8 @@ const kanjiData = [
     "radicals": "走-tẩu",
     "core_meaning": "Chạy",
     "story_image": "Một người (土) vung tay chân (止) chạy thật nhanh.",
-    "logic_development": "土-thổ + 止-chỉ -> (走) di chuyển nhanh",
+    "logic_development": "土-thổ + 止-chỉ → (走) di chuyển nhanh",
     "memory_tip": "Người chạy trên đất văng cả bụi.",
-    "adjectives": "なし",
     "vocabulary": "走る(はしる):chạy|走者(そうしゃ):người chạy|競走(きょうそう):chạy thi|走行(そうこう):xe đang chạy|脱走(だっそう):đào tẩu"
   },
   {
@@ -2844,9 +2655,8 @@ const kanjiData = [
     "radicals": "止-chỉ|少-thiểu",
     "core_meaning": "Đi bộ",
     "story_image": "Dừng lại (止) một ít (少) để thực hiện bước đi.",
-    "logic_development": "止-chỉ + 少-thiểu -> (歩) dạo bước",
+    "logic_development": "止-chỉ + 少-thiểu → (歩) dạo bước",
     "memory_tip": "Dừng lại từng chút để bước đi.",
-    "adjectives": "なし",
     "vocabulary": "歩く(あるく):đi bộ|散歩(さんぽ):đi dạo|歩道(ほどう):vỉa hè|一歩(いっぽ):một bước|進歩(しんぽ):tiến bộ"
   },
   {
@@ -2859,9 +2669,8 @@ const kanjiData = [
     "radicals": "止-chỉ",
     "core_meaning": "Dừng lại",
     "story_image": "Hình ảnh một bàn chân đang dẫm xuống đất để dừng lại.",
-    "logic_development": "止-chỉ -> (止) đình chỉ",
+    "logic_development": "止-chỉ → (止) đình chỉ",
     "memory_tip": "Vết chân dừng lại trên mặt đất.",
-    "adjectives": "なし",
     "vocabulary": "止まる(とまる):dừng lại|止める(とめる):ngăn lại|禁止(きんし):cấm|中止(ちゅうし):hủy bỏ|波止場(はとば):bến tàu"
   },
   {
@@ -2874,9 +2683,8 @@ const kanjiData = [
     "radicals": "重-trọng|力-lực",
     "core_meaning": "Chuyển động",
     "story_image": "Dùng sức lực (力) để di chuyển vật nặng (重).",
-    "logic_development": "重-trọng + 力-lực -> (動) hoạt động",
+    "logic_development": "重-trọng + 力-lực → (動) hoạt động",
     "memory_tip": "Dùng sức mạnh làm vật nặng di chuyển.",
-    "adjectives": "なし",
     "vocabulary": "動く(うごく):chuyển động|自動車(じどうしゃ):xe ô tô|動物(どうぶつ):động vật|運動(うんどう):vận động|活動(かつどう):hoạt động"
   },
   {
@@ -2889,9 +2697,8 @@ const kanjiData = [
     "radicals": "亻-nhân|動-động",
     "core_meaning": "Làm việc",
     "story_image": "Con người (亻) tạo ra sự chuyển động (動) là đang lao động.",
-    "logic_development": "亻-nhân + 動-động -> (働) lao động",
+    "logic_development": "亻-nhân + 動-động → (働) lao động",
     "memory_tip": "Con người chuyển động để kiếm sống.",
-    "adjectives": "なし",
     "vocabulary": "働く(はたらく):làm việc|労働(ろうどう):lao động|共働き(ともばたらき):vợ chồng cùng làm|労働者(ろうどうしゃ):người lao động|働き盛り(はたらきざかり):đỉnh cao sự nghiệp"
   },
   {
@@ -2904,9 +2711,8 @@ const kanjiData = [
     "radicals": "口-khẩu|ナ-tả",
     "core_meaning": "Phía phải",
     "story_image": "Dùng tay (ナ) đưa thức ăn vào miệng (口).",
-    "logic_development": "ナ-tả + 口-khẩu -> (右) bên phải",
+    "logic_development": "ナ-tả + 口-khẩu → (右) bên phải",
     "memory_tip": "Tay cầm thìa đưa vào miệng là tay phải.",
-    "adjectives": "なし",
     "vocabulary": "右(みぎ):bên phải|右手(みぎて):tay phải|右側(みぎがわ):phía bên phải|左右(さゆう):trái phải|右折(うせつ):rẽ phải"
   },
   {
@@ -2919,9 +2725,8 @@ const kanjiData = [
     "radicals": "工-công|ナ-tả",
     "core_meaning": "Phía trái",
     "story_image": "Dùng tay (ナ) cầm thước thợ (工) để làm việc.",
-    "logic_development": "ナ-tả + 工-công -> (左) bên trái",
+    "logic_development": "ナ-tả + 工-công → (左) bên trái",
     "memory_tip": "Tay cầm công cụ hỗ trợ là tay trái.",
-    "adjectives": "なし",
     "vocabulary": "左(ひだり):bên trái|左手(ひだりて):tay trái|左側(ひだりがわ):phía bên trái|左右(さゆう):trái phải|左折(させつ):rẽ trái"
   },
   {
@@ -2934,9 +2739,8 @@ const kanjiData = [
     "radicals": "木-mộc|日-nhật",
     "core_meaning": "Phía đông",
     "story_image": "Mặt trời (日) mọc lên xuyên qua cành cây (木).",
-    "logic_development": "木-mộc + 日-nhật -> (東) hướng đông",
+    "logic_development": "木-mộc + 日-nhật → (東) hướng đông",
     "memory_tip": "Mặt trời bị mắc vào cành cây buổi sáng.",
-    "adjectives": "なし",
     "vocabulary": "東(ひがし):phía đông|東京(とうきょう):tokyo|関東(かんとう):vùng kanto|東口(ひがしぐち):cửa đông|中東(ちゅうとう):trung đông"
   },
   {
@@ -2949,9 +2753,8 @@ const kanjiData = [
     "radicals": "西-tây",
     "core_meaning": "Phía tây",
     "story_image": "Hình ảnh con chim đang bay về tổ (西) khi trời tối.",
-    "logic_development": "西-tây -> (西) hướng tây",
+    "logic_development": "西-tây → (西) hướng tây",
     "memory_tip": "Con chim đậu trong tổ lúc chiều tà.",
-    "adjectives": "なし",
     "vocabulary": "西(にし):phía tây|関西(かんさい):vùng kansai|西洋(せいよう):phương tây|西口(にしぐち):cửa tây|北西(ほくせい):tây bắc"
   },
   {
@@ -2964,9 +2767,8 @@ const kanjiData = [
     "radicals": "匕-chủy",
     "core_meaning": "Phía bắc",
     "story_image": "Hai người ngồi quay lưng lại với nhau vì gió lạnh phương bắc.",
-    "logic_development": "匕-chủy + 匕-chủy -> (北) hướng bắc",
+    "logic_development": "匕-chủy + 匕-chủy → (北) hướng bắc",
     "memory_tip": "Hai người quay lưng để tránh rét.",
-    "adjectives": "なし",
     "vocabulary": "北(きた):phía bắc|北海道(ほっかいどう):hokkaido|北極(ほっきょく):bắc cực|南北(なんぼく):nam bắc|北口(きたぐち):cửa bắc"
   },
   {
@@ -2979,9 +2781,8 @@ const kanjiData = [
     "radicals": "十-thập",
     "core_meaning": "Phía nam",
     "story_image": "Hình ảnh một loại nhạc cụ treo trong nhà có mái che hướng nam.",
-    "logic_development": "十-thập + 冂-quynh -> (南) hướng nam",
+    "logic_development": "十-thập + 冂-quynh → (南) hướng nam",
     "memory_tip": "Ngôi nhà ấm áp hướng về phía nam.",
-    "adjectives": "なし",
     "vocabulary": "南(みなみ):phía nam|南極(なんきょく):nam cực|東南アジア(とうなんあじあ):đông nam á|南口(みなみぐち):cửa nam|南北(なんぼく):nam bắc"
   },
   {
@@ -2994,9 +2795,8 @@ const kanjiData = [
     "radicals": "夕-tịch|ト-bốc",
     "core_meaning": "Bên ngoài",
     "story_image": "Buổi tối (夕) xem bói (ト) ở ngoài sân.",
-    "logic_development": "夕-tịch + ト-bốc -> (外) bên ngoài",
+    "logic_development": "夕-tịch + ト-bốc → (外) bên ngoài",
     "memory_tip": "Bói toán dưới ánh trăng ở ngoài nhà.",
-    "adjectives": "なし",
     "vocabulary": "外(そと):bên ngoài|外国(がいこく):nước ngoài|外出(がいしゅつ):ra ngoài|意外(いがい):ngoài dự tính|屋外(おくがい):ngoài trời"
   },
   {
@@ -3009,9 +2809,8 @@ const kanjiData = [
     "radicals": "冂-quynh|人-nhân",
     "core_meaning": "Bên trong",
     "story_image": "Con người (人) đi vào bên dưới một cái cổng (冂) để vào nhà.",
-    "logic_development": "冂-quynh + 人-nhân -> (内) phía trong",
+    "logic_development": "冂-quynh + 人-nhân → (内) phía trong",
     "memory_tip": "Người đi vào trong vòng bao quanh.",
-    "adjectives": "なし",
     "vocabulary": "内(うち):bên trong|家内(かない):vợ mình|室内(しつない):trong phòng|案内(あんない):hướng dẫn|国内(こくない):trong nước"
   },
   {
@@ -3024,9 +2823,8 @@ const kanjiData = [
     "radicals": "立-lập|口-khẩu|阝-phụ",
     "core_meaning": "Bộ phận",
     "story_image": "Mọi người đứng (立) nói (口) phân chia vùng đất (阝) thành các bộ.",
-    "logic_development": "立-lập + 口-khẩu + 阝-phụ -> (部) phân loại",
+    "logic_development": "立-lập + 口-khẩu + 阝-phụ → (部) phân loại",
     "memory_tip": "Phân chia các bộ phận trên vùng đất.",
-    "adjectives": "なし",
     "vocabulary": "部(ぶ):bộ|部屋(へや):phòng|部長(ぶちょう):trưởng phòng|全部(ぜんぶ):tất cả|一部(いちぶ): một phần"
   },
   {
@@ -3039,9 +2837,8 @@ const kanjiData = [
     "radicals": "馬-mã|尺-xích",
     "core_meaning": "Nhà ga",
     "story_image": "Nơi con ngựa (馬) dừng lại để đo (尺) quãng đường tiếp theo.",
-    "logic_development": "馬-mã + 尺-xích -> (駅) trạm dừng",
+    "logic_development": "馬-mã + 尺-xích → (駅) trạm dừng",
     "memory_tip": "Ngựa dừng chân tại nơi đo lường.",
-    "adjectives": "なし",
     "vocabulary": "駅(えき):nhà ga|駅員(えきいん):nhân viên nhà ga|駅前(えきまえ):trước nhà ga|東京駅(とうきょうえき):ga tokyo|特急駅(とっきゅうえき):ga tàu tốc hành"
   },
   {
@@ -3054,9 +2851,8 @@ const kanjiData = [
     "radicals": "礻-thị|土-thổ",
     "core_meaning": "Công ty",
     "story_image": "Nơi thờ thần đất (土) cầu mong sự hiển linh (礻).",
-    "logic_development": "礻-thị + 土-thổ -> (社) tổ chức",
+    "logic_development": "礻-thị + 土-thổ → (社) tổ chức",
     "memory_tip": "Thờ thần đất tại đền xã.",
-    "adjectives": "なし",
     "vocabulary": "会社(かいしゃ):công ty|神社(じんじゃ):đền thờ|社長(しゃちょう):giám đốc|社会(しゃかい):xã hội|本社(ほんしゃ):trụ sở chính"
   },
   {
@@ -3069,9 +2865,8 @@ const kanjiData = [
     "radicals": "阝-phụ|完-hoàn",
     "core_meaning": "Học viện",
     "story_image": "Tòa nhà được xây dựng hoàn thiện (完) trên sườn đồi (阝).",
-    "logic_development": "阝-phụ + 完-hoàn -> (院) cơ sở",
+    "logic_development": "阝-phụ + 完-hoàn → (院) cơ sở",
     "memory_tip": "Nơi hoàn thiện kỹ năng trên vùng đất.",
-    "adjectives": "なし",
     "vocabulary": "病院(びょういん):bệnh viện|入院(にゅういん):nhập viện|大学院(だいがくいん):cao học|院長(いんちょう):viện trưởng|退院(たいいん):xuất viện"
   },
   {
@@ -3084,9 +2879,8 @@ const kanjiData = [
     "radicals": "土-thổ|也-dã",
     "core_meaning": "Đất đai",
     "story_image": "Đất (土) trải dài như một tấm lụa (也) bao la.",
-    "logic_development": "土-thổ + 也-dã -> (地) mặt đất",
+    "logic_development": "土-thổ + 也-dã → (地) mặt đất",
     "memory_tip": "Đất đai trải rộng vô tận.",
-    "adjectives": "なし",
     "vocabulary": "地下鉄(ちかてつ):tàu điện ngầm|地図(ちず):bản đồ|地方(ちほう):địa phương|地震(じしん):động đất|地位(ちい):địa vị"
   },
   {
@@ -3099,9 +2893,8 @@ const kanjiData = [
     "radicals": "金-kim|失-thất",
     "core_meaning": "Sắt thép",
     "story_image": "Kim loại (金) mà nếu đánh mất (失) sẽ không thể xây dựng.",
-    "logic_development": "金-kim + 失-thất -> (鉄) kim loại",
+    "logic_development": "金-kim + 失-thất → (鉄) kim loại",
     "memory_tip": "Vàng bị mất đi độ bóng thành sắt.",
-    "adjectives": "なし",
     "vocabulary": "鉄道(てつどう):đường sắt|地下鉄(ちかてつ):tàu điện ngầm|私鉄(してつ):đường sắt tư nhân|鉄分(てつぶん):chất sắt|鉄橋(てっきょう):cầu sắt"
   },
   {
@@ -3114,9 +2907,8 @@ const kanjiData = [
     "radicals": "工-công",
     "core_meaning": "Công việc",
     "story_image": "Hình ảnh chiếc thước thợ dùng để đo đạc và làm việc.",
-    "logic_development": "工-công -> (工) lao động",
+    "logic_development": "工-công → (工) lao động",
     "memory_tip": "Thước thợ dùng cho công trình.",
-    "adjectives": "なし",
     "vocabulary": "工場(こうじょう):nhà máy|工業(こうぎょう):công nghiệp|大工(だいく):thợ mộc|工事(こうじ):công trường|工作(こうさく):thủ công"
   },
   {
@@ -3129,9 +2921,8 @@ const kanjiData = [
     "radicals": "土-thổ|昜-dương",
     "core_meaning": "Địa điểm",
     "story_image": "Nơi mặt trời (昜) chiếu sáng trên mặt đất (土).",
-    "logic_development": "土-thổ + 昜-dương -> (場) nơi chốn",
+    "logic_development": "土-thổ + 昜-dương → (場) nơi chốn",
     "memory_tip": "Mặt đất tràn ngập ánh sáng.",
-    "adjectives": "なし",
     "vocabulary": "場所(ばしょ):địa điểm|工場(こうじょう):nhà máy|売り場(うりば):nơi bán hàng|会場(かいじょう):hội trường|場合(ばあい):trường hợp"
   },
   {
@@ -3144,9 +2935,8 @@ const kanjiData = [
     "radicals": "囗-vi|図-đồ",
     "core_meaning": "Bản đồ",
     "story_image": "Hình ảnh một khu vực được bao quanh (囗) và đánh dấu bên trong.",
-    "logic_development": "囗-vi + 乂-nghệ -> (図) sơ đồ",
+    "logic_development": "囗-vi + 乂-nghệ → (図) sơ đồ",
     "memory_tip": "Một khu vực được quy hoạch rõ ràng.",
-    "adjectives": "なし",
     "vocabulary": "地図(ちず):bản đồ|図書館(としょかん):thư viện|図画(ずが):hội họa|意図(いと):ý đồ|合図(あいず):dấu hiệu"
   },
   {
@@ -3159,9 +2949,8 @@ const kanjiData = [
     "radicals": "食-thực|官-quan",
     "core_meaning": "Tòa nhà",
     "story_image": "Nơi các quan (官) đến ăn uống (食) và lưu trú.",
-    "logic_development": "食-thực + 官-quan -> (館) hội quán",
+    "logic_development": "食-thực + 官-quan → (館) hội quán",
     "memory_tip": "Nhà quan có cung cấp đồ ăn.",
-    "adjectives": "なし",
     "vocabulary": "図書館(としょかん):thư viện|大使館(たいしかん):đại sứ館|映画館(えいがかん):rạp phim|旅館(りょかん):nhà nghỉ|美術館(びじゅつかん):bảo tàng mỹ thuật"
   },
   {
@@ -3174,9 +2963,8 @@ const kanjiData = [
     "radicals": "八-bát|ム-khứ",
     "core_meaning": "Công cộng",
     "story_image": "Chia sẻ (八) những thứ riêng tư (ム) cho mọi người.",
-    "logic_development": "八-bát + ム-khứ -> (公) chung",
+    "logic_development": "八-bát + ム-khứ → (公) chung",
     "memory_tip": "Mở lòng mình ra cho đại chúng.",
-    "adjectives": "なし",
     "vocabulary": "公園(こうえん):công viên|公立(こうりつ):công lập|公衆電話(こうしゅうでんわ):điện thoại công cộng|公式(こうしき):công thức|公務員(こうむいん):viên chức"
   },
   {
@@ -3189,9 +2977,8 @@ const kanjiData = [
     "radicals": "囗-vi|袁-viên",
     "core_meaning": "Vườn",
     "story_image": "Khu vực bao quanh (囗) nơi có người mặc áo dài (袁) đi dạo.",
-    "logic_development": "囗-vi + 袁-viên -> (園) hoa viên",
+    "logic_development": "囗-vi + 袁-viên → (園) hoa viên",
     "memory_tip": "Khu đất có rào chắn trồng hoa.",
-    "adjectives": "なし",
     "vocabulary": "公園(こうえん):công viên|動物園(どうぶつえん):vườn bách thú|庭園(ていえん):đình viên|幼稚園(ようちえん):trường mầm non|遊園地(ゆうえんち):khu vui chơi"
   },
   {
@@ -3204,9 +2991,8 @@ const kanjiData = [
     "radicals": "亻-nhân|主-chủ",
     "core_meaning": "Cư trú",
     "story_image": "Con người (亻) ở nơi mình làm chủ (主).",
-    "logic_development": "亻-nhân + 主-chủ -> (住) sinh sống",
+    "logic_development": "亻-nhân + 主-chủ → (住) sinh sống",
     "memory_tip": "Người dừng lại làm chủ một nơi.",
-    "adjectives": "なし",
     "vocabulary": "住む(すむ):sinh sống|住所(じゅうしょ):địa chỉ|住宅(じゅうたく):nhà ở|居住(きょじゅう):cư trú|住民(じゅうみん):dân cư"
   },
   {
@@ -3219,9 +3005,8 @@ const kanjiData = [
     "radicals": "戸-hộ|斤-cân",
     "core_meaning": "Nơi chốn",
     "story_image": "Dùng rìu (斤) để đẽo cánh cửa (戸) tại nơi ở.",
-    "logic_development": "戸-hộ + 斤-cân -> (所) địa điểm",
+    "logic_development": "戸-hộ + 斤-cân → (所) địa điểm",
     "memory_tip": "Nơi đặt cánh cửa bằng rìu.",
-    "adjectives": "なし",
     "vocabulary": "場所(ばしょ):địa điểm|近所(きんじょ):hàng xóm|台所(だいどころ):nhà bếp|長所(ちょうしょ):ưu điểm|住所(じゅうしょ):địa chỉ"
   },
   {
@@ -3234,9 +3019,8 @@ const kanjiData = [
     "radicals": "釆-biện|田-điền",
     "core_meaning": "Số thứ tự",
     "story_image": "Hình ảnh bước chân (釆) đi trên ruộng (田) theo lượt.",
-    "logic_development": "釆-biện + 田-điền -> (番) lượt đi",
+    "logic_development": "釆-biện + 田-điền → (番) lượt đi",
     "memory_tip": "Theo dấu chân trên ruộng để đếm lượt.",
-    "adjectives": "なし",
     "vocabulary": "一番(いちばん):số một|番号(ばんごう):số điện thoại|交番(こうばん):đồn cảnh sát|番組(ばんぐみ):chương trình|当番(とうばん):trực nhật"
   },
   {
@@ -3249,9 +3033,8 @@ const kanjiData = [
     "radicals": "口-khẩu|号-hiệu",
     "core_meaning": "Số hiệu",
     "story_image": "Dùng miệng (口) để hô to các tín hiệu lặp lại.",
-    "logic_development": "口-khẩu -> (号) tên hiệu",
+    "logic_development": "口-khẩu → (号) tên hiệu",
     "memory_tip": "Cái miệng phát ra âm thanh báo hiệu.",
-    "adjectives": "なし",
     "vocabulary": "番号(ばんごう):số hiệu|信号(しんごう):đèn giao thông|年号(ねんごう):niên hiệu|暗号(あんごう):mật mã|電話番号(でんわばんごう):số điện thoại"
   },
   {
@@ -3264,9 +3047,8 @@ const kanjiData = [
     "radicals": "市-thị",
     "core_meaning": "Thành phố",
     "story_image": "Nơi mọi người tụ tập dưới một cái lọng để buôn bán.",
-    "logic_development": "市-thị -> (市) chợ",
+    "logic_development": "市-thị → (市) chợ",
     "memory_tip": "Chỗ họp chợ trung tâm.",
-    "adjectives": "なし",
     "vocabulary": "市(し):thành phố|市長(しちょう):thị trưởng|市民(しみん):thị dân|市場(いちば):chợ|都市(とし):đô thị"
   },
   {
@@ -3279,9 +3061,8 @@ const kanjiData = [
     "radicals": "田-điền|丁-đinh",
     "core_meaning": "Thị trấn",
     "story_image": "Nơi có các thửa ruộng (田) được phân chia rõ ràng (丁).",
-    "logic_development": "田-điền + 丁-đinh -> (町) khu phố",
+    "logic_development": "田-điền + 丁-đinh → (町) khu phố",
     "memory_tip": "Ruộng được phân ranh giới thành phố.",
-    "adjectives": "なし",
     "vocabulary": "町(まち):thị trấn|町長(ちょうちょう):trưởng thị trấn|町中(まちじゅう):khắp thị trấn|下町(したまち):khu phố cổ|港町(みなとまち):thành phố cảng"
   },
   {
@@ -3294,9 +3075,8 @@ const kanjiData = [
     "radicals": "木-mộc|寸-thốn",
     "core_meaning": "Ngôi làng",
     "story_image": "Nơi có nhiều cây (木) được đo đạc (寸) làm ranh giới làng.",
-    "logic_development": "木-mộc + 寸-thốn -> (村) thôn xóm",
+    "logic_development": "木-mộc + 寸-thốn → (村) thôn xóm",
     "memory_tip": "Nhóm cây nhỏ tạo thành làng.",
-    "adjectives": "なし",
     "vocabulary": "村(むら):làng|村長(そんちょう):trưởng thôn|農村(のうそん):nông thôn|山村(さんそん):làng núi|漁村(ぎょそん):làng chài"
   },
   {
@@ -3309,9 +3089,8 @@ const kanjiData = [
     "radicals": "匚-phương|乂-nghệ",
     "core_meaning": "Khu vực",
     "story_image": "Vùng đất được bao quanh (匚) và phân chia (乂).",
-    "logic_development": "匚-phương + 乂-nghệ -> (区) phân khu",
+    "logic_development": "匚-phương + 乂-nghệ → (区) phân khu",
     "memory_tip": "Cái hộp chứa các phần chia cắt.",
-    "adjectives": "なし",
     "vocabulary": "区(く):quận|区役所(くやくしょ):ủy ban quận|区分(くぶん):phân loại|地区(ちく):địa khu|区別(くべつ):phân biệt"
   },
   {
@@ -3324,9 +3103,8 @@ const kanjiData = [
     "radicals": "者-giả|阝-phụ",
     "core_meaning": "Kinh đô",
     "story_image": "Nơi tập hợp nhiều người (者) trên vùng đất (阝) trù phú.",
-    "logic_development": "者-giả + 阝-phụ -> (都) thành thị",
+    "logic_development": "者-giả + 阝-phụ → (都) thành thị",
     "memory_tip": "Mọi người tụ họp ở vùng đất lớn.",
-    "adjectives": "なし",
     "vocabulary": "東京都(とうきょうと):thành phố tokyo|都会(とかい):thành thị|都合(つごう):thuận tiện|京都(きょうと):kyoto|首都(しゅと):thủ đô"
   },
   {
@@ -3339,9 +3117,8 @@ const kanjiData = [
     "radicals": "广-nghiễm|付-phó",
     "core_meaning": "Phủ",
     "story_image": "Nơi lưu trữ giấy tờ quan trọng (付) dưới mái nhà (广).",
-    "logic_development": "广-nghiễm + 付-phó -> (府) cơ quan",
+    "logic_development": "广-nghiễm + 付-phó → (府) cơ quan",
     "memory_tip": "Nhà của chính phủ giao phó công việc.",
-    "adjectives": "なし",
     "vocabulary": "大阪府(おおさかふ):tỉnh osaka|京都府(きょうとふ):tỉnh kyoto|政府(せいふ):chính phủ|府庁(ふちょう):văn phòng tỉnh|幕府(ばくふ):mạc phủ"
   },
   {
@@ -3354,9 +3131,8 @@ const kanjiData = [
     "radicals": "目-mục|系-hệ",
     "core_meaning": "Tỉnh",
     "story_image": "Vùng đất được giám sát (目) qua hệ thống (系) quản lý.",
-    "logic_development": "目-mục + 系-hệ -> (県) tỉnh lỵ",
+    "logic_development": "目-mục + 系-hệ → (県) tỉnh lỵ",
     "memory_tip": "Cái đầu treo ngược để quản lý vùng đất.",
-    "adjectives": "なし",
     "vocabulary": "県(けん):tỉnh|県庁(けんちょう):văn phòng tỉnh|県知事(けんちじ):tỉnh trưởng|千葉県(ちばけん):tỉnh chiba|県立(けんりつ):tỉnh lập"
   },
   {
@@ -3369,9 +3145,8 @@ const kanjiData = [
     "radicals": "山-sơn|鳥-điểu",
     "core_meaning": "Hòn đảo",
     "story_image": "Ngọn núi (山) nơi chim (鳥) bay đến đậu giữa biển.",
-    "logic_development": "鳥-điểu + 山-sơn -> (島) hải đảo",
+    "logic_development": "鳥-điểu + 山-sơn → (島) hải đảo",
     "memory_tip": "Con chim đậu trên núi giữa nước.",
-    "adjectives": "なし",
     "vocabulary": "島(しま):đảo|広島(ひろしま):hiroshima|半島(はんとう):bán đảo|列島(れっとう):quần đảo|無人島(むじんとう):đảo hoang"
   },
   {
@@ -3384,9 +3159,8 @@ const kanjiData = [
     "radicals": "亠-đầu|口-khẩu|小-tiểu",
     "core_meaning": "Kinh đô",
     "story_image": "Hình ảnh một tòa tháp cao (亠) có cửa (口) ở trên nền nhỏ (小).",
-    "logic_development": "亠-đầu + 口-khẩu + 小-tiểu -> (京) thành phố lớn",
+    "logic_development": "亠-đầu + 口-khẩu + 小-tiểu → (京) thành phố lớn",
     "memory_tip": "Tòa nhà cao tầng ở trung tâm.",
-    "adjectives": "なし",
     "vocabulary": "東京(とうきょう):Tokyo|京都(きょうと):Kyoto|上京(じょうきょう):đi lên thủ đô|京浜(けいひん):vùng Tokyo-Yokohama|北京(ぺきん):Bắc Kinh"
   },
     {
@@ -3399,10 +3173,9 @@ const kanjiData = [
       "radicals": "木-mộc|羊-dương|氺-thủy",
       "core_meaning": "ngài、dáng vẻ",
       "story_image": "Hình ảnh con cừu (羊) uống nước (氺) bên cạnh cây (木) thể hiện dáng vẻ tự nhiên.",
-      "logic_development": "木-mộc + 羊-dương + 氺-thủy -> dáng vẻ con cừu bên cây",
+      "logic_development": "木-mộc + 羊-dương + 氺-thủy → dáng vẻ con cừu bên cây",
       "memory_tip": "Nhớ ngài Dương đứng bên cây ngắm dòng nước chảy.",
-      "adjectives": "様々(さまさま):đa dạng",
-      "vocabulary": "皆様(みなさま):mọi người|お子様(おこさま):quý con|様子(ようす):tình hình|様式(ようしき):hình thức|同様(どうよう):giống nhau"
+      "vocabulary": "様々(さまさま):đa dạng|皆様(みなさま):mọi người|お子様(おこさま):quý con|様子(ようす):tình hình|様式(ようしき):hình thức|同様(どうよう):giống nhau"
     },
     {
       "stt": 228,
@@ -3414,10 +3187,9 @@ const kanjiData = [
       "radicals": "糸-mịch|柬-giản",
       "core_meaning": "rèn luyện",
       "story_image": "Hình ảnh sợi chỉ (糸) được chọn lọc kỹ càng (柬) để rèn luyện độ bền.",
-      "logic_development": "糸-mịch + 柬-giản -> luyện sợi chỉ cho tốt",
+      "logic_development": "糸-mịch + 柬-giản → luyện sợi chỉ cho tốt",
       "memory_tip": "Luyện tập kết nối các sợi chỉ lại với nhau.",
-      "adjectives": "練れる(ねれる):thành thạo",
-      "vocabulary": "練習(れんしゅう):luyện tập|訓練(くんれん):huấn luyện|洗練(せんれん):tinh tế|未練(みれん):tiếc nuối|試練(しれん):thử thách"
+      "vocabulary": "練れる(ねれる):thành thạo|練習(れんしゅう):luyện tập|訓練(くんれん):huấn luyện|洗練(せんれん):tinh tế|未練(みれん):tiếc nuối|試練(しれん):thử thách"
     },
     {
       "stt": 229,
@@ -3429,10 +3201,9 @@ const kanjiData = [
       "radicals": "羽-vũ|白-bạch",
       "core_meaning": "học tập",
       "story_image": "Chim non dùng đôi cánh (羽) trắng (白) tập bay nhiều lần.",
-      "logic_development": "羽-vũ + 白-bạch -> chim trắng tập bay",
+      "logic_development": "羽-vũ + 白-bạch → chim trắng tập bay",
       "memory_tip": "Tập bay dưới ánh mặt trời trắng xóa.",
-      "adjectives": "習わしい(ならわしい):thói quen",
-      "vocabulary": "学習(がくしゅう):học tập|自習(じしゅう):tự học|慣習(かんしゅう):tập quán|復習(ふくしゅう):ôn tập|予習(よしゅう):chuẩn bị bài"
+      "vocabulary": "習わしい(ならわしい):thói quen|学習(がくしゅう):học tập|自習(じしゅう):tự học|慣習(かんしゅう):tập quán|復習(ふくしゅう):ôn tập|予習(よしゅう):chuẩn bị bài"
     },
     {
       "stt": 230,
@@ -3444,10 +3215,9 @@ const kanjiData = [
       "radicals": "免-miễn|力-lực",
       "core_meaning": "cố gắng",
       "story_image": "Dùng sức lực (力) để miễn (免) cưỡng bản thân làm việc chăm chỉ.",
-      "logic_development": "免-miễn + 力-lực -> dùng sức để làm việc",
+      "logic_development": "免-miễn + 力-lực → dùng sức để làm việc",
       "memory_tip": "Cố gắng hết sức lực để không bị miễn nhiệm.",
-      "adjectives": "勉め(つとめ):nỗ lực",
-      "vocabulary": "勉強(べんきょう):học tập|勤勉(きんべん):cần cù|勉励(べんれい):siêng năng|ガリ勉(がりべん):mọt sách|勉学(べんがく):việc học"
+      "vocabulary": "勉め(つとめ):nỗ lực|勉強(べんきょう):học tập|勤勉(きんべん):cần cù|勉励(べんれい):siêng năng|ガリ勉(がりべん):mọt sách|勉学(べんがく):việc học"
     },
     {
       "stt": 231,
@@ -3459,10 +3229,9 @@ const kanjiData = [
       "radicals": "弓-cung|口-khẩu|虫-trùng",
       "core_meaning": "mạnh mẽ",
       "story_image": "Cung (弓) bắn trúng miệng (口) con sâu (虫) thể hiện sức mạnh.",
-      "logic_development": "弓-cung + 口-khẩu + 虫-trùng -> sức mạnh cây cung",
+      "logic_development": "弓-cung + 口-khẩu + 虫-trùng → sức mạnh cây cung",
       "memory_tip": "Cái cung mạnh có thể bắn xuyên miệng con sâu.",
-      "adjectives": "強い(つよい):mạnh|強硬な(きょうこうな):mạnh mẽ",
-      "vocabulary": "強化(きょうか):tăng cường|強引(ごういん):cưỡng ép|強力(きょうりょく):mạnh mẽ|強盗(ごうとう):cướp|強弱(きょうじゃく):mạnh yếu"
+      "vocabulary": "強い(つよい):mạnh|強硬な(きょうこうな):mạnh mẽ|強化(きょうか):tăng cường|強引(ごういん):cưỡng ép|強力(きょうりょく):mạnh mẽ|強盗(ごうとう):cướp|強弱(きょうじゃく):mạnh yếu"
     },
     {
       "stt": 232,
@@ -3474,10 +3243,9 @@ const kanjiData = [
       "radicals": "石-thạch|开-nghiên",
       "core_meaning": "nghiên cứu",
       "story_image": "Dùng đá (石) mài phẳng bề mặt (开) để nghiên cứu.",
-      "logic_development": "石-thạch + 开-nghiên -> mài đá nghiên cứu",
+      "logic_development": "石-thạch + 开-nghiên → mài đá nghiên cứu",
       "memory_tip": "Dùng đá mài giũa kiến thức cho phẳng.",
-      "adjectives": "研ぐ(とぐ):mài",
-      "vocabulary": "研究所(けんきゅうじょ):viện nghiên cứu|研究者(けんきゅうしゃ):nhà nghiên cứu|研修(けんしゅう):tu nghiệp|研磨(けんま):mài giũa|究研(きゅうけん):nghiên cứu"
+      "vocabulary": "研ぐ(とぐ):mài|研究所(けんきゅうじょ):viện nghiên cứu|研究者(けんきゅうしゃ):nhà nghiên cứu|研修(けんしゅう):tu nghiệp|研磨(けんま):mài giũa|究研(きゅうけん):nghiên cứu"
     },
     {
       "stt": 233,
@@ -3489,10 +3257,9 @@ const kanjiData = [
       "radicals": "穴-huyệt|九-cửu",
       "core_meaning": "nghiên cứu",
       "story_image": "Tìm kiếm trong hang (穴) chín (九) lần để cứu xét kỹ lưỡng.",
-      "logic_development": "穴-huyệt + 九-cửu -> tìm trong hang chín lần",
+      "logic_development": "穴-huyệt + 九-cửu → tìm trong hang chín lần",
       "memory_tip": "Nghiên cứu chín lần trong cái hang sâu.",
-      "adjectives": "究める(きわめる):tìm hiểu kỹ",
-      "vocabulary": "究明(きゅうめい):điều tra làm rõ|追究(ついきゅう):truy cứu|探究(たんきゅう):tìm tòi|学究(がっきゅう):người ham học|学問を究める(がくもんをきわめる):nghiên cứu học vấn"
+      "vocabulary": "究める(きわめる):tìm hiểu kỹ|究明(きゅうめい):điều tra làm rõ|追究(ついきゅう):truy cứu|探究(たんきゅう):tìm tòi|学究(がっきゅう):người ham học|学問を究める(がくもんをきわめる):nghiên cứu học vấn"
     },
     {
       "stt": 234,
@@ -3504,10 +3271,9 @@ const kanjiData = [
       "radicals": "卯-mão|田-điền",
       "core_meaning": "lưu lại",
       "story_image": "Giữ lại ruộng (田) trong thời gian dài (卯).",
-      "logic_development": "卯-mão + 田-điền -> giữ ruộng",
+      "logic_development": "卯-mão + 田-điền → giữ ruộng",
       "memory_tip": "Lưu lại ở ruộng để canh gác.",
-      "adjectives": "留守(るす):vắng nhà",
-      "vocabulary": "留学(りゅうがく):du học|留学生(りゅうがくせい):du học sinh|保留(ほりゅう):bảo lưu|停留所(ていりゅうじょ):trạm dừng|書留(かきとめ):gửi bảo đảm"
+      "vocabulary": "留守(るす):vắng nhà|留学(りゅうがく):du học|留学生(りゅうがくせい):du học sinh|保留(ほりゅう):bảo lưu|停留所(ていりゅうじょ):trạm dừng|書留(かきとめ):gửi bảo đảm"
     },
     {
       "stt": 235,
@@ -3519,10 +3285,9 @@ const kanjiData = [
       "radicals": "斤-cân|斤-cân|貝-bối",
       "core_meaning": "chất lượng",
       "story_image": "Dùng rìu (斤) chặt vỏ sò (貝) để kiểm tra chất lượng bên trong.",
-      "logic_development": "斤-cân + 斤-cân + 貝-bối -> dùng rìu kiểm tra tiền",
+      "logic_development": "斤-cân + 斤-cân + 貝-bối → dùng rìu kiểm tra tiền",
       "memory_tip": "Chất lượng tiền tệ được kiểm soát bằng rìu.",
-      "adjectives": "質素な(しっそな):giản dị",
-      "vocabulary": "質問(しつもん):câu hỏi|品質(ひんしつ):chất lượng|性質(せいしつ):tính chất|物質(ぶっしつ):vật chất|地質(ちしつ):địa chất"
+      "vocabulary": "質素な(しっそな):giản dị|質問(しつもん):câu hỏi|品質(ひんしつ):chất lượng|性質(せいしつ):tính chất|物質(ぶっしつ):vật chất|地質(ちしつ):địa chất"
     },
     {
       "stt": 236,
@@ -3534,10 +3299,9 @@ const kanjiData = [
       "radicals": "門-môn|口-khẩu",
       "core_meaning": "hỏi",
       "story_image": "Đứng ở cửa (門) mở miệng (口) ra để hỏi.",
-      "logic_development": "門-môn + 口-khẩu -> đứng cửa hỏi",
+      "logic_development": "門-môn + 口-khẩu → đứng cửa hỏi",
       "memory_tip": "Muốn vấn an hãy mở miệng hỏi ở cửa.",
-      "adjectives": "問い(とい):câu hỏi",
-      "vocabulary": "問題(もんだい):vấn đề|訪問(ほうもん):thăm hỏi|自問(じもん):tự hỏi|学問(がくもん):học vấn|問い合わせ(といあわせ):liên hệ"
+      "vocabulary": "問い(とい):câu hỏi|問題(もんだい):vấn đề|訪問(ほうもん):thăm hỏi|自問(じもん):tự hỏi|学問(がくもん):học vấn|問い合わせ(といあわせ):liên hệ"
     },
     {
       "stt": 237,
@@ -3549,10 +3313,9 @@ const kanjiData = [
       "radicals": "是-thị|頁-hiệt",
       "core_meaning": "đề tài",
       "story_image": "Dùng đầu (頁) để xác định đúng (是) đề tài.",
-      "logic_development": "是-thị + 頁-hiệt -> xác định đúng trang đầu",
+      "logic_development": "是-thị + 頁-hiệt → xác định đúng trang đầu",
       "memory_tip": "Đầu óc suy nghĩ để ra một đề tài đúng.",
-      "adjectives": "題する(だいする):đặt tiêu đề",
-      "vocabulary": "主題(しゅだい):chủ đề|題名(だいめい):tên đề bài|宿題(しゅだい):bài về nhà|話題(わだい):chủ đề nói chuyện|例題(れいだい):ví dụ mẫu"
+      "vocabulary": "題する(だいする):đặt tiêu đề|主題(しゅだい):chủ đề|題名(だいめい):tên đề bài|宿題(しゅだい):bài về nhà|話題(わだい):chủ đề nói chuyện|例題(れいだい):ví dụ mẫu"
     },
     {
       "stt": 238,
@@ -3564,10 +3327,9 @@ const kanjiData = [
       "radicals": "竹-trúc|合-hợp",
       "core_meaning": "trả lời",
       "story_image": "Dùng thẻ tre (竹) viết những lời phù hợp (合) để trả lời.",
-      "logic_development": "竹-trúc + 合-合 -> dùng tre viết lời hợp",
+      "logic_development": "竹-trúc + 合-合 → dùng tre viết lời hợp",
       "memory_tip": "Lời đáp trả phù hợp được viết lên tre.",
-      "adjectives": "答え(こええ):câu trả lời",
-      "vocabulary": "回答(かいとう):giải đáp|応答(おうとう):phản hồi|正答(せいとう):đáp án đúng|問答(もんどう):hỏi đáp|口頭で答える(こうとうでこたえる):trả lời bằng miệng"
+      "vocabulary": "答え(こええ):câu trả lời|回答(かいとう):giải đáp|応答(おうとう):phản hồi|正答(せいとう):đáp án đúng|問答(もんどう):hỏi đáp|口頭で答える(こうとうでこたえる):trả lời bằng miệng"
     },
     {
       "stt": 239,
@@ -3579,10 +3341,9 @@ const kanjiData = [
       "radicals": "宀-miên|亻-nhân|百-bách",
       "core_meaning": "chỗ trọ",
       "story_image": "Mái nhà (宀) có một trăm (百) người (亻) vào trọ.",
-      "logic_development": "宀-miên + 亻-nhân + 百-bách -> nhà trọ trăm người",
+      "logic_development": "宀-miên + 亻-nhân + 百-bách → nhà trọ trăm người",
       "memory_tip": "Trăm người cùng trú dưới một mái nhà.",
-      "adjectives": "宿る(やどる):trú lại",
-      "vocabulary": "宿泊(しゅくはく):trọ lại|新宿(しんじゅく):Shinjuku|下宿(げしゅく):nhà trọ|宿題(しゅだい):bài tập|宿舎(しゅくしゃ):ký túc xá"
+      "vocabulary": "宿る(やどる):trú lại|宿泊(しゅくはく):trọ lại|新宿(しんじゅく):Shinjuku|下宿(げしゅく):nhà trọ|宿題(しゅだい):bài tập|宿舎(しゅくしゃ):ký túc xá"
     },
     {
       "stt": 240,
@@ -3594,10 +3355,9 @@ const kanjiData = [
       "radicals": "正-chính|攵-phu",
       "core_meaning": "chính trị",
       "story_image": "Dùng roi (攵) để giữ cho mọi việc luôn đúng (正) đắn.",
-      "logic_development": "正-chính + 攵-phu -> gõ cho đúng",
+      "logic_development": "正-chính + 攵-phu → gõ cho đúng",
       "memory_tip": "Chính trị là dùng roi uốn nắn điều đúng.",
-      "adjectives": "正しい(ただしい):đúng",
-      "vocabulary": "政治(せいじ):chính trị|政策(せいさく):chính sách|政府(せいふ):chính phủ|政党(せいとう):đảng phái|行政(ぎょうせい):hành chính"
+      "vocabulary": "正しい(ただしい):đúng|政治(せいじ):chính trị|政策(せいさく):chính sách|政府(せいふ):chính phủ|政党(せいとう):đảng phái|行政(ぎょうせい):hành chính"
     },
     {
       "stt": 241,
@@ -3609,10 +3369,9 @@ const kanjiData = [
       "radicals": "氵-thủy|台-đài",
       "core_meaning": "cai trị",
       "story_image": "Dùng nước (氵) để quản lý đài (台) cao nhằm cai trị dân.",
-      "logic_development": "氵-thủy + 台-đài -> dùng nước trị dân",
+      "logic_development": "氵-thủy + 台-đài → dùng nước trị dân",
       "memory_tip": "Dùng nước tưới lên đài để chữa bệnh.",
-      "adjectives": "治る(なおる):khỏi bệnh",
-      "vocabulary": "治金(じきん):luyện kim|自治(じち):tự trị|治水(ちすい):trị thủy|治療(ちりょう):trị liệu|治外法権(ちがいほうけん):quyền ngoại trị"
+      "vocabulary": "治る(なおる):khỏi bệnh|治金(じきん):luyện kim|自治(じち):tự trị|治水(ちすい):trị thủy|治療(ちりょう):trị liệu|治外法権(ちがいほうけん):quyền ngoại trị"
     },
     {
       "stt": 242,
@@ -3624,10 +3383,9 @@ const kanjiData = [
       "radicals": "制-chế|リ-đao",
       "core_meaning": "chế độ",
       "story_image": "Dùng dao (リ) để cắt may quần áo theo quy chế (制).",
-      "logic_development": "制-chế + リ-đao -> dùng dao cắt chế độ",
+      "logic_development": "制-chế + リ-đao → dùng dao cắt chế độ",
       "memory_tip": "Dùng dao cắt tỉa để thiết lập chế độ.",
-      "adjectives": "制する(せいする):áp chế",
-      "vocabulary": "制度(せいど):chế độ|制作(せいさく):chế tác|制限(せいげん):hạn chế|強制(きょうせい):cưỡng chế|制服(せいふく):đồng phục"
+      "vocabulary": "制する(せいする):áp chế|制度(せいど):chế độ|制作(せいさく):chế tác|制限(せいげん):hạn chế|強制(きょうせい):cưỡng chế|制服(せいふく):đồng phục"
     },
     {
       "stt": 243,
@@ -3639,10 +3397,9 @@ const kanjiData = [
       "radicals": "氵-thủy|斉-tề",
       "core_meaning": "kinh tế",
       "story_image": "Dùng nước (氵) để làm cho mọi thứ được chỉnh tề (斉).",
-      "logic_development": "氵-thủy + 斉-tề -> nước làm sạch tề tựu",
+      "logic_development": "氵-thủy + 斉-tề → nước làm sạch tề tựu",
       "memory_tip": "Xong việc tưới nước cho tề chỉnh.",
-      "adjectives": "済む(すむ):kết thúc",
-      "vocabulary": "経済(けいざい):kinh tế|決済(けっさい):thanh toán|返済(へんさい):hoàn trả|救済(きゅうさい):cứu tế|共済(きょうさい):cùng chi trả"
+      "vocabulary": "済む(すむ):kết thúc|経済(けいざい):kinh tế|決済(けっさい):thanh toán|返済(へんさい):hoàn trả|救済(きゅうさい):cứu tế|共済(きょうさい):cùng chi trả"
     },
     {
       "stt": 244,
@@ -3654,10 +3411,9 @@ const kanjiData = [
       "radicals": "业-nghiệp",
       "core_meaning": "nghề nghiệp",
       "story_image": "Hình ảnh cái giá treo chuông thể hiện công việc của thợ đúc.",
-      "logic_development": "业-nghiệp -> giá treo chuông",
+      "logic_development": "业-nghiệp → giá treo chuông",
       "memory_tip": "Nghiệp là công việc tạo ra giá trị.",
-      "adjectives": "業(わざ):kỹ năng",
-      "vocabulary": "工業(こうぎょう):công nghiệp|卒業(そつぎょう):tốt nghiệp|授業(じゅぎょう):tiết học|残業(ざんぎょう):làm thêm|作業(さぎょう):thao tác"
+      "vocabulary": "業(わざ):kỹ năng|工業(こうぎょう):công nghiệp|卒業(そつぎょう):tốt nghiệp|授業(じゅぎょう):tiết học|残業(ざんぎょう):làm thêm|作業(さぎょう):thao tác"
     },
     {
       "stt": 245,
@@ -3669,10 +3425,9 @@ const kanjiData = [
       "radicals": "厂-hán|林-lâm|止-chỉ",
       "core_meaning": "lịch sử",
       "story_image": "Đi (止) qua rừng (林) dưới vách đá (厂) để xem lịch sử.",
-      "logic_development": "厂-hán + 林-lâm + 止-chỉ -> đi qua rừng vách đá",
+      "logic_development": "厂-hán + 林-lâm + 止-chỉ → đi qua rừng vách đá",
       "memory_tip": "Dưới vách đá rừng cây đứng im lìm làm lịch sử.",
-      "adjectives": "歴史(れきし):lịch sử|経歴(けいれき):sơ yếu lý lịch|学歴(がくれき):học vấn|来歴(らいれき):nguồn gốc|履歴書(りれきしょ):bản tóm tắt",
-      "vocabulary": ""
+      "vocabulary": "歴史(れきし):lịch sử|経歴(けいれき):sơ yếu lý lịch|学歴(がくれき):học vấn|来歴(らいれき):nguồn gốc|履歴書(りれきしょ):bản tóm tắt"
     },
     {
       "stt": 246,
@@ -3684,10 +3439,9 @@ const kanjiData = [
       "radicals": "育-dục|肉-nhục",
       "core_meaning": "giáo dục",
       "story_image": "Người mẹ nuôi dưỡng đứa trẻ bằng thịt (肉) của mình.",
-      "logic_development": "育-dục + 肉-nhục -> nuôi bằng thịt",
+      "logic_development": "育-dục + 肉-nhục → nuôi bằng thịt",
       "memory_tip": "Nuôi dưỡng thân xác bằng thịt.",
-      "adjectives": "育つ(そだつ):lớn lên",
-      "vocabulary": "教育(きょういく):giáo dục|体育(たいいく):thể dục|保育(ほいく):bảo mẫu|育成(いくせい):nuôi dưỡng|知育(ちいく):giáo dục trí tuệ"
+      "vocabulary": "育つ(そだつ):lớn lên|教育(きょういく):giáo dục|体育(たいいく):thể dục|保育(ほいく):bảo mẫu|育成(いくせい):nuôi dưỡng|知育(ちいく):giáo dục trí tuệ"
     },
     {
       "stt": 247,
@@ -3699,10 +3453,9 @@ const kanjiData = [
       "radicals": "亦-diệc|攵-phu",
       "core_meaning": "thay đổi",
       "story_image": "Dùng roi (攵) quất để thay đổi vẻ bề ngoài (亦).",
-      "logic_development": "亦-diệc + 攵-phu -> thay đổi vẻ ngoài",
+      "logic_development": "亦-diệc + 攵-phu → thay đổi vẻ ngoài",
       "memory_tip": "Sùng bái sự thay đổi bằng hành động.",
-      "adjectives": "変な(へんな):lạ lùng",
-      "vocabulary": "変化(へんか):biến hóa|大変(たいへん):vất vả|変人(へんじん):người lập dị|変更(へんこう):thay đổi|変則(へんそく):bất quy tắc"
+      "vocabulary": "変な(へんな):lạ lùng|変化(へんか):biến hóa|大変(たいへん):vất vả|変人(へんじん):người lập dị|変更(へんこう):thay đổi|変則(へんそく):bất quy tắc"
     },
     {
       "stt": 248,
@@ -3714,10 +3467,9 @@ const kanjiData = [
       "radicals": "王-vương|里-lý",
       "core_meaning": "lý do",
       "story_image": "Vị vua (王) quản lý làng (里) theo lẽ phải.",
-      "logic_development": "王-vương + 里-lý -> vua quản làng",
+      "logic_development": "王-vương + 里-lý → vua quản làng",
       "memory_tip": "Ông vua lý giải chuyện trong làng.",
-      "adjectives": "理不尽な(りふじんな):phi lý",
-      "vocabulary": "理由(りゆう):lý do|料理(りょうり):nấu ăn|物理(ぶつり):vật lý|心理(しんり):tâm lý|無理(むり):vô lý"
+      "vocabulary": "理不尽な(りふじんな):phi lý|理由(りゆう):lý do|料理(りょうり):nấu ăn|物理(ぶつり):vật lý|心理(しんり):tâm lý|無理(むり):vô lý"
     },
     {
       "stt": 249,
@@ -3729,10 +3481,9 @@ const kanjiData = [
       "radicals": "禾-hòa|斗-đấu",
       "core_meaning": "khoa học",
       "story_image": "Dùng cái đấu (斗) để đong lúa (禾) theo từng khoa mục.",
-      "logic_development": "禾-hòa + 斗-đấu -> đong lúa bằng đấu",
+      "logic_development": "禾-hòa + 斗-đấu → đong lúa bằng đấu",
       "memory_tip": "Đong lúa theo từng khoa phân loại.",
-      "adjectives": "科学(かがく):khoa học|教科書(きょうかしょ):sách giáo khoa|内科(ないか):nội khoa|外科(げか):ngoại khoa|学科(がっか):ngành học",
-      "vocabulary": ""
+      "vocabulary": "科学(かがく):khoa học|教科書(きょうかしょ):sách giáo khoa|内科(ないか):nội khoa|外科(げか):ngoại khoa|学科(がっか):ngành học"
     },
     {
       "stt": 250,
@@ -3744,10 +3495,9 @@ const kanjiData = [
       "radicals": "米-mễ|女-nữ|攵-phu",
       "core_meaning": "con số",
       "story_image": "Người phụ nữ (女) đong gạo (米) rồi lấy roi (攵) đếm số.",
-      "logic_development": "米-mễ + 女-nữ + 攵-phu -> phụ nữ đếm gạo",
+      "logic_development": "米-mễ + 女-nữ + 攵-phu → phụ nữ đếm gạo",
       "memory_tip": "Phụ nữ cầm gậy đếm từng hạt gạo.",
-      "adjectives": "数多い(かずおおい):nhiều",
-      "vocabulary": "数字(すうじ):con số|数学(すうがく):toán học|多数(たすう):đa số|回数(かいすう):số lần|数える(かぞえる):đếm"
+      "vocabulary": "数多い(かずおおい):nhiều|数字(すうじ):con số|数学(すうがく):toán học|多数(たすう):đa số|回数(かいすう):số lần|数える(かぞえる):đếm"
     },
     {
       "stt": 251,
@@ -3759,10 +3509,9 @@ const kanjiData = [
       "radicals": "匚-phương|矢-thỉ",
       "core_meaning": "y học",
       "story_image": "Đựng mũi tên (矢) trong hộp (匚) để làm dụng cụ y tế.",
-      "logic_development": "匚-phương + 矢-thỉ -> tên trong hộp",
+      "logic_development": "匚-phương + 矢-thỉ → tên trong hộp",
       "memory_tip": "Mũi tên trong hộp là dụng cụ y sĩ.",
-      "adjectives": "医者(いしゃ):bác sĩ|医学(いがく):y học|医院(いいん):phòng khám|医療(いりょう):y tế|医薬品(いやくひん):dược phẩm",
-      "vocabulary": ""
+      "vocabulary": "医者(いしゃ):bác sĩ|医学(いがく):y học|医院(いいん):phòng khám|医療(いりょう):y tế|医薬品(いやくひん):dược phẩm"
     },
     {
       "stt": 252,
@@ -3774,10 +3523,9 @@ const kanjiData = [
       "radicals": "日-nhật|央-ương",
       "core_meaning": "phản chiếu",
       "story_image": "Mặt trời (日) ở chính giữa (央) phản chiếu ánh sáng.",
-      "logic_development": "日-nhật + 央-ương -> mặt trời chiếu ở giữa",
+      "logic_development": "日-nhật + 央-ương → mặt trời chiếu ở giữa",
       "memory_tip": "Mặt trời ở giữa trời phản chiếu ánh sáng xuống.",
-      "adjectives": "明るい(あかるい):sáng",
-      "vocabulary": "映画(えいが):phim|上映(じょうえい):trình chiếu|映像(えいぞう):hình ảnh|反映(はんえい):phản ánh|映る(うつる):bị phản chiếu"
+      "vocabulary": "明るい(あかるい):sáng|映画(えいが):phim|上映(じょうえい):trình chiếu|映像(えいぞう):hình ảnh|反映(はんえい):phản ánh|映る(うつる):bị phản chiếu"
     },
     {
       "stt": 253,
@@ -3789,10 +3537,9 @@ const kanjiData = [
       "radicals": "田-điền|凵-khảm",
       "core_meaning": "họa|vẽ",
       "story_image": "Phác họa hình ảnh thửa ruộng (田) trong một cái khung (凵).",
-      "logic_development": "田-điền + 凵-khảm -> vẽ hình ruộng",
+      "logic_development": "田-điền + 凵-khảm → vẽ hình ruộng",
       "memory_tip": "Vẽ một bức họa về cánh đồng.",
-      "adjectives": "画く(えがく):vẽ",
-      "vocabulary": "計画(けいかく):kế hoạch|漫画(まんが):truyện tranh|画面(がめん):màn hình|画家(がか):họa sĩ|画数(かくすう):số nét"
+      "vocabulary": "画く(えがく):vẽ|計画(けいかく):kế hoạch|漫画(まんが):truyện tranh|画面(がめん):màn hình|画家(がか):họa sĩ|画数(かくすう):số nét"
     },
     {
       "stt": 254,
@@ -3804,10 +3551,9 @@ const kanjiData = [
       "radicals": "冖-mịch|与-dữ",
       "core_meaning": "sao chép",
       "story_image": "Dùng vải (冖) che lại để cho (与) ra một bản sao chép.",
-      "logic_development": "冖-mịch + 与-dữ -> che lại để cho bản sao",
+      "logic_development": "冖-mịch + 与-dữ → che lại để cho bản sao",
       "memory_tip": "Sao chép lại những gì được cho dưới màn che.",
-      "adjectives": "写る(うつる):chụp được",
-      "vocabulary": "写真(しゃしん):hình ảnh|写生(しゃせい):vẽ phác thảo|写経(しゃきょう):chép kinh|複写(ふくしゃ):sao chép|写す(うつす):chụp ảnh"
+      "vocabulary": "写る(うつる):chụp được|写真(しゃしん):hình ảnh|写生(しゃせい):vẽ phác thảo|写経(しゃきょう):chép kinh|複写(ふくしゃ):sao chép|写す(うつす):chụp ảnh"
     },
     {
       "stt": 255,
@@ -3819,10 +3565,9 @@ const kanjiData = [
       "radicals": "十-thập|目-mục|乚-ẩn|ハ-bát",
       "core_meaning": "chân thật",
       "story_image": "Mười (十) con mắt (目) cùng nhìn thấu sự thật ẩn giấu (乚).",
-      "logic_development": "十-thập + 目-mục + 乚-ẩn + ハ-bát -> mười mắt nhìn sự thật",
+      "logic_development": "十-thập + 目-mục + 乚-ẩn + ハ-bát → mười mắt nhìn sự thật",
       "memory_tip": "Mười con mắt nhìn thẳng vào sự thật chân chính.",
-      "adjectives": "真っ白(まっしろ):trắng tinh",
-      "vocabulary": "真実(しんじつ):sự thật|真っ赤(まっか):đỏ rực|真面目(まじめ):chăm chỉ|真空(しんくう):chân không|真ん中(まんなか):chính giữa"
+      "vocabulary": "真っ白(まっしろ):trắng tinh|真実(しんじつ):sự thật|真っ赤(まっか):đỏ rực|真面目(まじめ):chăm chỉ|真空(しんくう):chân không|真ん中(まんなか):chính giữa"
     },
     {
       "stt": 256,
@@ -3834,10 +3579,9 @@ const kanjiData = [
       "radicals": "立-lập|日-nhật",
       "core_meaning": "âm thanh",
       "story_image": "Đứng (立) trên mặt trời (日) phát ra âm thanh.",
-      "logic_development": "立-lập + 日-nhật -> đứng trên mặt trời phát âm",
+      "logic_development": "立-lập + 日-nhật → đứng trên mặt trời phát âm",
       "memory_tip": "Âm thanh vang lên khi mặt trời mọc.",
-      "adjectives": "音色(ねいろ):âm sắc",
-      "vocabulary": "音楽(おんがく):âm nhạc|音(おと):tiếng động|発音(はつおん):phát âm|本音(ほんね):ý định thật|足音(あしおと):tiếng bước chân"
+      "vocabulary": "音色(ねいろ):âm sắc|音楽(おんがく):âm nhạc|音(おと):tiếng động|発音(はつおん):phát âm|本音(ほんね):ý định thật|足音(あしおと):tiếng bước chân"
     },
     {
       "stt": 257,
@@ -3849,10 +3593,9 @@ const kanjiData = [
       "radicals": "白-bạch|木-mộc|糸-mịch",
       "core_meaning": "vui vẻ",
       "story_image": "Gẩy dây đàn (糸) bằng gỗ (木) có màu trắng (白) rất vui.",
-      "logic_development": "白-bạch + 木-mộc + 糸-mịch -> chơi đàn gỗ trắng",
+      "logic_development": "白-bạch + 木-mộc + 糸-mịch → chơi đàn gỗ trắng",
       "memory_tip": "Vui vẻ gẩy đàn gỗ trắng.",
-      "adjectives": "楽しい(たのしい):vui vẻ",
-      "vocabulary": "楽器(がっき):nhạc cụ|安楽(あんらく):an lạc|享楽(きょうらく):hưởng lạc|楽勝(らくしょう):thắng dễ|楽天(らくてん):lạc quan"
+      "vocabulary": "楽しい(たのしい):vui vẻ|楽器(がっき):nhạc cụ|安楽(あんらく):an lạc|享楽(きょうらく):hưởng lạc|楽勝(らくしょう):thắng dễ|楽天(らくてん):lạc quan"
     },
     {
       "stt": 258,
@@ -3864,10 +3607,9 @@ const kanjiData = [
       "radicals": "米-mễ|斗-đấu",
       "core_meaning": "nguyên liệu",
       "story_image": "Dùng cái đấu (斗) để đong gạo (米) làm nguyên liệu.",
-      "logic_development": "米-mễ + 斗-đấu -> dùng đấu đong gạo",
+      "logic_development": "米-mễ + 斗-đấu → dùng đấu đong gạo",
       "memory_tip": "Đong gạo làm nguyên liệu nấu ăn.",
-      "adjectives": "料理(りょうり):nấu ăn|料金(りょうきん):phí|材料(ざいりょう):nguyên liệu|資料(しりょう):tài liệu|調味料(ちょうみりょう):gia vị",
-      "vocabulary": ""
+      "vocabulary": "料理(りょうり):nấu ăn|料金(りょうきん):phí|材料(ざいりょう):nguyên liệu|資料(しりょう):tài liệu|調味料(ちょうみりょう):gia vị"
     },
     {
       "stt": 259,
@@ -3879,10 +3621,9 @@ const kanjiData = [
       "radicals": "王-vương|里-lý",
       "core_meaning": "lý do",
       "story_image": "Vị vua (王) quản lý làng (里) theo lẽ phải.",
-      "logic_development": "王-vương + 里-lý -> vua quản làng",
+      "logic_development": "王-vương + 里-lý → vua quản làng",
       "memory_tip": "Ông vua lý giải chuyện trong làng.",
-      "adjectives": "理不尽な(りふじんな):phi lý",
-      "vocabulary": "理由(りゆう):lý do|料理(りょうり):nấu ăn|物理(ぶつり):vật lý|心理(しんり):tâm lý|無理(むり):vô lý"
+      "vocabulary": "理不尽な(りふじんな):phi lý|理由(りゆう):lý do|料理(りょうり):nấu ăn|物理(ぶつり):vật lý|心理(しんり):tâm lý|無理(むり):vô lý"
     },
     {
       "stt": 260,
@@ -3894,10 +3635,9 @@ const kanjiData = [
       "radicals": "田-điền|心-tâm",
       "core_meaning": "suy nghĩ",
       "story_image": "Dùng cả tâm (心) trí hướng về ruộng (田) để suy nghĩ.",
-      "logic_development": "田-điền + 心-tâm -> lòng hướng về ruộng",
+      "logic_development": "田-điền + 心-tâm → lòng hướng về ruộng",
       "memory_tip": "Lòng luôn nghĩ về mảnh ruộng quê hương.",
-      "adjectives": "思い出す(おもいだす):nhớ ra",
-      "vocabulary": "不思議(ふしぎ):kỳ lạ|思考(しこう):tư duy|思想(しそう):tư tưởng|意思(いし):ý chí|思い出(おもいで):kỷ niệm"
+      "vocabulary": "思い出す(おもいだす):nhớ ra|不思議(ふしぎ):kỳ lạ|思考(しこう):tư duy|思想(しそう):tư tưởng|意思(いし):ý chí|思い出(おもいで):kỷ niệm"
     },
     {
       "stt": 261,
@@ -3909,10 +3649,9 @@ const kanjiData = [
       "radicals": "音-âm|心-tâm",
       "core_meaning": "ý nghĩa",
       "story_image": "Âm thanh (音) phát ra từ trái tim (心) chính là ý nghĩ.",
-      "logic_development": "音-âm + 心-tâm -> tiếng lòng",
+      "logic_development": "音-âm + 心-tâm → tiếng lòng",
       "memory_tip": "Tiếng lòng nói ra ý định của bản thân.",
-      "adjectives": "意地悪な(いじわるな):xấu tính",
-      "vocabulary": "意味(いみ):ý nghĩa|意見(いけん):ý kiến|注意(ちゅうい):chú ý|用意(ようい):chuẩn bị|意外(いがい):ngoài dự tính"
+      "vocabulary": "意地悪な(いじわるな):xấu tính|意味(いみ):ý nghĩa|意見(いけん):ý kiến|注意(ちゅうい):chú ý|用意(ようい):chuẩn bị|意外(いがい):ngoài dự tính"
     },
     {
       "stt": 262,
@@ -3924,10 +3663,9 @@ const kanjiData = [
       "radicals": "白-bạch",
       "core_meaning": "màu trắng",
       "story_image": "Hình ảnh hạt gạo hoặc ánh sáng trắng.",
-      "logic_development": "白-bạch -> hạt gạo trắng",
+      "logic_development": "白-bạch → hạt gạo trắng",
       "memory_tip": "Màu trắng của hạt gạo sạch.",
-      "adjectives": "白い(しろい):trắng",
-      "vocabulary": "白鳥(はくちょう):thiên nga|空白(くうはく):trống trải|面白(おもしろい):thú vị|告白(こくはく):tỏ tình|白髪(しらが):tóc bạc"
+      "vocabulary": "白い(しろい):trắng|白鳥(はくちょう):thiên nga|空白(くうはく):trống trải|面白(おもしろい):thú vị|告白(こくはく):tỏ tình|白髪(しらが):tóc bạc"
     },
     {
       "stt": 263,
@@ -3939,10 +3677,9 @@ const kanjiData = [
       "radicals": "里-lý|灬-hỏa",
       "core_meaning": "màu đen",
       "story_image": "Đốt lửa (灬) dưới ngôi làng (里) làm mọi thứ đen kịt.",
-      "logic_development": "里-lý + 灬-hỏa -> đốt làng đen thui",
+      "logic_development": "里-lý + 灬-hỏa → đốt làng đen thui",
       "memory_tip": "Ngọn lửa đốt cháy làng thành màu đen.",
-      "adjectives": "黒い(くろい):đen",
-      "vocabulary": "黒板(こくばん):bảng đen|暗黒(あんこく):u ám|黒字(くろじ):có lãi|真っ黒(まっくろ):đen thui|黒豆(くろまめ):đậu đen"
+      "vocabulary": "黒い(くろい):đen|黒板(こくばん):bảng đen|暗黒(あんこく):u ám|黒字(くろじ):có lãi|真っ黒(まっくろ):đen thui|黒豆(くろまめ):đậu đen"
     },
     {
       "stt": 264,
@@ -3954,10 +3691,9 @@ const kanjiData = [
       "radicals": "土-thổ|ハ-bát",
       "core_meaning": "màu đỏ",
       "story_image": "Lửa cháy dưới đất (土) tỏa ra (ハ) sắc đỏ.",
-      "logic_development": "土-thổ + ハ-bát -> lửa cháy dưới đất",
+      "logic_development": "土-thổ + ハ-bát → lửa cháy dưới đất",
       "memory_tip": "Đất nung trong lửa biến thành màu đỏ.",
-      "adjectives": "赤い(あかい):đỏ",
-      "vocabulary": "赤ちゃん(あかちゃん):em bé|赤道(せきどう):xích đạo|赤字(あかじ):lỗ|真っ赤(まっか):đỏ rực|赤面(せきめん):đỏ mặt"
+      "vocabulary": "赤い(あかい):đỏ|赤ちゃん(あかちゃん):em bé|赤道(せきどう):xích đạo|赤字(あかじ):lỗ|真っ赤(まっか):đỏ rực|赤面(せきめん):đỏ mặt"
     },
     {
       "stt": 265,
@@ -3969,10 +3705,9 @@ const kanjiData = [
       "radicals": "走-tẩu|己-kỷ",
       "core_meaning": "thức dậy",
       "story_image": "Tự bản thân (己) chạy (走) đi để khởi đầu ngày mới.",
-      "logic_development": "走-tẩu + 己-kỷ -> bản thân chạy đi",
+      "logic_development": "走-tẩu + 己-kỷ → bản thân chạy đi",
       "memory_tip": "Tự mình vùng dậy chạy đi.",
-      "adjectives": "起きる(おきる):thức dậy",
-      "vocabulary": "起動(きどう):khởi động|起床(きしょう):ngủ dậy|起立(きりつ):đứng dậy|早起き(はやおき):dậy sớm|起こす(おこす):đánh thức"
+      "vocabulary": "起きる(おきる):thức dậy|起動(きどう):khởi động|起床(きしょう):ngủ dậy|起立(きりつ):đứng dậy|早起き(はやおき):dậy sớm|起こす(おこす):đánh thức"
     },
     {
       "stt": 266,
@@ -3984,10 +3719,9 @@ const kanjiData = [
       "radicals": "宀-miên|爿-tường|帚-trổi",
       "core_meaning": "ngủ",
       "story_image": "Dưới mái nhà (宀) nằm trên giường gỗ (爿) và cầm chổi (帚) đi ngủ.",
-      "logic_development": "宀-miên + 爿-tường + 帚-trổi -> ngủ trong nhà trên giường",
+      "logic_development": "宀-miên + 爿-tường + 帚-trổi → ngủ trong nhà trên giường",
       "memory_tip": "Vào nhà nằm trên giường gỗ đi ngủ.",
-      "adjectives": "寝心地がいい(ねごこちがいい):ngủ ngon",
-      "vocabulary": "寝室(しんしつ):phòng ngủ|寝坊(ねぼう):ngủ nướng|昼寝(ひるね):ngủ trưa|寝具(しんぐ):đồ ngủ|寝顔(ねがお):mặt lúc ngủ"
+      "vocabulary": "寝心地がいい(ねごこちがいい):ngủ ngon|寝室(しんしつ):phòng ngủ|寝坊(ねぼう):ngủ nướng|昼寝(ひるね):ngủ trưa|寝具(しんぐ):đồ ngủ|寝顔(ねがお):mặt lúc ngủ"
     },
     {
       "stt": 267,
@@ -3999,10 +3733,9 @@ const kanjiData = [
       "radicals": "辶-sước|斿-du",
       "core_meaning": "chơi",
       "story_image": "Đi dạo (辶) thong dong như lá cờ bay (斿) để vui chơi.",
-      "logic_development": "辶-sước + 斿-du -> đi chơi tự do",
+      "logic_development": "辶-sước + 斿-du → đi chơi tự do",
       "memory_tip": "Đi du ngoạn thong dong khắp nơi.",
-      "adjectives": "遊び(あそび):vui chơi",
-      "vocabulary": "遊園地(ゆうえんち):công viên giải trí|遊歩道(ゆうほどう):đường đi bộ|遊び場(あそびば):chỗ chơi|遊牧(ゆうぼく):du mục|周遊(しゅうゆう):chu du"
+      "vocabulary": "遊び(あそび):vui chơi|遊園地(ゆうえんち):công viên giải trí|遊歩道(ゆうほどう):đường đi bộ|遊び場(あそびば):chỗ chơi|遊牧(ゆうぼく):du mục|周遊(しゅうゆう):chu du"
     },
     {
       "stt": 268,
@@ -4014,10 +3747,9 @@ const kanjiData = [
       "radicals": "立-lập",
       "core_meaning": "đứng",
       "story_image": "Hình ảnh một người đứng thẳng trên mặt đất.",
-      "logic_development": "立-lập -> người đứng thẳng",
+      "logic_development": "立-lập → người đứng thẳng",
       "memory_tip": "Đứng thẳng chân trên mặt đất.",
-      "adjectives": "目立つ(めだつ):nổi bật",
-      "vocabulary": "国立(こくりつ):quốc lập|私立(しりつ):tư lập|立場(たちば):lập trường|建立(こんりゅう):xây dựng|立派(りっぱ):hào nhoáng"
+      "vocabulary": "目立つ(めだつ):nổi bật|国立(こくりつ):quốc lập|私立(しりつ):tư lập|立場(たちば):lập trường|建立(こんりゅう):xây dựng|立派(りっぱ):hào nhoáng"
     },
     {
       "stt": 269,
@@ -4029,10 +3761,9 @@ const kanjiData = [
       "radicals": "广-nghiễm|从-tùng|土-thổ",
       "core_meaning": "ngồi",
       "story_image": "Hai người (从) ngồi trên đất (土) dưới mái nhà (广).",
-      "logic_development": "广-nghiễm + 从-tùng + 土-thổ -> ngồi trong nhà trên đất",
+      "logic_development": "广-nghiễm + 从-tùng + 土-thổ → ngồi trong nhà trên đất",
       "memory_tip": "Hai người rủ nhau ngồi dưới mái hiên.",
-      "adjectives": "座る(すわる):ngồi",
-      "vocabulary": "座席(ざせき):chỗ ngồi|星座(せいざ):chòm sao|口座(こうざ):tài khoản|座長(ざちょう):chủ tọa|正座(せいざ):ngồi chính tọa"
+      "vocabulary": "座る(すわる):ngồi|座席(ざせき):chỗ ngồi|星座(せいざ):chòm sao|口座(こうざ):tài khoản|座長(ざちょう):chủ tọa|正座(せいざ):ngồi chính tọa"
     },
     {
       "stt": 270,
@@ -4044,10 +3775,9 @@ const kanjiData = [
       "radicals": "亻-nhân|吏-lại",
       "core_meaning": "sử dụng",
       "story_image": "Người (亻) sai bảo quan lại (吏) sử dụng quyền lực.",
-      "logic_development": "亻-nhân + 吏-lại -> người dùng quan lại",
+      "logic_development": "亻-nhân + 吏-lại → người dùng quan lại",
       "memory_tip": "Người dùng công cụ để làm việc.",
-      "adjectives": "使いやすい(つかいやすい):dễ dùng",
-      "vocabulary": "使用(しよう):sử dụng|大使館(たいしかん):đại sứ quán|使い道(つかいみち):cách dùng|使者(ししゃ):sứ giả|天使(てんし):thiên sứ"
+      "vocabulary": "使いやすい(つかいやすい):dễ dùng|使用(しよう):sử dụng|大使館(たいしかん):đại sứ quán|使い道(つかいみち):cách dùng|使者(ししゃ):sứ giả|天使(てんし):thiên sứ"
     },
     {
       "stt": 271,
@@ -4059,10 +3789,9 @@ const kanjiData = [
       "radicals": "女-nữ|台-đài",
       "core_meaning": "bắt đầu",
       "story_image": "Người phụ nữ (女) đứng trên bục (台) bắt đầu buổi lễ.",
-      "logic_development": "女-nữ + 台-đài -> phụ nữ trên bục",
+      "logic_development": "女-nữ + 台-đài → phụ nữ trên bục",
       "memory_tip": "Mọi sự bắt đầu từ người phụ nữ.",
-      "adjectives": "始め(はじめ):bắt đầu",
-      "vocabulary": "開始(かいし):khai mạc|年始(ねんし):đầu năm|始末(しまつ):thu xếp|始発(しはつ):chuyến tàu đầu|原始(げんし):nguyên thủy"
+      "vocabulary": "始め(はじめ):bắt đầu|開始(かいし):khai mạc|年始(ねんし):đầu năm|始末(しまつ):thu xếp|始発(しはつ):chuyến tàu đầu|原始(げんし):nguyên thủy"
     },
     {
       "stt": 272,
@@ -4074,10 +3803,9 @@ const kanjiData = [
       "radicals": "糸-mịch|冬-đông",
       "core_meaning": "kết thúc",
       "story_image": "Dùng sợi chỉ (糸) buộc lại vào mùa đông (冬) để kết thúc.",
-      "logic_development": "糸-mịch + 冬-đông -> buộc chỉ vào mùa đông",
+      "logic_development": "糸-mịch + 冬-đông → buộc chỉ vào mùa đông",
       "memory_tip": "Buộc chỉ lại là xong việc cuối năm.",
-      "adjectives": "終日(しゅうじつ):cả ngày",
-      "vocabulary": "終了(しゅうりょう):kết thúc|最終(さいしゅう):cuối cùng|終点(しゅうてん):trạm cuối|終電(しゅうでん):tàu cuối|終止符(しゅうしふ):dấu chấm hết"
+      "vocabulary": "終日(しゅうじつ):cả ngày|終了(しゅうりょう):kết thúc|最終(さいしゅう):cuối cùng|終点(しゅうてん):trạm cuối|終電(しゅうでん):tàu cuối|終止符(しゅうしふ):dấu chấm hết"
     },
     {
       "stt": 273,
@@ -4089,10 +3817,9 @@ const kanjiData = [
       "radicals": "代-đại|貝-bối",
       "core_meaning": "cho vay",
       "story_image": "Thay mặt (代) đưa tiền (貝) cho người khác vay.",
-      "logic_development": "代-đại + 貝-bối -> thay tiền cho mượn",
+      "logic_development": "代-đại + 貝-bối → thay tiền cho mượn",
       "memory_tip": "Đưa tiền cho người khác thay mình giữ.",
-      "adjectives": "貸し(かし):cho vay",
-      "vocabulary": "貸金(かしきん):tiền cho vay|賃貸(ちんたい):cho thuê|貸し出し(かしだし):cho mượn ra|貸家(かしや):nhà cho thuê|貸し借(かしかり):vay mượn"
+      "vocabulary": "貸し(かし):cho vay|貸金(かしきん):tiền cho vay|賃貸(ちんたい):cho thuê|貸し出し(かしだし):cho mượn ra|貸家(かしや):nhà cho thuê|貸し借(かしかり):vay mượn"
     },
     {
       "stt": 274,
@@ -4104,10 +3831,9 @@ const kanjiData = [
       "radicals": "亻-nhân|昔-tích",
       "core_meaning": "mượn",
       "story_image": "Người (亻) mượn đồ từ ngày xưa (昔).",
-      "logic_development": "亻-nhân + 昔-tích -> người mượn đồ cũ",
+      "logic_development": "亻-nhân + 昔-tích → người mượn đồ cũ",
       "memory_tip": "Người đi mượn lại đồ ngày xưa.",
-      "adjectives": "借り(かり):nợ",
-      "vocabulary": "借金(しゃっきん):tiền nợ|借家(しゃくや):nhà thuê|借用(しゃくよう):mượn dùng|貸借(たいしゃく):cho vay và mượn|借地(しゃくち):đất thuê"
+      "vocabulary": "借り(かり):nợ|借金(しゃっきん):tiền nợ|借家(しゃくや):nhà thuê|借用(しゃくよう):mượn dùng|貸借(たいしゃく):cho vay và mượn|借地(しゃくち):đất thuê"
     },
     {
       "stt": 275,
@@ -4119,10 +3845,9 @@ const kanjiData = [
       "radicals": "辶-sước|反-phản",
       "core_meaning": "trả lại",
       "story_image": "Đi bộ (辶) quay ngược (反) lại để trả đồ.",
-      "logic_development": "辶-sước + 反-phản -> đi ngược lại",
+      "logic_development": "辶-sước + 反-phản → đi ngược lại",
       "memory_tip": "Đi ngược lại con đường để trả đồ.",
-      "adjectives": "返る(かえる):được trả lại",
-      "vocabulary": "返事(へんじ):trả lời|返却(へんきゃく):hoàn trả|返済(へんさい):trả nợ|返信(へんしん):hồi âm|繰り返す(くりかえす):lặp lại"
+      "vocabulary": "返る(かえる):được trả lại|返事(へんじ):trả lời|返却(へんきゃく):hoàn trả|返済(へんさい):trả nợ|返信(へんしん):hồi âm|繰り返す(くりかえす):lặp lại"
     },
     {
       "stt": 276,
@@ -4134,10 +3859,9 @@ const kanjiData = [
       "radicals": "辶-sước|关-quan",
       "core_meaning": "gửi đi",
       "story_image": "Đi bộ (辶) mang theo món quà (关) để gửi đi.",
-      "logic_development": "辶-sước + 关-quan -> đi gửi quà",
+      "logic_development": "辶-sước + 关-quan → đi gửi quà",
       "memory_tip": "Đi ra cổng để tiễn người gửi đồ.",
-      "adjectives": "送り(おくり):gửi",
-      "vocabulary": "送信(そうしん):gửi tin|放送(ほうそう):phát sóng|転送(てんそう):chuyển tiếp|見送る(みおくる):tiễn biệt|送金(そうきん):gửi tiền"
+      "vocabulary": "送り(おくり):gửi|送信(そうしん):gửi tin|放送(ほうそう):phát sóng|転送(てんそう):chuyển tiếp|見送る(みおくる):tiễn biệt|送金(そうきん):gửi tiền"
     },
     {
       "stt": 277,
@@ -4149,10 +3873,9 @@ const kanjiData = [
       "radicals": "糸-mịch|吉-cát",
       "core_meaning": "thắt nút",
       "story_image": "Dùng sợi chỉ (糸) buộc lại điềm lành (吉) để kết duyên.",
-      "logic_development": "糸-mịch + 吉-cát -> buộc chỉ lành",
+      "logic_development": "糸-mịch + 吉-cát → buộc chỉ lành",
       "memory_tip": "Dùng chỉ thắt lại những điều tốt lành.",
-      "adjectives": "結果(けっか):kết quả|結婚(けっこん):kết hôn|結末(けつまつ):kết thúc|結論(けつろん):kết luận|結ぶ(むすぶ):buộc",
-      "vocabulary": ""
+      "vocabulary": "結果(けっか):kết quả|結婚(けっこん):kết hôn|結末(けつまつ):kết thúc|結論(けつろん):kết luận|結ぶ(むすぶ):buộc"
     },
     {
       "stt": 278,
@@ -4164,10 +3887,9 @@ const kanjiData = [
       "radicals": "女-nữ|氏-thị|日-nhật",
       "core_meaning": "kết hôn",
       "story_image": "Người phụ nữ (女) đổi họ (氏) dưới ánh mặt trời (日) khi kết hôn.",
-      "logic_development": "女-nữ + 氏-thị + 日-nhật -> phụ nữ đổi họ dưới nắng",
+      "logic_development": "女-nữ + 氏-thị + 日-nhật → phụ nữ đổi họ dưới nắng",
       "memory_tip": "Người phụ nữ đổi họ vào ngày cưới.",
-      "adjectives": "新婚(しんこん):mới cưới|未婚(みこん):chưa cưới|既婚(きこん):đã cưới|婚約(こんやく):đính hôn|離婚(りこん):ly hôn",
-      "vocabulary": ""
+      "vocabulary": "新婚(しんこん):mới cưới|未婚(みこん):chưa cưới|既婚(きこん):đã cưới|婚約(こんやく):đính hôn|離婚(りこん):ly hôn"
     },
     {
       "stt": 279,
@@ -4179,10 +3901,9 @@ const kanjiData = [
       "radicals": "离-ly|隹-truy",
       "core_meaning": "rời khỏi",
       "story_image": "Con chim (隹) bay rời khỏi (离) tổ.",
-      "logic_development": "离-ly + 隹-truy -> chim bay đi",
+      "logic_development": "离-ly + 隹-truy → chim bay đi",
       "memory_tip": "Chim bay xa rời khỏi tổ ấm.",
-      "adjectives": "離れ(はなれ):cách xa",
-      "vocabulary": "離陸(りりく):cất cánh|分離(ぶんり):phân ly|離婚(りこん):ly hôn|距離(きょり):khoảng cách|離席(りせき):rời ghế"
+      "vocabulary": "離れ(はなれ):cách xa|離陸(りりく):cất cánh|分離(ぶんり):phân ly|離婚(りこん):ly hôn|距離(きょり):khoảng cách|離席(りせき):rời ghế"
     },
     {
       "stt": 280,
@@ -4194,10 +3915,9 @@ const kanjiData = [
       "radicals": "广-nghiễm|廿-nhập|巾-cân",
       "core_meaning": "chỗ ngồi",
       "story_image": "Dưới mái nhà (广) trải khăn (巾) lên hai mươi (廿) chỗ ngồi.",
-      "logic_development": "广-nghiễm + 廿-nhập + 巾-cân -> nhà trải khăn hai mươi chỗ",
+      "logic_development": "广-nghiễm + 廿-nhập + 巾-cân → nhà trải khăn hai mươi chỗ",
       "memory_tip": "Trải khăn ngồi dưới mái hiên rộng.",
-      "adjectives": "座席(ざせき):chỗ ngồi|出席(しゅっせき):có mặt|欠席(けっせき):vắng mặt|空席(くうせき):ghế trống|客席(きゃくせき):ghế khán giả",
-      "vocabulary": ""
+      "vocabulary": "座席(ざせき):chỗ ngồi|出席(しゅっせき):có mặt|欠席(けっせき):vắng mặt|空席(くうせき):ghế trống|客席(きゃくせき):ghế khán giả"
     },
     {
       "stt": 281,
@@ -4209,10 +3929,9 @@ const kanjiData = [
       "radicals": "欠-khiếm",
       "core_meaning": "thiếu",
       "story_image": "Hình ảnh một người đang há miệng ngáp vì thiếu ngủ.",
-      "logic_development": "欠-khiếm -> người há miệng",
+      "logic_development": "欠-khiếm → người há miệng",
       "memory_tip": "Người há miệng vì đang thiếu cái gì đó.",
-      "adjectives": "欠ける(かける):thiếu sót",
-      "vocabulary": "欠席(けっせき):vắng mặt|欠点(けってん):khuyết điểm|欠乏(けつぼう):thiếu thốn|欠数(けっすう):số thiếu|欠礼(けつれい):bất lịch sự"
+      "vocabulary": "欠ける(かける):thiếu sót|欠席(けっせき):vắng mặt|欠点(けってん):khuyết điểm|欠乏(けつぼう):thiếu thốn|欠数(けっすう):số thiếu|欠礼(けつれい):bất lịch sự"
     },
     {
       "stt": 282,
@@ -4224,10 +3943,9 @@ const kanjiData = [
       "radicals": "予-dự",
       "core_meaning": "trước",
       "story_image": "Hình ảnh cái thoi dệt vải được chuẩn bị trước.",
-      "logic_development": "予-dự -> thoi dệt vải",
+      "logic_development": "予-dự → thoi dệt vải",
       "memory_tip": "Chuẩn bị sẵn sàng mọi thứ từ trước.",
-      "adjectives": "予定(よてい):dự định|予約(よやく):đặt trước|予習(よしゅう):chuẩn bị bài|予測(よそく):dự đoán|予報(よほう):dự báo",
-      "vocabulary": ""
+      "vocabulary": "予定(よてい):dự định|予約(よやく):đặt trước|予習(よしゅう):chuẩn bị bài|予測(よそく):dự đoán|予報(よほう):dự báo"
     },
     {
       "stt": 283,
@@ -4239,10 +3957,9 @@ const kanjiData = [
       "radicals": "宀-miên|正-chính",
       "core_meaning": "xác định",
       "story_image": "Dưới mái nhà (宀) mọi việc phải đúng đắn (正) và ổn định.",
-      "logic_development": "宀-miên + 正-chính -> nhà làm điều đúng",
+      "logic_development": "宀-miên + 正-chính → nhà làm điều đúng",
       "memory_tip": "Ở trong nhà thì mọi thứ phải ổn định.",
-      "adjectives": "正しい(ただしい):đúng",
-      "vocabulary": "予定(よてい):dự định|決定(けってい):quyết định|定休日(ていきゅうび):ngày nghỉ cố định|定員(ていいん):sức chứa|定食(ていしょく):suất ăn cố định"
+      "vocabulary": "正しい(ただしい):đúng|予定(よてい):dự định|決定(けってい):quyết định|定休日(ていきゅうび):ngày nghỉ cố định|定員(ていいん):sức chứa|定食(ていしょく):suất ăn cố định"
     },
     {
       "stt": 284,
@@ -4254,10 +3971,9 @@ const kanjiData = [
       "radicals": "工-công|羊-dương|𠂉-phiệt",
       "core_meaning": "khác biệt",
       "story_image": "Người thợ (工) và con cừu (羊) có sự khác biệt rõ rệt.",
-      "logic_development": "工-công + 羊-dương + 𠂉-phiệt -> thợ và cừu khác nhau",
+      "logic_development": "工-công + 羊-dương + 𠂉-phiệt → thợ và cừu khác nhau",
       "memory_tip": "Sự khác biệt giữa sức người và cừu.",
-      "adjectives": "差し引き(さしひき):khấu trừ",
-      "vocabulary": "時差(じさ):múi giờ|交差点(こうさてん):ngã tư|差別(さべつ):phân biệt|格差(かくさ):khoảng cách|誤差(ごさ):sai số"
+      "vocabulary": "差し引き(さしひき):khấu trừ|時差(じさ):múi giờ|交差点(こうさてん):ngã tư|差別(さべつ):phân biệt|格差(かくさ):khoảng cách|誤差(ごさ):sai số"
     },
     {
       "stt": 285,
@@ -4269,10 +3985,9 @@ const kanjiData = [
       "radicals": "弋-dặc|工-công",
       "core_meaning": "hình thức",
       "story_image": "Dùng thước (工) và mũi tên (弋) để làm theo đúng hình thức.",
-      "logic_development": "弋-dặc + 工-công -> mũi tên và thước",
+      "logic_development": "弋-dặc + 工-công → mũi tên và thước",
       "memory_tip": "Làm việc theo đúng quy tắc và thước đo.",
-      "adjectives": "形式(けいしき):hình thức|公式(こうしき):công thức|結婚式(けっこんしき):lễ cưới|方式(ほうしき):phương thức|式典(しきてん):nghi lễ",
-      "vocabulary": ""
+      "vocabulary": "形式(けいしき):hình thức|公式(こうしき):công thức|結婚式(けっこんしき):lễ cưới|方式(ほうしき):phương thức|式典(しきてん):nghi lễ"
     },
     {
       "stt": 286,
@@ -4284,10 +3999,9 @@ const kanjiData = [
       "radicals": "禾-hòa|口-khẩu",
       "core_meaning": "hòa bình",
       "story_image": "Cái miệng (口) được ăn lúa (禾) thì sẽ hòa thuận.",
-      "logic_development": "禾-hòa + 口-khẩu -> miệng ăn lúa",
+      "logic_development": "禾-hòa + 口-khẩu → miệng ăn lúa",
       "memory_tip": "Có cái ăn vào miệng là hòa bình ngay.",
-      "adjectives": "和やか(なごやか):ôn hòa",
-      "vocabulary": "平和(へいわ):hòa bình|和食(わしょく):món Nhật|和服(わふく):Kimono|和室(わしつ):phòng kiểu Nhật|昭和(しょうわ):thời Chiêu Hòa"
+      "vocabulary": "和やか(なごやか):ôn hòa|平和(へいわ):hòa bình|和食(わしょく):món Nhật|和服(わふく):Kimono|和室(わしつ):phòng kiểu Nhật|昭和(しょうわ):thời Chiêu Hòa"
     },
     {
       "stt": 287,
@@ -4299,10 +4013,9 @@ const kanjiData = [
       "radicals": "氵-thủy|舌-thiệt",
       "core_meaning": "hoạt động",
       "story_image": "Dùng nước (氵) tưới lên lưỡi (舌) để duy trì sự sống.",
-      "logic_development": "氵-thủy + 舌-thiệt -> nước trên lưỡi",
+      "logic_development": "氵-thủy + 舌-thiệt → nước trên lưỡi",
       "memory_tip": "Nước trên lưỡi giúp con người hoạt bát.",
-      "adjectives": "活発な(かっぱつな):hoạt bát",
-      "vocabulary": "生活(せいかつ):sinh hoạt|活動(かつどう):hoạt động|活用(かつよう):vận dụng|活字(かつじ):chữ in|活気(かっき):sôi nổi"
+      "vocabulary": "活発な(かっぱつな):hoạt bát|生活(せいかつ):sinh hoạt|活動(かつどう):hoạt động|活用(かつよう):vận dụng|活字(かつじ):chữ in|活気(かっき):sôi nổi"
     },
     {
       "stt": 288,
@@ -4314,10 +4027,9 @@ const kanjiData = [
       "radicals": "三-tam|人-nhân|日-nhật",
       "core_meaning": "mùa xuân",
       "story_image": "Ba (三) người (人) cùng ngắm mặt trời (日) vào mùa xuân.",
-      "logic_development": "三-tam + 人-nhân + 日-nhật -> ba người ngắm nắng",
+      "logic_development": "三-tam + 人-nhân + 日-nhật → ba người ngắm nắng",
       "memory_tip": "Mùa xuân có ba người đi tắm nắng.",
-      "adjectives": "春らしい(はるらしい):như mùa xuân",
-      "vocabulary": "春分(しゅんぶん):xuân phân|青春(せいしゅん):thanh xuân|初春(しょしゅん):đầu xuân|春休み(はるやすみ):nghỉ xuân|売春(ばいしゅん):mại dâm"
+      "vocabulary": "春らしい(はるらしい):như mùa xuân|春分(しゅんぶん):xuân phân|青春(せいしゅん):thanh xuân|初春(しょしゅん):đầu xuân|春休み(はるやすみ):nghỉ xuân|売春(ばいしゅん):mại dâm"
     },
     {
       "stt": 289,
@@ -4329,10 +4041,9 @@ const kanjiData = [
       "radicals": "夏-hạ",
       "core_meaning": "mùa hạ",
       "story_image": "Hình ảnh một người đội mũ đi dạo dưới nắng mùa hè.",
-      "logic_development": "夏-hạ -> người đi nắng",
+      "logic_development": "夏-hạ → người đi nắng",
       "memory_tip": "Mùa hạ nóng nên phải đội mũ đi chậm.",
-      "adjectives": "夏らしい(なつらしい):như mùa hè",
-      "vocabulary": "夏休み(なつやすみ):nghỉ hè|真夏(まなつ):giữa hè|夏季(かき):mùa hè|初夏(しょか):đầu hè|夏至(げし):hạ chí"
+      "vocabulary": "夏らしい(なつらしい):như mùa hè|夏休み(なつやすみ):nghỉ hè|真夏(まなつ):giữa hè|夏季(かき):mùa hè|初夏(しょか):đầu hè|夏至(げし):hạ chí"
     },
     {
       "stt": 290,
@@ -4344,10 +4055,9 @@ const kanjiData = [
       "radicals": "禾-hòa|火-hỏa",
       "core_meaning": "mùa thu",
       "story_image": "Lúa (禾) chín vàng như lửa (火) vào mùa thu.",
-      "logic_development": "禾-hòa + 火-hỏa -> lúa như lửa",
+      "logic_development": "禾-hòa + 火-hỏa → lúa như lửa",
       "memory_tip": "Mùa thu lúa chín vàng rực như lửa.",
-      "adjectives": "秋らしい(あきらしい):như mùa thu",
-      "vocabulary": "秋分(しゅうぶん):thu phân|晩秋(ばんしゅう):cuối thu|秋葉原(あきはばら):Akihabara|秋休み(あきやすみ):nghỉ thu|中秋(ちゅうしゅう):trung thu"
+      "vocabulary": "秋らしい(あきらしい):như mùa thu|秋分(しゅうぶん):thu phân|晩秋(ばんしゅう):cuối thu|秋葉原(あきはばら):Akihabara|秋休み(あきやすみ):nghỉ thu|中秋(ちゅうしゅう):trung thu"
     },
     {
       "stt": 291,
@@ -4359,10 +4069,9 @@ const kanjiData = [
       "radicals": "冬-đông",
       "core_meaning": "mùa đông",
       "story_image": "Hình ảnh những hạt băng rơi vào mùa đông.",
-      "logic_development": "冬-đông -> băng rơi",
+      "logic_development": "冬-đông → băng rơi",
       "memory_tip": "Mùa đông lạnh lẽo có băng rơi.",
-      "adjectives": "冬らしい(ふゆらしい):như mùa đông",
-      "vocabulary": "冬休み(ふゆやすみ):nghỉ đông|初冬(しょとう):đầu đông|冬季(とうき):mùa đông|立冬(りっとう):lập đông|冬眠(とうみん):ngủ đông"
+      "vocabulary": "冬らしい(ふゆらしい):như mùa đông|冬休み(ふゆやすみ):nghỉ đông|初冬(しょとう):đầu đông|冬季(とうき):mùa đông|立冬(りっとう):lập đông|冬眠(とうみん):ngủ đông"
     },
     {
       "stt": 292,
@@ -4374,10 +4083,9 @@ const kanjiData = [
       "radicals": "日-nhật|者-giả",
       "core_meaning": "nóng (thời tiết)",
       "story_image": "Mặt trời (日) chiếu vào người (者) làm cho nóng bức.",
-      "logic_development": "日-nhật + 者-giả -> nắng chiếu vào người",
+      "logic_development": "日-nhật + 者-giả → nắng chiếu vào người",
       "memory_tip": "Nắng chiếu vào người thì thấy nóng.",
-      "adjectives": "暑い(あつい):nóng",
-      "vocabulary": "残暑(ざんしょ):nắng cuối hè|暑中(しょちゅう):giữa hè|猛暑(もうしょ):nóng gay gắt|酷暑(こくしょ):nóng nực|避暑地(ひしょち):nơi tránh nóng"
+      "vocabulary": "暑い(あつい):nóng|残暑(ざんしょ):nắng cuối hè|暑中(しょちゅう):giữa hè|猛暑(もうしょ):nóng gay gắt|酷暑(こくしょ):nóng nực|避暑地(ひしょち):nơi tránh nóng"
     },
     {
       "stt": 293,
@@ -4389,10 +4097,9 @@ const kanjiData = [
       "radicals": "執-chấp|灬-hỏa",
       "core_meaning": "nóng (vật thể)",
       "story_image": "Dùng tay cầm (執) vật đang đốt lửa (灬) nên thấy nhiệt.",
-      "logic_development": "執-chấp + 灬-hỏa -> cầm lửa thấy nóng",
+      "logic_development": "執-chấp + 灬-hỏa → cầm lửa thấy nóng",
       "memory_tip": "Đốt lửa ở dưới thì tỏa ra nhiệt.",
-      "adjectives": "熱い(あつい):nóng|熱心な(ねっしんな):nhiệt tình",
-      "vocabulary": "熱中(ねっちゅう):say mê|加熱(かねつ):gia nhiệt|熱帯(ねったい):nhiệt đới|高熱(こうねつ):sốt cao|情熱(じょうねつ):tâm huyết"
+      "vocabulary": "熱い(あつい):nóng|熱心な(ねっしんな):nhiệt tình|熱中(ねっちゅう):say mê|加熱(かねつ):gia nhiệt|熱帯(ねったい):nhiệt đới|高熱(こうねつ):sốt cao|情熱(じょうねつ):tâm huyết"
     },
     {
       "stt": 294,
@@ -4404,10 +4111,9 @@ const kanjiData = [
       "radicals": "宀-miên|井-tỉnh|ハ-bát",
       "core_meaning": "lạnh (thời tiết)",
       "story_image": "Trong nhà (宀) có đống rơm khô (井) và băng (ハ) nên lạnh.",
-      "logic_development": "宀-miên + 井-tỉnh + ハ-bát -> rơm và băng trong nhà",
+      "logic_development": "宀-miên + 井-tỉnh + ハ-bát → rơm và băng trong nhà",
       "memory_tip": "Trong nhà mà có băng thì rất lạnh.",
-      "adjectives": "寒い(さむい):lạnh",
-      "vocabulary": "寒気(かんき):luồng khí lạnh|寒波(かんぱ):đợt rét|極寒(ごっかん):cực lạnh|寒風(かんぷう):gió lạnh|防寒(ぼうかん):phòng lạnh"
+      "vocabulary": "寒い(さむい):lạnh|寒気(かんき):luồng khí lạnh|寒波(かんぱ):đợt rét|極寒(ごっかん):cực lạnh|寒風(かんぷう):gió lạnh|防寒(ぼうかん):phòng lạnh"
     },
     {
       "stt": 295,
@@ -4419,10 +4125,9 @@ const kanjiData = [
       "radicals": "冫-băng|令-lệnh",
       "core_meaning": "lạnh (vật thể)",
       "story_image": "Nhận lệnh (令) mang băng (冫) đến để làm lạnh.",
-      "logic_development": "冫-băng + 令-lệnh -> lệnh dùng băng",
+      "logic_development": "冫-băng + 令-lệnh → lệnh dùng băng",
       "memory_tip": "Lệnh dùng băng để làm vật lạnh đi.",
-      "adjectives": "冷たい(つめたい):lạnh|冷淡な(れいたんな):lạnh lùng",
-      "vocabulary": "冷蔵庫(れいぞうこ):tủ lạnh|冷凍(れいとう):đông lạnh|冷房(れいぼう):máy lạnh|冷静(れいせい):bình tĩnh|冷水(れいすい):nước lạnh"
+      "vocabulary": "冷たい(つめたい):lạnh|冷淡な(れいたんな):lạnh lùng|冷蔵庫(れいぞうこ):tủ lạnh|冷凍(れいとう):đông lạnh|冷房(れいぼう):máy lạnh|冷静(れいせい):bình tĩnh|冷水(れいすい):nước lạnh"
     },
     {
       "stt": 296,
@@ -4434,10 +4139,9 @@ const kanjiData = [
       "radicals": "日-nhật|爰-viên",
       "core_meaning": "ấm áp (thời tiết)",
       "story_image": "Mặt trời (日) chiếu sáng cho bàn tay (爰) thấy ấm áp.",
-      "logic_development": "日-nhật + 爰-viên -> mặt trời sưởi ấm tay",
+      "logic_development": "日-nhật + 爰-viên → mặt trời sưởi ấm tay",
       "memory_tip": "Có mặt trời chiếu xuống nên ấm áp.",
-      "adjectives": "暖かい(あたたかい):ấm",
-      "vocabulary": "暖房(だんぼう):lò sưởi|温暖(おんだん):ôn hòa|暖冬(だんとう):mùa đông ấm|暖流(だんりゅう):dòng biển ấm|暖色(だんしょく):màu ấm"
+      "vocabulary": "暖かい(あたたかい):ấm|暖房(だんぼう):lò sưởi|温暖(おんだん):ôn hòa|暖冬(だんとう):mùa đông ấm|暖流(だんりゅう):dòng biển ấm|暖色(だんしょく):màu ấm"
     },
     {
       "stt": 297,
@@ -4449,10 +4153,9 @@ const kanjiData = [
       "radicals": "氵-thủy|日-nhật|皿-mãnh",
       "core_meaning": "ấm áp (vật thể)",
       "story_image": "Nước (氵) trong đĩa (皿) được mặt trời (日) làm ôn hòa.",
-      "logic_development": "氵-thủy + 日-nhật +皿-mãnh -> nước trong đĩa dưới nắng",
+      "logic_development": "氵-thủy + 日-nhật +皿-mãnh → nước trong đĩa dưới nắng",
       "memory_tip": "Nước trong đĩa gặp nắng thì ấm.",
-      "adjectives": "温かい(あたたかい):ấm|温厚な(おんこうな):hiền hậu",
-      "vocabulary": "温泉(おんせん):suối nước nóng|温度(おんど):nhiệt độ|体温(たいおん):thân nhiệt|温室(おんしつ):nhà kính|気温(きおん):nhiệt độ khí quyển"
+      "vocabulary": "温かい(あたたかい):ấm|温厚な(おんこうな):hiền hậu|温泉(おんせん):suối nước nóng|温度(おんど):nhiệt độ|体温(たいおん):thân nhiệt|温室(おんしつ):nhà kính|気温(きおん):nhiệt độ khí quyển"
     },
     {
       "stt": 298,
@@ -4464,10 +4167,9 @@ const kanjiData = [
       "radicals": "氵-thủy|京-kinh",
       "core_meaning": "mát mẻ",
       "story_image": "Nước (氵) ở kinh đô (京) mang lại cảm giác mát mẻ.",
-      "logic_development": "氵-thủy + 京-kinh -> nước ở kinh đô",
+      "logic_development": "氵-thủy + 京-kinh → nước ở kinh đô",
       "memory_tip": "Nước chảy qua kinh đô rất mát.",
-      "adjectives": "涼しい(すずしい):mát mẻ",
-      "vocabulary": "涼風(りょうふう):gió mát|夕涼み(ゆうすずみ):hóng mát buổi chiều|清涼(せいりょう):thanh khiết|涼気(りょうき):khí mát|涼む(すずむ):hóng mát"
+      "vocabulary": "涼しい(すずしい):mát mẻ|涼風(りょうふう):gió mát|夕涼み(ゆうすずみ):hóng mát buổi chiều|清涼(せいりょう):thanh khiết|涼気(りょうき):khí mát|涼む(すずむ):hóng mát"
     },
     {
       "stt": 299,
@@ -4479,10 +4181,9 @@ const kanjiData = [
       "radicals": "一-nhất|大-đại",
       "core_meaning": "trời",
       "story_image": "Cái lớn nhất (大) trên cả số một (一) chính là bầu trời.",
-      "logic_development": "一-nhất + 大-đại -> trên cái lớn nhất",
+      "logic_development": "一-nhất + 大-đại → trên cái lớn nhất",
       "memory_tip": "Trên đầu người khổng lồ là bầu trời.",
-      "adjectives": "天気(てんき):thời tiết|天才(てんさい):thiên tài|天皇(てんのう):thiên hoàng|天国(てんごく):thiên đường|天然(てんねん):tự nhiên",
-      "vocabulary": ""
+      "vocabulary": "天気(てんき):thời tiết|天才(てんさい):thiên tài|天皇(てんのう):thiên hoàng|天国(てんごく):thiên đường|天然(てんねん):tự nhiên"
     },
     {
       "stt": 300,
@@ -4494,10 +4195,9 @@ const kanjiData = [
       "radicals": "亻-nhân|士-sĩ",
       "core_meaning": "phục vụ",
       "story_image": "Người (亻) kẻ sĩ (士) làm việc phục vụ công chúng.",
-      "logic_development": "亻-nhân + 士-sĩ -> người kẻ sĩ",
+      "logic_development": "亻-nhân + 士-sĩ → người kẻ sĩ",
       "memory_tip": "Kẻ sĩ là người đi phục vụ.",
-      "adjectives": "仕事(しごと):công việc|仕方(しかた):cách làm|奉仕(ほうし):phụng sự|仕草(しぐさ):điệu bộ|仕送り(しおくり):chu cấp",
-      "vocabulary": ""
+      "vocabulary": "仕事(しごと):công việc|仕方(しかた):cách làm|奉仕(ほうし):phụng sự|仕草(しぐさ):điệu bộ|仕送り(しおくり):chu cấp"
     },
     {
       "stt": 301,
@@ -4509,10 +4209,9 @@ const kanjiData = [
       "radicals": "事-sự",
       "core_meaning": "sự việc",
       "story_image": "Hình ảnh cái gậy và cái miệng đang kể lại một sự việc.",
-      "logic_development": "事-sự -> gậy và miệng",
+      "logic_development": "事-sự → gậy và miệng",
       "memory_tip": "Kể lại các sự việc bằng miệng.",
-      "adjectives": "食事(しょくじ):bữa ăn|大事(だいじ):quan trọng|出来事(できごと):sự kiện|火事(かじ):hỏa hoạn|用事(ようじ):việc bận",
-      "vocabulary": ""
+      "vocabulary": "食事(しょくじ):bữa ăn|大事(だいじ):quan trọng|出来事(できごと):sự kiện|火事(かじ):hỏa hoạn|用事(ようじ):việc bận"
     },
     {
       "stt": 302,
@@ -4524,10 +4223,9 @@ const kanjiData = [
       "radicals": "耂-lão|丂-khảo",
       "core_meaning": "suy nghĩ",
       "story_image": "Người già (耂) chống gậy (丂) đứng suy nghĩ.",
-      "logic_development": "耂-lão + 丂-khảo -> cụ già chống gậy",
+      "logic_development": "耂-lão + 丂-khảo → cụ già chống gậy",
       "memory_tip": "Cụ già chống gậy suy nghĩ về khảo cổ.",
-      "adjectives": "考え(かんがえ):ý kiến",
-      "vocabulary": "思考(しこう):tư duy|考古学(こうこがく):khảo cổ học|考案(こうあん):nghĩ ra|参考(さんこう):tham khảo|選考(せんこう):tuyển chọn"
+      "vocabulary": "考え(かんがえ):ý kiến|思考(しこう):tư duy|考古学(こうこがく):khảo cổ học|考案(こうあん):nghĩ ra|参考(さんこう):tham khảo|選考(せんこう):tuyển chọn"
     },
     {
       "stt": 303,
@@ -4539,10 +4237,9 @@ const kanjiData = [
       "radicals": "辶-sước|軍-quân",
       "core_meaning": "vận chuyển",
       "story_image": "Quân đội (軍) đi bộ (辶) để vận chuyển lương thực.",
-      "logic_development": "辶-sước + 軍-quân -> quân đội đi bộ",
+      "logic_development": "辶-sước + 軍-quân → quân đội đi bộ",
       "memory_tip": "Quân đội di chuyển để vận hành.",
-      "adjectives": "運転(うんてん):lái xe|運動(うんどう):vận động|運命(うんめい):vận mệnh|幸運(こううん):may mắn|運賃(うんちん):cước vận chuyển",
-      "vocabulary": ""
+      "vocabulary": "運転(うんてん):lái xe|運動(うんどう):vận động|運命(うんめい):vận mệnh|幸運(こううん):may mắn|運賃(うんちん):cước vận chuyển"
     },
     {
       "stt": 304,
@@ -4554,10 +4251,9 @@ const kanjiData = [
       "radicals": "車-xa|云-vân",
       "core_meaning": "chuyển động",
       "story_image": "Bánh xe (車) quay theo mây (云) tạo ra sự chuyển động.",
-      "logic_development": "車-xa + 云-vân -> xe và mây",
+      "logic_development": "車-xa + 云-vân → xe và mây",
       "memory_tip": "Bánh xe quay tròn để di chuyển.",
-      "adjectives": "自転車(じてんしゃ):xe đạp|回転(かいてん):xoay vòng|運転手(うんてんしゅ):tài xế|転職(てんしょく):đổi việc|転校(てんこう):chuyển trường",
-      "vocabulary": ""
+      "vocabulary": "自転車(じてんしゃ):xe đạp|回転(かいてん):xoay vòng|運転手(うんてんしゅ):tài xế|転職(てんしょく):đổi việc|転校(てんこう):chuyển trường"
     },
     {
       "stt": 305,
@@ -4569,10 +4265,9 @@ const kanjiData = [
       "radicals": "辶-sước|巽-tốn",
       "core_meaning": "lựa chọn",
       "story_image": "Đi bộ (辶) để tìm kiếm và lựa chọn vật đặt trên kệ (巽).",
-      "logic_development": "辶-sước + 巽-tốn -> đi tìm vật trên kệ",
+      "logic_development": "辶-sước + 巽-tốn → đi tìm vật trên kệ",
       "memory_tip": "Đi tìm món đồ ưng ý để tuyển chọn.",
-      "adjectives": "選手(せんしゅ):tuyển thủ|選挙(せんきょ):bầu cử|選択(せんたく):lựa chọn|選考(せんこう):tuyển chọn|選ぶ(えらぶ):chọn",
-      "vocabulary": ""
+      "vocabulary": "選手(せんしゅ):tuyển thủ|選挙(せんきょ):bầu cử|選択(せんたく):lựa chọn|選考(せんこう):tuyển chọn|選ぶ(えらぶ):chọn"
     },
     {
       "stt": 306,
@@ -4584,10 +4279,9 @@ const kanjiData = [
       "radicals": "酉-dậu|己-kỷ",
       "core_meaning": "phân phát",
       "story_image": "Tự mình (己) mang bình rượu (酉) đi phân phát cho mọi người.",
-      "logic_development": "酉-dậu + 己-kỷ -> bình rượu và mình",
+      "logic_development": "酉-dậu + 己-kỷ → bình rượu và mình",
       "memory_tip": "Tự mình đi chia rượu cho mọi người.",
-      "adjectives": "配達(はいたつ):giao hàng|心配(しんぱい):lo lắng|配置(はいち):bố trí|支配(しはい):chi phối|配分(はいぶん):phân bổ",
-      "vocabulary": ""
+      "vocabulary": "配達(はいたつ):giao hàng|心配(しんぱい):lo lắng|配置(はいち):bố trí|支配(しはい):chi phối|配分(はいぶん):phân bổ"
     },
     {
       "stt": 307,
@@ -4599,10 +4293,9 @@ const kanjiData = [
       "radicals": "言-ngôn|義-nghĩa",
       "core_meaning": "nghị luận",
       "story_image": "Dùng lời nói (言) để bàn bạc về đạo nghĩa (義).",
-      "logic_development": "言-ngôn + 義-nghĩa -> nói về đạo nghĩa",
+      "logic_development": "言-ngôn + 義-nghĩa → nói về đạo nghĩa",
       "memory_tip": "Dùng lời nói để thảo luận chính nghĩa.",
-      "adjectives": "会議(かいぎ):hội nghị|不思議(ふしぎ):kỳ lạ|議員(ぎいん):nghị viên|議論(ぎろん):thảo luận|議題(ぎだい):đề tài thảo luận",
-      "vocabulary": ""
+      "vocabulary": "会議(かいぎ):hội nghị|不思議(ふしぎ):kỳ lạ|議員(ぎいん):nghị viên|議論(ぎろん):thảo luận|議題(ぎだい):đề tài thảo luận"
     },
     {
       "stt": 308,
@@ -4614,10 +4307,9 @@ const kanjiData = [
       "radicals": "口-khẩu|貝-bối",
       "core_meaning": "nhân viên",
       "story_image": "Cái miệng (口) ăn lương bằng vỏ sò (貝) là nhân viên.",
-      "logic_development": "口-khẩu + 貝-bối -> miệng và tiền",
+      "logic_development": "口-khẩu + 貝-bối → miệng và tiền",
       "memory_tip": "Người có tên trong danh sách nhận tiền.",
-      "adjectives": "全員(ぜんいん):tất cả mọi người|店員(てんいん):nhân viên cửa hàng|社員(しゃいん):nhân viên công ty|銀行員(ぎんこういん):nhân viên ngân hàng|会員(かいいん):hội viên",
-      "vocabulary": ""
+      "vocabulary": "全員(ぜんいん):tất cả mọi người|店員(てんいん):nhân viên cửa hàng|社員(しゃいん):nhân viên công ty|銀行員(ぎんこういん):nhân viên ngân hàng|会員(かいいん):hội viên"
     },
     {
       "stt": 309,
@@ -4629,10 +4321,9 @@ const kanjiData = [
       "radicals": "业-nghiệp",
       "core_meaning": "nghề nghiệp",
       "story_image": "Hình ảnh cái giá treo chuông thể hiện công việc của thợ đúc.",
-      "logic_development": "业-nghiệp -> giá treo chuông",
+      "logic_development": "业-nghiệp → giá treo chuông",
       "memory_tip": "Nghiệp là công việc tạo ra giá trị.",
-      "adjectives": "工業(こうぎょう):công nghiệp|卒業(そつぎょう):tốt nghiệp|授業(じゅぎょう):tiết học|残業(ざんぎょう):làm thêm|作業(さぎょう):thao tác",
-      "vocabulary": ""
+      "vocabulary": "工業(こうぎょう):công nghiệp|卒業(そつぎょう):tốt nghiệp|授業(じゅぎょう):tiết học|残業(ざんぎょう):làm thêm|作業(さぎょう):thao tác"
     },
     {
       "stt": 310,
@@ -4644,10 +4335,9 @@ const kanjiData = [
       "radicals": "艹-thảo|采-thải",
       "core_meaning": "rau",
       "story_image": "Cây cỏ (艹) được hái (采) về làm rau ăn.",
-      "logic_development": "艹-thảo + 采-thải -> cỏ hái về",
+      "logic_development": "艹-thảo + 采-thải → cỏ hái về",
       "memory_tip": "Hái cỏ về làm món rau thái.",
-      "adjectives": "野菜(やさい):rau|白菜(はくさい):cải thảo|菜園(さいえん):vườn rau|惣菜(そうざい):món ăn kèm|生野菜(なまやさい):rau sống",
-      "vocabulary": ""
+      "vocabulary": "野菜(やさい):rau|白菜(はくさい):cải thảo|菜園(さいえん):vườn rau|惣菜(そうざい):món ăn kèm|生野菜(なまやさい):rau sống"
     },
     {
       "stt": 311,
@@ -4659,10 +4349,9 @@ const kanjiData = [
       "radicals": "曲-khúc|辰-thần",
       "core_meaning": "nông nghiệp",
       "story_image": "Dùng công cụ cong (曲) làm việc theo giờ giấc (辰) để làm nông.",
-      "logic_development": "曲-khúc + 辰-thần -> dùng công cụ theo giờ",
+      "logic_development": "曲-khúc + 辰-thần → dùng công cụ theo giờ",
       "memory_tip": "Làm nông cần uốn lưng theo thời gian.",
-      "adjectives": "農業(のうぎょう):nông nghiệp|農家(のうか):nhà nông|農村(のうそん):nông thôn|農薬(のうやく):thuốc trừ sâu|農場(のうじょう):nông trường",
-      "vocabulary": ""
+      "vocabulary": "農業(のうぎょう):nông nghiệp|農家(のうか):nhà nông|農村(のうそん):nông thôn|農薬(のうやく):thuốc trừ sâu|農場(のうじょう):nông trường"
     },
     {
       "stt": 312,
@@ -4674,10 +4363,9 @@ const kanjiData = [
       "radicals": "良-lương",
       "core_meaning": "tốt lành",
       "story_image": "Hình ảnh cái phễu lọc lấy những hạt gạo tốt nhất.",
-      "logic_development": "良-lương -> phễu lọc gạo",
+      "logic_development": "良-lương → phễu lọc gạo",
       "memory_tip": "Người lương thiện như hạt gạo đã lọc sạch.",
-      "adjectives": "良い(よい):tốt",
-      "vocabulary": "良心(りょうしん):lương tâm|良好(りょうこう):tốt đẹp|良質(りょうしつ):chất lượng tốt|最良(さいりょう):tốt nhất|改良(かいりょう):cải thiện"
+      "vocabulary": "良い(よい):tốt|良心(りょうしん):lương tâm|良好(りょうこう):tốt đẹp|良質(りょうしつ):chất lượng tốt|最良(さいりょう):tốt nhất|改良(かいりょう):cải thiện"
     },
     {
       "stt": 313,
@@ -4689,10 +4377,9 @@ const kanjiData = [
       "radicals": "亜-á|心-tâm",
       "core_meaning": "xấu ác",
       "story_image": "Trái tim (心) xếp sau (亜) điều tốt là trái tim xấu.",
-      "logic_development": "亜-á + 心-tâm -> tim hạng hai",
+      "logic_development": "亜-á + 心-tâm → tim hạng hai",
       "memory_tip": "Trái tim hạng hai là trái tim ác.",
-      "adjectives": "悪い(わるい):xấu",
-      "vocabulary": "悪魔(あくま):ác quỷ|最悪(さいあく):tệ nhất|悪気(わるぎ):ác ý|悪口(わるぐち):nói xấu|改悪(かいあく):làm tệ đi"
+      "vocabulary": "悪い(わるい):xấu|悪魔(あくま):ác quỷ|最悪(さいあく):tệ nhất|悪気(わるぎ):ác ý|悪口(わるぐち):nói xấu|改悪(かいあく):làm tệ đi"
     },
     {
       "stt": 314,
@@ -4704,10 +4391,9 @@ const kanjiData = [
       "radicals": "占-chiêm|灬-hỏa",
       "core_meaning": "điểm số",
       "story_image": "Chiếm (占) lấy những đốm lửa (灬) để ghi điểm.",
-      "logic_development": "占-chiêm + 灬-hỏa -> chiếm lấy lửa",
+      "logic_development": "占-chiêm + 灬-hỏa → chiếm lấy lửa",
       "memory_tip": "Dùng lửa để đánh dấu từng điểm.",
-      "adjectives": "欠点(けってん):khuyết điểm|弱点(じゃくてん):điểm yếu|終点(しゅうてん):điểm cuối|点数(てんすう):điểm số|百点(ひゃくてん):100 điểm",
-      "vocabulary": ""
+      "vocabulary": "欠点(けってん):khuyết điểm|弱点(じゃくてん):điểm yếu|終点(しゅうてん):điểm cuối|点数(てんすう):điểm số|百点(ひゃくてん):100 điểm"
     },
     {
       "stt": 315,
@@ -4719,10 +4405,9 @@ const kanjiData = [
       "radicals": "一-nhất|止-chỉ",
       "core_meaning": "đúng đắn",
       "story_image": "Dừng lại (止) ở vạch số một (一) để giữ sự chính trực.",
-      "logic_development": "一-nhất + 止-chỉ -> dừng ở vạch đầu",
+      "logic_development": "一-nhất + 止-chỉ → dừng ở vạch đầu",
       "memory_tip": "Dừng lại đúng chỗ là chính xác.",
-      "adjectives": "正しい(ただしい):đúng",
-      "vocabulary": "正解(せいかい):đáp án đúng|正月(しょうがつ):tết|正直(しょうじき):thành thật|正常(せいじょう):bình thường|大正(たいしょう):thời Đại Chính"
+      "vocabulary": "正しい(ただしい):đúng|正解(せいかい):đáp án đúng|正月(しょうがつ):tết|正直(しょうじき):thành thật|正常(せいじょう):bình thường|大正(たいしょう):thời Đại Chính"
     },
     {
       "stt": 316,
@@ -4734,10 +4419,9 @@ const kanjiData = [
       "radicals": "辶-sước|韋-vi",
       "core_meaning": "sai khác",
       "story_image": "Đi (辶) bao quanh (韋) một vòng thấy sự sai khác.",
-      "logic_development": "辶-sước + 韋-vi -> đi bao quanh",
+      "logic_development": "辶-sước + 韋-vi → đi bao quanh",
       "memory_tip": "Đi quanh một vòng thấy có gì đó sai sai.",
-      "adjectives": "違い(ちがい):sự khác biệt",
-      "vocabulary": "間違い(まちがい):sai lầm|違反(いはん):vi phạm|違和感(いわかん):cảm giác lạ|違法(いほう):phạm pháp|相違(そうい):tương phản"
+      "vocabulary": "違い(ちがい):sự khác biệt|間違い(まちがい):sai lầm|違反(いはん):vi phạm|違和感(いわかん):cảm giác lạ|違法(いほう):phạm pháp|相違(そうい):tương phản"
     },
     {
       "stt": 317,
@@ -4749,10 +4433,9 @@ const kanjiData = [
       "radicals": "冂-quynh|一-nhất|口-khẩu",
       "core_meaning": "giống nhau",
       "story_image": "Mọi người trong vùng (冂) cùng một (一) miệng (口) nói giống nhau.",
-      "logic_development": "冂-quynh + 一-nhất + 口-khẩu -> chung một miệng",
+      "logic_development": "冂-quynh + 一-nhất + 口-khẩu → chung một miệng",
       "memory_tip": "Mọi người cùng một lời nói giống nhau.",
-      "adjectives": "同じ(おなじ):giống",
-      "vocabulary": "同意(どうい):đồng ý|同時(どうじ):đồng thời|同僚(どうりょう):đồng nghiệp|共同(きょうどう):cộng đồng|同感(どうかん):đồng cảm"
+      "vocabulary": "同じ(おなじ):giống|同意(どうい):đồng ý|同時(どうじ):đồng thời|同僚(どうりょう):đồng nghiệp|共同(きょうどう):cộng đồng|同感(どうかん):đồng cảm"
     },
     {
       "stt": 318,
@@ -4764,10 +4447,9 @@ const kanjiData = [
       "radicals": "辶-sước|啇-đích",
       "core_meaning": "thích hợp",
       "story_image": "Đi (辶) đến đúng gốc rễ (啇) là điều thích hợp.",
-      "logic_development": "辶-sước + 啇-đích -> đi đến gốc",
+      "logic_development": "辶-sước + 啇-đích → đi đến gốc",
       "memory_tip": "Đi đúng đích là rất thích hợp.",
-      "adjectives": "適した(てきした):phù hợp",
-      "vocabulary": "適切(てきせつ):thích đáng|適当(てきとう):tùy tiện|適応(てきおう):thích nghi|適度(てきど):vừa phải|快適(かいたい):thoải mái"
+      "vocabulary": "適した(てきした):phù hợp|適切(てきせつ):thích đáng|適当(てきとう):tùy tiện|適応(てきおう):thích nghi|適度(てきど):vừa phải|快適(かいたい):thoải mái"
     },
     {
       "stt": 319,
@@ -4779,10 +4461,9 @@ const kanjiData = [
       "radicals": "当-đương",
       "core_meaning": "trúng",
       "story_image": "Hình ảnh cái nhà và cái ruộng thể hiện sự đảm đương.",
-      "logic_development": "当-đương -> nhà và ruộng",
+      "logic_development": "当-đương → nhà và ruộng",
       "memory_tip": "Đứng ra đảm đương công việc sẽ trúng lớn.",
-      "adjectives": "適当な(てきとうな):phù hợp",
-      "vocabulary": "当然(とうぜん):đương nhiên|弁当(べんとう):cơm hộp|本当(ほんとう):thật sự|当選(とうせん):trúng cử|当代(とうだい):thời nay"
+      "vocabulary": "適当な(てきとうな):phù hợp|当然(とうぜん):đương nhiên|弁当(べんとう):cơm hộp|本当(ほんとう):thật sự|当選(とうせん):trúng cử|当代(とうだい):thời nay"
     },
     {
       "stt": 320,
@@ -4794,10 +4475,9 @@ const kanjiData = [
       "radicals": "𦰩-nan|隹-truy",
       "core_meaning": "khó khăn",
       "story_image": "Con chim (隹) gặp lửa (𦰩) thì thật là gian nan.",
-      "logic_development": "𦰩-nan + 隹-truy -> chim gặp lửa",
+      "logic_development": "𦰩-nan + 隹-truy → chim gặp lửa",
       "memory_tip": "Con chim gặp hạn thì rất khó khăn.",
-      "adjectives": "難しい(むずかしい):khó",
-      "vocabulary": "困難(こんなん):khó khăn|難問(なんもん):câu hỏi khó|避難(ひなん):lánh nạn|難病(なんびょう):bệnh nan y|有難う(ありがとう):cảm ơn"
+      "vocabulary": "難しい(むずかしい):khó|困難(こんなん):khó khăn|難問(なんもん):câu hỏi khó|避難(ひなん):lánh nạn|難病(なんびょう):bệnh nan y|有難う(ありがとう):cảm ơn"
     },
     {
       "stt": 321,
@@ -4809,10 +4489,9 @@ const kanjiData = [
       "radicals": "冫-băng|欠-khiếm",
       "core_meaning": "tiếp theo",
       "story_image": "Người thiếu (欠) đá lạnh (冫) là người đứng thứ hai.",
-      "logic_development": "冫-băng + 欠-khiếm -> thiếu băng",
+      "logic_development": "冫-băng + 欠-khiếm → thiếu băng",
       "memory_tip": "Thiếu một chút nữa là đến lượt tiếp theo.",
-      "adjectives": "次(つぎ):tiếp theo",
-      "vocabulary": "次回(じかい):lần tới|目次(もくじ):mục lục|次第(しだい):dần dần|次元(じげん):chiều không gian|次女(じじょ):con gái thứ hai"
+      "vocabulary": "次(つぎ):tiếp theo|次回(じかい):lần tới|目次(もくじ):mục lục|次第(しだい):dần dần|次元(じげん):chiều không gian|次女(じじょ):con gái thứ hai"
     },
     {
       "stt": 322,
@@ -4824,10 +4503,9 @@ const kanjiData = [
       "radicals": "开-nghiên|彡-sam",
       "core_meaning": "hình dáng",
       "story_image": "Dùng bút vẽ (彡) khung (开) tạo nên hình dáng.",
-      "logic_development": "开-nghiên + 彡-sam -> vẽ khung",
+      "logic_development": "开-nghiên + 彡-sam → vẽ khung",
       "memory_tip": "Dùng nét vẽ tạo ra hình dạng.",
-      "adjectives": "形(かたち):hình dáng",
-      "vocabulary": "形式(けいしき):hình thức|三角形(さんかっけい):tam giác|人形(にんぎょう):búp bê|地形(ちけい):địa hình|形見(かたみ):kỷ vật"
+      "vocabulary": "形(かたち):hình dáng|形式(けいしき):hình thức|三角形(さんかっけい):tam giác|人形(にんぎょう):búp bê|地形(ちけい):địa hình|形見(かたみ):kỷ vật"
     },
     {
       "stt": 323,
@@ -4839,10 +4517,9 @@ const kanjiData = [
       "radicals": "口-khẩu|未-vị",
       "core_meaning": "hương vị",
       "story_image": "Miệng (口) nếm cành cây chưa (未) ra quả để thử vị.",
-      "logic_development": "口-khẩu + 未-vị -> miệng nếm cây non",
+      "logic_development": "口-khẩu + 未-vị → miệng nếm cây non",
       "memory_tip": "Dùng miệng nếm cái chưa biết để xem vị gì.",
-      "adjectives": "意味(いみ):ý nghĩa|趣味(しゅみ):sở thích|興味(きょうみ):hứng thú|地味(じみ):giản dị|調味料(ちょうみりょう):gia vị",
-      "vocabulary": ""
+      "vocabulary": "意味(いみ):ý nghĩa|趣味(しゅみ):sở thích|興味(きょうみ):hứng thú|地味(じみ):giản dị|調味料(ちょうみりょう):gia vị"
     },
     {
       "stt": 324,
@@ -4854,10 +4531,9 @@ const kanjiData = [
       "radicals": "言-ngôn|式-thức",
       "core_meaning": "thử nghiệm",
       "story_image": "Dùng lời nói (言) theo đúng nghi thức (式) để thi cử.",
-      "logic_development": "言-ngôn + 式-thức -> nói theo quy tắc",
+      "logic_development": "言-ngôn + 式-thức → nói theo quy tắc",
       "memory_tip": "Dùng lời nói để thử nghiệm quy tắc.",
-      "adjectives": "試合(しあい):trận đấu|試験(しけん):kỳ thi|試作(しさく):làm thử|試食(ししょく):ăn thử|試練(しれん):thử thách",
-      "vocabulary": ""
+      "vocabulary": "試合(しあい):trận đấu|試験(しけん):kỳ thi|試作(しさく):làm thử|試食(ししょく):ăn thử|試練(しれん):thử thách"
     },
     {
       "stt": 325,
@@ -4869,10 +4545,9 @@ const kanjiData = [
       "radicals": "馬-mã|僉-thiêm",
       "core_meaning": "trải nghiệm",
       "story_image": "Dùng ngựa (馬) để mọi người (僉) cùng kiểm nghiệm sức mạnh.",
-      "logic_development": "馬-mã + 僉-thiêm -> cưỡi ngựa kiểm tra",
+      "logic_development": "馬-mã + 僉-thiêm → cưỡi ngựa kiểm tra",
       "memory_tip": "Cưỡi ngựa để trải nghiệm thực tế.",
-      "adjectives": "試験(しけん):kỳ thi|体験(たいけん):trải nghiệm|経験(けいけん):kinh nghiệm|受験(じゅけん):đi thi|実験(じっけん):thí nghiệm",
-      "vocabulary": ""
+      "vocabulary": "試験(しけん):kỳ thi|体験(たいけん):trải nghiệm|経験(けいけん):kinh nghiệm|受験(じゅけん):đi thi|実験(じっけん):thí nghiệm"
     },
     {
       "stt": 326,
@@ -4884,10 +4559,9 @@ const kanjiData = [
       "radicals": "面-diện",
       "core_meaning": "bề mặt",
       "story_image": "Hình ảnh khuôn mặt với đôi mắt và cái mũi.",
-      "logic_development": "面-diện -> khuôn mặt",
+      "logic_development": "面-diện → khuôn mặt",
       "memory_tip": "Nhìn thẳng vào diện mạo của ai đó.",
-      "adjectives": "面白い(おもしろい):thú vị",
-      "vocabulary": "表面(ひょうめん):bề mặt|画面(がめん):màn hình|方面(ほうめん):phương diện|面接(めんせつ):phỏng vấn|真面目(まじめ):chăm chỉ"
+      "vocabulary": "面白い(おもしろい):thú vị|表面(ひょうめん):bề mặt|画面(がめん):màn hình|方面(ほうめん):phương diện|面接(めんせつ):phỏng vấn|真面目(まじめ):chăm chỉ"
     },
     {
       "stt": 327,
@@ -4899,10 +4573,9 @@ const kanjiData = [
       "radicals": "扌-thủ|立-lập|女-nữ",
       "core_meaning": "tiếp xúc",
       "story_image": "Dùng tay (扌) dựng đứng (立) người phụ nữ (女) dậy để tiếp đón.",
-      "logic_development": "扌-thủ + 立-lập + 女-nữ -> tay dựng người phụ nữ",
+      "logic_development": "扌-thủ + 立-lập + 女-nữ → tay dựng người phụ nữ",
       "memory_tip": "Dùng tay tiếp đón người đang đứng.",
-      "adjectives": "直接(ちょくせつ):trực tiếp|面接(めんせつ):phỏng vấn|接近(せっきん):tiếp cận|接続(せつぞく):kết nối|応接(おうせつ):tiếp đãi",
-      "vocabulary": ""
+      "vocabulary": "直接(ちょくせつ):trực tiếp|面接(めんせつ):phỏng vấn|接近(せっきん):tiếp cận|接続(せつぞく):kết nối|応接(おうせつ):tiếp đãi"
     },
     {
       "stt": 328,
@@ -4914,10 +4587,9 @@ const kanjiData = [
       "radicals": "言-ngôn|兌-đoái",
       "core_meaning": "thuyết minh",
       "story_image": "Dùng lời nói (言) vui vẻ (兌) để giải thích thuyết phục.",
-      "logic_development": "言-ngôn + 兌-đoái -> nói năng vui vẻ",
+      "logic_development": "言-ngôn + 兌-đoái → nói năng vui vẻ",
       "memory_tip": "Dùng lời nói để thuyết giáo.",
-      "adjectives": "説明(せつめい):giải thích|小説(しょうせつ):tiểu thuyết|伝説(でんせつ):truyền thuyết|説教(せっきょう):dạy bảo|仮説(かせつ):giả thuyết",
-      "vocabulary": ""
+      "vocabulary": "説明(せつめい):giải thích|小説(しょうせつ):tiểu thuyết|伝説(でんせつ):truyền thuyết|説教(せっきょう):dạy bảo|仮説(かせつ):giả thuyết"
     },
     {
       "stt": 329,
@@ -4929,10 +4601,9 @@ const kanjiData = [
       "radicals": "田-điền|木-mộc",
       "core_meaning": "kết quả",
       "story_image": "Trên cây (木) mọc ra trái như thửa ruộng (田) là thành quả.",
-      "logic_development": "田-điền + 木-mộc -> ruộng trên cây",
+      "logic_development": "田-điền + 木-mộc → ruộng trên cây",
       "memory_tip": "Cây ra quả là kết quả của việc trồng trọt.",
-      "adjectives": "果物(くだもの):trái cây|結果(けっか):kết quả|効果(こうか):hiệu quả|成果(せいか):thành quả|果実(かじつ):hoa quả",
-      "vocabulary": ""
+      "vocabulary": "果物(くだもの):trái cây|結果(けっか):kết quả|効果(こうか):hiệu quả|成果(せいか):thành quả|果実(かじつ):hoa quả"
     },
     {
       "stt": 330,
@@ -4944,10 +4615,9 @@ const kanjiData = [
       "radicals": "口-khẩu|合-hợp",
       "core_meaning": "phù hợp",
       "story_image": "Ba cái miệng (口) cùng chụm lại thành một là hòa hợp.",
-      "logic_development": "合-hợp -> nắp và hộp",
+      "logic_development": "合-hợp → nắp và hộp",
       "memory_tip": "Nắp và hộp khớp với nhau là hợp.",
-      "adjectives": "間に合う(まにあう):kịp thời",
-      "vocabulary": "場合(ばあい):trường hợp|具合(ぐあい):tình trạng|合格(ごうかく):đỗ|合計(ごうけい):tổng cộng|試合(しあい):trận đấu"
+      "vocabulary": "間に合う(まにあう):kịp thời|場合(ばあい):trường hợp|具合(ぐあい):tình trạng|合格(ごうかく):đỗ|合計(ごうけい):tổng cộng|試合(しあい):trận đấu"
     },
     {
       "stt": 331,
@@ -4959,10 +4629,9 @@ const kanjiData = [
       "radicals": "木-mộc|各-các",
       "core_meaning": "tư cách",
       "story_image": "Dùng gỗ (木) làm khung cho mỗi (各) cái cây theo phong cách.",
-      "logic_development": "木-mộc + 各-các -> cây của mỗi người",
+      "logic_development": "木-mộc + 各-các → cây của mỗi người",
       "memory_tip": "Mỗi cái cây đều có quy cách riêng.",
-      "adjectives": "合格(ごうかく):đỗ|資格(しかく):tư cách|性格(せいかく):tính cách|価格(かかく):giá cả|本格的(ほんかくてき):đích thực",
-      "vocabulary": ""
+      "vocabulary": "合格(ごうかく):đỗ|資格(しかく):tư cách|性格(せいかく):tính cách|価格(かかく):giá cả|本格的(ほんかくてき):đích thực"
     },
     {
       "stt": 332,
@@ -4974,10 +4643,9 @@ const kanjiData = [
       "radicals": "受-thụ",
       "core_meaning": "nhận lấy",
       "story_image": "Hình ảnh hai bàn tay đang đưa và nhận một vật.",
-      "logic_development": "受-thụ -> tay đưa tay nhận",
+      "logic_development": "受-thụ → tay đưa tay nhận",
       "memory_tip": "Mở lòng để đón nhận lấy cái mới.",
-      "adjectives": "受ける(うける):nhận",
-      "vocabulary": "受験(じゅけん):đi thi|受付(うけつけ):lễ tân|受話器(じゅわき):ống nghe|授受(じゅじゅ):cho và nhận|享受(きょうじゅ):hưởng thụ"
+      "vocabulary": "受ける(うける):nhận|受験(じゅけん):đi thi|受付(うけつけ):lễ tân|受話器(じゅわき):ống nghe|授受(じゅじゅ):cho và nhận|享受(きょうじゅ):hưởng thụ"
     },
     {
       "stt": 333,
@@ -4989,10 +4657,9 @@ const kanjiData = [
       "radicals": "艹-thảo|氵-thủy|各-các",
       "core_meaning": "rơi xuống",
       "story_image": "Cỏ (艹) và nước (氵) của mỗi người (各) đều rơi xuống đất.",
-      "logic_development": "艹-thảo + 氵-thủy + 各-các -> cỏ nước của mỗi người",
+      "logic_development": "艹-thảo + 氵-thủy + 各-các → cỏ nước của mỗi người",
       "memory_tip": "Lá rụng về cội nên rơi xuống.",
-      "adjectives": "落ち着く(おちつく):bình tĩnh",
-      "vocabulary": "落第(らくだい):trượt|落とし物(おとしもの):đồ đánh rơi|墜落(ついらく):rơi máy bay|下落(げらく):giảm giá|集落(しゅうらく):bản làng"
+      "vocabulary": "落ち着く(おちつく):bình tĩnh|落第(らくだい):trượt|落とし物(おとしもの):đồ đánh rơi|墜落(ついらく):rơi máy bay|下落(げらく):giảm giá|集落(しゅうらく):bản làng"
     },
     {
       "stt": 334,
@@ -5004,10 +4671,9 @@ const kanjiData = [
       "radicals": "歹-ngạt|戔-tàn",
       "core_meaning": "còn lại",
       "story_image": "Xương (歹) còn sót lại sau khi dùng dao (戔) tàn phá.",
-      "logic_development": "歹-ngạt + 戔-tàn -> xương bị tàn phá",
+      "logic_development": "歹-ngạt + 戔-tàn → xương bị tàn phá",
       "memory_tip": "Sau cuộc tàn sát chỉ còn lại xương.",
-      "adjectives": "残念な(ざんねんな):đáng tiếc",
-      "vocabulary": "残業(ざんぎょう):làm thêm|残高(ざんだか):số dư|残り物(のこりもの):đồ thừa|残暑(ざんしょ):nắng cuối hè|生存(せいぞん):sinh tồn"
+      "vocabulary": "残念な(ざんねんな):đáng tiếc|残業(ざんぎょう):làm thêm|残高(ざんだか):số dư|残り物(のこりもの):đồ thừa|残暑(ざんしょ):nắng cuối hè|生存(せいぞん):sinh tồn"
     },
     {
       "stt": 335,
@@ -5019,10 +4685,9 @@ const kanjiData = [
       "radicals": "今-kim|心-tâm",
       "core_meaning": "ý niệm",
       "story_image": "Trong tâm (心) luôn nghĩ về chuyện của bây giờ (今).",
-      "logic_development": "今-kim + 心-tâm -> tim của hiện tại",
+      "logic_development": "今-kim + 心-tâm → tim của hiện tại",
       "memory_tip": "Trái tim luôn ghi nhớ điều hiện tại.",
-      "adjectives": "残念(ざんねん):đáng tiếc|記念(きねん):kỷ niệm|信念(しんねん):niềm tin|専念(せんねん):chuyên tâm|念願(ねんがん):nguyện vọng",
-      "vocabulary": ""
+      "vocabulary": "残念(ざんねん):đáng tiếc|記念(きねん):kỷ niệm|信念(しんねん):niềm tin|専念(せんねん):chuyên tâm|念願(ねんがん):nguyện vọng"
     },
     {
       "stt": 336,
@@ -5034,10 +4699,9 @@ const kanjiData = [
       "radicals": "扌-thủ|旨-chỉ",
       "core_meaning": "ngón tay",
       "story_image": "Dùng tay (扌) chỉ vào điều cốt yếu (旨).",
-      "logic_development": "扌-thủ + 旨-chỉ -> tay chỉ ý chính",
+      "logic_development": "扌-thủ + 旨-chỉ → tay chỉ ý chính",
       "memory_tip": "Dùng ngón tay để chỉ dẫn.",
-      "adjectives": "指(ゆび):ngón tay",
-      "vocabulary": "指定(してい):chỉ định|指示(しじ):chỉ thị|指輪(ゆびわ):nhẫn|目指す(めざす):hướng tới|指導(しどう):hướng dẫn"
+      "vocabulary": "指(ゆび):ngón tay|指定(してい):chỉ định|指示(しじ):chỉ thị|指輪(ゆびわ):nhẫn|目指す(めざす):hướng tới|指導(しどう):hướng dẫn"
     },
     {
       "stt": 337,
@@ -5049,10 +4713,9 @@ const kanjiData = [
       "radicals": "扌-thủ|斤-cân",
       "core_meaning": "bẻ gãy",
       "story_image": "Dùng tay (扌) cầm rìu (斤) bẻ gãy cành cây.",
-      "logic_development": "扌-thủ + 斤-cân -> tay cầm rìu",
+      "logic_development": "扌-thủ + 斤-cân → tay cầm rìu",
       "memory_tip": "Dùng sức tay để bẻ gãy.",
-      "adjectives": "折り紙(おりがみ):nghệ thuật xếp giấy|骨折(こっせつ):gãy xương|右折(うせつ):rẽ phải|左折(させつ):rẽ trái|挫折(ざせつ):nản lòng",
-      "vocabulary": ""
+      "vocabulary": "折り紙(おりがみ):nghệ thuật xếp giấy|骨折(こっせつ):gãy xương|右折(うせつ):rẽ phải|左折(させつ):rẽ trái|挫折(ざせつ):nản lòng"
     },
     {
       "stt": 338,
@@ -5064,10 +4727,9 @@ const kanjiData = [
       "radicals": "扌-thủ|ム-khứ",
       "core_meaning": "trả tiền",
       "story_image": "Dùng tay (扌) đẩy cái tôi (ム) đi để trả nợ.",
-      "logic_development": "扌-thủ + ム-khứ -> tay đẩy nợ đi",
+      "logic_development": "扌-thủ + ム-khứ → tay đẩy nợ đi",
       "memory_tip": "Dùng tay phủi bụi hoặc trả tiền.",
-      "adjectives": "払い(はらい):chi trả",
-      "vocabulary": "支払い(しはらい):thanh toán|前払い(まえばらい):trả trước|払拭(ふっしょく):quét sạch|日払い(ひばらい):trả theo ngày|後払い(あとばらい):trả sau"
+      "vocabulary": "払い(はらい):chi trả|支払い(しはらい):thanh toán|前払い(まえばらい):trả trước|払拭(ふっしょく):quét sạch|日払い(ひばらい):trả theo ngày|後払い(あとばらい):trả sau"
     },
     {
       "stt": 339,
@@ -5079,10 +4741,9 @@ const kanjiData = [
       "radicals": "扌-thủ|殳-thù",
       "core_meaning": "ném",
       "story_image": "Dùng tay (扌) cầm binh khí (殳) ném đi xa.",
-      "logic_development": "扌-thủ + 殳-thù -> tay cầm gậy ném",
+      "logic_development": "扌-thủ + 殳-thù → tay cầm gậy ném",
       "memory_tip": "Dùng tay ném mạnh vật gì đó.",
-      "adjectives": "投手(とうしゅ):người ném bóng|投資(とうし):đầu tư|投票(とうひょう):bỏ phiếu|投書(とうしょ):thư góp ý|投げ出す(なげだす):từ bỏ",
-      "vocabulary": ""
+      "vocabulary": "投手(とうしゅ):người ném bóng|投資(とうし):đầu tư|投票(とうひょう):bỏ phiếu|投書(とうしょ):thư góp ý|投げ出す(なげだす):từ bỏ"
     },
     {
       "stt": 340,
@@ -5094,10 +4755,9 @@ const kanjiData = [
       "radicals": "扌-thủ|丁-đinh",
       "core_meaning": "đánh",
       "story_image": "Dùng tay (扌) cầm cái đinh (丁) để đóng vào.",
-      "logic_development": "扌-thủ + 丁-đinh -> tay đóng đinh",
+      "logic_development": "扌-thủ + 丁-đinh → tay đóng đinh",
       "memory_tip": "Dùng tay đánh hoặc đóng vào.",
-      "adjectives": "打楽器(だがっき):nhạc cụ gõ|打ち合わせ(うちあわせ):thảo luận|打撃(だげき):đòn đánh|打開(だかい):mở lối thoát|打診(だしん):thăm dò",
-      "vocabulary": ""
+      "vocabulary": "打楽器(だがっき):nhạc cụ gõ|打ち合わせ(うちあわせ):thảo luận|打撃(だげき):đòn đánh|打開(だかい):mở lối thoát|打診(だしん):thăm dò"
     },
     {
       "stt": 341,
@@ -5109,10 +4769,9 @@ const kanjiData = [
       "radicals": "氵-thủy|冖-mịch|木-mộc",
       "core_meaning": "sâu sắc",
       "story_image": "Nước (氵) dưới gốc cây (木) bị che khuất (冖) nên rất sâu.",
-      "logic_development": "氵-thủy + 冖-mịch + 木-mộc -> nước dưới gốc cây che",
+      "logic_development": "氵-thủy + 冖-mịch + 木-mộc → nước dưới gốc cây che",
       "memory_tip": "Nước ở sâu dưới gốc cây trong rừng.",
-      "adjectives": "深い(ふかい):sâu",
-      "vocabulary": "深夜(しんや):khuya|深刻な(しんこくな):nghiêm trọng|深呼吸(しんこきゅう):thở sâu|深化(しんか):trở nên sâu sắc|深海(しんかい):biển sâu"
+      "vocabulary": "深い(ふかい):sâu|深夜(しんや):khuya|深刻な(しんこくな):nghiêm trọng|深呼吸(しんこきゅう):thở sâu|深化(しんか):trở nên sâu sắc|深海(しんかい):biển sâu"
     },
     {
       "stt": 342,
@@ -5124,10 +4783,9 @@ const kanjiData = [
       "radicals": "氵-thủy|先-tiên",
       "core_meaning": "rửa",
       "story_image": "Dùng nước (氵) rửa sạch đôi chân trước (先) khi vào nhà.",
-      "logic_development": "氵-thủy + 先-tiên -> nước rửa chân",
+      "logic_development": "氵-thủy + 先-tiên → nước rửa chân",
       "memory_tip": "Trước tiên là dùng nước để rửa.",
-      "adjectives": "洗剤(せんざい):xà phòng|洗濯(せんたく):giặt giũ|洗面所(せんめんじょ):bồn rửa mặt|お手洗い(おてあらい):nhà vệ sinh|洗練(せんれん):tinh tế",
-      "vocabulary": ""
+      "vocabulary": "洗剤(せんざい):xà phòng|洗濯(せんたく):giặt giũ|洗面所(せんめんじょ):bồn rửa mặt|お手洗い(おてあらい):nhà vệ sinh|洗練(せんれん):tinh tế"
     },
     {
       "stt": 343,
@@ -5139,10 +4797,9 @@ const kanjiData = [
       "radicals": "氵-thủy|𠫓-đột|川-xuyên",
       "core_meaning": "chảy",
       "story_image": "Dòng nước (氵) đột ngột (𠫓) chảy ra thành sông (川).",
-      "logic_development": "氵-thủy + 𠫓-đột + 川-xuyên -> nước chảy ra sông",
+      "logic_development": "氵-thủy + 𠫓-đột + 川-xuyên → nước chảy ra sông",
       "memory_tip": "Nước chảy trôi xuôi theo dòng sông.",
-      "adjectives": "流行(りゅうこう):thịnh hành|一流(いちりゅう):hạng nhất|流出(りゅうしゅつ):rò rỉ|電流(でんりゅう):dòng điện|物流(ぶつりゅう):vận tải",
-      "vocabulary": ""
+      "vocabulary": "流行(りゅうこう):thịnh hành|一流(いちりゅう):hạng nhất|流出(りゅうしゅつ):rò rỉ|電流(でんりゅう):dòng điện|物流(ぶつりゅう):vận tải"
     },
     {
       "stt": 344,
@@ -5154,10 +4811,9 @@ const kanjiData = [
       "radicals": "氵-thủy|肖-tiếu",
       "core_meaning": "tiêu tan",
       "story_image": "Nước (氵) làm tan biến đi hình bóng (肖).",
-      "logic_development": "氵-thủy + 肖-tiếu -> nước làm tan hình",
+      "logic_development": "氵-thủy + 肖-tiếu → nước làm tan hình",
       "memory_tip": "Nước dập tắt lửa để tiêu tan đi.",
-      "adjectives": "消しゴム(けしゴム):cục tẩy|消化(しょうか):tiêu hóa|消火(しょうか):dập lửa|消防署(しょうぼうしょ):trạm cứu hỏa|消費(しょうひ):tiêu dùng",
-      "vocabulary": ""
+      "vocabulary": "消しゴム(けしゴム):cục tẩy|消化(しょうか):tiêu hóa|消火(しょうか):dập lửa|消防署(しょうぼうしょ):trạm cứu hỏa|消費(しょうひ):tiêu dùng"
     },
     {
       "stt": 345,
@@ -5169,10 +4825,9 @@ const kanjiData = [
       "radicals": "氵-thủy|夬-quái",
       "core_meaning": "quyết định",
       "story_image": "Dùng nước (氵) để phân chia ranh giới đất (夬) một cách dứt khoát.",
-      "logic_development": "氵-thủy + 夬-quái -> nước chia đất",
+      "logic_development": "氵-thủy + 夬-quái → nước chia đất",
       "memory_tip": "Dòng nước dứt khoát đưa ra quyết định.",
-      "adjectives": "決して(けっして):tuyệt đối không",
-      "vocabulary": "決定(けってい):quyết định|解決(かいけつ):giải quyết|決心(けっしん):quyết tâm|多数決(たすうけつ):biểu quyết|決勝(けっしょう):chung kết"
+      "vocabulary": "決して(けっして):tuyệt đối không|決定(けってい):quyết định|解決(かいけつ):giải quyết|決心(けっしん):quyết tâm|多数決(たすうけつ):biểu quyết|決勝(けっしょう):chung kết"
     },
     {
       "stt": 346,
@@ -5184,10 +4839,9 @@ const kanjiData = [
       "radicals": "方-phương|𠂉-phiệt|氏-thị",
       "core_meaning": "du lịch",
       "story_image": "Những người (氏) cầm cờ (方) đi về các hướng để du lịch.",
-      "logic_development": "方-phương + 氏-thị -> người cầm cờ đi",
+      "logic_development": "方-phương + 氏-thị → người cầm cờ đi",
       "memory_tip": "Người cầm cờ dẫn đoàn đi du lịch.",
-      "adjectives": "旅行(りょこう):du lịch|旅券(りょけん):hộ chiếu|旅人(たびびと):lữ khách|旅館(りょかん):nhà trọ|船旅(ふなたび):du lịch tàu thủy",
-      "vocabulary": ""
+      "vocabulary": "旅行(りょこう):du lịch|旅券(りょけん):hộ chiếu|旅人(たびびと):lữ khách|旅館(りょかん):nhà trọ|船旅(ふなたび):du lịch tàu thủy"
     },
     {
       "stt": 347,
@@ -5199,10 +4853,9 @@ const kanjiData = [
       "radicals": "糸-mịch|勺-chước",
       "core_meaning": "lời hứa",
       "story_image": "Dùng sợi chỉ (糸) buộc chặt cái thìa (勺) để làm ước hẹn.",
-      "logic_development": "糸-mịch + 勺-chước -> buộc chỉ vào thìa",
+      "logic_development": "糸-mịch + 勺-chước → buộc chỉ vào thìa",
       "memory_tip": "Buộc chỉ vào tay để ghi nhớ lời hứa.",
-      "adjectives": "予約(よやく):đặt trước|約束(やくそく):hứa hẹn|約(やく):khoảng chừng|要約(ようやく):tóm tắt|婚約(こんやく):đính hôn",
-      "vocabulary": ""
+      "vocabulary": "予約(よやく):đặt trước|約束(やくそく):hứa hẹn|約(やく):khoảng chừng|要約(ようやく):tóm tắt|婚約(こんやく):đính hôn"
     },
     {
       "stt": 348,
@@ -5214,10 +4867,9 @@ const kanjiData = [
       "radicals": "宀-miên|女-nữ|木-mộc",
       "core_meaning": "đề án",
       "story_image": "Người phụ nữ (女) dưới mái nhà (宀) ngồi bên bàn gỗ (木) viết đề án.",
-      "logic_development": "宀-miên + 女-nữ + 木-mộc -> phụ nữ ngồi bàn gỗ",
+      "logic_development": "宀-miên + 女-nữ + 木-mộc → phụ nữ ngồi bàn gỗ",
       "memory_tip": "Người phụ nữ nghĩ ra đề án dưới mái nhà.",
-      "adjectives": "案内(あんない):hướng dẫn|案外(あんがい):bất ngờ|提案(ていあん):đề án|答案(とうあん):bài làm|名案(めいあん):ý kiến hay",
-      "vocabulary": ""
+      "vocabulary": "案内(あんない):hướng dẫn|案外(あんがい):bất ngờ|提案(ていあん):đề án|答案(とうあん):bài làm|名案(めいあん):ý kiến hay"
     },
     {
       "stt": 349,
@@ -5229,10 +4881,9 @@ const kanjiData = [
       "radicals": "氵-thủy|隹-truy|十-thập",
       "core_meaning": "tiêu chuẩn",
       "story_image": "Mười (十) con chim (隹) đậu trên mặt nước (氵) làm tiêu chuẩn thẳng.",
-      "logic_development": "氵-thủy + 隹-truy + 十-thập -> chim trên mặt nước",
+      "logic_development": "氵-thủy + 隹-truy + 十-thập → chim trên mặt nước",
       "memory_tip": "Mặt nước phẳng là tiêu chuẩn chính xác nhất.",
-      "adjectives": "準備(じゅんび):chuẩn bị|基準(きじゅん):tiêu chuẩn|標準(ひょうじゅん):quy chuẩn|準急(じゅんきゅう):tàu nhanh vừa|準決勝(じゅんけっしょう):bán kết",
-      "vocabulary": ""
+      "vocabulary": "準備(じゅんび):chuẩn bị|基準(きじゅん):tiêu chuẩn|標準(ひょうじゅん):quy chuẩn|準急(じゅんきゅう):tàu nhanh vừa|準決勝(じゅんけっしょう):bán kết"
     },
     {
       "stt": 350,
@@ -5244,10 +4895,9 @@ const kanjiData = [
       "radicals": "亻-nhân|艹-thảo|厂-hán|用-dụng",
       "core_meaning": "chuẩn bị",
       "story_image": "Người (亻) chuẩn bị cỏ (艹) và dụng cụ (用) dưới vách đá (厂).",
-      "logic_development": "亻-nhân + 艹-thảo + 用-dụng -> người chuẩn bị cỏ",
+      "logic_development": "亻-nhân + 艹-thảo + 用-dụng → người chuẩn bị cỏ",
       "memory_tip": "Người mang dụng cụ đi chuẩn bị.",
-      "adjectives": "準備(じゅんび):chuẩn bị|設備(せつび):thiết bị|予備(よび):dự phòng|守備(しゅび):phòng thủ|完備(かんび):trang bị đầy đủ",
-      "vocabulary": ""
+      "vocabulary": "準備(じゅんび):chuẩn bị|設備(せつび):thiết bị|予備(よび):dự phòng|守備(しゅび):phòng thủ|完備(かんび):trang bị đầy đủ"
     },
     {
       "stt": 351,
@@ -5259,10 +4909,9 @@ const kanjiData = [
       "radicals": "木-mộc|目-mục",
       "core_meaning": "tương trợ",
       "story_image": "Mắt (目) nhìn vào cái cây (木) để xem xét sự tương quan.",
-      "logic_development": "木-mộc + 目-mục -> mắt nhìn cây",
+      "logic_development": "木-mộc + 目-mục → mắt nhìn cây",
       "memory_tip": "Mắt nhìn cây để thấy sự tương đồng.",
-      "adjectives": "相談(そうだん):thảo luận|相手(あいて):đối phương|首相(しゅしょう):thủ tướng|相当(そうとう):tương đương|相互(そうご):lẫn nhau",
-      "vocabulary": ""
+      "vocabulary": "相談(そうだん):thảo luận|相手(あいて):đối phương|首相(しゅしょう):thủ tướng|相当(そうとう):tương đương|相互(そうご):lẫn nhau"
     },
     {
       "stt": 352,
@@ -5274,10 +4923,9 @@ const kanjiData = [
       "radicals": "言-ngôn|炎-viêm",
       "core_meaning": "đàm thoại",
       "story_image": "Dùng lời nói (言) nồng nhiệt như lửa (炎) để bàn bạc.",
-      "logic_development": "言-ngôn + 炎-viêm -> lời nói nóng bỏng",
+      "logic_development": "言-ngôn + 炎-viêm → lời nói nóng bỏng",
       "memory_tip": "Dùng lời nói nóng hổi để thảo luận.",
-      "adjectives": "相談(そうだん):thảo luận|冗談(じょうだん):nói đùa|会談(かいだん):hội đàm|談話(だんわ):đàm thoại|雑談(ざつだん):nói chuyện phiếm",
-      "vocabulary": ""
+      "vocabulary": "相談(そうだん):thảo luận|冗談(じょうだん):nói đùa|会談(かいだん):hội đàm|談話(だんわ):đàm thoại|雑談(ざつだん):nói chuyện phiếm"
     },
     {
       "stt": 353,
@@ -5289,10 +4937,9 @@ const kanjiData = [
       "radicals": "辶-sước|車-xa",
       "core_meaning": "liên kết",
       "story_image": "Những chiếc xe (車) đi (辶) nối đuôi nhau liên tục.",
-      "logic_development": "辶-sước + 車-xa -> xe nối đuôi nhau",
+      "logic_development": "辶-sước + 車-xa → xe nối đuôi nhau",
       "memory_tip": "Xe đi liên tục tạo thành một chuỗi.",
-      "adjectives": "連れて行く(つれていく):dẫn đi",
-      "vocabulary": "連絡(れんらく):liên lạc|連続(れんぞく):liên tiếp|国連(こくれん):liên hiệp quốc|連休(れんきゅう):kỳ nghỉ dài|関連(かんれん):liên quan"
+      "vocabulary": "連れて行く(つれていく):dẫn đi|連絡(れんらく):liên lạc|連続(れんぞく):liên tiếp|国連(こくれん):liên hiệp quốc|連休(れんきゅう):kỳ nghỉ dài|関連(かんれん):liên quan"
     },
     {
       "stt": 354,
@@ -5304,10 +4951,9 @@ const kanjiData = [
       "radicals": "糸-mịch|各-các",
       "core_meaning": "liên lạc",
       "story_image": "Sợi chỉ (糸) của mỗi người (各) được nối lại để liên lạc.",
-      "logic_development": "糸-mịch + 各-các -> chỉ nối mỗi người",
+      "logic_development": "糸-mịch + 各-các → chỉ nối mỗi người",
       "memory_tip": "Sợi chỉ kết nối mọi người lại với nhau.",
-      "adjectives": "連絡(れんらく):liên lạc|絡む(からむ):vướng vào|脈絡(みゃくらく):mạch lạc|短絡(たんらく):đoản mạch|籠絡(ろうらく):mua chuộc",
-      "vocabulary": ""
+      "vocabulary": "連絡(れんらく):liên lạc|絡む(からむ):vướng vào|脈絡(みゃくらく):mạch lạc|短絡(たんらく):đoản mạch|籠絡(ろうらく):mua chuộc"
     },
     {
       "stt": 355,
@@ -5319,10 +4965,9 @@ const kanjiData = [
       "radicals": "氵-thủy|白-bạch",
       "core_meaning": "trọ lại",
       "story_image": "Dòng nước (氵) trắng (白) là nơi thuyền đậu lại trọ.",
-      "logic_development": "氵-thủy + 白-bạch -> nước trắng",
+      "logic_development": "氵-thủy + 白-bạch → nước trắng",
       "memory_tip": "Dừng thuyền bên dòng nước trắng để trọ lại.",
-      "adjectives": "一泊二日(いっぱくふつか):2 ngày 1 đêm|宿泊(しゅくはく):trọ lại|泊まる(とまる):ở lại|外泊(がいはく):ngủ ngoài|漂泊(ひょうはく):phiêu bạt",
-      "vocabulary": ""
+      "vocabulary": "一泊二日(いっぱくふつか):2 ngày 1 đêm|宿泊(しゅくはく):trọ lại|泊まる(とまる):ở lại|外泊(がいはく):ngủ ngoài|漂泊(ひょうはく):phiêu bạt"
     },
     {
       "stt": 356,
@@ -5334,10 +4979,9 @@ const kanjiData = [
       "radicals": "牛-ngưu|寺-tự",
       "core_meaning": "đặc biệt",
       "story_image": "Con bò (牛) ở trong chùa (寺) là con vật đặc biệt.",
-      "logic_development": "牛-ngưu + 寺-tự -> bò trong chùa",
+      "logic_development": "牛-ngưu + 寺-tự → bò trong chùa",
       "memory_tip": "Con bò đi chùa thì rất đặc biệt.",
-      "adjectives": "特に(とくに):đặc biệt",
-      "vocabulary": "特別(とくべつ):đặc biệt|特徴(とくちょう):đặc trưng|特急(とっきゅう):tàu siêu tốc|特売(とくばい):giảm giá đặc biệt|特色(とくしょく):đặc sắc"
+      "vocabulary": "特に(とくに):đặc biệt|特別(とくべつ):đặc biệt|特徴(とくちょう):đặc trưng|特急(とっきゅう):tàu siêu tốc|特売(とくばい):giảm giá đặc biệt|特色(とくしょく):đặc sắc"
     },
     {
       "stt": 357,
@@ -5350,9 +4994,8 @@ const kanjiData = [
       "core_meaning": "khẩn cấp",
       "story_image": "Trong tâm (心) luôn lo lắng vội vàng (⺈",
       "logic_development": "彐) vì việc khẩn.",
-      "memory_tip": "⺈-bao + 彐-kệ + 心-tâm -> tim vội vàng",
-      "adjectives": "Lòng đang vội vàng vì chuyện khẩn cấp.",
-      "vocabulary": "急(いそ)ぐ:vội vã|急な(きゅうな):đột ngột"
+      "memory_tip": "⺈-bao + 彐-kệ + 心-tâm → tim vội vàng",
+      "vocabulary": "Lòng đang vội vàng vì chuyện khẩn cấp.|急(いそ)ぐ:vội vã|急な(きゅうな):đột ngột"
     },
     {
       "stt": 358,
@@ -5364,10 +5007,9 @@ const kanjiData = [
       "radicals": "糸-mịch|泉-tuyền",
       "core_meaning": "đường dây",
       "story_image": "Sợi chỉ (糸) kéo dài như dòng nước suối (泉) tạo thành đường tuyến.",
-      "logic_development": "糸-mịch + 泉-tuyền -> chỉ chảy như suối",
+      "logic_development": "糸-mịch + 泉-tuyền → chỉ chảy như suối",
       "memory_tip": "Sợi chỉ dài như dòng suối là đường kẻ.",
-      "adjectives": "線路(せんろ):đường ray|直線(ちょくせん):đường thẳng|新幹線(しんかんせん):tàu điện ngầm|下線(かせん):gạch chân|境界線(きょうかいせん):đường biên giới",
-      "vocabulary": ""
+      "vocabulary": "線路(せんろ):đường ray|直線(ちょくせん):đường thẳng|新幹線(しんかんせん):tàu điện ngầm|下線(かせん):gạch chân|境界線(きょうかいせん):đường biên giới"
     },
     {
       "stt": 359,
@@ -5379,10 +5021,9 @@ const kanjiData = [
       "radicals": "癶-bát|弓-cung|殳-thù",
       "core_meaning": "xuất phát",
       "story_image": "Dùng cung (弓) bắn mạnh (殳) để bắt đầu xuất phát (癶).",
-      "logic_development": "癶-bát + 弓-cung + 殳-thù -> bắn cung xuất phát",
+      "logic_development": "癶-bát + 弓-cung + 殳-thù → bắn cung xuất phát",
       "memory_tip": "Bắn cung để lệnh xuất phát.",
-      "adjectives": "出発(しゅっぱつ):xuất phát|発表(はっぴょう):phát biểu|発見(はっけん):phát hiện|発行(はっこう):phát hành|発達(はったつ):phát triển",
-      "vocabulary": ""
+      "vocabulary": "出発(しゅっぱつ):xuất phát|発表(はっぴょう):phát biểu|発見(はっけん):phát hiện|発行(はっこう):phát hành|発達(はったつ):phát triển"
     },
     {
       "stt": 360,
@@ -5394,10 +5035,9 @@ const kanjiData = [
       "radicals": "至-chí|リ-đao",
       "core_meaning": "đến nơi",
       "story_image": "Dùng dao (リ) để đánh dấu nơi đã đến (至).",
-      "logic_development": "至-chí + リ-đao -> đến nơi dùng dao",
+      "logic_development": "至-chí + リ-đao → đến nơi dùng dao",
       "memory_tip": "Đi đến tận nơi cuối cùng.",
-      "adjectives": "到着(とうちゃく):đến nơi|殺到(さっとう):chen lấn|用意周到(よういしゅうとう):chuẩn bị chu đáo|到る(いたる):đạt đến|未到(みとう):chưa đến",
-      "vocabulary": ""
+      "vocabulary": "到着(とうちゃく):đến nơi|殺到(さっとう):chen lấn|用意周到(よういしゅうとう):chuẩn bị chu đáo|到る(いたる):đạt đến|未到(みとう):chưa đến"
     },
     {
       "stt": 361,
@@ -5409,10 +5049,9 @@ const kanjiData = [
       "radicals": "交-giao",
       "core_meaning": "giao lưu",
       "story_image": "Hình ảnh một người đang bắt chéo chân để giao lưu.",
-      "logic_development": "交-giao -> người bắt chéo chân",
+      "logic_development": "交-giao → người bắt chéo chân",
       "memory_tip": "Bắt chéo chân ngồi giao lưu.",
-      "adjectives": "交差点(こうさてん):ngã tư|交通(こうつう):giao thông|交換(こうかん):trao đổi|交流(こうりゅう):giao lưu|交際(こうさい):hẹn hò",
-      "vocabulary": ""
+      "vocabulary": "交差点(こうさてん):ngã tư|交通(こうつう):giao thông|交換(こうかん):trao đổi|交流(こうりゅう):giao lưu|交際(こうさい):hẹn hò"
     },
     {
       "stt": 362,
@@ -5424,10 +5063,9 @@ const kanjiData = [
       "radicals": "木-mộc|幾-ki",
       "core_meaning": "máy móc",
       "story_image": "Dùng gỗ (木) làm ra những thiết bị nhỏ (幾) như máy móc.",
-      "logic_development": "木-mộc + 幾-ki -> gỗ làm vật nhỏ",
+      "logic_development": "木-mộc + 幾-ki → gỗ làm vật nhỏ",
       "memory_tip": "Dùng gỗ chế tạo máy móc cơ khí.",
-      "adjectives": "飛行機(ひこうき):máy bay|機会(きかい):cơ hội|機械(きかい):máy móc|機能(きのう):chức năng|機関(きかん):cơ quan",
-      "vocabulary": ""
+      "vocabulary": "飛行機(ひこうき):máy bay|機会(きかい):cơ hội|機械(きかい):máy móc|機能(きのう):chức năng|機関(きかん):cơ quan"
     },
     {
       "stt": 363,
@@ -5439,10 +5077,9 @@ const kanjiData = [
       "radicals": "門-môn|𦫿-liên",
       "core_meaning": "liên quan",
       "story_image": "Cái then cửa (𦫿) dùng để đóng cửa môn (門) lại.",
-      "logic_development": "門-môn + 𦫿-liên -> then cửa",
+      "logic_development": "門-môn + 𦫿-liên → then cửa",
       "memory_tip": "Cái then cửa liên quan mật thiết đến cửa.",
-      "adjectives": "関係(かんけい):quan hệ|関心(かんしん):quan tâm|玄関(げんかん):lối vào|関東(かんとう):vùng Kanto|機関(きかん):cơ quan",
-      "vocabulary": ""
+      "vocabulary": "関係(かんけい):quan hệ|関心(かんしん):quan tâm|玄関(げんかん):lối vào|関東(かんとう):vùng Kanto|機関(きかん):cơ quan"
     },
     {
       "stt": 364,
@@ -5454,10 +5091,9 @@ const kanjiData = [
       "radicals": "尸-thi|句-cú",
       "core_meaning": "cục bộ",
       "story_image": "Cơ thể (尸) bị giới hạn trong những câu nói (句) hạn hẹp.",
-      "logic_development": "尸-thi + 句-cú -> người trong câu",
+      "logic_development": "尸-thi + 句-cú → người trong câu",
       "memory_tip": "Làm việc trong một đơn vị hạn hẹp.",
-      "adjectives": "郵便局(ゆうびんきょく):bưu điện|結局(けっきょく):kết cục|薬局(やっきょく):hiệu thuốc|当局(とうきょく):nhà chức trách|放送局(ほうそうきょく):đài truyền hình",
-      "vocabulary": ""
+      "vocabulary": "郵便局(ゆうびんきょく):bưu điện|結局(けっきょく):kết cục|薬局(やっきょく):hiệu thuốc|当局(とうきょく):nhà chức trách|放送局(ほうそうきょく):đài truyền hình"
     },
     {
       "stt": 365,
@@ -5469,10 +5105,9 @@ const kanjiData = [
       "radicals": "亻-nhân|言-ngôn",
       "core_meaning": "tin tưởng",
       "story_image": "Con người (亻) nói (言) lời phải giữ lấy chữ tín.",
-      "logic_development": "亻-nhân + 言-ngôn -> người nói",
+      "logic_development": "亻-nhân + 言-ngôn → người nói",
       "memory_tip": "Lời người nói ra phải đáng tin.",
-      "adjectives": "信じる(しんじる):tin tưởng",
-      "vocabulary": "信号(しんごう):đèn giao thông|自信(じしん):tự tin|信用(しんよう):tín dụng|通信(つうしん):truyền thông|送信(そうしん):gửi đi"
+      "vocabulary": "信じる(しんじる):tin tưởng|信号(しんごう):đèn giao thông|自信(じしん):tự tin|信用(しんよう):tín dụng|通信(つうしん):truyền thông|送信(そうしん):gửi đi"
     },
     {
       "stt": 366,
@@ -5484,10 +5119,9 @@ const kanjiData = [
       "radicals": "足-túc|各-các",
       "core_meaning": "con đường",
       "story_image": "Đôi chân (足) của mỗi người (各) đều đi trên con đường.",
-      "logic_development": "足-túc + 各-các -> mỗi người đi chân",
+      "logic_development": "足-túc + 各-các → mỗi người đi chân",
       "memory_tip": "Mỗi bàn chân đều bước trên con đường.",
-      "adjectives": "道路(どうろ):đường bộ|線路(せんろ):đường ray|通路(つうろ):lối đi|進路(しんろ):lối đi tương lai|迷路(めいろ):mê cung",
-      "vocabulary": ""
+      "vocabulary": "道路(どうろ):đường bộ|線路(せんろ):đường ray|通路(つうろ):lối đi|進路(しんろ):lối đi tương lai|迷路(めいろ):mê cung"
     },
     {
       "stt": 367,
@@ -5499,10 +5133,9 @@ const kanjiData = [
       "radicals": "古-cổ|攵-phu",
       "core_meaning": "sự cố",
       "story_image": "Dùng roi (攵) đánh vào những thứ cũ (古) gây ra sự cố.",
-      "logic_development": "古-cổ + 攵-phu -> gõ vào đồ cũ",
+      "logic_development": "古-cổ + 攵-phu → gõ vào đồ cũ",
       "memory_tip": "Đồ cũ bị đánh thì gây ra sự cố.",
-      "adjectives": "故障(こしょう):hỏng hóc|事故(じこ):tai nạn|故郷(こきょう):quê hương|故意(こい):cố ý|何故(なぜ):tại sao",
-      "vocabulary": ""
+      "vocabulary": "故障(こしょう):hỏng hóc|事故(じこ):tai nạn|故郷(こきょう):quê hương|故意(こい):cố ý|何故(なぜ):tại sao"
     },
     {
       "stt": 368,
@@ -5514,10 +5147,9 @@ const kanjiData = [
       "radicals": "氵-thủy|主-chủ",
       "core_meaning": "chú ý",
       "story_image": "Chủ nhân (主) đổ nước (氵) vào để chú ý làm đầy.",
-      "logic_development": "氵-thủy + 主-chủ -> chủ đổ nước",
+      "logic_development": "氵-thủy + 主-chủ → chủ đổ nước",
       "memory_tip": "Chủ nhân chú ý đổ nước vào bình.",
-      "adjectives": "注意(chゅうい):chú ý|注文(ちゅうもん):đặt hàng|注目(ちゅうもく):tập trung nhìn|注入(ちゅうにゅう):róm vào|注釈(ちゅうしゃく):chú thích",
-      "vocabulary": ""
+      "vocabulary": "注意(chゅうい):chú ý|注文(ちゅうもん):đặt hàng|注目(ちゅうもく):tập trung nhìn|注入(ちゅうにゅう):róm vào|注釈(ちゅうしゃく):chú thích"
     },
     {
       "stt": 369,
@@ -5529,10 +5161,9 @@ const kanjiData = [
       "radicals": "音-âm|心-tâm",
       "core_meaning": "ý nghĩa",
       "story_image": "Âm thanh (音) phát ra từ trái tim (心) chính là ý nghĩ.",
-      "logic_development": "音-âm + 心-tâm -> tiếng lòng",
+      "logic_development": "音-âm + 心-tâm → tiếng lòng",
       "memory_tip": "Tiếng lòng nói ra ý định của bản thân.",
-      "adjectives": "意地悪な(いじわるな):xấu tính",
-      "vocabulary": "意味(いみ):ý nghĩa|意見(いけん):ý kiến|注意(ちゅうい):chú ý|用意(ようい):chuẩn bị|意外(いがい):ngoài dự tính"
+      "vocabulary": "意地悪な(いじわるな):xấu tính|意味(いみ):ý nghĩa|意見(いけん):ý kiến|注意(ちゅうい):chú ý|用意(ようい):chuẩn bị|意外(いがい):ngoài dự tính"
     },
     {
       "stt": 370,
@@ -5544,10 +5175,9 @@ const kanjiData = [
       "radicals": "扌-thủ|甲-giáp",
       "core_meaning": "ấn xuống",
       "story_image": "Dùng tay (扌) ấn mạnh vào lớp vỏ giáp (甲).",
-      "logic_development": "扌-thủ + 甲-giáp -> tay ấn vỏ",
+      "logic_development": "扌-thủ + 甲-giáp → tay ấn vỏ",
       "memory_tip": "Dùng tay đè mạnh xuống lớp vỏ cứng.",
-      "adjectives": "押し入れ(おしいれ):tủ âm tường|押す(おす):nhấn|押印(おういん):đóng dấu|押収(おうしゅう):tịch thu|後押し(あとおし):ủng hộ",
-      "vocabulary": ""
+      "vocabulary": "押し入れ(おしいれ):tủ âm tường|押す(おす):nhấn|押印(おういん):đóng dấu|押収(おうしゅう):tịch thu|後押し(あとおし):ủng hộ"
     },
     {
       "stt": 371,
@@ -5559,10 +5189,9 @@ const kanjiData = [
       "radicals": "弓-cung|丨-cổn",
       "core_meaning": "kéo",
       "story_image": "Hình ảnh cây cung (弓) được kéo căng bởi một sợi dây (丨).",
-      "logic_development": "弓-cung + 丨-cổn -> kéo cung",
+      "logic_development": "弓-cung + 丨-cổn → kéo cung",
       "memory_tip": "Kéo căng dây cung ra.",
-      "adjectives": "引き出し(ひきだし):ngăn kéo|引用(いんよう):trích dẫn|割引(わりびき):giảm giá|引き受ける(ひきうける):đảm nhận|引っ越し(ひっこし):chuyển nhà",
-      "vocabulary": ""
+      "vocabulary": "引き出し(ひきだし):ngăn kéo|引用(いんよう):trích dẫn|割引(わりびき):giảm giá|引き受ける(ひきうける):đảm nhận|引っ越し(ひっこし):chuyển nhà"
     },
     {
       "stt": 372,
@@ -5574,10 +5203,9 @@ const kanjiData = [
       "radicals": "害-hại|リ-đao",
       "core_meaning": "chia cắt",
       "story_image": "Dùng dao (リ) chia cắt những thứ gây hại (害).",
-      "logic_development": "害-hại + リ-đao -> dùng dao cắt vật hại",
+      "logic_development": "害-hại + リ-đao → dùng dao cắt vật hại",
       "memory_tip": "Dùng dao cắt nhỏ vật ra.",
-      "adjectives": "割合(わりあい):tỷ lệ|割引(わりびき):giảm giá|割る(わる):làm vỡ|分割(ぶんかつ):phân chia|割り算(わりざん):phép chia",
-      "vocabulary": ""
+      "vocabulary": "割合(わりあい):tỷ lệ|割引(わりびき):giảm giá|割る(わる):làm vỡ|分割(ぶんかつ):phân chia|割り算(わりざん):phép chia"
     },
     {
       "stt": 373,
@@ -5589,10 +5217,9 @@ const kanjiData = [
       "radicals": "𤇾-oanh|呂-lữ",
       "core_meaning": "kinh doanh",
       "story_image": "Nhiều người (呂) làm việc dưới ánh đèn (𤇾) để kinh doanh.",
-      "logic_development": "𤇾-oanh + 呂-lữ -> người làm dưới đèn",
+      "logic_development": "𤇾-oanh + 呂-lữ → người làm dưới đèn",
       "memory_tip": "Nhiều người hợp sức kinh doanh dưới ánh sáng.",
-      "adjectives": "営業(えいぎょう):kinh doanh|運営(うんえい):vận hành|経営(けいえい):quản trị|営む(いとなむ):điều hành|公営(こうえい):công lập",
-      "vocabulary": ""
+      "vocabulary": "営業(えいぎょう):kinh doanh|運営(うんえい):vận hành|経営(けいえい):quản trị|営む(いとなむ):điều hành|公営(こうえい):công lập"
     },
     {
       "stt": 374,
@@ -5604,10 +5231,9 @@ const kanjiData = [
       "radicals": "自-tự",
       "core_meaning": "tự mình",
       "story_image": "Hình ảnh cái mũi tự chỉ vào mình.",
-      "logic_development": "自-tự -> cái mũi",
+      "logic_development": "自-tự → cái mũi",
       "memory_tip": "Cái mũi tự đại diện cho bản thân.",
-      "adjectives": "自由(じゆう):tự do|自分(じぶん):bản thân|自然(しぜん):tự nhiên|自信(じしん):tự tin|自転車(じてんしゃ):xe đạp",
-      "vocabulary": ""
+      "vocabulary": "自由(じゆう):tự do|自分(じぶん):bản thân|自然(しぜん):tự nhiên|自信(じしん):tự tin|自転車(じてんしゃ):xe đạp"
     },
     {
       "stt": 375,
@@ -5619,10 +5245,9 @@ const kanjiData = [
       "radicals": "由-do",
       "core_meaning": "lý do",
       "story_image": "Hình ảnh hạt nảy mầm từ lớp đất thể hiện nguyên do.",
-      "logic_development": "由-do -> hạt nảy mầm",
+      "logic_development": "由-do → hạt nảy mầm",
       "memory_tip": "Mọi sự đều có nguyên do từ hạt giống.",
-      "adjectives": "自由(じゆう):tự do|理由(りゆう):lý do|経由(けいゆ):thông qua|由来(ゆらい):nguồn gốc|不自由(ふじゆう):không tự do",
-      "vocabulary": ""
+      "vocabulary": "自由(じゆう):tự do|理由(りゆう):lý do|経由(けいゆ):thông qua|由来(ゆらい):nguồn gốc|不自由(ふじゆう):không tự do"
     },
     {
       "stt": 376,
@@ -5634,10 +5259,9 @@ const kanjiData = [
       "radicals": "耳-nhĩ|又-hựu",
       "core_meaning": "lấy",
       "story_image": "Dùng tay (又) cầm lấy cái tai (耳).",
-      "logic_development": "耳-nhĩ + 又-hựu -> tay cầm tai",
+      "logic_development": "耳-nhĩ + 又-hựu → tay cầm tai",
       "memory_tip": "Dùng tay lấy cái tai làm bằng chứng.",
-      "adjectives": "受け取る(うけとる):nhận lấy|取り消す(とりけす):hủy bỏ|取得(しゅとく):lấy được|取引(とりひき):giao dịch|取材(しゅざい):thu thập tin tức",
-      "vocabulary": ""
+      "vocabulary": "受け取る(うけとる):nhận lấy|取り消す(とりけす):hủy bỏ|取得(しゅとく):lấy được|取引(とりひき):giao dịch|取材(しゅざい):thu thập tin tức"
     },
     {
       "stt": 377,
@@ -5649,10 +5273,9 @@ const kanjiData = [
       "radicals": "求-cầu",
       "core_meaning": "yêu cầu",
       "story_image": "Hình ảnh cái đuôi da thú được con người săn cầu.",
-      "logic_development": "求-cầu -> đuôi da thú",
+      "logic_development": "求-cầu → đuôi da thú",
       "memory_tip": "Săn lùng và yêu cầu có được da thú.",
-      "adjectives": "要求(ようきゅう):yêu cầu|追求(ついきゅう):mưu cầu|求人(きゅうじん):tuyển dụng|求婚(きゅうこん):cầu hôn|探求(たんきゅう):tìm kiếm",
-      "vocabulary": ""
+      "vocabulary": "要求(ようきゅう):yêu cầu|追求(ついきゅう):mưu cầu|求人(きゅうじん):tuyển dụng|求婚(きゅうこん):cầu hôn|探求(たんきゅう):tìm kiếm"
     },
     {
       "stt": 378,
@@ -5664,10 +5287,9 @@ const kanjiData = [
       "radicals": "原-nguyên|頁-hiệt",
       "core_meaning": "cầu nguyện",
       "story_image": "Hướng đầu (頁) về phía nguồn gốc (原) để cầu nguyện.",
-      "logic_development": "原-nguyên + 頁-hiệt -> hướng đầu về nguồn",
+      "logic_development": "原-nguyên + 頁-hiệt → hướng đầu về nguồn",
       "memory_tip": "Dùng tâm trí hướng về nguồn cội cầu xin.",
-      "adjectives": "お願い(おねがい):làm ơn",
-      "vocabulary": "願書(がんしょ):đơn xin|念願(ねんがん):nguyện vọng|志願(しがん):tình nguyện|祈願(きがん):cầu khấn|願う(ねがう):mong muốn"
+      "vocabulary": "お願い(おねがい):làm ơn|願書(がんしょ):đơn xin|念願(ねんがん):nguyện vọng|志願(しがん):tình nguyện|祈願(きがん):cầu khấn|願う(ねがう):mong muốn"
     },
     {
       "stt": 379,
@@ -5679,10 +5301,9 @@ const kanjiData = [
       "radicals": "矢-thỉ|口-khẩu",
       "core_meaning": "biết",
       "story_image": "Lời nói (口) ra nhanh như mũi tên (矢) là người hiểu biết.",
-      "logic_development": "矢-thỉ + 口-khẩu -> nói nhanh như tên",
+      "logic_development": "矢-thỉ + 口-khẩu → nói nhanh như tên",
       "memory_tip": "Người hiểu biết nói năng dứt khoát.",
-      "adjectives": "知り合い(しりあい):người quen",
-      "vocabulary": "知識(ちしき):kiến thức|知能(ちのう):trí thông minh|通知(つうち):thông báo|知る(しる):biết|知恵(ちえ):trí tuệ"
+      "vocabulary": "知り合い(しりあい):người quen|知識(ちしき):kiến thức|知能(ちのう):trí thông minh|通知(つうち):thông báo|知る(しる):biết|知恵(ちえ):trí tuệ"
     },
     {
       "stt": 380,
@@ -5694,10 +5315,9 @@ const kanjiData = [
       "radicals": "台-đài",
       "core_meaning": "cái đài",
       "story_image": "Hình ảnh một cái bục cao có miệng nói phía trên.",
-      "logic_development": "台-đài -> bục cao",
+      "logic_development": "台-đài → bục cao",
       "memory_tip": "Cái bục cao dùng để đứng lên.",
-      "adjectives": "台風(たいふう):bão|台所(だいどころ):nhà bếp|一台(いちだい):một chiếc (xe、 máy)|舞台(ぶたい):sân khấu|灯台(とうだい):hải đăng",
-      "vocabulary": ""
+      "vocabulary": "台風(たいふう):bão|台所(だいどころ):nhà bếp|一台(いちだい):một chiếc (xe、 máy)|舞台(ぶたい):sân khấu|灯台(とうだい):hải đăng"
     },
     {
       "stt": 381,
@@ -5709,10 +5329,9 @@ const kanjiData = [
       "radicals": "穴-huyệt|厶-khứ|心-tâm",
       "core_meaning": "cửa sổ",
       "story_image": "Cái lỗ (穴) để tâm (心) tư hướng ra ngoài chính là cửa sổ.",
-      "logic_development": "穴-huyệt + 厶-khứ + 心-tâm -> cái lỗ và tim",
+      "logic_development": "穴-huyệt + 厶-khứ + 心-tâm → cái lỗ và tim",
       "memory_tip": "Trổ một cái lỗ để nhìn ra ngoài.",
-      "adjectives": "窓(まど):cửa sổ",
-      "vocabulary": "窓口(まどぐち):quầy giao dịch|車窓(しゃそう):cửa sổ xe|同窓会(どうそうかい):hội bạn học|窓辺(まどべ):bên cửa sổ|窓ガラス(まどガラス):kính cửa sổ"
+      "vocabulary": "窓(まど):cửa sổ|窓口(まどぐち):quầy giao dịch|車窓(しゃそう):cửa sổ xe|同窓会(どうそうかい):hội bạn học|窓辺(まどべ):bên cửa sổ|窓ガラス(まどガラス):kính cửa sổ"
     },
     {
       "stt": 382,
@@ -5724,10 +5343,9 @@ const kanjiData = [
       "radicals": "目-mục|具-cụ",
       "core_meaning": "dụng cụ",
       "story_image": "Dùng mắt (目) để xem xét các dụng cụ đặt trên giá.",
-      "logic_development": "目-mục + 具-cụ -> mắt nhìn giá đồ",
+      "logic_development": "目-mục + 具-cụ → mắt nhìn giá đồ",
       "memory_tip": "Các đồ dùng cần thiết dùng hàng ngày.",
-      "adjectives": "道具(どうぐ):dụng cụ|家具(かぐ):nội thất|具合(ぐあい):tình trạng|具体的な(ぐたいてきな):cụ thể|文房具(ぶんぼうぐ):văn phòng phẩm",
-      "vocabulary": ""
+      "vocabulary": "道具(どうぐ):dụng cụ|家具(かぐ):nội thất|具合(ぐあい):tình trạng|具体的な(ぐたいてきな):cụ thể|文房具(ぶんぼうぐ):văn phòng phẩm"
     },
     {
       "stt": 383,
@@ -5739,10 +5357,9 @@ const kanjiData = [
       "radicals": "口-khẩu|口-khẩu|犬-khuyển|口-khẩu|口-khẩu",
       "core_meaning": "dụng cụ",
       "story_image": "Bốn cái miệng (口) và một con chó (犬) canh giữ các khí cụ.",
-      "logic_development": "口4 + 犬-khuyển -> bốn miệng và chó",
+      "logic_development": "口4 + 犬-khuyển → bốn miệng và chó",
       "memory_tip": "Nhiều đồ vật dùng để đựng đồ.",
-      "adjectives": "楽器(がっき):nhạc cụ|食器(しょっき):bát đĩa|器用な(きような):khéo léo|容器(ようき):đồ đựng|臓器(ぞうき):nội tạng",
-      "vocabulary": ""
+      "vocabulary": "楽器(がっき):nhạc cụ|食器(しょっき):bát đĩa|器用な(きような):khéo léo|容器(ようき):đồ đựng|臓器(ぞうき):nội tạng"
     },
     {
       "stt": 384,
@@ -5754,10 +5371,9 @@ const kanjiData = [
       "radicals": "用-dụng",
       "core_meaning": "sử dụng",
       "story_image": "Hình ảnh cái hàng rào được dùng để bao quanh.",
-      "logic_development": "用-dụng -> hàng rào",
+      "logic_development": "用-dụng → hàng rào",
       "memory_tip": "Mọi thứ được đem ra sử dụng.",
-      "adjectives": "用意(ようい):chuẩn bị|使用(しよう):sử dụng|利用(りよう):tận dụng|用事(ようじ):việc bận|採用(さいよう):tuyển dụng",
-      "vocabulary": ""
+      "vocabulary": "用意(ようい):chuẩn bị|使用(しよう):sử dụng|利用(りよう):tận dụng|用事(ようじ):việc bận|採用(さいよう):tuyển dụng"
     },
     {
       "stt": 385,
@@ -5769,10 +5385,9 @@ const kanjiData = [
       "radicals": "月-nguyệt|卩-tiết|又-hựu",
       "core_meaning": "quần áo",
       "story_image": "Dùng tay (又) cầm quần áo làm bằng vải (月) theo đúng tiết (卩).",
-      "logic_development": "月-nguyệt + 卩-tiết + 又-hựu -> tay cầm vải",
+      "logic_development": "月-nguyệt + 卩-tiết + 又-hựu → tay cầm vải",
       "memory_tip": "Mặc quần áo vào người mỗi tháng.",
-      "adjectives": "服装(ふくそう):trang phục|洋服(ようふく):quần áo tây|和服(わふく):quần áo Nhật|服用(ふくよう):uống thuốc|克服(こくふく):khắc phục",
-      "vocabulary": ""
+      "vocabulary": "服装(ふくそう):trang phục|洋服(ようふく):quần áo tây|和服(わふく):quần áo Nhật|服用(ふくよう):uống thuốc|克服(こくふく):khắc phục"
     },
     {
       "stt": 386,
@@ -5784,10 +5399,9 @@ const kanjiData = [
       "radicals": "糸-mịch|氏-thị",
       "core_meaning": "giấy",
       "story_image": "Dùng sợi tơ (糸) của họ tộc (氏) làm ra giấy.",
-      "logic_development": "糸-mịch + 氏-thị -> sợi tơ của họ tộc",
+      "logic_development": "糸-mịch + 氏-thị → sợi tơ của họ tộc",
       "memory_tip": "Sợi tơ cán mỏng tạo thành giấy.",
-      "adjectives": "手紙(てがみ):bức thư|用紙(ようし):mẫu giấy|和紙(わし):giấy Nhật|新聞紙(しんぶんし):giấy báo|折り紙(おりがみ):giấy xếp",
-      "vocabulary": ""
+      "vocabulary": "手紙(てがみ):bức thư|用紙(ようし):mẫu giấy|和紙(わし):giấy Nhật|新聞紙(しんぶんし):giấy báo|折り紙(おりがみ):giấy xếp"
     },
     {
       "stt": 387,
@@ -5799,14 +5413,13 @@ const kanjiData = [
       "radicals": "舌-thiệt|辛-tân",
       "core_meaning": "từ bỏ",
       "story_image": "Dùng lưỡi (舌) nói ra những lời cay đắng (辛) để từ chức.",
-      "logic_development": "舌-thiệt + 辛-tân -> lưỡi nói lời cay",
+      "logic_development": "舌-thiệt + 辛-tân → lưỡi nói lời cay",
       "memory_tip": "Nói lời cay đắng để từ biệt.",
-      "adjectives": "辞書(じしょ):từ điển|辞典(じてん):từ điển|辞退(じたい):từ chối|辞職(じしょく):từ chức|世辞(せじ):nịnh nọt",
-      "vocabulary": ""
+      "vocabulary": "辞書(じしょ):từ điển|辞典(じてん):từ điển|辞退(じたい):từ chối|辞職(じしょく):từ chức|世辞(せじ):nịnh nọt"
     },
     {
       "stt": 388,
-      "kanji": "雑",
+      "kanji": "|雑",
       "hanviet": "TẠP",
       "on_reading": "ザツ|ゾウ",
       "kun_reading": "まじ.る",
@@ -5814,10 +5427,9 @@ const kanjiData = [
       "radicals": "九-cửu|木-mộc|隹-truy",
       "core_meaning": "tạp chí",
       "story_image": "Chín (九) con chim (隹) đậu trên cây (木) thật là phức tạp.",
-      "logic_development": "九-cửu + 木-mộc + 隹-truy -> chín chim trên cây",
+      "logic_development": "九-cửu + 木-mộc + 隹-truy → chín chim trên cây",
       "memory_tip": "Nhiều thứ trộn lẫn lại thành tạp.",
-      "adjectives": "複雑な(ふくざつな):phức tạp",
-      "vocabulary": "雑誌(ざっし):tạp chí|雑用(ざつよう):việc vặt|雑音(ざつおん):tiếng ồn|雑草(ざっそう):cỏ dại|混雑(こんざつ):đông đúc"
+      "vocabulary": "複雑な(ふくざつな):phức tạp|雑誌(ざっし):tạp chí|雑用(ざつよう):việc vặt|雑音(ざつおん):tiếng ồn|雑草(ざっそう):cỏ dại|混雑(こんざつ):đông đúc"
     },
     {
       "stt": 389,
@@ -5829,10 +5441,9 @@ const kanjiData = [
       "radicals": "言-ngôn|志-chí",
       "core_meaning": "tạp chí",
       "story_image": "Dùng lời nói (言) ghi lại ý chí (志) vào tạp chí.",
-      "logic_development": "言-ngôn + 志-chí -> lời nói và ý chí",
+      "logic_development": "言-ngôn + 志-chí → lời nói và ý chí",
       "memory_tip": "Ghi lại ý chí bằng lời nói.",
-      "adjectives": "雑誌(ざっし):tạp chí|日誌(にっし):nhật ký công việc|地誌(ちし):địa chí|誌面(しめん):trang báo|文芸誌(ぶんげいし):tạp chí văn nghệ",
-      "vocabulary": ""
+      "vocabulary": "雑誌(ざっし):tạp chí|日誌(にっし):nhật ký công việc|地誌(ちし):địa chí|誌面(しめん):trang báo|文芸誌(ぶんげいし):tạp chí văn nghệ"
     },
     {
       "stt": 390,
@@ -5844,10 +5455,9 @@ const kanjiData = [
       "radicals": "金-kim|艮-cấn",
       "core_meaning": "bạc",
       "story_image": "Kim loại (金) cứng (艮) và sáng bóng chính là bạc.",
-      "logic_development": "金-kim + 艮-cấn -> kim loại cứng",
+      "logic_development": "金-kim + 艮-cấn → kim loại cứng",
       "memory_tip": "Kim loại quý màu trắng bạc.",
-      "adjectives": "銀行(ぎんこう):ngân hàng|銀色(ぎんいろ):màu bạc|銀河(ぎんが):ngân hà|水銀(すいぎん):thủy ngân|銀メダル(ぎんめだる):huy chương bạc",
-      "vocabulary": ""
+      "vocabulary": "銀行(ぎんこう):ngân hàng|銀色(ぎんいろ):màu bạc|銀河(ぎんが):ngân hà|水銀(すいぎん):thủy ngân|銀メダル(ぎんめだる):huy chương bạc"
     },
     {
       "stt": 391,
@@ -5859,10 +5469,9 @@ const kanjiData = [
       "radicals": "次-thứ|貝-bối",
       "core_meaning": "tư bản",
       "story_image": "Tiền bạc (貝) là thứ (次) quan trọng để làm vốn.",
-      "logic_development": "次-thứ + 貝-bối -> tiền là thứ hai",
+      "logic_development": "次-thứ + 貝-bối → tiền là thứ hai",
       "memory_tip": "Tiền là thứ để đầu tư.",
-      "adjectives": "資料(しりょう):tài liệu|資産(しさん):tài sản|資本(しほん):vốn|資源(しげん):tài nguyên|資格(しかく):tư cách",
-      "vocabulary": ""
+      "vocabulary": "資料(しりょう):tài liệu|資産(しさん):tài sản|資本(しほん):vốn|資源(しげん):tài nguyên|資格(しかく):tư cách"
     },
     {
       "stt": 392,
@@ -5874,10 +5483,9 @@ const kanjiData = [
       "radicals": "口-khẩu|口-khẩu|口-khẩu",
       "core_meaning": "sản phẩm",
       "story_image": "Ba cái miệng (口) cùng khen ngợi một món hàng sản phẩm.",
-      "logic_development": "口3 -> ba cái miệng",
+      "logic_development": "口3 → ba cái miệng",
       "memory_tip": "Nhiều miệng cùng đánh giá chất lượng sản phẩm.",
-      "adjectives": "品物(しなもの):hàng hóa|作品(さくひん):tác phẩm|商品(しょうひん):thương phẩm|上品な(じょうひんな):sang trọng|下品な(げひんな):thô tục",
-      "vocabulary": ""
+      "vocabulary": "品物(しなもの):hàng hóa|作品(さくひん):tác phẩm|商品(しょうひん):thương phẩm|上品な(じょうひんな):sang trọng|下品な(げひんな):thô tục"
     },
     {
       "stt": 393,
@@ -5889,10 +5497,9 @@ const kanjiData = [
       "radicals": "亻-nhân|固-cố",
       "core_meaning": "cá nhân",
       "story_image": "Một người (亻) có tính cách kiên cố (固) là một cá thể.",
-      "logic_development": "亻-nhân + 固-cố -> người kiên cố",
+      "logic_development": "亻-nhân + 固-cố → người kiên cố",
       "memory_tip": "Từng người một là từng cá thể.",
-      "adjectives": "個人(こじん):cá nhân|一個(いっこ):một cái|個性(こせい):cá tính|個数(こすう):số lượng cái|個室(こしつ):phòng riêng",
-      "vocabulary": ""
+      "vocabulary": "個人(こじん):cá nhân|一個(いっこ):một cái|個性(こせい):cá tính|個数(こすう):số lượng cái|個室(こしつ):phòng riêng"
     },
     {
       "stt": 394,
@@ -5904,10 +5511,9 @@ const kanjiData = [
       "radicals": "亻-nhân|価-giá",
       "core_meaning": "giá cả",
       "story_image": "Con người (亻) định giá cho các mặt hàng.",
-      "logic_development": "亻-nhân + 価-giá -> người định giá",
+      "logic_development": "亻-nhân + 価-giá → người định giá",
       "memory_tip": "Con người đưa ra mức giá.",
-      "adjectives": "価格(かかく):giá cả|価値(かち):giá trị|物価(ぶっか):vật giá|評価(ひょうか):đánh giá|定価(ていか):giá cố định",
-      "vocabulary": ""
+      "vocabulary": "価格(かかく):giá cả|価値(かち):giá trị|物価(ぶっか):vật giá|評価(ひょうか):đánh giá|定価(ていか):giá cố định"
     },
     {
       "stt": 395,
@@ -5919,10 +5525,9 @@ const kanjiData = [
       "radicals": "产-sản|生-sinh",
       "core_meaning": "sản xuất",
       "story_image": "Nơi vách núi (产) sinh (生) ra các sản vật.",
-      "logic_development": "产-sản + 生-sinh -> sinh ra sản vật",
+      "logic_development": "产-sản + 生-sinh → sinh ra sản vật",
       "memory_tip": "Sinh đẻ hoặc sản xuất đồ đạc.",
-      "adjectives": "産業(さんぎょう):công nghiệp|生産(せいさん):sản xuất|お土産(おみやげ):quà lưu niệm|産産(うむ):sinh con|不動産(ふどうさん):bất động sản",
-      "vocabulary": ""
+      "vocabulary": "産業(さんぎょう):công nghiệp|生産(せいさん):sản xuất|お土産(おみやげ):quà lưu niệm|産産(うむ):sinh con|不動産(ふどうさん):bất động sản"
     },
     {
       "stt": 396,
@@ -5934,10 +5539,9 @@ const kanjiData = [
       "radicals": "其-kỳ|月-nguyệt",
       "core_meaning": "kỳ hạn",
       "story_image": "Thời gian trôi qua từng tháng (月) theo định kỳ (其).",
-      "logic_development": "其-kỳ + 月-nguyệt -> mặt trăng định kỳ",
+      "logic_development": "其-kỳ + 月-nguyệt → mặt trăng định kỳ",
       "memory_tip": "Thời gian trôi theo chu kỳ mặt trăng.",
-      "adjectives": "期間(きかん):thời kỳ|期待(きたい):kỳ vọng|学期(がっき):học kỳ|定期(ていき):định kỳ|時期(じき):thời điểm",
-      "vocabulary": ""
+      "vocabulary": "期間(きかん):thời kỳ|期待(きたい):kỳ vọng|学期(がっき):học kỳ|定期(ていき):định kỳ|時期(じき):thời điểm"
     },
     {
       "stt": 397,
@@ -5949,10 +5553,9 @@ const kanjiData = [
       "radicals": "々-điệp",
       "core_meaning": "lặp lại",
       "story_image": "Ký hiệu dùng để lặp lại chữ kanji đứng trước.",
-      "logic_development": "々-điệp -> lặp lại",
+      "logic_development": "々-điệp → lặp lại",
       "memory_tip": "Dấu hiệu nhắc lại từ trước.",
-      "adjectives": "時々(ときどき):thỉnh thoảng|人々(ひとびと):mọi người|色々(いろいろ):nhiều loại|代々(だいだい):đời đời|日々(ひび):ngày ngày",
-      "vocabulary": ""
+      "vocabulary": "時々(ときどき):thỉnh thoảng|人々(ひとびと):mọi người|色々(いろいろ):nhiều loại|代々(だいだい):đời đời|日々(ひび):ngày ngày"
     },
     {
       "stt": 398,
@@ -5964,10 +5567,9 @@ const kanjiData = [
       "radicals": "幸-hạnh|卩-tiết|又-hựu",
       "core_meaning": "báo cáo",
       "story_image": "Dùng tay (又) thông báo về hạnh phúc (幸) theo từng tiết (卩).",
-      "logic_development": "幸-hạnh + 卩-tiết + 又-hựu -> tay báo tin vui",
+      "logic_development": "幸-hạnh + 卩-tiết + 又-hựu → tay báo tin vui",
       "memory_tip": "Mang tin tức về cho mọi người.",
-      "adjectives": "報告(ほうこく):báo cáo|情報(じょうほう):thông tin|天気予報(てんきよほう):dự báo thời tiết|報道(ほうどう):tin tức|報酬(ほうしゅう):thù lao",
-      "vocabulary": ""
+      "vocabulary": "報告(ほうこく):báo cáo|情報(じょうほう):thông tin|天気予報(てんきよほう):dự báo thời tiết|報道(ほうどう):tin tức|報酬(ほうしゅう):thù lao"
     },
     {
       "stt": 399,
@@ -5979,10 +5581,9 @@ const kanjiData = [
       "radicals": "牛-ngưu|口-khẩu",
       "core_meaning": "thông cáo",
       "story_image": "Dùng miệng (口) nói về con bò (牛) để thông cáo.",
-      "logic_development": "牛-ngưu + 口-khẩu -> miệng nói về bò",
+      "logic_development": "牛-ngưu + 口-khẩu → miệng nói về bò",
       "memory_tip": "Mở miệng thông báo cho mọi người.",
-      "adjectives": "報告(ほうこく):báo cáo|広告(こうこく):quảng cáo|告白(こくはく):tỏ tình|忠告(ちゅうこく):lời khuyên|通告(つうこく):thông báo",
-      "vocabulary": ""
+      "vocabulary": "報告(ほうこく):báo cáo|広告(こうこく):quảng cáo|告白(こくはく):tỏ tình|忠告(ちゅうこく):lời khuyên|通告(つうこく):thông báo"
     },
     {
       "stt": 400,
@@ -5994,10 +5595,9 @@ const kanjiData = [
       "radicals": "心-tâm",
       "core_meaning": "trái tim",
       "story_image": "Hình ảnh quả tim với các huyết quản.",
-      "logic_development": "心-tâm -> quả tim",
+      "logic_development": "心-tâm → quả tim",
       "memory_tip": "Trái tim là trung tâm cảm xúc.",
-      "adjectives": "中心(ちゅうしん):trung tâm|安心(あんしん):an tâm|心配(しんぱい):lo lắng|熱心(ねっしん):nhiệt tình|関心(かんしん):quan tâm",
-      "vocabulary": ""
+      "vocabulary": "中心(ちゅうしん):trung tâm|安心(あんしん):an tâm|心配(しんぱい):lo lắng|熱心(ねっしん):nhiệt tình|関心(かんしん):quan tâm"
     },
     {
       "stt": 401,
@@ -6009,10 +5609,9 @@ const kanjiData = [
       "radicals": "咸-hàm|心-tâm",
       "core_meaning": "cảm giác",
       "story_image": "Mọi người (咸) đều cảm thấy từ trong tim (心).",
-      "logic_development": "咸-hàm + 心-tâm -> tim của mọi người",
+      "logic_development": "咸-hàm + 心-tâm → tim của mọi người",
       "memory_tip": "Cảm xúc xuất phát từ trái tim.",
-      "adjectives": "感心な(かんしんな):khâm phục",
-      "vocabulary": "感じ(かんじ):cảm giác|感謝(かんしゃ):cảm ơn|感動(かんどう):cảm động|感想(かんそう):cảm tưởng|直感(ちょっかん):trực giác"
+      "vocabulary": "感心な(かんしんな):khâm phục|感じ(かんじ):cảm giác|感謝(かんしゃ):cảm ơn|感動(かんどう):cảm động|感想(かんそう):cảm tưởng|直感(ちょっかん):trực giác"
     },
     {
       "stt": 402,
@@ -6024,10 +5623,9 @@ const kanjiData = [
       "radicals": "忄-tâm|青-thanh",
       "core_meaning": "tình cảm",
       "story_image": "Trái tim (忄) luôn xanh (青) tươi đầy tình cảm.",
-      "logic_development": "忄-tâm + 青-thanh -> tim xanh",
+      "logic_development": "忄-tâm + 青-thanh → tim xanh",
       "memory_tip": "Tình cảm nồng nàn như tuổi trẻ.",
-      "adjectives": "愛情(あいじょう):tình yêu|友情(ゆうじょう):tình bạn|表情(ひょうじょう):biểu cảm|情熱(じょうねつ):đam mê|事情(じじょう):sự tình",
-      "vocabulary": ""
+      "vocabulary": "愛情(あいじょう):tình yêu|友情(ゆうじょう):tình bạn|表情(ひょうじょう):biểu cảm|情熱(じょうねつ):đam mê|事情(じじょう):sự tình"
     },
     {
       "stt": 403,
@@ -6039,10 +5637,9 @@ const kanjiData = [
       "radicals": "非-phi|心-tâm",
       "core_meaning": "đau buồn",
       "story_image": "Khi trái tim (心) cảm thấy sai trái (非) thì sẽ đau buồn.",
-      "logic_development": "非-phi + 心-tâm -> tim thấy sai",
+      "logic_development": "非-phi + 心-tâm → tim thấy sai",
       "memory_tip": "Trái tim đau đớn vì điều không đúng.",
-      "adjectives": "悲しい(かなしい):buồn",
-      "vocabulary": "悲劇(ひげき):bi kịch|悲鳴(ひめい):tiếng thét|悲惨な(ひさんな):bi thảm|悲しみ(かなしみ):nỗi buồn|悲観(ひかん):bi quan"
+      "vocabulary": "悲しい(かなしい):buồn|悲劇(ひげき):bi kịch|悲鳴(ひめい):tiếng thét|悲惨な(ひさんな):bi thảm|悲しみ(かなしみ):nỗi buồn|悲観(ひかん):bi quan"
     },
     {
       "stt": 404,
@@ -6054,10 +5651,9 @@ const kanjiData = [
       "radicals": "氵-thủy|立-lập",
       "core_meaning": "khóc",
       "story_image": "Đứng (立) đó và chảy nước mắt (氵) để khóc.",
-      "logic_development": "氵-thủy + 立-lập -> nước khi đứng",
+      "logic_development": "氵-thủy + 立-lập → nước khi đứng",
       "memory_tip": "Đứng đó khóc sưng cả mắt.",
-      "adjectives": "泣く(なく):khóc",
-      "vocabulary": "号泣(ごうきゅう):khóc rống|泣き声(なきごえ):tiếng khóc|泣き虫(なきむし):đứa trẻ hay khóc|感泣(かんきゅう):khóc vì cảm động|泣き顔(なきがお):mặt khóc"
+      "vocabulary": "泣く(なく):khóc|号泣(ごうきゅう):khóc rống|泣き声(なきごえ):tiếng khóc|泣き虫(なきむし):đứa trẻ hay khóc|感泣(かんきゅう):khóc vì cảm động|泣き顔(なきがお):mặt khóc"
     },
     {
       "stt": 405,
@@ -6069,10 +5665,9 @@ const kanjiData = [
       "radicals": "竹-trúc|夭-yêu",
       "core_meaning": "cười",
       "story_image": "Cây tre (竹) nghiêng ngả như người (夭) đang cười.",
-      "logic_development": "竹-trúc + 夭-yêu -> tre nghiêng người cười",
+      "logic_development": "竹-trúc + 夭-yêu → tre nghiêng người cười",
       "memory_tip": "Cười tươi như hoa nở.",
-      "adjectives": "笑顔(えがお):mặt cười|大笑い(おおわらい):cười lớn|爆笑(ばくしょう):cười nổ|苦笑(くしょう):cười khổ|笑む(えむ):mỉm cười",
-      "vocabulary": ""
+      "vocabulary": "笑顔(えがお):mặt cười|大笑い(おおわらい):cười lớn|爆笑(ばくしょう):cười nổ|苦笑(くしょう):cười khổ|笑む(えむ):mỉm cười"
     },
     {
       "stt": 406,
@@ -6084,10 +5679,9 @@ const kanjiData = [
       "radicals": "豆-đậu|頁-hiệt",
       "core_meaning": "cái đầu",
       "story_image": "Hạt đậu (豆) nhỏ nhưng là bộ phận của đầu (頁).",
-      "logic_development": "豆-đậu + 頁-hiệt -> đậu trên đầu",
+      "logic_development": "豆-đậu + 頁-hiệt → đậu trên đầu",
       "memory_tip": "Cái đầu tròn trịa như hạt đậu.",
-      "adjectives": "頭がいい(あたまがいい):thông minh",
-      "vocabulary": "頭痛(ずつう):đau đầu|先頭(せんとう):dẫn đầu|頭金(あたまきん):tiền đặt cọc|冒頭(ぼうとう):phần đầu|頭部(とうぶ):phần đầu"
+      "vocabulary": "頭がいい(あたまがいい):thông minh|頭痛(ずつう):đau đầu|先頭(せんとう):dẫn đầu|頭金(あたまきん):tiền đặt cọc|冒頭(ぼうとう):phần đầu|頭部(とうぶ):phần đầu"
     },
     {
       "stt": 407,
@@ -6099,10 +5693,9 @@ const kanjiData = [
       "radicals": "覚-giác|見-kiến",
       "core_meaning": "ghi nhớ",
       "story_image": "Thấy (見) và ghi nhớ bằng thị giác.",
-      "logic_development": "覚-giác + 見-kiến -> nhìn để nhớ",
+      "logic_development": "覚-giác + 見-kiến → nhìn để nhớ",
       "memory_tip": "Mở mắt ra để nhận thức.",
-      "adjectives": "目覚める(めざめる):thức tỉnh",
-      "vocabulary": "覚える(おぼえる):nhớ|感覚(かんかく):cảm giác|自覚(じかく):tự giác|味覚(みかく):vị giác|視覚(しかく):thị giác"
+      "vocabulary": "目覚める(めざめる):thức tỉnh|覚える(おぼえる):nhớ|感覚(かんかく):cảm giác|自覚(じかく):tự giác|味覚(みかく):vị giác|視覚(しかく):thị giác"
     },
     {
       "stt": 408,
@@ -6114,10 +5707,9 @@ const kanjiData = [
       "radicals": "亡-vong|心-tâm",
       "core_meaning": "quên",
       "story_image": "Trái tim (心) bị mất mát (亡) dẫn đến quên lãng.",
-      "logic_development": "亡-vong + 心-tâm -> tim mất mát",
+      "logic_development": "亡-vong + 心-tâm → tim mất mát",
       "memory_tip": "Để mất trái tim nên quên hết.",
-      "adjectives": "忘れ物(わすれもの):đồ bỏ quên|忘年会(ぼうねんかい):tiệc cuối năm|忘れっぽい(わすれっぽい):hay quên|忘却(ぼうきゃく):quên lãng|忘れる(わすれる):quên",
-      "vocabulary": ""
+      "vocabulary": "忘れ物(わすれもの):đồ bỏ quên|忘年会(ぼうねんかい):tiệc cuối năm|忘れっぽい(わすれっぽい):hay quên|忘却(ぼうきゃく):quên lãng|忘れる(わすれる):quên"
     },
     {
       "stt": 409,
@@ -6129,10 +5721,9 @@ const kanjiData = [
       "radicals": "耂-lão|丂-khảo",
       "core_meaning": "suy nghĩ",
       "story_image": "Người già (耂) chống gậy (丂) đứng suy nghĩ.",
-      "logic_development": "耂-lão + 丂-khảo -> cụ già chống gậy",
+      "logic_development": "耂-lão + 丂-khảo → cụ già chống gậy",
       "memory_tip": "Cụ già chống gậy suy nghĩ về khảo cổ.",
-      "adjectives": "考え(かんがえ):ý kiến",
-      "vocabulary": "思考(しこう):tư duy|考古学(こうこがく):khảo cổ học|考案(こうあん):nghĩ ra|参考(さんこう):tham khảo|選考(せんこう):tuyển chọn"
+      "vocabulary": "考え(かんがえ):ý kiến|思考(しこう):tư duy|考古学(こうこがく):khảo cổ học|考案(こうあん):nghĩ ra|参考(さんこう):tham khảo|選考(せんこう):tuyển chọn"
     },
     {
       "stt": 410,
@@ -6144,10 +5735,9 @@ const kanjiData = [
       "radicals": "亻-nhân|伝-truyền",
       "core_meaning": "truyền đạt",
       "story_image": "Con người (亻) truyền đạt tin tức cho nhau.",
-      "logic_development": "亻-nhân + 伝-truyền -> người truyền tin",
+      "logic_development": "亻-nhân + 伝-truyền → người truyền tin",
       "memory_tip": "Truyền lại kinh nghiệm cho đời sau.",
-      "adjectives": "手伝う(てつだう):giúp đỡ|伝統(でんとう):truyền thống|伝言(でんごん):lời nhắn|伝える(つたえる):truyền đạt|伝記(でんき):truyện ký",
-      "vocabulary": ""
+      "vocabulary": "手伝う(てつだう):giúp đỡ|伝統(でんとう):truyền thống|伝言(でんごん):lời nhắn|伝える(つたえる):truyền đạt|伝記(でんき):truyện ký"
     },
     {
       "stt": 411,
@@ -6159,10 +5749,9 @@ const kanjiData = [
       "radicals": "亻-nhân|弋-dặc",
       "core_meaning": "thay thế",
       "story_image": "Người (亻) dùng mũi tên (弋) để thay đổi vị trí.",
-      "logic_development": "亻-nhân + 弋-dặc -> người cầm tên thay đổi",
+      "logic_development": "亻-nhân + 弋-dặc → người cầm tên thay đổi",
       "memory_tip": "Thay thế thế hệ cũ bằng người mới.",
-      "adjectives": "代わりに(かわりに):thay cho",
-      "vocabulary": "時代(じだい):thời đại|交代(こうたい):thay phiên|代表(だいひょう):đại diện|代理(だいり):đại lý|現代(げんだい):hiện đại"
+      "vocabulary": "代わりに(かわりに):thay cho|時代(じだい):thời đại|交代(こうたい):thay phiên|代表(だいひょう):đại diện|代理(だいり):đại lý|現代(げんだい):hiện đại"
     },
     {
       "stt": 412,
@@ -6174,10 +5763,9 @@ const kanjiData = [
       "radicals": "口-khẩu|乎-hô",
       "core_meaning": "gọi tên",
       "story_image": "Mở miệng (口) ra để gọi tên (乎).",
-      "logic_development": "口-khẩu + 乎-hô -> miệng gọi tên",
+      "logic_development": "口-khẩu + 乎-hô → miệng gọi tên",
       "memory_tip": "Mở miệng gọi thật to.",
-      "adjectives": "呼ぶ(よぶ):gọi",
-      "vocabulary": "呼気(こき):hơi thở|呼吸(こきゅう):hô hấp|呼び出し(よびだし):gọi ra|点呼(てんこ):điểm danh|呼称(こしょう):danh xưng"
+      "vocabulary": "呼ぶ(よぶ):gọi|呼気(こき):hơi thở|呼吸(こきゅう):hô hấp|呼び出し(よびだし):gọi ra|点呼(てんこ):điểm danh|呼称(こしょう):danh xưng"
     },
     {
       "stt": 413,
@@ -6189,10 +5777,9 @@ const kanjiData = [
       "radicals": "火-hỏa|尭-nghiêu",
       "core_meaning": "đốt cháy",
       "story_image": "Dùng lửa (火) để đốt cháy ở trên cao (尭).",
-      "logic_development": "火-hỏa + 尭-nghiêu -> lửa đốt trên cao",
+      "logic_development": "火-hỏa + 尭-nghiêu → lửa đốt trên cao",
       "memory_tip": "Lửa cháy nung nấu mọi thứ.",
-      "adjectives": "焼き鳥(やきとり):thịt gà nướng|夕焼け(ゆうやけ):hoàng hôn|焼肉(やきにく):thịt nướng|焼却(しょうきゃく):thiêu hủy|燃焼(ねんしょう):đốt cháy",
-      "vocabulary": ""
+      "vocabulary": "焼き鳥(やきとり):thịt gà nướng|夕焼け(ゆうやけ):hoàng hôn|焼肉(やきにく):thịt nướng|焼却(しょうきゃく):thiêu hủy|燃焼(ねんしょう):đốt cháy"
     },
     {
       "stt": 414,
@@ -6204,10 +5791,9 @@ const kanjiData = [
       "radicals": "曲-khúc",
       "core_meaning": "cong vẹo",
       "story_image": "Hình ảnh một vật bị uốn cong lại.",
-      "logic_development": "曲-khúc -> vật bị uốn",
+      "logic_development": "曲-khúc → vật bị uốn",
       "memory_tip": "Đường cong hoặc giai điệu nhạc.",
-      "adjectives": "曲がる(まがる):rẽ|曲線(きょくせん):đường cong",
-      "vocabulary": "作曲(さっきょく):sáng tác nhạc|楽曲(がっきょく):bản nhạc|屈曲(くっきょく):gấp khúc|曲名(きょくめい):tên bài hát|名曲(めいきょく):bản nhạc hay"
+      "vocabulary": "曲がる(まがる):rẽ|曲線(きょくせん):đường cong|作曲(さっきょく):sáng tác nhạc|楽曲(がっきょく):bản nhạc|屈曲(くっきょく):gấp khúc|曲名(きょくめい):tên bài hát|名曲(めいきょく):bản nhạc hay"
     },
     {
       "stt": 415,
@@ -6219,10 +5805,9 @@ const kanjiData = [
       "radicals": "月-nguyệt|兌-đoái",
       "core_meaning": "cởi bỏ",
       "story_image": "Phần thịt (月) được cởi bỏ vui vẻ (兌) quần áo.",
-      "logic_development": "月-nguyệt + 兌-đoái -> thịt vui vẻ",
+      "logic_development": "月-nguyệt + 兌-đoái → thịt vui vẻ",
       "memory_tip": "Cởi quần áo để cảm thấy thoải mái.",
-      "adjectives": "脱ぐ(ぬぐ):cởi",
-      "vocabulary": "脱出(だっしゅつ):thoát khỏi|脱毛(だつもう):rụng tóc|脱水(だっすい):mất nước|脱走(だっそう):vượt ngục|脱退(だったい):rút lui"
+      "vocabulary": "脱ぐ(ぬぐ):cởi|脱出(だっしゅつ):thoát khỏi|脱毛(だつもう):rụng tóc|脱水(だっすい):mất nước|脱走(だっそう):vượt ngục|脱退(だったい):rút lui"
     },
     {
       "stt": 416,
@@ -6234,10 +5819,9 @@ const kanjiData = [
       "radicals": "口-khẩu|刀-đao",
       "core_meaning": "phân biệt",
       "story_image": "Dùng dao (刀) để chia nhỏ cái miệng (口) ra phân biệt.",
-      "logic_development": "口-khẩu + 刀-đao -> dao chia miệng",
+      "logic_development": "口-khẩu + 刀-đao → dao chia miệng",
       "memory_tip": "Dùng dao cắt để phân ra.",
-      "adjectives": "別の(べつの):khác",
-      "vocabulary": "特別(とくべつ):đặc biệt|別(わか)れる:chia tay|差別(さべつ):phân biệt|区別(くべつ):phân chia|送別会(そうべつかい):tiệc chia tay"
+      "vocabulary": "別の(べつの):khác|特別(とくべつ):đặc biệt|別(わか)れる:chia tay|差別(さべつ):phân biệt|区別(くべつ):phân chia|送別会(そうべつかい):tiệc chia tay"
     },
     {
       "stt": 417,
@@ -6249,10 +5833,9 @@ const kanjiData = [
       "radicals": "隹-truy|木-mộc",
       "core_meaning": "tập hợp",
       "story_image": "Đàn chim (隹) đậu trên cây (木) để tập hợp lại.",
-      "logic_development": "隹-truy + 木-mộc -> chim trên cây",
+      "logic_development": "隹-truy + 木-mộc → chim trên cây",
       "memory_tip": "Nhiều con chim cùng tụ về một chỗ.",
-      "adjectives": "集まる(あつまる):tập trung",
-      "vocabulary": "集合(しゅうごう):tập hợp|集中(しゅうちゅう):tập trung|収集(しゅうしゅう):thu thập|集会(しゅうかい):hội họp|編集(へんしゅう):biên tập"
+      "vocabulary": "集まる(あつまる):tập trung|集合(しゅうごう):tập hợp|集中(しゅうちゅう):tập trung|収集(しゅうしゅう):thu thập|集会(しゅうかい):hội họp|編集(へんしゅう):biên tập"
     },
     {
       "stt": 418,
@@ -6264,10 +5847,9 @@ const kanjiData = [
       "radicals": "並-tịnh",
       "core_meaning": "xếp hàng",
       "story_image": "Hình ảnh hai người đang đứng xếp hàng ngang nhau.",
-      "logic_development": "並-tịnh -> hai người xếp hàng",
+      "logic_development": "並-tịnh → hai người xếp hàng",
       "memory_tip": "Xếp các đồ vật ngay ngắn thành hàng.",
-      "adjectives": "並の(なみの):bình thường",
-      "vocabulary": "並列(へいれつ):song song|並行(へいこう):song hành|並ぶ(ならぶ):xếp hàng|人並み(ひとなみ):như mọi người|足並み(あしなみ):bước đi"
+      "vocabulary": "並の(なみの):bình thường|並列(へいれつ):song song|並行(へいこう):song hành|並ぶ(ならぶ):xếp hàng|人並み(ひとなみ):như mọi người|足並み(あしなみ):bước đi"
     },
     {
       "stt": 419,
@@ -6279,10 +5861,9 @@ const kanjiData = [
       "radicals": "壴-hỉ|口-khẩu",
       "core_meaning": "vui mừng",
       "story_image": "Đánh trống (壴) và mở miệng (口) cười vui mừng.",
-      "logic_development": "壴-hỉ + 口-khẩu -> trống và miệng",
+      "logic_development": "壴-hỉ + 口-khẩu → trống và miệng",
       "memory_tip": "Vui mừng reo hò khi có tin hỉ.",
-      "adjectives": "喜ぶ(よろこぶ):vui mừng",
-      "vocabulary": "歓喜(かんき):hoan hỉ|喜劇(きげき):hài kịch|大喜び(おおよろこび):vất vui sướng|喜び(よろこび):niềm vui|喜怒哀楽(きどあいらく):hỉ nộ ái ố"
+      "vocabulary": "喜ぶ(よろこぶ):vui mừng|歓喜(かんき):hoan hỉ|喜劇(きげき):hài kịch|大喜び(おおよろこび):vất vui sướng|喜び(よろこび):niềm vui|喜怒哀楽(きどあいらく):hỉ nộ ái ố"
     },
     {
       "stt": 420,
@@ -6294,10 +5875,9 @@ const kanjiData = [
       "radicals": "車-xa|𢦏-tải",
       "core_meaning": "đăng tải",
       "story_image": "Dùng xe (車) để chở và đăng tải (𢦏) thông tin.",
-      "logic_development": "車-xa + 𢦏-tải -> xe chở thông tin",
+      "logic_development": "車-xa + 𢦏-tải → xe chở thông tin",
       "memory_tip": "Đặt đồ lên xe hoặc đăng bài báo.",
-      "adjectives": "掲載(けいさい):đăng bài|記載(きさい):ghi chép|積載(せきさい):chất hàng|転載(てんさい):sao chép lại|満載(まんさい):chở đầy",
-      "vocabulary": ""
+      "vocabulary": "掲載(けいさい):đăng bài|記載(きさい):ghi chép|積載(せきさい):chất hàng|転載(てんさい):sao chép lại|満載(まんさい):chở đầy"
     },
     {
       "stt": 421,
@@ -6309,10 +5889,9 @@ const kanjiData = [
       "radicals": "糸-mịch|田-điền",
       "core_meaning": "nhỏ bé",
       "story_image": "Sợi chỉ (糸) mỏng như rãnh nước trên ruộng (田) rất tinh tế.",
-      "logic_development": "糸-mịch + 田-điền -> chỉ trên ruộng",
+      "logic_development": "糸-mịch + 田-điền → chỉ trên ruộng",
       "memory_tip": "Sợi chỉ nhỏ và tinh tế.",
-      "adjectives": "細かい(こまかい):chi tiết|細い(ほそい):gầy",
-      "vocabulary": "細部(さいぶ):chi tiết nhỏ|細工(さいく):chế tác nhỏ|細菌(さいきん):vi khuẩn|明細(めいさい):chi tiết|繊細な(せんさいな):tinh tế"
+      "vocabulary": "細かい(こまかい):chi tiết|細い(ほそい):gầy|細部(さいぶ):chi tiết nhỏ|細工(さいく):chế tác nhỏ|細菌(さいきん):vi khuẩn|明細(めいさい):chi tiết|繊細な(せんさいな):tinh tế"
     },
     {
       "stt": 422,
@@ -6324,10 +5903,9 @@ const kanjiData = [
       "radicals": "大-đại|丶-chủ",
       "core_meaning": "béo",
       "story_image": "Người lớn (大) mà có thêm dấu (丶) là người béo thái quá.",
-      "logic_development": "大-đại + 丶-chủ -> người có thêm dấu",
+      "logic_development": "大-đại + 丶-chủ → người có thêm dấu",
       "memory_tip": "Người quá to lớn nên béo.",
-      "adjectives": "太い(ふとい):béo",
-      "vocabulary": "太陽(たいよう):mặt trời|太平洋(たいへいよう):Thái Bình Dương|太鼓(たいこ):cái trống|太字(ふとじ):chữ in đậm|太る(ふとる):béo lên"
+      "vocabulary": "太い(ふとい):béo|太陽(たいよう):mặt trời|太平洋(たいへいよう):Thái Bình Dương|太鼓(たいこ):cái trống|太字(ふとじ):chữ in đậm|太る(ふとる):béo lên"
     },
     {
       "stt": 423,
@@ -6339,10 +5917,9 @@ const kanjiData = [
       "radicals": "千-thiên|里-lý",
       "core_meaning": "nặng",
       "story_image": "Đi ngàn (千) dặm (里) đường thì rất nặng nhọc.",
-      "logic_development": "千-thiên + 里-lý -> ngàn dặm đường",
+      "logic_development": "千-thiên + 里-lý → ngàn dặm đường",
       "memory_tip": "Vật nặng hoặc sự lặp lại nhiều lần.",
-      "adjectives": "重い(おもい):nặng",
-      "vocabulary": "重要(じゅうよう):quan trọng|体重(たいじゅう):cân nặng|貴重な(きちょうな):quý giá|重ねる(かさねる):chồng lên|重力(じゅうりょく):trọng lực"
+      "vocabulary": "重い(おもい):nặng|重要(じゅうよう):quan trọng|体重(たいじゅう):cân nặng|貴重な(きちょうな):quý giá|重ねる(かさねる):chồng lên|重力(じゅうりょく):trọng lực"
     },
     {
       "stt": 424,
@@ -6354,10 +5931,9 @@ const kanjiData = [
       "radicals": "車-xa|圣-khinh",
       "core_meaning": "nhẹ",
       "story_image": "Chiếc xe (車) chạy trên đất (圣) rất nhẹ nhàng.",
-      "logic_development": "車-xa + 圣-khinh -> xe chạy trên đất",
+      "logic_development": "車-xa + 圣-khinh → xe chạy trên đất",
       "memory_tip": "Vật nhẹ có thể di chuyển dễ dàng.",
-      "adjectives": "軽い(かるい):nhẹ",
-      "vocabulary": "軽食(けいしょく):bữa ăn nhẹ|軽率な(けいそつな):khinh suất|軽油(けいゆ):dầu diezen|軽蔑(けいべつ):khinh miệt|軽やか(かろやか):nhẹ nhàng"
+      "vocabulary": "軽い(かるい):nhẹ|軽食(けいしょく):bữa ăn nhẹ|軽率な(けいそつな):khinh suất|軽油(けいゆ):dầu diezen|軽蔑(けいべつ):khinh miệt|軽やか(かろやか):nhẹ nhàng"
     },
     {
       "stt": 425,
@@ -6369,10 +5945,9 @@ const kanjiData = [
       "radicals": "犭-khuyển|夾-hiệp",
       "core_meaning": "chật hẹp",
       "story_image": "Con chó (犭) bị kẹp (夾) vào giữa không gian chật hẹp.",
-      "logic_development": "犭-khuyển + 夾-hiệp -> chó bị kẹp",
+      "logic_development": "犭-khuyển + 夾-hiệp → chó bị kẹp",
       "memory_tip": "Không gian nhỏ hẹp khó đi.",
-      "adjectives": "狭い(せまい):hẹp",
-      "vocabulary": "狭量(きょうりょう):hẹp hòi|狭義(きょうぎ):nghĩa hẹp|狭間(はざま):khoảng hẹp|狭まる(せばまる):hẹp lại|手狭(てぜま):chật chội"
+      "vocabulary": "狭い(せまい):hẹp|狭量(きょうりょう):hẹp hòi|狭義(きょうぎ):nghĩa hẹp|狭間(はざま):khoảng hẹp|狭まる(せばまる):hẹp lại|手狭(てぜま):chật chội"
     },
     {
       "stt": 426,
@@ -6384,10 +5959,9 @@ const kanjiData = [
       "radicals": "弓-cung|冫-băng",
       "core_meaning": "yếu",
       "story_image": "Cây cung (弓) bị đóng băng (冫) nên trở nên yếu ớt.",
-      "logic_development": "弓-cung + 冫-băng -> cung bị băng",
+      "logic_development": "弓-cung + 冫-băng → cung bị băng",
       "memory_tip": "Sức mạnh bị giảm sút nên yếu.",
-      "adjectives": "弱い(よわい):yếu",
-      "vocabulary": "弱点(じゃくてん):điểm yếu|弱気(よわき):nhát gan|軟弱な(なんじゃくな):yếu đuối|弱肉強食(じゃくにくきょうしょく):cá lớn nuốt cá bé|弱まる(よわまる):yếu đi"
+      "vocabulary": "弱い(よわい):yếu|弱点(じゃくてん):điểm yếu|弱気(よわき):nhát gan|軟弱な(なんじゃくな):yếu đuối|弱肉強食(じゃくにくきょうしょく):cá lớn nuốt cá bé|弱まる(よわまる):yếu đi"
     },
     {
       "stt": 427,
@@ -6399,10 +5973,9 @@ const kanjiData = [
       "radicals": "目-mục|民-dân",
       "core_meaning": "ngủ",
       "story_image": "Người dân (民) nhắm mắt (目) lại để ngủ.",
-      "logic_development": "目-mục + 民-dân -> mắt của dân",
+      "logic_development": "目-mục + 民-dân → mắt của dân",
       "memory_tip": "Nhắm mắt lại để đi vào giấc ngủ.",
-      "adjectives": "眠い(ねむい):buồn ngủ",
-      "vocabulary": "睡眠(すいみん):giấc ngủ|冬眠(とうmin):ngủ đông|不眠症(ふみんしょう):mất ngủ|永眠(えいみん):an nghỉ cuối cùng|眠る(ねむる):ngủ"
+      "vocabulary": "眠い(ねむい):buồn ngủ|睡眠(すいみん):giấc ngủ|冬眠(とうmin):ngủ đông|不眠症(ふみんしょう):mất ngủ|永眠(えいみん):an nghỉ cuối cùng|眠る(ねむる):ngủ"
     },
     {
       "stt": 428,
@@ -6414,10 +5987,9 @@ const kanjiData = [
       "radicals": "艹-thảo|古-cổ",
       "core_meaning": "khổ cực",
       "story_image": "Ăn loại cỏ (艹) cũ (古) thì thấy đắng và khổ.",
-      "logic_development": "艹-thảo + 古-cổ -> cỏ cũ",
+      "logic_development": "艹-thảo + 古-cổ → cỏ cũ",
       "memory_tip": "Đắng như vị thuốc làm từ cỏ cũ.",
-      "adjectives": "苦しい(くるしい):vất vả|苦い(にがい):đắng",
-      "vocabulary": "苦労(くろう):gian khổ|苦情(くじょう):phàn nàn|苦手な(にがてな):kém cỏi|苦痛(くつう):đau đớn|苦笑(くしょう):cười khổ"
+      "vocabulary": "苦しい(くるしい):vất vả|苦い(にがい):đắng|苦労(くろう):gian khổ|苦情(くじょう):phàn nàn|苦手な(にがてな):kém cỏi|苦痛(くつう):đau đớn|苦笑(くしょう):cười khổ"
     },
     {
       "stt": 429,
@@ -6429,10 +6001,9 @@ const kanjiData = [
       "radicals": "竹-trúc|間-gian",
       "core_meaning": "đơn giản",
       "story_image": "Thẻ tre (竹) viết trong khoảng không gian (間) rất đơn giản.",
-      "logic_development": "竹-trúc + 間-gian -> tre và khoảng cách",
+      "logic_development": "竹-trúc + 間-gian → tre và khoảng cách",
       "memory_tip": "Cách làm ngắn gọn không cầu kỳ.",
-      "adjectives": "簡単な(かんたんな):đơn giản",
-      "vocabulary": "簡潔な(かんけつな):ngắn gọn|簡易(かんい):giản tiện|簡略(かんりゃく):lược bớt|書簡(しょかん):thư từ|簡素(かんそ):giản dị"
+      "vocabulary": "簡単な(かんたんな):đơn giản|簡潔な(かんけつな):ngắn gọn|簡易(かんい):giản tiện|簡略(かんりゃく):lược bớt|書簡(しょかん):thư từ|簡素(かんそ):giản dị"
     },
     {
       "stt": 430,
@@ -6444,10 +6015,9 @@ const kanjiData = [
       "radicals": "単-đơn",
       "core_meaning": "đơn lẻ",
       "story_image": "Hình ảnh cái ná săn bắn chỉ có một chiếc.",
-      "logic_development": "単-đơn -> cái ná",
+      "logic_development": "単-đơn → cái ná",
       "memory_tip": "Chỉ có một mình đơn độc.",
-      "adjectives": "単なる(たんなる):chỉ là",
-      "vocabulary": "単位(たんい):đơn vị|単語(たんご):từ vựng|単身(たんしん):đơn thân|単純な(たんじゅんな):đơn giản|単独(たんどく):độc lập"
+      "vocabulary": "単なる(たんなる):chỉ là|単位(たんい):đơn vị|単語(たんご):từ vựng|単身(たんしん):đơn thân|単純な(たんじゅんな):đơn giản|単独(たんどく):độc lập"
     },
     {
       "stt": 431,
@@ -6459,10 +6029,9 @@ const kanjiData = [
       "radicals": "穴-huyệt|工-công",
       "core_meaning": "trống rỗng",
       "story_image": "Dùng công cụ (工) đào cái lỗ (穴) vào hư không.",
-      "logic_development": "穴-huyệt + 工-công -> đào lỗ",
+      "logic_development": "穴-huyệt + 工-công → đào lỗ",
       "memory_tip": "Bầu trời bao la trống rỗng.",
-      "adjectives": "空(そら):bầu trời|空腹な(くうふくな):đói",
-      "vocabulary": "空港(くうこう):sân bay|空気(くうき):không khí|空席(くうせき):chỗ trống|空手(からて):võ Karate|空間(くうかん):không gian"
+      "vocabulary": "空(そら):bầu trời|空腹な(くうふくな):đói|空港(くうこう):sân bay|空気(くうき):không khí|空席(くうせき):chỗ trống|空手(からて):võ Karate|空間(くうかん):không gian"
     },
     {
       "stt": 432,
@@ -6474,10 +6043,9 @@ const kanjiData = [
       "radicals": "氵-thủy|巷-hạng",
       "core_meaning": "bến cảng",
       "story_image": "Dòng nước (氵) dẫn vào con hẻm (巷) chính là bến cảng.",
-      "logic_development": "氵-thủy + 巷-hạng -> nước vào hẻm",
+      "logic_development": "氵-thủy + 巷-hạng → nước vào hẻm",
       "memory_tip": "Nơi thuyền đậu bên dòng nước.",
-      "adjectives": "空港(くうこう):sân bay|港町(みなとまち):thành phố cảng|出港(しゅっこう):rời cảng|帰港(きこう):về cảng|漁港(ぎょこう):cảng cá",
-      "vocabulary": ""
+      "vocabulary": "空港(くうこう):sân bay|港町(みなとまち):thành phố cảng|出港(しゅっこう):rời cảng|帰港(きこう):về cảng|漁港(ぎょこう):cảng cá"
     },
     {
       "stt": 433,
@@ -6489,10 +6057,9 @@ const kanjiData = [
       "radicals": "飛-phi",
       "core_meaning": "bay",
       "story_image": "Hình ảnh con chim đang vẫy đôi cánh để bay lên.",
-      "logic_development": "飛-phi -> chim vẫy cánh",
+      "logic_development": "飛-phi → chim vẫy cánh",
       "memory_tip": "Bay lên trên không trung.",
-      "adjectives": "飛行機(ひこうき):máy bay|飛行士(ひこうし):phi công|飛び出す(とびだす):nhảy ra|飛散(ひさん):bay tán loạn|飛ばす(とばす):làm cho bay",
-      "vocabulary": ""
+      "vocabulary": "飛行機(ひこうき):máy bay|飛行士(ひこうし):phi công|飛び出す(とびだす):nhảy ra|飛散(ひさん):bay tán loạn|飛ばす(とばす):làm cho bay"
     },
     {
       "stt": 434,
@@ -6504,10 +6071,9 @@ const kanjiData = [
       "radicals": "阝-phụ|皆-giai",
       "core_meaning": "giai cấp",
       "story_image": "Mọi người (皆) đi lên những bậc thang (阝).",
-      "logic_development": "阝-phụ + 皆-giai -> bậc thang và mọi người",
+      "logic_development": "阝-phụ + 皆-giai → bậc thang và mọi người",
       "memory_tip": "Từng bậc thang phân chia giai cấp.",
-      "adjectives": "階段(かいだん):cầu thang|地階(ちかい):tầng hầm|三階(さんがい):tầng 3|階級(かいきゅう):giai cấp|階層(かいそう):tầng lớp",
-      "vocabulary": ""
+      "vocabulary": "階段(かいだん):cầu thang|地階(ちかい):tầng hầm|三階(さんがい):tầng 3|階級(かいきゅう):giai cấp|階層(かいそう):tầng lớp"
     },
     {
       "stt": 435,
@@ -6519,10 +6085,9 @@ const kanjiData = [
       "radicals": "廴-dẫn|聿-duật",
       "core_meaning": "xây dựng",
       "story_image": "Dùng cây bút (聿) vẽ ra con đường (廴) để xây dựng.",
-      "logic_development": "廴-dẫn + 聿-duật -> đi vẽ bằng bút",
+      "logic_development": "廴-dẫn + 聿-duật → đi vẽ bằng bút",
       "memory_tip": "Xây dựng nên những công trình mới.",
-      "adjectives": "建物(たてもの):tòa nhà|建設(けんせつ):xây dựng|建国(けんこく):lập quốc|建立(こんりゅう):xây chùa|再建(さいけん):xây dựng lại",
-      "vocabulary": ""
+      "vocabulary": "建物(たてもの):tòa nhà|建設(けんせつ):xây dựng|建国(けんこく):lập quốc|建立(こんりゅう):xây chùa|再建(さいけん):xây dựng lại"
     },
     {
       "stt": 436,
@@ -6534,10 +6099,9 @@ const kanjiData = [
       "radicals": "言-ngôn|殳-thù",
       "core_meaning": "thiết lập",
       "story_image": "Dùng lời nói (言) và hành động (殳) để thiết lập kế hoạch.",
-      "logic_development": "言-ngôn + 殳-thù -> nói và làm",
+      "logic_development": "言-ngôn + 殳-thù → nói và làm",
       "memory_tip": "Thiết kế hoặc lập nên một cái gì đó.",
-      "adjectives": "建設(けんせつ):xây dựng|設計(せっけい):thiết kế|設定(せってい):thiết lập|設備(せつび):thiết bị|設立(せつりつ):thành lập",
-      "vocabulary": ""
+      "vocabulary": "建設(けんせつ):xây dựng|設計(せっけい):thiết kế|設定(せってい):thiết lập|設備(せつび):thiết bị|設立(せつりつ):thành lập"
     },
     {
       "stt": 437,
@@ -6549,10 +6113,9 @@ const kanjiData = [
       "radicals": "宀-miên|元-nguyên",
       "core_meaning": "hoàn thành",
       "story_image": "Dưới mái nhà (宀) mọi thứ đã quay về nguồn gốc (元) hoàn thiện.",
-      "logic_development": "宀-miên + 元-nguyên -> mái nhà và gốc",
+      "logic_development": "宀-miên + 元-nguyên → mái nhà và gốc",
       "memory_tip": "Mọi việc đã hoàn tất mỹ mãn.",
-      "adjectives": "完全な(かんぜんな):hoàn hảo",
-      "vocabulary": "完了(かんりょう):hoàn thành|完成(かんせい):hoàn thành|完璧な(かんぺきな):hoàn mỹ|完売(かんばい):bán hết|完結(かんけつ):kết thúc"
+      "vocabulary": "完全な(かんぜんな):hoàn hảo|完了(かんりょう):hoàn thành|完成(かんせい):hoàn thành|完璧な(かんぺきな):hoàn mỹ|完売(かんばい):bán hết|完結(かんけつ):kết thúc"
     },
     {
       "stt": 438,
@@ -6564,10 +6127,9 @@ const kanjiData = [
       "radicals": "成-thành",
       "core_meaning": "thành đạt",
       "story_image": "Dùng giáo mác để bảo vệ sự thành công.",
-      "logic_development": "成-thành -> giáo mác",
+      "logic_development": "成-thành → giáo mác",
       "memory_tip": "Mọi việc đã trở nên tốt đẹp.",
-      "adjectives": "成功(せいこう):thành công|完成(かんせい):hoàn thành|成長(せいちょう):trưởng thành|成立(せいりつ):thiết lập|成人(せいじん):người lớn",
-      "vocabulary": ""
+      "vocabulary": "成功(せいこう):thành công|完成(かんせい):hoàn thành|成長(せいちょう):trưởng thành|成立(せいりつ):thiết lập|成人(せいじん):người lớn"
     },
     {
       "stt": 439,
@@ -6579,10 +6141,9 @@ const kanjiData = [
       "radicals": "弗-phất|貝-bối",
       "core_meaning": "chi phí",
       "story_image": "Dùng tiền (貝) để loại bỏ (弗) các khó khăn.",
-      "logic_development": "弗-phất + 貝-bối -> không có tiền",
+      "logic_development": "弗-phất + 貝-bối → không có tiền",
       "memory_tip": "Tiêu tốn tiền bạc vào việc gì đó.",
-      "adjectives": "費用(ひよう):chi phí|消費(しょうひ):tiêu dùng|学費(がくひ):học phí|会費(かいひ):hội phí|浪費(ろうひ):lãng phí",
-      "vocabulary": ""
+      "vocabulary": "費用(ひよう):chi phí|消費(しょうひ):tiêu dùng|学費(がくひ):học phí|会費(かいひ):hội phí|浪費(ろうひ):lãng phí"
     },
     {
       "stt": 440,
@@ -6594,10 +6155,9 @@ const kanjiData = [
       "radicals": "方-phương|攵-phu",
       "core_meaning": "phóng thích",
       "story_image": "Dùng roi (攵) đuổi đi về bốn phương (方).",
-      "logic_development": "方-phương + 攵-phu -> đuổi đi bốn phương",
+      "logic_development": "方-phương + 攵-phu → đuổi đi bốn phương",
       "memory_tip": "Thả tự do cho vật gì đó.",
-      "adjectives": "放送(ほうそう):phát sóng|開放(かいほう):mở cửa|放火(ほうか):phóng hỏa|放課後(ほうかご):sau giờ học|放す(はなす):thả ra",
-      "vocabulary": ""
+      "vocabulary": "放送(ほうそう):phát sóng|開放(かいほう):mở cửa|放火(ほうか):phóng hỏa|放課後(ほうかご):sau giờ học|放す(はなす):thả ra"
     },
     {
       "stt": 441,
@@ -6609,10 +6169,9 @@ const kanjiData = [
       "radicals": "亻-nhân|立-lập",
       "core_meaning": "vị trí",
       "story_image": "Con người (亻) đứng (立) ở một vị trí nhất định.",
-      "logic_development": "亻-nhân + 立-lập -> người đứng",
+      "logic_development": "亻-nhân + 立-lập → người đứng",
       "memory_tip": "Xác định địa vị của một người.",
-      "adjectives": "一位(いちい):vị trí thứ nhất|単位(たんい):đơn vị|地位(ちい):địa vị|位置(いち):vị trí|方位(ほうい):phương vị",
-      "vocabulary": ""
+      "vocabulary": "一位(いちい):vị trí thứ nhất|単位(たんい):đơn vị|地位(ちい):địa vị|位置(いち):vị trí|方位(ほうい):phương vị"
     },
     {
       "stt": 442,
@@ -6624,10 +6183,9 @@ const kanjiData = [
       "radicals": "罒-võng|直-trực",
       "core_meaning": "đặt để",
       "story_image": "Dùng lưới (罒) giữ thẳng (直) vật để đặt vào chỗ cũ.",
-      "logic_development": "罒-võng + 直-trực -> lưới và thẳng",
+      "logic_development": "罒-võng + 直-trực → lưới và thẳng",
       "memory_tip": "Đặt vật gì đó xuống một vị trí.",
-      "adjectives": "配置(はいち):bố trí|位置(いち):vị trí|置く(おく):đặt|放置(ほうち):bỏ mặc|設置(せっち):cài đặt",
-      "vocabulary": ""
+      "vocabulary": "配置(はいち):bố trí|位置(いち):vị trí|置く(おく):đặt|放置(ほうち):bỏ mặc|設置(せっち):cài đặt"
     },
     {
       "stt": 443,
@@ -6639,10 +6197,9 @@ const kanjiData = [
       "radicals": "木-mộc|黄-hoàng",
       "core_meaning": "chiều ngang",
       "story_image": "Cái cây (木) màu vàng (黄) nằm ngang trên đường.",
-      "logic_development": "木-mộc + 黄-hoàng -> cây vàng",
+      "logic_development": "木-mộc + 黄-hoàng → cây vàng",
       "memory_tip": "Chiều nằm ngang hoặc bên cạnh.",
-      "adjectives": "横断歩道(おうだんほどう):vạch qua đường|横(よこ):bên cạnh|横転(おうてん):lật ngang|横顔(よこがお):mặt nhìn nghiêng|横着(おうちゃく):lười biếng",
-      "vocabulary": ""
+      "vocabulary": "横断歩道(おうだんほどう):vạch qua đường|横(よこ):bên cạnh|横転(おうてん):lật ngang|横顔(よこがお):mặt nhìn nghiêng|横着(おうちゃく):lười biếng"
     },
     {
       "stt": 444,
@@ -6654,10 +6211,9 @@ const kanjiData = [
       "radicals": "向-hướng",
       "core_meaning": "hướng về",
       "story_image": "Hình ảnh cái cửa sổ hướng ra bên ngoài.",
-      "logic_development": "向-hướng -> cửa sổ hướng ra",
+      "logic_development": "向-hướng → cửa sổ hướng ra",
       "memory_tip": "Hướng về một phía nào đó.",
-      "adjectives": "方向(ほうこう):phương hướng|向上(こうじょう):nâng cao|向かう(むかう):hướng tới|向かい(むかい):đối diện|傾向(けいこう):khuynh hướng",
-      "vocabulary": ""
+      "vocabulary": "方向(ほうこう):phương hướng|向上(こうじょう):nâng cao|向かう(むかう):hướng tới|向かい(むかい):đối diện|傾向(けいこう):khuynh hướng"
     },
     {
       "stt": 445,
@@ -6669,10 +6225,9 @@ const kanjiData = [
       "radicals": "厂-hán|泉-tuyền",
       "core_meaning": "nguyên bản",
       "story_image": "Dòng suối (泉) chảy ra từ vách đá (厂) là nguồn gốc.",
-      "logic_development": "厂-hán + 泉-tuyền -> suối dưới vách",
+      "logic_development": "厂-hán + 泉-tuyền → suối dưới vách",
       "memory_tip": "Nguồn gốc của mọi sự việc.",
-      "adjectives": "原因(げんいん):nguyên nhân|原料(げんりょう):nguyên liệu|原子(げんし):nguyên tử|野原(のはら):cánh đồng|原理(げんり):nguyên lý",
-      "vocabulary": ""
+      "vocabulary": "原因(げんいん):nguyên nhân|原料(げんりょう):nguyên liệu|原子(げんし):nguyên tử|野原(のはら):cánh đồng|原理(げんり):nguyên lý"
     },
     {
       "stt": 446,
@@ -6684,10 +6239,9 @@ const kanjiData = [
       "radicals": "平-bình",
       "core_meaning": "bằng phẳng",
       "story_image": "Hình ảnh cái cân thăng bằng thể hiện sự bằng phẳng.",
-      "logic_development": "平-bình -> cân thăng bằng",
+      "logic_development": "平-bình → cân thăng bằng",
       "memory_tip": "Mọi thứ đều bình đẳng và phẳng.",
-      "adjectives": "平らな(たいらな):phẳng",
-      "vocabulary": "平和(へいわ):hòa bình|平日(へいじつ):ngày thường|平均(へいきん):trung bình|平等(びょうどう):bình đẳng|地平線(ちへいせん):đường chân trời"
+      "vocabulary": "平らな(たいらな):phẳng|平和(へいわ):hòa bình|平日(へいじつ):ngày thường|平均(へいきん):trung bình|平等(びょうどう):bình đẳng|地平線(ちへいせん):đường chân trời"
     },
     {
       "stt": 447,
@@ -6699,10 +6253,9 @@ const kanjiData = [
       "radicals": "里-lý|予-dự",
       "core_meaning": "cánh đồng",
       "story_image": "Làng (里) đã được chuẩn bị (予) sẵn để làm cánh đồng.",
-      "logic_development": "里-lý + 予-dự -> làng chuẩn bị sẵn",
+      "logic_development": "里-lý + 予-dự → làng chuẩn bị sẵn",
       "memory_tip": "Cánh đồng rộng lớn ngoài làng.",
-      "adjectives": "野菜(やさい):rau|野原(のはら):cánh đồng|野球(やきゅう):bóng chày|分野(ぶんや):lĩnh vực|野生(やせい):hoang dã",
-      "vocabulary": ""
+      "vocabulary": "野菜(やさい):rau|野原(のはら):cánh đồng|野球(やきゅう):bóng chày|分野(ぶんや):lĩnh vực|野生(やせい):hoang dã"
     },
     {
       "stt": 448,
@@ -6714,10 +6267,9 @@ const kanjiData = [
       "radicals": "几-kỉ|虫-trùng",
       "core_meaning": "gió",
       "story_image": "Côn trùng (虫) bay theo gió dưới mái hiên (几).",
-      "logic_development": "几-kỉ + 虫-trùng -> sâu dưới mái",
+      "logic_development": "几-kỉ + 虫-trùng → sâu dưới mái",
       "memory_tip": "Gió thổi làm cây lá rung chuyển.",
-      "adjectives": "風邪(かぜ):cảm lạnh|台風(たいふう):bão|お風呂(おふろ):bồn tắm|風景(ふうけい):phong cảnh|風(かぜ):gió",
-      "vocabulary": ""
+      "vocabulary": "風邪(かぜ):cảm lạnh|台風(たいふう):bão|お風呂(おふろ):bồn tắm|風景(ふうけい):phong cảnh|風(かぜ):gió"
     },
     {
       "stt": 449,
@@ -6729,10 +6281,9 @@ const kanjiData = [
       "radicals": "門-môn|日-nhật",
       "core_meaning": "khoảng cách",
       "story_image": "Ánh nắng (日) lọt qua khe cửa (門) tạo ra khoảng không.",
-      "logic_development": "門-môn + 日-nhật -> nắng qua cửa",
+      "logic_development": "門-môn + 日-nhật → nắng qua cửa",
       "memory_tip": "Khoảng cách giữa hai vật.",
-      "adjectives": "間に合う(まにあう):kịp lúc",
-      "vocabulary": "時間(じかん):thời gian|人間(にんげん):con người|間違い(まちがい):sai lầm|客間(きゃくま):phòng khách|仲間(なかま):bạn bè"
+      "vocabulary": "間に合う(まにあう):kịp lúc|時間(じかん):thời gian|人間(にんげん):con người|間違い(まちがい):sai lầm|客間(きゃくま):phòng khách|仲間(なかま):bạn bè"
     },
     {
       "stt": 450,
@@ -6744,10 +6295,9 @@ const kanjiData = [
       "radicals": "木-mộc|喬-kiều",
       "core_meaning": "cây cầu",
       "story_image": "Dùng gỗ (木) cao (喬) để bắc làm cầu.",
-      "logic_development": "木-mộc + 喬-kiều -> gỗ cao",
+      "logic_development": "木-mộc + 喬-kiều → gỗ cao",
       "memory_tip": "Cây cầu bắc qua sông.",
-      "adjectives": "橋(はし):cây cầu",
-      "vocabulary": "歩道橋(ほどうきょう):cầu vượt bộ|鉄橋(てっきょう):cầu sắt|日本橋(にほんばし):cầu Nihonbashi|架け橋(かけはし):cầu nối|桟橋(さんばし):bến tàu"
+      "vocabulary": "橋(はし):cây cầu|歩道橋(ほどうきょう):cầu vượt bộ|鉄橋(てっきょう):cầu sắt|日本橋(にほんばし):cầu Nihonbashi|架け橋(かけはし):cầu nối|桟橋(さんばし):bến tàu"
     },
     {
       "stt": 451,
@@ -6759,10 +6309,9 @@ const kanjiData = [
       "radicals": "耂-lão|ヒ-chủy",
       "core_meaning": "người già",
       "story_image": "Người chống gậy (耂) và biến đổi (ヒ) thành người già.",
-      "logic_development": "耂-lão + ヒ-chủy -> người già biến đổi",
+      "logic_development": "耂-lão + ヒ-chủy → người già biến đổi",
       "memory_tip": "Người đã có tuổi.",
-      "adjectives": "老いる(おいる):già đi",
-      "vocabulary": "老人(ろうじん):người già|老後(ろうご):tuổi già|敬老(けいろう):kính lão|老ける(ふける):già dặn|老舗(しにせ):cửa hàng lâu đời"
+      "vocabulary": "老いる(おいる):già đi|老人(ろうじん):người già|老後(ろうご):tuổi già|敬老(けいろう):kính lão|老ける(ふける):già dặn|老舗(しにせ):cửa hàng lâu đời"
     },
     {
       "stt": 452,
@@ -6774,10 +6323,9 @@ const kanjiData = [
       "radicals": "方-phương|𠂉-phiệt|矢-thỉ",
       "core_meaning": "gia tộc",
       "story_image": "Những người cầm cờ (方) và mũi tên (矢) thuộc cùng một tộc.",
-      "logic_development": "方-phương + 矢-thỉ -> cờ và tên",
+      "logic_development": "方-phương + 矢-thỉ → cờ và tên",
       "memory_tip": "Những người cùng huyết thống.",
-      "adjectives": "家族(かぞく):gia đình|民族(みんぞく):dân tộc|親族(しんぞく):họ hàng|貴族(きぞく):quý tộc|水族館(すいぞくかん):thủy cung",
-      "vocabulary": ""
+      "vocabulary": "家族(かぞく):gia đình|民族(みんぞく):dân tộc|親族(しんぞく):họ hàng|貴族(きぞく):quý tộc|水族館(すいぞくかん):thủy cung"
     },
     {
       "stt": 453,
@@ -6789,10 +6337,9 @@ const kanjiData = [
       "radicals": "酉-dậu|己-kỷ",
       "core_meaning": "phân phát",
       "story_image": "Tự mình (己) mang bình rượu (酉) đi phân phát cho mọi người.",
-      "logic_development": "酉-dậu + 己-kỷ -> bình rượu và mình",
+      "logic_development": "酉-dậu + 己-kỷ → bình rượu và mình",
       "memory_tip": "Tự mình đi chia rượu cho mọi người.",
-      "adjectives": "配達(はいたつ):giao hàng|心配(しんぱい):lo lắng|配置(はいち):bố trí|支配(しはい):chi phối|配分(はいぶん):phân bổ",
-      "vocabulary": ""
+      "vocabulary": "配達(はいたつ):giao hàng|心配(しんぱい):lo lắng|配置(はいち):bố trí|支配(しはい):chi phối|配分(はいぶん):phân bổ"
     },
     {
       "stt": 454,
@@ -6804,10 +6351,9 @@ const kanjiData = [
       "radicals": "行-hành|朮-thuật",
       "core_meaning": "kỹ thuật",
       "story_image": "Đi (行) theo con đường kỹ thuật (朮) điêu luyện.",
-      "logic_development": "行-hành + 朮-thuật -> đi làm thuật",
+      "logic_development": "行-hành + 朮-thuật → đi làm thuật",
       "memory_tip": "Kỹ năng hoặc phương pháp làm việc.",
-      "adjectives": "技術(ぎじゅつ):kỹ thuật|芸術(げいじゅつ):nghệ thuật|手術(しゅじゅつ):phẫu thuật|美術館(びじゅつかん):bảo tàng mỹ thuật|忍術(にんじゅつ):nhẫn thuật",
-      "vocabulary": ""
+      "vocabulary": "技術(ぎじゅつ):kỹ thuật|芸術(げいじゅつ):nghệ thuật|手術(しゅじゅつ):phẫu thuật|美術館(びじゅつかん):bảo tàng mỹ thuật|忍術(にんじゅつ):nhẫn thuật"
     },
     {
       "stt": 455,
@@ -6819,10 +6365,9 @@ const kanjiData = [
       "radicals": "辶-sước|艮-cấn",
       "core_meaning": "rút lui",
       "story_image": "Đi (辶) vượt qua ranh giới cứng (艮) để rút lui.",
-      "logic_development": "辶-sước + 艮-cấn -> đi qua ranh giới",
+      "logic_development": "辶-sước + 艮-cấn → đi qua ranh giới",
       "memory_tip": "Lùi lại phía sau.",
-      "adjectives": "退院(たいいん):xuất viện|退職(たいしょく):nghỉ việc|後退(こうたい):lùi bước|退学(たいがく):thôi học|早退(そうたい):về sớm",
-      "vocabulary": ""
+      "vocabulary": "退院(たいいん):xuất viện|退職(たいしょく):nghỉ việc|後退(こうたい):lùi bước|退学(たいがく):thôi học|早退(そうたい):về sớm"
     },
     {
       "stt": 456,
@@ -6834,10 +6379,9 @@ const kanjiData = [
       "radicals": "交-giao|力-lực",
       "core_meaning": "hiệu quả",
       "story_image": "Dùng sức lực (力) để giao lưu (交) tạo ra hiệu quả.",
-      "logic_development": "交-giao + 力-lực -> giao sức lực",
+      "logic_development": "交-giao + 力-lực → giao sức lực",
       "memory_tip": "Có tác dụng tốt.",
-      "adjectives": "効果(こうか):hiệu quả|有効(ゆうこう):có hiệu lực|効率(こうりつ):hiệu suất|効く(きく):có tác dụng|特効薬(とっこうやく):thuốc đặc trị",
-      "vocabulary": ""
+      "vocabulary": "効果(こうか):hiệu quả|有効(ゆうこう):có hiệu lực|効率(こうりつ):hiệu suất|効く(きく):có tác dụng|特効薬(とっこうやく):thuốc đặc trị"
     },
     {
       "stt": 457,
@@ -6849,10 +6393,9 @@ const kanjiData = [
       "radicals": "民-dân",
       "core_meaning": "người dân",
       "story_image": "Hình ảnh một người dân đang cúi đầu.",
-      "logic_development": "民-dân -> người dân",
+      "logic_development": "民-dân → người dân",
       "memory_tip": "Mọi người trong một quốc gia.",
-      "adjectives": "国民(こくみん):quốc dân|市民(しみん):thị dân|民族(みんぞく):dân tộc|民主(みんしゅ):dân chủ|民間(みんかん):tư nhân",
-      "vocabulary": ""
+      "vocabulary": "国民(こくみん):quốc dân|市民(しみん):thị dân|民族(みんぞく):dân tộc|民主(みんしゅ):dân chủ|民間(みんかん):tư nhân"
     },
     {
       "stt": 458,
@@ -6864,10 +6407,9 @@ const kanjiData = [
       "radicals": "言-ngôn|方-phương",
       "core_meaning": "thăm hỏi",
       "story_image": "Dùng lời nói (言) hỏi phương (方) hướng để đi thăm.",
-      "logic_development": "言-ngôn + 方-phương -> nói hỏi phương hướng",
+      "logic_development": "言-ngôn + 方-phương → nói hỏi phương hướng",
       "memory_tip": "Đi đến gặp ai đó.",
-      "adjectives": "訪問(ほうもん):thăm hỏi|訪れる(おとずれる):ghé thăm|訪米(ほうべい):thăm Mỹ|訪日(ほうにち):thăm Nhật|来訪(らいほう):đến thăm",
-      "vocabulary": ""
+      "vocabulary": "訪問(ほうもん):thăm hỏi|訪れる(おとずれる):ghé thăm|訪米(ほうべい):thăm Mỹ|訪日(ほうにち):thăm Nhật|来訪(らいほう):đến thăm"
     },
     {
       "stt": 459,
@@ -6879,10 +6421,9 @@ const kanjiData = [
       "radicals": "彦-ngạn|頁-hiệt",
       "core_meaning": "khuôn mặt",
       "story_image": "Khuôn mặt (頁) của người tài giỏi (彦) rạng rỡ.",
-      "logic_development": "彦-ngạn + 頁-hiệt -> người giỏi mặt",
+      "logic_development": "彦-ngạn + 頁-hiệt → người giỏi mặt",
       "memory_tip": "Mặt mũi con người.",
-      "adjectives": "顔(かお):khuôn mặt",
-      "vocabulary": "顔色(かおいろ):sắc mặt|洗顔(せんがん):rửa mặt|素顔(すがお):mặt mộc|笑顔(えがお):mặt cười|横顔(よこがお):mặt nhìn nghiêng"
+      "vocabulary": "顔(かお):khuôn mặt|顔色(かおいろ):sắc mặt|洗顔(せんがん):rửa mặt|素顔(すがお):mặt mộc|笑顔(えがお):mặt cười|横顔(よこがお):mặt nhìn nghiêng"
     },
     {
       "stt": 460,
@@ -6894,10 +6435,9 @@ const kanjiData = [
       "radicals": "囗-vi|木-mộc",
       "core_meaning": "khó khăn",
       "story_image": "Cây (木) bị bao quanh bởi tường (囗) nên khốn khổ.",
-      "logic_development": "囗-vi + 木-mộc -> cây trong tường",
+      "logic_development": "囗-vi + 木-mộc → cây trong tường",
       "memory_tip": "Gặp rắc rối khó giải quyết.",
-      "adjectives": "困る(こまる):khó khăn",
-      "vocabulary": "困難(こんなん):khó khăn|困窮(こんきゅう):túng quẫn|困惑(こんわく):bối rối|貧困(ひんこん):nghèo đói|困り果てる(こまりはてる):khốn cùng"
+      "vocabulary": "困る(こまる):khó khăn|困難(こんなん):khó khăn|困窮(こんきゅう):túng quẫn|困惑(こんわく):bối rối|貧困(ひんこん):nghèo đói|困り果てる(こまりはてる):khốn cùng"
     },
     {
       "stt": 461,
@@ -6909,10 +6449,9 @@ const kanjiData = [
       "radicals": "卒-tốt",
       "core_meaning": "tốt nghiệp",
       "story_image": "Hình ảnh những người lính mặc áo đồng phục.",
-      "logic_development": "卒-tốt -> lính áo đồng phục",
+      "logic_development": "卒-tốt → lính áo đồng phục",
       "memory_tip": "Hoàn thành một giai đoạn học tập.",
-      "adjectives": "卒業(そつぎょう):tốt nghiệp|新卒(しんそつ):mới tốt nghiệp|卒論(そつろん):luận văn tốt nghiệp|大卒(だいそつ):tốt nghiệp đại học|高卒(こうそつ):tốt nghiệp cấp 3",
-      "vocabulary": ""
+      "vocabulary": "卒業(そつぎょう):tốt nghiệp|新卒(しんそつ):mới tốt nghiệp|卒論(そつろん):luận văn tốt nghiệp|大卒(だいそつ):tốt nghiệp đại học|高卒(こうそつ):tốt nghiệp cấp 3"
     },
     {
       "stt": 462,
@@ -6924,10 +6463,9 @@ const kanjiData = [
       "radicals": "言-ngôn|侖-luân",
       "core_meaning": "thảo luận",
       "story_image": "Dùng lời nói (言) có thứ tự (侖) để thảo luận.",
-      "logic_development": "言-ngôn + 侖-luân -> lời nói có trật tự",
+      "logic_development": "言-ngôn + 侖-luân → lời nói có trật tự",
       "memory_tip": "Bàn bạc về một vấn đề.",
-      "adjectives": "理論(りろん):lý luận|結論(けつろん):kết luận|論文(ろんぶん):luận văn|議論(ぎろん):thảo luận|論理(ろんり):lôgic",
-      "vocabulary": ""
+      "vocabulary": "理論(りろん):lý luận|結論(けつろん):kết luận|論文(ろんぶん):luận văn|議論(ぎろん):thảo luận|論理(ろんり):lôgic"
     },
     {
       "stt": 463,
@@ -6939,10 +6477,9 @@ const kanjiData = [
       "radicals": "宀-miên|実-thực",
       "core_meaning": "sự thật",
       "story_image": "Trong nhà (宀) có đầy đủ sản vật là thực tế.",
-      "logic_development": "宀-miên + 実-thực -> sản vật trong nhà",
+      "logic_development": "宀-miên + 実-thực → sản vật trong nhà",
       "memory_tip": "Trái cây hoặc sự thật khách quan.",
-      "adjectives": "実は(じつは):thực ra là",
-      "vocabulary": "事実(じじつ):sự thật|実行(じっこう):thực hiện|実現(じつげん):hiện thực|実力(じつりょく):thực lực|果実(かじつ):hoa quả"
+      "vocabulary": "実は(じつは):thực ra là|事実(じじつ):sự thật|実行(じっこう):thực hiện|実現(じつげん):hiện thực|実力(じつりょく):thực lực|果実(かじつ):hoa quả"
     },
     {
       "stt": 464,
@@ -6954,10 +6491,9 @@ const kanjiData = [
       "radicals": "言-ngôn|周-chu",
       "core_meaning": "điều tra",
       "story_image": "Dùng lời nói (言) đi vòng quanh (周) để điều tra.",
-      "logic_development": "言-ngôn + 周-chu -> nói quanh",
+      "logic_development": "言-ngôn + 周-chu → nói quanh",
       "memory_tip": "Kiểm tra hoặc điều chỉnh cho khớp.",
-      "adjectives": "調査(ちょうさ):điều tra|体調(たいちょう):tình trạng cơ thể|調味料(ちょうみりょう):gia vị|強調(きょうちょう):nhấn mạnh|調べる(しらべる):tra cứu",
-      "vocabulary": ""
+      "vocabulary": "調査(ちょうさ):điều tra|体調(たいちょう):tình trạng cơ thể|調味料(ちょうみりょう):gia vị|強調(きょうちょう):nhấn mạnh|調べる(しらべる):tra cứu"
     },
     {
       "stt": 465,
@@ -6969,10 +6505,9 @@ const kanjiData = [
       "radicals": "心-tâm|丿-phiệt",
       "core_meaning": "tất yếu",
       "story_image": "Dùng một nhát chém (丿) vào tim (心) để thề quyết tâm.",
-      "logic_development": "心-tâm + 丿-phiệt -> chém vào tim",
+      "logic_development": "心-tâm + 丿-phiệt → chém vào tim",
       "memory_tip": "Chắc chắn phải làm điều gì đó.",
-      "adjectives": "必ず(かならず):chắc chắn",
-      "vocabulary": "必要(ひつよう):cần thiết|必死(ひっし):quyết tâm chết|必勝(ひっしょう):tất thắng|必然(ひつぜん):tất nhiên|必修(ひっしゅう):bắt buộc học"
+      "vocabulary": "必ず(かならず):chắc chắn|必要(ひつよう):cần thiết|必死(ひっし):quyết tâm chết|必勝(ひっしょう):tất thắng|必然(ひつぜん):tất nhiên|必修(ひっしゅう):bắt buộc học"
     },
     {
       "stt": 466,
@@ -6984,10 +6519,9 @@ const kanjiData = [
       "radicals": "要-yếu",
       "core_meaning": "quan trọng",
       "story_image": "Hình ảnh một người phụ nữ chống tay lên hông làm điểm yếu cốt.",
-      "logic_development": "要-yếu -> phụ nữ chống hông",
+      "logic_development": "要-yếu → phụ nữ chống hông",
       "memory_tip": "Điều cần thiết nhất.",
-      "adjectives": "必要な(ひつような):cần thiết",
-      "vocabulary": "重要(じゅうよう):quan trọng|要点(ようてん):điểm chính|要求(ようきゅう):yêu cầu|要素(ようそ):yếu tố|要約(ようやく):tóm tắt"
+      "vocabulary": "必要な(ひつような):cần thiết|重要(じゅうよう):quan trọng|要点(ようてん):điểm chính|要求(ようきゅう):yêu cầu|要素(ようそ):yếu tố|要約(ようやく):tóm tắt"
     },
     {
       "stt": 467,
@@ -6999,10 +6533,9 @@ const kanjiData = [
       "radicals": "米-mễ|大-đại|頁-hiệt",
       "core_meaning": "phân loại",
       "story_image": "Dùng gạo (米) lớn (大) và đầu óc (頁) để phân loại.",
-      "logic_development": "米-mễ + 大-đại + 頁-hiệt -> gạo và đầu óc",
+      "logic_development": "米-mễ + 大-đại + 頁-hiệt → gạo và đầu óc",
       "memory_tip": "Phân chia các thứ cùng loại.",
-      "adjectives": "種類(しゅるい):chủng loại|人類(じんるい):nhân loại|書類(しょるい):giấy tờ|分類(ぶんるい):phân loại|類似(るいじ):tương tự",
-      "vocabulary": ""
+      "vocabulary": "種類(しゅるい):chủng loại|人類(じんるい):nhân loại|書類(しょるい):giấy tờ|分類(ぶんるい):phân loại|類似(るいじ):tương tự"
     },
     {
       "stt": 468,
@@ -7014,10 +6547,9 @@ const kanjiData = [
       "radicals": "彳-xích|旦-đán|寸-thốn",
       "core_meaning": "đạt được",
       "story_image": "Đi bộ (彳) từ sáng sớm (旦) một quãng (寸) để đạt được đồ.",
-      "logic_development": "彳-xích + 旦-đán + 寸-thốn -> đi sớm một quãng",
+      "logic_development": "彳-xích + 旦-đán + 寸-thốn → đi sớm một quãng",
       "memory_tip": "Nhận được hoặc có lợi ích.",
-      "adjectives": "得る(える):nhận được",
-      "vocabulary": "得意な(とくいな):giỏi|納得(なっとく):hiểu ra|所得(しょとく):thu nhập|利得(りとく):lợi nhuận|習得(しゅうとく):học được"
+      "vocabulary": "得る(える):nhận được|得意な(とくいな):giỏi|納得(なっとく):hiểu ra|所得(しょとく):thu nhập|利得(りとく):lợi nhuận|習得(しゅうとく):học được"
     },
     {
       "stt": 469,
@@ -7029,10 +6561,9 @@ const kanjiData = [
       "radicals": "失-thất",
       "core_meaning": "mất mát",
       "story_image": "Hình ảnh một vật tuột khỏi bàn tay.",
-      "logic_development": "失-thất -> tuột khỏi tay",
+      "logic_development": "失-thất → tuột khỏi tay",
       "memory_tip": "Để mất đi một cái gì đó.",
-      "adjectives": "失敗(しっぱい):thất bại|失礼(しつれい):thất lễ|失業(しつぎょう):thất nghiệp|失う(うしなう):mất|失明(しつめい):mất thị lực",
-      "vocabulary": ""
+      "vocabulary": "失敗(しっぱい):thất bại|失礼(しつれい):thất lễ|失業(しつぎょう):thất nghiệp|失う(うしなう):mất|失明(しつめい):mất thị lực"
     },
     {
       "stt": 470,
@@ -7044,10 +6575,9 @@ const kanjiData = [
       "radicals": "礻-thị|乚-ẩn",
       "core_meaning": "lễ nghĩa",
       "story_image": "Dùng đồ thờ (礻) để bày tỏ sự tôn kính kín đáo (乚).",
-      "logic_development": "礻-thị + 乚-ẩn -> thờ cúng kín đáo",
+      "logic_development": "礻-thị + 乚-ẩn → thờ cúng kín đáo",
       "memory_tip": "Phép lịch sự hoặc nghi lễ.",
-      "adjectives": "失礼(しつれい):thất lễ|お礼(おれい):cảm ơn|礼儀(れいぎ):lễ nghi|敬礼(けいれい):chào hỏi|拝礼(はいれい):vái lạy",
-      "vocabulary": ""
+      "vocabulary": "失礼(しつれい):thất lễ|お礼(おれい):cảm ơn|礼儀(れいぎ):lễ nghi|敬礼(けいれい):chào hỏi|拝礼(はいれい):vái lạy"
     },
     {
       "stt": 471,
@@ -7059,10 +6589,9 @@ const kanjiData = [
       "radicals": "土-thổ|曽-tăng",
       "core_meaning": "tăng lên",
       "story_image": "Dùng đất (土) bồi đắp thêm từ đời trước (曽) làm tăng lên.",
-      "logic_development": "土-thổ + 曽-tăng -> thêm đất",
+      "logic_development": "土-thổ + 曽-tăng → thêm đất",
       "memory_tip": "Số lượng nhiều thêm.",
-      "adjectives": "増える(ふえる):tăng lên",
-      "vocabulary": "増加(ぞうか):tăng lên|増やす(ふやす):làm tăng|増収(ぞうしゅう):tăng thu nhập|増長(ぞうちょう):kiêu căng|増築(ぞうちく):xây thêm"
+      "vocabulary": "増える(ふえる):tăng lên|増加(ぞうか):tăng lên|増やす(ふやす):làm tăng|増収(ぞうしゅう):tăng thu nhập|増長(ぞうちょう):kiêu căng|増築(ぞうちく):xây thêm"
     },
     {
       "stt": 472,
@@ -7074,10 +6603,9 @@ const kanjiData = [
       "radicals": "力-lực|口-khẩu",
       "core_meaning": "thêm vào",
       "story_image": "Dùng sức lực (力) và lời nói (口) để gia nhập.",
-      "logic_development": "力-lực + 口-khẩu -> dùng sức nói",
+      "logic_development": "力-lực + 口-khẩu → dùng sức nói",
       "memory_tip": "Thêm một phần vào cái cũ.",
-      "adjectives": "参加(さんか):tham gia|増加(ぞうか):tăng lên|加入(かにゅう):gia nhập|加工(かこう):gia công|加速(かそく):tăng tốc",
-      "vocabulary": ""
+      "vocabulary": "参加(さんか):tham gia|増加(ぞうか):tăng lên|加入(かにゅう):gia nhập|加工(かこう):gia công|加速(かそく):tăng tốc"
     },
     {
       "stt": 473,
@@ -7089,10 +6617,9 @@ const kanjiData = [
       "radicals": "氵-thủy|咸-hàm",
       "core_meaning": "giảm bớt",
       "story_image": "Dùng nước (氵) tưới đều cho mọi người (咸) làm giảm cơn khát.",
-      "logic_development": "氵-thủy + 咸-hàm -> nước cho mọi người",
+      "logic_development": "氵-thủy + 咸-hàm → nước cho mọi người",
       "memory_tip": "Số lượng ít đi.",
-      "adjectives": "減る(へる):giảm",
-      "vocabulary": "減少(げんしょう):giảm bớt|削減(さくげん):cắt giảm|減額(げんがく):giảm tiền|加減(かげん):gia giảm|減速(げんそく):giảm tốc"
+      "vocabulary": "減る(へる):giảm|減少(げんしょう):giảm bớt|削減(さくげん):cắt giảm|減額(げんがく):giảm tiền|加減(かげん):gia giảm|減速(げんそく):giảm tốc"
     },
     {
       "stt": 474,
@@ -7104,10 +6631,9 @@ const kanjiData = [
       "radicals": "亦-diệc|攵-phu",
       "core_meaning": "thay đổi",
       "story_image": "Dùng roi (攵) quất để thay đổi vẻ bề ngoài (亦).",
-      "logic_development": "亦-diệc + 攵-phu -> thay đổi vẻ ngoài",
+      "logic_development": "亦-diệc + 攵-phu → thay đổi vẻ ngoài",
       "memory_tip": "Sùng bái sự thay đổi bằng hành động.",
-      "adjectives": "変な(へんな):lạ lùng",
-      "vocabulary": "変化(へんか):biến hóa|大変(たいへん):vất vả|変人(へんじん):người lập dị|変更(へんこう):thay đổi|変則(へんそく):bất quy tắc"
+      "vocabulary": "変な(へんな):lạ lùng|変化(へんか):biến hóa|大変(たいへん):vất vả|変人(へんじん):người lập dị|変更(へんこう):thay đổi|変則(へんそく):bất quy tắc"
     },
     {
       "stt": 475,
@@ -7119,10 +6645,9 @@ const kanjiData = [
       "radicals": "禾-hòa|多-đa",
       "core_meaning": "di chuyển",
       "story_image": "Cây lúa (禾) nhiều (多) quá phải di chuyển bớt đi.",
-      "logic_development": "禾-hòa + 多-đa -> nhiều lúa",
+      "logic_development": "禾-hòa + 多-đa → nhiều lúa",
       "memory_tip": "Chuyển từ chỗ này sang chỗ khác.",
-      "adjectives": "移動(いどう):di chuyển|移住(いじゅう):di cư|移る(うつる):chuyển sang|移管(いかん):chuyển giao|移植(いしょく):cấy ghép",
-      "vocabulary": ""
+      "vocabulary": "移動(いどう):di chuyển|移住(いじゅう):di cư|移る(うつる):chuyển sang|移管(いかん):chuyển giao|移植(いしょく):cấy ghép"
     },
     {
       "stt": 476,
@@ -7134,10 +6659,9 @@ const kanjiData = [
       "radicals": "糸-mịch|充-sung",
       "core_meaning": "thống nhất",
       "story_image": "Dùng sợi chỉ (糸) để lấp đầy (充) và thống nhất lại.",
-      "logic_development": "糸-mịch + 充-sung -> chỉ lấp đầy",
+      "logic_development": "糸-mịch + 充-sung → chỉ lấp đầy",
       "memory_tip": "Quản lý và thống nhất một khối.",
-      "adjectives": "伝統( traditions):truyền thống|統計(とうけい):thống kê|統一(とういつ):thống nhất|大統領(だいとうりょう):tổng thống|統治(とうち):cai trị",
-      "vocabulary": ""
+      "vocabulary": "伝統( traditions):truyền thống|統計(とうけい):thống kê|統一(とういつ):thống nhất|大統領(だいとうりょう):tổng thống|統治(とうち):cai trị"
     },
     {
       "stt": 477,
@@ -7149,10 +6673,9 @@ const kanjiData = [
       "radicals": "辶-sước|咼-qua",
       "core_meaning": "vượt quá",
       "story_image": "Đi bộ (辶) qua những cái miệng (咼) ồn ào là vượt quá.",
-      "logic_development": "辶-sước + 咼-qua -> đi qua miệng",
+      "logic_development": "辶-sước + 咼-qua → đi qua miệng",
       "memory_tip": "Đi quá giới hạn hoặc trải qua thời gian.",
-      "adjectives": "過ぎる(すぎる):quá mức",
-      "vocabulary": "過去(かこ):quá khứ|通過(つうか):đi ngang qua|過程(かてい):quá trình|過失(かしつ):sai sót|過ごす(すごす):trải qua"
+      "vocabulary": "過ぎる(すぎる):quá mức|過去(かこ):quá khứ|通過(つうか):đi ngang qua|過程(かてい):quá trình|過失(かしつ):sai sót|過ごす(すごす):trải qua"
     },
     {
       "stt": 478,
@@ -7164,10 +6687,9 @@ const kanjiData = [
       "radicals": "辶-sước|隹-truy",
       "core_meaning": "tiến lên",
       "story_image": "Con chim (隹) đi bộ (辶) tiến về phía trước.",
-      "logic_development": "辶-sước + 隹-truy -> chim đi bộ",
+      "logic_development": "辶-sước + 隹-truy → chim đi bộ",
       "memory_tip": "Tiến triển hoặc đi tới.",
-      "adjectives": "進む(すすむ):tiến lên",
-      "vocabulary": "進化(しんか):tiến hóa|進行(しんこう):tiến hành|進学(しんがく):học lên cao|進歩(しんぽ):tiến bộ|前進(ぜんしん):tiến về trước"
+      "vocabulary": "進む(すすむ):tiến lên|進化(しんか):tiến hóa|進行(しんこう):tiến hành|進学(しんがく):học lên cao|進歩(しんぽ):tiến bộ|前進(ぜんしん):tiến về trước"
     },
     {
       "stt": 479,
@@ -7179,10 +6701,9 @@ const kanjiData = [
       "radicals": "以-dĩ",
       "core_meaning": "dùng làm",
       "story_image": "Hình ảnh một người dùng một vật làm mốc.",
-      "logic_development": "以-dĩ -> người và vật mốc",
+      "logic_development": "以-dĩ → người và vật mốc",
       "memory_tip": "Dùng làm điểm giới hạn.",
-      "adjectives": "以上(いじょう):trở lên|以下(いか):trở xuống|以外(いがい):ngoài ra|以前(いぜん):trước đây|以降(いこう):sau đó",
-      "vocabulary": ""
+      "vocabulary": "以上(いじょう):trở lên|以下(いか):trở xuống|以外(いがい):ngoài ra|以前(いぜん):trước đây|以降(いこう):sau đó"
     },
     {
       "stt": 480,
@@ -7194,10 +6715,9 @@ const kanjiData = [
       "radicals": "羊-dương|大-đại",
       "core_meaning": "đẹp",
       "story_image": "Con cừu (羊) lớn (大) thì trông rất đẹp.",
-      "logic_development": "羊-dương + 大-đại -> cừu lớn",
+      "logic_development": "羊-dương + 大-đại → cừu lớn",
       "memory_tip": "Vẻ đẹp lộng lẫy.",
-      "adjectives": "美しい(うつくしい):đẹp",
-      "vocabulary": "美人(びじん):người đẹp|美術(びじゅつ):mỹ thuật|美化(びか):làm đẹp|美容(びよう):thẩm mỹ|美味(びみ):vị ngon"
+      "vocabulary": "美しい(うつくしい):đẹp|美人(びじん):người đẹp|美術(びじゅつ):mỹ thuật|美化(びか):làm đẹp|美容(びよう):thẩm mỹ|美味(びみ):vị ngon"
     },
     {
       "stt": 481,
@@ -7209,10 +6729,9 @@ const kanjiData = [
       "radicals": "比-bỉ",
       "core_meaning": "so sánh",
       "story_image": "Hình ảnh hai người đang đứng cạnh nhau để so sánh.",
-      "logic_development": "比-bỉ -> hai người cạnh nhau",
+      "logic_development": "比-bỉ → hai người cạnh nhau",
       "memory_tip": "So sánh hai hay nhiều vật.",
-      "adjectives": "比べる(くらべる):so sánh",
-      "vocabulary": "比較(ひかく):so sánh|比率(ひりつ):tỷ lệ|対比(たいひ):đối chiếu|比重(ひじゅう):tỷ trọng|類比(るいひ):tương đồng"
+      "vocabulary": "比べる(くらべる):so sánh|比較(ひかく):so sánh|比率(ひりつ):tỷ lệ|対比(たいひ):đối chiếu|比重(ひじゅう):tỷ trọng|類比(るいひ):tương đồng"
     },
     {
       "stt": 482,
@@ -7224,10 +6743,9 @@ const kanjiData = [
       "radicals": "車-xa|交-giao",
       "core_meaning": "so sánh",
       "story_image": "Dùng xe (車) giao (交) nhau để so sánh độ bền.",
-      "logic_development": "車-xa + 交-giao -> xe giao nhau",
+      "logic_development": "車-xa + 交-giao → xe giao nhau",
       "memory_tip": "So sánh sự khác biệt.",
-      "adjectives": "比較(ひかく):so sánh|較差(かくさ):sự chênh lệch|較べる(くらべる):so sánh|年較差(ねんかくさ):biến thiên năm|日較差(にっかくさ):biến thiên ngày",
-      "vocabulary": ""
+      "vocabulary": "比較(ひかく):so sánh|較差(かくさ):sự chênh lệch|較べる(くらべる):so sánh|年較差(ねんかくさ):biến thiên năm|日較差(にっかくさ):biến thiên ngày"
     },
     {
       "stt": 483,
@@ -7239,10 +6757,9 @@ const kanjiData = [
       "radicals": "厂-hán|又-hựu",
       "core_meaning": "phản đối",
       "story_image": "Dùng tay (又) đẩy vách đá (厂) ngược lại là phản đối.",
-      "logic_development": "厂-hán + 又-hựu -> tay đẩy vách đá",
+      "logic_development": "厂-hán + 又-hựu → tay đẩy vách đá",
       "memory_tip": "Chống đối hoặc quay ngược lại.",
-      "adjectives": "反対(はんたい):phản đối|反映(はんえい):phản ánh|反省(はんせい):suy nghĩ lại|反抗(はんこう):phản kháng|反応(はんのう):phản ứng",
-      "vocabulary": ""
+      "vocabulary": "反対(はんたい):phản đối|反映(はんえい):phản ánh|反省(はんせい):suy nghĩ lại|反抗(はんこう):phản kháng|反応(はんのう):phản ứng"
     },
     {
       "stt": 484,
@@ -7254,10 +6771,9 @@ const kanjiData = [
       "radicals": "文-văn|寸-thốn",
       "core_meaning": "đối diện",
       "story_image": "Dùng lời văn (文) một quãng (寸) để đối đáp.",
-      "logic_development": "文-văn + 寸-thốn -> văn và quãng",
+      "logic_development": "文-văn + 寸-thốn → văn và quãng",
       "memory_tip": "Đứng ở phía ngược lại.",
-      "adjectives": "反対(はんたい):phản đối|対象(たいしょう):đối tượng|対応(たいおう):đối ứng|対面(たいめん):đối mặt|対等(たいとう):ngang bằng",
-      "vocabulary": ""
+      "vocabulary": "反対(はんたい):phản đối|対象(たいしょう):đối tượng|対応(たいおう):đối ứng|対面(たいめん):đối mặt|対等(たいとう):ngang bằng"
     },
     {
       "stt": 485,
@@ -7269,10 +6785,9 @@ const kanjiData = [
       "radicals": "替-thế|貝-bối",
       "core_meaning": "tán thành",
       "story_image": "Dùng tiền (貝) thay thế (替) lời nói để tán thành.",
-      "logic_development": "替-thế + 貝-bối -> thay tiền",
+      "logic_development": "替-thế + 貝-bối → thay tiền",
       "memory_tip": "Đồng ý với ý kiến của người khác.",
-      "adjectives": "賛成(さんせい):tán thành|賛辞(さんじ):lời khen|賛同(さんどう):đồng tình|賛美(さんび):ca ngợi|絶賛(ぜっさん):khen nức nở",
-      "vocabulary": ""
+      "vocabulary": "賛成(さんせい):tán thành|賛辞(さんじ):lời khen|賛同(さんどう):đồng tình|賛美(さんび):ca ngợi|絶賛(ぜっさん):khen nức nở"
     },
     {
       "stt": 486,
@@ -7284,10 +6799,9 @@ const kanjiData = [
       "radicals": "共-cộng",
       "core_meaning": "cùng nhau",
       "story_image": "Hình ảnh nhiều người cùng chung tay làm việc.",
-      "logic_development": "共-cộng -> chung tay",
+      "logic_development": "共-cộng → chung tay",
       "memory_tip": "Làm chung hoặc có cùng một điểm.",
-      "adjectives": "共に(ともに):cùng nhau",
-      "vocabulary": "共通(きょうつう):chung|共同(きょうどう):cộng đồng|共産(きょうさん):cộng sản|共和国(きょうわこく):nước cộng hòa|公共(こうきょう):công cộng"
+      "vocabulary": "共に(ともに):cùng nhau|共通(きょうつう):chung|共同(きょうどう):cộng đồng|共産(きょうさん):cộng sản|共和国(きょうわこく):nước cộng hòa|公共(こうきょう):công cộng"
     },
     {
       "stt": 487,
@@ -7299,10 +6813,9 @@ const kanjiData = [
       "radicals": "十-thập|目-mục|乚-ẩn",
       "core_meaning": "trực tiếp",
       "story_image": "Mười (十) con mắt (目) nhìn thẳng vào vật ẩn (乚).",
-      "logic_development": "十-thập + 目-mục + 乚-ẩn -> mười mắt nhìn",
+      "logic_development": "十-thập + 目-mục + 乚-ẩn → mười mắt nhìn",
       "memory_tip": "Thẳng thắn hoặc sửa chữa.",
-      "adjectives": "正直な(しょうじきな):thành thật",
-      "vocabulary": "直接(ちょくせつ):trực tiếp|直後に(ちょくごに):ngay sau khi|直す(なおす):sửa|直線(ちょくせん):đường thẳng|見直す(みなおす):xem lại"
+      "vocabulary": "正直な(しょうじきな):thành thật|直接(ちょくせつ):trực tiếp|直後に(ちょくごに):ngay sau khi|直す(なおす):sửa|直線(ちょくせん):đường thẳng|見直す(みなおす):xem lại"
     },
     {
       "stt": 488,
@@ -7314,10 +6827,9 @@ const kanjiData = [
       "radicals": "表-biểu",
       "core_meaning": "biểu hiện",
       "story_image": "Hình ảnh mặt ngoài của chiếc áo.",
-      "logic_development": "表-biểu -> áo ngoài",
+      "logic_development": "表-biểu → áo ngoài",
       "memory_tip": "Thể hiện ra bên ngoài hoặc danh sách.",
-      "adjectives": "発表(はっぴょう):phát biểu|表面(ひょうめん):bề mặt|表情(ひょうじょう):biểu cảm|代表(だいひょう):đại diện|表(おもて):mặt trước",
-      "vocabulary": ""
+      "vocabulary": "発表(はっぴょう):phát biểu|表面(ひょうめん):bề mặt|表情(ひょうじょう):biểu cảm|代表(だいひょう):đại diện|表(おもて):mặt trước"
     },
     {
       "stt": 489,
@@ -7329,10 +6841,9 @@ const kanjiData = [
       "radicals": "王-vương|見-kiến",
       "core_meaning": "hiện tại",
       "story_image": "Vị vua (王) xuất hiện cho mọi người thấy (見).",
-      "logic_development": "王-vương + 見-kiến -> vua xuất hiện",
+      "logic_development": "王-vương + 見-kiến → vua xuất hiện",
       "memory_tip": "Đang xảy ra hoặc xuất hiện.",
-      "adjectives": "現在(げんざい):hiện tại|表現(ひょうげん):biểu hiện|現実(げんじつ):hiện thực|現代(げんだい):hiện đại|現象(げんしょう):hiện tượng",
-      "vocabulary": ""
+      "vocabulary": "現在(げんざい):hiện tại|表現(ひょうげん):biểu hiện|現実(げんじつ):hiện thực|現代(げんだい):hiện đại|現象(げんしょう):hiện tượng"
     },
     {
       "stt": 490,
@@ -7344,10 +6855,9 @@ const kanjiData = [
       "radicals": "衤-y|刀-đao",
       "core_meaning": "đầu tiên",
       "story_image": "Dùng dao (刀) cắt vải (衤) là bước đầu tiên may áo.",
-      "logic_development": "衤-y + 刀-đao -> dao cắt vải",
+      "logic_development": "衤-y + 刀-đao → dao cắt vải",
       "memory_tip": "Lần đầu làm một việc gì đó.",
-      "adjectives": "初めて(はじめて):lần đầu tiên",
-      "vocabulary": "最初(さいしょ):đầu tiên|初恋(はつこい):mối tình đầu|初雪(はつゆき):tuyết đầu mùa|初級(しょきゅう):sơ cấp|初志(しょし):ý chí ban đầu"
+      "vocabulary": "初めて(はじめて):lần đầu tiên|最初(さいしょ):đầu tiên|初恋(はつこい):mối tình đầu|初雪(はつゆき):tuyết đầu mùa|初級(しょきゅう):sơ cấp|初志(しょし):ý chí ban đầu"
     },
     {
       "stt": 491,
@@ -7359,10 +6869,9 @@ const kanjiData = [
       "radicals": "入-nhập|王-vương",
       "core_meaning": "hoàn toàn",
       "story_image": "Vị vua (王) bước vào (入) cung điện một cách trọn vẹn.",
-      "logic_development": "入-nhập + 王-vương -> vua đi vào",
+      "logic_development": "入-nhập + 王-vương → vua đi vào",
       "memory_tip": "Đầy đủ không thiếu sót.",
-      "adjectives": "全く(まったく):hoàn toàn",
-      "vocabulary": "全部(ぜんぶ):tất cả|全員(ぜんいん):tất cả mọi người|全国(ぜんこく):toàn quốc|安全(あんぜん):an toàn|完全(かんぜん):hoàn hảo"
+      "vocabulary": "全く(まったく):hoàn toàn|全部(ぜんぶ):tất cả|全員(ぜんいん):tất cả mọi người|全国(ぜんこく):toàn quốc|安全(あんぜん):an toàn|完全(かんぜん):hoàn hảo"
     },
     {
       "stt": 492,
@@ -7374,10 +6883,9 @@ const kanjiData = [
       "radicals": "日-nhật|取-thủ",
       "core_meaning": "nhất",
       "story_image": "Mỗi ngày (日) đều lấy (取) cái tốt nhất.",
-      "logic_development": "日-nhật + 取-thủ -> ngày đi lấy",
+      "logic_development": "日-nhật + 取-thủ → ngày đi lấy",
       "memory_tip": "Mức độ cao nhất.",
-      "adjectives": "最も(もっとも):nhất",
-      "vocabulary": "最初(さいしょ):đầu tiên|最後(さいご):cuối cùng|最近(さいきん):gần đây|最高(さいこう):tuyệt nhất|最低(さいてい):tệ nhất"
+      "vocabulary": "最も(もっとも):nhất|最初(さいしょ):đầu tiên|最後(さいご):cuối cùng|最近(さいきん):gần đây|最高(さいこう):tuyệt nhất|最低(さいてい):tệ nhất"
     },
     {
       "stt": 493,
@@ -7389,10 +6897,9 @@ const kanjiData = [
       "radicals": "無-vô",
       "core_meaning": "không có",
       "story_image": "Hình ảnh nhiều người nhảy múa trên đống củi đến khi không còn gì.",
-      "logic_development": "無-vô -> nhảy múa trên củi",
+      "logic_development": "無-vô → nhảy múa trên củi",
       "memory_tip": "Trạng thái không có vật gì.",
-      "adjectives": "無い(ない):không có",
-      "vocabulary": "無理な(むりな):vô lý"
+      "vocabulary": "無い(ない):không có|無理な(むりな):vô lý"
     },
     {
       "stt": 494,
@@ -7404,10 +6911,9 @@ const kanjiData = [
       "radicals": "非-phi",
       "core_meaning": "sai trái",
       "story_image": "Hình ảnh đôi cánh quay ngược lại thể hiện sự sai trái.",
-      "logic_development": "非-phi -> đôi cánh ngược",
+      "logic_development": "非-phi → đôi cánh ngược",
       "memory_tip": "Không phải hoặc điều xấu.",
-      "adjectives": "非常口(ひじょうぐち):lối thoát hiểm|非常に(ひじょうに):rất|是非(ぜひ):nhất định|非難(ひなん):chỉ trích|非公式(ひこうしき):không chính thức",
-      "vocabulary": ""
+      "vocabulary": "非常口(ひじょうぐち):lối thoát hiểm|非常に(ひじょうに):rất|是非(ぜひ):nhất định|非難(ひなん):chỉ trích|非公式(ひこうしき):không chính thức"
     },
     {
       "stt": 495,
@@ -7419,25 +6925,23 @@ const kanjiData = [
       "radicals": "竹-trúc|弟-đệ",
       "core_meaning": "thứ tự",
       "story_image": "Dùng thẻ tre (竹) để ghi số thứ tự cho các đệ (弟) tử.",
-      "logic_development": "竹-trúc + 弟-đệ -> tre của em trai",
+      "logic_development": "竹-trúc + 弟-đệ → tre của em trai",
       "memory_tip": "Thứ bậc trong danh sách.",
-      "adjectives": "第一(だいいち):thứ nhất|落第(らくだい):trượt|次第に(しだいに):dần dần|第三者(だいさんしゃ):người thứ ba|第...回(だい...かい):lần thứ...",
-      "vocabulary": ""
+      "vocabulary": "第一(だいいち):thứ nhất|落第(らくだい):trượt|次第に(しだいに):dần dần|第三者(だいさんしゃ):người thứ ba|第...回(だい...かい):lần thứ..."
     },
     {
       "stt": 496,
-      "kanji": "的",
+      "kanji": "ĐÍCH",
       "hanviet": "テキ",
       "on_reading": "まと",
       "kun_reading": 8,
       "stroke_count": "白-bạch|勺-chước",
       "radicals": "mục tiêu",
       "core_meaning": "Cái thìa (勺) màu trắng (白) là mục tiêu để nhắm vào.",
-      "story_image": "白-bạch + 勺-chước -> thìa trắng",
+      "story_image": "白-bạch + 勺-chước → thìa trắng",
       "logic_development": "Mục đích hoặc mang tính chất.",
       "memory_tip": "的(まと):đích|的な(てきな):mang tính",
-      "adjectives": "目的(もくてき):mục đích|的確な(てきかくな):chính xác|個人的な(こじんてきな):mang tính cá nhân|効率的(こうりつてき):mang tính hiệu quả|標的(ひょうてき):bia bắn",
-      "vocabulary": ""
+      "vocabulary": "目的(もくてき):mục đích|的確な(てきかくな):chính xác|個人的な(こじんてきな):mang tính cá nhân|効率的(こうりつてき):mang tính hiệu quả|標的(ひょうてき):bia bắn"
     },
     {
       "stt": 497,
@@ -7449,10 +6953,9 @@ const kanjiData = [
       "radicals": "忄-tâm|生-sinh",
       "core_meaning": "tính cách",
       "story_image": "Trái tim (忄) khi vừa sinh (生) ra đã có tính cách.",
-      "logic_development": "忄-tâm + 生-sinh -> tim khi sinh ra",
+      "logic_development": "忄-tâm + 生-sinh → tim khi sinh ra",
       "memory_tip": "Bản chất hoặc giới tính.",
-      "adjectives": "男性(だんせい):nam giới|女性(じょせい):nữ giới|性格(せいかく):tính cách|可能性(かのうせい):khả năng|安全性(あんぜんせい):tính an toàn",
-      "vocabulary": ""
+      "vocabulary": "男性(だんせい):nam giới|女性(じょせい):nữ giới|性格(せいかく):tính cách|可能性(かのうせい):khả năng|安全性(あんぜんせい):tính an toàn"
     },
     {
       "stt": 498,
@@ -7464,10 +6967,9 @@ const kanjiData = [
       "radicals": "氵-thủy|去-khứ",
       "core_meaning": "pháp luật",
       "story_image": "Pháp luật trôi đi (去) công bằng như nước (氵).",
-      "logic_development": "氵-thủy + 去-khứ -> nước trôi đi",
+      "logic_development": "氵-thủy + 去-khứ → nước trôi đi",
       "memory_tip": "Quy tắc hoặc phương pháp.",
-      "adjectives": "方法(ほうほう):phương pháp|法律(ほうりつ):pháp luật|文法(ぶんぽう):ngữ pháp|作法(さほう):cách xử sự|憲法(けんぽう):hiến pháp",
-      "vocabulary": ""
+      "vocabulary": "方法(ほうほう):phương pháp|法律(ほうりつ):pháp luật|文法(ぶんぽう):ngữ pháp|作法(さほう):cách xử sự|憲法(けんぽう):hiến pháp"
     },
     {
       "stt": 499,
@@ -7479,10 +6981,9 @@ const kanjiData = [
       "radicals": "制-chế|リ-đao",
       "core_meaning": "chế độ",
       "story_image": "Dùng dao (リ) để cắt may quần áo theo quy chế (制).",
-      "logic_development": "制-chế + リ-đao -> dùng dao cắt chế độ",
+      "logic_development": "制-chế + リ-đao → dùng dao cắt chế độ",
       "memory_tip": "Dùng dao cắt tỉa để thiết lập chế độ.",
-      "adjectives": "制する(せいする):áp chế",
-      "vocabulary": "制度(せいど):chế độ|制作(せいさく):chế tác|制限(せいげん):hạn chế|強制(きょうせい):cưỡng chế|制服(せいふく):đồng phục"
+      "vocabulary": "制する(せいする):áp chế|制度(せいど):chế độ|制作(せいさく):chế tác|制限(せいげん):hạn chế|強制(きょうせい):cưỡng chế|制服(せいふく):đồng phục"
     },
     {
       "stt": 500,
@@ -7494,9 +6995,8 @@ const kanjiData = [
       "radicals": "言-ngôn|果-quả",
       "core_meaning": "khoá học",
       "story_image": "Dùng lời nói (言) để giảng về các thành quả (果) trong khóa học.",
-      "logic_development": "言-ngôn + 果-quả -> lời nói về hoa quả",
+      "logic_development": "言-ngôn + 果-quả → lời nói về hoa quả",
       "memory_tip": "Phần học hoặc một đơn vị phòng ban.",
-      "adjectives": "課長(かちょう):trưởng phòng|課題(かだい):chủ đề|第一課(だいいっか):bài 1|課税(かぜい):đánh thuế|放課後(ほうかご):sau giờ học",
-      "vocabulary": ""
+      "vocabulary": "課長(かちょう):trưởng phòng|課題(かだい):chủ đề|第一課(だいいっか):bài 1|課税(かぜい):đánh thuế|放課後(ほうかご):sau giờ học"
     }
 ];
