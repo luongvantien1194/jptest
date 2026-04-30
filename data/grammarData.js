@@ -4,7 +4,7 @@ const grammarData = [
     "Lesson": 1,
     "Structure": "N1 は　N2　です",
     "Meaning": "N1 là N2",
-    "Explanation": "Dùng để giới thiệu tên、 danh tính hoặc nghề nghiệp. です biểu thị sự lịch sự.",
+    "Explanation": "Dùng để giới thiệu tên, danh tính hoặc nghề nghiệp. です biểu thị sự lịch sự.",
     "Example": "わたしは　マイク・ミラーです。[Watashi wa Maiku Miraa desu.] (Tôi là Mike Miller.)"
   },
   {
@@ -36,7 +36,7 @@ const grammarData = [
     "Lesson": 2,
     "Structure": "これ/ それ/ あれ",
     "Meaning": "Cái này/ cái đó/ cái kia",
-    "Explanation": "Chỉ định từ làm chủ ngữ. これ (gần người nói)、 それ (gần người nghe)、 あれ (xa cả hai)",
+    "Explanation": "Chỉ định từ làm chủ ngữ. これ (gần người nói), それ (gần người nghe), あれ (xa cả hai)",
     "Example": "これは　本[ほん]です。[Kore wa hon desu.] (Đây là cuốn sách) | それは　辞書[じしょ]です。[Sore wa jisho desu.] (Đó là từ điển) | あれは　コンピューターです。[Are wa konpyuutaa desu.] (Kia là máy tính)"
   },
   {
@@ -53,15 +53,15 @@ const grammarData = [
     "Structure": "そうです/ そうじゃ　ありません",
     "Meaning": "Đúng vậy/ Không phải vậy",
     "Explanation": "Dùng để trả lời cho câu hỏi xác nhận danh từ N1 は N2 ですか",
-    "Example": "はい、そうです。[Hai、 sou desu.] (Vâng、 đúng vậy.) | いいえ、そうじゃ　ありません。[Iie、 sou ja arimasen.] (Không、 không phải vậy.)"
+    "Example": "はい,そうです。[Hai, sou desu.] (Vâng, đúng vậy.) | いいえ,そうじゃ　ありません。[Iie, sou ja arimasen.] (Không, không phải vậy.)"
   },
   {
     "STT": 8,
     "Lesson": 2,
-    "Structure": "～は S1 ですか 、S2 ですか",
+    "Structure": "～は S1 ですか ,S2 ですか",
     "Meaning": "Lựa chọn S1 hay S2",
     "Explanation": "Câu hỏi lựa chọn giữa hai hay nhiều phương án",
-    "Example": "これは　「９」ですか、「７」ですか。[Kore wa 9 desu ka、 7 desu ka.] (Đây là số 9 hay số 7?)"
+    "Example": "これは　「９」ですか,「７」ですか。[Kore wa 9 desu ka, 7 desu ka.] (Đây là số 9 hay số 7?)"
   },
   {
     "STT": 9,
@@ -92,7 +92,7 @@ const grammarData = [
     "Lesson": 3,
     "Structure": "N1は　N2（địa điểm）です",
     "Meaning": "N1 ở N2",
-    "Explanation": "Dùng để chỉ vị trí của người、 vật hoặc địa điểm",
+    "Explanation": "Dùng để chỉ vị trí của người, vật hoặc địa điểm",
     "Example": "電話[でんわ]は　２階[にかい]です。[Denwa wa nikai desu.] (Điện thoại ở tầng 2.)"
   },
   {
@@ -188,7 +188,7 @@ const grammarData = [
     "Lesson": 5,
     "Structure": "N (phương tiện giao thông )　で いきます/きます/かえります",
     "Meaning": "Đi bằng phương tiện N",
-    "Explanation": "Trợ từ で chỉ phương thức、 phương tiện di chuyển",
+    "Explanation": "Trợ từ で chỉ phương thức, phương tiện di chuyển",
     "Example": "電車[でんしゃ]で　行[い]きます。[Densha de ikimasu.] (Tôi đi bằng tàu điện.)"
   },
   {
@@ -228,7 +228,7 @@ const grammarData = [
     "Lesson": 6,
     "Structure": "Nをします",
     "Meaning": "Làm/ Chơi/ Thực hiện N",
-    "Explanation": "Dùng cho các môn thể thao、 sự kiện、 nghề nghiệp",
+    "Explanation": "Dùng cho các môn thể thao, sự kiện, nghề nghiệp",
     "Example": "サッカーを　します。[Sakkaa o shimasu.] (Tôi chơi bóng đá.)"
   },
   {
@@ -244,7 +244,7 @@ const grammarData = [
     "Lesson": 6,
     "Structure": "なん và なに",
     "Meaning": "Cái gì",
-    "Explanation": "なん dùng trước t、 d、 n hoặc số đếm. なに dùng trong các trường hợp khác",
+    "Explanation": "なん dùng trước t, d, n hoặc số đếm. なに dùng trong các trường hợp khác",
     "Example": "それは　何[なん]ですか。[Sore wa nan desu ka.] (Đó là cái gì?) | 何[なに]を　買[か]いましたか。[Nani o kaimashita ka.] (Bạn đã mua cái gì?)"
   },
   {
@@ -284,7 +284,7 @@ const grammarData = [
     "Lesson": 7,
     "Structure": "Dụng cụ/ phương tiện で　V",
     "Meaning": "Làm bằng gì",
-    "Explanation": "Trợ từ で chỉ công cụ、 phương thức thực hiện hành động",
+    "Explanation": "Trợ từ で chỉ công cụ, phương thức thực hiện hành động",
     "Example": "はしで　食[た]べます。[Hashi de tabemasu.] (Tôi ăn bằng đũa.)"
   },
   {
@@ -298,7 +298,7 @@ const grammarData = [
   {
     "STT": 38,
     "Lesson": 7,
-    "Structure": "N( người) に あげます、かします、おしえます、かけます、..",
+    "Structure": "N( người) に あげます,かします,おしえます,かけます,..",
     "Meaning": "Cho/ dạy N",
     "Explanation": "Trợ từ に chỉ đối tượng nhận hành động từ người thực hiện",
     "Example": "木村[きむら]さんに　花[はな]を　あげました。[Kimura-san ni hana o agemashita.] (Tôi đã tặng hoa cho chị Kimura.)"
@@ -306,7 +306,7 @@ const grammarData = [
   {
     "STT": 39,
     "Lesson": 7,
-    "Structure": "N( người) に　もらいます、ならいます、かりま す、...",
+    "Structure": "N( người) に　もらいます,ならいます,かりま す,...",
     "Meaning": "Nhận/ học từ N",
     "Explanation": "Trợ từ に chỉ đối tượng mà người nói nhận hành động từ đó",
     "Example": "カリナさんに　CDを　借[か]りました。[Karina-san ni CD o karimashita.] (Tôi đã mượn đĩa CD từ chị Karina.)"
@@ -340,8 +340,8 @@ const grammarData = [
     "Lesson": 8,
     "Structure": "Dạng nghi vấn của câu tính từ",
     "Meaning": "N có (tính chất) không?",
-    "Explanation": "Câu hỏi xác nhận tính chất。 Trả lời bằng はい hoặc いいえ。 Phủ định của な-adj là じゃありません、 của い-adj là bỏ い thêm くないです。",
-    "Example": "この　辞書[じしょ]は　いいですか。[Kono jisho wa ii desu ka.] (Cuốn từ điển này có tốt không？) | いいえ、あまり　よくないです。[Iie、 amari yokunai desu.] (Không、 không tốt lắm。)"
+    "Explanation": "Câu hỏi xác nhận tính chất。 Trả lời bằng はい hoặc いいえ。 Phủ định của な-adj là じゃありません, của い-adj là bỏ い thêm くないです。",
+    "Example": "この　辞書[じしょ]は　いいですか。[Kono jisho wa ii desu ka.] (Cuốn từ điển này có tốt không？) | いいえ,あまり　よくないです。[Iie, amari yokunai desu.] (Không, không tốt lắm。)"
   },
   {
     "STT": 44,
@@ -356,7 +356,7 @@ const grammarData = [
     "Lesson": 8,
     "Structure": "とても/　あまり",
     "Meaning": "Rất / Không ... lắm",
-    "Explanation": "Trạng từ chỉ mức độ。 とても dùng trong câu khẳng định、 あまり dùng trong câu phủ định。",
+    "Explanation": "Trạng từ chỉ mức độ。 とても dùng trong câu khẳng định, あまり dùng trong câu phủ định。",
     "Example": "北京[ぺきん]は　とても　寒[さむ]いです。[Pekin wa totemo samui desu.] (Bắc Kinh rất lạnh。) | この　料理[りょうり]は　あまり　辛[から]くないです。[Kono ryouri wa amari karakunai desu.] (Món ăn này không cay lắm。)"
   },
   {
@@ -378,10 +378,10 @@ const grammarData = [
   {
     "STT": 48,
     "Lesson": 8,
-    "Structure": "S1 が、S2",
+    "Structure": "S1 が,S2",
     "Meaning": "S1 nhưng S2",
     "Explanation": "Trợ từ が nối hai mệnh đề có ý nghĩa tương phản nhau。",
-    "Example": "日本[にほん]の　食[た]べ物は　おいしいですが、高[たか]いです。[Nihon no tabemono wa oishii desu ga、 takai desu.] (Đồ ăn Nhật ngon nhưng đắt。)"
+    "Example": "日本[にほん]の　食[た]べ物は　おいしいですが,高[たか]いです。[Nihon no tabemono wa oishii desu ga, takai desu.] (Đồ ăn Nhật ngon nhưng đắt。)"
   },
   {
     "STT": 49,
@@ -396,7 +396,7 @@ const grammarData = [
     "Lesson": 9,
     "Structure": "N　が　あります/わかります N　が　すきです/きらいです /じょうずです /へたです",
     "Meaning": "Có/Hiểu N hoặc Thích/Ghét/Giỏi/Kém N",
-    "Explanation": "Các động từ và tính từ chỉ sở hữu、 năng lực、 sở thích đi với trợ từ が thay vì を。",
+    "Explanation": "Các động từ và tính từ chỉ sở hữu, năng lực, sở thích đi với trợ từ が thay vì を。",
     "Example": "わたしは　イタリア料理[りょうり]が　好[す]きです。[Watashi wa Itaria ryouri ga suki desu.] (Tôi thích món Ý。) | 英語[えいご]が　わかりますか。[Eigo ga wakarimasu ka.] (Bạn có hiểu tiếng Anh không？)"
   },
   {
@@ -418,10 +418,10 @@ const grammarData = [
   {
     "STT": 53,
     "Lesson": 9,
-    "Structure": "S1から、S2.",
+    "Structure": "S1から,S2.",
     "Meaning": "Vì S1 nên S2",
     "Explanation": "Mệnh đề trước から chỉ lý do hoặc nguyên nhân。",
-    "Example": "時間[じかん]が　ありませんから、タクシーで　行[い]きます。[Jikan ga arimasen kara、 takushii de ikimasu.] (Vì không có thời gian nên tôi đi bằng taxi。)"
+    "Example": "時間[じかん]が　ありませんから,タクシーで　行[い]きます。[Jikan ga arimasen kara, takushii de ikimasu.] (Vì không có thời gian nên tôi đi bằng taxi。)"
   },
   {
     "STT": 54,
@@ -436,7 +436,7 @@ const grammarData = [
     "Lesson": 10,
     "Structure": "N　が　あります/います",
     "Meaning": "Có N",
-    "Explanation": "あります dùng cho vật vô tri、 います dùng cho người và động vật。",
+    "Explanation": "あります dùng cho vật vô tri, います dùng cho người và động vật。",
     "Example": "コンピューターが　あります。[Konpyuutaa ga arimasu.] (Có máy tính。) | 犬[いぬ]が　います。[Inu ga imasu.] (Có con chó。)"
   },
   {
@@ -460,7 +460,7 @@ const grammarData = [
     "Lesson": 10,
     "Structure": "N1 ( đồ vật/ con người/ địa điểm)　の　N2( vị trí)　=　N",
     "Meaning": "Vị trí của N1",
-    "Explanation": "Sử dụng các danh từ chỉ vị trí như: うえ (trên)、 した (dưới)、 まえ (trước)、 うしろ (sau)、 なか (trong)、 となり (bên cạnh)。",
+    "Explanation": "Sử dụng các danh từ chỉ vị trí như: うえ (trên), した (dưới), まえ (trước), うしろ (sau), なか (trong), となり (bên cạnh)。",
     "Example": "本[ほん]は　箱[はこ]の　中[なか]に　あります。[Hon wa hako no naka ni arimasu.] (Sách ở trong hộp。)"
   },
   {
@@ -469,7 +469,7 @@ const grammarData = [
     "Structure": "N1　や　N2",
     "Meaning": "N1 và N2 (và một số thứ khác)",
     "Explanation": "Dùng để liệt kê danh từ mang tính tiêu biểu (không liệt kê hết tất cả)。",
-    "Example": "箱[はこ]の　中[なか]に　手紙[てがみ]や　写真[しゃしん]が　あります。[Hako no naka ni tegami ya shashin ga arimasu.] (Trong hộp có thư、 ảnh và những thứ khác。)"
+    "Example": "箱[はこ]の　中[なか]に　手紙[てがみ]や　写真[しゃしん]が　あります。[Hako no naka ni tegami ya shashin ga arimasu.] (Trong hộp có thư, ảnh và những thứ khác。)"
   },
   {
     "STT": 60,
@@ -477,7 +477,7 @@ const grammarData = [
     "Structure": "「Từ hoặc cụm từ 」ですか。",
     "Meaning": "...có phải không?",
     "Explanation": "Dùng để xác nhận lại thông tin vừa nghe。",
-    "Example": "すみません、ユナさんは　いますか。ー　ユナさんですか。あちらです。[Sumimasen、 Yuna-san wa imasu ka. - Yuna-san desu ka. Achira desu.] (Xin lỗi、 có cô Yuna ở đây không？ - Cô Yuna hả？ Ở đằng kia kìa。)"
+    "Example": "すみません,ユナさんは　いますか。ー　ユナさんですか。あちらです。[Sumimasen, Yuna-san wa imasu ka. - Yuna-san desu ka. Achira desu.] (Xin lỗi, có cô Yuna ở đây không？ - Cô Yuna hả？ Ở đằng kia kìa。)"
   },
   {
     "STT": 61,
@@ -485,7 +485,7 @@ const grammarData = [
     "Structure": "N　は　ありませんか。",
     "Meaning": "Bạn có N không?",
     "Explanation": "Cách hỏi mượn hoặc hỏi mua một món đồ một cách lịch sự tại cửa hàng。",
-    "Example": "すみません、日本[にほん]の　地図[ちず]は　ありませんか。[Sumimasen、 Nihon no chizu wa arimasen ka.] (Xin lỗi、 bạn có bản đồ Nhật Bản không？)"
+    "Example": "すみません,日本[にほん]の　地図[ちず]は　ありませんか。[Sumimasen, Nihon no chizu wa arimasen ka.] (Xin lỗi, bạn có bản đồ Nhật Bản không？)"
   },
   {
     "STT": 62,
@@ -533,7 +533,7 @@ const grammarData = [
     "Structure": "N1　と　N2　と　どちらが 　“ Tính từ” 　ですか。　N1　N2　の　ほうが　“ Tính từ” です。",
     "Meaning": "Giữa N1 và N2 cái nào (tính chất) hơn? N1/N2 (tính chất) hơn。",
     "Explanation": "Câu hỏi so sánh lựa chọn giữa hai vật。 Trả lời dùng ～のほうが。",
-    "Example": "サッカーと　野球[やきゅう]と　どちらが　おもしろいですか。ー　サッカーのほうが　おもしろいです。[Sakkaa to yakyuu to dochira ga omoshiroi desu ka. - Sakkaa no hou ga omoshiroi desu.] (Bóng đá và bóng chày、 cái nào thú vị hơn？ - Bóng đá thú vị hơn。)"
+    "Example": "サッカーと　野球[やきゅう]と　どちらが　おもしろいですか。ー　サッカーのほうが　おもしろいです。[Sakkaa to yakyuu to dochira ga omoshiroi desu ka. - Sakkaa no hou ga omoshiroi desu.] (Bóng đá và bóng chày, cái nào thú vị hơn？ - Bóng đá thú vị hơn。)"
   },
   {
     "STT": 68,
@@ -541,7 +541,7 @@ const grammarData = [
     "Structure": "N1　[ のなか ]　で　[なに/どこ/だれ/いつ]　が　いちばん “ Tính từ” 　ですか。N2　が　いちばん　“ Tính từ” です。",
     "Meaning": "Trong phạm vi N1 thì cái gì/đâu/ai/khi nào là nhất?",
     "Explanation": "So sánh nhất trong một tập hợp từ 3 đối tượng trở lên。",
-    "Example": "日本料理[にほんりょうり]の　中[なか]で　何[なに]が　いちばん　好[す]きですか。ー　天[てん]ぷらが　いちばん　好[す]きです。[Nihon ryouri no naka de nani ga ichiban suki desu ka. - Tenpura ga ichiban suki desu.] (Trong các món ăn Nhật、 bạn thích món nào nhất？ - Tôi thích Tempura nhất。)"
+    "Example": "日本料理[にほんりょうり]の　中[なか]で　何[なに]が　いちばん　好[す]きですか。ー　天[てん]ぷらが　いちばん　好[す]きです。[Nihon ryouri no naka de nani ga ichiban suki desu ka. - Tenpura ga ichiban suki desu.] (Trong các món ăn Nhật, bạn thích món nào nhất？ - Tôi thích Tempura nhất。)"
   },
   {
     "STT": 69,
@@ -564,7 +564,7 @@ const grammarData = [
     "Lesson": 13,
     "Structure": "N　(địa điểm)　へ　[ Thể ます/N ] に　行(い)きます/来(き)ます/帰(かえ)ります",
     "Meaning": "Đi/đến/về để làm gì đó",
-    "Explanation": "Mục đích của việc di chuyển。 Nếu là động từ thì bỏ ます、 nếu là danh từ thì phải là danh động từ。",
+    "Explanation": "Mục đích của việc di chuyển。 Nếu là động từ thì bỏ ます, nếu là danh từ thì phải là danh động từ。",
     "Example": "神戸[こうべ]へ　日本料理[にほんりょうり]を　食[た]べに　行[い]きます。[Koube e Nihon ryouri o tabe ni ikimasu.] (Tôi đi Kobe để ăn món Nhật。) | デパートへ　買[か]い物[もの]に　行[い]きます。[Depaato e kaimono ni ikimasu.] (Tôi đi bách hóa để mua sắm。)"
   },
   {
@@ -580,7 +580,7 @@ const grammarData = [
     "Lesson": 13,
     "Structure": "どこか / なにか",
     "Meaning": "Đâu đó / Cái gì đó",
-    "Explanation": "Dùng khi không xác định cụ thể địa điểm hoặc vật thể。 Trợ từ へ、 を thường được lược bỏ。",
+    "Explanation": "Dùng khi không xác định cụ thể địa điểm hoặc vật thể。 Trợ từ へ, を thường được lược bỏ。",
     "Example": "どこか　行[い]きましたか。[Doko ka ikimashita ka.] (Bạn có đi đâu đó không？) | 何[なに]か　飲[の]みたいです。[Nani ka nomitai desu.] (Tôi muốn uống cái gì đó。)"
   },
   {
@@ -596,7 +596,7 @@ const grammarData = [
     "Lesson": 14,
     "Structure": "Thể て",
     "Meaning": "Động từ chia thể て",
-    "Explanation": "Thể nối của động từ。 Cách chia tùy thuộc vào nhóm động từ 1、 2 hoặc 3。",
+    "Explanation": "Thể nối của động từ。 Cách chia tùy thuộc vào nhóm động từ 1, 2 hoặc 3。",
     "Example": "書[か]いて [kaite] (viết) | 食[た]べて [tabete] (ăn) | 来[き]て [kite] (đến)"
   },
   {
@@ -604,7 +604,7 @@ const grammarData = [
     "Lesson": 14,
     "Structure": "Thểて　+　ください",
     "Meaning": "Hãy làm V",
-    "Explanation": "Dùng để yêu cầu、 sai khiến hoặc mời ai đó làm gì một cách lịch sự。",
+    "Explanation": "Dùng để yêu cầu, sai khiến hoặc mời ai đó làm gì một cách lịch sự。",
     "Example": "ここに　名前[なまえ]を　書[か]いて　ください。[Koko ni namae o kaite kudasai.] (Hãy viết tên vào đây。)"
   },
   {
@@ -626,10 +626,10 @@ const grammarData = [
   {
     "STT": 79,
     "Lesson": 14,
-    "Structure": "S1　が、S2",
-    "Meaning": "S1、 nhưng S2 (Nối câu)",
-    "Explanation": "Tương tự bài 8、 nhưng dùng để nối hai mệnh đề bất kỳ có ý tương phản。",
-    "Example": "失礼[しつれい]ですが、お名前[なまえ]は？[Shitsurei desu ga、 onamae wa?] (Xin lỗi、 nhưng tên bạn là gì？)"
+    "Structure": "S1　が,S2",
+    "Meaning": "S1, nhưng S2 (Nối câu)",
+    "Explanation": "Tương tự bài 8, nhưng dùng để nối hai mệnh đề bất kỳ có ý tương phản。",
+    "Example": "失礼[しつれい]ですが,お名前[なまえ]は？[Shitsurei desu ga, onamae wa?] (Xin lỗi, nhưng tên bạn là gì？)"
   },
   {
     "STT": 80,
@@ -668,7 +668,7 @@ const grammarData = [
     "Lesson": 15,
     "Structure": "Vて　います (Những hành động có tính lâu dài)",
     "Meaning": "Đang làm V (Nghề nghiệp / Thói quen)",
-    "Explanation": "Diễn tả những hành động lặp đi lặp lại hoặc nghề nghiệp、 nơi cư trú。",
+    "Explanation": "Diễn tả những hành động lặp đi lặp lại hoặc nghề nghiệp, nơi cư trú。",
     "Example": "IMCで　働[はたら]いて　います。[IMC de hataraite imasu.] (Tôi đang làm việc tại công ty IMC。) | スーパーで　売[う]って　います。[Suupaa de utte imasu.] (Có bán ở siêu thị。)"
   },
   {
@@ -677,39 +677,39 @@ const grammarData = [
     "Structure": "しりません",
     "Meaning": "Không biết",
     "Explanation": "Dạng phủ định của しっています。 Chú ý không dùng しっていません。",
-    "Example": "市役所[しやくしょ]の　電話番号[でんわばんごう]を　知[し]っていますか。ー　いいえ、知りません。[Shiyakusho no denwabangou o shitte imasu ka. - Iie、 shirimasen.] (Bạn có biết số điện thoại tòa thị chính không？ - Không、 tôi không biết。)"
+    "Example": "市役所[しやくしょ]の　電話番号[でんわばんごう]を　知[し]っていますか。ー　いいえ,知りません。[Shiyakusho no denwabangou o shitte imasu ka. - Iie, shirimasen.] (Bạn có biết số điện thoại tòa thị chính không？ - Không, tôi không biết。)"
   },
   {
     "STT": 86,
     "Lesson": 16,
-    "Structure": "V1て、V2て、～",
-    "Meaning": "Làm V1、 rồi V2...",
+    "Structure": "V1て,V2て,～",
+    "Meaning": "Làm V1, rồi V2...",
     "Explanation": "Dùng để liệt kê các hành động theo trình tự thời gian。",
-    "Example": "朝[あさ]　ジョギングをして、シャワーを　浴[あ]びて、会社[かいしゃ]へ　行[い]きます。[Asa jogingu o shite、 shawaa o abite、 kaisha e ikimasu.] (Sáng tôi chạy bộ、 tắm rồi đi làm。)"
+    "Example": "朝[あさ]　ジョギングをして,シャワーを　浴[あ]びて,会社[かいしゃ]へ　行[い]きます。[Asa jogingu o shite, shawaa o abite, kaisha e ikimasu.] (Sáng tôi chạy bộ, tắm rồi đi làm。)"
   },
   {
     "STT": 87,
     "Lesson": 16,
-    "Structure": "V1て　+　から、　V2。",
+    "Structure": "V1て　+　から,　V2。",
     "Meaning": "Sau khi làm V1 thì làm V2",
     "Explanation": "Nhấn mạnh trình tự: hành động V2 chỉ xảy ra sau khi V1 đã kết thúc。",
-    "Example": "仕事[しごと]が　終[お]わってから、飲[の]みに　行[い]きませんか。[Shigoto ga owatte kara、 nomi ni ikimasen ka.] (Sau khi xong việc、 cùng đi uống nhé？)"
+    "Example": "仕事[しごと]が　終[お]わってから,飲[の]みに　行[い]きませんか。[Shigoto ga owatte kara, nomi ni ikimasen ka.] (Sau khi xong việc, cùng đi uống nhé？)"
   },
   {
     "STT": 88,
     "Lesson": 16,
-    "Structure": "い - adj ( ～い ) => ～くて、～",
+    "Structure": "い - adj ( ～い ) => ～くて,～",
     "Meaning": "Tính từ đuôi い (Nối câu)",
     "Explanation": "Cách nối hai tính từ đuôi い hoặc tính từ đuôi い với một mệnh đề khác (bỏ い thêm くて)。",
-    "Example": "この　部屋[へや]は　広[ひろ]くて、明[あか]るいです。[Kono heya wa hirokute、 akarui desu.] (Căn phòng này rộng và sáng。)"
+    "Example": "この　部屋[へや]は　広[ひろ]くて,明[あか]るいです。[Kono heya wa hirokute, akarui desu.] (Căn phòng này rộng và sáng。)"
   },
   {
     "STT": 89,
     "Lesson": 16,
-    "Structure": "[N / な- adj] + で、～",
+    "Structure": "[N / な- adj] + で,～",
     "Meaning": "Danh từ / Tính từ đuôi な (Nối câu)",
     "Explanation": "Cách nối danh từ hoặc tính từ đuôi な (thêm で)。",
-    "Example": "ミラーさんは　ハンサムで、親切[しんせつ]です。[Miraa-san wa hansamu de、 shinsetsu desu.] (Anh Miller vừa đẹp trai vừa tử tế。) | カリナさんは　学生[がくせい]で、マリアさんは　主婦[しゅふ]です。[Karina-san wa gakusei de、 Maria-san wa shufu desu.] (Karina là sinh viên、 còn Maria là nội trợ。)"
+    "Example": "ミラーさんは　ハンサムで,親切[しんせつ]です。[Miraa-san wa hansamu de, shinsetsu desu.] (Anh Miller vừa đẹp trai vừa tử tế。) | カリナさんは　学生[がくせい]で,マリアさんは　主婦[しゅふ]です。[Karina-san wa gakusei de, Maria-san wa shufu desu.] (Karina là sinh viên, còn Maria là nội trợ。)"
   },
   {
     "STT": 90,
@@ -740,7 +740,7 @@ const grammarData = [
     "Lesson": 17,
     "Structure": "Thể ない",
     "Meaning": "Động từ thể phủ định ngắn",
-    "Explanation": "Cách chia động từ sang thể ない (Nhóm 1: cột i → cột a + nai; Nhóm 2: bỏ masu + nai; Nhóm 3: konai、 shinai)。",
+    "Explanation": "Cách chia động từ sang thể ない (Nhóm 1: cột i → cột a + nai; Nhóm 2: bỏ masu + nai; Nhóm 3: konai, shinai)。",
     "Example": "書[か]かない [kakanai] (không viết) | 食[た]べない [tabenai] (không ăn) | しない [shinai] (không làm)"
   },
   {
@@ -810,10 +810,10 @@ const grammarData = [
   {
     "STT": 102,
     "Lesson": 18,
-    "Structure": "[V1る / Nの / Số từ chỉ một khoảng thời gian] まえに、 V2",
+    "Structure": "[V1る / Nの / Số từ chỉ một khoảng thời gian] まえに, V2",
     "Meaning": "Trước khi làm V1/N thì làm V2",
     "Explanation": "Chỉ trình tự thời gian của hành động。",
-    "Example": "寝[ね]る　まえに、本[ほん]を　読[よ]みます。[Neru mae ni、 hon o yomimasu.] (Trước khi ngủ tôi đọc sách。) | 食事[しょくじ]の　まえに、手[て]を　洗[あら]います。[Shokuji no mae ni、 te o araimasu.] (Trước bữa ăn tôi rửa tay。) | ３年[さんねん]まえに、日本[にほん]へ　来[き]ました。[Sannen mae ni、 Nihon e kimashita.] (Tôi đã đến Nhật 3 năm trước。)"
+    "Example": "寝[ね]る　まえに,本[ほん]を　読[よ]みます。[Neru mae ni, hon o yomimasu.] (Trước khi ngủ tôi đọc sách。) | 食事[しょくじ]の　まえに,手[て]を　洗[あら]います。[Shokuji no mae ni, te o araimasu.] (Trước bữa ăn tôi rửa tay。) | ３年[さんねん]まえに,日本[にほん]へ　来[き]ました。[Sannen mae ni, Nihon e kimashita.] (Tôi đã đến Nhật 3 năm trước。)"
   },
   {
     "STT": 103,
@@ -850,10 +850,10 @@ const grammarData = [
   {
     "STT": 107,
     "Lesson": 19,
-    "Structure": "Vたり、 Vたり　します",
-    "Meaning": "Làm V1、 làm V2... (Liệt kê)",
+    "Structure": "Vたり, Vたり　します",
+    "Meaning": "Làm V1, làm V2... (Liệt kê)",
     "Explanation": "Dùng để liệt kê một vài hành động tiêu biểu trong số nhiều hành động。",
-    "Example": "日曜日は　テニスをしたり、映画を　見たり　します。[Nichiyoubi wa tenisu o shitari、 eiga o mitari shimasu.] (Chủ nhật tôi lúc thì chơi tennis、 lúc thì xem phim。)"
+    "Example": "日曜日は　テニスをしたり,映画を　見たり　します。[Nichiyoubi wa tenisu o shitari, eiga o mitari shimasu.] (Chủ nhật tôi lúc thì chơi tennis, lúc thì xem phim。)"
   },
   {
     "STT": 108,
@@ -892,8 +892,8 @@ const grammarData = [
     "Lesson": 20,
     "Structure": "Hội thoại bằng thể thông thường",
     "Meaning": "Giao tiếp thân mật",
-    "Explanation": "Trong hội thoại ngắn、 trợ từ có thể lược bỏ、 câu hỏi không dùng か mà lên giọng cuối câu。",
-    "Example": "ごはん　食[た]べる？ー　うん、食[た]べる。[Gohan taberu? - Un、 taberu.] (Ăn cơm không？ - Ừ、 ăn。)"
+    "Explanation": "Trong hội thoại ngắn, trợ từ có thể lược bỏ, câu hỏi không dùng か mà lên giọng cuối câu。",
+    "Example": "ごはん　食[た]べる？ー　うん,食[た]べる。[Gohan taberu? - Un, taberu.] (Ăn cơm không？ - Ừ, ăn。)"
   },
   {
     "STT": 113,
@@ -901,7 +901,7 @@ const grammarData = [
     "Structure": "けど",
     "Meaning": "Nhưng (thông thường)",
     "Explanation": "Là dạng thông thường của trợ từ が (nghĩa là \"nhưng\")。",
-    "Example": "その　カレー、おいしい？ー　辛[から]いけど、おいしい。[Sono karee、 oishii? - Karai kedo、 oishii.] (Món cà ri đó ngon không？ - Cay nhưng mà ngon。)"
+    "Example": "その　カレー,おいしい？ー　辛[から]いけど,おいしい。[Sono karee, oishii? - Karai kedo, oishii.] (Món cà ri đó ngon không？ - Cay nhưng mà ngon。)"
   },
   {
     "STT": 114,
@@ -932,7 +932,7 @@ const grammarData = [
     "Lesson": 21,
     "Structure": "N1 (địa điểm) で　N2　が　あります。",
     "Meaning": "N2 được tổ chức/xảy ra tại N1",
-    "Explanation": "Dùng あります với nghĩa là tổ chức (sự kiện、 lễ hội、 tai nạn) thay vì sở hữu。",
+    "Explanation": "Dùng あります với nghĩa là tổ chức (sự kiện, lễ hội, tai nạn) thay vì sở hữu。",
     "Example": "東京[とうきょう]で　お祭[まつ]りが　あります。[Toukyou de omatsuri ga arimasu.] (Ở Tokyo có lễ hội。)"
   },
   {
@@ -972,40 +972,40 @@ const grammarData = [
     "Lesson": 22,
     "Structure": "Thể từ điển +　じかん/やくそく/ようじ",
     "Meaning": "Thời gian/Hẹn/Việc để làm V",
-    "Explanation": "Dùng mệnh đề định ngữ để nói rõ nội dung của thời gian、 cuộc hẹn hoặc công việc。",
+    "Explanation": "Dùng mệnh đề định ngữ để nói rõ nội dung của thời gian, cuộc hẹn hoặc công việc。",
     "Example": "わたしは　漢字[かんじ]を　勉強[べんきょう]する　時間[じかん]が　ありません。[Watashi wa kanji o benkyou suru jikan ga arimasen.] (Tôi không có thời gian để học chữ Hán。)"
   },
   {
     "STT": 123,
     "Lesson": 23,
-    "Structure": "Động từ、 tính từ đuôi い ở とき、～　: Mệnh đề trạng",
+    "Structure": "Động từ, tính từ đuôi い ở とき,～　: Mệnh đề trạng",
     "Meaning": "Khi...",
     "Explanation": "Dùng để nối hai mệnh đề chỉ thời điểm xảy ra một trạng thái hay hành động。",
-    "Example": "図書館[としょかん]で　本[ほん]を　借[か]くとき、カードが　要[い]ります。[Toshokan de hon o kariru toki、 kaado ga irimasu.] (Khi mượn sách ở thư viện cần có thẻ。)"
+    "Example": "図書館[としょかん]で　本[ほん]を　借[か]くとき,カードが　要[い]ります。[Toshokan de hon o kariru toki, kaado ga irimasu.] (Khi mượn sách ở thư viện cần có thẻ。)"
   },
   {
     "STT": 124,
     "Lesson": 23,
-    "Structure": "Thể từ điển（Vる) 、 Thể た（Vた）",
+    "Structure": "Thể từ điển（Vる) , Thể た（Vた）",
     "Meaning": "Vる とき vs Vた とき",
     "Explanation": "Vる とき: Trước khi làm/Trong khi làm。 Vた とき: Sau khi đã làm xong。",
-    "Example": "国[くに]へ　帰[かえ]る　とき、かばんを　買[か]いました。[Kuni e kaeru toki、 kaban o kaimashita.] (Trên đường về nước tôi đã mua cặp。) | 国[くに]へ　帰[かえ]った　とき、かばんを　買[か]いました。[Kuni e kaetta toki、 kaban o kaimashita.] (Sau khi về nước tôi đã mua cặp。)"
+    "Example": "国[くに]へ　帰[かえ]る　とき,かばんを　買[か]いました。[Kuni e kaeru toki, kaban o kaimashita.] (Trên đường về nước tôi đã mua cặp。) | 国[くに]へ　帰[かえ]った　とき,かばんを　買[か]いました。[Kuni e kaetta toki, kaban o kaimashita.] (Sau khi về nước tôi đã mua cặp。)"
   },
   {
     "STT": 125,
     "Lesson": 23,
     "Structure": "Thể từ điển＋と",
     "Meaning": "Hễ làm V thì...",
-    "Explanation": "Diễn tả một kết quả tất yếu、 một hệ quả tự nhiên hoặc hướng dẫn đường đi。",
-    "Example": "この　ボタンを　押[お]すと、お釣[つ]りが　出[で]ます。[Kono botan o osu to、 otsuri ga demasu.] (Hễ ấn nút này thì tiền thừa sẽ ra。)"
+    "Explanation": "Diễn tả một kết quả tất yếu, một hệ quả tự nhiên hoặc hướng dẫn đường đi。",
+    "Example": "この　ボタンを　押[お]すと,お釣[つ]りが　出[で]ます。[Kono botan o osu to, otsuri ga demasu.] (Hễ ấn nút này thì tiền thừa sẽ ra。)"
   },
   {
     "STT": 126,
     "Lesson": 23,
     "Structure": "N が　tính từ/ động từ:",
     "Meaning": "Chủ ngữ trong mệnh đề phụ",
-    "Explanation": "Trong mệnh đề có とき hoặc と、 chủ ngữ được biểu thị bằng trợ từ が。",
-    "Example": "音[おと]が　小[ちい]さいとき、この　つまみを　回[まわ]してください。[Oto ga chiisai toki、 kono tsumami o mawashite kudasai.] (Khi âm thanh nhỏ、 hãy vặn cái núm này。)"
+    "Explanation": "Trong mệnh đề có とき hoặc と, chủ ngữ được biểu thị bằng trợ từ が。",
+    "Example": "音[おと]が　小[ちい]さいとき,この　つまみを　回[まわ]してください。[Oto ga chiisai toki, kono tsumami o mawashite kudasai.] (Khi âm thanh nhỏ, hãy vặn cái núm này。)"
   },
   {
     "STT": 127,
@@ -1026,9 +1026,9 @@ const grammarData = [
   {
     "STT": 129,
     "Lesson": 24,
-    "Structure": "Thể て + あげます、 もらいます、 くれます",
+    "Structure": "Thể て + あげます, もらいます, くれます",
     "Meaning": "Làm V cho/được làm V cho",
-    "Explanation": "Diễn tả việc tặng/nhận một hành động (giúp đỡ、 phục vụ)。",
+    "Explanation": "Diễn tả việc tặng/nhận một hành động (giúp đỡ, phục vụ)。",
     "Example": "わたしは　木村[きむら]さんに　本[ほん]を　貸[か]して　あげました。[Watashi wa Kimura-san ni hon o kashite agemashita.] (Tôi đã cho chị Kimura mượn sách。) | わたしは　鈴木[すずき]さんに　日本語[にほんご]を　教[おし]えて　もらいました。[Watashi wa Suzuki-san ni Nihongo o oshiete moraimashita.] (Tôi đã được anh Suzuki dạy tiếng Nhật cho。) | 家内[かない]は　わたしに　ネクタイを　買[か]って　くれました。[Kanai wa watashi ni nekutai o katte kuremashita.] (Vợ tôi đã mua cà vạt cho tôi。)"
   },
   {
@@ -1037,23 +1037,23 @@ const grammarData = [
     "Structure": "Thể quá khứ thông thường +ら",
     "Meaning": "Nếu/Sau khi...",
     "Explanation": "Cách chia thể điều kiện ～たら (Vた/N/Adj quá khứ thêm ら)。",
-    "Example": "雨[あめ]が　降[ふ]ったら、行[い]きません。[Ame ga futtara、 ikimasen.] (Nếu trời mưa tôi sẽ không đi。)"
+    "Example": "雨[あめ]が　降[ふ]ったら,行[い]きません。[Ame ga futtara, ikimasen.] (Nếu trời mưa tôi sẽ không đi。)"
   },
   {
     "STT": 131,
     "Lesson": 25,
-    "Structure": "Vた＋ら、～：",
+    "Structure": "Vた＋ら,～：",
     "Meaning": "Sau khi làm V thì...",
     "Explanation": "Nhấn mạnh một hành động xảy ra sau khi một hành động khác kết thúc。",
-    "Example": "１０時[じゅうじ]に　なったら、出[で]かけましょう。[Juuji ni nattara、 dekakemashou.] (Sau khi đến 10 giờ thì chúng ta cùng đi nhé。)"
+    "Example": "１０時[じゅうじ]に　なったら,出[で]かけましょう。[Juuji ni nattara, dekakemashou.] (Sau khi đến 10 giờ thì chúng ta cùng đi nhé。)"
   },
   {
     "STT": 132,
     "Lesson": 25,
-    "Structure": "Thể て | Tính từ đuôi い、 な",
+    "Structure": "Thể て | Tính từ đuôi い, な",
     "Meaning": "Mặc dù... nhưng...",
     "Explanation": "Cách chia thể ～ても (V/Adj/N sang thể て thêm も)。",
-    "Example": "雨[あめ]が　降[ふ]っても、洗濯[せんたく]します。[Ame ga futte mo、 sentaku shimasu.] (Mặc dù trời mưa nhưng tôi vẫn giặt đồ。)"
+    "Example": "雨[あめ]が　降[ふ]っても,洗濯[せんたく]します。[Ame ga futte mo, sentaku shimasu.] (Mặc dù trời mưa nhưng tôi vẫn giặt đồ。)"
   },
   {
     "STT": 133,
@@ -1061,15 +1061,15 @@ const grammarData = [
     "Structure": "もし　và　いくら",
     "Meaning": "Nếu / Cho dù...",
     "Explanation": "もし đi kèm với たら để nhấn mạnh giả định。 いくら đi kèm với ても để nhấn mạnh sự đối lập。",
-    "Example": "もし　１億円[いちおくえん]　あったら、旅行[りょこう]します。[Moshi ichioku-en attara、 ryokou shimasu.] (Nếu có 100 triệu Yên tôi sẽ đi du lịch。) | いくら　考[かんが]えても、わかりません。[Ikura kangaete mo、 wakarimasen.] (Cho dù có suy nghĩ bao nhiêu đi nữa tôi cũng không hiểu。)"
+    "Example": "もし　１億円[いちおくえん]　あったら,旅行[りょこう]します。[Moshi ichioku-en attara, ryokou shimasu.] (Nếu có 100 triệu Yên tôi sẽ đi du lịch。) | いくら　考[かんが]えても,わかりません。[Ikura kangaete mo, wakarimasen.] (Cho dù có suy nghĩ bao nhiêu đi nữa tôi cũng không hiểu。)"
   },
   {
     "STT": 134,
     "Lesson": 25,
     "Structure": "N が",
     "Meaning": "Chủ ngữ trong mệnh đề điều kiện",
-    "Explanation": "Giống bài 23、 chủ ngữ của mệnh đề chứa たら/ても dùng trợ từ が。",
-    "Example": "友達[ともだち]が　来[く]るまえに、掃除[そうじ]します。[Tomodachi ga kuru mae ni、 souji shimasu.] (Trước khi bạn đến tôi sẽ dọn dẹp。)"
+    "Explanation": "Giống bài 23, chủ ngữ của mệnh đề chứa たら/ても dùng trợ từ が。",
+    "Example": "友達[ともだち]が　来[く]るまえに,掃除[そうじ]します。[Tomodachi ga kuru mae ni, souji shimasu.] (Trước khi bạn đến tôi sẽ dọn dẹp。)"
   },
   {
     "STT": 135,
@@ -1092,7 +1092,7 @@ const grammarData = [
     "Lesson": 26,
     "Structure": "Thể thông thường + んです",
     "Meaning": "Giải thích lý do/Nhấn mạnh",
-    "Explanation": "Dùng để giải thích hoàn cảnh、 nhấn mạnh thông tin hoặc hỏi sâu thêm về lý do (N/Na + な + んです)。",
+    "Explanation": "Dùng để giải thích hoàn cảnh, nhấn mạnh thông tin hoặc hỏi sâu thêm về lý do (N/Na + な + んです)。",
     "Example": "どうして　遅[おく]れたんですか。ー　バスが　来[こ]なかったんです。[Doushite okureta n desu ka. - Basu ga konakatta n desu.] (Tại sao bạn lại đến muộn vậy？ - Vì xe buýt đã không đến。)"
   },
   {
@@ -1132,7 +1132,7 @@ const grammarData = [
     "Lesson": 27,
     "Structure": "できます",
     "Meaning": "Được hoàn thành / Xong",
-    "Explanation": "Dùng để chỉ một công trình、 cửa hàng hoặc vật gì đó đã hoàn thiện。",
+    "Explanation": "Dùng để chỉ một công trình, cửa hàng hoặc vật gì đó đã hoàn thiện。",
     "Example": "駅[えき]の　前[まえ]に　大[おお]きい　スーパーが　できました。[Eki no mae ni ookii suupaa ga dekimashita.] (Một siêu thị lớn đã được xây xong trước nhà ga。)"
   },
   {
@@ -1141,7 +1141,7 @@ const grammarData = [
     "Structure": "は",
     "Meaning": "Trợ từ nhấn mạnh",
     "Explanation": "Dùng は để nhấn mạnh hoặc so sánh trong câu phủ định。",
-    "Example": "ひらがなは　書[か]けますが、漢字[かんじ]は　書[か]けません。[Hiragana wa kakemasu ga、 kanji wa kakemasen.] (Chữ Hiragana thì tôi viết được、 nhưng chữ Hán thì không。)"
+    "Example": "ひらがなは　書[か]けますが,漢字[かんじ]は　書[か]けません。[Hiragana wa kakemasu ga, kanji wa kakemasen.] (Chữ Hiragana thì tôi viết được, nhưng chữ Hán thì không。)"
   },
   {
     "STT": 144,
@@ -1164,7 +1164,7 @@ const grammarData = [
     "Lesson": 28,
     "Structure": "V1 （thể ます）＋　ながら　V2",
     "Meaning": "Vừa làm V1 vừa làm V2",
-    "Explanation": "Diễn tả hai hành động diễn ra đồng thời、 trong đó V2 là hành động chính。",
+    "Explanation": "Diễn tả hai hành động diễn ra đồng thời, trong đó V2 là hành động chính。",
     "Example": "音楽[おんがく]を　聞[き]きながら　食事[しょくじ]します。[Ongaku o kikinagara shokuji shimasu.] (Tôi vừa nghe nhạc vừa dùng bữa。)"
   },
   {
@@ -1178,10 +1178,10 @@ const grammarData = [
   {
     "STT": 148,
     "Lesson": 28,
-    "Structure": "Thể thông thường + し、～",
+    "Structure": "Thể thông thường + し,～",
     "Meaning": "Vừa... lại vừa... (Liệt kê lý do)",
     "Explanation": "Dùng để liệt kê các đặc điểm hoặc lý do dẫn đến một kết quả。",
-    "Example": "ワットさんは　熱心[ねっしん]だし、真面目[まじめ]だし、経験[けいけん]も　あります。[Watto-san wa nesshin dashi、 majime dashi、 keiken mo arimasu.] (Thầy Watt vừa nhiệt tình、 vừa nghiêm túc lại có cả kinh nghiệm nữa。)"
+    "Example": "ワットさんは　熱心[ねっしん]だし,真面目[まじめ]だし,経験[けいけん]も　あります。[Watto-san wa nesshin dashi, majime dashi, keiken mo arimasu.] (Thầy Watt vừa nhiệt tình, vừa nghiêm túc lại có cả kinh nghiệm nữa。)"
   },
   {
     "STT": 149,
@@ -1197,7 +1197,7 @@ const grammarData = [
     "Structure": "それで",
     "Meaning": "Vì thế / Do đó",
     "Explanation": "Trạng từ dùng để chỉ kết quả từ các nguyên nhân đã nêu ở trước。",
-    "Example": "この　レストランは　安[やす]くて、おいしいです。それで　人[ひと]が　多[おお]いんです。[Kono resutoran wa yasukute、 oishii desu. Sorede hito ga ooi n desu.] (Nhà hàng này rẻ và ngon。 Vì thế nên đông khách。)"
+    "Example": "この　レストランは　安[やす]くて,おいしいです。それで　人[ひと]が　多[おお]いんです。[Kono resutoran wa yasukute, oishii desu. Sorede hito ga ooi n desu.] (Nhà hàng này rẻ và ngon。 Vì thế nên đông khách。)"
   },
   {
     "STT": 151,
@@ -1237,7 +1237,7 @@ const grammarData = [
     "Structure": "ありました",
     "Meaning": "Tìm thấy / Đã có",
     "Explanation": "Dùng để thông báo rằng một vật bị mất đã được tìm thấy。",
-    "Example": "あ、ありました！[A、 arimashita!] (A、 thấy rồi！)"
+    "Example": "あ,ありました！[A, arimashita!] (A, thấy rồi！)"
   },
   {
     "STT": 156,
@@ -1261,7 +1261,7 @@ const grammarData = [
     "Structure": "V (他動詞)　ておきます",
     "Meaning": "Làm sẵn V / Cứ để nguyên V",
     "Explanation": "Làm sẵn một việc để chuẩn bị cho lần sau hoặc giữ nguyên trạng thái。",
-    "Example": "旅行[りょこう]の　まえに、切符[きっぷ]を　買[か]っておきます。[Ryokou no mae ni、 kippu o katte okimasu.] (Trước khi đi du lịch tôi sẽ mua vé sẵn。)"
+    "Example": "旅行[りょこう]の　まえに,切符[きっぷ]を　買[か]っておきます。[Ryokou no mae ni, kippu o katte okimasu.] (Trước khi đi du lịch tôi sẽ mua vé sẵn。)"
   },
   {
     "STT": 159,
@@ -1372,7 +1372,7 @@ const grammarData = [
     "Lesson": 32,
     "Structure": "Từ chỉ số lượng 　＋　で：",
     "Meaning": "Trong phạm vi (số lượng)",
-    "Explanation": "Dùng để giới hạn mức giá、 thời gian hoặc số lượng cần thiết。",
+    "Explanation": "Dùng để giới hạn mức giá, thời gian hoặc số lượng cần thiết。",
     "Example": "３万円[さんまんえん]で　パソコンが　買[か]えますか。[Sanman-en de pasokon ga kaemasu ka.] (Với 3 vạn Yên có mua được máy tính không？)"
   },
   {
@@ -1388,7 +1388,7 @@ const grammarData = [
     "Lesson": 33,
     "Structure": "Cách sử dụng thể mệnh lệnh và thể cấm đoán",
     "Meaning": "Hoàn cảnh sử dụng",
-    "Explanation": "Dùng trong quân đội、 cổ vũ thể thao、 biển báo hoặc nam giới nói với người dưới。",
+    "Explanation": "Dùng trong quân đội, cổ vũ thể thao, biển báo hoặc nam giới nói với người dưới。",
     "Example": "あきらめるな！[Akirameru na!] (Đừng bỏ cuộc！) | 入[はい]るな [hairu na] (Cấm vào)"
   },
   {
@@ -1421,15 +1421,15 @@ const grammarData = [
     "Structure": "(“Câu nói” / Thể văn thông thường)　+　と　伝(つた)えて　いただけませんか",
     "Meaning": "Làm ơn nhắn lại giúp tôi rằng...",
     "Explanation": "Dùng để nhờ ai đó truyền đạt lại lời nhắn cho người khác。",
-    "Example": "すみませんが、渡辺[わたなべ]さんに　あしたの　パーティーは　６時[ろくじ]からだと　伝[つた]えて　いただけませんか。[Sumimasen ga、 Watanabe-san ni ashita no paatii wa rokuji kara da to tsutaete itadakemasen ka.] (Xin lỗi、 anh/chị có thể nhắn lại cho anh Watanabe rằng bữa tiệc ngày mai bắt đầu từ 6 giờ được không？)"
+    "Example": "すみませんが,渡辺[わたなべ]さんに　あしたの　パーティーは　６時[ろくじ]からだと　伝[つた]えて　いただけませんか。[Sumimasen ga, Watanabe-san ni ashita no paatii wa rokuji kara da to tsutaete itadakemasen ka.] (Xin lỗi, anh/chị có thể nhắn lại cho anh Watanabe rằng bữa tiệc ngày mai bắt đầu từ 6 giờ được không？)"
   },
   {
     "STT": 179,
     "Lesson": 34,
-    "Structure": "(V1た / Nの) あとで、V2",
+    "Structure": "(V1た / Nの) あとで,V2",
     "Meaning": "Sau khi làm V1/N thì làm V2",
     "Explanation": "Chỉ trình tự thời gian rõ rệt giữa hai hành động。",
-    "Example": "仕事[しごと]が　終[お]わった　あとで、飲[の]みに　行[い]きませんか。[Shigoto ga owatta ato de、 nomi ni ikimasen ka.] (Sau khi xong việc、 đi uống chút gì không？)"
+    "Example": "仕事[しごと]が　終[お]わった　あとで,飲[の]みに　行[い]きませんか。[Shigoto ga owatta ato de, nomi ni ikimasen ka.] (Sau khi xong việc, đi uống chút gì không？)"
   },
   {
     "STT": 180,
@@ -1442,10 +1442,10 @@ const grammarData = [
   {
     "STT": 181,
     "Lesson": 34,
-    "Structure": "V1 (thể ない) ないで、V2",
+    "Structure": "V1 (thể ない) ないで,V2",
     "Meaning": "Thay vì làm V1 thì làm V2",
     "Explanation": "Diễn tả sự lựa chọn giữa hai hành động đối lập。",
-    "Example": "日曜日は　どこも　行[い]かないで、家[うち]で　ゆっくり　休[やす]みます。[Nichiyoubi wa doko mo ikanaide、 uchi de yukkuri yasumimasu.] (Chủ nhật tôi không đi đâu cả mà nghỉ ngơi thong thả ở nhà。)"
+    "Example": "日曜日は　どこも　行[い]かないで,家[うち]で　ゆっくり　休[やす]みます。[Nichiyoubi wa doko mo ikanaide, uchi de yukkuri yasumimasu.] (Chủ nhật tôi không đi đâu cả mà nghỉ ngơi thong thả ở nhà。)"
   },
   {
     "STT": 182,
@@ -1482,7 +1482,7 @@ const grammarData = [
   {
     "STT": 186,
     "Lesson": 36,
-    "Structure": "V1る / V1ない + ように、V2",
+    "Structure": "V1る / V1ない + ように,V2",
     "Meaning": "Để làm V1 (mục đích)",
     "Explanation": "V1 thường là động từ khả năng hoặc động từ không mang ý chí để chỉ trạng thái mục tiêu。",
     "Example": "忘[わす]れないように　メモします。[Wasurenai you ni memo shimasu.] (Tôi ghi chép lại để không bị quên。)"
@@ -1548,7 +1548,7 @@ const grammarData = [
     "Lesson": 37,
     "Structure": "N から / N によって",
     "Meaning": "Từ N / Bởi N",
-    "Explanation": "Dùng から khi chỉ nguồn gốc thông tin và によって khi chỉ người sáng tạo (tác giả、 kiến trúc sư)。",
+    "Explanation": "Dùng から khi chỉ nguồn gốc thông tin và によって khi chỉ người sáng tạo (tác giả, kiến trúc sư)。",
     "Example": "この　家[いえ]は　有名[ゆうめい]な　建築家[けんちくか]によって　建[た]てられました。[Kono ie wa yuumei na kenchikuka ni yotte tateraremashita.] (Ngôi nhà này được xây bởi một kiến trúc sư nổi tiếng。)"
   },
   {
@@ -1594,7 +1594,7 @@ const grammarData = [
   {
     "STT": 200,
     "Lesson": 39,
-    "Structure": "Vて / Vないで / Adj くて / Adj で、 ～",
+    "Structure": "Vて / Vないで / Adj くて / Adj で, ～",
     "Meaning": "Vì... nên...",
     "Explanation": "Mệnh đề trước chỉ nguyên nhân gây ra cảm xúc hoặc trạng thái ở vế sau (không dùng ý chí)。",
     "Example": "ニュースを　聞[き]いて　びっくりしました。[Nyuusu o kiite bikkuri shimashita.] (Tôi đã giật mình khi nghe tin tức。)"
@@ -1610,7 +1610,7 @@ const grammarData = [
   {
     "STT": 202,
     "Lesson": 39,
-    "Structure": "～ので、 ～",
+    "Structure": "～ので, ～",
     "Meaning": "Vì... nên (lịch sự)",
     "Explanation": "Dùng để giải thích lý do một cách nhẹ nhàng và lịch sự hơn から。",
     "Example": "用事[ようじ]が　あるので　お先[さき]に　失礼[しつれい]します。[Youji ga aru node osaki ni shitsurei shimasu.] (Vì có chút việc nên tôi xin phép về trước。)"
@@ -1618,18 +1618,18 @@ const grammarData = [
   {
     "STT": 203,
     "Lesson": 40,
-    "Structure": "Từ để hỏi + V (thể thông thường) か、 ～",
+    "Structure": "Từ để hỏi + V (thể thông thường) か, ～",
     "Meaning": "Câu hỏi nghi vấn lồng trong câu",
     "Explanation": "Dùng để lồng một câu hỏi có từ để hỏi vào trong một câu văn khác。",
-    "Example": "結婚[けっこん]のお祝[いわ]いに　何[なに]を　あげたら　いいか、考[かんが]えています。[Kekkon no oiwai ni nani o agetara ii ka、 kangaete imasu.] (Tôi đang suy nghĩ xem nên tặng gì làm quà mừng cưới。)"
+    "Example": "結婚[けっこん]のお祝[いわ]いに　何[なに]を　あげたら　いいか,考[かんが]えています。[Kekkon no oiwai ni nani o agetara ii ka, kangaete imasu.] (Tôi đang suy nghĩ xem nên tặng gì làm quà mừng cưới。)"
   },
   {
     "STT": 204,
     "Lesson": 40,
-    "Structure": "V (thể thông thường) か どうか、 ～",
+    "Structure": "V (thể thông thường) か どうか, ～",
     "Meaning": "Có hay không... (lồng câu hỏi)",
     "Explanation": "Dùng để lồng một câu hỏi không có từ để hỏi vào trong một câu văn khác。",
-    "Example": "間違い[まちがい]が　ないか　どうか、調べ[しらべ]てください。[Machigai ga nai ka douka、 shirabete kudasai.] (Hãy kiểm tra xem có lỗi hay không nhé。)"
+    "Example": "間違い[まちがい]が　ないか　どうか,調べ[しらべ]てください。[Machigai ga nai ka douka, shirabete kudasai.] (Hãy kiểm tra xem có lỗi hay không nhé。)"
   },
   {
     "STT": 205,
@@ -1644,7 +1644,7 @@ const grammarData = [
     "Lesson": 40,
     "Structure": "Adj (bỏ い) / Adj (bỏ な) + さ",
     "Meaning": "Danh từ hóa tính từ",
-    "Explanation": "Biến tính từ thành danh từ chỉ mức độ (độ cao、 độ dài、 độ nặng)。",
+    "Explanation": "Biến tính từ thành danh từ chỉ mức độ (độ cao, độ dài, độ nặng)。",
     "Example": "富士山[ふじさん]の　高さ[たかさ]は　どのくらいですか。[Fujisan no takasa wa dono kurai desu ka.] (Độ cao của núi Phú Sĩ là bao nhiêu？)"
   },
   {
@@ -1652,7 +1652,7 @@ const grammarData = [
     "Lesson": 41,
     "Structure": "N1 に N2 を　( やります / あげます / さしあげます )",
     "Meaning": "Tặng / Cho N2 cho N1",
-    "Explanation": "Dùng やります với người dưới/động vật、 あげます với người ngang hàng、 さしあげます với người trên。",
+    "Explanation": "Dùng やります với người dưới/động vật, あげます với người ngang hàng, さしあげます với người trên。",
     "Example": "息子[むすこ]に　おもちゃを　やりました。[Musuko ni omocha o yarimashita.] (Tôi đã cho con trai đồ chơi。) | 先生[せんせい]に　お土産[おみやげ]を　差し上げ[さしあげ]ました。[Sensei ni omiyage o sashiagemashita.] (Tôi đã biếu thầy giáo quà quê。)"
   },
   {
@@ -1778,18 +1778,18 @@ const grammarData = [
   {
     "STT": 223,
     "Lesson": 45,
-    "Structure": "V (thể thông thường) / Adj / N の + 場合は、 ～",
+    "Structure": "V (thể thông thường) / Adj / N の + 場合は, ～",
     "Meaning": "Trong trường hợp... thì...",
     "Explanation": "Dùng để giả định một tình huống cụ thể và đưa ra cách giải quyết hoặc kết quả。",
-    "Example": "会議[かいぎ]に　遅れる[おくれる]　場合[ばあい]は、連絡[れんらく]して　ください。[Kaigi ni okureru baai wa、 renraku shite kudasai.] (Trong trường hợp đến muộn cuộc họp thì hãy liên lạc nhé。)"
+    "Example": "会議[かいぎ]に　遅れる[おくれる]　場合[ばあい]は,連絡[れんらく]して　ください。[Kaigi ni okureru baai wa, renraku shite kudasai.] (Trong trường hợp đến muộn cuộc họp thì hãy liên lạc nhé。)"
   },
   {
     "STT": 224,
     "Lesson": 45,
-    "Structure": "V (thể thông thường) / Adj / N な + のに、 ～",
+    "Structure": "V (thể thông thường) / Adj / N な + のに, ～",
     "Meaning": "Mặc dù... nhưng...",
     "Explanation": "Diễn tả sự đối lập bất ngờ hoặc thất vọng so với mong đợi (mạnh hơn が)。",
-    "Example": "約束[やくそく]をしたのに、彼女[かのじょ]は　来[き]ませんでした。[Yakusoku o shita noni、 kanojo wa kimasen deshita.] (Mặc dù đã hẹn rồi nhưng cô ấy đã không đến。)"
+    "Example": "約束[やくそく]をしたのに,彼女[かのじょ]は　来[き]ませんでした。[Yakusoku o shita noni, kanojo wa kimasen deshita.] (Mặc dù đã hẹn rồi nhưng cô ấy đã không đến。)"
   },
   {
     "STT": 225,
@@ -1836,7 +1836,7 @@ const grammarData = [
     "Lesson": 47,
     "Structure": "V (thể thông thường) + そうです",
     "Meaning": "Nghe nói là...",
-    "Explanation": "Dùng để truyền đạt lại thông tin nhận được từ nguồn khác (nghe、 đọc)。",
+    "Explanation": "Dùng để truyền đạt lại thông tin nhận được từ nguồn khác (nghe, đọc)。",
     "Example": "天気予報[てんきよほう]によると　あしたは　晴れる[はれる]　そうです。[Tenkiyohou ni yoru to ashita wa hareru sou desu.] (Theo dự báo thời tiết thì nghe nói ngày mai trời nắng。)"
   },
   {
@@ -1900,7 +1900,7 @@ const grammarData = [
     "Lesson": 49,
     "Structure": "Động từ tôn kính ngữ đặc biệt",
     "Meaning": "Kính ngữ (Từ đặc biệt)",
-    "Explanation": "Các từ như: いらっしゃいます (đi/đến/ở)、 おっしゃいます (nói)、 なさいます (làm)。",
+    "Explanation": "Các từ như: いらっしゃいます (đi/đến/ở), おっしゃいます (nói), なさいます (làm)。",
     "Example": "何[なに]を　召し上がり[めしあがり]ますか。[Nani o meshiagarimasu ka.] (Ngài dùng món gì ạ？)"
   },
   {
@@ -1924,7 +1924,7 @@ const grammarData = [
     "Lesson": 50,
     "Structure": "Động từ khiêm nhường ngữ đặc biệt",
     "Meaning": "Kính ngữ (Từ đặc biệt)",
-    "Explanation": "Các từ như: 参り[まいり]ます (đi/đến)、 申し[もうし]ます (nói)、 いたし[いたし]ます (làm)。",
+    "Explanation": "Các từ như: 参り[まいり]ます (đi/đến), 申し[もうし]ます (nói), いたし[いたし]ます (làm)。",
     "Example": "わたしは　ミラーと　申し[もうし]ます。[Watashi wa Miraa to moushimasu.] (Tôi tên là Miller ạ。)"
   },
   {
