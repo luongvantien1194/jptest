@@ -2202,10 +2202,17 @@
     const kanjiEl = createElement("div", "kd-char", item.kanji);
     const meaningBadge = createElement("div", "kd-meaning-badge", item.core_meaning || "");
     const hanvietEl = createElement("div", "kd-hanviet", item.hanviet || "");
+    const maziiLink = document.createElement("a");
+    maziiLink.className = "kd-mazii-link";
+    maziiLink.href = "https://mazii.net/vi-VN/search/kanji/javi/" + encodeURIComponent(item.kanji);
+    maziiLink.target = "_blank";
+    maziiLink.rel = "noopener noreferrer";
+    maziiLink.textContent = "Tra Mazii";
     hero.appendChild(indexLabel);
     hero.appendChild(kanjiEl);
     if (item.core_meaning) hero.appendChild(meaningBadge);
     if (item.hanviet) hero.appendChild(hanvietEl);
+    hero.appendChild(maziiLink);
     container.appendChild(hero);
 
     // Section 1: Phát âm & Cấu tạo
