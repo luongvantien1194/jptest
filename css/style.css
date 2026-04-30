@@ -2470,12 +2470,20 @@ select:focus {
   border: 1px solid rgba(148,163,184,0.2);
   margin-bottom: 6px;
 }
-.kd-hero .star-btn {
+.kd-hero-actions {
   position: absolute;
-  top: 12px;
+  top: 10px;
   right: 12px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.kd-hero .star-btn {
+  position: static;
   font-size: 22px;
-  padding: 4px;
+  line-height: 1;
+  padding: 2px;
   background: none;
   border: none;
   cursor: pointer;

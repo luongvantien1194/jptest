@@ -2175,6 +2175,7 @@
     const globalIndex = state.selected.kanjiIndex;
     const isKanjiFav = !!state.kanjiFavorites[globalIndex];
     const hero = createElement("div", "kd-hero", "");
+    const heroActions = createElement("div", "kd-hero-actions", "");
     const starBtn = createElement(
       "button",
       "star-btn" + (isKanjiFav ? " star-btn--active" : ""),
@@ -2208,11 +2209,13 @@
     maziiLink.target = "_blank";
     maziiLink.rel = "noopener noreferrer";
     maziiLink.textContent = "Tra Mazii";
+    heroActions.appendChild(starBtn);
+    heroActions.appendChild(maziiLink);
+    hero.appendChild(heroActions);
     hero.appendChild(indexLabel);
     hero.appendChild(kanjiEl);
     if (item.core_meaning) hero.appendChild(meaningBadge);
     if (item.hanviet) hero.appendChild(hanvietEl);
-    hero.appendChild(maziiLink);
     container.appendChild(hero);
 
     // Section 1: Phát âm & Cấu tạo
