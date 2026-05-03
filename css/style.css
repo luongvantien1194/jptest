@@ -2958,7 +2958,7 @@ select:focus {
   gap: 8px;
 }
 .kd-writing-setting {
-  display: flex;
+  display: none;
   flex-direction: column;
   gap: 6px;
   padding: 8px;
