@@ -2477,6 +2477,9 @@ select:focus {
   display: flex;
   align-items: center;
   gap: 6px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  max-width: 64%;
 }
 
 .kd-hero .star-btn {
@@ -2878,20 +2881,19 @@ select:focus {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 8px 14px;
-  margin-top: 4px;
+  padding: 4px 10px;
   border: 1px solid var(--border);
-  border-radius: 8px;
-  background: var(--bg-card);
-  color: var(--accent);
-  font-size: 14px;
-  font-weight: 500;
+  border-radius: 999px;
+  background: rgba(238, 242, 255, 0.95);
+  color: #4338ca;
+  font-size: 12px;
+  font-weight: 700;
   cursor: pointer;
   transition: background 0.2s, border-color 0.2s;
 }
 .kd-writing-toggle-btn:hover {
-  background: var(--accent-soft);
-  border-color: var(--accent);
+  background: rgba(224, 231, 255, 0.95);
+  border-color: #818cf8;
 }
 .kd-writing-panel {
   margin-top: 10px;
@@ -2931,6 +2933,7 @@ select:focus {
   display: flex;
   gap: 8px;
   flex-wrap: wrap;
+  justify-content: center;
 }
 .kd-writing-btn {
   padding: 6px 12px;
@@ -2945,6 +2948,35 @@ select:focus {
 .kd-writing-btn:hover {
   background: var(--accent-soft);
   border-color: var(--accent);
+  color: var(--accent);
+}
+.kd-writing-settings {
+  width: min(92vw, 520px);
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 8px;
+}
+.kd-writing-setting {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fff;
+}
+.kd-writing-setting-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+.kd-writing-select,
+.kd-writing-range {
+  width: 100%;
+}
+.kd-writing-range-value {
+  font-size: 12px;
+  font-weight: 700;
   color: var(--accent);
 }
 .detail-modal__body .kd-section--writing { padding: 8px 10px 10px; }

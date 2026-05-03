@@ -79,6 +79,10 @@
         isOpen: false,
         lastType: null
       },
+      writingPractice: {
+        penType: "calligraphy",
+        lineWidth: 13
+      },
       vocabListKey: "",
       kanjiVocabFavOnly: false,
       /** Khi mở chi tiết Kanji từ tab ⭐(kanji), đóng modal thì quay lại tab này */
@@ -955,6 +959,41 @@
     canvasWrap.appendChild(canvas);
 
     const actions = createElement("div", "kd-writing-actions", "");
+    const settings = createElement("div", "kd-writing-settings", "");
+    const penTypeGroup = createElement("label", "kd-writing-setting", "");
+    const penTypeText = createElement("span", "kd-writing-setting-label", "Loại bút");
+    const penTypeSelect = document.createElement("select");
+    penTypeSelect.className = "kd-writing-select";
+    [
+      { value: "ink", label: "Bút mực" },
+      { value: "marker", label: "Bút dạ" },
+      { value: "pencil", label: "Bút chì" },
+      { value: "calligraphy", label: "Bút thư pháp" }
+    ].forEach(function (optData) {
+      var opt = document.createElement("option");
+      opt.value = optData.value;
+      opt.textContent = optData.label;
+      penTypeSelect.appendChild(opt);
+    });
+    penTypeGroup.appendChild(penTypeText);
+    penTypeGroup.appendChild(penTypeSelect);
+
+    const lineWidthGroup = createElement("label", "kd-writing-setting", "");
+    const lineWidthText = createElement("span", "kd-writing-setting-label", "Độ dày nét");
+    const lineWidthRange = document.createElement("input");
+    lineWidthRange.type = "range";
+    lineWidthRange.className = "kd-writing-range";
+    lineWidthRange.min = "1";
+    lineWidthRange.max = "16";
+    lineWidthRange.step = "1";
+    const lineWidthValue = createElement("span", "kd-writing-range-value", "");
+    lineWidthGroup.appendChild(lineWidthText);
+    lineWidthGroup.appendChild(lineWidthRange);
+    lineWidthGroup.appendChild(lineWidthValue);
+
+    settings.appendChild(penTypeGroup);
+    settings.appendChild(lineWidthGroup);
+
     const toggleRefBtn = createElement("button", "kd-writing-btn", "Ẩn kanji mẫu");
     toggleRefBtn.type = "button";
     const clearBtn = createElement("button", "kd-writing-btn", "Clear");
@@ -970,6 +1009,7 @@
       ctx.clearRect(0, 0, canvas.width, canvas.height);
     });
 
+    wrap.appendChild(settings);
     actions.appendChild(toggleRefBtn);
     actions.appendChild(clearBtn);
 
@@ -979,11 +1019,64 @@
     (function initCanvasDrawing() {
       var ctx = canvas.getContext("2d");
       var drawing = false;
+      var writingConfig = state.ui.writingPractice || { penType: "calligraphy", lineWidth: 13 };
+      var lastPos = null;
+      var lastMoveTime = 0;
 
-      ctx.strokeStyle = "#1f2937";
-      ctx.lineWidth = 4;
-      ctx.lineCap = "round";
-      ctx.lineJoin = "round";
+      function getPenStyle(penType) {
+        if (penType === "marker") {
+          return { color: "rgba(30, 41, 59, 0.75)", cap: "square", join: "round" };
+        }
+        if (penType === "pencil") {
+          return { color: "rgba(55, 65, 81, 0.6)", cap: "round", join: "round" };
+        }
+        if (penType === "calligraphy") {
+          return { color: "#111827", cap: "butt", join: "miter" };
+        }
+        return { color: "#1f2937", cap: "round", join: "round" };
+      }
+      function getCalligraphyWidth(currPos) {
+        if (!lastPos) return writingConfig.lineWidth;
+        var dx = currPos.x - lastPos.x;
+        var dy = currPos.y - lastPos.y;
+        var dist = Math.sqrt(dx * dx + dy * dy);
+        var now = Date.now();
+        var dt = Math.max(16, now - (lastMoveTime || now));
+        var speed = dist / dt;
+        var angle = Math.atan2(Math.abs(dy), Math.abs(dx || 0.0001));
+        var directionFactor = 0.7 + Math.abs(Math.cos(angle)) * 0.6;
+        var speedFactor = Math.max(0.7, Math.min(1.2, 1.1 - speed * 1.8));
+        return Math.max(1, writingConfig.lineWidth * directionFactor * speedFactor);
+      }
+      function applyBrushSettings() {
+        var style = getPenStyle(writingConfig.penType);
+        ctx.strokeStyle = style.color;
+        ctx.lineCap = style.cap;
+        ctx.lineJoin = style.join;
+        ctx.lineWidth = writingConfig.lineWidth;
+      }
+      function syncSettingsUI() {
+        penTypeSelect.value = writingConfig.penType;
+        lineWidthRange.value = String(writingConfig.lineWidth);
+        lineWidthValue.textContent = String(writingConfig.lineWidth) + " px";
+      }
+      syncSettingsUI();
+      applyBrushSettings();
+
+      penTypeSelect.addEventListener("change", function () {
+        writingConfig.penType = penTypeSelect.value;
+        state.ui.writingPractice = writingConfig;
+        applyBrushSettings();
+      });
+      lineWidthRange.addEventListener("input", function () {
+        var size = parseInt(lineWidthRange.value, 10);
+        if (!isNaN(size)) {
+          writingConfig.lineWidth = size;
+          state.ui.writingPractice = writingConfig;
+          lineWidthValue.textContent = String(size) + " px";
+          applyBrushSettings();
+        }
+      });
 
       function getPos(e) {
         var rect = canvas.getBoundingClientRect();
@@ -1003,16 +1096,26 @@
         var pos = getPos(e);
         ctx.beginPath();
         ctx.moveTo(pos.x, pos.y);
+        lastPos = pos;
+        lastMoveTime = Date.now();
       }
       function moveDraw(e) {
         if (!drawing) return;
         e.preventDefault();
         var pos = getPos(e);
+        if (writingConfig.penType === "calligraphy") {
+          ctx.lineWidth = getCalligraphyWidth(pos);
+        } else {
+          ctx.lineWidth = writingConfig.lineWidth;
+        }
         ctx.lineTo(pos.x, pos.y);
         ctx.stroke();
+        lastPos = pos;
+        lastMoveTime = Date.now();
       }
       function endDraw() {
         drawing = false;
+        lastPos = null;
       }
 
       canvas.addEventListener("mousedown", startDraw);
@@ -2209,8 +2312,15 @@
     maziiLink.target = "_blank";
     maziiLink.rel = "noopener noreferrer";
     maziiLink.textContent = "Tra Mazii";
+    const openWriteBtn = createElement("button", "kd-writing-toggle-btn", "✏️ Tập viết");
+    openWriteBtn.type = "button";
+    openWriteBtn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      openKanjiPracticeModal(item.kanji);
+    });
     heroActions.appendChild(starBtn);
     heroActions.appendChild(maziiLink);
+    heroActions.appendChild(openWriteBtn);
     hero.appendChild(heroActions);
     hero.appendChild(indexLabel);
     hero.appendChild(kanjiEl);
@@ -2424,20 +2534,6 @@
         container.appendChild(sec4);
       }
     }
-
-    // Section: Kanji writing practice (open modal)
-    const secWrite = createElement("div", "kd-section kd-section--writing", "");
-    const secWriteTitle = createElement("div", "kd-section-title", "Tập viết");
-    const openWriteBtn = createElement("button", "kd-writing-toggle-btn", "✏️ Tập viết");
-    openWriteBtn.type = "button";
-    secWrite.appendChild(secWriteTitle);
-    secWrite.appendChild(openWriteBtn);
-    openWriteBtn.addEventListener("click", function (e) {
-      e.stopPropagation();
-      openKanjiPracticeModal(item.kanji);
-    });
-
-    container.appendChild(secWrite);
 
     const contentDiv = createElement("div", "kd-detail-content", "");
     while (container.firstChild) {
