@@ -2311,8 +2311,8 @@
     maziiLink.href = "https://mazii.net/vi-VN/search/kanji/javi/" + encodeURIComponent(item.kanji);
     maziiLink.target = "_blank";
     maziiLink.rel = "noopener noreferrer";
-    maziiLink.textContent = "Tra Mazii";
-    const openWriteBtn = createElement("button", "kd-writing-toggle-btn", "✏️ Tập viết");
+    maziiLink.textContent = "Mazii";
+    const openWriteBtn = createElement("button", "kd-writing-toggle-btn", "✏️");
     openWriteBtn.type = "button";
     openWriteBtn.addEventListener("click", function (e) {
       e.stopPropagation();
