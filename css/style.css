@@ -2951,6 +2951,7 @@ select:focus {
   color: var(--accent);
 }
 .kd-writing-settings {
+  display: none;
   width: min(92vw, 520px);
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
