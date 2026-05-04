@@ -2297,12 +2297,7 @@
       renderKanjiDetail();
       refreshStarsTabIfActive();
     });
-    hero.appendChild(starBtn);
-    const indexLabel = createElement(
-      "div",
-      "kd-index",
-      String(globalIndex + 1)
-    );
+    const indexLabel = createElement("div", "kd-index", String(globalIndex + 1));
     const kanjiEl = createElement("div", "kd-char", item.kanji);
     const meaningBadge = createElement("div", "kd-meaning-badge", item.core_meaning || "");
     const hanvietEl = createElement("div", "kd-hanviet", item.hanviet || "");
@@ -2312,6 +2307,12 @@
     maziiLink.target = "_blank";
     maziiLink.rel = "noopener noreferrer";
     maziiLink.textContent = "Mazii";
+    const jdictLink = document.createElement("a");
+    jdictLink.className = "kd-mazii-link kd-jdict-link";
+    jdictLink.href = "https://jdict.net/kanji/" + encodeURIComponent(item.kanji);
+    jdictLink.target = "_blank";
+    jdictLink.rel = "noopener noreferrer";
+    jdictLink.textContent = "JDict";
     const openWriteBtn = createElement("button", "kd-writing-toggle-btn", "✏️");
     openWriteBtn.type = "button";
     openWriteBtn.addEventListener("click", function (e) {
@@ -2320,12 +2321,19 @@
     });
     heroActions.appendChild(starBtn);
     heroActions.appendChild(maziiLink);
+    heroActions.appendChild(jdictLink);
     heroActions.appendChild(openWriteBtn);
-    hero.appendChild(heroActions);
+    const heroMain = createElement("div", "kd-hero-main", "");
+    const heroMeta = createElement("div", "kd-hero-meta", "");
+    heroMain.appendChild(kanjiEl);
+    if (item.core_meaning) heroMeta.appendChild(meaningBadge);
+    if (item.hanviet) heroMeta.appendChild(hanvietEl);
+    if (heroMeta.childNodes.length) heroMain.appendChild(heroMeta);
+    const heroBody = createElement("div", "kd-hero-body", "");
+    heroBody.appendChild(heroActions);
+    heroBody.appendChild(heroMain);
     hero.appendChild(indexLabel);
-    hero.appendChild(kanjiEl);
-    if (item.core_meaning) hero.appendChild(meaningBadge);
-    if (item.hanviet) hero.appendChild(hanvietEl);
+    hero.appendChild(heroBody);
     container.appendChild(hero);
 
     // Section 1: Phát âm & Cấu tạo
