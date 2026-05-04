@@ -2044,16 +2044,16 @@ select:focus {
   z-index: 1;
   width: 100%;
   max-width: 600px;
-  max-height: calc(100vh - 20px);
+  max-height: calc(100vh - 12px);
   overflow: hidden;
   display: flex;
   flex-direction: column;
-  border-radius: 18px;
+  border-radius: 16px;
   border: 1px solid rgba(209, 213, 219, 0.95);
   background: radial-gradient(circle at 0 0, #ffffff, #eff6ff);
   box-shadow: 0 20px 45px rgba(15, 23, 42, 0.45);
-  padding: 14px 14px 12px;
-  gap: 8px;
+  padding: 10px 10px 8px;
+  gap: 5px;
 }
 .detail-modal__dialog .detail-modal__body {
   flex: 1;
@@ -2456,30 +2456,74 @@ select:focus {
 
 /* ===== KANJI DETAIL — Rich Layout ===== */
 
-/* Hero block: big kanji + meaning badge */
+/* Hero: index góc trên trái; main trái (BFC); actions float phải 50%, nội dung dài tự xuống */
 .kd-hero {
   position: relative;
+  display: block;
+  padding: 8px 10px 10px;
+  background: radial-gradient(circle at 50% 30%, rgba(191,219,254,0.45), rgba(238,242,255,0.6) 65%);
+  border-radius: 12px;
+  border: 1px solid rgba(148,163,184,0.2);
+  margin-bottom: 4px;
+}
+.kd-hero .kd-index {
+  position: absolute;
+  top: 6px;
+  left: 8px;
+  z-index: 2;
+  margin: 0;
+}
+.kd-hero-body {
+  display: flow-root;
+  width: 100%;
+  min-width: 0;
+  padding-top: 22px;
+  box-sizing: border-box;
+}
+.kd-hero-main {
   display: flex;
   flex-direction: row;
-  align-items: center;
-  justify-content: center;
-  gap: 12px;
-  padding: 16px 12px 12px;
-  background: radial-gradient(circle at 50% 30%, rgba(191,219,254,0.45), rgba(238,242,255,0.6) 65%);
-  border-radius: 16px;
-  border: 1px solid rgba(148,163,184,0.2);
-  margin-bottom: 6px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 10px;
+  overflow: hidden;
+  min-width: 0;
+}
+.kd-hero-meta {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+  padding-top: 2px;
+}
+.kd-hero-meta .kd-meaning-badge,
+.kd-hero-meta .kd-hanviet {
+  max-width: 100%;
+}
+.kd-hero-meta .kd-meaning-badge {
+  white-space: normal;
+  text-align: left;
+  line-height: 1.3;
 }
 .kd-hero-actions {
-  position: absolute;
-  top: 10px;
-  right: 12px;
+  float: right;
   display: flex;
-  align-items: center;
-  gap: 6px;
+  flex-direction: row;
   flex-wrap: wrap;
+  align-items: center;
+  align-content: flex-start;
   justify-content: flex-end;
-  max-width: 64%;
+  gap: 6px;
+  width: 50%;
+  max-width: 50%;
+  min-width: 0;
+  box-sizing: border-box;
+  margin-left: 8px;
+}
+.kd-hero-actions > * {
+  flex: 0 0 auto;
 }
 
 .kd-hero .star-btn {
@@ -2494,42 +2538,42 @@ select:focus {
 
 .kd-char {
   font-family: var(--font-jp);
-  font-size: 72px;
+  font-size: 64px;
   font-weight: 300;
   line-height: 1;
   color: #1e1b4b;
   letter-spacing: -2px;
-  text-shadow: 0 4px 18px rgba(99,102,241,0.18);
+  text-shadow: 0 3px 14px rgba(99,102,241,0.16);
   flex-shrink: 0;
 }
 
 .kd-index {
-  font-size: 14px;
+  font-size: 12px;
   font-weight: 600;
   color: #6b7280;
-  margin-right: 8px;
-  padding: 2px 8px;
+  margin-right: 0;
+  padding: 1px 7px;
   border-radius: 999px;
   background: rgba(243, 244, 246, 0.9);
-  box-shadow: 0 1px 3px rgba(15, 23, 42, 0.08);
+  box-shadow: 0 1px 2px rgba(15, 23, 42, 0.06);
 }
 
 .kd-meaning-badge {
-  padding: 3px 14px;
+  padding: 2px 10px;
   border-radius: 999px;
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
   background: linear-gradient(135deg, #6366f1, #2563eb);
   color: #fff;
   letter-spacing: 0.04em;
-  box-shadow: 0 2px 10px rgba(99,102,241,0.35);
+  box-shadow: 0 1px 8px rgba(99,102,241,0.3);
   flex-shrink: 0;
 }
 
 .kd-hanviet {
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 800;
-  letter-spacing: 0.12em;
+  letter-spacing: 0.1em;
   text-transform: uppercase;
   background: linear-gradient(135deg, #4338ca, #2563eb);
   -webkit-background-clip: text;
@@ -2538,11 +2582,11 @@ select:focus {
 }
 
 .kd-mazii-link {
-  font-size: 12px;
+  font-size: 11px;
   font-weight: 700;
   color: #1d4ed8;
   text-decoration: none;
-  padding: 4px 8px;
+  padding: 3px 7px;
   border-radius: 999px;
   background: rgba(219, 234, 254, 0.85);
   border: 1px solid rgba(96, 165, 250, 0.6);
@@ -2556,18 +2600,18 @@ select:focus {
 
 /* Section wrapper */
 .kd-section {
-  border-radius: 14px;
-  padding: 10px 12px 12px;
-  margin-bottom: 8px;
+  border-radius: 12px;
+  padding: 8px 10px 10px;
+  margin-bottom: 5px;
   border: 1px solid transparent;
 }
 
 .kd-section-title {
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 700;
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  margin-bottom: 8px;
+  margin-bottom: 5px;
   opacity: 0.6;
 }
 
@@ -2600,14 +2644,14 @@ select:focus {
 .kd-pills-grid {
   display: flex;
   flex-wrap: wrap;
-  gap: 8px;
+  gap: 5px;
 }
 
 .kd-pill-group {
   display: flex;
   flex-direction: column;
-  gap: 4px;
-  min-width: 60px;
+  gap: 2px;
+  min-width: 56px;
 }
 
 .kd-pill-label {
@@ -2621,14 +2665,14 @@ select:focus {
 .kd-pill-values {
   display: flex;
   flex-wrap: wrap;
-  gap: 4px;
+  gap: 3px;
 }
 
 .kd-pill {
   display: inline-block;
-  padding: 4px 10px;
+  padding: 3px 8px;
   border-radius: 999px;
-  font-size: 14px;
+  font-size: 13px;
   font-family: var(--font-jp);
   font-weight: 600;
   border: 1px solid transparent;
@@ -2651,14 +2695,14 @@ select:focus {
   border-color: rgba(148,163,184,0.6);
   color: #374151;
   font-family: inherit;
-  font-size: 13px;
+  font-size: 12px;
 }
 
 .kd-pill--radical {
   background: rgba(243,232,255,0.9);
   border-color: rgba(192,132,252,0.6);
   color: #6d28d9;
-  font-size: 13px;
+  font-size: 12px;
   font-family: inherit;
 }
 
@@ -2676,8 +2720,8 @@ select:focus {
 .kd-story-row {
   display: flex;
   align-items: flex-start;
-  gap: 8px;
-  padding: 6px 0;
+  gap: 6px;
+  padding: 4px 0;
   border-bottom: 1px dashed rgba(0,0,0,0.07);
 }
 
@@ -2719,35 +2763,35 @@ select:focus {
 }
 
 .kd-story-value {
-  font-size: 14px;
+  font-size: 13px;
   color: #1c1917;
-  line-height: 1.5;
+  line-height: 1.45;
 }
 
 /* Vocabulary section */
 .kd-vocab-sublabel {
-  font-size: 10px;
+  font-size: 9px;
   font-weight: 700;
   text-transform: uppercase;
   letter-spacing: 0.08em;
   color: #065f46;
   opacity: 0.65;
-  margin-bottom: 6px;
-  margin-top: 4px;
+  margin-bottom: 4px;
+  margin-top: 2px;
 }
 
 .kd-vocab-pills {
   display: flex;
   flex-wrap: wrap;
-  gap: 6px;
-  margin-bottom: 10px;
+  gap: 4px;
+  margin-bottom: 6px;
 }
 
 .kd-vocab-chip {
   display: flex;
   flex-direction: column;
-  padding: 5px 10px;
-  border-radius: 10px;
+  padding: 4px 8px;
+  border-radius: 8px;
   background: rgba(255,255,255,0.85);
   border: 1px solid rgba(110,231,183,0.5);
   gap: 1px;
@@ -2756,21 +2800,21 @@ select:focus {
 
 .kd-vocab-chip-word {
   font-family: var(--font-jp);
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 600;
   color: #065f46;
 }
 
 .kd-vocab-chip-meaning {
-  font-size: 11px;
+  font-size: 10px;
   color: #6b7280;
 }
 
 .kd-vocab-row {
   display: flex;
   align-items: baseline;
-  gap: 6px;
-  padding: 5px 4px;
+  gap: 5px;
+  padding: 3px 2px;
   border-bottom: 1px dashed rgba(0,0,0,0.06);
   flex-wrap: wrap;
 }
@@ -2781,7 +2825,7 @@ select:focus {
 
 .kd-vocab-word {
   font-family: var(--font-jp);
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 700;
   color: #065f46;
   flex: 1 1 auto;
@@ -2798,7 +2842,7 @@ select:focus {
 }
 
 .kd-vocab-mean {
-  font-size: 13px;
+  font-size: 12px;
   color: #374151;
   flex: 1;
 }
@@ -2819,50 +2863,121 @@ select:focus {
 .kd-detail-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 6px;
+  gap: 4px;
 }
-.kd-detail-content > .kd-hero,
+.kd-detail-content > .kd-hero { grid-column: 1 / -1; }
 .kd-detail-content > .kd-hanviet { grid-column: 1 / -1; }
 .kd-detail-content > .kd-section--blue { grid-column: 1; }
 .kd-detail-content > .kd-section--amber { grid-column: 2; }
 .kd-detail-content > .kd-section--green { grid-column: 1 / -1; }
 .kd-detail-content > .kd-section--writing { grid-column: 1 / -1; }
+.detail-modal__body .kd-hero {
+  padding: 10px 8px 6px;
+  margin-bottom: 2px;
+}
+.detail-modal__body .kd-char { font-size: 56px; }
+.detail-modal__body .kd-meaning-badge {
+  margin-top: 2px;
+  padding: 2px 10px;
+  font-size: 12px;
+}
+.detail-modal__body .kd-hero-meta .kd-meaning-badge {
+  margin-top: 0;
+}
+.detail-modal__body .kd-hanviet {
+  font-size: 15px;
+}
 @media (max-width: 420px) {
   .kd-detail-content { grid-template-columns: 1fr; }
   .kd-detail-content > .kd-section--blue,
   .kd-detail-content > .kd-section--amber { grid-column: 1; }
-}
-.detail-modal__body .kd-hero {
-  padding: 12px 10px 8px;
-  margin-bottom: 4px;
-}
-.detail-modal__body .kd-char { font-size: 72px; }
-.detail-modal__body .kd-meaning-badge {
-  margin-top: 4px;
-  padding: 3px 12px;
-  font-size: 14px;
-}
-.detail-modal__body .kd-hanviet {
-  font-size: 18px;
+
+  /* Hero mobile: index góc trái; cột nút 50% */
+  .kd-hero {
+    padding: 6px 6px 8px;
+    border-radius: 12px;
+  }
+  .kd-hero .kd-index {
+    top: 4px;
+    left: 6px;
+    font-size: 11px;
+    padding: 1px 6px;
+  }
+  .kd-hero-body {
+    padding-top: 20px;
+  }
+  .kd-hero-main {
+    gap: 8px;
+    align-items: flex-start;
+    min-width: 0;
+  }
+  .kd-hero-actions {
+    width: 50%;
+    max-width: 50%;
+    margin-left: 5px;
+    gap: 5px;
+    align-items: center;
+    justify-content: flex-end;
+  }
+  .kd-hero .kd-char {
+    font-size: clamp(44px, 16vw, 54px);
+    letter-spacing: -1px;
+  }
+  .kd-hero-meta .kd-hanviet {
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    line-height: 1.25;
+  }
+  .kd-hero-meta .kd-meaning-badge {
+    font-size: 11px;
+    padding: 2px 10px;
+    max-width: 100%;
+    line-height: 1.2;
+  }
+  .kd-hero .kd-mazii-link {
+    padding: 4px 8px;
+    font-size: 10px;
+    min-height: 32px;
+    display: inline-flex;
+    align-items: center;
+  }
+  .kd-hero .star-btn,
+  .kd-hero .kd-writing-toggle-btn {
+    min-width: 34px;
+    min-height: 34px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .detail-modal__body .kd-hero {
+    padding: 6px 6px 8px;
+  }
+  .detail-modal__body .kd-char {
+    font-size: clamp(44px, 16vw, 54px);
+  }
+  .detail-modal__body .kd-hanviet {
+    font-size: 13px;
+  }
 }
 .detail-modal__body .kd-section {
-  padding: 8px 10px 10px;
-  margin-bottom: 4px;
+  padding: 6px 8px 8px;
+  margin-bottom: 3px;
 }
-.detail-modal__body .kd-section-title { margin-bottom: 4px; }
-.detail-modal__body .kd-pills-grid { gap: 6px; }
-.detail-modal__body .kd-pill { padding: 4px 10px; font-size: 15px; }
-.detail-modal__body .kd-pill--stroke { font-size: 14px; }
-.detail-modal__body .kd-pill--radical { font-size: 14px; }
-.detail-modal__body .kd-story-row { padding: 4px 0; }
-.detail-modal__body .kd-story-label { font-size: 10px; }
-.detail-modal__body .kd-story-value { font-size: 15px; }
-.detail-modal__body .kd-vocab-row { padding: 4px 0; }
-.detail-modal__body .kd-vocab-word { font-size: 19px; }
-.detail-modal__body .kd-vocab-read { font-size: 14px; }
-.detail-modal__body .kd-vocab-mean { font-size: 15px; }
-.detail-modal__body .kd-vocab-chip-word { font-size: 16px; }
-.detail-modal__body .kd-vocab-chip-meaning { font-size: 13px; }
+.detail-modal__body .kd-section-title { margin-bottom: 3px; }
+.detail-modal__body .kd-pills-grid { gap: 4px; }
+.detail-modal__body .kd-pill { padding: 3px 8px; font-size: 13px; }
+.detail-modal__body .kd-pill--stroke { font-size: 12px; }
+.detail-modal__body .kd-pill--radical { font-size: 12px; }
+.detail-modal__body .kd-story-row { padding: 3px 0; }
+.detail-modal__body .kd-story-label { font-size: 9px; }
+.detail-modal__body .kd-story-value { font-size: 13px; }
+.detail-modal__body .kd-vocab-row { padding: 3px 0; }
+.detail-modal__body .kd-vocab-word { font-size: 16px; }
+.detail-modal__body .kd-vocab-read { font-size: 12px; }
+.detail-modal__body .kd-vocab-mean { font-size: 13px; }
+.detail-modal__body .kd-vocab-chip-word { font-size: 13px; }
+.detail-modal__body .kd-vocab-chip-meaning { font-size: 11px; }
 .kd-nav-row--header {
   margin-top: 0;
   padding-top: 0;
@@ -2875,7 +2990,7 @@ select:focus {
 
 /* Kanji writing practice */
 .kd-section--writing {
-  padding: 10px 12px 12px;
+  padding: 8px 10px 10px;
 }
 .kd-writing-toggle-btn {
   display: inline-flex;
@@ -2896,8 +3011,8 @@ select:focus {
   border-color: #818cf8;
 }
 .kd-writing-panel {
-  margin-top: 10px;
-  padding-top: 10px;
+  margin-top: 6px;
+  padding-top: 6px;
   border-top: 1px solid var(--border);
 }
 .kd-writing-canvas-wrap {
