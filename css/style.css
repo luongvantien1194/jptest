@@ -2912,8 +2912,8 @@ select:focus {
     min-width: 0;
   }
   .kd-hero-actions {
-    width: 50%;
-    max-width: 50%;
+    width: 60%;
+    max-width: 60%;
     margin-left: 5px;
     gap: 5px;
     align-items: center;
