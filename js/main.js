@@ -953,8 +953,10 @@
     canvas.height = 520;
     canvas.setAttribute("aria-label", "Vùng tập viết kanji");
 
-    const referenceDiv = createElement("div", "kd-writing-reference", String(kanjiChar));
+    const referenceDiv = createElement("div", "kd-writing-reference", "");
     referenceDiv.style.pointerEvents = "none";
+    referenceDiv.setAttribute("aria-hidden", "false");
+    referenceDiv.style.visibility = "hidden";
     canvasWrap.appendChild(referenceDiv);
     canvasWrap.appendChild(canvas);
 
@@ -994,7 +996,137 @@
     settings.appendChild(penTypeGroup);
     settings.appendChild(lineWidthGroup);
 
-    const toggleRefBtn = createElement("button", "kd-writing-btn", "Ẩn kanji mẫu");
+    var strokeEls = [];
+    var strokeTimers = [];
+    var svgLoaded = false;
+    var svgLoadPromise = null;
+    const strokeColors = ["#00d1b2", "#3498db", "#9b59b6", "#e74c3c", "#f1c40f", "#e67e22"];
+
+    function clearStrokeTimers() {
+      strokeTimers.forEach(function (t) {
+        clearTimeout(t);
+      });
+      strokeTimers = [];
+    }
+
+    function getKanjiVGUrls(ch) {
+      var hex = ch.codePointAt(0).toString(16).padStart(5, "0");
+      // Prefer CDN to avoid local-file/CORS/network blocks on raw.githubusercontent.com
+      return [
+        "https://cdn.jsdelivr.net/gh/KanjiVG/kanjivg/kanji/" + hex + ".svg",
+        "https://raw.githubusercontent.com/KanjiVG/kanjivg/master/kanji/" + hex + ".svg"
+      ];
+    }
+
+    function resetStrokesForAnimation() {
+      strokeEls.forEach(function (p) {
+        var len = p.getTotalLength ? p.getTotalLength() : 0;
+        p.style.strokeDasharray = String(len);
+        p.style.strokeDashoffset = String(len);
+        p.style.opacity = "0";
+      });
+    }
+
+    function runStrokeAnimation() {
+      if (!strokeEls.length) return;
+      clearStrokeTimers();
+      resetStrokesForAnimation();
+
+      var totalDelay = 0;
+      strokeEls.forEach(function (p, i) {
+        var len = p.getTotalLength ? p.getTotalLength() : 0;
+        var duration = 500 + len * 4;
+        var color = strokeColors[i % strokeColors.length];
+        p.style.stroke = color;
+
+        var t = setTimeout(function () {
+          p.style.transition = "opacity 200ms ease";
+          p.style.opacity = "1";
+          // ensure opacity applies before dash animation
+          setTimeout(function () {
+            p.style.transition = "stroke-dashoffset " + duration + "ms cubic-bezier(0.25, 0.1, 0.25, 1)";
+            p.style.strokeDashoffset = "0";
+          }, 20);
+        }, totalDelay);
+        strokeTimers.push(t);
+        totalDelay += duration + 250;
+      });
+    }
+
+    async function loadReferenceSvgIfNeeded() {
+      if (svgLoaded) return;
+      if (svgLoadPromise) return svgLoadPromise;
+
+      referenceDiv.textContent = "";
+      var loading = createElement("div", "kd-writing-reference-loading", "Đang tải mẫu...");
+      referenceDiv.appendChild(loading);
+
+      svgLoadPromise = (async function () {
+        try {
+          var urls = getKanjiVGUrls(String(kanjiChar));
+          var svgText = null;
+          for (var i = 0; i < urls.length; i++) {
+            var res = await fetch(urls[i]);
+            if (res && res.ok) {
+              svgText = await res.text();
+              break;
+            }
+          }
+          if (!svgText) {
+            throw new Error("Không tải được SVG từ CDN/GitHub");
+          }
+          var parser = new DOMParser();
+          var xml = parser.parseFromString(svgText, "image/svg+xml");
+
+          var dList = Array.from(xml.querySelectorAll("path"))
+            .map(function (p) {
+              return p.getAttribute("d");
+            })
+            .filter(Boolean);
+          if (!dList.length) {
+            throw new Error("SVG không có path nét vẽ");
+          }
+
+          referenceDiv.textContent = "";
+          var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+          svg.setAttribute("viewBox", "0 0 109 109");
+          svg.setAttribute("width", "100%");
+          svg.setAttribute("height", "100%");
+          svg.setAttribute("aria-label", "Kanji mẫu (animation)");
+
+          var g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+          svg.appendChild(g);
+
+          strokeEls = dList.map(function (d, i) {
+            var p = document.createElementNS("http://www.w3.org/2000/svg", "path");
+            p.setAttribute("d", d);
+            p.setAttribute("fill", "none");
+            p.setAttribute("stroke", strokeColors[i % strokeColors.length]);
+            p.setAttribute("stroke-width", "4.5");
+            p.setAttribute("stroke-linecap", "round");
+            p.setAttribute("stroke-linejoin", "round");
+            p.classList.add("kd-writing-ref-stroke");
+            g.appendChild(p);
+            return p;
+          });
+
+          referenceDiv.appendChild(svg);
+          svgLoaded = true;
+          resetStrokesForAnimation();
+        } catch (e) {
+          referenceDiv.textContent = "";
+          var msg = createElement("div", "kd-writing-reference-loading", "Không tải được mẫu. Hãy thử mở bằng server (Live Server) hoặc kiểm tra mạng.");
+          referenceDiv.appendChild(msg);
+          svgLoaded = false;
+        }
+      })();
+
+      return svgLoadPromise;
+    }
+
+    const drawBtn = createElement("button", "kd-writing-btn", "Vẽ");
+    drawBtn.type = "button";
+    const toggleRefBtn = createElement("button", "kd-writing-btn", "Hiện mẫu");
     toggleRefBtn.type = "button";
     const clearBtn = createElement("button", "kd-writing-btn", "Clear");
     clearBtn.type = "button";
@@ -1002,14 +1134,23 @@
     toggleRefBtn.addEventListener("click", function () {
       var hidden = referenceDiv.style.visibility === "hidden";
       referenceDiv.style.visibility = hidden ? "visible" : "hidden";
-      toggleRefBtn.textContent = hidden ? "Ẩn kanji mẫu" : "Hiện kanji mẫu";
+      toggleRefBtn.textContent = hidden ? "Ẩn mẫu" : "Hiện mẫu";
     });
     clearBtn.addEventListener("click", function () {
       var ctx = canvas.getContext("2d");
       ctx.clearRect(0, 0, canvas.width, canvas.height);
     });
+    drawBtn.addEventListener("click", function () {
+      // Ensure sample is visible when drawing sample strokes
+      referenceDiv.style.visibility = "visible";
+      toggleRefBtn.textContent = "Ẩn mẫu";
+      loadReferenceSvgIfNeeded().then(function () {
+        runStrokeAnimation();
+      });
+    });
 
     wrap.appendChild(settings);
+    actions.appendChild(drawBtn);
     actions.appendChild(toggleRefBtn);
     actions.appendChild(clearBtn);
 
@@ -1141,6 +1282,13 @@
     if (detailModalState.el) {
       detailModalState.el.classList.add("detail-modal--practice");
     }
+
+    // preload sample; auto-show + auto-animate once loaded
+    loadReferenceSvgIfNeeded().then(function () {
+      referenceDiv.style.visibility = "visible";
+      toggleRefBtn.textContent = "Ẩn mẫu";
+      runStrokeAnimation();
+    });
   }
 
   // ========================
