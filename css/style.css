@@ -2063,8 +2063,8 @@ select:focus {
 }
 
 .detail-modal__header {
-  padding-left: 45px;
-  padding-right: 45px;
+  padding-left: 80px;
+  padding-right: 80px;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
