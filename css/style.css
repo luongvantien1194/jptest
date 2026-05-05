@@ -2912,8 +2912,8 @@ select:focus {
     min-width: 0;
   }
   .kd-hero-actions {
-    width: 60%;
-    max-width: 60%;
+    width: 50%;
+    max-width: 50%;
     margin-left: 5px;
     gap: 5px;
     align-items: center;
@@ -3025,6 +3025,8 @@ select:focus {
   box-shadow: inset 0 1px 3px rgba(0, 0, 0, 0.06);
 }
 .kd-writing-canvas {
+  position: relative;
+  z-index: 2;
   display: block;
   width: 240px;
   height: 240px;
@@ -3033,6 +3035,7 @@ select:focus {
   touch-action: none;
 }
 .kd-writing-reference {
+  z-index: 1;
   position: absolute;
   inset: 0;
   display: flex;
@@ -3044,6 +3047,19 @@ select:focus {
   pointer-events: none;
   user-select: none;
 }
+.kd-writing-reference svg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+.kd-writing-reference-loading {
+  font-size: 14px;
+  font-weight: 700;
+  color: rgba(15, 23, 42, 0.55);
+}
+.kd-writing-ref-stroke {
+  opacity: 0;
+}
 .kd-writing-actions {
   display: flex;
   gap: 8px;
@@ -3051,7 +3067,9 @@ select:focus {
   justify-content: center;
 }
 .kd-writing-btn {
-  padding: 6px 12px;
+  width: 120px;
+  height: 36px;
+  padding: 0 12px;
   border: 1px solid var(--border);
   border-radius: 6px;
   background: var(--bg-card);
@@ -3059,6 +3077,10 @@ select:focus {
   font-size: 13px;
   cursor: pointer;
   transition: background 0.2s, border-color 0.2s;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  white-space: nowrap;
 }
 .kd-writing-btn:hover {
   background: var(--accent-soft);
