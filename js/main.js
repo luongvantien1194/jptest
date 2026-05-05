@@ -1291,6 +1291,146 @@
     });
   }
 
+  function createHeroMidKanjiAutoStroke(kanjiChar) {
+    const box = createElement("div", "kd-hero-mid-kanji", "");
+    if (!kanjiChar) return box;
+
+    const replayBtn = createElement("button", "kd-hero-mid-replay", "⟳");
+    replayBtn.type = "button";
+    replayBtn.title = "Vẽ lại";
+    box.appendChild(replayBtn);
+
+    var strokeEls = [];
+    var strokeTimers = [];
+    const strokeColors = ["#00d1b2", "#3498db", "#9b59b6", "#e74c3c", "#f1c40f", "#e67e22"];
+    var ready = false;
+
+    function clearStrokeTimers() {
+      strokeTimers.forEach(function (t) {
+        clearTimeout(t);
+      });
+      strokeTimers = [];
+    }
+
+    function getKanjiVGUrls(ch) {
+      var hex = ch.codePointAt(0).toString(16).padStart(5, "0");
+      return [
+        "https://cdn.jsdelivr.net/gh/KanjiVG/kanjivg/kanji/" + hex + ".svg",
+        "https://raw.githubusercontent.com/KanjiVG/kanjivg/master/kanji/" + hex + ".svg"
+      ];
+    }
+
+    function resetStrokesForAnimation() {
+      strokeEls.forEach(function (p) {
+        var len = p.getTotalLength ? p.getTotalLength() : 0;
+        p.style.strokeDasharray = String(len);
+        p.style.strokeDashoffset = String(len);
+        p.style.opacity = "0";
+      });
+    }
+
+    function runStrokeAnimationLoop() {
+      if (!strokeEls.length) return;
+      clearStrokeTimers();
+      resetStrokesForAnimation();
+
+      var totalDelay = 0;
+      strokeEls.forEach(function (p, i) {
+        var len = p.getTotalLength ? p.getTotalLength() : 0;
+        var duration = 450 + len * 3.5;
+        var color = strokeColors[i % strokeColors.length];
+        p.style.stroke = color;
+
+        var t = setTimeout(function () {
+          p.style.transition = "opacity 200ms ease";
+          p.style.opacity = "1";
+          setTimeout(function () {
+            p.style.transition = "stroke-dashoffset " + duration + "ms cubic-bezier(0.25, 0.1, 0.25, 1)";
+            p.style.strokeDashoffset = "0";
+          }, 20);
+        }, totalDelay);
+        strokeTimers.push(t);
+        totalDelay += duration + 220;
+      });
+    }
+
+    function replayOnce() {
+      if (!ready) return;
+      runStrokeAnimationLoop();
+    }
+
+    replayBtn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      replayOnce();
+    });
+
+    (async function init() {
+      try {
+        var urls = getKanjiVGUrls(String(kanjiChar));
+        var svgText = null;
+        for (var i = 0; i < urls.length; i++) {
+          var res = await fetch(urls[i]);
+          if (res && res.ok) {
+            svgText = await res.text();
+            break;
+          }
+        }
+        if (!svgText) throw new Error("Không tải được SVG");
+
+        var parser = new DOMParser();
+        var xml = parser.parseFromString(svgText, "image/svg+xml");
+        var dList = Array.from(xml.querySelectorAll("path"))
+          .map(function (p) {
+            return p.getAttribute("d");
+          })
+          .filter(Boolean);
+        if (!dList.length) throw new Error("SVG không có path");
+
+        var svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        svg.setAttribute("viewBox", "0 0 109 109");
+        svg.setAttribute("width", "100%");
+        svg.setAttribute("height", "100%");
+        svg.setAttribute("aria-hidden", "true");
+        svg.style.pointerEvents = "none";
+
+        var g = document.createElementNS("http://www.w3.org/2000/svg", "g");
+        svg.appendChild(g);
+
+        strokeEls = dList.map(function (d, idx) {
+          var p = document.createElementNS("http://www.w3.org/2000/svg", "path");
+          p.setAttribute("d", d);
+          p.setAttribute("fill", "none");
+          p.setAttribute("stroke", strokeColors[idx % strokeColors.length]);
+          p.setAttribute("stroke-width", "4.5");
+          p.setAttribute("stroke-linecap", "round");
+          p.setAttribute("stroke-linejoin", "round");
+          p.classList.add("kd-writing-ref-stroke");
+          g.appendChild(p);
+          return p;
+        });
+
+        // Keep replay button; replace only drawing content behind it
+        Array.from(box.querySelectorAll("svg")).forEach(function (n) {
+          n.remove();
+        });
+        box.appendChild(svg);
+        resetStrokesForAnimation();
+        ready = true;
+
+        // Start animation after layout
+        requestAnimationFrame(function () {
+          replayOnce();
+        });
+      } catch (e) {
+        box.textContent = "";
+        box.appendChild(replayBtn);
+        box.appendChild(createElement("div", "kd-hero-mid-fallback", String(kanjiChar)));
+      }
+    })();
+
+    return box;
+  }
+
   // ========================
   // RENDER FUNCTIONS
   // ========================
@@ -2473,14 +2613,15 @@
     heroActions.appendChild(openWriteBtn);
     const heroMain = createElement("div", "kd-hero-main", "");
     const heroMeta = createElement("div", "kd-hero-meta", "");
+    heroMain.appendChild(indexLabel);
     heroMain.appendChild(kanjiEl);
     if (item.core_meaning) heroMeta.appendChild(meaningBadge);
     if (item.hanviet) heroMeta.appendChild(hanvietEl);
     if (heroMeta.childNodes.length) heroMain.appendChild(heroMeta);
     const heroBody = createElement("div", "kd-hero-body", "");
     heroBody.appendChild(heroActions);
+    heroBody.appendChild(createHeroMidKanjiAutoStroke(item.kanji));
     heroBody.appendChild(heroMain);
-    hero.appendChild(indexLabel);
     hero.appendChild(heroBody);
     container.appendChild(hero);
 
