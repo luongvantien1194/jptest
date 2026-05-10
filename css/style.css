@@ -2717,11 +2717,6 @@ select:focus {
   display: none !important;
 }
 
-/* Hide star filter button (user request) */
-.star-filter-btn {
-  display: none !important;
-}
-
 .kd-index {
   font-size: 12px;
   font-weight: 600;
