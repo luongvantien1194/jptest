@@ -2531,6 +2531,9 @@
   function appendKanjiDetailSections(targetEl, kanjiIndex, opts) {
     opts = opts || {};
     var embeddedReadOnly = !!opts.embeddedReadOnly;
+    var testReveal = !!opts.testReveal;
+    // testReveal: cho phép star, ẩn Mazii/JDict/tập viết/link kanji
+    var readOnly = embeddedReadOnly || testReveal;
     var raw = kanjiData[kanjiIndex];
     var item = {
       kanji: raw.kanji,
@@ -2550,6 +2553,8 @@
     var isKanjiFav = !!state.kanjiFavorites[globalIndex];
     var hero = createElement("div", "kd-hero", "");
     var heroActions = createElement("div", "kd-hero-actions", "");
+
+    // Star: hiển thị khi không phải readOnly (bình thường hoặc testReveal)
     if (!embeddedReadOnly) {
       var starBtn = createElement(
         "button",
@@ -2566,32 +2571,36 @@
           state.kanjiFavorites[globalIndex] = true;
         }
         saveKanjiFavorites();
-        renderKanjiDetail();
+        if (!testReveal) renderKanjiDetail();
         refreshStarsTabIfActive();
       });
       heroActions.appendChild(starBtn);
     }
-    var maziiLink = document.createElement("a");
-    maziiLink.className = "kd-mazii-link";
-    maziiLink.href = "https://mazii.net/vi-VN/search/kanji/javi/" + encodeURIComponent(item.kanji);
-    maziiLink.target = "_blank";
-    maziiLink.rel = "noopener noreferrer";
-    maziiLink.textContent = "Mazii";
-    var jdictLink = document.createElement("a");
-    jdictLink.className = "kd-mazii-link kd-jdict-link";
-    jdictLink.href = "https://jdict.net/kanji/" + encodeURIComponent(item.kanji);
-    jdictLink.target = "_blank";
-    jdictLink.rel = "noopener noreferrer";
-    jdictLink.textContent = "JDict";
-    var openWriteBtn = createElement("button", "kd-writing-toggle-btn", "✏️");
-    openWriteBtn.type = "button";
-    openWriteBtn.addEventListener("click", function (e) {
-      e.stopPropagation();
-      openKanjiPracticeModal(item.kanji);
-    });
-    heroActions.appendChild(maziiLink);
-    heroActions.appendChild(jdictLink);
-    heroActions.appendChild(openWriteBtn);
+
+    // Mazii / JDict / Tập viết: ẩn khi testReveal
+    if (!testReveal) {
+      var maziiLink = document.createElement("a");
+      maziiLink.className = "kd-mazii-link";
+      maziiLink.href = "https://mazii.net/vi-VN/search/kanji/javi/" + encodeURIComponent(item.kanji);
+      maziiLink.target = "_blank";
+      maziiLink.rel = "noopener noreferrer";
+      maziiLink.textContent = "Mazii";
+      var jdictLink = document.createElement("a");
+      jdictLink.className = "kd-mazii-link kd-jdict-link";
+      jdictLink.href = "https://jdict.net/kanji/" + encodeURIComponent(item.kanji);
+      jdictLink.target = "_blank";
+      jdictLink.rel = "noopener noreferrer";
+      jdictLink.textContent = "JDict";
+      var openWriteBtn = createElement("button", "kd-writing-toggle-btn", "✏️");
+      openWriteBtn.type = "button";
+      openWriteBtn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        openKanjiPracticeModal(item.kanji);
+      });
+      heroActions.appendChild(maziiLink);
+      heroActions.appendChild(jdictLink);
+      heroActions.appendChild(openWriteBtn);
+    }
     var indexLabel = createElement("div", "kd-index", String(globalIndex + 1));
     var kanjiEl = createElement("div", "kd-char", item.kanji);
     var meaningBadge = createElement("div", "kd-meaning-badge", item.core_meaning || "");
@@ -2623,7 +2632,7 @@
         var trimmed = String(v || "").trim();
         if (!trimmed) return;
         var pill = createElement("span", "kd-pill" + (mod ? " kd-pill--" + mod : ""), trimmed);
-        if (mod === "radical" && !embeddedReadOnly) {
+        if (mod === "radical" && !readOnly) {
           pill.classList.add("kd-pill--radical-clickable");
           pill.title = "Click để lọc các bộ thủ cùng nghĩa tiếng Việt";
           pill.addEventListener("click", function () {
@@ -2658,7 +2667,7 @@
       rowBody.appendChild(createElement("div", "kd-story-label", label));
       var rowValue = createElement("div", "kd-story-value", "");
       if (label === "Cấu tạo") {
-        if (embeddedReadOnly) {
+        if (readOnly) {
           rowValue.textContent = value;
         } else {
           rowValue.innerHTML = linkifyKanjiText(value, item.kanji);
@@ -2713,7 +2722,7 @@
       var sec4 = createElement("div", "kd-section kd-section--purple", "");
       var sec4TitleRow = createElement("div", "kd-section-title-row", "");
       sec4TitleRow.appendChild(createElement("div", "kd-section-title", "Từ vựng ứng dụng"));
-      if (!embeddedReadOnly) {
+      if (!readOnly) {
         var sec4StarToggle = createElement("button", "star-filter-btn" + (state.ui.kanjiVocabFavOnly ? " star-filter-btn--active" : ""), state.ui.kanjiVocabFavOnly ? "⭐" : "☆");
         sec4StarToggle.type = "button";
         sec4StarToggle.title = state.ui.kanjiVocabFavOnly ? "Đang lọc: chỉ hiện từ đã gắn sao" : "Chỉ hiện từ đã gắn sao";
@@ -2733,14 +2742,14 @@
         var kanjiIndexForFav = kanjiIndex;
         var favKey = getKanjiVocabFavKey(kanjiIndexForFav, parts);
         var isFav = !!state.kanjiVocabFavorites[favKey];
-        if (!embeddedReadOnly && state.ui.kanjiVocabFavOnly && !isFav) {
+        if (!readOnly && state.ui.kanjiVocabFavOnly && !isFav) {
           return;
         }
 
         var row = createElement("div", "kd-vocab-row", "");
         var wordEl = createElement("span", "kd-vocab-word", "");
         var wordText = parts[0] || "";
-        if (embeddedReadOnly) {
+        if (readOnly) {
           wordEl.textContent = wordText;
         } else {
           wordEl.innerHTML = linkifyKanjiText(wordText, item.kanji);
@@ -2749,7 +2758,7 @@
         row.appendChild(createElement("span", "kd-vocab-read", parts[1] ? "(" + parts[1] + ")" : ""));
         row.appendChild(createElement("span", "kd-vocab-mean", parts[2] || ""));
 
-        if (!embeddedReadOnly) {
+        if (!readOnly) {
           var rowStarBtn = createElement("button", "star-btn kd-vocab-star" + (isFav ? " star-btn--active" : ""), isFav ? "⭐" : "☆");
           rowStarBtn.type = "button";
           rowStarBtn.title = isFav ? "Bỏ gắn sao từ vựng" : "Gắn sao từ vựng";
@@ -2891,7 +2900,7 @@
       7: "Nghĩa → Hiragana", 8: "Hiragana → Kanji", 9: "Hiragana → Nghĩa"
     };
     var work = document.createElement("div");
-    appendKanjiDetailSections(work, kanjiIndexReveal, { embeddedReadOnly: true });
+    appendKanjiDetailSections(work, kanjiIndexReveal, { testReveal: true });
     var contentDiv = createElement("div", "kd-detail-content kd-detail-content--test-reveal", "");
     while (work.firstChild) {
       contentDiv.appendChild(work.firstChild);
