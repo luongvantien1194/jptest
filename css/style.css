@@ -2311,6 +2311,72 @@ select:focus {
   letter-spacing: 0.04em;
 }
 
+/* Kanji test: reveal detail after each answer */
+.kt-test-reveal {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+.kt-test-reveal-banner {
+  border-radius: 12px;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  font-size: 13px;
+  line-height: 1.45;
+}
+.kt-test-reveal-banner--correct {
+  background: rgba(209,250,229,0.55);
+  border-color: rgba(110,231,183,0.5);
+}
+.kt-test-reveal-banner--wrong {
+  background: rgba(254,243,199,0.65);
+  border-color: rgba(252,211,77,0.45);
+}
+.kt-test-reveal-status {
+  font-weight: 800;
+  font-size: 15px;
+  margin-bottom: 6px;
+}
+.kt-test-reveal-banner--wrong .kt-test-reveal-status {
+  color: #b45309;
+}
+.kt-test-reveal-banner--correct .kt-test-reveal-status {
+  color: #047857;
+}
+.kt-test-reveal-answer,
+.kt-test-reveal-pick,
+.kt-test-reveal-mode {
+  margin-top: 4px;
+}
+.kt-test-reveal-mode {
+  font-size: 11px;
+  opacity: 0.75;
+  margin-top: 8px;
+}
+.kt-test-reveal-em {
+  font-weight: 700;
+  color: var(--accent);
+}
+.kd-detail-content--test-reveal {
+  flex: 1;
+  min-height: 120px;
+  max-height: min(52vh, 440px);
+  overflow-y: auto;
+  padding-bottom: 4px;
+}
+.kt-test-reveal-footer {
+  position: sticky;
+  bottom: 0;
+  padding-top: 4px;
+  margin-top: 4px;
+  background: linear-gradient(to top, var(--bg-app, #fafafa) 80%, transparent);
+}
+.kt-test-reveal-continue {
+  width: 100%;
+  justify-content: center;
+}
+
 /* ===== KANJI LIST ITEM — Ink Style ===== */
 .kl-item {
   display: flex;

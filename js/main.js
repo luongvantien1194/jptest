@@ -58,7 +58,9 @@
       fromIdx: 0,
       toIdx: null,
       modes: [4],
-      isStar: false
+      isStar: false,
+      /** Sau mỗi câu: hiện chi tiết Kanji, bấm Tiếp tục để sang câu tiếp (mặc định tắt) */
+      showAnswerKanjiDetailAfterEach: false
     },
     kanjiViewMode: "grid",
     note: {
@@ -2525,18 +2527,12 @@
     container.appendChild(grid);
   }
 
-  function renderKanjiDetail() {
-    const container = document.getElementById("kanji-detail-container");
-    container.innerHTML = "";
-
-    if (state.selected.kanjiIndex == null) {
-      const empty = createElement("div", "detail-empty", "Chưa chọn Kanji nào.");
-      container.appendChild(empty);
-      return;
-    }
-
-    const raw = kanjiData[state.selected.kanjiIndex];
-    const item = {
+  /** Nội dung chi tiết Kanji vào một phần tử (dùng chung giữa panel và Test Kanji) */
+  function appendKanjiDetailSections(targetEl, kanjiIndex, opts) {
+    opts = opts || {};
+    var embeddedReadOnly = !!opts.embeddedReadOnly;
+    var raw = kanjiData[kanjiIndex];
+    var item = {
       kanji: raw.kanji,
       hanviet: raw.hanviet,
       kun_reading: raw.kun_reading,
@@ -2550,97 +2546,84 @@
       adjectives: raw.adjectives,
       vocabulary: raw.vocabulary
     };
-    if (!item.kanji) {
-      const notFound = createElement("div", "detail-empty", "Không tìm thấy dữ liệu Kanji.");
-      container.appendChild(notFound);
-      return;
+    var globalIndex = kanjiIndex;
+    var isKanjiFav = !!state.kanjiFavorites[globalIndex];
+    var hero = createElement("div", "kd-hero", "");
+    var heroActions = createElement("div", "kd-hero-actions", "");
+    if (!embeddedReadOnly) {
+      var starBtn = createElement(
+        "button",
+        "star-btn" + (isKanjiFav ? " star-btn--active" : ""),
+        isKanjiFav ? "⭐" : "☆"
+      );
+      starBtn.type = "button";
+      starBtn.title = "Yêu thích";
+      starBtn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        if (state.kanjiFavorites[globalIndex]) {
+          delete state.kanjiFavorites[globalIndex];
+        } else {
+          state.kanjiFavorites[globalIndex] = true;
+        }
+        saveKanjiFavorites();
+        renderKanjiDetail();
+        refreshStarsTabIfActive();
+      });
+      heroActions.appendChild(starBtn);
     }
-
-    if (state.currentTab === "stars") {
-      state.ui.kanjiDetailReturnTab = "stars";
-    } else {
-      state.ui.kanjiDetailReturnTab = null;
-    }
-
-    // Hero: Kanji + Nghĩa + Hán Việt + sao
-    const globalIndex = state.selected.kanjiIndex;
-    const isKanjiFav = !!state.kanjiFavorites[globalIndex];
-    const hero = createElement("div", "kd-hero", "");
-    const heroActions = createElement("div", "kd-hero-actions", "");
-    const starBtn = createElement(
-      "button",
-      "star-btn" + (isKanjiFav ? " star-btn--active" : ""),
-      isKanjiFav ? "⭐" : "☆"
-    );
-    starBtn.type = "button";
-    starBtn.title = "Yêu thích";
-    starBtn.addEventListener("click", function (e) {
-      e.stopPropagation();
-      if (state.kanjiFavorites[globalIndex]) {
-        delete state.kanjiFavorites[globalIndex];
-      } else {
-        state.kanjiFavorites[globalIndex] = true;
-      }
-      saveKanjiFavorites();
-      renderKanjiDetail();
-      refreshStarsTabIfActive();
-    });
-    const indexLabel = createElement("div", "kd-index", String(globalIndex + 1));
-    const kanjiEl = createElement("div", "kd-char", item.kanji);
-    const meaningBadge = createElement("div", "kd-meaning-badge", item.core_meaning || "");
-    const hanvietEl = createElement("div", "kd-hanviet", item.hanviet || "");
-    const maziiLink = document.createElement("a");
+    var maziiLink = document.createElement("a");
     maziiLink.className = "kd-mazii-link";
     maziiLink.href = "https://mazii.net/vi-VN/search/kanji/javi/" + encodeURIComponent(item.kanji);
     maziiLink.target = "_blank";
     maziiLink.rel = "noopener noreferrer";
     maziiLink.textContent = "Mazii";
-    const jdictLink = document.createElement("a");
+    var jdictLink = document.createElement("a");
     jdictLink.className = "kd-mazii-link kd-jdict-link";
     jdictLink.href = "https://jdict.net/kanji/" + encodeURIComponent(item.kanji);
     jdictLink.target = "_blank";
     jdictLink.rel = "noopener noreferrer";
     jdictLink.textContent = "JDict";
-    const openWriteBtn = createElement("button", "kd-writing-toggle-btn", "✏️");
+    var openWriteBtn = createElement("button", "kd-writing-toggle-btn", "✏️");
     openWriteBtn.type = "button";
     openWriteBtn.addEventListener("click", function (e) {
       e.stopPropagation();
       openKanjiPracticeModal(item.kanji);
     });
-    heroActions.appendChild(starBtn);
     heroActions.appendChild(maziiLink);
     heroActions.appendChild(jdictLink);
     heroActions.appendChild(openWriteBtn);
-    const heroMain = createElement("div", "kd-hero-main", "");
-    const heroMeta = createElement("div", "kd-hero-meta", "");
+    var indexLabel = createElement("div", "kd-index", String(globalIndex + 1));
+    var kanjiEl = createElement("div", "kd-char", item.kanji);
+    var meaningBadge = createElement("div", "kd-meaning-badge", item.core_meaning || "");
+    var hanvietEl = createElement("div", "kd-hanviet", item.hanviet || "");
+    var heroMain = createElement("div", "kd-hero-main", "");
+    var heroMeta = createElement("div", "kd-hero-meta", "");
     heroMain.appendChild(indexLabel);
     heroMain.appendChild(kanjiEl);
     if (item.core_meaning) heroMeta.appendChild(meaningBadge);
     if (item.hanviet) heroMeta.appendChild(hanvietEl);
     if (heroMeta.childNodes.length) heroMain.appendChild(heroMeta);
-    const heroBody = createElement("div", "kd-hero-body", "");
+    var heroBody = createElement("div", "kd-hero-body", "");
     heroBody.appendChild(heroActions);
     heroBody.appendChild(createHeroMidKanjiAutoStroke(item.kanji));
     heroBody.appendChild(heroMain);
     hero.appendChild(heroBody);
-    container.appendChild(hero);
+    targetEl.appendChild(hero);
 
-    // Section 1: Phát âm & Cấu tạo
-    const sec1 = createElement("div", "kd-section kd-section--blue", "");
-    const sec1Title = createElement("div", "kd-section-title", "Phát âm & Cấu tạo");
-    sec1.appendChild(sec1Title);
-    const sec1Grid = createElement("div", "kd-pills-grid", "");
+    var sec1 = createElement("div", "kd-section kd-section--blue", "");
+    sec1.appendChild(createElement("div", "kd-section-title", "Phát âm & Cấu tạo"));
+    var sec1Grid = createElement("div", "kd-pills-grid", "");
 
     function addPillGroup(label, value, mod) {
       if (!value) return;
-      const group = createElement("div", "kd-pill-group", "");
-      const lbl = createElement("div", "kd-pill-label", label);
-      const valWrap = createElement("div", "kd-pill-values", "");
+      var group = createElement("div", "kd-pill-group", "");
+      group.appendChild(createElement("div", "kd-pill-label", label));
+      var valWrap = createElement("div", "kd-pill-values", "");
       value.split("|").forEach(function (v) {
         var trimmed = String(v || "").trim();
         if (!trimmed) return;
-        const pill = createElement("span", "kd-pill" + (mod ? " kd-pill--" + mod : ""), trimmed);
-        if (mod === "radical") {
+        var pill = createElement("span", "kd-pill" + (mod ? " kd-pill--" + mod : ""), trimmed);
+        if (mod === "radical" && !embeddedReadOnly) {
           pill.classList.add("kd-pill--radical-clickable");
           pill.title = "Click để lọc các bộ thủ cùng nghĩa tiếng Việt";
           pill.addEventListener("click", function () {
@@ -2649,7 +2632,6 @@
         }
         valWrap.appendChild(pill);
       });
-      group.appendChild(lbl);
       group.appendChild(valWrap);
       sec1Grid.appendChild(group);
     }
@@ -2658,189 +2640,169 @@
     addPillGroup("Âm Kun", item.kun_reading, "kun");
 
     if (item.stroke_count != null) {
-      const strokeGroup = createElement("div", "kd-pill-group", "");
-      const strokeLbl = createElement("div", "kd-pill-label", "Số nét");
-      const strokeVal = createElement("span", "kd-pill kd-pill--stroke", String(item.stroke_count) + " nét");
-      strokeGroup.appendChild(strokeLbl);
-      strokeGroup.appendChild(strokeVal);
+      var strokeGroup = createElement("div", "kd-pill-group", "");
+      strokeGroup.appendChild(createElement("div", "kd-pill-label", "Số nét"));
+      strokeGroup.appendChild(createElement("span", "kd-pill kd-pill--stroke", String(item.stroke_count) + " nét"));
       sec1Grid.appendChild(strokeGroup);
     }
 
     addPillGroup("Bộ thủ", item.radicals, "radical");
     sec1.appendChild(sec1Grid);
-    container.appendChild(sec1);
+    targetEl.appendChild(sec1);
 
-    // Section 2: Ký ức & Hình ảnh
     function addStoryRow(sec, icon, label, value) {
       if (!value) return;
-      const row = createElement("div", "kd-story-row", "");
-      const rowIcon = createElement("span", "kd-story-icon", icon);
-      const rowBody = createElement("div", "kd-story-body", "");
-      const rowLabel = createElement("div", "kd-story-label", label);
-      const rowValue = createElement("div", "kd-story-value", "");
-
+      var row = createElement("div", "kd-story-row", "");
+      row.appendChild(createElement("span", "kd-story-icon", icon));
+      var rowBody = createElement("div", "kd-story-body", "");
+      rowBody.appendChild(createElement("div", "kd-story-label", label));
+      var rowValue = createElement("div", "kd-story-value", "");
       if (label === "Cấu tạo") {
-        rowValue.innerHTML = linkifyKanjiText(value, item.kanji);
-        rowValue.addEventListener("click", function (e) {
-          var target = e.target;
-          if (target && target.classList.contains("kd-inline-kanji-link")) {
-            var idxAttr = target.getAttribute("data-kanji-index");
-            var idx = parseInt(idxAttr, 10);
-            if (!isNaN(idx) && idx >= 0 && idx < kanjiData.length) {
-              if (state.selected.kanjiIndex != null) {
-                state.kanjiHistory.push(state.selected.kanjiIndex);
+        if (embeddedReadOnly) {
+          rowValue.textContent = value;
+        } else {
+          rowValue.innerHTML = linkifyKanjiText(value, item.kanji);
+          rowValue.addEventListener("click", function (e) {
+            var target = e.target;
+            if (target && target.classList.contains("kd-inline-kanji-link")) {
+              var idxAttr = target.getAttribute("data-kanji-index");
+              var idx = parseInt(idxAttr, 10);
+              if (!isNaN(idx) && idx >= 0 && idx < kanjiData.length) {
+                if (state.selected.kanjiIndex != null) {
+                  state.kanjiHistory.push(state.selected.kanjiIndex);
+                }
+                state.selected.kanjiIndex = idx;
+                renderKanjiDetail();
               }
-              state.selected.kanjiIndex = idx;
-              renderKanjiDetail();
             }
-          }
-        });
+          });
+        }
       } else {
         rowValue.textContent = value;
       }
-      rowBody.appendChild(rowLabel);
       rowBody.appendChild(rowValue);
-      row.appendChild(rowIcon);
       row.appendChild(rowBody);
       sec.appendChild(row);
     }
 
-    const sec2 = createElement("div", "kd-section kd-section--amber", "");
-    const sec2Title = createElement("div", "kd-section-title", "Ký ức & Hình ảnh");
-    sec2.appendChild(sec2Title);
+    var sec2 = createElement("div", "kd-section kd-section--amber", "");
+    sec2.appendChild(createElement("div", "kd-section-title", "Ký ức & Hình ảnh"));
     addStoryRow(sec2, "🖼️", "Tượng hình", item.story_image);
     addStoryRow(sec2, "🔗", "Cấu tạo", item.logic_development);
-    // Bỏ hiển thị "Mẹo nhớ" để tiết kiệm không gian
-    container.appendChild(sec2);
+    targetEl.appendChild(sec2);
 
-    // Section 3: Tính từ (ẩn nếu không có)
     if (item.adjectives && String(item.adjectives).trim() && String(item.adjectives).toLowerCase() !== "không có") {
-      const sec3 = createElement("div", "kd-section kd-section--green", "");
-
-      const adjWrap = createElement("div", "kd-vocab-pills", "");
+      var sec3 = createElement("div", "kd-section kd-section--green", "");
+      var adjWrap = createElement("div", "kd-vocab-pills", "");
       item.adjectives.split("|").forEach(function (a) {
         var trimmed = String(a).trim();
         if (!trimmed || trimmed.toLowerCase() === "không có") return;
         var parts = trimmed.split(":");
-        const chip = createElement("div", "kd-vocab-chip", "");
-        const word = createElement("span", "kd-vocab-chip-word", parts[0] || "");
-        const meaning = createElement("span", "kd-vocab-chip-meaning", parts[1] || "");
-        chip.appendChild(word);
-        chip.appendChild(meaning);
+        var chip = createElement("div", "kd-vocab-chip", "");
+        chip.appendChild(createElement("span", "kd-vocab-chip-word", parts[0] || ""));
+        chip.appendChild(createElement("span", "kd-vocab-chip-meaning", parts[1] || ""));
         adjWrap.appendChild(chip);
       });
-      
-      // Chỉ thêm section nếu có ít nhất 1 chip
       if (adjWrap.children.length > 0) {
         sec3.appendChild(adjWrap);
-        container.appendChild(sec3);
+        targetEl.appendChild(sec3);
       }
     }
 
-    // Section 4: Từ vựng ứng dụng (ẩn nếu không có)
     if (item.vocabulary && String(item.vocabulary).trim() && String(item.vocabulary).toLowerCase() !== "không có") {
-      const sec4 = createElement("div", "kd-section kd-section--purple", "");
-      const sec4TitleRow = createElement("div", "kd-section-title-row", "");
-      const sec4Title = createElement("div", "kd-section-title", "Từ vựng ứng dụng");
-      const sec4StarToggle = createElement("button", "star-filter-btn" + (state.ui.kanjiVocabFavOnly ? " star-filter-btn--active" : ""), state.ui.kanjiVocabFavOnly ? "⭐" : "☆");
-      sec4StarToggle.type = "button";
-      sec4StarToggle.title = state.ui.kanjiVocabFavOnly ? "Đang lọc: chỉ hiện từ đã gắn sao" : "Chỉ hiện từ đã gắn sao";
-      sec4StarToggle.addEventListener("click", function (e) {
-        e.stopPropagation();
-        state.ui.kanjiVocabFavOnly = !state.ui.kanjiVocabFavOnly;
-        renderKanjiDetail();
-      });
-      sec4TitleRow.appendChild(sec4Title);
-      sec4TitleRow.appendChild(sec4StarToggle);
+      var sec4 = createElement("div", "kd-section kd-section--purple", "");
+      var sec4TitleRow = createElement("div", "kd-section-title-row", "");
+      sec4TitleRow.appendChild(createElement("div", "kd-section-title", "Từ vựng ứng dụng"));
+      if (!embeddedReadOnly) {
+        var sec4StarToggle = createElement("button", "star-filter-btn" + (state.ui.kanjiVocabFavOnly ? " star-filter-btn--active" : ""), state.ui.kanjiVocabFavOnly ? "⭐" : "☆");
+        sec4StarToggle.type = "button";
+        sec4StarToggle.title = state.ui.kanjiVocabFavOnly ? "Đang lọc: chỉ hiện từ đã gắn sao" : "Chỉ hiện từ đã gắn sao";
+        sec4StarToggle.addEventListener("click", function (e) {
+          e.stopPropagation();
+          state.ui.kanjiVocabFavOnly = !state.ui.kanjiVocabFavOnly;
+          renderKanjiDetail();
+        });
+        sec4TitleRow.appendChild(sec4StarToggle);
+      }
       sec4.appendChild(sec4TitleRow);
 
       item.vocabulary.split("|").forEach(function (v) {
         var trimmed = String(v).trim();
         if (!trimmed || trimmed.toLowerCase() === "không có") return;
         var parts = trimmed.split(":");
-
-        var kanjiIndexForFav = state.selected.kanjiIndex;
+        var kanjiIndexForFav = kanjiIndex;
         var favKey = getKanjiVocabFavKey(kanjiIndexForFav, parts);
         var isFav = !!state.kanjiVocabFavorites[favKey];
-        if (state.ui.kanjiVocabFavOnly && !isFav) {
+        if (!embeddedReadOnly && state.ui.kanjiVocabFavOnly && !isFav) {
           return;
         }
 
-        const row = createElement("div", "kd-vocab-row", "");
-        const wordEl = createElement("span", "kd-vocab-word", "");
+        var row = createElement("div", "kd-vocab-row", "");
+        var wordEl = createElement("span", "kd-vocab-word", "");
         var wordText = parts[0] || "";
-        // Link hóa các chữ Kanji trong từ vựng (nếu tồn tại trong kanjiData)
-        // excludeChar = item.kanji để không tự link chính chữ hiện tại
-        wordEl.innerHTML = linkifyKanjiText(wordText, item.kanji);
-        const readEl = createElement("span", "kd-vocab-read", parts[1] ? "(" + parts[1] + ")" : "");
-        const meanEl = createElement("span", "kd-vocab-mean", parts[2] || "");
-
+        if (embeddedReadOnly) {
+          wordEl.textContent = wordText;
+        } else {
+          wordEl.innerHTML = linkifyKanjiText(wordText, item.kanji);
+        }
         row.appendChild(wordEl);
-        row.appendChild(readEl);
-        row.appendChild(meanEl);
+        row.appendChild(createElement("span", "kd-vocab-read", parts[1] ? "(" + parts[1] + ")" : ""));
+        row.appendChild(createElement("span", "kd-vocab-mean", parts[2] || ""));
 
-        // Star vocab (per-kanji)
-        var rowStarBtn = createElement("button", "star-btn kd-vocab-star" + (isFav ? " star-btn--active" : ""), isFav ? "⭐" : "☆");
-        rowStarBtn.type = "button";
-        rowStarBtn.title = isFav ? "Bỏ gắn sao từ vựng" : "Gắn sao từ vựng";
-        rowStarBtn.addEventListener("click", function (e) {
-          e.stopPropagation();
-          if (state.kanjiVocabFavorites[favKey]) {
-            delete state.kanjiVocabFavorites[favKey];
-          } else {
-            state.kanjiVocabFavorites[favKey] = true;
-          }
-          saveKanjiVocabFavorites();
-          renderKanjiDetail();
-          refreshStarsTabIfActive();
-        });
-        row.appendChild(rowStarBtn);
-
-        // Click vào Kanji trong từ vựng để mở chi tiết Kanji
-        wordEl.addEventListener("click", function (e) {
-          var target = e.target;
-          if (target && target.classList.contains("kd-inline-kanji-link")) {
-            var idxAttr = target.getAttribute("data-kanji-index");
-            var idx = parseInt(idxAttr, 10);
-            if (!isNaN(idx) && idx >= 0 && idx < kanjiData.length) {
-              // Nếu trùng với kanji hiện tại thì bỏ qua
-              if (state.selected.kanjiIndex === idx) {
-                return;
-              }
-              if (state.selected.kanjiIndex != null) {
-                state.kanjiHistory.push(state.selected.kanjiIndex);
-              }
-              state.selected.kanjiIndex = idx;
-              renderKanjiDetail();
+        if (!embeddedReadOnly) {
+          var rowStarBtn = createElement("button", "star-btn kd-vocab-star" + (isFav ? " star-btn--active" : ""), isFav ? "⭐" : "☆");
+          rowStarBtn.type = "button";
+          rowStarBtn.title = isFav ? "Bỏ gắn sao từ vựng" : "Gắn sao từ vựng";
+          rowStarBtn.addEventListener("click", function (e) {
+            e.stopPropagation();
+            if (state.kanjiVocabFavorites[favKey]) {
+              delete state.kanjiVocabFavorites[favKey];
+            } else {
+              state.kanjiVocabFavorites[favKey] = true;
             }
-          }
-        });
+            saveKanjiVocabFavorites();
+            renderKanjiDetail();
+            refreshStarsTabIfActive();
+          });
+          row.appendChild(rowStarBtn);
+          wordEl.addEventListener("click", function (e) {
+            var target = e.target;
+            if (target && target.classList.contains("kd-inline-kanji-link")) {
+              var idxAttr = target.getAttribute("data-kanji-index");
+              var idx = parseInt(idxAttr, 10);
+              if (!isNaN(idx) && idx >= 0 && idx < kanjiData.length) {
+                if (state.selected.kanjiIndex === idx) {
+                  return;
+                }
+                if (state.selected.kanjiIndex != null) {
+                  state.kanjiHistory.push(state.selected.kanjiIndex);
+                }
+                state.selected.kanjiIndex = idx;
+                renderKanjiDetail();
+              }
+            }
+          });
+        }
 
-        // Chỉ đọc phần Kanji (không đọc hiragana trong ngoặc)
         var kanjiWordOnly = String(parts[0] || "").split("(")[0].trim();
         if (kanjiWordOnly) {
-          var audioBtnVocab = createAudioBtn(kanjiWordOnly);
-          row.appendChild(audioBtnVocab);
+          row.appendChild(createAudioBtn(kanjiWordOnly));
         }
 
         sec4.appendChild(row);
       });
 
-      // Chỉ thêm section nếu có ít nhất 1 row
       if (sec4.children.length > 0) {
-        container.appendChild(sec4);
+        targetEl.appendChild(sec4);
       }
     }
+  }
 
-    const contentDiv = createElement("div", "kd-detail-content", "");
-    while (container.firstChild) {
-      contentDiv.appendChild(container.firstChild);
-    }
-
-    const navRow = createElement("div", "kd-nav-row kd-nav-row--header", "");
-    const hasBack = Array.isArray(state.kanjiHistory) && state.kanjiHistory.length > 0;
+  function buildKanjiDetailNavRow() {
+    var navRow = createElement("div", "kd-nav-row kd-nav-row--header", "");
+    var hasBack = Array.isArray(state.kanjiHistory) && state.kanjiHistory.length > 0;
     if (hasBack) {
-      const backBtn = createElement("button", "kd-nav-btn kd-nav-btn--back", "← Quay lại");
+      var backBtn = createElement("button", "kd-nav-btn kd-nav-btn--back", "← Quay lại");
       backBtn.type = "button";
       backBtn.addEventListener("click", function () {
         if (!state.kanjiHistory.length) return;
@@ -2852,14 +2814,14 @@
       });
       navRow.appendChild(backBtn);
     } else {
-      const filtered = applyKanjiFilter();
-      const currentIdxInFiltered = filtered.findIndex(function (r) {
+      var filtered = applyKanjiFilter();
+      var currentIdxInFiltered = filtered.findIndex(function (r) {
         return kanjiData.indexOf(r) === state.selected.kanjiIndex;
       });
-      const hasPrev = currentIdxInFiltered > 0;
-      const hasNext = currentIdxInFiltered >= 0 && currentIdxInFiltered < filtered.length - 1;
+      var hasPrev = currentIdxInFiltered > 0;
+      var hasNext = currentIdxInFiltered >= 0 && currentIdxInFiltered < filtered.length - 1;
 
-      const prevBtn = createElement("button", "kd-nav-btn", "‹");
+      var prevBtn = createElement("button", "kd-nav-btn", "‹");
       prevBtn.type = "button";
       prevBtn.disabled = !hasPrev;
       prevBtn.addEventListener("click", function () {
@@ -2867,7 +2829,7 @@
         state.selected.kanjiIndex = kanjiData.indexOf(filtered[currentIdxInFiltered - 1]);
         renderKanjiDetail();
       });
-      const nextBtn = createElement("button", "kd-nav-btn", "›");
+      var nextBtn = createElement("button", "kd-nav-btn", "›");
       nextBtn.type = "button";
       nextBtn.disabled = !hasNext;
       nextBtn.addEventListener("click", function () {
@@ -2878,9 +2840,97 @@
       navRow.appendChild(prevBtn);
       navRow.appendChild(nextBtn);
     }
+    return navRow;
+  }
 
-    // Không hiển thị tiêu đề để header gọn hơn, chỉ còn nút điều hướng
-    openDetailModal("", contentDiv, navRow);
+  function renderKanjiDetail() {
+    var container = document.getElementById("kanji-detail-container");
+    container.innerHTML = "";
+
+    if (state.selected.kanjiIndex == null) {
+      container.appendChild(createElement("div", "detail-empty", "Chưa chọn Kanji nào."));
+      return;
+    }
+
+    var raw = kanjiData[state.selected.kanjiIndex];
+    if (!raw || !raw.kanji) {
+      container.appendChild(createElement("div", "detail-empty", "Không tìm thấy dữ liệu Kanji."));
+      return;
+    }
+
+    if (state.currentTab === "stars") {
+      state.ui.kanjiDetailReturnTab = "stars";
+    } else {
+      state.ui.kanjiDetailReturnTab = null;
+    }
+
+    appendKanjiDetailSections(container, state.selected.kanjiIndex, { embeddedReadOnly: false });
+    var contentDiv = createElement("div", "kd-detail-content", "");
+    while (container.firstChild) {
+      contentDiv.appendChild(container.firstChild);
+    }
+    openDetailModal("", contentDiv, buildKanjiDetailNavRow());
+  }
+
+  function renderKanjiTestAnswerReveal(kanjiIndexReveal, reveal) {
+    var ts = state.kanjiTestState;
+    if (kanjiIndexReveal == null || kanjiIndexReveal < 0 || kanjiIndexReveal >= kanjiData.length) {
+      if (ts.currentIndex < ts.questions.length - 1) {
+        ts.currentIndex += 1;
+        renderKanjiTestQuestion();
+      } else {
+        ts.isFinished = true;
+        renderKanjiTestResult();
+      }
+      return;
+    }
+    var modeLabels = {
+      1: "Kanji → Âm On", 2: "Kanji → Âm Kun",
+      3: "Hán Việt → Kanji", 4: "Kanji → Hán Việt",
+      5: "Từ vựng → Nghĩa", 6: "Nghĩa → Kanji",
+      7: "Nghĩa → Hiragana", 8: "Hiragana → Kanji", 9: "Hiragana → Nghĩa"
+    };
+    var work = document.createElement("div");
+    appendKanjiDetailSections(work, kanjiIndexReveal, { embeddedReadOnly: true });
+    var contentDiv = createElement("div", "kd-detail-content kd-detail-content--test-reveal", "");
+    while (work.firstChild) {
+      contentDiv.appendChild(work.firstChild);
+    }
+
+    var wrap = createElement("div", "kt-test-reveal", "");
+    var banner = createElement("div", "kt-test-reveal-banner", "");
+    banner.classList.add(reveal.isCorrect ? "kt-test-reveal-banner--correct" : "kt-test-reveal-banner--wrong");
+    banner.appendChild(createElement("div", "kt-test-reveal-status", reveal.isCorrect ? "Đúng rồi!" : "Chưa đúng."));
+    var ansRow = createElement("div", "kt-test-reveal-answer", "");
+    ansRow.appendChild(document.createTextNode("Đáp án đúng: "));
+    ansRow.appendChild(createElement("span", "kt-test-reveal-em", reveal.correct != null ? String(reveal.correct) : ""));
+    banner.appendChild(ansRow);
+    var pickRow = createElement("div", "kt-test-reveal-pick", "");
+    pickRow.appendChild(document.createTextNode("Bạn chọn: "));
+    pickRow.appendChild(createElement("span", "kt-test-reveal-em", reveal.selected != null ? String(reveal.selected) : ""));
+    banner.appendChild(pickRow);
+    banner.appendChild(createElement("div", "kt-test-reveal-mode", "Dạng câu: " + (modeLabels[reveal.mode] || "")));
+
+    var footer = createElement("div", "kt-test-reveal-footer", "");
+    var continueBtn = createElement("button", "btn kt-test-reveal-continue", "Tiếp tục");
+    continueBtn.type = "button";
+    continueBtn.addEventListener("click", function () {
+      if (ts.currentIndex < ts.questions.length - 1) {
+        ts.currentIndex += 1;
+        renderKanjiTestQuestion();
+      } else {
+        ts.isFinished = true;
+        renderKanjiTestResult();
+      }
+    });
+    footer.appendChild(continueBtn);
+
+    wrap.appendChild(banner);
+    wrap.appendChild(contentDiv);
+    wrap.appendChild(footer);
+    if (detailModalState.bodyEl) {
+      openDetailModal("Test Kanji", wrap, null);
+    }
   }
 
   // ----- Grammar -----
@@ -3916,7 +3966,13 @@
       btn.appendChild(createElement("span", "option-index", String(idx + 1)));
       btn.appendChild(createElement("span", "", opt));
       btn.addEventListener("click", function () {
-        handleKanjiSelectAnswer({ kanji: raw.kanji, name: raw.hanviet, ve: ve }, mode, correct, opt);
+        handleKanjiSelectAnswer(
+          { kanji: raw.kanji, name: raw.hanviet, ve: ve },
+          mode,
+          correct,
+          opt,
+          qMeta.kanjiIdx
+        );
       });
       optionsGrid.appendChild(btn);
     });
@@ -3995,6 +4051,16 @@
     isStarField.appendChild(isStarLabel);
     configSection.appendChild(isStarField);
 
+    var revealDetailField = createElement("div", "field-group", "");
+    var revealDetailLabel = createElement("label", "kt-mode-label", "");
+    var revealDetailInput = document.createElement("input");
+    revealDetailInput.type = "checkbox";
+    revealDetailInput.checked = !!ts.showAnswerKanjiDetailAfterEach;
+    revealDetailLabel.appendChild(revealDetailInput);
+    revealDetailLabel.appendChild(document.createTextNode("Hiển thị kết quả sau mỗi câu"));
+    revealDetailField.appendChild(revealDetailLabel);
+    configSection.appendChild(revealDetailField);
+
     // --- Dạng câu hỏi ---
     const modeSection = createElement("div", "kt-section", "");
     modeSection.appendChild(createElement("div", "kt-section-label", "Dạng câu hỏi"));
@@ -4054,6 +4120,7 @@
       if (selectedModes.length === 0) selectedModes = [4];
 
       var isStarVal = isStarInput.checked || false;
+      ts.showAnswerKanjiDetailAfterEach = !!revealDetailInput.checked;
       ts.fromIdx = fromVal - 1;
       ts.toIdx = toVal - 1;
       ts.questionCount = qCount;
@@ -4185,15 +4252,24 @@
     }
   }
 
-  function handleKanjiSelectAnswer(item, mode, correct, selected) {
-    const testState = state.kanjiTestState;
-    const isCorrect = selected === correct;
+  function handleKanjiSelectAnswer(item, mode, correct, selected, kanjiIdxForReveal) {
+    var testState = state.kanjiTestState;
+    var isCorrect = selected === correct;
     if (isCorrect) testState.correctCount += 1;
     testState.answers.push({ item: item, mode: mode, correct: correct, selected: selected, isCorrect: isCorrect });
 
-    // Nếu câu hỏi dựa trên từ vựng (mode 5–9) thì sau khi chọn đáp án: đọc reading bằng TTS
     if (item && item.ve && item.ve.reading) {
       speakJapanese(item.ve.reading, null);
+    }
+
+    if (testState.showAnswerKanjiDetailAfterEach) {
+      renderKanjiTestAnswerReveal(kanjiIdxForReveal, {
+        mode: mode,
+        correct: correct,
+        selected: selected,
+        isCorrect: isCorrect
+      });
+      return;
     }
 
     if (testState.currentIndex < testState.questions.length - 1) {
