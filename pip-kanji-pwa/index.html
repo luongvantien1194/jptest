@@ -1,1 +1,163 @@
 
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0f172a">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <title>Kanji PiP Lab</title>
+  <link rel="manifest" href="./manifest.json">
+  <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 180 180'%3E%3Crect fill='%230f172a' width='180' height='180' rx='24'/%3E%3Ctext x='90' y='118' font-size='72' text-anchor='middle' fill='%23e2e8f0' font-family='system-ui,sans-serif'%3E漢%3C/text%3E%3C/svg%3E">
+  <style>
+    :root {
+      --bg: #0f172a;
+      --card: #1e293b;
+      --text: #e2e8f0;
+      --muted: #94a3b8;
+      --accent: #38bdf8;
+      --danger: #f87171;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100dvh;
+      padding: max(12px, env(safe-area-inset-top)) 16px 24px;
+    }
+    h1 { font-size: 1.15rem; margin: 0 0 4px; }
+    .sub { color: var(--muted); font-size: 0.8rem; margin-bottom: 16px; }
+    .row { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; }
+    .list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(72px, 1fr));
+      gap: 8px;
+      margin: 16px 0;
+    }
+    .kanji-btn {
+      background: var(--card);
+      border: 1px solid #334155;
+      color: var(--text);
+      border-radius: 12px;
+      padding: 14px 8px;
+      font-size: 1.75rem;
+      font-family: "Hiragino Sans", "Yu Gothic", sans-serif;
+      cursor: pointer;
+      min-height: 64px;
+    }
+    .kanji-btn:active { transform: scale(0.98); }
+    .kanji-btn[aria-current="true"] {
+      border-color: var(--accent);
+      box-shadow: 0 0 0 2px rgba(56, 189, 248, 0.35);
+    }
+    .panel {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 16px;
+      border: 1px solid #334155;
+    }
+    .panel h2 { margin: 0 0 8px; font-size: 1rem; }
+    .meta { color: var(--muted); font-size: 0.85rem; line-height: 1.5; margin-bottom: 12px; }
+    #main-canvas {
+      width: 100%;
+      max-width: 360px;
+      height: auto;
+      display: block;
+      margin: 0 auto 12px;
+      border-radius: 12px;
+      background: #020617;
+      touch-action: manipulation;
+    }
+    .btn {
+      appearance: none;
+      border: none;
+      border-radius: 12px;
+      padding: 12px 16px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      background: var(--accent);
+      color: #0f172a;
+    }
+    .btn:disabled { opacity: 0.45; cursor: not-allowed; }
+    .btn-secondary {
+      background: #334155;
+      color: var(--text);
+    }
+    .pip-video-wrap {
+      position: fixed;
+      width: 2px;
+      height: 2px;
+      opacity: 0.01;
+      pointer-events: none;
+      bottom: 0;
+      right: 0;
+      overflow: hidden;
+    }
+    #pip-video {
+      width: 320px;
+      height: 180px;
+      object-fit: contain;
+      background: #000;
+    }
+    .fallback {
+      margin-top: 12px;
+      padding: 12px;
+      border-radius: 12px;
+      background: rgba(248, 113, 113, 0.12);
+      color: #fecaca;
+      font-size: 0.85rem;
+      line-height: 1.45;
+    }
+    .hint { font-size: 0.75rem; color: var(--muted); margin-top: 8px; }
+    .sw-status { font-size: 0.75rem; color: var(--muted); margin-top: 16px; }
+    .auto-pip-label {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.85rem;
+      color: var(--muted);
+      margin-bottom: 12px;
+      cursor: pointer;
+      max-width: 420px;
+    }
+    .auto-pip-label input { margin-top: 3px; flex-shrink: 0; }
+  </style>
+</head>
+<body>
+  <h1>Kanji PiP Lab</h1>
+  <p class="sub">SPA · PiP từ canvas (iOS 15+ Safari, cần HTTPS hoặc localhost)</p>
+  <p class="sub" style="margin-top:-8px">Vuốt về Home vẫn thấy Kanji chỉ khi ô <strong>Picture-in-Picture</strong> đang bật — tự mở PiP khi bạn chạm chọn chữ (tùy chọn dưới đây).</p>
+
+  <div id="app">
+    <label class="auto-pip-label">
+      <input type="checkbox" id="auto-pip" checked>
+      Tự mở PiP khi chạm chọn Kanji (để ra ngoài vẫn thấy đúng chữ đó)
+    </label>
+    <p class="meta" id="load-status">Đang tải dữ liệu…</p>
+    <div class="list" id="kanji-list" hidden></div>
+    <div class="panel" id="detail-panel" hidden>
+      <h2 id="detail-title">Chi tiết</h2>
+      <div class="meta" id="detail-meta"></div>
+      <canvas id="main-canvas" width="720" height="405" aria-label="Kanji canvas"></canvas>
+      <div class="row">
+        <button type="button" class="btn" id="btn-pip" disabled>Mở Picture-in-Picture</button>
+        <button type="button" class="btn btn-secondary" id="btn-flip">Đổi mặt (flip)</button>
+      </div>
+      <p class="hint">PiP chỉ hiện khi hệ thống cho phép; nếu tự mở thất bại, bấm nút PiP. Khi PiP đang mở, vuốt về Home vẫn thấy canvas (đúng chữ đang chọn).</p>
+      <div id="fallback-box" class="fallback" hidden></div>
+    </div>
+  </div>
+
+  <div class="pip-video-wrap" aria-hidden="true">
+    <video id="pip-video" muted playsinline></video>
+  </div>
+
+  <p class="sw-status" id="sw-status"></p>
+
+  <script src="./script.js" defer></script>
+</body>
+</html>
