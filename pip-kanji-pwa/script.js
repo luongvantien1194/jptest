@@ -9,8 +9,6 @@
     selected: null,
     stream: null,
     pipActive: false,
-    rafId: 0,
-    lastDraw: 0,
     autoPipOnSelect: true
   };
 
@@ -23,7 +21,7 @@
     fallback: document.getElementById("fallback-box")
   };
 
-  const ctx = els.canvas.getContext("2d", { alpha: false }); // Tối ưu hiệu năng
+  const ctx = els.canvas.getContext("2d", { alpha: false }); // alpha: false giúp render nhanh hơn
 
   function parseLegacyPipeVocab(s) {
     var out = [];
@@ -57,14 +55,6 @@
     return [];
   }
 
-  function supportsPipFromCanvas() {
-    var v = els.video;
-    if (!v || !v.requestPictureInPicture) {
-      return { ok: false, reason: "Trình duyệt không hỗ trợ PiP." };
-    }
-    return { ok: true };
-  }
-
   function setFallback(msg) {
     if (!els.fallback) return;
     els.fallback.hidden = !msg;
@@ -74,25 +64,19 @@
   function wrapLinesToArray(text, maxW) {
     var s = String(text || "").trim();
     if (!s) return [];
-    var lines = [];
-    var parts = s.split(/(\s+)/);
-    var cur = "";
+    var lines = [], parts = s.split(/(\s+)/), cur = "";
     for (var i = 0; i < parts.length; i++) {
       var p = parts[i];
       if (!p) continue;
       var test = cur + p;
-      if (ctx.measureText(test).width <= maxW) {
-        cur = test;
-        continue;
-      }
+      if (ctx.measureText(test).width <= maxW) { cur = test; continue; }
       if (cur.trim()) lines.push(cur.trim());
       cur = p;
       while (cur.length > 0 && ctx.measureText(cur).width > maxW) {
         var lo = 1, hi = cur.length;
         while (lo < hi) {
           var mid = Math.ceil((lo + hi) / 2);
-          if (ctx.measureText(cur.slice(0, mid)).width <= maxW) lo = mid;
-          else hi = mid - 1;
+          if (ctx.measureText(cur.slice(0, mid)).width <= maxW) lo = mid; else hi = mid - 1;
         }
         var take = Math.max(1, lo);
         lines.push(cur.slice(0, take));
@@ -125,62 +109,37 @@
     var maxW = CANVAS_W - 28;
     var y = 54;
 
-    ctx.textAlign = "center";
     ctx.fillStyle = "#f8fafc";
-    ctx.font = "bold 96px 'Hiragino Sans', 'Yu Gothic', 'PingFang SC', sans-serif";
+    ctx.font = "bold 96px sans-serif";
     ctx.textBaseline = "middle";
     ctx.fillText(item.kanji || "", cx, y);
     y += 56;
 
     if (item.hanviet) {
       ctx.fillStyle = "#7dd3fc";
-      ctx.font = "600 19px system-ui, sans-serif";
+      ctx.font = "600 19px sans-serif";
       ctx.fillText(item.hanviet, cx, y);
       y += 28;
     }
 
     ctx.fillStyle = "#cbd5e1";
-    ctx.font = "18px system-ui, sans-serif";
-    var meaningLines = wrapLinesToArray(item.meaning || "", maxW);
-    y = drawParagraphCenter(cx, y, maxW, 22, meaningLines) + 12;
+    ctx.font = "18px sans-serif";
+    var mLines = wrapLinesToArray(item.meaning || "", maxW);
+    y = drawParagraphCenter(cx, y, maxW, 22, mLines) + 12;
 
     ctx.fillStyle = "#94a3b8";
-    ctx.font = "16px system-ui, sans-serif";
+    ctx.font = "16px sans-serif";
     ctx.fillText("On: " + (item.on || "—"), cx, y); y += 24;
     ctx.fillText("Kun: " + (item.kun || "—"), cx, y); y += 24;
-    ctx.fillText("Nét: " + (item.strokes != null ? item.strokes : "—"), cx, y); y += 28;
-
-    if (item.radicals) {
-      ctx.fillStyle = "#78716c";
-      ctx.font = "14px system-ui, sans-serif";
-      var radLines = wrapLinesToArray("Bộ thủ: " + item.radicals, maxW);
-      y = drawParagraphCenter(cx, y, maxW, 19, radLines) + 10;
-    }
-
-    var vocabs = item._vocabs || [];
-    if (vocabs.length) {
-      ctx.fillStyle = "#64748b";
-      ctx.font = "bold 14px system-ui, sans-serif";
-      ctx.fillText("Từ vựng", cx, y); y += 24;
-      ctx.fillStyle = "#94a3b8";
-      ctx.font = "13px system-ui, sans-serif";
-      vocabs.slice(0, 3).forEach(function (v) {
-        var line = (v.word || "") + (v.reading ? "(" + v.reading + ")" : "") + (v.meaning ? " — " + v.meaning : "");
-        var vl = wrapLinesToArray(line, maxW);
-        y = drawParagraphCenter(cx, y, maxW, 18, vl) + 8;
-      });
-    }
+    
     ctx.restore();
 
-    // Cập nhật Poster (Quan trọng để giữ hình khi khóa máy)
-    updateVideoPoster();
-  }
-
-  function updateVideoPoster() {
+    // --- FIX QUAN TRỌNG CHO IPHONE ---
+    // Chuyển Canvas thành ảnh và đặt làm Poster
     const dataUrl = els.canvas.toDataURL("image/jpeg", 0.9);
     els.video.poster = dataUrl;
     
-    // Gán video trắng siêu nhỏ nếu chưa có src
+    // Mồi video trắng nếu chưa có src
     if (!els.video.src) {
       els.video.src = "data:video/mp4;base64,AAAAIGZ0eXBpc29tAAACAGlzb21pc29tYXZjMQAAAAh0cmFmAAAAZHRraGQAAAADAAAAAAAAAAAAAAABAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAEAAAAABAAAAAAByZWYAAAAIZWxtcwAAAAEAAAABAAAAAAAAbWRpYWhkcmEAAAAAAA==";
       els.video.loop = true;
@@ -188,30 +147,27 @@
   }
 
   function attachStreamToVideo() {
-    // Với phương án Poster, chúng ta không nhất thiết phải captureStream liên tục
-    // Nhưng vẫn giữ để hỗ trợ một số trình duyệt desktop
-    if (els.canvas.captureStream) {
-        state.stream = els.canvas.captureStream(1);
+    // Vẫn dùng captureStream để hỗ trợ PiP mượt hơn khi đang mở máy
+    try {
+      if (els.canvas.captureStream) {
+        state.stream = els.canvas.captureStream(1); // Chỉ cần 1 FPS cho text tĩnh
         els.video.srcObject = state.stream;
-    }
-    els.video.muted = true;
-    els.video.setAttribute("playsinline", "");
-    els.video.setAttribute("webkit-playsinline", "");
+      }
+      els.video.muted = true;
+      els.video.setAttribute("playsinline", "");
+      els.video.setAttribute("webkit-playsinline", "");
+    } catch (e) {}
   }
 
   function renderDetail(opts) {
     opts = opts || {};
-    var item = state.selected;
-    if (!item) {
-      els.detailPanel.hidden = true;
-      return;
-    }
+    if (!state.selected) return;
     els.detailPanel.hidden = false;
 
     drawCanvas();
     attachStreamToVideo();
 
-    if (opts.skipAutoPip !== true && state.autoPipOnSelect && supportsPipFromCanvas().ok) {
+    if (opts.skipAutoPip !== true && state.autoPipOnSelect) {
       openPipFromUserGesture({ silent: true });
     }
   }
@@ -221,43 +177,31 @@
     var v = els.video;
     if (!v.requestPictureInPicture) return Promise.resolve(false);
 
-    try {
-      v.play().catch(function(){});
-      return v.requestPictureInPicture()
-        .then(function () {
-          state.pipActive = true;
-          return true;
-        })
-        .catch(function (err) {
-          if (!opts.silent) setFallback("Bấm lại nút PiP để bật.");
-          return false;
-        });
-    } catch (err) {
-      return Promise.resolve(false);
-    }
+    v.play().catch(function(){});
+    return v.requestPictureInPicture()
+      .then(function () {
+        state.pipActive = true;
+        return true;
+      })
+      .catch(function (err) {
+        if (!opts.silent) setFallback("Bấm lại nút PiP để kích hoạt.");
+        return false;
+      });
   }
 
   els.btnPip.addEventListener("click", function () {
     openPipFromUserGesture({ silent: false });
   });
 
-  if (els.video) {
-    els.video.addEventListener("leavepictureinpicture", function () {
-      state.pipActive = false;
-    });
-  }
-
   function bootFromHash() {
     var m = (window.location.hash || "").match(/^#kanji=(.+)$/);
     if (!m || !state.items.length) return;
-    try {
-      var id = decodeURIComponent(m[1]);
-      var found = state.items.find(x => String(x.id) === String(id));
-      if (found) {
-        state.selected = found;
-        renderDetail({ skipAutoPip: true });
-      }
-    } catch (e) {}
+    var id = decodeURIComponent(m[1]);
+    var found = state.items.find(x => String(x.id) === String(id));
+    if (found) {
+      state.selected = found;
+      renderDetail({ skipAutoPip: true });
+    }
   }
 
   function bootFromKanjiData(arr) {
@@ -268,10 +212,7 @@
         meaning: raw.core_meaning || "",
         on: String(raw.on_reading || "").replace(/\|/g, "、"),
         kun: String(raw.kun_reading || "").replace(/\|/g, "、"),
-        strokes: raw.stroke_count || "",
         hanviet: raw.hanviet || "",
-        radicals: String(raw.radicals || ""),
-        memory_tip: String(raw.memory_tip || ""),
         vocabulary: raw.vocabulary
       };
       o._vocabs = normalizeVocabularyList({ vocabulary: raw.vocabulary });
