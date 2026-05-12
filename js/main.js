@@ -4,7 +4,7 @@
   // ========================
   // DATA & LOADING SECTION
   // ========================
-  // Data from grammarData.js, kanjiData.js, vocabData.js
+  // data from grammarData.js, kanjiData.js, vocabData.js
 
   const state = {
     currentTab: "vocab",
