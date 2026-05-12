@@ -1,35 +1,26 @@
 (function () {
   "use strict";
 
-  const CANVAS_W = 720;
-  const CANVAS_H = 405;
+  const CANVAS_W = 405;
+  const CANVAS_H = 500;
 
   const state = {
     items: [],
     selected: null,
-    /** 0 = chữ lớn + nghĩa (dễ đọc khi PiP); 1 = nghĩa + On/Kun đầy đủ */
-    face: 0,
     stream: null,
     pipActive: false,
     rafId: 0,
     lastDraw: 0,
-    /** Tự gọi PiP sau khi chạm chọn Kanji (cùng user gesture) */
     autoPipOnSelect: true
   };
 
   const els = {
     loadStatus: document.getElementById("load-status"),
-    list: document.getElementById("kanji-list"),
     detailPanel: document.getElementById("detail-panel"),
-    detailTitle: document.getElementById("detail-title"),
-    detailMeta: document.getElementById("detail-meta"),
     canvas: document.getElementById("main-canvas"),
     btnPip: document.getElementById("btn-pip"),
-    btnFlip: document.getElementById("btn-flip"),
     video: document.getElementById("pip-video"),
-    fallback: document.getElementById("fallback-box"),
-    swStatus: document.getElementById("sw-status"),
-    autoPipCheckbox: document.getElementById("auto-pip")
+    fallback: document.getElementById("fallback-box")
   };
 
   const ctx = els.canvas.getContext("2d");
@@ -72,22 +63,6 @@
     return [];
   }
 
-  function vocabPreviewLine(vocabs, maxChars) {
-    maxChars = maxChars || 22;
-    if (!vocabs || !vocabs.length) {
-      return "";
-    }
-    var s = vocabs
-      .map(function (v) {
-        return v.word;
-      })
-      .join("、");
-    if (s.length > maxChars) {
-      s = s.slice(0, maxChars - 1) + "…";
-    }
-    return "Từ: " + s;
-  }
-
   function supportsPipFromCanvas() {
     var c = els.canvas;
     var v = els.video;
@@ -106,16 +81,59 @@
     els.fallback.textContent = msg || "";
   }
 
-  function drawTruncatedCenterLine(text, cx, y, maxW, fontPx) {
-    var t = String(text || "");
-    if (!t) {
-      return;
+  /** Góp dòng (kể cả chuỗi không có khoảng trắng), căn giữa tại cx; trả về y dưới đoạn vừa vẽ. */
+  function wrapLinesToArray(text, maxW) {
+    var s = String(text || "").trim();
+    if (!s) {
+      return [];
     }
-    ctx.font = fontPx + "px system-ui, sans-serif";
-    while (t.length > 1 && ctx.measureText(t).width > maxW) {
-      t = t.slice(0, -2) + "…";
+    var lines = [];
+    var parts = s.split(/(\s+)/);
+    var cur = "";
+    for (var i = 0; i < parts.length; i++) {
+      var p = parts[i];
+      if (!p) {
+        continue;
+      }
+      var test = cur + p;
+      if (ctx.measureText(test).width <= maxW) {
+        cur = test;
+        continue;
+      }
+      if (cur.trim()) {
+        lines.push(cur.trim());
+      }
+      cur = p;
+      while (cur.length > 0 && ctx.measureText(cur).width > maxW) {
+        var lo = 1;
+        var hi = cur.length;
+        while (lo < hi) {
+          var mid = Math.ceil((lo + hi) / 2);
+          if (ctx.measureText(cur.slice(0, mid)).width <= maxW) {
+            lo = mid;
+          } else {
+            hi = mid - 1;
+          }
+        }
+        var take = Math.max(1, lo);
+        lines.push(cur.slice(0, take));
+        cur = cur.slice(take);
+      }
     }
-    ctx.fillText(t, cx, y);
+    if (cur.trim()) {
+      lines.push(cur.trim());
+    }
+    return lines;
+  }
+
+  function drawParagraphCenter(cx, y, maxW, lineHeight, lines) {
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    for (var i = 0; i < lines.length; i++) {
+      ctx.fillText(lines[i], cx, y + lineHeight / 2);
+      y += lineHeight;
+    }
+    return y;
   }
 
   function drawCanvas() {
@@ -126,53 +144,71 @@
 
     ctx.fillStyle = "#020617";
     ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
-
     ctx.save();
-    ctx.translate(CANVAS_W / 2, CANVAS_H / 2);
+    ctx.beginPath();
+    ctx.rect(0, 0, CANVAS_W, CANVAS_H);
+    ctx.clip();
+
+    var cx = CANVAS_W / 2;
+    var pad = 14;
+    var maxW = CANVAS_W - 2 * pad;
+    var y = 54;
+
+    ctx.textAlign = "center";
+
+    ctx.fillStyle = "#f8fafc";
+    ctx.font =
+      "bold 96px 'Hiragino Sans', 'Yu Gothic', 'PingFang SC', sans-serif";
+    ctx.textBaseline = "middle";
+    ctx.fillText(item.kanji || "", cx, y);
+    y += 56;
+
+    if (item.hanviet) {
+      ctx.fillStyle = "#7dd3fc";
+      ctx.font = "600 19px system-ui, 'Segoe UI', sans-serif";
+      ctx.fillText(item.hanviet, cx, y);
+      y += 28;
+    }
+
+    ctx.fillStyle = "#cbd5e1";
+    ctx.font = "18px system-ui, sans-serif";
+    var meaningLines = wrapLinesToArray(item.meaning || "", maxW);
+    y = drawParagraphCenter(cx, y, maxW, 22, meaningLines) + 12;
+
+    ctx.fillStyle = "#94a3b8";
+    ctx.font = "16px system-ui, sans-serif";
+    ctx.fillText("On: " + (item.on || "—"), cx, y);
+    y += 24;
+    ctx.fillText("Kun: " + (item.kun || "—"), cx, y);
+    y += 24;
+    ctx.fillText("Nét: " + (item.strokes != null ? item.strokes : "—"), cx, y);
+    y += 28;
+
+    if (item.radicals) {
+      ctx.fillStyle = "#78716c";
+      ctx.font = "14px system-ui, sans-serif";
+      var radLines = wrapLinesToArray("Bộ thủ: " + item.radicals, maxW);
+      y = drawParagraphCenter(cx, y, maxW, 19, radLines) + 10;
+    }
+
+    if (item.memory_tip) {
+      ctx.fillStyle = "#64748b";
+      ctx.font = "13px system-ui, sans-serif";
+      var tipLines = wrapLinesToArray(item.memory_tip, maxW);
+      y = drawParagraphCenter(cx, y, maxW, 18, tipLines) + 12;
+    }
 
     var vocabs = item._vocabs || [];
+    if (vocabs.length) {
+      ctx.fillStyle = "#64748b";
+      ctx.font = "bold 14px system-ui, sans-serif";
+      ctx.textBaseline = "middle";
+      ctx.fillText("Từ vựng", cx, y);
+      y += 24;
 
-    if (state.face === 0) {
-      ctx.fillStyle = "#f8fafc";
-      ctx.font =
-        "bold 200px 'Hiragino Sans', 'Yu Gothic', 'PingFang SC', sans-serif";
-      ctx.textAlign = "center";
-      ctx.textBaseline = "middle";
-      ctx.fillText(item.kanji || "", 0, -72);
-      ctx.fillStyle = "#cbd5e1";
-      ctx.font = "24px system-ui, sans-serif";
-      wrapText(ctx, item.meaning || "", 0, 28, CANVAS_W - 48, 28);
-      ctx.fillStyle = "#64748b";
-      ctx.font = "20px system-ui, sans-serif";
-      ctx.textAlign = "center";
-      ctx.fillText("On " + (item.on || "—") + "  ·  Kun " + (item.kun || "—"), 0, 132);
-      ctx.font = "18px system-ui, sans-serif";
-      ctx.fillText("Stroke: " + (item.strokes != null ? item.strokes : "—"), 0, 162);
-      var preview = vocabPreviewLine(vocabs, 36);
-      if (preview) {
-        ctx.fillStyle = "#475569";
-        ctx.textAlign = "center";
-        drawTruncatedCenterLine(preview, 0, 188, CANVAS_W - 56, 15);
-      }
-    } else {
-      ctx.fillStyle = "#e2e8f0";
-      ctx.font = "28px system-ui, sans-serif";
-      ctx.textAlign = "center";
-      ctx.textBaseline = "middle";
-      wrapText(ctx, item.meaning || "", 0, -130, CANVAS_W - 80, 30);
       ctx.fillStyle = "#94a3b8";
-      ctx.font = "22px system-ui, sans-serif";
-      var lines = ["On: " + (item.on || "—"), "Kun: " + (item.kun || "—")];
-      lines.forEach(function (line, i) {
-        ctx.fillText(line, 0, -40 + i * 30);
-      });
-      ctx.fillStyle = "#64748b";
-      ctx.font = "bold 17px system-ui, sans-serif";
-      ctx.fillText("Từ vựng", 0, 10);
-      ctx.font = "16px system-ui, sans-serif";
-      ctx.fillStyle = "#94a3b8";
-      var startY = 32;
-      vocabs.slice(0, 5).forEach(function (v, i) {
+      ctx.font = "13px system-ui, sans-serif";
+      vocabs.forEach(function (v) {
         var line = v.word || "";
         if (v.reading) {
           line += "(" + v.reading + ")";
@@ -180,29 +216,12 @@
         if (v.meaning) {
           line += " — " + v.meaning;
         }
-        wrapText(ctx, line, 0, startY + i * 26, CANVAS_W - 56, 24);
+        var vl = wrapLinesToArray(line, maxW);
+        y = drawParagraphCenter(cx, y, maxW, 18, vl) + 8;
       });
     }
 
     ctx.restore();
-  }
-
-  function wrapText(context, text, x, y, maxWidth, lineHeight) {
-    var words = String(text).split(/\s+/);
-    var line = "";
-    var cy = y;
-    for (var n = 0; n < words.length; n++) {
-      var testLine = line + words[n] + " ";
-      var metrics = context.measureText(testLine);
-      if (metrics.width > maxWidth && n > 0) {
-        context.fillText(line, x, cy);
-        line = words[n] + " ";
-        cy += lineHeight;
-      } else {
-        line = testLine;
-      }
-    }
-    context.fillText(line, x, cy);
   }
 
   function loop() {
@@ -255,18 +274,6 @@
       return;
     }
     els.detailPanel.hidden = false;
-    els.detailTitle.textContent = "Kanji: " + item.kanji;
-    els.detailMeta.innerHTML =
-      "<strong>Nghĩa:</strong> " +
-      escapeHtml(item.meaning) +
-      (item.hanviet
-        ? "<br><strong>Hán Việt:</strong> " + escapeHtml(item.hanviet)
-        : "") +
-      "<br><strong>On:</strong> " +
-      escapeHtml(item.on) +
-      " · <strong>Kun:</strong> " +
-      escapeHtml(item.kun) +
-      formatVocabHtml(item);
 
     attachStreamToVideo();
     drawCanvas();
@@ -280,57 +287,6 @@
     ) {
       openPipFromUserGesture({ silent: true });
     }
-  }
-
-  function escapeHtml(s) {
-    return String(s || "")
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;");
-  }
-
-  function formatVocabHtml(item) {
-    var list = item._vocabs || [];
-    if (!list.length) {
-      return "";
-    }
-    var li = list
-      .map(function (v) {
-        var line = escapeHtml(v.word);
-        if (v.reading) {
-          line += " (" + escapeHtml(v.reading) + ")";
-        }
-        if (v.meaning) {
-          line += " — " + escapeHtml(v.meaning);
-        }
-        return "<li>" + line + "</li>";
-      })
-      .join("");
-    return '<div class="detail-vocab"><strong>Từ vựng</strong><ul>' + li + "</ul></div>";
-  }
-
-  function renderList() {
-    els.list.innerHTML = "";
-    state.items.forEach(function (item) {
-      var b = document.createElement("button");
-      b.type = "button";
-      b.className = "kanji-btn";
-      b.textContent = item.kanji;
-      b.setAttribute("aria-current", state.selected && state.selected.id === item.id ? "true" : "false");
-      b.addEventListener("click", function () {
-        state.selected = item;
-        state.face = 0;
-        document.querySelectorAll(".kanji-btn").forEach(function (btn) {
-          btn.setAttribute("aria-current", "false");
-        });
-        b.setAttribute("aria-current", "true");
-        renderDetail();
-        history.replaceState({ id: item.id }, "", "#kanji=" + encodeURIComponent(item.id));
-      });
-      els.list.appendChild(b);
-    });
-    els.list.hidden = false;
   }
 
   function openPipFromUserGesture(opts) {
@@ -400,14 +356,25 @@
     openPipFromUserGesture({ silent: false });
   });
 
-  els.btnFlip.addEventListener("click", function () {
-    state.face = state.face === 0 ? 1 : 0;
-  });
-
   if (els.video) {
     els.video.addEventListener("leavepictureinpicture", function () {
       state.pipActive = false;
     });
+  }
+
+  function clearLoadError() {
+    if (els.loadStatus) {
+      els.loadStatus.textContent = "";
+      els.loadStatus.hidden = true;
+    }
+  }
+
+  function showLoadError(msg) {
+    if (!els.loadStatus) {
+      return;
+    }
+    els.loadStatus.textContent = msg;
+    els.loadStatus.hidden = false;
   }
 
   function bootFromHash() {
@@ -422,56 +389,31 @@
       });
       if (found) {
         state.selected = found;
-        state.face = 0;
-        document.querySelectorAll(".kanji-btn").forEach(function (btn) {
-          btn.setAttribute("aria-current", btn.textContent === found.kanji ? "true" : "false");
-        });
         renderDetail({ skipAutoPip: true });
+        clearLoadError();
       }
     } catch (e) {
       /* ignore */
     }
   }
 
-  if (els.autoPipCheckbox) {
-    els.autoPipCheckbox.checked = state.autoPipOnSelect;
-    els.autoPipCheckbox.addEventListener("change", function () {
-      state.autoPipOnSelect = !!els.autoPipCheckbox.checked;
-    });
-  }
-
   function registerSw() {
-    if (!els.swStatus) {
-      return;
-    }
     if (location.protocol === "file:") {
-      els.swStatus.textContent =
-        "Service Worker không chạy khi mở file cục bộ (file://). Đẩy lên server HTTPS hoặc mở qua http://localhost (vd. npx serve trong app10_files → vào pip-kanji-pwa) thì SW và cache Kanji sẽ hoạt động.";
       return;
     }
     if (typeof window.isSecureContext !== "undefined" && !window.isSecureContext) {
-      els.swStatus.textContent = "Service Worker: cần HTTPS hoặc localhost (secure context).";
       return;
     }
     if (!("serviceWorker" in navigator)) {
-      els.swStatus.textContent = "Service Worker: không hỗ trợ trên trình duyệt này.";
       return;
     }
-    navigator.serviceWorker
-      .register("./sw.js", { scope: "./" })
-      .then(function () {
-        els.swStatus.textContent = "Service Worker: đã đăng ký (cache file chính khi có mạng).";
-      })
-      .catch(function (err) {
-        els.swStatus.textContent =
-          "Service Worker: đăng ký thất bại. " + (err && err.message ? err.message : err);
-      });
+    navigator.serviceWorker.register("./sw.js", { scope: "./" }).catch(function () {});
   }
 
   function bootFromKanjiData(arr) {
     state.items = (Array.isArray(arr) ? arr : []).map(function (raw, idx) {
-      var on = (raw.on_reading || "").replace(/\|/g, "、");
-      var kun = (raw.kun_reading || "").replace(/\|/g, "、");
+      var on = String(raw.on_reading != null ? raw.on_reading : "").replace(/\|/g, "、");
+      var kun = String(raw.kun_reading != null ? raw.kun_reading : "").replace(/\|/g, "、");
       var o = {
         id: String(raw.stt != null ? raw.stt : idx + 1),
         kanji: raw.kanji || "",
@@ -480,24 +422,20 @@
         kun: kun,
         strokes: raw.stroke_count != null ? raw.stroke_count : "",
         hanviet: raw.hanviet || "",
+        radicals: raw.radicals != null ? String(raw.radicals) : "",
+        memory_tip: raw.memory_tip != null ? String(raw.memory_tip) : "",
         vocabulary: raw.vocabulary
       };
       o._vocabs = normalizeVocabularyList({ vocabulary: raw.vocabulary });
       return o;
     });
-    els.loadStatus.textContent = "Chọn một chữ Kanji:";
-    renderList();
     bootFromHash();
     if (!state.selected && state.items.length) {
       state.selected = state.items[0];
-      state.face = 0;
-      var first = els.list.querySelector(".kanji-btn");
-      if (first) {
-        first.setAttribute("aria-current", "true");
-      }
       renderDetail({ skipAutoPip: true });
       history.replaceState({ id: state.selected.id }, "", "#kanji=" + encodeURIComponent(state.selected.id));
     }
+    clearLoadError();
   }
 
   function getKanjiDataArray() {
@@ -514,20 +452,9 @@
     var kd = getKanjiDataArray();
     if (kd) {
       bootFromKanjiData(kd);
-      if (location.protocol === "file:" && els.loadStatus) {
-        els.loadStatus.textContent =
-          "Chọn một chữ Kanji: (dữ liệu từ data/kanjiData.js — Service Worker chỉ khi mở qua http://localhost)";
-      }
       return;
     }
-    if (els.loadStatus) {
-      var cur = els.loadStatus.textContent || "";
-      if (cur.indexOf("Đã thử:") !== -1 || cur.indexOf("kanjiData.json") !== -1) {
-        return;
-      }
-      els.loadStatus.textContent =
-        "Lỗi: không có kanjiData. Ưu tiên file pip-kanji-pwa/kanjiData.json (cần mở qua http://localhost, không dùng file://). Nếu vẫn lỗi: chạy server từ thư mục app10_files để có ../data/kanjiData.js, hoặc chép data/kanjiData.js vào pip-kanji-pwa/kanjiData.js.";
-    }
+    showLoadError("Không tải được dữ liệu Kanji (kanjiData.js).");
   }
 
   window.addEventListener("hashchange", bootFromHash);
