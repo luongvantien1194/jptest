@@ -1,5 +1,5 @@
 /* eslint-disable no-restricted-globals */
-var CACHE_NAME = "kanji-pip-lab-v15";
+var CACHE_NAME = "kanji-pip-lab-v16";
 var ASSETS = ["./index.html", "./script.js", "./manifest.json", "../data/kanjiData.js"];
 
 self.addEventListener("install", function (event) {
