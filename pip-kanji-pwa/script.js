@@ -500,9 +500,20 @@
     }
   }
 
-  function loadKanjiData() {
+  function getKanjiDataArray() {
     if (typeof kanjiData !== "undefined" && Array.isArray(kanjiData) && kanjiData.length) {
-      bootFromKanjiData(kanjiData);
+      return kanjiData;
+    }
+    if (window.kanjiData && Array.isArray(window.kanjiData) && window.kanjiData.length) {
+      return window.kanjiData;
+    }
+    return null;
+  }
+
+  function loadKanjiData() {
+    var kd = getKanjiDataArray();
+    if (kd) {
+      bootFromKanjiData(kd);
       if (location.protocol === "file:" && els.loadStatus) {
         els.loadStatus.textContent =
           "Chọn một chữ Kanji: (dữ liệu từ data/kanjiData.js — Service Worker chỉ khi mở qua http://localhost)";
@@ -510,8 +521,12 @@
       return;
     }
     if (els.loadStatus) {
+      var cur = els.loadStatus.textContent || "";
+      if (cur.indexOf("Đã thử:") !== -1 || cur.indexOf("kanjiData.json") !== -1) {
+        return;
+      }
       els.loadStatus.textContent =
-        "Lỗi: không có kanjiData. Kiểm tra <script src=\"../data/kanjiData.js\"> và mở index.html đúng thư mục pip-kanji-pwa (hoặc chạy server từ app10_files).";
+        "Lỗi: không có kanjiData. Ưu tiên file pip-kanji-pwa/kanjiData.json (cần mở qua http://localhost, không dùng file://). Nếu vẫn lỗi: chạy server từ thư mục app10_files để có ../data/kanjiData.js, hoặc chép data/kanjiData.js vào pip-kanji-pwa/kanjiData.js.";
     }
   }
 
