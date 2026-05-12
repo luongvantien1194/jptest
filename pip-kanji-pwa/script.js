@@ -1,3 +1,4 @@
+<script>
 (function () {
   "use strict";
 
@@ -9,10 +10,9 @@
     selected: null,
     stream: null,
     pipActive: false,
-    rafId: 0,
-    lastDraw: 0,
-    autoPipOnSelect: true,
-    pipHeartbeat: null 
+    rafId: null,
+    pipHeartbeat: null,
+    audioCtx: null
   };
 
   const els = {
@@ -26,311 +26,927 @@
 
   const ctx = els.canvas.getContext("2d");
 
-  // --- KỸ THUẬT DUY TRÌ CHẠY NỀN & FIX LỖI SAFARI ---
+  // =========================================================
+  // SILENT AUDIO TRACK
+  // =========================================================
 
-  /** Tạo track âm thanh im lặng để Safari không ngắt PiP khi khóa máy */
   function createSilentAudioTrack() {
+
     try {
-      const AudioContext = window.AudioContext || window.webkitAudioContext;
-      if (!AudioContext) return null;
-      const audioCtx = new AudioContext();
-      const oscillator = audioCtx.createOscillator();
-      const dst = audioCtx.createMediaStreamDestination();
-      oscillator.connect(dst);
+
+      const AudioContext =
+        window.AudioContext ||
+        window.webkitAudioContext;
+
+      if (!AudioContext) {
+        return null;
+      }
+
+      state.audioCtx =
+        new AudioContext();
+
+      const oscillator =
+        state.audioCtx.createOscillator();
+
+      const gain =
+        state.audioCtx.createGain();
+
+      gain.gain.value = 0;
+
+      const dst =
+        state.audioCtx
+          .createMediaStreamDestination();
+
+      oscillator.connect(gain);
+
+      gain.connect(dst);
+
       oscillator.start();
-      return dst.stream.getAudioTracks()[0];
+
+      return dst.stream
+        .getAudioTracks()[0];
+
     } catch (e) {
+
+      console.warn(
+        "Silent audio failed:",
+        e
+      );
+
       return null;
     }
   }
 
-  /** Cập nhật MediaSession an toàn (Sửa lỗi "Can't find variable: MediaSessionMetadata") */
-  function updateMediaSession() {
-    if ('mediaSession' in navigator && state.selected) {
-      try {
-        const metadataConfig = {
-          title: "Học Kanji: " + state.selected.kanji,
-          artist: state.selected.hanviet || "Kanji PiP",
-          album: "Japanese Learning",
-          artwork: [
-            { 
-              src: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512"><rect width="512" height="512" fill="%230f172a"/><text x="50%" y="50%" font-size="250" fill="white" text-anchor="middle" dominant-baseline="central">' + state.selected.kanji + '</text></svg>', 
-              sizes: '512x512', 
-              type: 'image/svg+xml' 
-            }
-          ]
-        };
+  // =========================================================
+  // MEDIA SESSION
+  // =========================================================
 
-        // Kiểm tra class tồn tại trước khi dùng 'new'
-        if (window.MediaSessionMetadata) {
-          navigator.mediaSession.metadata = new MediaSessionMetadata(metadataConfig);
-        } else {
-          navigator.mediaSession.metadata = metadataConfig;
-        }
-        
-        navigator.mediaSession.playbackState = 'playing';
-      } catch (e) {
-        console.warn("MediaSession update failed:", e);
+  function updateMediaSession() {
+
+    if (
+      !("mediaSession" in navigator) ||
+      !state.selected
+    ) {
+      return;
+    }
+
+    try {
+
+      const svg =
+        `<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512">
+          <rect width="512" height="512" fill="#0f172a"/>
+          <text
+            x="50%"
+            y="50%"
+            font-size="250"
+            fill="white"
+            text-anchor="middle"
+            dominant-baseline="central"
+          >
+            ${state.selected.kanji}
+          </text>
+        </svg>`;
+
+      const metadataConfig = {
+
+        title:
+          "Học Kanji: " +
+          state.selected.kanji,
+
+        artist:
+          state.selected.hanviet ||
+          "Kanji PiP",
+
+        album:
+          "Japanese Learning",
+
+        artwork: [
+          {
+            src:
+              "data:image/svg+xml;charset=utf-8," +
+              encodeURIComponent(svg),
+
+            sizes: "512x512",
+
+            type: "image/svg+xml"
+          }
+        ]
+      };
+
+      if ("MediaMetadata" in window) {
+
+        navigator.mediaSession.metadata =
+          new MediaMetadata(
+            metadataConfig
+          );
       }
+
+      navigator.mediaSession
+        .playbackState = "playing";
+
+    } catch (e) {
+
+      console.warn(
+        "MediaSession update failed:",
+        e
+      );
     }
   }
 
-  // Heartbeat duy trì Canvas khi màn hình tắt (requestAnimationFrame sẽ dừng khi ẩn)
-  document.addEventListener("visibilitychange", function() {
-    if (document.hidden) {
-      if (!state.pipHeartbeat) {
-        state.pipHeartbeat = setInterval(function() {
-          drawCanvas();
-        }, 1000); 
-      }
-    } else {
-      if (state.pipHeartbeat) {
-        clearInterval(state.pipHeartbeat);
-        state.pipHeartbeat = null;
-      }
-    }
-  });
-
-  // --- LOGIC VẼ CANVAS ---
+  // =========================================================
+  // VOCAB PARSER
+  // =========================================================
 
   function parseLegacyPipeVocab(s) {
-    var out = [];
-    String(s).split("|").forEach(function (seg) {
-      var t = String(seg).trim();
-      if (!t) return;
-      var m = t.match(/^(.+?)\(([^)]+)\)\s*:\s*(.+)$/);
-      if (m) {
-        out.push({ word: m[1].trim(), reading: m[2].trim(), meaning: m[3].trim() });
-      } else {
-        out.push({ word: t, reading: "", meaning: "" });
-      }
-    });
+
+    const out = [];
+
+    String(s)
+      .split("|")
+      .forEach(function (seg) {
+
+        const t =
+          String(seg).trim();
+
+        if (!t) return;
+
+        const m =
+          t.match(
+            /^(.+?)\(([^)]+)\)\s*:\s*(.+)$/
+          );
+
+        if (m) {
+
+          out.push({
+            word: m[1].trim(),
+            reading: m[2].trim(),
+            meaning: m[3].trim()
+          });
+
+        } else {
+
+          out.push({
+            word: t,
+            reading: "",
+            meaning: ""
+          });
+        }
+      });
+
     return out;
   }
 
   function normalizeVocabularyList(raw) {
+
     if (Array.isArray(raw.vocabulary)) {
+
       return raw.vocabulary.map(function (e) {
-        if (typeof e === "string") return { word: e, reading: "", meaning: "" };
+
+        if (typeof e === "string") {
+
+          return {
+            word: e,
+            reading: "",
+            meaning: ""
+          };
+        }
+
         return {
-          word: e.word != null ? String(e.word) : "",
-          reading: e.reading != null ? String(e.reading) : "",
-          meaning: e.meaning != null ? String(e.meaning) : ""
+          word:
+            e.word != null
+              ? String(e.word)
+              : "",
+
+          reading:
+            e.reading != null
+              ? String(e.reading)
+              : "",
+
+          meaning:
+            e.meaning != null
+              ? String(e.meaning)
+              : ""
         };
       });
     }
-    if (typeof raw.vocabulary === "string" && raw.vocabulary.trim()) {
-      return parseLegacyPipeVocab(raw.vocabulary);
+
+    if (
+      typeof raw.vocabulary === "string" &&
+      raw.vocabulary.trim()
+    ) {
+      return parseLegacyPipeVocab(
+        raw.vocabulary
+      );
     }
+
     return [];
   }
 
-  function wrapLinesToArray(text, maxW) {
-    var s = String(text || "").trim();
+  // =========================================================
+  // TEXT WRAP
+  // =========================================================
+
+  function wrapLinesToArray(
+    text,
+    maxW
+  ) {
+
+    const s =
+      String(text || "").trim();
+
     if (!s) return [];
-    var lines = [];
-    var parts = s.split(/(\s+)/);
-    var cur = "";
-    for (var i = 0; i < parts.length; i++) {
-      var p = parts[i];
+
+    const lines = [];
+
+    const parts =
+      s.split(/(\s+)/);
+
+    let cur = "";
+
+    for (let i = 0; i < parts.length; i++) {
+
+      const p = parts[i];
+
       if (!p) continue;
-      var test = cur + p;
-      if (ctx.measureText(test).width <= maxW) {
+
+      const test = cur + p;
+
+      if (
+        ctx.measureText(test).width <= maxW
+      ) {
+
         cur = test;
+
         continue;
       }
-      if (cur.trim()) lines.push(cur.trim());
-      cur = p;
-      while (cur.length > 0 && ctx.measureText(cur).width > maxW) {
-        var lo = 1, hi = cur.length;
-        while (lo < hi) {
-          var mid = Math.ceil((lo + hi) / 2);
-          if (ctx.measureText(cur.slice(0, mid)).width <= maxW) lo = mid;
-          else hi = mid - 1;
-        }
-        var take = Math.max(1, lo);
-        lines.push(cur.slice(0, take));
-        cur = cur.slice(take);
+
+      if (cur.trim()) {
+
+        lines.push(cur.trim());
       }
+
+      cur = p;
     }
-    if (cur.trim()) lines.push(cur.trim());
+
+    if (cur.trim()) {
+
+      lines.push(cur.trim());
+    }
+
     return lines;
   }
 
-  function drawParagraphCenter(cx, y, maxW, lineHeight, lines) {
+  function drawParagraphCenter(
+    cx,
+    y,
+    maxW,
+    lineHeight,
+    lines
+  ) {
+
     ctx.textAlign = "center";
+
     ctx.textBaseline = "middle";
-    for (var i = 0; i < lines.length; i++) {
-      ctx.fillText(lines[i], cx, y + lineHeight / 2);
+
+    for (let i = 0; i < lines.length; i++) {
+
+      ctx.fillText(
+        lines[i],
+        cx,
+        y + lineHeight / 2
+      );
+
       y += lineHeight;
     }
+
     return y;
   }
 
+  // =========================================================
+  // DRAW CANVAS
+  // =========================================================
+
   function drawCanvas() {
-    var item = state.selected;
-    if (!item || !ctx) return;
+
+    const item = state.selected;
+
+    if (!item || !ctx) {
+      return;
+    }
 
     ctx.fillStyle = "#020617";
-    ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
+
+    ctx.fillRect(
+      0,
+      0,
+      CANVAS_W,
+      CANVAS_H
+    );
+
     ctx.save();
+
     ctx.beginPath();
-    ctx.rect(0, 0, CANVAS_W, CANVAS_H);
+
+    ctx.rect(
+      0,
+      0,
+      CANVAS_W,
+      CANVAS_H
+    );
+
     ctx.clip();
 
-    var cx = CANVAS_W / 2;
-    var pad = 14;
-    var maxW = CANVAS_W - 2 * pad;
-    var y = 54;
+    const cx = CANVAS_W / 2;
 
+    const maxW =
+      CANVAS_W - 28;
+
+    let y = 54;
+
+    // Kanji
     ctx.textAlign = "center";
-    ctx.fillStyle = "#f8fafc";
-    ctx.font = "bold 96px 'Hiragino Sans', 'Yu Gothic', sans-serif";
+
     ctx.textBaseline = "middle";
-    ctx.fillText(item.kanji || "", cx, y);
+
+    ctx.fillStyle = "#f8fafc";
+
+    ctx.font =
+      "bold 96px 'Hiragino Sans','Yu Gothic',sans-serif";
+
+    ctx.fillText(
+      item.kanji || "",
+      cx,
+      y
+    );
+
     y += 56;
 
+    // Hanviet
     if (item.hanviet) {
+
       ctx.fillStyle = "#7dd3fc";
-      ctx.font = "600 19px system-ui, sans-serif";
-      ctx.fillText(item.hanviet, cx, y);
+
+      ctx.font =
+        "600 19px system-ui,sans-serif";
+
+      ctx.fillText(
+        item.hanviet,
+        cx,
+        y
+      );
+
       y += 28;
     }
 
+    // Meaning
     ctx.fillStyle = "#cbd5e1";
-    ctx.font = "18px system-ui, sans-serif";
-    var meaningLines = wrapLinesToArray(item.meaning || "", maxW);
-    y = drawParagraphCenter(cx, y, maxW, 22, meaningLines) + 12;
 
+    ctx.font =
+      "18px system-ui,sans-serif";
+
+    const meaningLines =
+      wrapLinesToArray(
+        item.meaning || "",
+        maxW
+      );
+
+    y =
+      drawParagraphCenter(
+        cx,
+        y,
+        maxW,
+        22,
+        meaningLines
+      ) + 12;
+
+    // On/Kun
     ctx.fillStyle = "#94a3b8";
-    ctx.font = "16px system-ui, sans-serif";
-    ctx.fillText("On: " + (item.on || "—"), cx, y);
+
+    ctx.font =
+      "16px system-ui,sans-serif";
+
+    ctx.fillText(
+      "On: " + (item.on || "—"),
+      cx,
+      y
+    );
+
     y += 24;
-    ctx.fillText("Kun: " + (item.kun || "—"), cx, y);
+
+    ctx.fillText(
+      "Kun: " + (item.kun || "—"),
+      cx,
+      y
+    );
+
     y += 24;
-    ctx.fillText("Nét: " + (item.strokes || "—"), cx, y);
+
+    ctx.fillText(
+      "Nét: " +
+      (item.strokes || "—"),
+      cx,
+      y
+    );
+
     y += 28;
 
+    // Radical
     if (item.radicals) {
+
       ctx.fillStyle = "#78716c";
-      ctx.font = "14px system-ui, sans-serif";
-      var radLines = wrapLinesToArray("Bộ thủ: " + item.radicals, maxW);
-      y = drawParagraphCenter(cx, y, maxW, 19, radLines) + 10;
+
+      ctx.font =
+        "14px system-ui,sans-serif";
+
+      y =
+        drawParagraphCenter(
+          cx,
+          y,
+          maxW,
+          19,
+          wrapLinesToArray(
+            "Bộ thủ: " +
+              item.radicals,
+            maxW
+          )
+        ) + 10;
     }
 
+    // Memory tip
     if (item.memory_tip) {
+
       ctx.fillStyle = "#64748b";
-      ctx.font = "13px system-ui, sans-serif";
-      var tipLines = wrapLinesToArray(item.memory_tip, maxW);
-      y = drawParagraphCenter(cx, y, maxW, 18, tipLines) + 12;
+
+      ctx.font =
+        "13px system-ui,sans-serif";
+
+      y =
+        drawParagraphCenter(
+          cx,
+          y,
+          maxW,
+          18,
+          wrapLinesToArray(
+            item.memory_tip,
+            maxW
+          )
+        ) + 12;
     }
 
-    var vocabs = item._vocabs || [];
+    // Vocabulary
+    const vocabs =
+      item._vocabs || [];
+
     if (vocabs.length) {
+
       ctx.fillStyle = "#64748b";
-      ctx.font = "bold 14px system-ui, sans-serif";
-      ctx.fillText("Từ vựng", cx, y);
+
+      ctx.font =
+        "bold 14px system-ui,sans-serif";
+
+      ctx.fillText(
+        "Từ vựng",
+        cx,
+        y
+      );
+
       y += 24;
+
       ctx.fillStyle = "#94a3b8";
-      ctx.font = "13px system-ui, sans-serif";
+
+      ctx.font =
+        "13px system-ui,sans-serif";
+
       vocabs.forEach(function (v) {
-        var line = (v.word || "") + (v.reading ? " ("+v.reading+")" : "") + (v.meaning ? " — "+v.meaning : "");
-        var vl = wrapLinesToArray(line, maxW);
-        y = drawParagraphCenter(cx, y, maxW, 18, vl) + 8;
+
+        const line =
+          (v.word || "") +
+          (
+            v.reading
+              ? " (" +
+                v.reading +
+                ")"
+              : ""
+          ) +
+          (
+            v.meaning
+              ? " — " +
+                v.meaning
+              : ""
+          );
+
+        y =
+          drawParagraphCenter(
+            cx,
+            y,
+            maxW,
+            18,
+            wrapLinesToArray(
+              line,
+              maxW
+            )
+          ) + 8;
       });
     }
+
     ctx.restore();
   }
 
+  // =========================================================
+  // LOOP
+  // =========================================================
+
   function loop() {
+
     if (!document.hidden) {
+
       drawCanvas();
     }
-    state.rafId = requestAnimationFrame(loop);
+
+    state.rafId =
+      setTimeout(loop, 100);
   }
 
-  // --- HÀNH ĐỘNG PIP ---
+  // =========================================================
+  // STREAM
+  // =========================================================
 
   function attachStreamToVideo() {
-    if (!els.canvas.captureStream || !els.video.requestPictureInPicture) {
+
+    if (
+      !els.canvas.captureStream ||
+      !els.video.requestPictureInPicture
+    ) {
+
       els.btnPip.disabled = true;
+
       return;
     }
-    try {
-      if (state.stream) {
-        state.stream.getTracks().forEach(t => t.stop());
-      }
-      
-      const canvasStream = els.canvas.captureStream(10);
-      const silentAudio = createSilentAudioTrack();
-      if (silentAudio) canvasStream.addTrack(silentAudio);
 
-      state.stream = canvasStream;
-      els.video.srcObject = state.stream;
+    try {
+
+      if (state.stream) {
+
+        state.stream
+          .getTracks()
+          .forEach(function (t) {
+            t.stop();
+          });
+      }
+
+      const canvasStream =
+        els.canvas.captureStream(10);
+
+      const silentAudio =
+        createSilentAudioTrack();
+
+      if (silentAudio) {
+
+        canvasStream.addTrack(
+          silentAudio
+        );
+      }
+
+      state.stream =
+        canvasStream;
+
+      els.video.srcObject =
+        state.stream;
+
       els.video.muted = true;
-      els.video.setAttribute("playsinline", "");
-      els.video.setAttribute("webkit-playsinline", "");
+
+      els.video.autoplay = true;
+
+      els.video.playsInline = true;
+
+      els.video.setAttribute(
+        "playsinline",
+        ""
+      );
+
+      els.video.setAttribute(
+        "webkit-playsinline",
+        ""
+      );
+
       els.btnPip.disabled = false;
+
     } catch (e) {
-      console.error(e);
+
+      console.error(
+        "Stream attach failed:",
+        e
+      );
     }
   }
+
+  // =========================================================
+  // OPEN PIP
+  // =========================================================
 
   async function openPip() {
-    if (!els.video.requestPictureInPicture) return;
+
+    if (
+      !document.pictureInPictureEnabled ||
+      !els.video.requestPictureInPicture
+    ) {
+      return;
+    }
+
     try {
+
       await els.video.play();
-      await els.video.requestPictureInPicture();
+
+      await els.video
+        .requestPictureInPicture();
+
       state.pipActive = true;
+
       updateMediaSession();
+
     } catch (err) {
-      console.warn("PiP Error:", err);
+
+      console.warn(
+        "PiP Error:",
+        err
+      );
     }
   }
 
-  els.btnPip.addEventListener("click", openPip);
+  els.btnPip.addEventListener(
+    "click",
+    openPip
+  );
 
-  // --- KHỞI TẠO DỮ LIỆU ---
+  // =========================================================
+  // PIP EVENTS
+  // =========================================================
+
+  els.video.addEventListener(
+    "enterpictureinpicture",
+    function () {
+
+      state.pipActive = true;
+    }
+  );
+
+  els.video.addEventListener(
+    "leavepictureinpicture",
+    function () {
+
+      state.pipActive = false;
+    }
+  );
+
+  // =========================================================
+  // VISIBILITY CHANGE
+  // =========================================================
+
+  document.addEventListener(
+    "visibilitychange",
+
+    async function () {
+
+      if (document.hidden) {
+
+        if (!state.pipHeartbeat) {
+
+          state.pipHeartbeat =
+            setInterval(function () {
+
+              drawCanvas();
+
+            }, 1000);
+        }
+
+      } else {
+
+        if (state.pipHeartbeat) {
+
+          clearInterval(
+            state.pipHeartbeat
+          );
+
+          state.pipHeartbeat = null;
+        }
+
+        drawCanvas();
+
+        // iPhone wake-up fix
+        if (state.pipActive) {
+
+          try {
+
+            if (state.stream) {
+
+              state.stream
+                .getTracks()
+                .forEach(function (t) {
+                  t.stop();
+                });
+            }
+
+            els.video.pause();
+
+            els.video.srcObject =
+              null;
+
+            attachStreamToVideo();
+
+            drawCanvas();
+
+            // GPU refresh trick
+            ctx.fillStyle =
+              "transparent";
+
+            ctx.fillRect(
+              0,
+              0,
+              1,
+              1
+            );
+
+            await els.video.play();
+
+          } catch (e) {
+
+            console.warn(
+              "PiP restore failed:",
+              e
+            );
+          }
+        }
+      }
+    }
+  );
+
+  // =========================================================
+  // CLEANUP
+  // =========================================================
+
+  function cleanup() {
+
+    if (state.rafId) {
+
+      clearTimeout(
+        state.rafId
+      );
+    }
+
+    if (state.pipHeartbeat) {
+
+      clearInterval(
+        state.pipHeartbeat
+      );
+    }
+
+    if (state.stream) {
+
+      state.stream
+        .getTracks()
+        .forEach(function (t) {
+          t.stop();
+        });
+    }
+
+    if (state.audioCtx) {
+
+      state.audioCtx.close();
+    }
+  }
+
+  window.addEventListener(
+    "beforeunload",
+    cleanup
+  );
+
+  // =========================================================
+  // BOOT
+  // =========================================================
 
   function bootFromKanjiData(arr) {
-    state.items = (Array.isArray(arr) ? arr : []).map(function (raw, idx) {
-      return {
-        id: String(raw.stt || idx + 1),
-        kanji: raw.kanji || "",
-        meaning: raw.core_meaning || "",
-        on: String(raw.on_reading || "").replace(/\|/g, "、"),
-        kun: String(raw.kun_reading || "").replace(/\|/g, "、"),
-        strokes: raw.stroke_count || "",
-        hanviet: raw.hanviet || "",
-        radicals: String(raw.radicals || ""),
-        memory_tip: String(raw.memory_tip || ""),
-        _vocabs: normalizeVocabularyList({ vocabulary: raw.vocabulary })
-      };
-    });
-    
-    // Hash check
-    var m = (window.location.hash || "").match(/^#kanji=(.+)$/);
+
+    state.items =
+      (
+        Array.isArray(arr)
+          ? arr
+          : []
+      ).map(function (raw, idx) {
+
+        return {
+
+          id:
+            String(
+              raw.stt ||
+              idx + 1
+            ),
+
+          kanji:
+            raw.kanji || "",
+
+          meaning:
+            raw.core_meaning || "",
+
+          on:
+            String(
+              raw.on_reading || ""
+            ).replace(/\|/g, "、"),
+
+          kun:
+            String(
+              raw.kun_reading || ""
+            ).replace(/\|/g, "、"),
+
+          strokes:
+            raw.stroke_count || "",
+
+          hanviet:
+            raw.hanviet || "",
+
+          radicals:
+            String(
+              raw.radicals || ""
+            ),
+
+          memory_tip:
+            String(
+              raw.memory_tip || ""
+            ),
+
+          _vocabs:
+            normalizeVocabularyList({
+              vocabulary:
+                raw.vocabulary
+            })
+        };
+      });
+
+    const m =
+      (
+        window.location.hash ||
+        ""
+      ).match(
+        /^#kanji=(.+)$/
+      );
+
     if (m) {
-      var id = decodeURIComponent(m[1]);
-      state.selected = state.items.find(x => String(x.id) === String(id));
+
+      const id =
+        decodeURIComponent(
+          m[1]
+        );
+
+      state.selected =
+        state.items.find(
+          x =>
+            String(x.id) ===
+            String(id)
+        );
     }
-    
-    if (!state.selected && state.items.length) {
-      state.selected = state.items[0];
+
+    if (
+      !state.selected &&
+      state.items.length
+    ) {
+
+      state.selected =
+        state.items[0];
     }
 
     if (state.selected) {
-      els.detailPanel.hidden = false;
+
+      els.detailPanel.hidden =
+        false;
+
       attachStreamToVideo();
+
       drawCanvas();
+
       loop();
     }
   }
 
-  if (typeof kanjiData !== "undefined") {
-    bootFromKanjiData(kanjiData);
+  // =========================================================
+  // START
+  // =========================================================
+
+  if (
+    typeof kanjiData !==
+    "undefined"
+  ) {
+
+    bootFromKanjiData(
+      kanjiData
+    );
+
   } else {
-    if (els.loadStatus) els.loadStatus.hidden = false;
+
+    if (els.loadStatus) {
+
+      els.loadStatus.hidden =
+        false;
+    }
   }
 
 })();
+</script>
