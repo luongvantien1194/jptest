@@ -1,14 +1,5 @@
-
 (function () {
   "use strict";
-
-  /** Dữ liệu Kanji nhúng trong script (không cần file JSON riêng). */
-  const KANJI_INLINE_DATA = [
-    { id: "1", kanji: "日", meaning: "Mặt trời / ngày", on: "ニチ、ジツ", kun: "ひ、び、か", strokes: 4 },
-    { id: "2", kanji: "月", meaning: "Mặt trăng / tháng", on: "ゲツ、ガツ", kun: "つき", strokes: 4 },
-    { id: "3", kanji: "木", meaning: "Cây", on: "モク、ボク", kun: "き、こ", strokes: 4 },
-    { id: "4", kanji: "水", meaning: "Nước", on: "スイ", kun: "みず", strokes: 4 }
-  ];
 
   const CANVAS_W = 720;
   const CANVAS_H = 405;
@@ -43,6 +34,60 @@
 
   const ctx = els.canvas.getContext("2d");
 
+  function parseLegacyPipeVocab(s) {
+    var out = [];
+    String(s)
+      .split("|")
+      .forEach(function (seg) {
+        var t = String(seg).trim();
+        if (!t) {
+          return;
+        }
+        var m = t.match(/^(.+?)\(([^)]+)\)\s*:\s*(.+)$/);
+        if (m) {
+          out.push({ word: m[1].trim(), reading: m[2].trim(), meaning: m[3].trim() });
+        } else {
+          out.push({ word: t, reading: "", meaning: "" });
+        }
+      });
+    return out;
+  }
+
+  function normalizeVocabularyList(raw) {
+    if (Array.isArray(raw.vocabulary)) {
+      return raw.vocabulary.map(function (e) {
+        if (typeof e === "string") {
+          return { word: e, reading: "", meaning: "" };
+        }
+        return {
+          word: e.word != null ? String(e.word) : "",
+          reading: e.reading != null ? String(e.reading) : "",
+          meaning: e.meaning != null ? String(e.meaning) : ""
+        };
+      });
+    }
+    if (typeof raw.vocabulary === "string" && raw.vocabulary.trim()) {
+      return parseLegacyPipeVocab(raw.vocabulary);
+    }
+    return [];
+  }
+
+  function vocabPreviewLine(vocabs, maxChars) {
+    maxChars = maxChars || 22;
+    if (!vocabs || !vocabs.length) {
+      return "";
+    }
+    var s = vocabs
+      .map(function (v) {
+        return v.word;
+      })
+      .join("、");
+    if (s.length > maxChars) {
+      s = s.slice(0, maxChars - 1) + "…";
+    }
+    return "Từ: " + s;
+  }
+
   function supportsPipFromCanvas() {
     var c = els.canvas;
     var v = els.video;
@@ -61,20 +106,36 @@
     els.fallback.textContent = msg || "";
   }
 
-  function drawCanvas(now) {
+  function drawTruncatedCenterLine(text, cx, y, maxW, fontPx) {
+    var t = String(text || "");
+    if (!t) {
+      return;
+    }
+    ctx.font = fontPx + "px system-ui, sans-serif";
+    while (t.length > 1 && ctx.measureText(t).width > maxW) {
+      t = t.slice(0, -2) + "…";
+    }
+    ctx.fillText(t, cx, y);
+  }
+
+  function drawCanvas() {
     var item = state.selected;
-    if (!item || !ctx) return;
+    if (!item || !ctx) {
+      return;
+    }
 
     ctx.fillStyle = "#020617";
     ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
 
-    var pulse = 0.85 + 0.15 * Math.sin((now || 0) / 400);
     ctx.save();
     ctx.translate(CANVAS_W / 2, CANVAS_H / 2);
 
+    var vocabs = item._vocabs || [];
+
     if (state.face === 0) {
       ctx.fillStyle = "#f8fafc";
-      ctx.font = "bold " + Math.floor(200 * pulse) + "px 'Hiragino Sans', 'Yu Gothic', 'PingFang SC', sans-serif";
+      ctx.font =
+        "bold 200px 'Hiragino Sans', 'Yu Gothic', 'PingFang SC', sans-serif";
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
       ctx.fillText(item.kanji || "", 0, -72);
@@ -87,27 +148,43 @@
       ctx.fillText("On " + (item.on || "—") + "  ·  Kun " + (item.kun || "—"), 0, 132);
       ctx.font = "18px system-ui, sans-serif";
       ctx.fillText("Stroke: " + (item.strokes != null ? item.strokes : "—"), 0, 162);
+      var preview = vocabPreviewLine(vocabs, 36);
+      if (preview) {
+        ctx.fillStyle = "#475569";
+        ctx.textAlign = "center";
+        drawTruncatedCenterLine(preview, 0, 188, CANVAS_W - 56, 15);
+      }
     } else {
       ctx.fillStyle = "#e2e8f0";
       ctx.font = "28px system-ui, sans-serif";
       ctx.textAlign = "center";
       ctx.textBaseline = "middle";
-      wrapText(ctx, item.meaning || "", 0, -60, CANVAS_W - 80, 34);
+      wrapText(ctx, item.meaning || "", 0, -130, CANVAS_W - 80, 30);
       ctx.fillStyle = "#94a3b8";
       ctx.font = "22px system-ui, sans-serif";
       var lines = ["On: " + (item.on || "—"), "Kun: " + (item.kun || "—")];
       lines.forEach(function (line, i) {
-        ctx.fillText(line, 0, 40 + i * 32);
+        ctx.fillText(line, 0, -40 + i * 30);
+      });
+      ctx.fillStyle = "#64748b";
+      ctx.font = "bold 17px system-ui, sans-serif";
+      ctx.fillText("Từ vựng", 0, 10);
+      ctx.font = "16px system-ui, sans-serif";
+      ctx.fillStyle = "#94a3b8";
+      var startY = 32;
+      vocabs.slice(0, 5).forEach(function (v, i) {
+        var line = v.word || "";
+        if (v.reading) {
+          line += "(" + v.reading + ")";
+        }
+        if (v.meaning) {
+          line += " — " + v.meaning;
+        }
+        wrapText(ctx, line, 0, startY + i * 26, CANVAS_W - 56, 24);
       });
     }
 
     ctx.restore();
-
-    var t = Math.floor((now || 0) / 500) % 4;
-    ctx.fillStyle = "#334155";
-    ctx.font = "14px monospace";
-    ctx.textAlign = "right";
-    ctx.fillText("tick " + String(t), CANVAS_W - 12, CANVAS_H - 10);
   }
 
   function wrapText(context, text, x, y, maxWidth, lineHeight) {
@@ -128,8 +205,8 @@
     context.fillText(line, x, cy);
   }
 
-  function loop(now) {
-    drawCanvas(now);
+  function loop() {
+    drawCanvas();
     state.rafId = requestAnimationFrame(loop);
   }
 
@@ -182,13 +259,17 @@
     els.detailMeta.innerHTML =
       "<strong>Nghĩa:</strong> " +
       escapeHtml(item.meaning) +
+      (item.hanviet
+        ? "<br><strong>Hán Việt:</strong> " + escapeHtml(item.hanviet)
+        : "") +
       "<br><strong>On:</strong> " +
       escapeHtml(item.on) +
       " · <strong>Kun:</strong> " +
-      escapeHtml(item.kun);
+      escapeHtml(item.kun) +
+      formatVocabHtml(item);
 
     attachStreamToVideo();
-    drawCanvas(performance.now());
+    drawCanvas();
     if (!state.rafId) {
       state.rafId = requestAnimationFrame(loop);
     }
@@ -207,6 +288,26 @@
       .replace(/</g, "&lt;")
       .replace(/>/g, "&gt;")
       .replace(/"/g, "&quot;");
+  }
+
+  function formatVocabHtml(item) {
+    var list = item._vocabs || [];
+    if (!list.length) {
+      return "";
+    }
+    var li = list
+      .map(function (v) {
+        var line = escapeHtml(v.word);
+        if (v.reading) {
+          line += " (" + escapeHtml(v.reading) + ")";
+        }
+        if (v.meaning) {
+          line += " — " + escapeHtml(v.meaning);
+        }
+        return "<li>" + line + "</li>";
+      })
+      .join("");
+    return '<div class="detail-vocab"><strong>Từ vựng</strong><ul>' + li + "</ul></div>";
   }
 
   function renderList() {
@@ -242,26 +343,57 @@
       }
       return Promise.resolve(false);
     }
-    return v
-      .play()
-      .then(function () {
-        return v.requestPictureInPicture();
-      })
-      .then(function () {
-        state.pipActive = true;
-        setFallback("");
-        return true;
-      })
-      .catch(function (err) {
-        if (!opts.silent) {
-          setFallback(
-            "Không bật được PiP: " +
-              (err && err.message ? err.message : err) +
-              " (thường do chưa tương tác hoặc iOS chặn)."
-          );
-        }
-        return false;
-      });
+
+    /**
+     * Safari / Chromium: requestPictureInPicture() phải được gọi trong cùng "user activation"
+     * với thao tác chạm. Gọi sau play().then(...) sẽ mất activation → lỗi
+     * "The request is not triggered by a user activation".
+     * Giải pháp: play() không await; gọi requestPictureInPicture() ngay trong cùng stack đồng bộ.
+     */
+    try {
+      var playP = v.play();
+      if (playP && typeof playP.catch === "function") {
+        playP.catch(function () {});
+      }
+    } catch (playErr) {
+      if (!opts.silent) {
+        setFallback("Video.play: " + (playErr && playErr.message ? playErr.message : playErr));
+      }
+      return Promise.resolve(false);
+    }
+
+    var pipP;
+    try {
+      pipP = v.requestPictureInPicture();
+    } catch (err) {
+      if (!opts.silent) {
+        setFallback("Không bật được PiP: " + (err && err.message ? err.message : err));
+      }
+      return Promise.resolve(false);
+    }
+
+    if (pipP && typeof pipP.then === "function") {
+      return pipP
+        .then(function () {
+          state.pipActive = true;
+          setFallback("");
+          return true;
+        })
+        .catch(function (err) {
+          if (!opts.silent) {
+            setFallback(
+              "Không bật được PiP: " +
+                (err && err.message ? err.message : err) +
+                " (thử bấm lại nút PiP.)"
+            );
+          }
+          return false;
+        });
+    }
+
+    state.pipActive = true;
+    setFallback("");
+    return Promise.resolve(true);
   }
 
   els.btnPip.addEventListener("click", function () {
@@ -309,8 +441,20 @@
   }
 
   function registerSw() {
+    if (!els.swStatus) {
+      return;
+    }
+    if (location.protocol === "file:") {
+      els.swStatus.textContent =
+        "Service Worker không chạy khi mở file cục bộ (file://). Đẩy lên server HTTPS hoặc mở qua http://localhost (vd. npx serve trong app10_files → vào pip-kanji-pwa) thì SW và cache Kanji sẽ hoạt động.";
+      return;
+    }
+    if (typeof window.isSecureContext !== "undefined" && !window.isSecureContext) {
+      els.swStatus.textContent = "Service Worker: cần HTTPS hoặc localhost (secure context).";
+      return;
+    }
     if (!("serviceWorker" in navigator)) {
-      els.swStatus.textContent = "Service Worker: không hỗ trợ (mở qua HTTPS hoặc localhost để cache offline).";
+      els.swStatus.textContent = "Service Worker: không hỗ trợ trên trình duyệt này.";
       return;
     }
     navigator.serviceWorker
@@ -320,12 +464,27 @@
       })
       .catch(function (err) {
         els.swStatus.textContent =
-          "Service Worker: đăng ký thất bại — thường do mở file:// hoặc sai path. " + (err && err.message ? err.message : "");
+          "Service Worker: đăng ký thất bại. " + (err && err.message ? err.message : err);
       });
   }
 
-  function bootAppData(data) {
-    state.items = Array.isArray(data) ? data : [];
+  function bootFromKanjiData(arr) {
+    state.items = (Array.isArray(arr) ? arr : []).map(function (raw, idx) {
+      var on = (raw.on_reading || "").replace(/\|/g, "、");
+      var kun = (raw.kun_reading || "").replace(/\|/g, "、");
+      var o = {
+        id: String(raw.stt != null ? raw.stt : idx + 1),
+        kanji: raw.kanji || "",
+        meaning: raw.core_meaning || "",
+        on: on,
+        kun: kun,
+        strokes: raw.stroke_count != null ? raw.stroke_count : "",
+        hanviet: raw.hanviet || "",
+        vocabulary: raw.vocabulary
+      };
+      o._vocabs = normalizeVocabularyList({ vocabulary: raw.vocabulary });
+      return o;
+    });
     els.loadStatus.textContent = "Chọn một chữ Kanji:";
     renderList();
     bootFromHash();
@@ -341,8 +500,22 @@
     }
   }
 
+  function loadKanjiData() {
+    if (typeof kanjiData !== "undefined" && Array.isArray(kanjiData) && kanjiData.length) {
+      bootFromKanjiData(kanjiData);
+      if (location.protocol === "file:" && els.loadStatus) {
+        els.loadStatus.textContent =
+          "Chọn một chữ Kanji: (dữ liệu từ data/kanjiData.js — Service Worker chỉ khi mở qua http://localhost)";
+      }
+      return;
+    }
+    if (els.loadStatus) {
+      els.loadStatus.textContent =
+        "Lỗi: không có kanjiData. Kiểm tra <script src=\"../data/kanjiData.js\"> và mở index.html đúng thư mục pip-kanji-pwa (hoặc chạy server từ app10_files).";
+    }
+  }
+
   window.addEventListener("hashchange", bootFromHash);
   registerSw();
-
-  bootAppData(KANJI_INLINE_DATA);
+  loadKanjiData();
 })();
