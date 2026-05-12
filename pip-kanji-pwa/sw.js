@@ -1,11 +1,6 @@
 /* eslint-disable no-restricted-globals */
-var CACHE_NAME = "kanji-pip-lab-v6";
-var ASSETS = [
-  "./index.html",
-  "./script.js",
-  "../data/kanjiData.js",
-  "./manifest.json"
-];
+var CACHE_NAME = "kanji-pip-lab-v15";
+var ASSETS = ["./index.html", "./script.js", "./manifest.json", "../data/kanjiData.js"];
 
 self.addEventListener("install", function (event) {
   event.waitUntil(
@@ -59,6 +54,10 @@ self.addEventListener("fetch", function (event) {
           return res;
         })
         .catch(function () {
+          var p = url.pathname.toLowerCase();
+          if (p.endsWith(".json") || p.endsWith(".js")) {
+            return new Response("", { status: 503, statusText: "offline" });
+          }
           return caches.match("./index.html");
         });
     })
