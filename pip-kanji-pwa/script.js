@@ -10,7 +10,9 @@
     selected: null,
     stream: null,
     pipActive: false,
-    rafId: null,
+    rafId: 0,
+    lastDraw: 0,
+    autoPipOnSelect: true,
     pipHeartbeat: null,
     audioCtx: null
   };
@@ -27,7 +29,7 @@
   const ctx = els.canvas.getContext("2d");
 
   // =========================================================
-  // SILENT AUDIO TRACK
+  // SILENT AUDIO TRACK (FIX iOS BACKGROUND PIP)
   // =========================================================
 
   function createSilentAudioTrack() {
@@ -42,8 +44,7 @@
         return null;
       }
 
-      state.audioCtx =
-        new AudioContext();
+      state.audioCtx = new AudioContext();
 
       const oscillator =
         state.audioCtx.createOscillator();
@@ -54,8 +55,7 @@
       gain.gain.value = 0;
 
       const dst =
-        state.audioCtx
-          .createMediaStreamDestination();
+        state.audioCtx.createMediaStreamDestination();
 
       oscillator.connect(gain);
 
@@ -63,8 +63,7 @@
 
       oscillator.start();
 
-      return dst.stream
-        .getAudioTracks()[0];
+      return dst.stream.getAudioTracks()[0];
 
     } catch (e) {
 
@@ -147,30 +146,31 @@
     } catch (e) {
 
       console.warn(
-        "MediaSession update failed:",
+        "MediaSession failed:",
         e
       );
     }
   }
 
   // =========================================================
-  // VOCAB PARSER
+  // VOCAB
   // =========================================================
 
   function parseLegacyPipeVocab(s) {
 
-    const out = [];
+    var out = [];
 
     String(s)
       .split("|")
       .forEach(function (seg) {
 
-        const t =
-          String(seg).trim();
+        var t = String(seg).trim();
 
-        if (!t) return;
+        if (!t) {
+          return;
+        }
 
-        const m =
+        var m =
           t.match(
             /^(.+?)\(([^)]+)\)\s*:\s*(.+)$/
           );
@@ -234,6 +234,7 @@
       typeof raw.vocabulary === "string" &&
       raw.vocabulary.trim()
     ) {
+
       return parseLegacyPipeVocab(
         raw.vocabulary
       );
@@ -243,33 +244,75 @@
   }
 
   // =========================================================
+  // SUPPORT CHECK
+  // =========================================================
+
+  function supportsPipFromCanvas() {
+
+    var c = els.canvas;
+
+    var v = els.video;
+
+    if (!c || !c.captureStream) {
+
+      return {
+        ok: false,
+        reason:
+          "Trình duyệt không hỗ trợ canvas.captureStream()."
+      };
+    }
+
+    if (!v || !v.requestPictureInPicture) {
+
+      return {
+        ok: false,
+        reason:
+          "Trình duyệt không hỗ trợ Picture-in-Picture."
+      };
+    }
+
+    return { ok: true };
+  }
+
+  function setFallback(msg) {
+
+    if (!els.fallback) {
+      return;
+    }
+
+    els.fallback.hidden = !msg;
+
+    els.fallback.textContent = msg || "";
+  }
+
+  // =========================================================
   // TEXT WRAP
   // =========================================================
 
-  function wrapLinesToArray(
-    text,
-    maxW
-  ) {
+  function wrapLinesToArray(text, maxW) {
 
-    const s =
-      String(text || "").trim();
+    var s = String(text || "").trim();
 
-    if (!s) return [];
+    if (!s) {
+      return [];
+    }
 
-    const lines = [];
+    var lines = [];
 
-    const parts =
+    var parts =
       s.split(/(\s+)/);
 
-    let cur = "";
+    var cur = "";
 
-    for (let i = 0; i < parts.length; i++) {
+    for (var i = 0; i < parts.length; i++) {
 
-      const p = parts[i];
+      var p = parts[i];
 
-      if (!p) continue;
+      if (!p) {
+        continue;
+      }
 
-      const test = cur + p;
+      var test = cur + p;
 
       if (
         ctx.measureText(test).width <= maxW
@@ -286,6 +329,41 @@
       }
 
       cur = p;
+
+      while (
+        cur.length > 0 &&
+        ctx.measureText(cur).width > maxW
+      ) {
+
+        var lo = 1;
+
+        var hi = cur.length;
+
+        while (lo < hi) {
+
+          var mid =
+            Math.ceil((lo + hi) / 2);
+
+          if (
+            ctx.measureText(
+              cur.slice(0, mid)
+            ).width <= maxW
+          ) {
+
+            lo = mid;
+
+          } else {
+
+            hi = mid - 1;
+          }
+        }
+
+        var take = Math.max(1, lo);
+
+        lines.push(cur.slice(0, take));
+
+        cur = cur.slice(take);
+      }
     }
 
     if (cur.trim()) {
@@ -308,7 +386,7 @@
 
     ctx.textBaseline = "middle";
 
-    for (let i = 0; i < lines.length; i++) {
+    for (var i = 0; i < lines.length; i++) {
 
       ctx.fillText(
         lines[i],
@@ -328,7 +406,7 @@
 
   function drawCanvas() {
 
-    const item = state.selected;
+    var item = state.selected;
 
     if (!item || !ctx) {
       return;
@@ -356,22 +434,24 @@
 
     ctx.clip();
 
-    const cx = CANVAS_W / 2;
+    var cx =
+      CANVAS_W / 2;
 
-    const maxW =
-      CANVAS_W - 28;
+    var pad = 14;
 
-    let y = 54;
+    var maxW =
+      CANVAS_W - 2 * pad;
 
-    // Kanji
+    var y = 54;
+
     ctx.textAlign = "center";
-
-    ctx.textBaseline = "middle";
 
     ctx.fillStyle = "#f8fafc";
 
     ctx.font =
-      "bold 96px 'Hiragino Sans','Yu Gothic',sans-serif";
+      "bold 96px 'Hiragino Sans','Yu Gothic','PingFang SC',sans-serif";
+
+    ctx.textBaseline = "middle";
 
     ctx.fillText(
       item.kanji || "",
@@ -381,7 +461,6 @@
 
     y += 56;
 
-    // Hanviet
     if (item.hanviet) {
 
       ctx.fillStyle = "#7dd3fc";
@@ -398,13 +477,12 @@
       y += 28;
     }
 
-    // Meaning
     ctx.fillStyle = "#cbd5e1";
 
     ctx.font =
       "18px system-ui,sans-serif";
 
-    const meaningLines =
+    var meaningLines =
       wrapLinesToArray(
         item.meaning || "",
         maxW
@@ -419,7 +497,6 @@
         meaningLines
       ) + 12;
 
-    // On/Kun
     ctx.fillStyle = "#94a3b8";
 
     ctx.font =
@@ -443,14 +520,17 @@
 
     ctx.fillText(
       "Nét: " +
-      (item.strokes || "—"),
+      (
+        item.strokes != null
+          ? item.strokes
+          : "—"
+      ),
       cx,
       y
     );
 
     y += 28;
 
-    // Radical
     if (item.radicals) {
 
       ctx.fillStyle = "#78716c";
@@ -458,21 +538,23 @@
       ctx.font =
         "14px system-ui,sans-serif";
 
+      var radLines =
+        wrapLinesToArray(
+          "Bộ thủ: " +
+          item.radicals,
+          maxW
+        );
+
       y =
         drawParagraphCenter(
           cx,
           y,
           maxW,
           19,
-          wrapLinesToArray(
-            "Bộ thủ: " +
-              item.radicals,
-            maxW
-          )
+          radLines
         ) + 10;
     }
 
-    // Memory tip
     if (item.memory_tip) {
 
       ctx.fillStyle = "#64748b";
@@ -480,21 +562,23 @@
       ctx.font =
         "13px system-ui,sans-serif";
 
+      var tipLines =
+        wrapLinesToArray(
+          item.memory_tip,
+          maxW
+        );
+
       y =
         drawParagraphCenter(
           cx,
           y,
           maxW,
           18,
-          wrapLinesToArray(
-            item.memory_tip,
-            maxW
-          )
+          tipLines
         ) + 12;
     }
 
-    // Vocabulary
-    const vocabs =
+    var vocabs =
       item._vocabs || [];
 
     if (vocabs.length) {
@@ -519,20 +603,28 @@
 
       vocabs.forEach(function (v) {
 
-        const line =
-          (v.word || "") +
-          (
-            v.reading
-              ? " (" +
-                v.reading +
-                ")"
-              : ""
-          ) +
-          (
-            v.meaning
-              ? " — " +
-                v.meaning
-              : ""
+        var line =
+          v.word || "";
+
+        if (v.reading) {
+
+          line +=
+            "(" +
+            v.reading +
+            ")";
+        }
+
+        if (v.meaning) {
+
+          line +=
+            " — " +
+            v.meaning;
+        }
+
+        var vl =
+          wrapLinesToArray(
+            line,
+            maxW
           );
 
         y =
@@ -541,10 +633,7 @@
             y,
             maxW,
             18,
-            wrapLinesToArray(
-              line,
-              maxW
-            )
+            vl
           ) + 8;
       });
     }
@@ -567,18 +656,32 @@
       setTimeout(loop, 100);
   }
 
+  function stopLoop() {
+
+    if (state.rafId) {
+
+      clearTimeout(
+        state.rafId
+      );
+
+      state.rafId = 0;
+    }
+  }
+
   // =========================================================
   // STREAM
   // =========================================================
 
   function attachStreamToVideo() {
 
-    if (
-      !els.canvas.captureStream ||
-      !els.video.requestPictureInPicture
-    ) {
+    var cap =
+      supportsPipFromCanvas();
+
+    if (!cap.ok) {
 
       els.btnPip.disabled = true;
+
+      setFallback(cap.reason);
 
       return;
     }
@@ -631,11 +734,19 @@
 
       els.btnPip.disabled = false;
 
+      setFallback("");
+
     } catch (e) {
 
-      console.error(
-        "Stream attach failed:",
-        e
+      els.btnPip.disabled = true;
+
+      setFallback(
+        "Không tạo được MediaStream: " +
+        (
+          e && e.message
+            ? e.message
+            : e
+        )
       );
     }
   }
@@ -644,62 +755,133 @@
   // OPEN PIP
   // =========================================================
 
-  async function openPip() {
+  function openPipFromUserGesture(opts) {
+
+    opts = opts || {};
+
+    var v = els.video;
 
     if (
-      !document.pictureInPictureEnabled ||
-      !els.video.requestPictureInPicture
+      !v ||
+      !v.requestPictureInPicture
     ) {
-      return;
+
+      if (!opts.silent) {
+
+        setFallback(
+          "Không hỗ trợ PiP."
+        );
+      }
+
+      return Promise.resolve(false);
     }
 
     try {
 
-      await els.video.play();
+      var playP = v.play();
 
-      await els.video
-        .requestPictureInPicture();
+      if (
+        playP &&
+        typeof playP.catch ===
+        "function"
+      ) {
 
-      state.pipActive = true;
+        playP.catch(function () {});
+      }
 
-      updateMediaSession();
+    } catch (playErr) {
+
+      return Promise.resolve(false);
+    }
+
+    var pipP;
+
+    try {
+
+      pipP =
+        v.requestPictureInPicture();
 
     } catch (err) {
 
-      console.warn(
-        "PiP Error:",
-        err
-      );
+      if (!opts.silent) {
+
+        setFallback(
+          "PiP Error: " +
+          (
+            err && err.message
+              ? err.message
+              : err
+          )
+        );
+      }
+
+      return Promise.resolve(false);
     }
+
+    return pipP
+      .then(function () {
+
+        state.pipActive = true;
+
+        updateMediaSession();
+
+        setFallback("");
+
+        return true;
+      })
+      .catch(function (err) {
+
+        if (!opts.silent) {
+
+          setFallback(
+            "Không bật được PiP: " +
+            (
+              err && err.message
+                ? err.message
+                : err
+            )
+          );
+        }
+
+        return false;
+      });
   }
 
   els.btnPip.addEventListener(
     "click",
-    openPip
+    function () {
+
+      openPipFromUserGesture({
+        silent: false
+      });
+    }
   );
 
   // =========================================================
   // PIP EVENTS
   // =========================================================
 
-  els.video.addEventListener(
-    "enterpictureinpicture",
-    function () {
+  if (els.video) {
 
-      state.pipActive = true;
-    }
-  );
+    els.video.addEventListener(
+      "enterpictureinpicture",
+      function () {
 
-  els.video.addEventListener(
-    "leavepictureinpicture",
-    function () {
+        state.pipActive = true;
+      }
+    );
 
-      state.pipActive = false;
-    }
-  );
+    els.video.addEventListener(
+      "leavepictureinpicture",
+      function () {
+
+        state.pipActive = false;
+      }
+    );
+  }
 
   // =========================================================
-  // VISIBILITY CHANGE
+  // iPHONE LOCK/UNLOCK FIX
   // =========================================================
 
   document.addEventListener(
@@ -732,7 +914,6 @@
 
         drawCanvas();
 
-        // iPhone wake-up fix
         if (state.pipActive) {
 
           try {
@@ -755,7 +936,6 @@
 
             drawCanvas();
 
-            // GPU refresh trick
             ctx.fillStyle =
               "transparent";
 
@@ -781,47 +961,172 @@
   );
 
   // =========================================================
-  // CLEANUP
+  // RENDER
   // =========================================================
 
-  function cleanup() {
+  function renderDetail(opts) {
 
-    if (state.rafId) {
+    opts = opts || {};
 
-      clearTimeout(
-        state.rafId
-      );
+    var item =
+      state.selected;
+
+    if (!item) {
+
+      els.detailPanel.hidden =
+        true;
+
+      stopLoop();
+
+      return;
     }
 
-    if (state.pipHeartbeat) {
+    els.detailPanel.hidden =
+      false;
 
-      clearInterval(
-        state.pipHeartbeat
-      );
+    attachStreamToVideo();
+
+    drawCanvas();
+
+    if (!state.rafId) {
+
+      loop();
     }
 
-    if (state.stream) {
+    if (
+      opts.skipAutoPip !== true &&
+      state.autoPipOnSelect &&
+      supportsPipFromCanvas().ok
+    ) {
 
-      state.stream
-        .getTracks()
-        .forEach(function (t) {
-          t.stop();
-        });
-    }
-
-    if (state.audioCtx) {
-
-      state.audioCtx.close();
+      openPipFromUserGesture({
+        silent: true
+      });
     }
   }
 
-  window.addEventListener(
-    "beforeunload",
-    cleanup
-  );
+  // =========================================================
+  // LOAD ERROR
+  // =========================================================
+
+  function clearLoadError() {
+
+    if (els.loadStatus) {
+
+      els.loadStatus.textContent =
+        "";
+
+      els.loadStatus.hidden =
+        true;
+    }
+  }
+
+  function showLoadError(msg) {
+
+    if (!els.loadStatus) {
+      return;
+    }
+
+    els.loadStatus.textContent =
+      msg;
+
+    els.loadStatus.hidden =
+      false;
+  }
 
   // =========================================================
-  // BOOT
+  // HASH
+  // =========================================================
+
+  function bootFromHash() {
+
+    var m =
+      (
+        window.location.hash ||
+        ""
+      ).match(
+        /^#kanji=(.+)$/
+      );
+
+    if (
+      !m ||
+      !state.items.length
+    ) {
+      return;
+    }
+
+    try {
+
+      var id =
+        decodeURIComponent(
+          m[1]
+        );
+
+      var found =
+        state.items.find(
+          function (x) {
+
+            return (
+              String(x.id) ===
+              String(id)
+            );
+          }
+        );
+
+      if (found) {
+
+        state.selected =
+          found;
+
+        renderDetail({
+          skipAutoPip: true
+        });
+
+        clearLoadError();
+      }
+
+    } catch (e) {}
+  }
+
+  // =========================================================
+  // SW
+  // =========================================================
+
+  function registerSw() {
+
+    if (
+      location.protocol ===
+      "file:"
+    ) {
+      return;
+    }
+
+    if (
+      typeof window.isSecureContext !==
+      "undefined" &&
+      !window.isSecureContext
+    ) {
+      return;
+    }
+
+    if (
+      !(
+        "serviceWorker" in
+        navigator
+      )
+    ) {
+      return;
+    }
+
+    navigator.serviceWorker
+      .register("./sw.js", {
+        scope: "./"
+      })
+      .catch(function () {});
+  }
+
+  // =========================================================
+  // DATA
   // =========================================================
 
   function bootFromKanjiData(arr) {
@@ -833,12 +1138,27 @@
           : []
       ).map(function (raw, idx) {
 
-        return {
+        var on =
+          String(
+            raw.on_reading != null
+              ? raw.on_reading
+              : ""
+          ).replace(/\|/g, "、");
+
+        var kun =
+          String(
+            raw.kun_reading != null
+              ? raw.kun_reading
+              : ""
+          ).replace(/\|/g, "、");
+
+        var o = {
 
           id:
             String(
-              raw.stt ||
-              idx + 1
+              raw.stt != null
+                ? raw.stt
+                : idx + 1
             ),
 
           kanji:
@@ -847,62 +1167,42 @@
           meaning:
             raw.core_meaning || "",
 
-          on:
-            String(
-              raw.on_reading || ""
-            ).replace(/\|/g, "、"),
+          on: on,
 
-          kun:
-            String(
-              raw.kun_reading || ""
-            ).replace(/\|/g, "、"),
+          kun: kun,
 
           strokes:
-            raw.stroke_count || "",
+            raw.stroke_count != null
+              ? raw.stroke_count
+              : "",
 
           hanviet:
             raw.hanviet || "",
 
           radicals:
-            String(
-              raw.radicals || ""
-            ),
+            raw.radicals != null
+              ? String(raw.radicals)
+              : "",
 
           memory_tip:
-            String(
-              raw.memory_tip || ""
-            ),
+            raw.memory_tip != null
+              ? String(raw.memory_tip)
+              : "",
 
-          _vocabs:
-            normalizeVocabularyList({
-              vocabulary:
-                raw.vocabulary
-            })
+          vocabulary:
+            raw.vocabulary
         };
+
+        o._vocabs =
+          normalizeVocabularyList({
+            vocabulary:
+              raw.vocabulary
+          });
+
+        return o;
       });
 
-    const m =
-      (
-        window.location.hash ||
-        ""
-      ).match(
-        /^#kanji=(.+)$/
-      );
-
-    if (m) {
-
-      const id =
-        decodeURIComponent(
-          m[1]
-        );
-
-      state.selected =
-        state.items.find(
-          x =>
-            String(x.id) ===
-            String(id)
-        );
-    }
+    bootFromHash();
 
     if (
       !state.selected &&
@@ -911,42 +1211,84 @@
 
       state.selected =
         state.items[0];
+
+      renderDetail({
+        skipAutoPip: true
+      });
+
+      history.replaceState(
+        {
+          id:
+            state.selected.id
+        },
+        "",
+        "#kanji=" +
+        encodeURIComponent(
+          state.selected.id
+        )
+      );
     }
 
-    if (state.selected) {
+    clearLoadError();
+  }
 
-      els.detailPanel.hidden =
-        false;
+  function getKanjiDataArray() {
 
-      attachStreamToVideo();
+    if (
+      typeof kanjiData !==
+      "undefined" &&
+      Array.isArray(
+        kanjiData
+      ) &&
+      kanjiData.length
+    ) {
 
-      drawCanvas();
-
-      loop();
+      return kanjiData;
     }
+
+    if (
+      window.kanjiData &&
+      Array.isArray(
+        window.kanjiData
+      ) &&
+      window.kanjiData.length
+    ) {
+
+      return window.kanjiData;
+    }
+
+    return null;
+  }
+
+  function loadKanjiData() {
+
+    var kd =
+      getKanjiDataArray();
+
+    if (kd) {
+
+      bootFromKanjiData(kd);
+
+      return;
+    }
+
+    showLoadError(
+      "Không tải được dữ liệu Kanji."
+    );
   }
 
   // =========================================================
   // START
   // =========================================================
 
-  if (
-    typeof kanjiData !==
-    "undefined"
-  ) {
+  window.addEventListener(
+    "hashchange",
+    bootFromHash
+  );
 
-    bootFromKanjiData(
-      kanjiData
-    );
+  registerSw();
 
-  } else {
-
-    if (els.loadStatus) {
-
-      els.loadStatus.hidden =
-        false;
-    }
-  }
+  loadKanjiData();
 
 })();
 </script>
