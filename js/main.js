@@ -893,6 +893,189 @@
     return window.innerWidth <= 720;
   }
 
+  /** Deep link chi tiết Kanji: #kanji/日 hoặc #stars/日 (encodeURIComponent cho ký tự đặc biệt). */
+  function replaceLocationHash(hash) {
+    if (window.history && window.history.replaceState) {
+      var path = window.location.pathname + window.location.search;
+      window.history.replaceState(null, "", path + hash);
+    } else {
+      window.location.hash = hash;
+    }
+  }
+
+  function findKanjiIndexByChar(char) {
+    if (!char) {
+      return -1;
+    }
+    for (var i = 0; i < kanjiData.length; i++) {
+      if (kanjiData[i] && kanjiData[i].kanji === char) {
+        return i;
+      }
+    }
+    return -1;
+  }
+
+  function parseKanjiDetailHash(rawHash) {
+    var h = rawHash || "";
+    if (h.indexOf("#kanji/") === 0) {
+      try {
+        return { tab: "kanji", slug: decodeURIComponent(h.slice("#kanji/".length)) };
+      } catch (e) {
+        return { tab: "kanji", slug: h.slice("#kanji/".length) };
+      }
+    }
+    if (h.indexOf("#stars/") === 0) {
+      try {
+        return { tab: "stars", slug: decodeURIComponent(h.slice("#stars/".length)) };
+      } catch (e) {
+        return { tab: "stars", slug: h.slice("#stars/".length) };
+      }
+    }
+    return { tab: null, slug: null };
+  }
+
+  var KANJI_DETAIL_RESUME_KEY = "jpstudy_kanji_detail_resume_v1";
+
+  function saveKanjiDetailResumeHint() {
+    if (state.currentTab !== "kanji" && state.currentTab !== "stars") {
+      return;
+    }
+    if (state.selected.kanjiIndex == null) {
+      return;
+    }
+    var raw = kanjiData[state.selected.kanjiIndex];
+    if (!raw || !raw.kanji) {
+      return;
+    }
+    try {
+      sessionStorage.setItem(
+        KANJI_DETAIL_RESUME_KEY,
+        JSON.stringify({ t: state.currentTab, k: raw.kanji })
+      );
+    } catch (err) {
+      /* quota / private mode */
+    }
+  }
+
+  function clearKanjiDetailResumeHint() {
+    try {
+      sessionStorage.removeItem(KANJI_DETAIL_RESUME_KEY);
+    } catch (err) {
+      /* ignore */
+    }
+  }
+
+  function readKanjiDetailResumeHint() {
+    try {
+      var s = sessionStorage.getItem(KANJI_DETAIL_RESUME_KEY);
+      if (!s) {
+        return null;
+      }
+      var o = JSON.parse(s);
+      if (!o || !o.k || (o.t !== "kanji" && o.t !== "stars")) {
+        return null;
+      }
+      return { t: o.t, k: String(o.k) };
+    } catch (err) {
+      return null;
+    }
+  }
+
+  function hashAllowsKanjiResume(savedTab) {
+    var h = window.location.hash || "";
+    if (savedTab === "kanji") {
+      return h === "#kanji" || h.indexOf("#kanji/") === 0;
+    }
+    if (savedTab === "stars") {
+      return h === "#stars" || h.indexOf("#stars/") === 0;
+    }
+    return false;
+  }
+
+  /**
+   * Khi quay lại Safari/PWA sau khi nền hóa: nếu modal chi tiết bị mất nhưng URL hoặc session
+   * vẫn ở flow Kanji/⭐ thì mở lại chi tiết (không hiển thị trên màn hình Home — chỉ trong app).
+   */
+  function tryRestoreKanjiDetailAfterResume() {
+    if (document.hidden || !detailModalState.el) {
+      return;
+    }
+    if (state.ui.detailModal.isOpen) {
+      return;
+    }
+
+    var h = window.location.hash || "";
+    var dh = parseKanjiDetailHash(h);
+    if (dh.tab && dh.slug && (dh.tab === "kanji" || dh.tab === "stars")) {
+      var idx = findKanjiIndexByChar(dh.slug);
+      if (idx >= 0) {
+        state.currentTab = dh.tab;
+        state.kanjiHistory = [];
+        state.selected.kanjiIndex = idx;
+        renderTabs();
+        if (dh.tab === "stars") {
+          renderStarsTab();
+        }
+        renderKanjiList();
+        renderKanjiDetail();
+        return;
+      }
+    }
+
+    var hint = readKanjiDetailResumeHint();
+    if (!hint) {
+      return;
+    }
+    if (!hashAllowsKanjiResume(hint.t)) {
+      return;
+    }
+    var idx2 = findKanjiIndexByChar(hint.k);
+    if (idx2 < 0) {
+      clearKanjiDetailResumeHint();
+      return;
+    }
+
+    state.kanjiHistory = [];
+    state.selected.kanjiIndex = idx2;
+    state.currentTab = hint.t;
+    renderTabs();
+    if (hint.t === "stars") {
+      renderStarsTab();
+    }
+    renderKanjiList();
+    var enc = encodeURIComponent(hint.k);
+    replaceLocationHash("#" + hint.t + "/" + enc);
+    renderKanjiDetail();
+  }
+
+  function syncKanjiDetailHash() {
+    if (state.currentTab !== "kanji" && state.currentTab !== "stars") {
+      return;
+    }
+    if (state.selected.kanjiIndex == null) {
+      return;
+    }
+    var raw = kanjiData[state.selected.kanjiIndex];
+    if (!raw || !raw.kanji) {
+      return;
+    }
+    var enc = encodeURIComponent(raw.kanji);
+    var target = state.currentTab === "stars" ? "#stars/" + enc : "#kanji/" + enc;
+    if (window.location.hash !== target) {
+      replaceLocationHash(target);
+    }
+    saveKanjiDetailResumeHint();
+  }
+
+  function clearKanjiDetailSlugFromLocation() {
+    var h = window.location.hash || "";
+    if (h.indexOf("#kanji/") === 0) {
+      window.location.hash = "#kanji";
+    } else if (h.indexOf("#stars/") === 0) {
+      window.location.hash = "#stars";
+    }
+  }
+
   const detailModalState = {
     el: null,
     bodyEl: null,
@@ -931,15 +1114,19 @@
     detailModalState.el.classList.remove("detail-modal--practice");
     detailModalState.el.setAttribute("aria-hidden", "true");
     state.ui.detailModal.isOpen = false;
+    clearKanjiDetailResumeHint();
     var ret = state.ui.kanjiDetailReturnTab;
     state.ui.kanjiDetailReturnTab = null;
     if (ret === "stars") {
       state.currentTab = "stars";
-      if (window.location.hash !== "#stars") {
+      var hsh = window.location.hash || "";
+      if (hsh !== "#stars") {
         window.location.hash = "#stars";
       }
       renderTabs();
       renderStarsTab();
+    } else {
+      clearKanjiDetailSlugFromLocation();
     }
   }
 
@@ -2879,6 +3066,7 @@
       contentDiv.appendChild(container.firstChild);
     }
     openDetailModal("", contentDiv, buildKanjiDetailNavRow());
+    syncKanjiDetailHash();
   }
 
   function renderKanjiTestAnswerReveal(kanjiIndexReveal, reveal) {
@@ -3114,9 +3302,6 @@
           state.kanjiHistory = [];
           state.selected.kanjiIndex = parsed.kanjiIndex;
           state.currentTab = "stars";
-          if (window.location.hash !== "#stars") {
-            window.location.hash = "#stars";
-          }
           renderTabs();
           renderKanjiList();
           renderKanjiDetail();
@@ -3456,7 +3641,12 @@
   // ========================
 
   function handleHashChange() {
-    const hash = window.location.hash || "#vocab";
+    const rawHash = window.location.hash || "#vocab";
+    var detail = parseKanjiDetailHash(rawHash);
+    var hash = rawHash;
+    if (detail.tab && detail.slug) {
+      hash = "#" + detail.tab;
+    }
     var tabName = "vocab";
     if (hash === "#kanji") {
       tabName = "kanji";
@@ -3475,6 +3665,20 @@
       renderNoteContent();
     } else if (tabName === "stars") {
       renderStarsTab();
+    }
+
+    if (detail.tab && detail.slug && (tabName === "kanji" || tabName === "stars")) {
+      var idx = findKanjiIndexByChar(detail.slug);
+      if (idx >= 0) {
+        state.kanjiHistory = [];
+        state.selected.kanjiIndex = idx;
+        renderKanjiList();
+        renderKanjiDetail();
+      } else {
+        window.location.hash = "#" + tabName;
+      }
+    } else if (tabName === "kanji" || tabName === "stars") {
+      renderKanjiList();
     }
   }
 
@@ -3497,6 +3701,17 @@
     });
 
     window.addEventListener("hashchange", handleHashChange);
+  }
+
+  function setupKanjiDetailResumeListeners() {
+    window.addEventListener("pageshow", function () {
+      tryRestoreKanjiDetailAfterResume();
+    });
+    document.addEventListener("visibilitychange", function () {
+      if (!document.hidden) {
+        tryRestoreKanjiDetailAfterResume();
+      }
+    });
   }
 
   function setupVocabFilters() {
@@ -4487,6 +4702,7 @@
     // Không cần fetch / load từ CSV để tránh lỗi CORS khi mở file trực tiếp.
 
     setupTabs();
+    setupKanjiDetailResumeListeners();
     setupVocabFilters();
     setupDisplaySettings();
     setupTestSection();
@@ -4508,5 +4724,6 @@
     } else {
       handleHashChange();
     }
+    tryRestoreKanjiDetailAfterResume();
   });
 })();
