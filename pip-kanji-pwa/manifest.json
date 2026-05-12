@@ -1,1 +1,12 @@
 
+{
+  "name": "Kanji PiP Lab",
+  "short_name": "KanjiPiP",
+  "description": "Chi tiết Kanji + Picture-in-Picture (iOS Safari)",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#0f172a",
+  "orientation": "portrait-primary"
+}
