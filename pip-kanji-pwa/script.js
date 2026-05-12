@@ -222,9 +222,6 @@
     }
 
     ctx.restore();
-
-    // --- FIX IPHONE: Cập nhật poster ngay sau khi vẽ ---
-    els.video.poster = els.canvas.toDataURL("image/jpeg", 0.8);
   }
 
   function loop() {
@@ -254,13 +251,6 @@
       }
       state.stream = els.canvas.captureStream(30);
       els.video.srcObject = state.stream;
-      
-      // --- FIX IPHONE: Gán video mồi Base64 nếu video chưa có src thực ---
-      if (!els.video.src || els.video.src.startsWith('data:')) {
-        els.video.src = "data:video/mp4;base64,AAAAIGZ0eXBpc29tAAACAGlzb21pc29tYXZjMQAAAAh0cmFmAAAAZHRraGQAAAADAAAAAAAAAAAAAAABAAAAAAAAAQAAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAAAAEAAAAABAAAAAAByZWYAAAAIZWxtcwAAAAEAAAABAAAAAAAAbWRpYWhkcmEAAAAAAA==";
-        els.video.loop = true;
-      }
-
       els.video.muted = true;
       els.video.setAttribute("playsinline", "");
       els.video.setAttribute("webkit-playsinline", "");
@@ -310,6 +300,12 @@
       return Promise.resolve(false);
     }
 
+    /**
+     * Safari / Chromium: requestPictureInPicture() phải được gọi trong cùng "user activation"
+     * với thao tác chạm. Gọi sau play().then(...) sẽ mất activation → lỗi
+     * "The request is not triggered by a user activation".
+     * Giải pháp: play() không await; gọi requestPictureInPicture() ngay trong cùng stack đồng bộ.
+     */
     try {
       var playP = v.play();
       if (playP && typeof playP.catch === "function") {
