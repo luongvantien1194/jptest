@@ -1,7 +1,6 @@
 (function () {
   "use strict";
 
-  // Cấu hình kích thước Canvas (tỉ lệ phù hợp cho cửa sổ PiP)
   const CANVAS_W = 405;
   const CANVAS_H = 500;
 
@@ -24,44 +23,42 @@
 
   const ctx = els.canvas.getContext("2d");
 
-  // --- PHẦN FIX LỖI MEDIASESSION & CHẠY NỀN ---
+  // --- GIẢI PHÁP FIX LỖI TRIỆT ĐỂ CHO SAFARI ---
 
-  /** 
-   * Cập nhật MediaSession an toàn 
-   * FIX: "Can't find variable: MediaSessionMetadata"
-   */
   function updateMediaSession() {
-    if ('mediaSession' in navigator && state.selected) {
-      try {
-        const metadataConfig = {
-          title: "Học Kanji: " + state.selected.kanji,
-          artist: state.selected.hanviet || "Kanji PiP",
-          album: "Tự học Tiếng Nhật",
-          artwork: [
-            { 
-              src: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512"><rect width="512" height="512" fill="%230f172a"/><text x="50%" y="50%" font-size="250" fill="white" text-anchor="middle" dominant-baseline="central">' + state.selected.kanji + '</text></svg>', 
-              sizes: '512x512', 
-              type: 'image/svg+xml' 
-            }
-          ]
-        };
+    // Chỉ chạy nếu navigator.mediaSession tồn tại
+    if (!navigator.mediaSession) return;
 
-        // KIỂM TRA BIẾN TOÀN CỤC TRƯỚC KHI KHỞI TẠO
-        if (window.MediaSessionMetadata) {
-          navigator.mediaSession.metadata = new MediaSessionMetadata(metadataConfig);
-        } else {
-          // Nếu Safari không expose class này, gán Object thuần (Safari vẫn nhận diện được)
-          navigator.mediaSession.metadata = metadataConfig;
-        }
-        
-        navigator.mediaSession.playbackState = 'playing';
-      } catch (e) {
-        console.warn("MediaSession update failed:", e);
-      }
+    try {
+      // Tạo object dữ liệu thuần, không dùng class MediaSessionMetadata
+      const data = {
+        title: "Học Kanji: " + (state.selected ? state.selected.kanji : ""),
+        artist: (state.selected ? state.selected.hanviet : "") || "Kanji PiP",
+        album: "Tự học Tiếng Nhật",
+        artwork: [
+          { 
+            src: 'data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="512" height="512"><rect width="512" height="512" fill="%230f172a"/><text x="50%" y="50%" font-size="250" fill="white" text-anchor="middle" dominant-baseline="central">' + (state.selected ? state.selected.kanji : "") + '</text></svg>', 
+            sizes: '512x512', 
+            type: 'image/svg+xml' 
+          }
+        ]
+      };
+
+      /**
+       * GIẢI PHÁP: Không dùng class, không dùng window.
+       * Thử gán trực tiếp, nếu trình duyệt yêu cầu constructor, 
+       * nó sẽ tự mapping object này vào metadata.
+       */
+      navigator.mediaSession.metadata = data;
+      navigator.mediaSession.playbackState = 'playing';
+
+    } catch (e) {
+      // Nếu vẫn lỗi, ta bỏ qua hoàn toàn phần Metadata để app không bị crash
+      console.log("MediaSession Metadata skipped to prevent crash");
     }
   }
 
-  /** Tạo track âm thanh im lặng để duy trì PiP khi khóa màn hình (Dành riêng cho iOS) */
+  /** Track âm thanh im lặng giúp PiP không bị iOS "kill" khi khóa máy */
   function createSilentAudioTrack() {
     try {
       const AudioContext = window.AudioContext || window.webkitAudioContext;
@@ -77,7 +74,7 @@
     }
   }
 
-  // Heartbeat: requestAnimationFrame sẽ dừng khi ẩn tab, nên dùng setInterval để giữ Canvas sống
+  // Giữ Canvas sống khi tab bị ẩn
   document.addEventListener("visibilitychange", function() {
     if (document.hidden) {
       if (!state.pipHeartbeat) {
@@ -91,7 +88,7 @@
     }
   });
 
-  // --- LOGIC XỬ LÝ DỮ LIỆU & VẼ ---
+  // --- LOGIC VẼ (GIỮ NGUYÊN) ---
 
   function normalizeVocabularyList(raw) {
     if (Array.isArray(raw.vocabulary)) {
@@ -141,7 +138,6 @@
     const item = state.selected;
     if (!item || !ctx) return;
 
-    // Background Dark
     ctx.fillStyle = "#020617";
     ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
     
@@ -149,14 +145,12 @@
     const maxW = CANVAS_W - 30;
     let y = 60;
 
-    // Vẽ Kanji chính
     ctx.textAlign = "center";
     ctx.fillStyle = "#f8fafc";
     ctx.font = "bold 100px 'Hiragino Sans', 'Yu Gothic', sans-serif";
     ctx.fillText(item.kanji || "", cx, y);
     y += 65;
 
-    // Hán Việt
     if (item.hanviet) {
       ctx.fillStyle = "#7dd3fc";
       ctx.font = "600 22px system-ui, sans-serif";
@@ -164,25 +158,22 @@
       y += 35;
     }
 
-    // Nghĩa chính
     ctx.fillStyle = "#cbd5e1";
     ctx.font = "20px system-ui, sans-serif";
     const meaningLines = wrapLinesToArray(item.meaning || "", maxW);
     y = drawParagraphCenter(cx, y, maxW, 26, meaningLines) + 20;
 
-    // Chi tiết On/Kun/Nét
     ctx.fillStyle = "#94a3b8";
     ctx.font = "16px system-ui, sans-serif";
     ctx.fillText("On: " + (item.on || "—"), cx, y); y += 25;
     ctx.fillText("Kun: " + (item.kun || "—"), cx, y); y += 25;
     ctx.fillText("Nét: " + (item.strokes || "—"), cx, y); y += 35;
 
-    // Từ vựng ví dụ
     const vocabs = item._vocabs || [];
     if (vocabs.length) {
       ctx.fillStyle = "#64748b";
       ctx.font = "bold 15px system-ui, sans-serif";
-      ctx.fillText("Từ vựng phổ biến", cx, y); y += 25;
+      ctx.fillText("Ví dụ", cx, y); y += 25;
       ctx.fillStyle = "#94a3b8";
       ctx.font = "14px system-ui, sans-serif";
       vocabs.slice(0, 3).forEach(v => {
@@ -197,14 +188,14 @@
     state.rafId = requestAnimationFrame(loop);
   }
 
-  // --- ĐIỀU KHIỂN PIP ---
+  // --- PIP CONTROL ---
 
   function setupStream() {
     if (!els.canvas.captureStream) return;
     try {
       if (state.stream) state.stream.getTracks().forEach(t => t.stop());
       
-      const canvasStream = els.canvas.captureStream(15); // 15 FPS là đủ để học
+      const canvasStream = els.canvas.captureStream(10);
       const silentAudio = createSilentAudioTrack();
       if (silentAudio) canvasStream.addTrack(silentAudio);
 
@@ -216,14 +207,14 @@
   }
 
   async function openPip() {
-    if (!els.video.requestPictureInPicture) {
-        alert("Trình duyệt của bạn không hỗ trợ Picture-in-Picture.");
-        return;
-    }
+    if (!els.video.requestPictureInPicture) return;
     try {
+      // Phải play video trước khi yêu cầu PiP
       await els.video.play();
       await els.video.requestPictureInPicture();
       state.pipActive = true;
+      
+      // Chạy updateMediaSession ngay sau khi PiP kích hoạt thành công
       updateMediaSession();
     } catch (err) {
       console.error("PiP Error:", err);
@@ -232,7 +223,7 @@
 
   els.btnPip.addEventListener("click", openPip);
 
-  // --- KHỞI CHẠY ---
+  // --- INIT ---
 
   function init(arr) {
     state.items = (arr || []).map((raw, idx) => ({
@@ -246,7 +237,6 @@
       _vocabs: normalizeVocabularyList({ vocabulary: raw.vocabulary })
     }));
     
-    // Check hash để hiển thị Kanji cụ thể
     const m = (window.location.hash || "").match(/^#kanji=(.+)$/);
     state.selected = m ? state.items.find(x => x.id === decodeURIComponent(m[1])) : state.items[0];
 
@@ -258,14 +248,8 @@
     }
   }
 
-  // Đợi dữ liệu từ file data.js
   if (typeof kanjiData !== "undefined") {
     init(kanjiData);
-  } else {
-    setTimeout(() => {
-        if (typeof kanjiData !== "undefined") init(kanjiData);
-        else if (els.loadStatus) els.loadStatus.textContent = "Lỗi: Không tải được dữ liệu Kanji.";
-    }, 1000);
   }
 
 })();
