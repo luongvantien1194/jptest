@@ -4,7 +4,7 @@
   // ========================
   // DATA & LOADING SECTION
   // ========================
-  // data from grammarData.js, kanjiData.js, vocabData.js
+  // Data from grammarData.js, kanjiData.js, vocabData.js
 
   const state = {
     currentTab: "vocab",
@@ -2778,6 +2778,16 @@
       jdictLink.target = "_blank";
       jdictLink.rel = "noopener noreferrer";
       jdictLink.textContent = "JDict";
+      var pipStt = raw.stt != null ? String(raw.stt) : String(globalIndex + 1);
+      var pipUrl = new URL("pip-kanji-pwa/index.html", window.location.href);
+      pipUrl.hash = "kanji=" + encodeURIComponent(pipStt);
+      var pipLink = document.createElement("a");
+      pipLink.className = "kd-mazii-link kd-pip-link";
+      pipLink.href = pipUrl.href;
+      pipLink.target = "_blank";
+      pipLink.rel = "noopener noreferrer";
+      pipLink.textContent = "PiP";
+      pipLink.title = "Kanji PiP Lab (id " + pipStt + ")";
       var openWriteBtn = createElement("button", "kd-writing-toggle-btn", "✏️");
       openWriteBtn.type = "button";
       openWriteBtn.addEventListener("click", function (e) {
@@ -2786,6 +2796,7 @@
       });
       heroActions.appendChild(maziiLink);
       heroActions.appendChild(jdictLink);
+      heroActions.appendChild(pipLink);
       heroActions.appendChild(openWriteBtn);
     }
     var indexLabel = createElement("div", "kd-index", String(globalIndex + 1));
