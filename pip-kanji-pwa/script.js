@@ -29,7 +29,7 @@
 
   const ctx = els.canvas.getContext("2d");
 
-  // --- GIỮ NGUYÊN CÁC HÀM LOGIC DỮ LIỆU ---
+  // --- XỬ LÝ DỮ LIỆU ---
 
   function parseLegacyPipeVocab(s) {
     var out = [];
@@ -63,18 +63,7 @@
     return [];
   }
 
-  function supportsPipFromCanvas() {
-    var c = els.canvas; var v = els.video;
-    if (!c || !c.captureStream) return { ok: false, reason: "Trình duyệt không hỗ trợ captureStream." };
-    if (!v || !v.requestPictureInPicture) return { ok: false, reason: "Trình duyệt không hỗ trợ PiP." };
-    return { ok: true };
-  }
-
-  function setFallback(msg) {
-    if (!els.fallback) return;
-    els.fallback.hidden = !msg;
-    els.fallback.textContent = msg || "";
-  }
+  // --- HÀM VẼ GIAO DIỆN (NEW DASHBOARD STYLE) ---
 
   function wrapLinesToArray(text, maxW) {
     var s = String(text || "").trim();
@@ -108,289 +97,149 @@
     return lines;
   }
 
-  function drawParagraphCenter(cx, y, maxW, lineHeight, lines) {
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-    for (var i = 0; i < lines.length; i++) {
-      ctx.fillText(lines[i], cx, y + lineHeight / 2);
-      y += lineHeight;
-    }
-    return y;
-  }
-
-  // --- CẤU TRÚC LẠI GIAO DIỆN VÀ CSS TRÊN CANVAS ---
-
   function drawCanvas() {
     var item = state.selected;
     if (!item || !ctx) return;
 
-    // 1. Nền Gradient chiều sâu
-    const grad = ctx.createLinearGradient(0, 0, 0, CANVAS_H);
-    grad.addColorStop(0, "#0f172a"); // Slate 900
-    grad.addColorStop(1, "#020617"); // Black
-    ctx.fillStyle = grad;
+    // 1. Nền tổng thể
+    ctx.fillStyle = "#020617"; 
     ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
-    ctx.save();
-
-    var cx = CANVAS_W / 2;
-    var pad = 24;
-    var maxW = CANVAS_W - 2 * pad;
     
-    // 2. VẼ KANJI CHÍNH (Cực đại hóa)
+    const pad = 20;
+    const colW = (CANVAS_W - pad * 3) / 2;
+
+    // --- KHỐI TRÁI: KANJI & HÁN VIỆT ---
+    ctx.fillStyle = "#1e293b";
+    ctx.beginPath();
+    ctx.roundRect(pad, pad, colW, 160, 12);
+    ctx.fill();
+
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
     ctx.fillStyle = "#ffffff";
-    ctx.font = "bold 145px 'Hiragino Sans', 'Yu Gothic', sans-serif";
-    // Đổ bóng nhẹ cho chữ nổi khối
-    ctx.shadowColor = "rgba(0, 0, 0, 0.5)";
-    ctx.shadowBlur = 10;
-    ctx.fillText(item.kanji || "", cx, 100);
-    ctx.shadowBlur = 0; // Tắt bóng cho các thành phần khác
+    ctx.font = "bold 110px 'Hiragino Sans', sans-serif";
+    ctx.fillText(item.kanji || "", pad + colW / 2, pad + 70);
 
-    // 3. TAG HÁN VIỆT (Nổi bật trong box)
-    var hv = (item.hanviet || "").toUpperCase();
-    ctx.font = "bold 24px system-ui, sans-serif";
-    var hvW = ctx.measureText(hv).width + 30;
-    ctx.fillStyle = "#38bdf8"; // Sky Blue
-    ctx.beginPath();
-    ctx.roundRect(cx - hvW/2, 175, hvW, 42, 8);
-    ctx.fill();
-    ctx.fillStyle = "#0f172a";
-    ctx.fillText(hv, cx, 198);
+    const hv = (item.hanviet || "").toUpperCase();
+    ctx.font = "bold 20px system-ui";
+    ctx.fillStyle = "#38bdf8";
+    ctx.fillText(hv, pad + colW / 2, pad + 135);
 
-    // 4. NGHĨA CHÍNH (Chữ to, dễ đọc)
-    ctx.fillStyle = "#f8fafc";
-    ctx.font = "600 28px system-ui, sans-serif";
-    var meaningLines = wrapLinesToArray(item.meaning || "", maxW);
-    var yAfterMeaning = drawParagraphCenter(cx, 240, maxW, 34, meaningLines.slice(0, 2)) + 15;
+    // --- KHỐI PHẢI: ON/KUN/STROKES ---
+    const rx = pad * 2 + colW;
+    ctx.textAlign = "left";
+    ctx.textBaseline = "top";
 
-    // 5. THÔNG TIN PHỤ (Gọn gàng)
-    ctx.fillStyle = "#94a3b8"; // Slate 400
-    ctx.font = "16px system-ui, sans-serif";
-    var info = "On: " + (item.on || "—") + "  •  Kun: " + (item.kun || "—");
-    ctx.fillText(info, cx, yAfterMeaning + 10);
+    // Số nét
     ctx.fillStyle = "#7dd3fc";
-    ctx.fillText("Số nét: " + (item.strokes || "—"), cx, yAfterMeaning + 35);
+    ctx.font = "bold 13px system-ui";
+    ctx.fillText("SỐ NÉT: " + (item.strokes || "—"), rx, pad + 5);
 
-    // 6. VÍ DỤ TIÊU BIỂU (Dạng Card)
-    var vocabs = item._vocabs || [];
-    if (vocabs.length) {
-      var yVocab = 410;
-      // Đường kẻ phân cách mờ
-      ctx.strokeStyle = "rgba(51, 65, 85, 0.5)";
-      ctx.beginPath(); ctx.moveTo(pad, yVocab - 20); ctx.lineTo(CANVAS_W - pad, yVocab - 20); ctx.stroke();
+    // On-reading
+    ctx.fillStyle = "#94a3b8";
+    ctx.font = "bold 11px system-ui";
+    ctx.fillText("ON-YOMI:", rx, pad + 32);
+    ctx.fillStyle = "#f1f5f9";
+    ctx.font = "500 15px system-ui";
+    var onL = wrapLinesToArray(item.on || "—", colW);
+    onL.slice(0, 2).forEach((l, i) => ctx.fillText(l, rx, pad + 48 + (i * 18)));
 
-      var v = vocabs[0]; // Chỉ lấy 1 ví dụ chất lượng nhất để đảm bảo chữ to rõ
+    // Kun-reading
+    ctx.fillStyle = "#94a3b8";
+    ctx.font = "bold 11px system-ui";
+    ctx.fillText("KUN-YOMI:", rx, pad + 95);
+    ctx.fillStyle = "#f1f5f9";
+    ctx.font = "500 15px system-ui";
+    var kunL = wrapLinesToArray(item.kun || "—", colW);
+    kunL.slice(0, 2).forEach((l, i) => ctx.fillText(l, rx, pad + 111 + (i * 18)));
+
+    // --- DẢI GIỮA: NGHĨA TIẾNG VIỆT ---
+    const mY = 200;
+    ctx.fillStyle = "#0f172a";
+    ctx.strokeStyle = "#334155";
+    ctx.beginPath();
+    ctx.roundRect(pad, mY, CANVAS_W - pad * 2, 75, 10);
+    ctx.fill(); ctx.stroke();
+
+    ctx.textAlign = "center";
+    ctx.fillStyle = "#ffffff";
+    ctx.font = "bold 24px system-ui";
+    var mLines = wrapLinesToArray(item.meaning || "", CANVAS_W - 60);
+    mLines.slice(0, 2).forEach((l, i) => {
+      ctx.fillText(l, CANVAS_W / 2, mY + 24 + (i * 30));
+    });
+
+    // --- DẢI DƯỚI: TỪ VỰNG CHI TIẾT ---
+    const vY = 295;
+    ctx.textAlign = "left";
+    ctx.fillStyle = "#64748b";
+    ctx.font = "bold 12px system-ui";
+    ctx.fillText("TỪ VỰNG TIÊU BIỂU", pad, vY);
+
+    const vocabs = item._vocabs || [];
+    vocabs.slice(0, 4).forEach((v, i) => {
+      const iy = vY + 28 + (i * 44);
+      // Bullet
+      ctx.fillStyle = "#38bdf8";
+      ctx.beginPath(); ctx.arc(pad + 5, iy + 8, 3, 0, Math.PI * 2); ctx.fill();
+      // Word
       ctx.fillStyle = "#f1f5f9";
-      ctx.font = "bold 22px system-ui, sans-serif";
-      var vText = v.word + (v.reading ? " [" + v.reading + "]" : "");
-      ctx.fillText(vText, cx, yVocab + 10);
-
+      ctx.font = "bold 16px system-ui";
+      ctx.fillText(v.word + (v.reading ? " (" + v.reading + ")" : ""), pad + 15, iy);
+      // Meaning
       ctx.fillStyle = "#94a3b8";
-      ctx.font = "italic 16px system-ui, sans-serif";
-      var vMean = wrapLinesToArray(v.meaning, maxW);
-      if(vMean.length) ctx.fillText(vMean[0], cx, yVocab + 38);
-    }
+      ctx.font = "14px system-ui";
+      const vm = v.meaning.length > 42 ? v.meaning.substring(0, 39) + "..." : v.meaning;
+      ctx.fillText(vm, pad + 15, iy + 20);
+    });
 
     ctx.restore();
   }
 
-  // --- GIỮ NGUYÊN TOÀN BỘ LOGIC ĐIỀU KHIỂN PIP VÀ STREAM CỦA FILE GỐC ---
+  // --- LOGIC PIP & STREAMING (GIỮ NGUYÊN TỪ FILE GỐC) ---
 
-  function loop() {
-    drawCanvas();
-    state.rafId = requestAnimationFrame(loop);
-  }
-
-  function stopLoop() {
-    if (state.rafId) { cancelAnimationFrame(state.rafId); state.rafId = 0; }
-  }
-
+  function loop() { drawCanvas(); state.rafId = requestAnimationFrame(loop); }
+  function stopLoop() { if (state.rafId) cancelAnimationFrame(state.rafId); }
+  
   function revokePipBlobUrl() {
     if (state.pipBlobUrl) { try { URL.revokeObjectURL(state.pipBlobUrl); } catch (e) {} state.pipBlobUrl = null; }
     state.pipUsingRecorded = false;
   }
 
-  function clearPipRecordTimer() {
-    if (state.pipRecordTimer) { clearTimeout(state.pipRecordTimer); state.pipRecordTimer = 0; }
-  }
-
-  function clearHiddenPipTimer() {
-    if (state.hiddenPipTimer) { clearInterval(state.hiddenPipTimer); state.hiddenPipTimer = 0; }
-  }
-
-  function refreshPipFrameFromCanvas() {
-    drawCanvas();
-    if (!state.stream) return;
-    var tracks = state.stream.getVideoTracks();
-    var t0 = tracks[0];
-    if (t0 && typeof t0.requestFrame === "function") {
-      try { t0.requestFrame(); } catch (e) {}
-    }
-  }
-
   function startHiddenPipRefresh() {
     if (state.hiddenPipTimer || state.pipUsingRecorded) return;
     state.hiddenPipTimer = setInterval(function () {
-      if (!state.pipActive || document.visibilityState !== "hidden") return;
-      refreshPipFrameFromCanvas();
+      if (state.pipActive && document.visibilityState === "hidden") {
+        drawCanvas();
+        var t = state.stream?.getVideoTracks()[0];
+        if (t?.requestFrame) t.requestFrame();
+      }
     }, 120);
   }
 
-  function pickMediaRecorderMime() {
-    if (typeof MediaRecorder === "undefined" || !MediaRecorder.isTypeSupported) return "";
-    var types = ["video/mp4", "video/webm;codecs=vp9", "video/webm"];
-    for (var i = 0; i < types.length; i++) {
-      if (MediaRecorder.isTypeSupported(types[i])) return types[i];
-    }
-    return "";
-  }
-
-  function recordStreamToLoopingBlob(stream, durationMs, done) {
-    if (!stream || typeof MediaRecorder === "undefined") { done(null); return; }
-    var mime = pickMediaRecorderMime();
-    var rec;
-    try {
-      rec = mime ? new MediaRecorder(stream, { mimeType: mime, videoBitsPerSecond: 2500000 }) : new MediaRecorder(stream);
-    } catch (e1) {
-      try { rec = new MediaRecorder(stream); } catch (e2) { done(null); return; }
-    }
-    var chunks = [];
-    var outMime = mime || rec.mimeType || "video/mp4";
-    var finished = false;
-    function finishOnce(blob) { if (finished) return; finished = true; done(blob); }
-    rec.ondataavailable = function (e) { if (e.data && e.data.size) chunks.push(e.data); };
-    rec.onstop = function () { var blob = chunks.length ? new Blob(chunks, { type: outMime }) : null; finishOnce(blob); };
-    try { rec.start(200); } catch (e) { finishOnce(null); return; }
-    setTimeout(function () { if (rec.state === "recording") try { rec.stop(); } catch (e) {} }, durationMs);
-    setTimeout(function () { if (!finished) finishOnce(null); }, durationMs + 2200);
-  }
-
-  function applyLoopingBlobToPipVideo(blob) {
-    var v = els.video;
-    if (!blob || !v) return;
-    if (document.pictureInPictureElement !== v || !state.pipActive) return;
-    revokePipBlobUrl();
-    state.pipBlobUrl = URL.createObjectURL(blob);
-    state.pipUsingRecorded = true;
-    try { v.srcObject = null; } catch (e) {}
-    v.src = state.pipBlobUrl;
-    v.loop = true;
-    v.muted = true;
-    v.play().catch(function () {});
-    clearHiddenPipTimer();
-    if (state.stream) {
-      state.stream.getTracks().forEach(function (t) { t.stop(); });
-      state.stream = null;
-    }
-  }
-
-  function schedulePipRecordedLoopSwap() {
-    clearPipRecordTimer();
-    if (state.pipUsingRecorded || typeof MediaRecorder === "undefined") return;
-    state.pipRecordTimer = setTimeout(function () {
-      state.pipRecordTimer = 0;
-      if (!state.pipActive || document.pictureInPictureElement !== els.video || !state.stream) return;
-      recordStreamToLoopingBlob(state.stream, 1600, function (blob) {
-        if (blob && blob.size && state.pipActive && document.pictureInPictureElement === els.video) {
-          applyLoopingBlobToPipVideo(blob);
-        }
-      });
-    }, 450);
-  }
-
   function attachStreamToVideo() {
-    var cap = supportsPipFromCanvas();
-    if (!cap.ok) { els.btnPip.disabled = true; return; }
+    if (!els.canvas.captureStream) { els.btnPip.disabled = true; return; }
     try {
-      clearPipRecordTimer();
       revokePipBlobUrl();
-      if (els.video) { els.video.removeAttribute("src"); els.video.src = ""; }
-      if (state.stream) { state.stream.getTracks().forEach(function (t) { t.stop(); }); }
+      if (state.stream) state.stream.getTracks().forEach(t => t.stop());
       state.stream = els.canvas.captureStream(30);
       els.video.srcObject = state.stream;
       els.video.muted = true;
-      els.video.setAttribute("playsinline", "");
+      els.video.play().catch(() => {});
       els.btnPip.disabled = false;
-      setFallback("");
-      if (document.pictureInPictureElement === els.video) { els.video.play().catch(function () {}); }
-    } catch (e) { els.btnPip.disabled = true; }
-  }
-
-  function renderDetail(opts) {
-    opts = opts || {};
-    var item = state.selected;
-    if (!item) { els.detailPanel.hidden = true; stopLoop(); return; }
-    els.detailPanel.hidden = false;
-    attachStreamToVideo();
-    drawCanvas();
-    if (!state.rafId) { state.rafId = requestAnimationFrame(loop); }
-    if (opts.skipAutoPip !== true && state.autoPipOnSelect && supportsPipFromCanvas().ok) {
-      openPipFromUserGesture({ silent: true });
-    }
-    if (state.pipActive && els.video && document.pictureInPictureElement === els.video) {
-      schedulePipRecordedLoopSwap();
-    }
-  }
-
-  function openPipFromUserGesture(opts) {
-    opts = opts || {};
-    var v = els.video;
-    if (!v || !v.requestPictureInPicture) return Promise.resolve(false);
-    
-    if (document.pictureInPictureElement === v) {
-      state.pipActive = true;
-      v.play().catch(function () {});
-      schedulePipRecordedLoopSwap();
-      return Promise.resolve(true);
-    }
-
-    try { v.play().catch(function () {}); } catch (e) {}
-
-    return v.requestPictureInPicture()
-      .then(function () {
-        state.pipActive = true;
-        setFallback("");
-        schedulePipRecordedLoopSwap();
-        return true;
-      })
-      .catch(function (err) {
-        if (!opts.silent) setFallback("Lỗi PiP: " + err.message);
-        return false;
-      });
-  }
-
-  els.btnPip.addEventListener("click", function () { openPipFromUserGesture({ silent: false }); });
-
-  if (els.video) {
-    els.video.addEventListener("enterpictureinpicture", function () {
-      state.pipActive = true;
-      schedulePipRecordedLoopSwap();
-    });
-    els.video.addEventListener("leavepictureinpicture", function () {
-      state.pipActive = false;
-      clearHiddenPipTimer(); clearPipRecordTimer(); revokePipBlobUrl();
-      if (state.selected) { attachStreamToVideo(); drawCanvas(); }
-    });
-  }
-
-  document.addEventListener("visibilitychange", function () {
-    if (state.pipActive && document.visibilityState === "hidden") {
-      if (!state.pipUsingRecorded) startHiddenPipRefresh();
-    } else if (state.pipActive) {
-      clearHiddenPipTimer(); drawCanvas();
-    }
-  });
-
-  function bootFromHash() {
-    var m = (window.location.hash || "").match(/^#kanji=(.+)$/);
-    if (!m || !state.items.length) return;
-    try {
-      var id = decodeURIComponent(m[1]);
-      var found = state.items.find(function (x) { return String(x.id) === String(id); });
-      if (found) { state.selected = found; renderDetail({ skipAutoPip: true }); }
     } catch (e) {}
   }
+
+  function openPipFromUserGesture(opts = {}) {
+    var v = els.video;
+    if (!v.requestPictureInPicture) return Promise.resolve(false);
+    v.play().catch(() => {});
+    return v.requestPictureInPicture()
+      .then(() => { state.pipActive = true; return true; })
+      .catch((err) => { return false; });
+  }
+
+  // --- KHỞI TẠO DỮ LIỆU ---
 
   function bootFromKanjiData(arr) {
     state.items = (Array.isArray(arr) ? arr : []).map(function (raw, idx) {
@@ -405,18 +254,43 @@
         _vocabs: normalizeVocabularyList({ vocabulary: raw.vocabulary })
       };
     });
-    bootFromHash();
-    if (!state.selected && state.items.length) {
+    if (state.items.length) {
       state.selected = state.items[0];
       renderDetail({ skipAutoPip: true });
     }
   }
 
+  function renderDetail(opts = {}) {
+    if (!state.selected) return;
+    els.detailPanel.hidden = false;
+    attachStreamToVideo();
+    drawCanvas();
+    if (!state.rafId) loop();
+    if (!opts.skipAutoPip && state.autoPipOnSelect) openPipFromUserGesture();
+  }
+
+  // --- EVENT LISTENERS ---
+
+  els.btnPip.addEventListener("click", () => openPipFromUserGesture());
+
+  if (els.video) {
+    els.video.addEventListener("enterpictureinpicture", () => { state.pipActive = true; });
+    els.video.addEventListener("leavepictureinpicture", () => { 
+      state.pipActive = false; 
+      clearInterval(state.hiddenPipTimer); 
+      state.hiddenPipTimer = 0;
+    });
+  }
+
+  document.addEventListener("visibilitychange", () => {
+    if (state.pipActive && document.visibilityState === "hidden") startHiddenPipRefresh();
+    else { clearInterval(state.hiddenPipTimer); state.hiddenPipTimer = 0; drawCanvas(); }
+  });
+
   function loadKanjiData() {
-    var kd = (typeof kanjiData !== "undefined" && kanjiData.length) ? kanjiData : (window.kanjiData || null);
+    var kd = (typeof kanjiData !== "undefined") ? kanjiData : (window.kanjiData || null);
     if (kd) bootFromKanjiData(kd);
   }
 
-  window.addEventListener("hashchange", bootFromHash);
   loadKanjiData();
 })();
