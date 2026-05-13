@@ -28,10 +28,6 @@
 
   const ctx = els.canvas.getContext("2d");
 
-  // =====================================================
-  // VOCAB
-  // =====================================================
-
   function parseLegacyPipeVocab(s) {
     var out = [];
 
@@ -91,10 +87,6 @@
     return [];
   }
 
-  // =====================================================
-  // PiP
-  // =====================================================
-
   function supportsPipFromCanvas() {
     var c = els.canvas;
     var v = els.video;
@@ -124,10 +116,6 @@
     els.fallback.hidden = !msg;
     els.fallback.textContent = msg || "";
   }
-
-  // =====================================================
-  // TEXT
-  // =====================================================
 
   function wrapLinesToArray(text, maxW) {
     var s = String(text || "").trim();
@@ -167,7 +155,8 @@
           var mid = Math.ceil((lo + hi) / 2);
 
           if (
-            ctx.measureText(cur.slice(0, mid)).width <= maxW
+            ctx.measureText(cur.slice(0, mid)).width <=
+            maxW
           ) {
             lo = mid;
           } else {
@@ -193,6 +182,7 @@
   function drawParagraphCenter(
     cx,
     y,
+    maxW,
     lineHeight,
     lines
   ) {
@@ -213,7 +203,7 @@
   }
 
   // =====================================================
-  // DRAW
+  // BEAUTIFIED LAYOUT
   // =====================================================
 
   function drawCanvas() {
@@ -222,8 +212,6 @@
     if (!item || !ctx) {
       return;
     }
-
-    // BG
 
     var bg = ctx.createLinearGradient(
       0,
@@ -246,17 +234,12 @@
 
     ctx.save();
 
-    // =====================================================
-    // LAYOUT
-    // =====================================================
+    var leftW = 138;
+    var rightX = leftW + 22;
+    var rightW =
+      CANVAS_W - rightX - 18;
 
-    var leftW = 136;
-    var rightX = leftW + 24;
-    var rightW = CANVAS_W - rightX - 18;
-
-    // =====================================================
     // LEFT PANEL
-    // =====================================================
 
     ctx.fillStyle =
       "rgba(255,255,255,0.045)";
@@ -274,7 +257,7 @@
     ctx.fill();
 
     ctx.strokeStyle =
-      "rgba(255,255,255,0.06)";
+      "rgba(255,255,255,0.07)";
 
     ctx.lineWidth = 1;
 
@@ -283,42 +266,38 @@
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
 
-    // =====================================================
     // KANJI
-    // =====================================================
 
     ctx.fillStyle = "#f8fafc";
 
     ctx.font =
-      "bold 76px 'Hiragino Sans', 'Yu Gothic', 'PingFang SC', sans-serif";
+      "bold 84px 'Hiragino Sans', 'Yu Gothic', 'PingFang SC', sans-serif";
 
     ctx.shadowColor =
-      "rgba(255,255,255,0.18)";
+      "rgba(255,255,255,0.15)";
 
-    ctx.shadowBlur = 18;
+    ctx.shadowBlur = 16;
 
     ctx.fillText(
       item.kanji || "",
       12 + leftW / 2,
-      100
+      108
     );
 
     ctx.shadowBlur = 0;
 
-    // =====================================================
     // HANVIET
-    // =====================================================
 
     if (item.hanviet) {
       ctx.fillStyle = "#7dd3fc";
 
       ctx.font =
-        "700 21px system-ui, sans-serif";
+        "700 22px system-ui, sans-serif";
 
       ctx.fillText(
         item.hanviet,
         12 + leftW / 2,
-        160
+        175
       );
     }
 
@@ -329,28 +308,26 @@
 
     ctx.beginPath();
 
-    ctx.moveTo(28, 208);
+    ctx.moveTo(30, 225);
 
     ctx.lineTo(
-      12 + leftW - 28,
-      208
+      12 + leftW - 30,
+      225
     );
 
     ctx.stroke();
 
-    // =====================================================
     // ON
-    // =====================================================
 
     ctx.fillStyle = "#64748b";
 
     ctx.font =
-      "700 12px system-ui, sans-serif";
+      "bold 13px system-ui, sans-serif";
 
     ctx.fillText(
       "ON",
       12 + leftW / 2,
-      245
+      265
     );
 
     ctx.fillStyle = "#f1f5f9";
@@ -361,29 +338,28 @@
     var onLines =
       wrapLinesToArray(
         item.on || "—",
-        108
+        110
       );
 
     drawParagraphCenter(
       12 + leftW / 2,
-      262,
+      285,
+      110,
       21,
       onLines
     );
 
-    // =====================================================
     // KUN
-    // =====================================================
 
     ctx.fillStyle = "#64748b";
 
     ctx.font =
-      "700 12px system-ui, sans-serif";
+      "bold 13px system-ui, sans-serif";
 
     ctx.fillText(
       "KUN",
       12 + leftW / 2,
-      360
+      385
     );
 
     ctx.fillStyle = "#f1f5f9";
@@ -394,19 +370,18 @@
     var kunLines =
       wrapLinesToArray(
         item.kun || "—",
-        108
+        110
       );
 
     drawParagraphCenter(
       12 + leftW / 2,
-      377,
+      405,
+      110,
       21,
       kunLines
     );
 
-    // =====================================================
     // RIGHT
-    // =====================================================
 
     ctx.textAlign = "left";
 
@@ -416,7 +391,7 @@
       ctx.fillStyle = "#7dd3fc";
 
       ctx.font =
-        "700 15px system-ui, sans-serif";
+        "700 16px system-ui, sans-serif";
 
       ctx.fillText(
         title,
@@ -424,12 +399,10 @@
         y
       );
 
-      y += 20;
+      y += 18;
     }
 
-    // =====================================================
-    // MEANING
-    // =====================================================
+    // Meaning
 
     if (item.meaning) {
       sectionTitle("Ý nghĩa");
@@ -452,15 +425,13 @@
           y
         );
 
-        y += 20;
+        y += 4;
       });
 
-      y += 12;
+      y += 25;
     }
 
-    // =====================================================
-    // RADICAL
-    // =====================================================
+    // Radical
 
     if (item.radicals) {
       sectionTitle("Bộ thủ");
@@ -483,15 +454,13 @@
           y
         );
 
-        y += 18;
+        y += 4;
       });
 
-      y += 12;
+      y += 25;
     }
 
-    // =====================================================
-    // MEMORY
-    // =====================================================
+    // Memory tip
 
     if (item.memory_tip) {
       sectionTitle("Gợi nhớ");
@@ -499,7 +468,7 @@
       ctx.fillStyle = "#94a3b8";
 
       ctx.font =
-        "14px system-ui, sans-serif";
+        "15px system-ui, sans-serif";
 
       var tipLines =
         wrapLinesToArray(
@@ -514,15 +483,13 @@
           y
         );
 
-        y += 17;
+        y += 16;
       });
 
-      y += 14;
+      y += 25;
     }
 
-    // =====================================================
     // VOCAB
-    // =====================================================
 
     var vocabs =
       item._vocabs || [];
@@ -535,21 +502,19 @@
         .forEach(function (v) {
 
           ctx.fillStyle =
-            "rgba(255,255,255,0.045)";
+            "rgba(255,255,255,0.04)";
 
           ctx.beginPath();
 
           ctx.roundRect(
-            rightX - 7,
-            y - 8,
-            rightW + 10,
-            74,
-            16
+            rightX - 6,
+            y - 2,
+            rightW + 8,
+            62,
+            14
           );
 
           ctx.fill();
-
-          // title
 
           ctx.fillStyle = "#ffffff";
 
@@ -568,11 +533,9 @@
 
           ctx.fillText(
             title,
-            rightX + 5,
-            y + 14
+            rightX + 4,
+            y + 16
           );
-
-          // meaning
 
           if (v.meaning) {
             ctx.fillStyle =
@@ -584,7 +547,7 @@
             var mLines =
               wrapLinesToArray(
                 v.meaning,
-                rightW - 12
+                rightW - 10
               );
 
             var my = y + 38;
@@ -594,7 +557,7 @@
               .forEach(function (line) {
                 ctx.fillText(
                   line,
-                  rightX + 5,
+                  rightX + 4,
                   my
                 );
 
@@ -602,16 +565,12 @@
               });
           }
 
-          y += 84;
+          y += 74;
         });
     }
 
     ctx.restore();
   }
-
-  // =====================================================
-  // LOOP
-  // =====================================================
 
   function loop() {
     drawCanvas();
@@ -629,10 +588,6 @@
       state.rafId = 0;
     }
   }
-
-  // =====================================================
-  // PiP STREAM
-  // =====================================================
 
   function attachStreamToVideo() {
     var cap =
@@ -686,10 +641,6 @@
     }
   }
 
-  // =====================================================
-  // RENDER
-  // =====================================================
-
   function renderDetail() {
     var item = state.selected;
 
@@ -712,10 +663,6 @@
         requestAnimationFrame(loop);
     }
   }
-
-  // =====================================================
-  // PiP OPEN
-  // =====================================================
 
   function openPipFromUserGesture() {
     var v = els.video;
@@ -775,10 +722,6 @@
       openPipFromUserGesture();
     }
   );
-
-  // =====================================================
-  // LOAD
-  // =====================================================
 
   function clearLoadError() {
     if (els.loadStatus) {
