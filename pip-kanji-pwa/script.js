@@ -213,6 +213,10 @@
     ctx.closePath();
   }
 
+  // =========================================================
+  // HORIZONTAL LAYOUT
+  // =========================================================
+
   function drawCanvas() {
     var item = state.selected;
 
@@ -222,6 +226,7 @@
 
     ctx.clearRect(0, 0, CANVAS_W, CANVAS_H);
 
+    // ===== Background =====
     var bg = ctx.createLinearGradient(
       0,
       0,
@@ -237,198 +242,285 @@
 
     ctx.save();
 
-    ctx.beginPath();
-    ctx.rect(0, 0, CANVAS_W, CANVAS_H);
-    ctx.clip();
+    // ===== Layout =====
+    var leftW = 150;
+    var rightX = leftW + 18;
+    var rightW = CANVAS_W - rightX - 16;
 
-    var cx = CANVAS_W / 2;
-    var pad = 22;
-    var maxW = CANVAS_W - pad * 2;
-    var y = 34;
-
-    ctx.strokeStyle = "rgba(255,255,255,0.08)";
-    ctx.lineWidth = 1;
-
-    ctx.beginPath();
-    ctx.moveTo(24, 26);
-    ctx.lineTo(CANVAS_W - 24, 26);
-    ctx.stroke();
-
-    ctx.textAlign = "center";
-    ctx.textBaseline = "middle";
-
-    ctx.shadowColor = "rgba(255,255,255,0.08)";
-    ctx.shadowBlur = 12;
-
-    ctx.fillStyle = "#f8fafc";
-
-    ctx.font =
-      "bold 104px 'Hiragino Sans', 'Yu Gothic', 'PingFang SC', sans-serif";
-
-    ctx.fillText(item.kanji || "", cx, y + 56);
-
-    ctx.shadowBlur = 0;
-
-    y += 118;
-
-    if (item.hanviet) {
-      ctx.fillStyle = "#7dd3fc";
-      ctx.font =
-        "600 20px system-ui, sans-serif";
-
-      ctx.fillText(item.hanviet, cx, y);
-
-      y += 34;
-    }
-
-    if (item.meaning) {
-      ctx.fillStyle = "#e2e8f0";
-      ctx.font =
-        "18px system-ui, sans-serif";
-
-      var meaningLines = wrapLinesToArray(
-        item.meaning,
-        maxW
-      );
-
-      y = drawParagraphCenter(
-        cx,
-        y,
-        maxW,
-        26,
-        meaningLines
-      );
-
-      y += 18;
-    }
-
-    var boxX = 24;
-    var boxW = CANVAS_W - 48;
-    var boxY = y;
-    var rowH = 28;
-    var boxH = rowH * 3 + 18;
-
+    // ===== Left panel =====
     ctx.fillStyle = "rgba(255,255,255,0.04)";
 
     roundRect(
       ctx,
-      boxX,
-      boxY,
-      boxW,
-      boxH,
-      14
+      12,
+      12,
+      leftW,
+      CANVAS_H - 24,
+      18
     );
 
     ctx.fill();
 
-    ctx.fillStyle = "#cbd5e1";
+    // ===== Kanji =====
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+
+    ctx.shadowColor = "rgba(255,255,255,0.12)";
+    ctx.shadowBlur = 16;
+
+    ctx.fillStyle = "#f8fafc";
 
     ctx.font =
-      "15px system-ui, sans-serif";
-
-    ctx.textAlign = "left";
+      "bold 100px 'Hiragino Sans', 'Yu Gothic', 'PingFang SC', sans-serif";
 
     ctx.fillText(
-      "On:",
-      boxX + 16,
-      boxY + 24
+      item.kanji || "",
+      12 + leftW / 2,
+      120
     );
 
-    ctx.fillText(
-      "Kun:",
-      boxX + 16,
-      boxY + 24 + rowH
-    );
+    ctx.shadowBlur = 0;
+
+    // ===== Hanviet =====
+    if (item.hanviet) {
+      ctx.fillStyle = "#7dd3fc";
+
+      ctx.font =
+        "600 22px system-ui, sans-serif";
+
+      ctx.fillText(
+        item.hanviet,
+        12 + leftW / 2,
+        195
+      );
+    }
+
+    // ===== Stroke =====
+    ctx.fillStyle = "#94a3b8";
+
+    ctx.font =
+      "14px system-ui, sans-serif";
 
     ctx.fillText(
-      "Nét:",
-      boxX + 16,
-      boxY + 24 + rowH * 2
+      "NÉT",
+      12 + leftW / 2,
+      255
     );
 
     ctx.fillStyle = "#f8fafc";
 
-    ctx.fillText(
-      item.on || "—",
-      boxX + 70,
-      boxY + 24
-    );
-
-    ctx.fillText(
-      item.kun || "—",
-      boxX + 70,
-      boxY + 24 + rowH
-    );
+    ctx.font =
+      "bold 34px system-ui, sans-serif";
 
     ctx.fillText(
       item.strokes != null
         ? String(item.strokes)
         : "—",
-      boxX + 70,
-      boxY + 24 + rowH * 2
+      12 + leftW / 2,
+      295
     );
 
-    y += boxH + 18;
+    // ===== ON =====
+    ctx.fillStyle = "#64748b";
 
+    ctx.font =
+      "bold 13px system-ui, sans-serif";
+
+    ctx.fillText(
+      "ON",
+      12 + leftW / 2,
+      360
+    );
+
+    ctx.fillStyle = "#e2e8f0";
+
+    ctx.font =
+      "14px system-ui, sans-serif";
+
+    var onLines = wrapLinesToArray(
+      item.on || "—",
+      110
+    );
+
+    drawParagraphCenter(
+      12 + leftW / 2,
+      376,
+      110,
+      18,
+      onLines
+    );
+
+    // ===== KUN =====
+    ctx.fillStyle = "#64748b";
+
+    ctx.font =
+      "bold 13px system-ui, sans-serif";
+
+    ctx.fillText(
+      "KUN",
+      12 + leftW / 2,
+      430
+    );
+
+    ctx.fillStyle = "#e2e8f0";
+
+    ctx.font =
+      "14px system-ui, sans-serif";
+
+    var kunLines = wrapLinesToArray(
+      item.kun || "—",
+      110
+    );
+
+    drawParagraphCenter(
+      12 + leftW / 2,
+      446,
+      110,
+      18,
+      kunLines
+    );
+
+    // =====================================================
+    // RIGHT PANEL
+    // =====================================================
+
+    var y = 26;
+
+    // ===== Meaning =====
+    if (item.meaning) {
+      ctx.textAlign = "left";
+
+      ctx.fillStyle = "#f8fafc";
+
+      ctx.font =
+        "bold 18px system-ui, sans-serif";
+
+      ctx.fillText(
+        "Ý nghĩa",
+        rightX,
+        y
+      );
+
+      y += 18;
+
+      ctx.fillStyle = "#cbd5e1";
+
+      ctx.font =
+        "15px system-ui, sans-serif";
+
+      var meaningLines =
+        wrapLinesToArray(
+          item.meaning,
+          rightW
+        );
+
+      meaningLines.forEach(function (line) {
+        ctx.fillText(
+          line,
+          rightX,
+          y + 20
+        );
+
+        y += 22;
+      });
+
+      y += 14;
+    }
+
+    // ===== Radical =====
     if (item.radicals) {
-      ctx.textAlign = "center";
+      ctx.fillStyle = "#7dd3fc";
+
+      ctx.font =
+        "bold 15px system-ui, sans-serif";
+
+      ctx.fillText(
+        "Bộ thủ",
+        rightX,
+        y
+      );
+
+      y += 18;
 
       ctx.fillStyle = "#94a3b8";
 
       ctx.font =
         "14px system-ui, sans-serif";
 
-      var radLines = wrapLinesToArray(
-        "Bộ thủ: " + item.radicals,
-        maxW
-      );
+      var radLines =
+        wrapLinesToArray(
+          item.radicals,
+          rightW
+        );
 
-      y = drawParagraphCenter(
-        cx,
-        y,
-        maxW,
-        20,
-        radLines
-      );
+      radLines.forEach(function (line) {
+        ctx.fillText(
+          line,
+          rightX,
+          y + 18
+        );
 
-      y += 12;
+        y += 20;
+      });
+
+      y += 14;
     }
 
+    // ===== Memory =====
     if (item.memory_tip) {
-      ctx.fillStyle = "#64748b";
-
-      ctx.font =
-        "italic 13px system-ui, sans-serif";
-
-      var tipLines = wrapLinesToArray(
-        item.memory_tip,
-        maxW
-      );
-
-      y = drawParagraphCenter(
-        cx,
-        y,
-        maxW,
-        18,
-        tipLines
-      );
-
-      y += 18;
-    }
-
-    var vocabs = item._vocabs || [];
-
-    if (vocabs.length) {
-      ctx.textAlign = "center";
-
       ctx.fillStyle = "#7dd3fc";
 
       ctx.font =
         "bold 15px system-ui, sans-serif";
 
-      ctx.fillText("TỪ VỰNG", cx, y);
+      ctx.fillText(
+        "Gợi nhớ",
+        rightX,
+        y
+      );
 
-      y += 22;
+      y += 18;
+
+      ctx.fillStyle = "#64748b";
+
+      ctx.font =
+        "italic 13px system-ui, sans-serif";
+
+      var tipLines =
+        wrapLinesToArray(
+          item.memory_tip,
+          rightW
+        );
+
+      tipLines.forEach(function (line) {
+        ctx.fillText(
+          line,
+          rightX,
+          y + 17
+        );
+
+        y += 18;
+      });
+
+      y += 14;
+    }
+
+    // ===== Vocabulary =====
+    var vocabs = item._vocabs || [];
+
+    if (vocabs.length) {
+      ctx.fillStyle = "#7dd3fc";
+
+      ctx.font =
+        "bold 15px system-ui, sans-serif";
+
+      ctx.fillText(
+        "Từ vựng",
+        rightX,
+        y
+      );
+
+      y += 20;
 
       vocabs.slice(0, 4).forEach(function (v) {
         ctx.fillStyle = "#f8fafc";
@@ -436,24 +528,27 @@
         ctx.font =
           "600 14px system-ui, sans-serif";
 
-        var top = v.word || "";
+        var title = v.word || "";
 
         if (v.reading) {
-          top += " (" + v.reading + ")";
+          title += " (" + v.reading + ")";
         }
 
-        var topLines = wrapLinesToArray(
-          top,
-          maxW
-        );
+        var wordLines =
+          wrapLinesToArray(
+            title,
+            rightW
+          );
 
-        y = drawParagraphCenter(
-          cx,
-          y,
-          maxW,
-          18,
-          topLines
-        );
+        wordLines.forEach(function (line) {
+          ctx.fillText(
+            line,
+            rightX,
+            y + 17
+          );
+
+          y += 18;
+        });
 
         if (v.meaning) {
           ctx.fillStyle = "#94a3b8";
@@ -461,19 +556,21 @@
           ctx.font =
             "13px system-ui, sans-serif";
 
-          var meaningLines2 =
+          var mLines =
             wrapLinesToArray(
               v.meaning,
-              maxW
+              rightW - 6
             );
 
-          y = drawParagraphCenter(
-            cx,
-            y,
-            maxW,
-            17,
-            meaningLines2
-          );
+          mLines.forEach(function (line) {
+            ctx.fillText(
+              line,
+              rightX + 6,
+              y + 15
+            );
+
+            y += 16;
+          });
         }
 
         y += 10;
@@ -483,5 +580,291 @@
     ctx.restore();
   }
 
-  window.__KANJI_DRAW_CANVAS__ = drawCanvas;
+  function loop() {
+    drawCanvas();
+
+    state.rafId =
+      requestAnimationFrame(loop);
+  }
+
+  function stopLoop() {
+    if (state.rafId) {
+      cancelAnimationFrame(state.rafId);
+      state.rafId = 0;
+    }
+  }
+
+  function attachStreamToVideo() {
+    var cap = supportsPipFromCanvas();
+
+    if (!cap.ok) {
+      els.btnPip.disabled = true;
+      setFallback(cap.reason);
+      return;
+    }
+
+    try {
+      if (state.stream) {
+        state.stream
+          .getTracks()
+          .forEach(function (t) {
+            t.stop();
+          });
+      }
+
+      state.stream =
+        els.canvas.captureStream(30);
+
+      els.video.srcObject =
+        state.stream;
+
+      els.video.muted = true;
+
+      els.video.setAttribute(
+        "playsinline",
+        ""
+      );
+
+      els.btnPip.disabled = false;
+
+      setFallback("");
+    } catch (e) {
+      els.btnPip.disabled = true;
+
+      setFallback(
+        "Không tạo được stream."
+      );
+    }
+  }
+
+  function renderDetail(opts) {
+    opts = opts || {};
+
+    var item = state.selected;
+
+    if (!item) {
+      els.detailPanel.hidden = true;
+      stopLoop();
+      return;
+    }
+
+    els.detailPanel.hidden = false;
+
+    attachStreamToVideo();
+
+    drawCanvas();
+
+    if (!state.rafId) {
+      state.rafId =
+        requestAnimationFrame(loop);
+    }
+  }
+
+  function openPipFromUserGesture() {
+    var v = els.video;
+
+    if (
+      !v ||
+      !v.requestPictureInPicture
+    ) {
+      return;
+    }
+
+    try {
+      var playP = v.play();
+
+      if (
+        playP &&
+        typeof playP.catch ===
+          "function"
+      ) {
+        playP.catch(function () {});
+      }
+
+      v.requestPictureInPicture()
+        .then(function () {
+          state.pipActive = true;
+        })
+        .catch(function () {});
+    } catch (e) {}
+  }
+
+  els.btnPip.addEventListener(
+    "click",
+    function () {
+      openPipFromUserGesture();
+    }
+  );
+
+  function clearLoadError() {
+    if (els.loadStatus) {
+      els.loadStatus.textContent = "";
+      els.loadStatus.hidden = true;
+    }
+  }
+
+  function showLoadError(msg) {
+    if (!els.loadStatus) return;
+
+    els.loadStatus.textContent = msg;
+    els.loadStatus.hidden = false;
+  }
+
+  function bootFromHash() {
+    var m = (
+      window.location.hash || ""
+    ).match(/^#kanji=(.+)$/);
+
+    if (!m || !state.items.length) {
+      return;
+    }
+
+    try {
+      var id = decodeURIComponent(m[1]);
+
+      var found = state.items.find(
+        function (x) {
+          return (
+            String(x.id) ===
+            String(id)
+          );
+        }
+      );
+
+      if (found) {
+        state.selected = found;
+
+        renderDetail({
+          skipAutoPip: true
+        });
+
+        clearLoadError();
+      }
+    } catch (e) {}
+  }
+
+  function bootFromKanjiData(arr) {
+    state.items = (
+      Array.isArray(arr)
+        ? arr
+        : []
+    ).map(function (raw, idx) {
+      var on = String(
+        raw.on_reading != null
+          ? raw.on_reading
+          : ""
+      ).replace(/\|/g, "、");
+
+      var kun = String(
+        raw.kun_reading != null
+          ? raw.kun_reading
+          : ""
+      ).replace(/\|/g, "、");
+
+      var o = {
+        id: String(
+          raw.stt != null
+            ? raw.stt
+            : idx + 1
+        ),
+
+        kanji: raw.kanji || "",
+
+        meaning:
+          raw.core_meaning || "",
+
+        on: on,
+
+        kun: kun,
+
+        strokes:
+          raw.stroke_count != null
+            ? raw.stroke_count
+            : "",
+
+        hanviet:
+          raw.hanviet || "",
+
+        radicals:
+          raw.radicals != null
+            ? String(raw.radicals)
+            : "",
+
+        memory_tip:
+          raw.memory_tip != null
+            ? String(raw.memory_tip)
+            : "",
+
+        vocabulary:
+          raw.vocabulary
+      };
+
+      o._vocabs =
+        normalizeVocabularyList({
+          vocabulary:
+            raw.vocabulary
+        });
+
+      return o;
+    });
+
+    bootFromHash();
+
+    if (
+      !state.selected &&
+      state.items.length
+    ) {
+      state.selected =
+        state.items[0];
+
+      renderDetail({
+        skipAutoPip: true
+      });
+    }
+
+    clearLoadError();
+  }
+
+  function getKanjiDataArray() {
+    if (
+      typeof kanjiData !==
+        "undefined" &&
+      Array.isArray(kanjiData) &&
+      kanjiData.length
+    ) {
+      return kanjiData;
+    }
+
+    if (
+      window.kanjiData &&
+      Array.isArray(
+        window.kanjiData
+      ) &&
+      window.kanjiData.length
+    ) {
+      return window.kanjiData;
+    }
+
+    return null;
+  }
+
+  function loadKanjiData() {
+    var kd = getKanjiDataArray();
+
+    if (kd) {
+      bootFromKanjiData(kd);
+      return;
+    }
+
+    showLoadError(
+      "Không tải được dữ liệu Kanji."
+    );
+  }
+
+  window.addEventListener(
+    "hashchange",
+    bootFromHash
+  );
+
+  loadKanjiData();
 })();
