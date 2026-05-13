@@ -148,16 +148,16 @@ function drawCanvas() {
   if (!item || !ctx) return;
 
   // ================= SETTINGS =================
-  var ver = "v16";
+  var ver = "v20";
 
   // global scale
   var S = state.fontScale == null ? 1 : state.fontScale;
 
   // NEW: 2 scale riêng biệt
-  var INFO = 1;   // thông tin bên phải (meaning/on/kun/radicals)
-  var VOCAB = 1.3; // từ vựng
+  var INFO = 1.3;   // thông tin bên phải (meaning/on/kun/radicals)
+  var VOCAB = 1.8; // từ vựng
 
-  var KANJI_SCALE = 0.7;
+  var KANJI_SCALE = 0.9;
 
   // ================= BACKGROUND =================
   ctx.fillStyle = "#020617";
