@@ -146,14 +146,14 @@
 
 function drawCanvas() {
   var item = state.selected;
-  if (!item || !ctx) {
-    return;
-  }
+  if (!item || !ctx) return;
 
-  // ================= VERSION + SCALE =================
-  var ver = "v17";
-  var KANJI_SCALE = 0.8;
-  var TEXT_SCALE = 1.3;
+  // ================= SETTINGS =================
+  var ver = "v18";
+  var S = state.fontScale == null ? 1 : state.fontScale;
+
+  var KANJI_SCALE = 0.7;
+  var TEXT_SCALE = 1;
 
   ctx.fillStyle = "#020617";
   ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
@@ -163,109 +163,117 @@ function drawCanvas() {
   ctx.rect(0, 0, CANVAS_W, CANVAS_H);
   ctx.clip();
 
+  // ================= LAYOUT =================
+  var midY = CANVAS_H * 0.52;
   var midX = CANVAS_W / 2;
 
   var leftX = CANVAS_W * 0.25;
   var rightX = CANVAS_W * 0.75;
 
-  var leftW = CANVAS_W * 0.5 - 20;
-  var rightW = CANVAS_W * 0.5 - 20;
-
-  var yL = 70;
-  var yR = 55;
+  var leftW = CANVAS_W * 0.45;
+  var rightW = CANVAS_W * 0.45;
 
   // divider
   ctx.strokeStyle = "rgba(148,163,184,0.15)";
   ctx.lineWidth = 1;
   ctx.beginPath();
-  ctx.moveTo(midX, 10);
-  ctx.lineTo(midX, CANVAS_H - 10);
+  ctx.moveTo(10, midY);
+  ctx.lineTo(CANVAS_W - 10, midY);
   ctx.stroke();
 
-  // ================= LEFT =================
+  ctx.beginPath();
+  ctx.moveTo(midX, 10);
+  ctx.lineTo(midX, midY - 10);
+  ctx.stroke();
+
+  // ================= TOP LEFT (KANJI) =================
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+
+  ctx.fillStyle = "#f8fafc";
+  ctx.font =
+    "900 " + Math.round(96 * KANJI_SCALE * S) + "px system-ui";
+  ctx.fillText(item.kanji || "", leftX, midY * 0.45);
+
+  // ================= TOP RIGHT (INFO) =================
+  var y = 40;
 
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
 
-  // KANJI (giảm 30%)
-  ctx.fillStyle = "#f8fafc";
-  ctx.font = "900 " + Math.round(112 * KANJI_SCALE) + "px system-ui";
-  ctx.fillText(item.kanji || "", leftX, yL);
-  yL += 85;
-
-  // HANVIET
   if (item.hanviet) {
     ctx.fillStyle = "#7dd3fc";
-    ctx.font = Math.round(20 * TEXT_SCALE) + "px system-ui";
-    ctx.fillText(item.hanviet, leftX, yL);
-    yL += 28;
+    ctx.font = Math.round(18 * S) + "px system-ui";
+    ctx.fillText(item.hanviet, rightX, y);
+    y += 26;
   }
 
-  // MEANING
   ctx.fillStyle = "#cbd5e1";
-  ctx.font = Math.round(16 * TEXT_SCALE) + "px system-ui";
-  var meaningLines = wrapLinesToArray(item.meaning || "", leftW);
-  yL = drawParagraphCenter(leftX, yL, leftW, 22, meaningLines) + 12;
+  ctx.font = Math.round(16 * S) + "px system-ui";
+  var meaningLines = wrapLinesToArray(item.meaning || "", rightW);
+  y = drawParagraphCenter(rightX, y, rightW, 20, meaningLines) + 8;
 
-  // ON / KUN
   ctx.fillStyle = "#94a3b8";
-  ctx.font = Math.round(14 * TEXT_SCALE) + "px system-ui";
+  ctx.font = Math.round(14 * S) + "px system-ui";
 
-  ctx.fillText("On: " + (item.on || "—"), leftX, yL);
-  yL += 22;
+  ctx.fillText("On: " + (item.on || "—"), rightX, y);
+  y += 20;
 
-  ctx.fillText("Kun: " + (item.kun || "—"), leftX, yL);
-  yL += 26;
+  ctx.fillText("Kun: " + (item.kun || "—"), rightX, y);
+  y += 20;
 
-  // RADICALS
   if (item.radicals) {
     ctx.fillStyle = "#78716c";
-    ctx.font = Math.round(12 * TEXT_SCALE) + "px system-ui";
-    var radLines = wrapLinesToArray("Bộ: " + item.radicals, leftW);
-    yL = drawParagraphCenter(leftX, yL, leftW, 18, radLines) + 10;
+    ctx.font = Math.round(12 * S) + "px system-ui";
+    var radLines = wrapLinesToArray("Bộ: " + item.radicals, rightW);
+    y = drawParagraphCenter(rightX, y, rightW, 18, radLines) + 8;
   }
 
-  // MEMORY TIP
   if (item.memory_tip) {
     ctx.fillStyle = "#64748b";
-    ctx.font = Math.round(12 * TEXT_SCALE) + "px system-ui";
-    var tipLines = wrapLinesToArray(item.memory_tip, leftW);
-    yL = drawParagraphCenter(leftX, yL, leftW, 18, tipLines);
+    ctx.font = Math.round(12 * S) + "px system-ui";
+    var tipLines = wrapLinesToArray(item.memory_tip, rightW);
+    y = drawParagraphCenter(rightX, y, rightW, 18, tipLines);
   }
 
-  // ================= RIGHT =================
-
+  // ================= BOTTOM (VOCAB) =================
   var vocabs = item._vocabs || [];
 
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
 
-  ctx.fillStyle = "#94a3b8";
-  ctx.font = "bold " + Math.round(15 * TEXT_SCALE) + "px system-ui";
-  ctx.fillText("Từ vựng", rightX, yR);
-  yR += 28;
+  var bottomY = midY + 24;
 
-  ctx.font = Math.round(13 * TEXT_SCALE) + "px system-ui";
+  ctx.fillStyle = "#94a3b8";
+  ctx.font = "bold " + Math.round(14 * S) + "px system-ui";
+  ctx.fillText("Từ vựng", midX, bottomY);
+
+  var vy = bottomY + 22;
+
+  ctx.font = Math.round(12 * S) + "px system-ui";
 
   vocabs.forEach(function (v) {
     var line = v.word || "";
     if (v.reading) line += "(" + v.reading + ")";
     if (v.meaning) line += " — " + v.meaning;
 
-    var lines = wrapLinesToArray(line, rightW);
+    var lines = wrapLinesToArray(line, CANVAS_W - 30);
 
     ctx.fillStyle = "#94a3b8";
-    yR = drawParagraphCenter(rightX, yR, rightW, 18, lines) + 8;
+    vy = drawParagraphCenter(midX, vy, CANVAS_W - 30, 18, lines) + 6;
   });
 
-  // ================= VERSION LABEL =================
-
+  // ================= VERSION + FONT SCALE =================
   ctx.fillStyle = "rgba(148,163,184,0.6)";
   ctx.font = "11px system-ui";
   ctx.textAlign = "right";
   ctx.textBaseline = "bottom";
 
-  ctx.fillText("v" + ver, CANVAS_W - 10, CANVAS_H - 10);
+  ctx.fillText(
+    "v" + ver + " · fs:" + S.toFixed(2),
+    CANVAS_W - 10,
+    CANVAS_H - 10
+  );
 
   ctx.restore();
 }
