@@ -646,8 +646,17 @@
     }
 
     try {
-      await v.play();
+      // KHÔNG await play()
+      var p = v.play();
 
+      if (
+        p &&
+        typeof p.catch === "function"
+      ) {
+        p.catch(function () {});
+      }
+
+      // gọi PiP ngay trong user gesture
       await v.requestPictureInPicture();
 
       state.pipActive = true;
@@ -817,9 +826,11 @@
 
       renderDetail();
 
-      // AUTO PIP
+      // auto thử PiP
+      // fail vẫn bấm được
       setTimeout(function () {
-        openPipFromUserGesture();
+        openPipFromUserGesture()
+          .catch(function () {});
       }, 500);
     }
 
