@@ -142,94 +142,6 @@
     return y;
   }
 
-  function drawCanvas() {
-    var item = state.selected;
-    if (!item || !ctx) {
-      return;
-    }
-
-    ctx.fillStyle = "#020617";
-    ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
-    ctx.save();
-    ctx.beginPath();
-    ctx.rect(0, 0, CANVAS_W, CANVAS_H);
-    ctx.clip();
-
-    var cx = CANVAS_W / 2;
-    var pad = 14;
-    var maxW = CANVAS_W - 2 * pad;
-    var y = 54;
-
-    ctx.textAlign = "center";
-
-    ctx.fillStyle = "#f8fafc";
-    ctx.font =
-      "bold 96px 'Hiragino Sans', 'Yu Gothic', 'PingFang SC', sans-serif";
-    ctx.textBaseline = "middle";
-    ctx.fillText(item.kanji || "", cx, y);
-    y += 56;
-
-    if (item.hanviet) {
-      ctx.fillStyle = "#7dd3fc";
-      ctx.font = "600 19px system-ui, 'Segoe UI', sans-serif";
-      ctx.fillText(item.hanviet, cx, y);
-      y += 28;
-    }
-
-    ctx.fillStyle = "#cbd5e1";
-    ctx.font = "18px system-ui, sans-serif";
-    var meaningLines = wrapLinesToArray(item.meaning || "", maxW);
-    y = drawParagraphCenter(cx, y, maxW, 22, meaningLines) + 12;
-
-    ctx.fillStyle = "#94a3b8";
-    ctx.font = "16px system-ui, sans-serif";
-    ctx.fillText("On: " + (item.on || "—"), cx, y);
-    y += 24;
-    ctx.fillText("Kun: " + (item.kun || "—"), cx, y);
-    y += 24;
-    ctx.fillText("Nét: " + (item.strokes != null ? item.strokes : "—"), cx, y);
-    y += 28;
-
-    if (item.radicals) {
-      ctx.fillStyle = "#78716c";
-      ctx.font = "14px system-ui, sans-serif";
-      var radLines = wrapLinesToArray("Bộ thủ: " + item.radicals, maxW);
-      y = drawParagraphCenter(cx, y, maxW, 19, radLines) + 10;
-    }
-
-    if (item.memory_tip) {
-      ctx.fillStyle = "#64748b";
-      ctx.font = "13px system-ui, sans-serif";
-      var tipLines = wrapLinesToArray(item.memory_tip, maxW);
-      y = drawParagraphCenter(cx, y, maxW, 18, tipLines) + 12;
-    }
-
-    var vocabs = item._vocabs || [];
-    if (vocabs.length) {
-      ctx.fillStyle = "#64748b";
-      ctx.font = "bold 14px system-ui, sans-serif";
-      ctx.textBaseline = "middle";
-      ctx.fillText("Từ vựng", cx, y);
-      y += 24;
-
-      ctx.fillStyle = "#94a3b8";
-      ctx.font = "13px system-ui, sans-serif";
-      vocabs.forEach(function (v) {
-        var line = v.word || "";
-        if (v.reading) {
-          line += "(" + v.reading + ")";
-        }
-        if (v.meaning) {
-          line += " — " + v.meaning;
-        }
-        var vl = wrapLinesToArray(line, maxW);
-        y = drawParagraphCenter(cx, y, maxW, 18, vl) + 8;
-      });
-    }
-
-    ctx.restore();
-  }
-
   function loop() {
     drawCanvas();
     state.rafId = requestAnimationFrame(loop);
@@ -722,7 +634,114 @@
     }
     showLoadError("Không tải được dữ liệu Kanji (kanjiData.js).");
   }
+  
+  
+  
+  
+  
+  
+function drawCanvas() {
+  var item = state.selected;
+  if (!item || !ctx) {
+    return;
+  }
 
+  ctx.fillStyle = "#020617";
+  ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
+  ctx.save();
+  ctx.beginPath();
+  ctx.rect(0, 0, CANVAS_W, CANVAS_H);
+  ctx.clip();
+
+  var midX = CANVAS_W / 2;
+  var pad = 14;
+
+  var leftW = CANVAS_W / 2;
+  var rightW = CANVAS_W / 2;
+
+  var leftX = leftW / 2;
+  var rightX = leftW + rightW / 2;
+
+  var maxLeftW = leftW - pad * 2;
+  var maxRightW = rightW - pad * 2;
+
+  var yL = 54;
+  var yR = 54;
+
+  // ================= LEFT COLUMN =================
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+
+  ctx.fillStyle = "#f8fafc";
+  ctx.font =
+    "bold 82px 'Hiragino Sans', 'Yu Gothic', 'PingFang SC', sans-serif";
+  ctx.fillText(item.kanji || "", leftX, yL);
+  yL += 60;
+
+  if (item.hanviet) {
+    ctx.fillStyle = "#7dd3fc";
+    ctx.font = "600 18px system-ui, sans-serif";
+    ctx.fillText(item.hanviet, leftX, yL);
+    yL += 26;
+  }
+
+  ctx.fillStyle = "#cbd5e1";
+  ctx.font = "15px system-ui, sans-serif";
+
+  var meaningLines = wrapLinesToArray(item.meaning || "", maxLeftW);
+  yL = drawParagraphCenter(leftX, yL, maxLeftW, 20, meaningLines) + 10;
+
+  ctx.fillStyle = "#94a3b8";
+  ctx.font = "13px system-ui, sans-serif";
+  ctx.fillText("On: " + (item.on || "—"), leftX, yL);
+  yL += 20;
+  ctx.fillText("Kun: " + (item.kun || "—"), leftX, yL);
+  yL += 20;
+  ctx.fillText("Nét: " + (item.strokes != null ? item.strokes : "—"), leftX, yL);
+  yL += 24;
+
+  if (item.radicals) {
+    ctx.fillStyle = "#78716c";
+    ctx.font = "12px system-ui, sans-serif";
+    var radLines = wrapLinesToArray("Bộ thủ: " + item.radicals, maxLeftW);
+    yL = drawParagraphCenter(leftX, yL, maxLeftW, 18, radLines) + 10;
+  }
+
+  if (item.memory_tip) {
+    ctx.fillStyle = "#64748b";
+    ctx.font = "12px system-ui, sans-serif";
+    var tipLines = wrapLinesToArray(item.memory_tip, maxLeftW);
+    yL = drawParagraphCenter(leftX, yL, maxLeftW, 16, tipLines) + 10;
+  }
+
+  // ================= RIGHT COLUMN (VOCAB) =================
+  var vocabs = item._vocabs || [];
+
+  ctx.fillStyle = "#94a3b8";
+  ctx.font = "bold 14px system-ui, sans-serif";
+  ctx.fillText("Từ vựng", rightX, yR);
+  yR += 26;
+
+  ctx.font = "13px system-ui, sans-serif";
+
+  vocabs.forEach(function (v) {
+    var line = v.word || "";
+    if (v.reading) line += "(" + v.reading + ")";
+    if (v.meaning) line += " — " + v.meaning;
+
+    ctx.fillStyle = "#94a3b8";
+    var lines = wrapLinesToArray(line, maxRightW);
+    yR = drawParagraphCenter(rightX, yR, maxRightW, 18, lines) + 8;
+  });
+
+
+
+
+
+
+
+  ctx.restore();
+}
   window.addEventListener("hashchange", bootFromHash);
   registerSw();
   loadKanjiData();
