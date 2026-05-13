@@ -12,13 +12,8 @@
     rafId: 0,
     lastDraw: 0,
     autoPipOnSelect: true,
-
-    /** URL.revokeObjectURL khi đổi nguồn / thoát PiP */
     pipBlobUrl: null,
-
-    /** PiP đang phát file đã ghi (ổn định hơn khi khóa màn hình iOS) */
     pipUsingRecorded: false,
-
     pipRecordTimer: 0,
     hiddenPipTimer: 0
   };
@@ -42,9 +37,7 @@
       .forEach(function (seg) {
         var t = String(seg).trim();
 
-        if (!t) {
-          return;
-        }
+        if (!t) return;
 
         var m = t.match(/^(.+?)\(([^)]+)\)\s*:\s*(.+)$/);
 
@@ -111,7 +104,7 @@
       return {
         ok: false,
         reason:
-          "Trình duyệt không hỗ trợ video.requestPictureInPicture()."
+          "Trình duyệt không hỗ trợ Picture-in-Picture."
       };
     }
 
@@ -128,9 +121,7 @@
   function wrapLinesToArray(text, maxW) {
     var s = String(text || "").trim();
 
-    if (!s) {
-      return [];
-    }
+    if (!s) return [];
 
     var lines = [];
     var parts = s.split(/(\s+)/);
@@ -139,9 +130,7 @@
     for (var i = 0; i < parts.length; i++) {
       var p = parts[i];
 
-      if (!p) {
-        continue;
-      }
+      if (!p) continue;
 
       var test = cur + p;
 
@@ -209,6 +198,10 @@
     return y;
   }
 
+  /* =========================================================
+     UI MỚI
+  ========================================================= */
+
   function drawCanvas() {
     var item = state.selected;
 
@@ -225,147 +218,223 @@
     ctx.rect(0, 0, CANVAS_W, CANVAS_H);
     ctx.clip();
 
-    var cx = CANVAS_W / 2;
-    var pad = 14;
-    var maxW = CANVAS_W - 2 * pad;
-    var y = 54;
+    var leftW = 150;
+    var rightX = leftW + 18;
+    var rightW = CANVAS_W - rightX - 14;
+
+    /* nền cột trái */
+
+    ctx.fillStyle = "#0f172a";
+    ctx.fillRect(0, 0, leftW, CANVAS_H);
+
+    /* divider */
+
+    ctx.fillStyle = "#1e293b";
+    ctx.fillRect(leftW, 0, 1, CANVAS_H);
+
+    /* =====================================================
+       CỘT TRÁI
+    ===================================================== */
+
+    var leftCenter = leftW / 2;
+    var yLeft = 58;
 
     ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
 
     ctx.fillStyle = "#f8fafc";
 
     ctx.font =
-      "bold 96px 'Hiragino Sans', 'Yu Gothic', 'PingFang SC', sans-serif";
+      "bold 92px 'Hiragino Sans', 'Yu Gothic', 'PingFang SC', sans-serif";
 
-    ctx.textBaseline = "middle";
+    ctx.fillText(item.kanji || "", leftCenter, yLeft);
 
-    ctx.fillText(item.kanji || "", cx, y);
-
-    y += 56;
+    yLeft += 72;
 
     if (item.hanviet) {
       ctx.fillStyle = "#7dd3fc";
 
       ctx.font =
-        "600 19px system-ui, 'Segoe UI', sans-serif";
+        "600 20px system-ui, 'Segoe UI', sans-serif";
 
-      ctx.fillText(item.hanviet, cx, y);
+      ctx.fillText(item.hanviet, leftCenter, yLeft);
 
-      y += 28;
+      yLeft += 36;
     }
 
     ctx.fillStyle = "#cbd5e1";
 
-    ctx.font = "18px system-ui, sans-serif";
+    ctx.font = "15px system-ui, sans-serif";
 
-    var meaningLines = wrapLinesToArray(
-      item.meaning || "",
-      maxW
+    var onLines = wrapLinesToArray(
+      "On: " + (item.on || "—"),
+      leftW - 18
     );
 
-    y =
+    yLeft =
       drawParagraphCenter(
-        cx,
-        y,
-        maxW,
-        22,
-        meaningLines
+        leftCenter,
+        yLeft,
+        leftW - 18,
+        20,
+        onLines
       ) + 12;
 
-    /* ===== UI ĐÃ SỬA: bỏ hiển thị số nét ===== */
+    var kunLines = wrapLinesToArray(
+      "Kun: " + (item.kun || "—"),
+      leftW - 18
+    );
 
-    ctx.fillStyle = "#94a3b8";
-
-    ctx.font = "16px system-ui, sans-serif";
-
-    ctx.fillText("On: " + (item.on || "—"), cx, y);
-
-    y += 24;
-
-    ctx.fillText("Kun: " + (item.kun || "—"), cx, y);
-
-    y += 28;
-
-    /* ======================================= */
+    yLeft =
+      drawParagraphCenter(
+        leftCenter,
+        yLeft,
+        leftW - 18,
+        20,
+        kunLines
+      ) + 14;
 
     if (item.radicals) {
-      ctx.fillStyle = "#78716c";
+      ctx.fillStyle = "#94a3b8";
 
       ctx.font = "14px system-ui, sans-serif";
 
       var radLines = wrapLinesToArray(
         "Bộ thủ: " + item.radicals,
-        maxW
+        leftW - 18
       );
 
-      y =
+      yLeft =
         drawParagraphCenter(
-          cx,
-          y,
-          maxW,
-          19,
+          leftCenter,
+          yLeft,
+          leftW - 18,
+          18,
           radLines
-        ) + 10;
+        ) + 8;
     }
 
-    if (item.memory_tip) {
-      ctx.fillStyle = "#64748b";
+    /* =====================================================
+       CỘT PHẢI
+    ===================================================== */
 
-      ctx.font = "13px system-ui, sans-serif";
+    var yRight = 34;
+
+    ctx.textAlign = "left";
+    ctx.textBaseline = "middle";
+
+    /* nghĩa */
+
+    ctx.fillStyle = "#f1f5f9";
+
+    ctx.font =
+      "600 20px system-ui, 'Segoe UI', sans-serif";
+
+    ctx.fillText("Ý nghĩa", rightX, yRight);
+
+    yRight += 28;
+
+    ctx.fillStyle = "#cbd5e1";
+
+    ctx.font = "17px system-ui, sans-serif";
+
+    var meaningLines = wrapLinesToArray(
+      item.meaning || "",
+      rightW
+    );
+
+    for (var i = 0; i < meaningLines.length; i++) {
+      ctx.fillText(
+        meaningLines[i],
+        rightX,
+        yRight
+      );
+
+      yRight += 22;
+    }
+
+    yRight += 16;
+
+    /* gợi nhớ */
+
+    if (item.memory_tip) {
+      ctx.fillStyle = "#7dd3fc";
+
+      ctx.font =
+        "600 16px system-ui, 'Segoe UI', sans-serif";
+
+      ctx.fillText("Gợi nhớ", rightX, yRight);
+
+      yRight += 24;
+
+      ctx.fillStyle = "#94a3b8";
+
+      ctx.font = "14px system-ui, sans-serif";
 
       var tipLines = wrapLinesToArray(
         item.memory_tip,
-        maxW
+        rightW
       );
 
-      y =
-        drawParagraphCenter(
-          cx,
-          y,
-          maxW,
-          18,
-          tipLines
-        ) + 12;
+      for (var j = 0; j < tipLines.length; j++) {
+        ctx.fillText(
+          tipLines[j],
+          rightX,
+          yRight
+        );
+
+        yRight += 19;
+      }
+
+      yRight += 14;
     }
+
+    /* từ vựng */
 
     var vocabs = item._vocabs || [];
 
     if (vocabs.length) {
-      ctx.fillStyle = "#64748b";
+      ctx.fillStyle = "#7dd3fc";
 
-      ctx.font = "bold 14px system-ui, sans-serif";
+      ctx.font =
+        "600 16px system-ui, 'Segoe UI', sans-serif";
 
-      ctx.textBaseline = "middle";
+      ctx.fillText("Từ vựng", rightX, yRight);
 
-      ctx.fillText("Từ vựng", cx, y);
-
-      y += 24;
-
-      ctx.fillStyle = "#94a3b8";
-
-      ctx.font = "13px system-ui, sans-serif";
+      yRight += 26;
 
       vocabs.forEach(function (v) {
-        var line = v.word || "";
+        var line = "• " + (v.word || "");
 
         if (v.reading) {
-          line += "(" + v.reading + ")";
+          line += " (" + v.reading + ")";
         }
 
         if (v.meaning) {
           line += " — " + v.meaning;
         }
 
-        var vl = wrapLinesToArray(line, maxW);
+        ctx.fillStyle = "#e2e8f0";
 
-        y =
-          drawParagraphCenter(
-            cx,
-            y,
-            maxW,
-            18,
-            vl
-          ) + 8;
+        ctx.font =
+          "600 14px system-ui, sans-serif";
+
+        var lines = wrapLinesToArray(
+          line,
+          rightW
+        );
+
+        for (var k = 0; k < lines.length; k++) {
+          ctx.fillText(
+            lines[k],
+            rightX,
+            yRight
+          );
+
+          yRight += 18;
+        }
+
+        yRight += 10;
       });
     }
 
@@ -385,296 +454,16 @@
     }
   }
 
-  function revokePipBlobUrl() {
-    if (state.pipBlobUrl) {
-      try {
-        URL.revokeObjectURL(state.pipBlobUrl);
-      } catch (e) {
-        /* ignore */
-      }
-
-      state.pipBlobUrl = null;
-    }
-
-    state.pipUsingRecorded = false;
-  }
-
-  function clearPipRecordTimer() {
-    if (state.pipRecordTimer) {
-      clearTimeout(state.pipRecordTimer);
-      state.pipRecordTimer = 0;
-    }
-  }
-
-  function clearHiddenPipTimer() {
-    if (state.hiddenPipTimer) {
-      clearInterval(state.hiddenPipTimer);
-      state.hiddenPipTimer = 0;
-    }
-  }
-
-  function refreshPipFrameFromCanvas() {
-    drawCanvas();
-
-    if (!state.stream) {
-      return;
-    }
-
-    var tracks = state.stream.getVideoTracks();
-    var t0 = tracks[0];
-
-    if (
-      t0 &&
-      typeof t0.requestFrame === "function"
-    ) {
-      try {
-        t0.requestFrame();
-      } catch (e) {
-        /* ignore */
-      }
-    }
-  }
-
-  function startHiddenPipRefresh() {
-    if (
-      state.hiddenPipTimer ||
-      state.pipUsingRecorded
-    ) {
-      return;
-    }
-
-    state.hiddenPipTimer = setInterval(function () {
-      if (
-        !state.pipActive ||
-        document.visibilityState !== "hidden"
-      ) {
-        return;
-      }
-
-      refreshPipFrameFromCanvas();
-    }, 120);
-  }
-
-  function pickMediaRecorderMime() {
-    if (
-      typeof MediaRecorder === "undefined" ||
-      !MediaRecorder.isTypeSupported
-    ) {
-      return "";
-    }
-
-    var types = [
-      "video/mp4",
-      "video/mp4; codecs=avc1.42E01E",
-      "video/webm;codecs=vp9",
-      "video/webm;codecs=vp8",
-      "video/webm"
-    ];
-
-    for (var i = 0; i < types.length; i++) {
-      if (MediaRecorder.isTypeSupported(types[i])) {
-        return types[i];
-      }
-    }
-
-    return "";
-  }
-
-  function recordStreamToLoopingBlob(
-    stream,
-    durationMs,
-    done
-  ) {
-    if (
-      !stream ||
-      typeof MediaRecorder === "undefined"
-    ) {
-      done(null);
-      return;
-    }
-
-    var mime = pickMediaRecorderMime();
-    var rec;
-
-    try {
-      rec = mime
-        ? new MediaRecorder(stream, {
-            mimeType: mime,
-            videoBitsPerSecond: 2500000
-          })
-        : new MediaRecorder(stream);
-    } catch (e1) {
-      try {
-        rec = new MediaRecorder(stream);
-      } catch (e2) {
-        done(null);
-        return;
-      }
-    }
-
-    var chunks = [];
-    var outMime = mime || rec.mimeType || "video/mp4";
-    var finished = false;
-
-    function finishOnce(blob) {
-      if (finished) {
-        return;
-      }
-
-      finished = true;
-
-      done(blob);
-    }
-
-    rec.ondataavailable = function (e) {
-      if (e.data && e.data.size) {
-        chunks.push(e.data);
-      }
-    };
-
-    rec.onstop = function () {
-      var blob = chunks.length
-        ? new Blob(chunks, { type: outMime })
-        : null;
-
-      finishOnce(blob);
-    };
-
-    try {
-      rec.start(200);
-    } catch (e) {
-      finishOnce(null);
-      return;
-    }
-
-    setTimeout(function () {
-      if (rec.state === "recording") {
-        try {
-          rec.stop();
-        } catch (e) {
-          finishOnce(null);
-        }
-      }
-    }, durationMs);
-
-    setTimeout(function () {
-      if (!finished) {
-        finishOnce(null);
-      }
-    }, durationMs + 2200);
-  }
-
-  function applyLoopingBlobToPipVideo(blob) {
-    var v = els.video;
-
-    if (!blob || !v) {
-      return;
-    }
-
-    if (
-      document.pictureInPictureElement !== v ||
-      !state.pipActive
-    ) {
-      return;
-    }
-
-    revokePipBlobUrl();
-
-    state.pipBlobUrl = URL.createObjectURL(blob);
-
-    state.pipUsingRecorded = true;
-
-    try {
-      v.srcObject = null;
-    } catch (e) {
-      /* ignore */
-    }
-
-    v.src = state.pipBlobUrl;
-
-    v.loop = true;
-    v.muted = true;
-
-    v.setAttribute("playsinline", "");
-    v.setAttribute("webkit-playsinline", "");
-
-    v.play().catch(function () {});
-
-    clearHiddenPipTimer();
-
-    if (state.stream) {
-      state.stream.getTracks().forEach(function (t) {
-        t.stop();
-      });
-
-      state.stream = null;
-    }
-  }
-
-  function schedulePipRecordedLoopSwap() {
-    clearPipRecordTimer();
-
-    if (
-      state.pipUsingRecorded ||
-      typeof MediaRecorder === "undefined"
-    ) {
-      return;
-    }
-
-    state.pipRecordTimer = setTimeout(function () {
-      state.pipRecordTimer = 0;
-
-      if (
-        !state.pipActive ||
-        document.pictureInPictureElement !==
-          els.video ||
-        !state.stream
-      ) {
-        return;
-      }
-
-      recordStreamToLoopingBlob(
-        state.stream,
-        1600,
-        function (blob) {
-          if (
-            blob &&
-            blob.size &&
-            state.pipActive &&
-            document.pictureInPictureElement ===
-              els.video
-          ) {
-            applyLoopingBlobToPipVideo(blob);
-          }
-        }
-      );
-    }, 450);
-  }
-
   function attachStreamToVideo() {
     var cap = supportsPipFromCanvas();
 
     if (!cap.ok) {
       els.btnPip.disabled = true;
-
-      setFallback(
-        cap.reason +
-          " Dùng canvas trong trang hoặc mở bằng Safari iOS mới hơn."
-      );
-
+      setFallback(cap.reason);
       return;
     }
 
     try {
-      clearPipRecordTimer();
-
-      revokePipBlobUrl();
-
-      if (els.video) {
-        els.video.removeAttribute("src");
-        els.video.src = "";
-      }
-
       if (state.stream) {
         state.stream.getTracks().forEach(function (t) {
           t.stop();
@@ -696,33 +485,22 @@
       els.btnPip.disabled = false;
 
       setFallback("");
-
-      if (
-        document.pictureInPictureElement ===
-        els.video
-      ) {
-        els.video.play().catch(function () {});
-      }
     } catch (e) {
       els.btnPip.disabled = true;
 
       setFallback(
-        "Không tạo được MediaStream từ canvas: " +
+        "Không tạo được stream: " +
           (e && e.message ? e.message : e)
       );
     }
   }
 
-  function renderDetail(opts) {
-    opts = opts || {};
-
+  function renderDetail() {
     var item = state.selected;
 
     if (!item) {
       els.detailPanel.hidden = true;
-
       stopLoop();
-
       return;
     }
 
@@ -735,238 +513,42 @@
     if (!state.rafId) {
       state.rafId = requestAnimationFrame(loop);
     }
-
-    if (
-      opts.skipAutoPip !== true &&
-      state.autoPipOnSelect &&
-      supportsPipFromCanvas().ok
-    ) {
-      openPipFromUserGesture({
-        silent: true
-      });
-    }
-
-    if (
-      state.pipActive &&
-      els.video &&
-      typeof document.pictureInPictureElement !==
-        "undefined" &&
-      document.pictureInPictureElement ===
-        els.video
-    ) {
-      schedulePipRecordedLoopSwap();
-    }
   }
 
-  function openPipFromUserGesture(opts) {
-    opts = opts || {};
-
+  function openPipFromUserGesture() {
     var v = els.video;
 
-    var pip = v && v.requestPictureInPicture;
-
-    if (!pip) {
-      if (!opts.silent) {
-        setFallback(
-          "Không có Picture-in-Picture trên trình duyệt này."
-        );
-      }
-
-      return Promise.resolve(false);
-    }
-
-    if (document.pictureInPictureElement === v) {
-      state.pipActive = true;
-
-      try {
-        var playExisting = v.play();
-
-        if (
-          playExisting &&
-          typeof playExisting.catch === "function"
-        ) {
-          playExisting.catch(function () {});
-        }
-      } catch (e) {
-        if (!opts.silent) {
-          setFallback(
-            "Video.play: " +
-              (e && e.message ? e.message : e)
-          );
-        }
-
-        return Promise.resolve(false);
-      }
-
-      schedulePipRecordedLoopSwap();
-
-      setFallback("");
-
-      return Promise.resolve(true);
+    if (!v || !v.requestPictureInPicture) {
+      return;
     }
 
     try {
-      var playP = v.play();
+      v.play().catch(function () {});
 
-      if (
-        playP &&
-        typeof playP.catch === "function"
-      ) {
-        playP.catch(function () {});
-      }
-    } catch (playErr) {
-      if (!opts.silent) {
-        setFallback(
-          "Video.play: " +
-            (playErr && playErr.message
-              ? playErr.message
-              : playErr)
-        );
-      }
-
-      return Promise.resolve(false);
-    }
-
-    var pipP;
-
-    try {
-      pipP = v.requestPictureInPicture();
-    } catch (err) {
-      if (!opts.silent) {
-        setFallback(
-          "Không bật được PiP: " +
-            (err && err.message ? err.message : err)
-        );
-      }
-
-      return Promise.resolve(false);
-    }
-
-    if (
-      pipP &&
-      typeof pipP.then === "function"
-    ) {
-      return pipP
+      v.requestPictureInPicture()
         .then(function () {
           state.pipActive = true;
-
-          setFallback("");
-
-          schedulePipRecordedLoopSwap();
-
-          return true;
         })
-        .catch(function (err) {
-          if (!opts.silent) {
-            setFallback(
-              "Không bật được PiP: " +
-                (err && err.message
-                  ? err.message
-                  : err) +
-                " (thử bấm lại nút PiP.)"
-            );
-          }
-
-          return false;
-        });
-    }
-
-    state.pipActive = true;
-
-    setFallback("");
-
-    schedulePipRecordedLoopSwap();
-
-    return Promise.resolve(true);
+        .catch(function () {});
+    } catch (e) {}
   }
 
   els.btnPip.addEventListener(
     "click",
-    function () {
-      openPipFromUserGesture({
-        silent: false
-      });
-    }
-  );
-
-  if (els.video) {
-    els.video.addEventListener(
-      "enterpictureinpicture",
-      function () {
-        state.pipActive = true;
-
-        schedulePipRecordedLoopSwap();
-      }
-    );
-
-    els.video.addEventListener(
-      "leavepictureinpicture",
-      function () {
-        state.pipActive = false;
-
-        clearHiddenPipTimer();
-
-        clearPipRecordTimer();
-
-        revokePipBlobUrl();
-
-        if (els.video) {
-          try {
-            els.video.srcObject = null;
-          } catch (e) {
-            /* ignore */
-          }
-
-          els.video.removeAttribute("src");
-
-          els.video.src = "";
-        }
-
-        if (state.selected) {
-          attachStreamToVideo();
-
-          drawCanvas();
-        }
-      }
-    );
-  }
-
-  document.addEventListener(
-    "visibilitychange",
-    function () {
-      if (!state.pipActive) {
-        return;
-      }
-
-      if (
-        document.visibilityState === "hidden"
-      ) {
-        if (!state.pipUsingRecorded) {
-          startHiddenPipRefresh();
-        }
-      } else {
-        clearHiddenPipTimer();
-
-        drawCanvas();
-      }
-    }
+    openPipFromUserGesture
   );
 
   function clearLoadError() {
     if (els.loadStatus) {
       els.loadStatus.textContent = "";
-
       els.loadStatus.hidden = true;
     }
   }
 
   function showLoadError(msg) {
-    if (!els.loadStatus) {
-      return;
-    }
+    if (!els.loadStatus) return;
 
     els.loadStatus.textContent = msg;
-
     els.loadStatus.hidden = false;
   }
 
@@ -988,16 +570,10 @@
 
       if (found) {
         state.selected = found;
-
-        renderDetail({
-          skipAutoPip: true
-        });
-
+        renderDetail();
         clearLoadError();
       }
-    } catch (e) {
-      /* ignore */
-    }
+    } catch (e) {}
   }
 
   function registerSw() {
@@ -1053,11 +629,6 @@
 
         kun: kun,
 
-        strokes:
-          raw.stroke_count != null
-            ? raw.stroke_count
-            : "",
-
         hanviet: raw.hanviet || "",
 
         radicals:
@@ -1085,9 +656,7 @@
     if (!state.selected && state.items.length) {
       state.selected = state.items[0];
 
-      renderDetail({
-        skipAutoPip: true
-      });
+      renderDetail();
 
       history.replaceState(
         { id: state.selected.id },
@@ -1125,12 +694,11 @@
 
     if (kd) {
       bootFromKanjiData(kd);
-
       return;
     }
 
     showLoadError(
-      "Không tải được dữ liệu Kanji (kanjiData.js)."
+      "Không tải được dữ liệu Kanji."
     );
   }
 
