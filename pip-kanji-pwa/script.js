@@ -421,7 +421,7 @@
       if (!state.pipActive || document.pictureInPictureElement !== els.video || !state.stream) {
         return;
       }
-      recordStreamToLoopingBlob(state.stream, 21600, function (blob) {
+      recordStreamToLoopingBlob(state.stream, 1600, function (blob) {
         if (
           blob &&
           blob.size &&
