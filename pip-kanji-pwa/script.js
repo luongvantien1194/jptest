@@ -168,11 +168,10 @@ function drawCanvas() {
   var leftW = CANVAS_W * 0.5 - 20;
   var rightW = CANVAS_W * 0.5 - 20;
 
-  // ⬇️ ĐẨY TOÀN BỘ XUỐNG (kanji cách top nhiều hơn)
-  var yL = 85;
-  var yR = 60;
+  var yL = 70;
+  var yR = 55;
 
-  // divider line
+  // divider
   ctx.strokeStyle = "rgba(148,163,184,0.15)";
   ctx.lineWidth = 1;
   ctx.beginPath();
@@ -185,51 +184,51 @@ function drawCanvas() {
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
 
-  // 🔼 KANJI TO HƠN NỮA
+  // 🔽 KANJI: nhỏ lại + đổi font
   ctx.fillStyle = "#f8fafc";
-  ctx.font = "bold 128px system-ui";
+  ctx.font = "900 92px 'Noto Serif JP', 'Hiragino Mincho ProN', serif";
   ctx.fillText(item.kanji || "", leftX, yL);
-  yL += 100;
+  yL += 80;
 
-  // HANVIET
+  // 🔼 toàn bộ text +70%
+  var scaleFont = function (base) {
+    return Math.round(base * 1.7) + "px system-ui";
+  };
+
   if (item.hanviet) {
     ctx.fillStyle = "#7dd3fc";
-    ctx.font = "600 22px system-ui";
+    ctx.font = scaleFont(20);
     ctx.fillText(item.hanviet, leftX, yL);
-    yL += 30;
+    yL += 34;
   }
 
-  // MEANING
   ctx.fillStyle = "#cbd5e1";
-  ctx.font = "17px system-ui";
+  ctx.font = scaleFont(16);
 
   var meaningLines = wrapLinesToArray(item.meaning || "", leftW);
-  yL = drawParagraphCenter(leftX, yL, leftW, 23, meaningLines) + 14;
+  yL = drawParagraphCenter(leftX, yL, leftW, 24, meaningLines) + 14;
 
-  // ON / KUN
   ctx.fillStyle = "#94a3b8";
-  ctx.font = "15px system-ui";
+  ctx.font = scaleFont(14);
 
   ctx.fillText("On: " + (item.on || "—"), leftX, yL);
-  yL += 24;
+  yL += 26;
 
   ctx.fillText("Kun: " + (item.kun || "—"), leftX, yL);
-  yL += 28;
+  yL += 30;
 
-  // RADICALS
   if (item.radicals) {
     ctx.fillStyle = "#78716c";
-    ctx.font = "13px system-ui";
+    ctx.font = scaleFont(13);
     var radLines = wrapLinesToArray("Bộ: " + item.radicals, leftW);
-    yL = drawParagraphCenter(leftX, yL, leftW, 18, radLines) + 12;
+    yL = drawParagraphCenter(leftX, yL, leftW, 20, radLines) + 12;
   }
 
-  // MEMORY TIP
   if (item.memory_tip) {
     ctx.fillStyle = "#64748b";
-    ctx.font = "13px system-ui";
+    ctx.font = scaleFont(13);
     var tipLines = wrapLinesToArray(item.memory_tip, leftW);
-    yL = drawParagraphCenter(leftX, yL, leftW, 18, tipLines);
+    yL = drawParagraphCenter(leftX, yL, leftW, 20, tipLines);
   }
 
   // ================= RIGHT =================
@@ -240,11 +239,11 @@ function drawCanvas() {
   ctx.textBaseline = "middle";
 
   ctx.fillStyle = "#94a3b8";
-  ctx.font = "bold 16px system-ui";
+  ctx.font = scaleFont(16);
   ctx.fillText("Từ vựng", rightX, yR);
-  yR += 30;
+  yR += 34;
 
-  ctx.font = "14px system-ui";
+  ctx.font = scaleFont(14);
 
   vocabs.forEach(function (v) {
     var line = v.word || "";
@@ -254,12 +253,11 @@ function drawCanvas() {
     var lines = wrapLinesToArray(line, rightW);
 
     ctx.fillStyle = "#94a3b8";
-    yR = drawParagraphCenter(rightX, yR, rightW, 19, lines) + 10;
+    yR = drawParagraphCenter(rightX, yR, rightW, 20, lines) + 12;
   });
 
   ctx.restore();
 }
-
 
 
 
