@@ -142,93 +142,120 @@
     return y;
   }
 
-  function drawCanvas() {
-    var item = state.selected;
-    if (!item || !ctx) {
-      return;
-    }
+function drawCanvas() {
+  var item = state.selected;
+  if (!item || !ctx) {
+    return;
+  }
 
-    ctx.fillStyle = "#020617";
-    ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
-    ctx.save();
-    ctx.beginPath();
-    ctx.rect(0, 0, CANVAS_W, CANVAS_H);
-    ctx.clip();
+  // ===== BACKGROUND =====
+  ctx.fillStyle = "#020617";
+  ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
 
-    var cx = CANVAS_W / 2;
-    var pad = 14;
-    var maxW = CANVAS_W - 2 * pad;
-    var y = 54;
+  ctx.save();
+  ctx.beginPath();
+  ctx.rect(0, 0, CANVAS_W, CANVAS_H);
+  ctx.clip();
 
-    ctx.textAlign = "center";
+  var midX = CANVAS_W / 2;
 
-    ctx.fillStyle = "#f8fafc";
-    ctx.font =
-      "bold 96px 'Hiragino Sans', 'Yu Gothic', 'PingFang SC', sans-serif";
-    ctx.textBaseline = "middle";
-    ctx.fillText(item.kanji || "", cx, y);
-    y += 56;
+  // ===== COLUMN LAYOUT (CSS STYLE) =====
+  var leftX = CANVAS_W * 0.25;
+  var rightX = CANVAS_W * 0.75;
 
-    if (item.hanviet) {
-      ctx.fillStyle = "#7dd3fc";
-      ctx.font = "600 19px system-ui, 'Segoe UI', sans-serif";
-      ctx.fillText(item.hanviet, cx, y);
-      y += 28;
-    }
+  var leftW = CANVAS_W * 0.5 - 20;
+  var rightW = CANVAS_W * 0.5 - 20;
 
-    ctx.fillStyle = "#cbd5e1";
-    ctx.font = "18px system-ui, sans-serif";
-    var meaningLines = wrapLinesToArray(item.meaning || "", maxW);
-    y = drawParagraphCenter(cx, y, maxW, 22, meaningLines) + 12;
+  var yL = 40;
+  var yR = 40;
+
+  // ===== DIVIDER LINE (CSS BORDER-LIKE) =====
+  ctx.strokeStyle = "rgba(148,163,184,0.15)";
+  ctx.lineWidth = 1;
+  ctx.beginPath();
+  ctx.moveTo(midX, 10);
+  ctx.lineTo(midX, CANVAS_H - 10);
+  ctx.stroke();
+
+  // ================= LEFT COLUMN =================
+
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+
+  // Kanji
+  ctx.fillStyle = "#f8fafc";
+  ctx.font = "bold 92px system-ui";
+  ctx.fillText(item.kanji || "", leftX, yL);
+  yL += 70;
+
+  // Hanviet
+  if (item.hanviet) {
+    ctx.fillStyle = "#7dd3fc";
+    ctx.font = "600 18px system-ui";
+    ctx.fillText(item.hanviet, leftX, yL);
+    yL += 26;
+  }
+
+  // Meaning
+  ctx.fillStyle = "#cbd5e1";
+  ctx.font = "15px system-ui";
+  var meaningLines = wrapLinesToArray(item.meaning || "", leftW);
+  yL = drawParagraphCenter(leftX, yL, leftW, 20, meaningLines) + 10;
+
+  // On / Kun / Stroke
+  ctx.fillStyle = "#94a3b8";
+  ctx.font = "13px system-ui";
+
+  ctx.fillText("On: " + (item.on || "—"), leftX, yL);
+  yL += 20;
+  ctx.fillText("Kun: " + (item.kun || "—"), leftX, yL);
+  yL += 20;
+  ctx.fillText("Nét: " + (item.strokes ?? "—"), leftX, yL);
+  yL += 26;
+
+  // Radicals
+  if (item.radicals) {
+    ctx.fillStyle = "#78716c";
+    ctx.font = "12px system-ui";
+    var radLines = wrapLinesToArray("Bộ: " + item.radicals, leftW);
+    yL = drawParagraphCenter(leftX, yL, leftW, 18, radLines) + 10;
+  }
+
+  // Memory tip
+  if (item.memory_tip) {
+    ctx.fillStyle = "#64748b";
+    ctx.font = "12px system-ui";
+    var tipLines = wrapLinesToArray(item.memory_tip, leftW);
+    yL = drawParagraphCenter(leftX, yL, leftW, 16, tipLines);
+  }
+
+  // ================= RIGHT COLUMN =================
+
+  var vocabs = item._vocabs || [];
+
+  ctx.textAlign = "center";
+  ctx.textBaseline = "middle";
+
+  ctx.fillStyle = "#94a3b8";
+  ctx.font = "bold 14px system-ui";
+  ctx.fillText("Từ vựng", rightX, yR);
+  yR += 26;
+
+  ctx.font = "13px system-ui";
+
+  vocabs.forEach(function (v) {
+    var line = v.word || "";
+    if (v.reading) line += "(" + v.reading + ")";
+    if (v.meaning) line += " — " + v.meaning;
 
     ctx.fillStyle = "#94a3b8";
-    ctx.font = "16px system-ui, sans-serif";
-    ctx.fillText("On: " + (item.on || "—"), cx, y);
-    y += 24;
-    ctx.fillText("Kun: " + (item.kun || "—"), cx, y);
-    y += 24;
-    ctx.fillText("Nét: " + (item.strokes != null ? item.strokes : "—"), cx, y);
-    y += 28;
 
-    if (item.radicals) {
-      ctx.fillStyle = "#78716c";
-      ctx.font = "14px system-ui, sans-serif";
-      var radLines = wrapLinesToArray("Bộ thủ: " + item.radicals, maxW);
-      y = drawParagraphCenter(cx, y, maxW, 19, radLines) + 10;
-    }
+    var lines = wrapLinesToArray(line, rightW);
+    yR = drawParagraphCenter(rightX, yR, rightW, 18, lines) + 8;
+  });
 
-    if (item.memory_tip) {
-      ctx.fillStyle = "#64748b";
-      ctx.font = "13px system-ui, sans-serif";
-      var tipLines = wrapLinesToArray(item.memory_tip, maxW);
-      y = drawParagraphCenter(cx, y, maxW, 18, tipLines) + 12;
-    }
-
-    var vocabs = item._vocabs || [];
-    if (vocabs.length) {
-      ctx.fillStyle = "#64748b";
-      ctx.font = "bold 14px system-ui, sans-serif";
-      ctx.textBaseline = "middle";
-      ctx.fillText("Từ vựng", cx, y);
-      y += 24;
-
-      ctx.fillStyle = "#94a3b8";
-      ctx.font = "13px system-ui, sans-serif";
-      vocabs.forEach(function (v) {
-        var line = v.word || "";
-        if (v.reading) {
-          line += "(" + v.reading + ")";
-        }
-        if (v.meaning) {
-          line += " — " + v.meaning;
-        }
-        var vl = wrapLinesToArray(line, maxW);
-        y = drawParagraphCenter(cx, y, maxW, 18, vl) + 8;
-      });
-    }
-
-    ctx.restore();
-  }
+  ctx.restore();
+}
 
   function loop() {
     drawCanvas();
