@@ -10,12 +10,7 @@
     stream: null,
     pipActive: false,
     rafId: 0,
-    lastDraw: 0,
-    autoPipOnSelect: true,
-    pipBlobUrl: null,
-    pipUsingRecorded: false,
-    pipRecordTimer: 0,
-    hiddenPipTimer: 0
+    autoPipOnSelect: true
   };
 
   const els = {
@@ -28,6 +23,10 @@
   };
 
   const ctx = els.canvas.getContext("2d");
+
+  // =====================================================
+  // HELPERS
+  // =====================================================
 
   function parseLegacyPipeVocab(s) {
     var out = [];
@@ -104,7 +103,7 @@
       return {
         ok: false,
         reason:
-          "Trình duyệt không hỗ trợ video.requestPictureInPicture()."
+          "Trình duyệt không hỗ trợ Picture-in-Picture."
       };
     }
 
@@ -121,9 +120,7 @@
   function wrapLinesToArray(text, maxW) {
     var s = String(text || "").trim();
 
-    if (!s) {
-      return [];
-    }
+    if (!s) return [];
 
     var lines = [];
     var parts = s.split(/(\s+)/);
@@ -213,9 +210,9 @@
     ctx.closePath();
   }
 
-  // =========================================================
-  // HORIZONTAL LAYOUT
-  // =========================================================
+  // =====================================================
+  // DRAW
+  // =====================================================
 
   function drawCanvas() {
     var item = state.selected;
@@ -226,7 +223,6 @@
 
     ctx.clearRect(0, 0, CANVAS_W, CANVAS_H);
 
-    // ===== Background =====
     var bg = ctx.createLinearGradient(
       0,
       0,
@@ -242,12 +238,11 @@
 
     ctx.save();
 
-    // ===== Layout =====
     var leftW = 150;
     var rightX = leftW + 18;
     var rightW = CANVAS_W - rightX - 16;
 
-    // ===== Left panel =====
+    // LEFT PANEL
     ctx.fillStyle = "rgba(255,255,255,0.04)";
 
     roundRect(
@@ -261,7 +256,6 @@
 
     ctx.fill();
 
-    // ===== Kanji =====
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
 
@@ -281,7 +275,6 @@
 
     ctx.shadowBlur = 0;
 
-    // ===== Hanviet =====
     if (item.hanviet) {
       ctx.fillStyle = "#7dd3fc";
 
@@ -295,7 +288,6 @@
       );
     }
 
-    // ===== Stroke =====
     ctx.fillStyle = "#94a3b8";
 
     ctx.font =
@@ -320,7 +312,7 @@
       295
     );
 
-    // ===== ON =====
+    // ON
     ctx.fillStyle = "#64748b";
 
     ctx.font =
@@ -350,7 +342,7 @@
       onLines
     );
 
-    // ===== KUN =====
+    // KUN
     ctx.fillStyle = "#64748b";
 
     ctx.font =
@@ -380,13 +372,9 @@
       kunLines
     );
 
-    // =====================================================
     // RIGHT PANEL
-    // =====================================================
-
     var y = 26;
 
-    // ===== Meaning =====
     if (item.meaning) {
       ctx.textAlign = "left";
 
@@ -427,7 +415,6 @@
       y += 14;
     }
 
-    // ===== Radical =====
     if (item.radicals) {
       ctx.fillStyle = "#7dd3fc";
 
@@ -466,7 +453,6 @@
       y += 14;
     }
 
-    // ===== Memory =====
     if (item.memory_tip) {
       ctx.fillStyle = "#7dd3fc";
 
@@ -505,7 +491,6 @@
       y += 14;
     }
 
-    // ===== Vocabulary =====
     var vocabs = item._vocabs || [];
 
     if (vocabs.length) {
@@ -580,6 +565,10 @@
     ctx.restore();
   }
 
+  // =====================================================
+  // LOOP
+  // =====================================================
+
   function loop() {
     drawCanvas();
 
@@ -593,6 +582,10 @@
       state.rafId = 0;
     }
   }
+
+  // =====================================================
+  // PIP
+  // =====================================================
 
   function attachStreamToVideo() {
     var cap = supportsPipFromCanvas();
@@ -625,6 +618,11 @@
         ""
       );
 
+      els.video.setAttribute(
+        "webkit-playsinline",
+        ""
+      );
+
       els.btnPip.disabled = false;
 
       setFallback("");
@@ -637,9 +635,32 @@
     }
   }
 
-  function renderDetail(opts) {
-    opts = opts || {};
+  async function openPipFromUserGesture() {
+    var v = els.video;
 
+    if (
+      !v ||
+      !v.requestPictureInPicture
+    ) {
+      return;
+    }
+
+    try {
+      await v.play();
+
+      await v.requestPictureInPicture();
+
+      state.pipActive = true;
+    } catch (e) {
+      console.warn(e);
+    }
+  }
+
+  // =====================================================
+  // RENDER
+  // =====================================================
+
+  function renderDetail() {
     var item = state.selected;
 
     if (!item) {
@@ -660,34 +681,9 @@
     }
   }
 
-  function openPipFromUserGesture() {
-    var v = els.video;
-
-    if (
-      !v ||
-      !v.requestPictureInPicture
-    ) {
-      return;
-    }
-
-    try {
-      var playP = v.play();
-
-      if (
-        playP &&
-        typeof playP.catch ===
-          "function"
-      ) {
-        playP.catch(function () {});
-      }
-
-      v.requestPictureInPicture()
-        .then(function () {
-          state.pipActive = true;
-        })
-        .catch(function () {});
-    } catch (e) {}
-  }
+  // =====================================================
+  // EVENTS
+  // =====================================================
 
   els.btnPip.addEventListener(
     "click",
@@ -695,6 +691,10 @@
       openPipFromUserGesture();
     }
   );
+
+  // =====================================================
+  // DATA
+  // =====================================================
 
   function clearLoadError() {
     if (els.loadStatus) {
@@ -734,9 +734,7 @@
       if (found) {
         state.selected = found;
 
-        renderDetail({
-          skipAutoPip: true
-        });
+        renderDetail();
 
         clearLoadError();
       }
@@ -817,9 +815,12 @@
       state.selected =
         state.items[0];
 
-      renderDetail({
-        skipAutoPip: true
-      });
+      renderDetail();
+
+      // AUTO PIP
+      setTimeout(function () {
+        openPipFromUserGesture();
+      }, 500);
     }
 
     clearLoadError();
@@ -861,10 +862,22 @@
     );
   }
 
+  // =====================================================
+  // START
+  // =====================================================
+
   window.addEventListener(
     "hashchange",
     bootFromHash
   );
 
-  loadKanjiData();
+  window.addEventListener(
+    "load",
+    function () {
+      setTimeout(function () {
+        loadKanjiData();
+      }, 100);
+    },
+    { once: true }
+  );
 })();
