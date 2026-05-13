@@ -428,7 +428,7 @@
         y += 4;
       });
 
-      y += 30;
+      y += 25;
     }
 
     // Radical
@@ -451,13 +451,13 @@
         ctx.fillText(
           line,
           rightX,
-          y + 15
+          y
         );
 
-        y += 20;
+        y += 4;
       });
 
-      y += 16;
+      y += 25;
     }
 
     // Memory tip
@@ -480,13 +480,13 @@
         ctx.fillText(
           line,
           rightX,
-          y + 15
+          y
         );
 
-        y += 20;
+        y += 4;
       });
 
-      y += 18;
+      y += 25;
     }
 
     // VOCAB
