@@ -144,23 +144,16 @@
 
 
 
-
 function drawCanvas() {
   var item = state.selected;
   if (!item || !ctx) {
     return;
   }
 
-  // ================= CACHE / VERSION (LOCAL ONLY) =================
-  var ver = "v15";
-  var cacheName = "pip-" + ver;
-
-  // nếu có service worker cache info (optional fallback)
-  try {
-    if (navigator.serviceWorker && navigator.serviceWorker.controller) {
-      cacheName = CACHE_NAME_UI || cacheName;
-    }
-  } catch (e) {}
+  // ================= VERSION + SCALE =================
+  var ver = "v16";
+  var KANJI_SCALE = 0.7;
+  var TEXT_SCALE = 2;
 
   ctx.fillStyle = "#020617";
   ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
@@ -194,26 +187,29 @@ function drawCanvas() {
   ctx.textAlign = "center";
   ctx.textBaseline = "middle";
 
+  // KANJI (giảm 30%)
   ctx.fillStyle = "#f8fafc";
-  ctx.font = "900 112px system-ui";
+  ctx.font = "900 " + Math.round(112 * KANJI_SCALE) + "px system-ui";
   ctx.fillText(item.kanji || "", leftX, yL);
   yL += 85;
 
+  // HANVIET
   if (item.hanviet) {
     ctx.fillStyle = "#7dd3fc";
-    ctx.font = "600 20px system-ui";
+    ctx.font = Math.round(20 * TEXT_SCALE) + "px system-ui";
     ctx.fillText(item.hanviet, leftX, yL);
     yL += 28;
   }
 
+  // MEANING
   ctx.fillStyle = "#cbd5e1";
-  ctx.font = "16px system-ui";
-
+  ctx.font = Math.round(16 * TEXT_SCALE) + "px system-ui";
   var meaningLines = wrapLinesToArray(item.meaning || "", leftW);
   yL = drawParagraphCenter(leftX, yL, leftW, 22, meaningLines) + 12;
 
+  // ON / KUN
   ctx.fillStyle = "#94a3b8";
-  ctx.font = "14px system-ui";
+  ctx.font = Math.round(14 * TEXT_SCALE) + "px system-ui";
 
   ctx.fillText("On: " + (item.on || "—"), leftX, yL);
   yL += 22;
@@ -221,16 +217,18 @@ function drawCanvas() {
   ctx.fillText("Kun: " + (item.kun || "—"), leftX, yL);
   yL += 26;
 
+  // RADICALS
   if (item.radicals) {
     ctx.fillStyle = "#78716c";
-    ctx.font = "12px system-ui";
+    ctx.font = Math.round(12 * TEXT_SCALE) + "px system-ui";
     var radLines = wrapLinesToArray("Bộ: " + item.radicals, leftW);
     yL = drawParagraphCenter(leftX, yL, leftW, 18, radLines) + 10;
   }
 
+  // MEMORY TIP
   if (item.memory_tip) {
     ctx.fillStyle = "#64748b";
-    ctx.font = "12px system-ui";
+    ctx.font = Math.round(12 * TEXT_SCALE) + "px system-ui";
     var tipLines = wrapLinesToArray(item.memory_tip, leftW);
     yL = drawParagraphCenter(leftX, yL, leftW, 18, tipLines);
   }
@@ -243,11 +241,11 @@ function drawCanvas() {
   ctx.textBaseline = "middle";
 
   ctx.fillStyle = "#94a3b8";
-  ctx.font = "bold 15px system-ui";
+  ctx.font = "bold " + Math.round(15 * TEXT_SCALE) + "px system-ui";
   ctx.fillText("Từ vựng", rightX, yR);
   yR += 28;
 
-  ctx.font = "13px system-ui";
+  ctx.font = Math.round(13 * TEXT_SCALE) + "px system-ui";
 
   vocabs.forEach(function (v) {
     var line = v.word || "";
@@ -260,14 +258,14 @@ function drawCanvas() {
     yR = drawParagraphCenter(rightX, yR, rightW, 18, lines) + 8;
   });
 
-  // ================= BOTTOM RIGHT LABEL =================
+  // ================= VERSION LABEL =================
 
   ctx.fillStyle = "rgba(148,163,184,0.6)";
   ctx.font = "11px system-ui";
   ctx.textAlign = "right";
   ctx.textBaseline = "bottom";
 
-  ctx.fillText(cacheName + " | " + ver, CANVAS_W - 10, CANVAS_H - 10);
+  ctx.fillText("v" + ver, CANVAS_W - 10, CANVAS_H - 10);
 
   ctx.restore();
 }
