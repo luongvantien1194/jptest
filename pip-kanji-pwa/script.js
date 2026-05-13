@@ -422,7 +422,7 @@
         ctx.fillText(
           line,
           rightX,
-          y + 16
+          y
         );
 
         y += 22;
