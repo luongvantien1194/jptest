@@ -655,7 +655,7 @@
       });
       if (found) {
         state.selected = found;
-        renderDetail({ skipAutoPip: true });
+        renderDetail({ skipAutoPip: false });
         clearLoadError();
       }
     } catch (e) {
@@ -698,7 +698,7 @@
     bootFromHash();
     if (!state.selected && state.items.length) {
       state.selected = state.items[0];
-      renderDetail({ skipAutoPip: true });
+      renderDetail({ skipAutoPip: false });
       history.replaceState({ id: state.selected.id }, "", "#kanji=" + encodeURIComponent(state.selected.id));
     }
     clearLoadError();
