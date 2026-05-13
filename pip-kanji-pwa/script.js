@@ -10,7 +10,12 @@
     stream: null,
     pipActive: false,
     rafId: 0,
-    autoPipOnSelect: true
+    lastDraw: 0,
+    autoPipOnSelect: true,
+    pipBlobUrl: null,
+    pipUsingRecorded: false,
+    pipRecordTimer: 0,
+    hiddenPipTimer: 0
   };
 
   const els = {
@@ -36,7 +41,9 @@
       .forEach(function (seg) {
         var t = String(seg).trim();
 
-        if (!t) return;
+        if (!t) {
+          return;
+        }
 
         var m = t.match(/^(.+?)\(([^)]+)\)\s*:\s*(.+)$/);
 
@@ -120,7 +127,9 @@
   function wrapLinesToArray(text, maxW) {
     var s = String(text || "").trim();
 
-    if (!s) return [];
+    if (!s) {
+      return [];
+    }
 
     var lines = [];
     var parts = s.split(/(\s+)/);
@@ -197,19 +206,6 @@
     return y;
   }
 
-  function roundRect(ctx, x, y, w, h, r) {
-    ctx.beginPath();
-
-    ctx.moveTo(x + r, y);
-
-    ctx.arcTo(x + w, y, x + w, y + h, r);
-    ctx.arcTo(x + w, y + h, x, y + h, r);
-    ctx.arcTo(x, y + h, x, y, r);
-    ctx.arcTo(x, y, x + w, y, r);
-
-    ctx.closePath();
-  }
-
   // =====================================================
   // DRAW
   // =====================================================
@@ -221,37 +217,25 @@
       return;
     }
 
-    ctx.clearRect(0, 0, CANVAS_W, CANVAS_H);
-
-    var bg = ctx.createLinearGradient(
-      0,
-      0,
-      0,
-      CANVAS_H
-    );
-
-    bg.addColorStop(0, "#020617");
-    bg.addColorStop(1, "#0f172a");
-
-    ctx.fillStyle = bg;
+    ctx.fillStyle = "#020617";
     ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
 
     ctx.save();
 
     var leftW = 150;
-    var rightX = leftW + 18;
+    var rightX = leftW + 20;
     var rightW = CANVAS_W - rightX - 16;
 
     // LEFT PANEL
-    ctx.fillStyle = "rgba(255,255,255,0.04)";
+    ctx.fillStyle = "rgba(255,255,255,0.05)";
 
-    roundRect(
-      ctx,
+    ctx.beginPath();
+    ctx.roundRect(
       12,
       12,
       leftW,
       CANVAS_H - 24,
-      18
+      20
     );
 
     ctx.fill();
@@ -259,13 +243,16 @@
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
 
-    ctx.shadowColor = "rgba(255,255,255,0.12)";
-    ctx.shadowBlur = 16;
-
+    // KANJI
     ctx.fillStyle = "#f8fafc";
 
     ctx.font =
-      "bold 100px 'Hiragino Sans', 'Yu Gothic', 'PingFang SC', sans-serif";
+      "bold 102px 'Hiragino Sans', 'Yu Gothic', 'PingFang SC', sans-serif";
+
+    ctx.shadowColor =
+      "rgba(255,255,255,0.18)";
+
+    ctx.shadowBlur = 18;
 
     ctx.fillText(
       item.kanji || "",
@@ -275,70 +262,47 @@
 
     ctx.shadowBlur = 0;
 
+    // HANVIET
     if (item.hanviet) {
       ctx.fillStyle = "#7dd3fc";
 
       ctx.font =
-        "600 22px system-ui, sans-serif";
+        "700 24px system-ui, sans-serif";
 
       ctx.fillText(
         item.hanviet,
         12 + leftW / 2,
-        195
+        205
       );
     }
-
-    ctx.fillStyle = "#94a3b8";
-
-    ctx.font =
-      "14px system-ui, sans-serif";
-
-    ctx.fillText(
-      "NÉT",
-      12 + leftW / 2,
-      255
-    );
-
-    ctx.fillStyle = "#f8fafc";
-
-    ctx.font =
-      "bold 34px system-ui, sans-serif";
-
-    ctx.fillText(
-      item.strokes != null
-        ? String(item.strokes)
-        : "—",
-      12 + leftW / 2,
-      295
-    );
 
     // ON
     ctx.fillStyle = "#64748b";
 
     ctx.font =
-      "bold 13px system-ui, sans-serif";
+      "bold 14px system-ui, sans-serif";
 
     ctx.fillText(
       "ON",
       12 + leftW / 2,
-      360
+      310
     );
 
     ctx.fillStyle = "#e2e8f0";
 
     ctx.font =
-      "14px system-ui, sans-serif";
+      "17px system-ui, sans-serif";
 
     var onLines = wrapLinesToArray(
       item.on || "—",
-      110
+      112
     );
 
     drawParagraphCenter(
       12 + leftW / 2,
-      376,
-      110,
-      18,
+      330,
+      112,
+      22,
       onLines
     );
 
@@ -346,39 +310,40 @@
     ctx.fillStyle = "#64748b";
 
     ctx.font =
-      "bold 13px system-ui, sans-serif";
+      "bold 14px system-ui, sans-serif";
 
     ctx.fillText(
       "KUN",
       12 + leftW / 2,
-      430
+      415
     );
 
     ctx.fillStyle = "#e2e8f0";
 
     ctx.font =
-      "14px system-ui, sans-serif";
+      "17px system-ui, sans-serif";
 
     var kunLines = wrapLinesToArray(
       item.kun || "—",
-      110
+      112
     );
 
     drawParagraphCenter(
       12 + leftW / 2,
-      446,
-      110,
-      18,
+      435,
+      112,
+      22,
       kunLines
     );
 
-    // RIGHT PANEL
-    var y = 26;
+    // RIGHT SIDE
+    ctx.textAlign = "left";
 
+    var y = 34;
+
+    // MEANING
     if (item.meaning) {
-      ctx.textAlign = "left";
-
-      ctx.fillStyle = "#f8fafc";
+      ctx.fillStyle = "#7dd3fc";
 
       ctx.font =
         "bold 18px system-ui, sans-serif";
@@ -389,12 +354,12 @@
         y
       );
 
-      y += 18;
+      y += 20;
 
-      ctx.fillStyle = "#cbd5e1";
+      ctx.fillStyle = "#f1f5f9";
 
       ctx.font =
-        "15px system-ui, sans-serif";
+        "18px system-ui, sans-serif";
 
       var meaningLines =
         wrapLinesToArray(
@@ -406,20 +371,21 @@
         ctx.fillText(
           line,
           rightX,
-          y + 20
+          y + 18
         );
 
-        y += 22;
+        y += 24;
       });
 
       y += 14;
     }
 
+    // RADICALS
     if (item.radicals) {
       ctx.fillStyle = "#7dd3fc";
 
       ctx.font =
-        "bold 15px system-ui, sans-serif";
+        "bold 16px system-ui, sans-serif";
 
       ctx.fillText(
         "Bộ thủ",
@@ -429,10 +395,10 @@
 
       y += 18;
 
-      ctx.fillStyle = "#94a3b8";
+      ctx.fillStyle = "#cbd5e1";
 
       ctx.font =
-        "14px system-ui, sans-serif";
+        "16px system-ui, sans-serif";
 
       var radLines =
         wrapLinesToArray(
@@ -444,20 +410,21 @@
         ctx.fillText(
           line,
           rightX,
-          y + 18
+          y + 17
         );
 
-        y += 20;
+        y += 22;
       });
 
       y += 14;
     }
 
+    // MEMORY TIP
     if (item.memory_tip) {
       ctx.fillStyle = "#7dd3fc";
 
       ctx.font =
-        "bold 15px system-ui, sans-serif";
+        "bold 16px system-ui, sans-serif";
 
       ctx.fillText(
         "Gợi nhớ",
@@ -467,10 +434,10 @@
 
       y += 18;
 
-      ctx.fillStyle = "#64748b";
+      ctx.fillStyle = "#94a3b8";
 
       ctx.font =
-        "italic 13px system-ui, sans-serif";
+        "15px system-ui, sans-serif";
 
       var tipLines =
         wrapLinesToArray(
@@ -482,22 +449,23 @@
         ctx.fillText(
           line,
           rightX,
-          y + 17
+          y + 16
         );
 
-        y += 18;
+        y += 21;
       });
 
-      y += 14;
+      y += 16;
     }
 
+    // VOCAB
     var vocabs = item._vocabs || [];
 
     if (vocabs.length) {
       ctx.fillStyle = "#7dd3fc";
 
       ctx.font =
-        "bold 15px system-ui, sans-serif";
+        "bold 18px system-ui, sans-serif";
 
       ctx.fillText(
         "Từ vựng",
@@ -505,13 +473,15 @@
         y
       );
 
-      y += 20;
+      y += 24;
 
       vocabs.slice(0, 4).forEach(function (v) {
+
+        // WORD
         ctx.fillStyle = "#f8fafc";
 
         ctx.font =
-          "600 14px system-ui, sans-serif";
+          "700 18px system-ui, sans-serif";
 
         var title = v.word || "";
 
@@ -529,36 +499,37 @@
           ctx.fillText(
             line,
             rightX,
-            y + 17
+            y + 18
           );
 
-          y += 18;
+          y += 24;
         });
 
+        // MEANING
         if (v.meaning) {
           ctx.fillStyle = "#94a3b8";
 
           ctx.font =
-            "13px system-ui, sans-serif";
+            "16px system-ui, sans-serif";
 
           var mLines =
             wrapLinesToArray(
               v.meaning,
-              rightW - 6
+              rightW - 4
             );
 
           mLines.forEach(function (line) {
             ctx.fillText(
               line,
-              rightX + 6,
-              y + 15
+              rightX + 4,
+              y + 16
             );
 
-            y += 16;
+            y += 21;
           });
         }
 
-        y += 10;
+        y += 16;
       });
     }
 
@@ -630,38 +601,45 @@
       els.btnPip.disabled = true;
 
       setFallback(
-        "Không tạo được stream."
+        "Không tạo được MediaStream."
       );
     }
   }
 
-  async function openPipFromUserGesture() {
+  function openPipFromUserGesture() {
     var v = els.video;
 
     if (
       !v ||
       !v.requestPictureInPicture
     ) {
-      return;
+      return Promise.resolve(false);
     }
 
     try {
-      // KHÔNG await play()
-      var p = v.play();
+      var playP = v.play();
 
       if (
-        p &&
-        typeof p.catch === "function"
+        playP &&
+        typeof playP.catch === "function"
       ) {
-        p.catch(function () {});
+        playP.catch(function () {});
       }
 
-      // gọi PiP ngay trong user gesture
-      await v.requestPictureInPicture();
+      return v
+        .requestPictureInPicture()
+        .then(function () {
+          state.pipActive = true;
+          return true;
+        })
+        .catch(function (e) {
+          console.warn(e);
+          return false;
+        });
 
-      state.pipActive = true;
     } catch (e) {
       console.warn(e);
+      return Promise.resolve(false);
     }
   }
 
@@ -713,7 +691,9 @@
   }
 
   function showLoadError(msg) {
-    if (!els.loadStatus) return;
+    if (!els.loadStatus) {
+      return;
+    }
 
     els.loadStatus.textContent = msg;
     els.loadStatus.hidden = false;
@@ -756,6 +736,7 @@
         ? arr
         : []
     ).map(function (raw, idx) {
+
       var on = String(
         raw.on_reading != null
           ? raw.on_reading
@@ -783,11 +764,6 @@
         on: on,
 
         kun: kun,
-
-        strokes:
-          raw.stroke_count != null
-            ? raw.stroke_count
-            : "",
 
         hanviet:
           raw.hanviet || "",
@@ -826,12 +802,14 @@
 
       renderDetail();
 
-      // auto thử PiP
-      // fail vẫn bấm được
-      setTimeout(function () {
-        openPipFromUserGesture()
-          .catch(function () {});
-      }, 500);
+      history.replaceState(
+        { id: state.selected.id },
+        "",
+        "#kanji=" +
+          encodeURIComponent(
+            state.selected.id
+          )
+      );
     }
 
     clearLoadError();
@@ -869,7 +847,7 @@
     }
 
     showLoadError(
-      "Không tải được dữ liệu Kanji."
+      "Không tải được dữ liệu Kanji (kanjiData.js)."
     );
   }
 
@@ -882,13 +860,6 @@
     bootFromHash
   );
 
-  window.addEventListener(
-    "load",
-    function () {
-      setTimeout(function () {
-        loadKanjiData();
-      }, 100);
-    },
-    { once: true }
-  );
+  loadKanjiData();
+
 })();
