@@ -11,7 +11,13 @@
     pipActive: false,
     rafId: 0,
     lastDraw: 0,
-    autoPipOnSelect: true
+    autoPipOnSelect: true,
+    /** URL.revokeObjectURL khi đổi nguồn / thoát PiP */
+    pipBlobUrl: null,
+    /** PiP đang phát file đã ghi (ổn định hơn khi khóa màn hình iOS) */
+    pipUsingRecorded: false,
+    pipRecordTimer: 0,
+    hiddenPipTimer: 0
   };
 
   const els = {
@@ -236,6 +242,198 @@
     }
   }
 
+  function revokePipBlobUrl() {
+    if (state.pipBlobUrl) {
+      try {
+        URL.revokeObjectURL(state.pipBlobUrl);
+      } catch (e) {
+        /* ignore */
+      }
+      state.pipBlobUrl = null;
+    }
+    state.pipUsingRecorded = false;
+  }
+
+  function clearPipRecordTimer() {
+    if (state.pipRecordTimer) {
+      clearTimeout(state.pipRecordTimer);
+      state.pipRecordTimer = 0;
+    }
+  }
+
+  function clearHiddenPipTimer() {
+    if (state.hiddenPipTimer) {
+      clearInterval(state.hiddenPipTimer);
+      state.hiddenPipTimer = 0;
+    }
+  }
+
+  /** Khi trang ẩn (khóa màn hình), rAF có thể dừng — ép vẽ + requestFrame cho track capture. */
+  function refreshPipFrameFromCanvas() {
+    drawCanvas();
+    if (!state.stream) {
+      return;
+    }
+    var tracks = state.stream.getVideoTracks();
+    var t0 = tracks[0];
+    if (t0 && typeof t0.requestFrame === "function") {
+      try {
+        t0.requestFrame();
+      } catch (e) {
+        /* ignore */
+      }
+    }
+  }
+
+  function startHiddenPipRefresh() {
+    if (state.hiddenPipTimer || state.pipUsingRecorded) {
+      return;
+    }
+    state.hiddenPipTimer = setInterval(function () {
+      if (!state.pipActive || document.visibilityState !== "hidden") {
+        return;
+      }
+      refreshPipFrameFromCanvas();
+    }, 120);
+  }
+
+  function pickMediaRecorderMime() {
+    if (typeof MediaRecorder === "undefined" || !MediaRecorder.isTypeSupported) {
+      return "";
+    }
+    var types = [
+      "video/mp4",
+      "video/mp4; codecs=avc1.42E01E",
+      "video/webm;codecs=vp9",
+      "video/webm;codecs=vp8",
+      "video/webm"
+    ];
+    for (var i = 0; i < types.length; i++) {
+      if (MediaRecorder.isTypeSupported(types[i])) {
+        return types[i];
+      }
+    }
+    return "";
+  }
+
+  /**
+   * Ghi vài giây từ MediaStream canvas → blob lặp. Trên iOS, phát file lặp trong PiP
+   * thường không bị “clear” khi khóa màn hình như luồng capture trực tiếp.
+   */
+  function recordStreamToLoopingBlob(stream, durationMs, done) {
+    if (!stream || typeof MediaRecorder === "undefined") {
+      done(null);
+      return;
+    }
+    var mime = pickMediaRecorderMime();
+    var rec;
+    try {
+      rec = mime
+        ? new MediaRecorder(stream, { mimeType: mime, videoBitsPerSecond: 2500000 })
+        : new MediaRecorder(stream);
+    } catch (e1) {
+      try {
+        rec = new MediaRecorder(stream);
+      } catch (e2) {
+        done(null);
+        return;
+      }
+    }
+    var chunks = [];
+    var outMime = mime || rec.mimeType || "video/mp4";
+    var finished = false;
+    function finishOnce(blob) {
+      if (finished) {
+        return;
+      }
+      finished = true;
+      done(blob);
+    }
+    rec.ondataavailable = function (e) {
+      if (e.data && e.data.size) {
+        chunks.push(e.data);
+      }
+    };
+    rec.onstop = function () {
+      var blob = chunks.length ? new Blob(chunks, { type: outMime }) : null;
+      finishOnce(blob);
+    };
+    try {
+      rec.start(200);
+    } catch (e) {
+      finishOnce(null);
+      return;
+    }
+    setTimeout(function () {
+      if (rec.state === "recording") {
+        try {
+          rec.stop();
+        } catch (e) {
+          finishOnce(null);
+        }
+      }
+    }, durationMs);
+    setTimeout(function () {
+      if (!finished) {
+        finishOnce(null);
+      }
+    }, durationMs + 2200);
+  }
+
+  function applyLoopingBlobToPipVideo(blob) {
+    var v = els.video;
+    if (!blob || !v) {
+      return;
+    }
+    if (document.pictureInPictureElement !== v || !state.pipActive) {
+      return;
+    }
+    revokePipBlobUrl();
+    state.pipBlobUrl = URL.createObjectURL(blob);
+    state.pipUsingRecorded = true;
+    try {
+      v.srcObject = null;
+    } catch (e) {
+      /* ignore */
+    }
+    v.src = state.pipBlobUrl;
+    v.loop = true;
+    v.muted = true;
+    v.setAttribute("playsinline", "");
+    v.setAttribute("webkit-playsinline", "");
+    v.play().catch(function () {});
+    clearHiddenPipTimer();
+    if (state.stream) {
+      state.stream.getTracks().forEach(function (t) {
+        t.stop();
+      });
+      state.stream = null;
+    }
+  }
+
+  function schedulePipRecordedLoopSwap() {
+    clearPipRecordTimer();
+    if (state.pipUsingRecorded || typeof MediaRecorder === "undefined") {
+      return;
+    }
+    state.pipRecordTimer = setTimeout(function () {
+      state.pipRecordTimer = 0;
+      if (!state.pipActive || document.pictureInPictureElement !== els.video || !state.stream) {
+        return;
+      }
+      recordStreamToLoopingBlob(state.stream, 1600, function (blob) {
+        if (
+          blob &&
+          blob.size &&
+          state.pipActive &&
+          document.pictureInPictureElement === els.video
+        ) {
+          applyLoopingBlobToPipVideo(blob);
+        }
+      });
+    }, 450);
+  }
+
   function attachStreamToVideo() {
     var cap = supportsPipFromCanvas();
     if (!cap.ok) {
@@ -244,6 +442,12 @@
       return;
     }
     try {
+      clearPipRecordTimer();
+      revokePipBlobUrl();
+      if (els.video) {
+        els.video.removeAttribute("src");
+        els.video.src = "";
+      }
       if (state.stream) {
         state.stream.getTracks().forEach(function (t) {
           t.stop();
@@ -287,6 +491,14 @@
     ) {
       openPipFromUserGesture({ silent: true });
     }
+    if (
+      state.pipActive &&
+      els.video &&
+      typeof document.pictureInPictureElement !== "undefined" &&
+      document.pictureInPictureElement === els.video
+    ) {
+      schedulePipRecordedLoopSwap();
+    }
   }
 
   function openPipFromUserGesture(opts) {
@@ -298,6 +510,24 @@
         setFallback("Không có Picture-in-Picture trên trình duyệt này.");
       }
       return Promise.resolve(false);
+    }
+
+    if (document.pictureInPictureElement === v) {
+      state.pipActive = true;
+      try {
+        var playExisting = v.play();
+        if (playExisting && typeof playExisting.catch === "function") {
+          playExisting.catch(function () {});
+        }
+      } catch (e) {
+        if (!opts.silent) {
+          setFallback("Video.play: " + (e && e.message ? e.message : e));
+        }
+        return Promise.resolve(false);
+      }
+      schedulePipRecordedLoopSwap();
+      setFallback("");
+      return Promise.resolve(true);
     }
 
     /**
@@ -333,6 +563,7 @@
         .then(function () {
           state.pipActive = true;
           setFallback("");
+          schedulePipRecordedLoopSwap();
           return true;
         })
         .catch(function (err) {
@@ -349,6 +580,7 @@
 
     state.pipActive = true;
     setFallback("");
+    schedulePipRecordedLoopSwap();
     return Promise.resolve(true);
   }
 
@@ -357,10 +589,44 @@
   });
 
   if (els.video) {
+    els.video.addEventListener("enterpictureinpicture", function () {
+      state.pipActive = true;
+      schedulePipRecordedLoopSwap();
+    });
     els.video.addEventListener("leavepictureinpicture", function () {
       state.pipActive = false;
+      clearHiddenPipTimer();
+      clearPipRecordTimer();
+      revokePipBlobUrl();
+      if (els.video) {
+        try {
+          els.video.srcObject = null;
+        } catch (e) {
+          /* ignore */
+        }
+        els.video.removeAttribute("src");
+        els.video.src = "";
+      }
+      if (state.selected) {
+        attachStreamToVideo();
+        drawCanvas();
+      }
     });
   }
+
+  document.addEventListener("visibilitychange", function () {
+    if (!state.pipActive) {
+      return;
+    }
+    if (document.visibilityState === "hidden") {
+      if (!state.pipUsingRecorded) {
+        startHiddenPipRefresh();
+      }
+    } else {
+      clearHiddenPipTimer();
+      drawCanvas();
+    }
+  });
 
   function clearLoadError() {
     if (els.loadStatus) {
