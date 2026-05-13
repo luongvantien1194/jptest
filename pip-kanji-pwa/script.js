@@ -655,8 +655,15 @@
       });
       if (found) {
         state.selected = found;
-        renderDetail({ skipAutoPip: false });
-        clearLoadError();
+        renderDetail();
+
+requestAnimationFrame(function () {
+  if (els.btnPip) {
+    els.btnPip.click();
+  }
+});
+
+clearLoadError();
       }
     } catch (e) {
       /* ignore */
@@ -701,7 +708,14 @@
       renderDetail({ skipAutoPip: false });
       history.replaceState({ id: state.selected.id }, "", "#kanji=" + encodeURIComponent(state.selected.id));
     }
-    clearLoadError();
+
+requestAnimationFrame(function () {
+  if (els.btnPip) {
+    els.btnPip.click();
+  }
+});
+
+clearLoadError();
   }
 
   function getKanjiDataArray() {
