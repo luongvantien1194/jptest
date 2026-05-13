@@ -9,22 +9,113 @@
     selected: null,
     stream: null,
     pipActive: false,
-    rafId: 0
+    rafId: 0,
+    autoPipOnSelect: true,
+    pipBlobUrl: null,
+    pipUsingRecorded: false,
+    pipRecordTimer: 0,
+    hiddenPipTimer: 0
   };
 
   const els = {
-    canvas: document.getElementById("main-canvas"),
-    video: document.getElementById("pip-video"),
-    btnPip: document.getElementById("btn-pip"),
+    loadStatus: document.getElementById("load-status"),
     detailPanel: document.getElementById("detail-panel"),
+    canvas: document.getElementById("main-canvas"),
+    btnPip: document.getElementById("btn-pip"),
+    video: document.getElementById("pip-video"),
     fallback: document.getElementById("fallback-box")
   };
 
   const ctx = els.canvas.getContext("2d");
 
-  // ======================================================
-  // HELPERS
-  // ======================================================
+  function parseLegacyPipeVocab(s) {
+    var out = [];
+
+    String(s)
+      .split("|")
+      .forEach(function (seg) {
+        var t = String(seg).trim();
+
+        if (!t) return;
+
+        var m = t.match(/^(.+?)\(([^)]+)\)\s*:\s*(.+)$/);
+
+        if (m) {
+          out.push({
+            word: m[1].trim(),
+            reading: m[2].trim(),
+            meaning: m[3].trim()
+          });
+        } else {
+          out.push({
+            word: t,
+            reading: "",
+            meaning: ""
+          });
+        }
+      });
+
+    return out;
+  }
+
+  function normalizeVocabularyList(raw) {
+    if (Array.isArray(raw.vocabulary)) {
+      return raw.vocabulary.map(function (e) {
+        if (typeof e === "string") {
+          return {
+            word: e,
+            reading: "",
+            meaning: ""
+          };
+        }
+
+        return {
+          word: e.word != null ? String(e.word) : "",
+          reading: e.reading != null ? String(e.reading) : "",
+          meaning: e.meaning != null ? String(e.meaning) : ""
+        };
+      });
+    }
+
+    if (
+      typeof raw.vocabulary === "string" &&
+      raw.vocabulary.trim()
+    ) {
+      return parseLegacyPipeVocab(raw.vocabulary);
+    }
+
+    return [];
+  }
+
+  function supportsPipFromCanvas() {
+    var c = els.canvas;
+    var v = els.video;
+
+    if (!c || !c.captureStream) {
+      return {
+        ok: false,
+        reason:
+          "Trình duyệt không hỗ trợ canvas.captureStream()."
+      };
+    }
+
+    if (!v || !v.requestPictureInPicture) {
+      return {
+        ok: false,
+        reason:
+          "Trình duyệt không hỗ trợ Picture-in-Picture."
+      };
+    }
+
+    return { ok: true };
+  }
+
+  function setFallback(msg) {
+    if (!els.fallback) return;
+
+    els.fallback.hidden = !msg;
+    els.fallback.textContent = msg || "";
+  }
 
   function wrapLinesToArray(text, maxW) {
     var s = String(text || "").trim();
@@ -52,6 +143,33 @@
       }
 
       cur = p;
+
+      while (
+        cur.length > 0 &&
+        ctx.measureText(cur).width > maxW
+      ) {
+        var lo = 1;
+        var hi = cur.length;
+
+        while (lo < hi) {
+          var mid = Math.ceil((lo + hi) / 2);
+
+          if (
+            ctx.measureText(cur.slice(0, mid)).width <=
+            maxW
+          ) {
+            lo = mid;
+          } else {
+            hi = mid - 1;
+          }
+        }
+
+        var take = Math.max(1, lo);
+
+        lines.push(cur.slice(0, take));
+
+        cur = cur.slice(take);
+      }
     }
 
     if (cur.trim()) {
@@ -84,23 +202,16 @@
     return y;
   }
 
-  function setFallback(msg) {
-    if (!els.fallback) return;
-
-    els.fallback.hidden = !msg;
-    els.fallback.textContent = msg || "";
-  }
-
-  // ======================================================
-  // DRAW
-  // ======================================================
+  // =====================================================
+  // BEAUTIFIED LAYOUT
+  // =====================================================
 
   function drawCanvas() {
     var item = state.selected;
 
-    if (!item) return;
-
-    // BG
+    if (!item || !ctx) {
+      return;
+    }
 
     var bg = ctx.createLinearGradient(
       0,
@@ -123,20 +234,12 @@
 
     ctx.save();
 
-    // ======================================================
-    // LAYOUT
-    // ======================================================
-
     var leftW = 138;
-
     var rightX = leftW + 22;
-
     var rightW =
       CANVAS_W - rightX - 18;
 
-    // ======================================================
     // LEFT PANEL
-    // ======================================================
 
     ctx.fillStyle =
       "rgba(255,255,255,0.045)";
@@ -156,19 +259,19 @@
     ctx.strokeStyle =
       "rgba(255,255,255,0.07)";
 
+    ctx.lineWidth = 1;
+
     ctx.stroke();
 
     ctx.textAlign = "center";
     ctx.textBaseline = "middle";
 
-    // ======================================================
     // KANJI
-    // ======================================================
 
     ctx.fillStyle = "#f8fafc";
 
     ctx.font =
-      "bold 84px 'Hiragino Sans', 'Yu Gothic', sans-serif";
+      "bold 84px 'Hiragino Sans', 'Yu Gothic', 'PingFang SC', sans-serif";
 
     ctx.shadowColor =
       "rgba(255,255,255,0.15)";
@@ -189,7 +292,7 @@
       ctx.fillStyle = "#7dd3fc";
 
       ctx.font =
-        "700 22px system-ui";
+        "700 22px system-ui, sans-serif";
 
       ctx.fillText(
         item.hanviet,
@@ -214,14 +317,12 @@
 
     ctx.stroke();
 
-    // ======================================================
     // ON
-    // ======================================================
 
     ctx.fillStyle = "#64748b";
 
     ctx.font =
-      "bold 13px system-ui";
+      "bold 13px system-ui, sans-serif";
 
     ctx.fillText(
       "ON",
@@ -232,7 +333,7 @@
     ctx.fillStyle = "#f1f5f9";
 
     ctx.font =
-      "16px system-ui";
+      "16px system-ui, sans-serif";
 
     var onLines =
       wrapLinesToArray(
@@ -244,18 +345,16 @@
       12 + leftW / 2,
       285,
       110,
-      20,
+      21,
       onLines
     );
 
-    // ======================================================
     // KUN
-    // ======================================================
 
     ctx.fillStyle = "#64748b";
 
     ctx.font =
-      "bold 13px system-ui";
+      "bold 13px system-ui, sans-serif";
 
     ctx.fillText(
       "KUN",
@@ -266,7 +365,7 @@
     ctx.fillStyle = "#f1f5f9";
 
     ctx.font =
-      "16px system-ui";
+      "16px system-ui, sans-serif";
 
     var kunLines =
       wrapLinesToArray(
@@ -278,13 +377,11 @@
       12 + leftW / 2,
       405,
       110,
-      20,
+      21,
       kunLines
     );
 
-    // ======================================================
-    // RIGHT PANEL
-    // ======================================================
+    // RIGHT
 
     ctx.textAlign = "left";
 
@@ -294,7 +391,7 @@
       ctx.fillStyle = "#7dd3fc";
 
       ctx.font =
-        "700 15px system-ui";
+        "700 16px system-ui, sans-serif";
 
       ctx.fillText(
         title,
@@ -302,13 +399,10 @@
         y
       );
 
-      // closer spacing
-      y += 10;
+      y += 18;
     }
 
-    // ======================================================
-    // MEANING
-    // ======================================================
+    // Meaning
 
     if (item.meaning) {
       sectionTitle("Ý nghĩa");
@@ -316,7 +410,7 @@
       ctx.fillStyle = "#f8fafc";
 
       ctx.font =
-        "17px system-ui";
+        "17px system-ui, sans-serif";
 
       var meaningLines =
         wrapLinesToArray(
@@ -324,24 +418,20 @@
           rightW
         );
 
-      meaningLines.forEach(function (
-        line
-      ) {
+      meaningLines.forEach(function (line) {
         ctx.fillText(
           line,
           rightX,
-          y + 13
+          y + 16
         );
 
-        y += 18;
+        y += 22;
       });
 
-      y += 10;
+      y += 16;
     }
 
-    // ======================================================
-    // RADICAL
-    // ======================================================
+    // Radical
 
     if (item.radicals) {
       sectionTitle("Bộ thủ");
@@ -349,7 +439,7 @@
       ctx.fillStyle = "#cbd5e1";
 
       ctx.font =
-        "15px system-ui";
+        "15px system-ui, sans-serif";
 
       var radLines =
         wrapLinesToArray(
@@ -357,24 +447,20 @@
           rightW
         );
 
-      radLines.forEach(function (
-        line
-      ) {
+      radLines.forEach(function (line) {
         ctx.fillText(
           line,
           rightX,
-          y + 13
+          y + 15
         );
 
-        y += 18;
+        y += 20;
       });
 
-      y += 10;
+      y += 16;
     }
 
-    // ======================================================
-    // MEMORY
-    // ======================================================
+    // Memory tip
 
     if (item.memory_tip) {
       sectionTitle("Gợi nhớ");
@@ -382,7 +468,7 @@
       ctx.fillStyle = "#94a3b8";
 
       ctx.font =
-        "15px system-ui";
+        "15px system-ui, sans-serif";
 
       var tipLines =
         wrapLinesToArray(
@@ -390,24 +476,20 @@
           rightW
         );
 
-      tipLines.forEach(function (
-        line
-      ) {
+      tipLines.forEach(function (line) {
         ctx.fillText(
           line,
           rightX,
-          y + 13
+          y + 15
         );
 
-        y += 18;
+        y += 20;
       });
 
-      y += 10;
+      y += 18;
     }
 
-    // ======================================================
     // VOCAB
-    // ======================================================
 
     var vocabs =
       item._vocabs || [];
@@ -426,21 +508,18 @@
 
           ctx.roundRect(
             rightX - 6,
-            y - 1,
+            y - 2,
             rightW + 8,
-            56,
-            12
+            62,
+            14
           );
 
           ctx.fill();
 
-          // WORD
-
-          ctx.fillStyle =
-            "#ffffff";
+          ctx.fillStyle = "#ffffff";
 
           ctx.font =
-            "700 20px system-ui";
+            "700 20px system-ui, sans-serif";
 
           var title =
             v.word || "";
@@ -458,14 +537,12 @@
             y + 16
           );
 
-          // meaning
-
           if (v.meaning) {
             ctx.fillStyle =
               "#94a3b8";
 
             ctx.font =
-              "15px system-ui";
+              "15px system-ui, sans-serif";
 
             var mLines =
               wrapLinesToArray(
@@ -477,9 +554,7 @@
 
             mLines
               .slice(0, 2)
-              .forEach(function (
-                line
-              ) {
+              .forEach(function (line) {
                 ctx.fillText(
                   line,
                   rightX + 4,
@@ -490,16 +565,12 @@
               });
           }
 
-          y += 64;
+          y += 74;
         });
     }
 
     ctx.restore();
   }
-
-  // ======================================================
-  // LOOP
-  // ======================================================
 
   function loop() {
     drawCanvas();
@@ -508,11 +579,28 @@
       requestAnimationFrame(loop);
   }
 
-  // ======================================================
-  // PiP
-  // ======================================================
+  function stopLoop() {
+    if (state.rafId) {
+      cancelAnimationFrame(
+        state.rafId
+      );
+
+      state.rafId = 0;
+    }
+  }
 
   function attachStreamToVideo() {
+    var cap =
+      supportsPipFromCanvas();
+
+    if (!cap.ok) {
+      els.btnPip.disabled = true;
+
+      setFallback(cap.reason);
+
+      return;
+    }
+
     try {
       if (state.stream) {
         state.stream
@@ -540,16 +628,43 @@
         ""
       );
 
+      els.btnPip.disabled = false;
+
       setFallback("");
 
     } catch (e) {
+      els.btnPip.disabled = true;
+
       setFallback(
-        "Không tạo được stream."
+        "Không tạo được MediaStream."
       );
     }
   }
 
-  function openPip() {
+  function renderDetail() {
+    var item = state.selected;
+
+    if (!item) {
+      els.detailPanel.hidden = true;
+
+      stopLoop();
+
+      return;
+    }
+
+    els.detailPanel.hidden = false;
+
+    attachStreamToVideo();
+
+    drawCanvas();
+
+    if (!state.rafId) {
+      state.rafId =
+        requestAnimationFrame(loop);
+    }
+  }
+
+  function openPipFromUserGesture() {
     var v = els.video;
 
     if (
@@ -564,51 +679,127 @@
     }
 
     try {
-      v.play().catch(function () {});
+      var p = v.play();
 
-      v.requestPictureInPicture()
-        .then(function () {
-          state.pipActive = true;
-        })
-        .catch(function (e) {
-          setFallback(
-            "PiP lỗi: " +
-              e.message
-          );
-        });
+      if (
+        p &&
+        typeof p.catch === "function"
+      ) {
+        p.catch(function () {});
+      }
+
+      var pip =
+        v.requestPictureInPicture();
+
+      if (
+        pip &&
+        typeof pip.then === "function"
+      ) {
+        pip
+          .then(function () {
+            state.pipActive = true;
+
+            setFallback("");
+          })
+          .catch(function (err) {
+            setFallback(
+              "Không bật được PiP: " +
+                err.message
+            );
+          });
+      }
 
     } catch (e) {
       setFallback(
-        "PiP lỗi: " +
-          e.message
+        "Lỗi PiP: " + e.message
       );
     }
   }
 
-  // ======================================================
-  // DETAIL
-  // ======================================================
+  els.btnPip.addEventListener(
+    "click",
+    function () {
+      openPipFromUserGesture();
+    }
+  );
 
-  function renderDetail() {
-    if (!state.selected) return;
+  function clearLoadError() {
+    if (els.loadStatus) {
+      els.loadStatus.textContent = "";
 
-    els.detailPanel.hidden = false;
-
-    attachStreamToVideo();
-
-    drawCanvas();
-
-    if (!state.rafId) {
-      state.rafId =
-        requestAnimationFrame(loop);
+      els.loadStatus.hidden = true;
     }
   }
 
-  // ======================================================
-  // DATA
-  // ======================================================
+  function showLoadError(msg) {
+    if (!els.loadStatus) return;
 
-  function normalizeData(arr) {
+    els.loadStatus.textContent = msg;
+
+    els.loadStatus.hidden = false;
+  }
+
+  function bootFromHash() {
+    var m =
+      (window.location.hash || "")
+        .match(/^#kanji=(.+)$/);
+
+    if (!m || !state.items.length) {
+      return;
+    }
+
+    try {
+      var id =
+        decodeURIComponent(m[1]);
+
+      var found =
+        state.items.find(function (x) {
+          return (
+            String(x.id) ===
+            String(id)
+          );
+        });
+
+      if (found) {
+        state.selected = found;
+
+        renderDetail();
+
+        clearLoadError();
+      }
+
+    } catch (e) {}
+  }
+
+  function registerSw() {
+    if (
+      location.protocol === "file:"
+    ) {
+      return;
+    }
+
+    if (
+      typeof window.isSecureContext !==
+        "undefined" &&
+      !window.isSecureContext
+    ) {
+      return;
+    }
+
+    if (
+      !("serviceWorker" in navigator)
+    ) {
+      return;
+    }
+
+    navigator.serviceWorker
+      .register("./sw.js", {
+        scope: "./"
+      })
+      .catch(function () {});
+  }
+
+  function bootFromKanjiData(arr) {
     state.items =
       (Array.isArray(arr)
         ? arr
@@ -616,16 +807,22 @@
       ).map(function (raw, idx) {
 
         var on = String(
-          raw.on_reading || ""
+          raw.on_reading != null
+            ? raw.on_reading
+            : ""
         ).replace(/\|/g, "、");
 
         var kun = String(
-          raw.kun_reading || ""
+          raw.kun_reading != null
+            ? raw.kun_reading
+            : ""
         ).replace(/\|/g, "、");
 
         var o = {
           id: String(
-            raw.stt || idx + 1
+            raw.stt != null
+              ? raw.stt
+              : idx + 1
           ),
 
           kanji:
@@ -642,56 +839,96 @@
             raw.hanviet || "",
 
           radicals:
-            raw.radicals || "",
+            raw.radicals != null
+              ? String(raw.radicals)
+              : "",
 
           memory_tip:
-            raw.memory_tip || "",
+            raw.memory_tip != null
+              ? String(raw.memory_tip)
+              : "",
 
           vocabulary:
             raw.vocabulary
         };
 
         o._vocabs =
-          Array.isArray(
-            raw.vocabulary
-          )
-            ? raw.vocabulary
-            : [];
+          normalizeVocabularyList({
+            vocabulary:
+              raw.vocabulary
+          });
 
         return o;
       });
 
-    if (state.items.length) {
+    bootFromHash();
+
+    if (
+      !state.selected &&
+      state.items.length
+    ) {
       state.selected =
         state.items[0];
 
       renderDetail();
+
+      history.replaceState(
+        { id: state.selected.id },
+        "",
+        "#kanji=" +
+          encodeURIComponent(
+            state.selected.id
+          )
+      );
     }
+
+    clearLoadError();
   }
 
-  // ======================================================
-  // EVENTS
-  // ======================================================
-
-  els.btnPip.addEventListener(
-    "click",
-    function () {
-      openPip();
+  function getKanjiDataArray() {
+    if (
+      typeof kanjiData !==
+        "undefined" &&
+      Array.isArray(kanjiData) &&
+      kanjiData.length
+    ) {
+      return kanjiData;
     }
-  );
 
-  // ======================================================
-  // BOOT
-  // ======================================================
+    if (
+      window.kanjiData &&
+      Array.isArray(
+        window.kanjiData
+      ) &&
+      window.kanjiData.length
+    ) {
+      return window.kanjiData;
+    }
 
-  if (
-    window.kanjiData &&
-    Array.isArray(
-      window.kanjiData
-    )
-  ) {
-    normalizeData(
-      window.kanjiData
+    return null;
+  }
+
+  function loadKanjiData() {
+    var kd =
+      getKanjiDataArray();
+
+    if (kd) {
+      bootFromKanjiData(kd);
+
+      return;
+    }
+
+    showLoadError(
+      "Không tải được dữ liệu Kanji."
     );
   }
+
+  window.addEventListener(
+    "hashchange",
+    bootFromHash
+  );
+
+  registerSw();
+
+  loadKanjiData();
 })();
