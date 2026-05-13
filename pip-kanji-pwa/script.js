@@ -10,11 +10,7 @@
     stream: null,
     pipActive: false,
     rafId: 0,
-    autoPipOnSelect: true,
-    pipBlobUrl: null,
-    pipUsingRecorded: false,
-    pipRecordTimer: 0,
-    hiddenPipTimer: 0
+    hiddenRefreshTimer: 0
   };
 
   const els = {
@@ -28,87 +24,9 @@
 
   const ctx = els.canvas.getContext("2d");
 
-  function parseLegacyPipeVocab(s) {
-    var out = [];
-
-    String(s)
-      .split("|")
-      .forEach(function (seg) {
-        var t = String(seg).trim();
-
-        if (!t) return;
-
-        var m = t.match(/^(.+?)\(([^)]+)\)\s*:\s*(.+)$/);
-
-        if (m) {
-          out.push({
-            word: m[1].trim(),
-            reading: m[2].trim(),
-            meaning: m[3].trim()
-          });
-        } else {
-          out.push({
-            word: t,
-            reading: "",
-            meaning: ""
-          });
-        }
-      });
-
-    return out;
-  }
-
-  function normalizeVocabularyList(raw) {
-    if (Array.isArray(raw.vocabulary)) {
-      return raw.vocabulary.map(function (e) {
-        if (typeof e === "string") {
-          return {
-            word: e,
-            reading: "",
-            meaning: ""
-          };
-        }
-
-        return {
-          word: e.word != null ? String(e.word) : "",
-          reading: e.reading != null ? String(e.reading) : "",
-          meaning: e.meaning != null ? String(e.meaning) : ""
-        };
-      });
-    }
-
-    if (
-      typeof raw.vocabulary === "string" &&
-      raw.vocabulary.trim()
-    ) {
-      return parseLegacyPipeVocab(raw.vocabulary);
-    }
-
-    return [];
-  }
-
-  function supportsPipFromCanvas() {
-    var c = els.canvas;
-    var v = els.video;
-
-    if (!c || !c.captureStream) {
-      return {
-        ok: false,
-        reason:
-          "Trình duyệt không hỗ trợ canvas.captureStream()."
-      };
-    }
-
-    if (!v || !v.requestPictureInPicture) {
-      return {
-        ok: false,
-        reason:
-          "Trình duyệt không hỗ trợ Picture-in-Picture."
-      };
-    }
-
-    return { ok: true };
-  }
+  // =====================================================
+  // HELPERS
+  // =====================================================
 
   function setFallback(msg) {
     if (!els.fallback) return;
@@ -143,33 +61,6 @@
       }
 
       cur = p;
-
-      while (
-        cur.length > 0 &&
-        ctx.measureText(cur).width > maxW
-      ) {
-        var lo = 1;
-        var hi = cur.length;
-
-        while (lo < hi) {
-          var mid = Math.ceil((lo + hi) / 2);
-
-          if (
-            ctx.measureText(cur.slice(0, mid)).width <=
-            maxW
-          ) {
-            lo = mid;
-          } else {
-            hi = mid - 1;
-          }
-        }
-
-        var take = Math.max(1, lo);
-
-        lines.push(cur.slice(0, take));
-
-        cur = cur.slice(take);
-      }
     }
 
     if (cur.trim()) {
@@ -202,16 +93,92 @@
     return y;
   }
 
+  function parseLegacyPipeVocab(s) {
+    var out = [];
+
+    String(s)
+      .split("|")
+      .forEach(function (seg) {
+
+        var t = String(seg).trim();
+
+        if (!t) return;
+
+        var m =
+          t.match(
+            /^(.+?)\(([^)]+)\)\s*:\s*(.+)$/
+          );
+
+        if (m) {
+          out.push({
+            word: m[1].trim(),
+            reading: m[2].trim(),
+            meaning: m[3].trim()
+          });
+        } else {
+          out.push({
+            word: t,
+            reading: "",
+            meaning: ""
+          });
+        }
+      });
+
+    return out;
+  }
+
+  function normalizeVocabularyList(raw) {
+    if (Array.isArray(raw.vocabulary)) {
+      return raw.vocabulary.map(function (e) {
+
+        if (typeof e === "string") {
+          return {
+            word: e,
+            reading: "",
+            meaning: ""
+          };
+        }
+
+        return {
+          word:
+            e.word != null
+              ? String(e.word)
+              : "",
+
+          reading:
+            e.reading != null
+              ? String(e.reading)
+              : "",
+
+          meaning:
+            e.meaning != null
+              ? String(e.meaning)
+              : ""
+        };
+      });
+    }
+
+    if (
+      typeof raw.vocabulary === "string" &&
+      raw.vocabulary.trim()
+    ) {
+      return parseLegacyPipeVocab(
+        raw.vocabulary
+      );
+    }
+
+    return [];
+  }
+
   // =====================================================
-  // BEAUTIFIED LAYOUT
+  // DRAW
   // =====================================================
 
   function drawCanvas() {
+
     var item = state.selected;
 
-    if (!item || !ctx) {
-      return;
-    }
+    if (!item) return;
 
     var bg = ctx.createLinearGradient(
       0,
@@ -235,11 +202,15 @@
     ctx.save();
 
     var leftW = 138;
+
     var rightX = leftW + 22;
+
     var rightW =
       CANVAS_W - rightX - 18;
 
-    // LEFT PANEL
+    // =====================================================
+    // LEFT
+    // =====================================================
 
     ctx.fillStyle =
       "rgba(255,255,255,0.045)";
@@ -259,8 +230,6 @@
     ctx.strokeStyle =
       "rgba(255,255,255,0.07)";
 
-    ctx.lineWidth = 1;
-
     ctx.stroke();
 
     ctx.textAlign = "center";
@@ -271,12 +240,12 @@
     ctx.fillStyle = "#f8fafc";
 
     ctx.font =
-      "bold 84px 'Hiragino Sans', 'Yu Gothic', 'PingFang SC', sans-serif";
+      "bold 82px 'Hiragino Sans', 'Yu Gothic', sans-serif";
 
     ctx.shadowColor =
-      "rgba(255,255,255,0.15)";
+      "rgba(255,255,255,0.18)";
 
-    ctx.shadowBlur = 16;
+    ctx.shadowBlur = 18;
 
     ctx.fillText(
       item.kanji || "",
@@ -289,30 +258,31 @@
     // HANVIET
 
     if (item.hanviet) {
+
       ctx.fillStyle = "#7dd3fc";
 
       ctx.font =
-        "700 22px system-ui, sans-serif";
+        "700 22px system-ui";
 
       ctx.fillText(
         item.hanviet,
         12 + leftW / 2,
-        175
+        176
       );
     }
 
-    // divider
+    // DIVIDER
 
     ctx.strokeStyle =
       "rgba(255,255,255,0.08)";
 
     ctx.beginPath();
 
-    ctx.moveTo(30, 225);
+    ctx.moveTo(30, 226);
 
     ctx.lineTo(
       12 + leftW - 30,
-      225
+      226
     );
 
     ctx.stroke();
@@ -322,31 +292,28 @@
     ctx.fillStyle = "#64748b";
 
     ctx.font =
-      "bold 13px system-ui, sans-serif";
+      "700 13px system-ui";
 
     ctx.fillText(
       "ON",
       12 + leftW / 2,
-      265
+      264
     );
 
     ctx.fillStyle = "#f1f5f9";
 
     ctx.font =
-      "16px system-ui, sans-serif";
-
-    var onLines =
-      wrapLinesToArray(
-        item.on || "—",
-        110
-      );
+      "16px system-ui";
 
     drawParagraphCenter(
       12 + leftW / 2,
-      285,
+      284,
       110,
-      21,
-      onLines
+      20,
+      wrapLinesToArray(
+        item.on || "—",
+        110
+      )
     );
 
     // KUN
@@ -354,44 +321,45 @@
     ctx.fillStyle = "#64748b";
 
     ctx.font =
-      "bold 13px system-ui, sans-serif";
+      "700 13px system-ui";
 
     ctx.fillText(
       "KUN",
       12 + leftW / 2,
-      385
+      384
     );
 
     ctx.fillStyle = "#f1f5f9";
 
     ctx.font =
-      "16px system-ui, sans-serif";
-
-    var kunLines =
-      wrapLinesToArray(
-        item.kun || "—",
-        110
-      );
+      "16px system-ui";
 
     drawParagraphCenter(
       12 + leftW / 2,
-      405,
+      404,
       110,
-      21,
-      kunLines
+      20,
+      wrapLinesToArray(
+        item.kun || "—",
+        110
+      )
     );
 
+    // =====================================================
     // RIGHT
+    // =====================================================
 
     ctx.textAlign = "left";
+    ctx.textBaseline = "top";
 
     var y = 34;
 
     function sectionTitle(title) {
+
       ctx.fillStyle = "#7dd3fc";
 
       ctx.font =
-        "700 16px system-ui, sans-serif";
+        "700 16px system-ui";
 
       ctx.fillText(
         title,
@@ -399,102 +367,102 @@
         y
       );
 
-      y += 18;
+      y += 20;
     }
 
     // Meaning
 
     if (item.meaning) {
+
       sectionTitle("Ý nghĩa");
 
       ctx.fillStyle = "#f8fafc";
 
       ctx.font =
-        "17px system-ui, sans-serif";
+        "17px system-ui";
 
-      var meaningLines =
-        wrapLinesToArray(
-          item.meaning,
-          rightW
-        );
+      wrapLinesToArray(
+        item.meaning,
+        rightW
+      ).forEach(function (line) {
 
-      meaningLines.forEach(function (line) {
         ctx.fillText(
           line,
           rightX,
           y
         );
 
-        y += 4;
+        y += 18;
       });
 
-      y += 25;
+      y += 10;
     }
 
     // Radical
 
     if (item.radicals) {
+
       sectionTitle("Bộ thủ");
 
       ctx.fillStyle = "#cbd5e1";
 
       ctx.font =
-        "15px system-ui, sans-serif";
+        "15px system-ui";
 
-      var radLines =
-        wrapLinesToArray(
-          item.radicals,
-          rightW
-        );
+      wrapLinesToArray(
+        item.radicals,
+        rightW
+      ).forEach(function (line) {
 
-      radLines.forEach(function (line) {
         ctx.fillText(
           line,
           rightX,
           y
         );
 
-        y += 4;
+        y += 18;
       });
 
-      y += 25;
+      y += 10;
     }
 
-    // Memory tip
+    // Memory
 
     if (item.memory_tip) {
+
       sectionTitle("Gợi nhớ");
 
       ctx.fillStyle = "#94a3b8";
 
       ctx.font =
-        "15px system-ui, sans-serif";
+        "15px system-ui";
 
-      var tipLines =
-        wrapLinesToArray(
-          item.memory_tip,
-          rightW
-        );
+      wrapLinesToArray(
+        item.memory_tip,
+        rightW
+      ).forEach(function (line) {
 
-      tipLines.forEach(function (line) {
         ctx.fillText(
           line,
           rightX,
           y
         );
 
-        y += 16;
+        y += 18;
       });
 
-      y += 25;
+      y += 12;
     }
 
+    // =====================================================
     // VOCAB
+    // =====================================================
 
     var vocabs =
       item._vocabs || [];
 
     if (vocabs.length) {
+
       sectionTitle("Từ vựng");
 
       vocabs
@@ -508,18 +476,21 @@
 
           ctx.roundRect(
             rightX - 6,
-            y - 2,
+            y - 4,
             rightW + 8,
-            62,
+            64,
             14
           );
 
           ctx.fill();
 
-          ctx.fillStyle = "#ffffff";
+          // WORD
+
+          ctx.fillStyle =
+            "#ffffff";
 
           ctx.font =
-            "700 20px system-ui, sans-serif";
+            "700 20px system-ui";
 
           var title =
             v.word || "";
@@ -533,35 +504,36 @@
 
           ctx.fillText(
             title,
-            rightX + 4,
-            y + 16
+            rightX + 6,
+            y + 10
           );
 
+          // MEANING
+
           if (v.meaning) {
+
             ctx.fillStyle =
               "#94a3b8";
 
             ctx.font =
-              "15px system-ui, sans-serif";
+              "15px system-ui";
 
-            var mLines =
-              wrapLinesToArray(
-                v.meaning,
-                rightW - 10
-              );
+            var my = y + 36;
 
-            var my = y + 38;
-
-            mLines
+            wrapLinesToArray(
+              v.meaning,
+              rightW - 14
+            )
               .slice(0, 2)
               .forEach(function (line) {
+
                 ctx.fillText(
                   line,
-                  rightX + 4,
+                  rightX + 6,
                   my
                 );
 
-                my += 18;
+                my += 17;
               });
           }
 
@@ -572,37 +544,82 @@
     ctx.restore();
   }
 
+  // =====================================================
+  // LOOP
+  // =====================================================
+
   function loop() {
+
     drawCanvas();
 
     state.rafId =
       requestAnimationFrame(loop);
   }
 
-  function stopLoop() {
-    if (state.rafId) {
-      cancelAnimationFrame(
-        state.rafId
+  // =====================================================
+  // PIP
+  // =====================================================
+
+  function refreshPipFrame() {
+
+    drawCanvas();
+
+    if (!state.stream) return;
+
+    var tracks =
+      state.stream.getVideoTracks();
+
+    var t0 = tracks[0];
+
+    if (
+      t0 &&
+      typeof t0.requestFrame ===
+        "function"
+    ) {
+      try {
+        t0.requestFrame();
+      } catch (e) {}
+    }
+  }
+
+  function startHiddenRefresh() {
+
+    if (state.hiddenRefreshTimer) {
+      return;
+    }
+
+    state.hiddenRefreshTimer =
+      setInterval(function () {
+
+        if (
+          document.visibilityState ===
+          "hidden"
+        ) {
+          refreshPipFrame();
+        }
+
+      }, 120);
+  }
+
+  function stopHiddenRefresh() {
+
+    if (
+      state.hiddenRefreshTimer
+    ) {
+      clearInterval(
+        state.hiddenRefreshTimer
       );
 
-      state.rafId = 0;
+      state.hiddenRefreshTimer = 0;
     }
   }
 
   function attachStreamToVideo() {
-    var cap =
-      supportsPipFromCanvas();
-
-    if (!cap.ok) {
-      els.btnPip.disabled = true;
-
-      setFallback(cap.reason);
-
-      return;
-    }
 
     try {
+
       if (state.stream) {
+
         state.stream
           .getTracks()
           .forEach(function (t) {
@@ -628,12 +645,9 @@
         ""
       );
 
-      els.btnPip.disabled = false;
-
       setFallback("");
 
     } catch (e) {
-      els.btnPip.disabled = true;
 
       setFallback(
         "Không tạo được MediaStream."
@@ -641,30 +655,8 @@
     }
   }
 
-  function renderDetail() {
-    var item = state.selected;
+  function openPip() {
 
-    if (!item) {
-      els.detailPanel.hidden = true;
-
-      stopLoop();
-
-      return;
-    }
-
-    els.detailPanel.hidden = false;
-
-    attachStreamToVideo();
-
-    drawCanvas();
-
-    if (!state.rafId) {
-      state.rafId =
-        requestAnimationFrame(loop);
-    }
-  }
-
-  function openPipFromUserGesture() {
     var v = els.video;
 
     if (
@@ -679,6 +671,7 @@
     }
 
     try {
+
       var p = v.play();
 
       if (
@@ -688,118 +681,62 @@
         p.catch(function () {});
       }
 
-      var pip =
-        v.requestPictureInPicture();
+      v.requestPictureInPicture()
+        .then(function () {
 
-      if (
-        pip &&
-        typeof pip.then === "function"
-      ) {
-        pip
-          .then(function () {
-            state.pipActive = true;
+          state.pipActive = true;
 
-            setFallback("");
-          })
-          .catch(function (err) {
-            setFallback(
-              "Không bật được PiP: " +
-                err.message
-            );
-          });
-      }
+          startHiddenRefresh();
+
+          setFallback("");
+
+        })
+        .catch(function (err) {
+
+          setFallback(
+            "PiP lỗi: " +
+              err.message
+          );
+        });
 
     } catch (e) {
+
       setFallback(
-        "Lỗi PiP: " + e.message
+        "PiP lỗi: " +
+          e.message
       );
     }
   }
 
-  els.btnPip.addEventListener(
-    "click",
-    function () {
-      openPipFromUserGesture();
-    }
-  );
+  // =====================================================
+  // DETAIL
+  // =====================================================
 
-  function clearLoadError() {
-    if (els.loadStatus) {
-      els.loadStatus.textContent = "";
+  function renderDetail() {
 
-      els.loadStatus.hidden = true;
-    }
-  }
-
-  function showLoadError(msg) {
-    if (!els.loadStatus) return;
-
-    els.loadStatus.textContent = msg;
-
-    els.loadStatus.hidden = false;
-  }
-
-  function bootFromHash() {
-    var m =
-      (window.location.hash || "")
-        .match(/^#kanji=(.+)$/);
-
-    if (!m || !state.items.length) {
+    if (!state.selected) {
       return;
     }
 
-    try {
-      var id =
-        decodeURIComponent(m[1]);
+    els.detailPanel.hidden = false;
 
-      var found =
-        state.items.find(function (x) {
-          return (
-            String(x.id) ===
-            String(id)
-          );
-        });
+    attachStreamToVideo();
 
-      if (found) {
-        state.selected = found;
+    drawCanvas();
 
-        renderDetail();
+    if (!state.rafId) {
 
-        clearLoadError();
-      }
-
-    } catch (e) {}
+      state.rafId =
+        requestAnimationFrame(loop);
+    }
   }
 
-  function registerSw() {
-    if (
-      location.protocol === "file:"
-    ) {
-      return;
-    }
-
-    if (
-      typeof window.isSecureContext !==
-        "undefined" &&
-      !window.isSecureContext
-    ) {
-      return;
-    }
-
-    if (
-      !("serviceWorker" in navigator)
-    ) {
-      return;
-    }
-
-    navigator.serviceWorker
-      .register("./sw.js", {
-        scope: "./"
-      })
-      .catch(function () {});
-  }
+  // =====================================================
+  // LOAD
+  // =====================================================
 
   function bootFromKanjiData(arr) {
+
     state.items =
       (Array.isArray(arr)
         ? arr
@@ -807,22 +744,17 @@
       ).map(function (raw, idx) {
 
         var on = String(
-          raw.on_reading != null
-            ? raw.on_reading
-            : ""
+          raw.on_reading || ""
         ).replace(/\|/g, "、");
 
         var kun = String(
-          raw.kun_reading != null
-            ? raw.kun_reading
-            : ""
+          raw.kun_reading || ""
         ).replace(/\|/g, "、");
 
         var o = {
+
           id: String(
-            raw.stt != null
-              ? raw.stt
-              : idx + 1
+            raw.stt || idx + 1
           ),
 
           kanji:
@@ -839,14 +771,10 @@
             raw.hanviet || "",
 
           radicals:
-            raw.radicals != null
-              ? String(raw.radicals)
-              : "",
+            raw.radicals || "",
 
           memory_tip:
-            raw.memory_tip != null
-              ? String(raw.memory_tip)
-              : "",
+            raw.memory_tip || "",
 
           vocabulary:
             raw.vocabulary
@@ -861,74 +789,50 @@
         return o;
       });
 
-    bootFromHash();
+    if (state.items.length) {
 
-    if (
-      !state.selected &&
-      state.items.length
-    ) {
       state.selected =
         state.items[0];
 
       renderDetail();
-
-      history.replaceState(
-        { id: state.selected.id },
-        "",
-        "#kanji=" +
-          encodeURIComponent(
-            state.selected.id
-          )
-      );
     }
-
-    clearLoadError();
   }
 
-  function getKanjiDataArray() {
-    if (
-      typeof kanjiData !==
-        "undefined" &&
-      Array.isArray(kanjiData) &&
-      kanjiData.length
-    ) {
-      return kanjiData;
+  // =====================================================
+  // EVENTS
+  // =====================================================
+
+  els.btnPip.addEventListener(
+    "click",
+    function () {
+      openPip();
     }
+  );
 
-    if (
-      window.kanjiData &&
-      Array.isArray(
-        window.kanjiData
-      ) &&
-      window.kanjiData.length
-    ) {
-      return window.kanjiData;
+  document.addEventListener(
+    "visibilitychange",
+    function () {
+
+      if (
+        document.visibilityState ===
+        "visible"
+      ) {
+        drawCanvas();
+      }
     }
+  );
 
-    return null;
-  }
+  // =====================================================
+  // BOOT
+  // =====================================================
 
-  function loadKanjiData() {
-    var kd =
-      getKanjiDataArray();
-
-    if (kd) {
-      bootFromKanjiData(kd);
-
-      return;
-    }
-
-    showLoadError(
-      "Không tải được dữ liệu Kanji."
+  if (
+    window.kanjiData &&
+    Array.isArray(window.kanjiData)
+  ) {
+    bootFromKanjiData(
+      window.kanjiData
     );
   }
 
-  window.addEventListener(
-    "hashchange",
-    bootFromHash
-  );
-
-  registerSw();
-
-  loadKanjiData();
 })();
