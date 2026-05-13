@@ -640,7 +640,7 @@
   
   
   
-function drawCanvas() {
+function drawCanvas2() {
   var item = state.selected;
   if (!item || !ctx) {
     return;
