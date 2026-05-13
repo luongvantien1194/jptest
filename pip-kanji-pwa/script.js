@@ -363,7 +363,7 @@
         ctx.fillText(
           line,
           rightX,
-          y + 13
+          y
         );
 
         y += 18;
