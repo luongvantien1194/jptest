@@ -151,9 +151,9 @@ function drawCanvas() {
   }
 
   // ================= VERSION + SCALE =================
-  var ver = "v16";
-  var KANJI_SCALE = 0.7;
-  var TEXT_SCALE = 2;
+  var ver = "v17";
+  var KANJI_SCALE = 0.8;
+  var TEXT_SCALE = 1.3;
 
   ctx.fillStyle = "#020617";
   ctx.fillRect(0, 0, CANVAS_W, CANVAS_H);
