@@ -157,7 +157,7 @@ function drawCanvas() {
   var INFO = 1.3;   // thông tin bên phải (meaning/on/kun/radicals)
   var VOCAB = 1.8; // từ vựng
 
-  var KANJI_SCALE = 0.9;
+  var KANJI_SCALE = 1.1;
 
   // ================= BACKGROUND =================
   ctx.fillStyle = "#020617";
@@ -247,7 +247,7 @@ function drawCanvas() {
 
   var bottomY = midY + 24;
 
-  ctx.textAlign = "center";
+  ctx.textAlign = "left";
   ctx.textBaseline = "middle";
 
   ctx.fillStyle = "#94a3b8";
