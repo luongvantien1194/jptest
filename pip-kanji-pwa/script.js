@@ -148,7 +148,7 @@ function drawCanvas() {
   if (!item || !ctx) return;
 
   // ================= SETTINGS =================
-  var ver = "v20";
+  var ver = "v21";
 
   // global scale
   var S = state.fontScale == null ? 1 : state.fontScale;
@@ -256,7 +256,7 @@ function drawCanvas() {
 
   var vy = bottomY + 22;
 
-  ctx.font = Math.round(12 * VOCAB * S) + "px system-ui";
+  ctx.font = Math.round(12 * VOCAB * S) + "px 'Klee One'";
 
   vocabs.forEach(function (v) {
     var line = v.word || "";
