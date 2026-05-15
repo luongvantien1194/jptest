@@ -148,7 +148,7 @@ function drawCanvas() {
   if (!item || !ctx) return;
 
   // ================= SETTINGS =================
-  var ver = "v21";
+  var ver = "v22";
 
   // global scale
   var S = state.fontScale == null ? 1 : state.fontScale;
@@ -197,7 +197,7 @@ function drawCanvas() {
   ctx.textBaseline = "middle";
 
   ctx.fillStyle = "#f8fafc";
-  ctx.font = "900 " + Math.round(96 * KANJI_SCALE * S) + "px system-ui";
+  ctx.font = "900 " + Math.round(96 * KANJI_SCALE * S) + "px 'Klee One'";
   ctx.fillText(item.kanji || "", leftX, midY * 0.45);
 
   // ================= TOP RIGHT (INFO BLOCK) =================
