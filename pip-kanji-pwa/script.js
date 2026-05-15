@@ -148,7 +148,7 @@ function drawCanvas() {
   if (!item || !ctx) return;
 
   // ================= SETTINGS =================
-  var ver = "v23";
+  var ver = "v24";
 
   // global scale
   var S = state.fontScale == null ? 1 : state.fontScale;
@@ -247,7 +247,7 @@ function drawCanvas() {
 
   var bottomY = midY + 24;
 
-  ctx.textAlign = "left";
+  ctx.textAlign = "center";
   ctx.textBaseline = "middle";
 
   ctx.fillStyle = "#94a3b8";
