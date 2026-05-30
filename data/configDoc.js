@@ -1,6 +1,25 @@
 window.DOC_CONFIG = {
   defaultKey: "theT",
   docs: [
+
+    {
+      key: "dongtu",
+      file: "dongtu",
+      type: "md",
+      label: "Các thể của động từ và trường hợp sử dụng"
+    },
+    {
+      key: "danhtu",
+      file: "danhtu",
+      type: "md",
+      label: "Danh từ (Noun)"
+    },
+    {
+      key: "tinhtu",
+      file: "tinhtu",
+      type: "md",
+      label: "Tính từ (Adjective)"
+    },
     {
       key: "theT",
       file: "theT",
@@ -144,30 +163,6 @@ window.DOC_CONFIG = {
       file: "kanji13",
       type: "md",
       label: "Kanji 13"
-    },
-    {
-      key: "gra",
-      file: "gra",
-      type: "xlsx",
-      label: "tai lieu excel"
-    },
-    {
-      key: "dongtu",
-      file: "dongtu",
-      type: "md",
-      label: "Các thể của động từ và trường hợp sử dụng"
-    },
-    {
-      key: "danhtu",
-      file: "danhtu",
-      type: "md",
-      label: "Danh từ (Noun)"
-    },
-    {
-      key: "tinhtu",
-      file: "tinhtu",
-      type: "md",
-      label: "Tính từ (Adjective)"
     }
 
   ]
