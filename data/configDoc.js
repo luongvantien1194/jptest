@@ -150,7 +150,26 @@ window.DOC_CONFIG = {
       file: "gra",
       type: "xlsx",
       label: "tai lieu excel"
+    },
+    {
+      key: "dongtu",
+      file: "dongtu",
+      type: "md",
+      label: "Các thể của động từ và trường hợp sử dụng"
+    },
+    {
+      key: "danhtu",
+      file: "danhtu",
+      type: "md",
+      label: "Danh từ (Noun)"
+    },
+    {
+      key: "tinhtu",
+      file: "tinhtu",
+      type: "md",
+      label: "Tính từ (Adjective)"
     }
+
   ]
 };
 
