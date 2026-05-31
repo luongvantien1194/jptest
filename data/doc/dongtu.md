@@ -2,17 +2,21 @@
 
 ---
 
-# 1. 普通形 tổng hợp
+# 1. Thể thông thường（普通形）
 
 ## 🔹 Ngữ pháp
 
 - ～と思う（tôi nghĩ）
 - ～と言う（nói rằng）
-- ～んです（giải thích）
-- ～でしょう（chắc là）
+- ～んです（giải thích / nhấn mạnh）
+- ～でしょう（chắc là / dự đoán）
 - ～かもしれない（có thể）
+- ～し（và còn / liệt kê）
+- ～から（vì… nên…）
+- ～ので（vì… nên… – lịch sự）
+- ～か（câu hỏi lồng）
+- ～かどうか（có… hay không）
 - bổ nghĩa danh từ（mô tả N）
-- điều kiện（nếu）
 
 ---
 
@@ -23,11 +27,20 @@
 - đứng trước cấu trúc khác
 
 👉 cách nhớ:
-> “trước cái khác → dùng 普通形”
+> “trước cái khác → dùng Thể thông thường”
 
 ---
 
-# 2. Vる（dạng nguyên）
+## 🔹 Cách chia
+
+- 行きます → 行く
+- 食べます → 食べる
+- 行きません → 行かない
+- 行きました → 行った
+
+---
+
+# 2. Dạng nguyên（Vる）
 
 ## 🔹 Ngữ pháp
 
@@ -39,8 +52,6 @@
 - ～ように（để / sao cho）
 - ～つもりです（dự định）
 - ～予定です（kế hoạch）
-- ～と（điều kiện: cứ… là…）
-- ～ながら（vừa… vừa…）
 
 ---
 
@@ -48,42 +59,55 @@
 
 👉 TẤT CẢ đều:
 
-- nói về **chưa xảy ra / ý định / suy nghĩ**
-- đứng **trước cấu trúc khác**
-- KHÔNG phải câu kết thúc
+- chưa xảy ra / tương lai
+- ý định
 
 👉 cách nhớ:
-> “Vる = chưa xong hoặc đang nói về tương lai / ý kiến”
+> “Vる = chưa làm”
 
 ---
 
-# 3. Vた（quá khứ）
+## 🔹 Cách chia
+
+- 食べます → 食べる
+- 書きます → 書く
+- 来ます → 来る
+- します → する
+
+---
+
+# 3. Quá khứ（Vた）
 
 ## 🔹 Ngữ pháp
 
 - ～たことがある（đã từng）
 - ～たり～たりする（làm A rồi làm B）
-- ～たら（nếu）
+- ～たら（nếu / sau khi）
 - ～たあとで（sau khi）
 - ～たほうがいい（nên làm）
-- ～たばかり（vừa mới làm）
-- ～たところ（đúng lúc vừa làm）
+- ～たばかり（vừa mới）
+- ～たところ（vừa đúng lúc）
 
 ---
 
 ## 🔹 NOTE CHUNG
 
-👉 TẤT CẢ đều:
-
-- mang nghĩa **đã xảy ra**
-- kể kinh nghiệm / điều kiện / lời khuyên
+👉 đã xảy ra  
 
 👉 cách nhớ:
-> “Vた = đã làm rồi mới nói tiếp”
+> “Vた = đã làm”
 
 ---
 
-# 4. Vて（て形）
+## 🔹 Cách chia
+
+- 食べて → 食べた
+- 書いて → 書いた
+- 飲んで → 飲んだ
+
+---
+
+# 4. Dạng nối（Vて）
 
 ## 🔹 Ngữ pháp
 
@@ -100,22 +124,33 @@
 - ～てあげる（làm cho người khác）
 - ～てもらう（được người khác làm cho）
 - ～てくれる（người khác làm cho mình）
+- ～てくる（đi rồi quay lại）
 
 ---
 
 ## 🔹 NOTE CHUNG
 
-👉 TẤT CẢ đều:
-
-- dùng để **nối hoặc tạo cấu trúc**
-- không đứng độc lập
+👉 nối / tạo cấu trúc  
 
 👉 cách nhớ:
-> “Vて = nối hoặc biến thành cấu trúc”
+> “Vて = nối”
 
 ---
 
-# 5. Vない（phủ định）
+## 🔹 Cách chia
+
+- 書く → 書いて
+- 泳ぐ → 泳いで
+- 話す → 話して
+- 飲む → 飲んで
+- 買う → 買って
+- 食べる → 食べて
+- 来る → 来て
+- する → して
+
+---
+
+# 5. Phủ định（Vない）
 
 ## 🔹 Ngữ pháp
 
@@ -131,17 +166,23 @@
 
 ## 🔹 NOTE CHUNG
 
-👉 TẤT CẢ đều:
-
-- liên quan **không làm / tránh làm**
-- hoặc nghĩa bắt buộc (dạng phủ định)
+👉 không làm  
 
 👉 cách nhớ:
-> “Vない = xoay quanh ‘không làm’”
+> “Vない = không”
 
 ---
 
-# 6. Vます（gốc ます）
+## 🔹 Cách chia
+
+- 書きます → 書かない
+- 食べる → 食べない
+- 来る → 来ない
+- する → しない
+
+---
+
+# 6. Gốc ます（Vます）
 
 ## 🔹 Ngữ pháp
 
@@ -149,142 +190,143 @@
 - ～やすい（dễ）
 - ～にくい（khó）
 - ～ながら（vừa… vừa…）
-- ～そうです（có vẻ / nhìn thấy）
+- ～そうです（trông có vẻ）
+- ～すぎる（quá…）
 
 ---
 
 ## 🔹 NOTE CHUNG
 
-👉 TẤT CẢ đều:
-
-- dùng **gốc động từ (bỏ ます)**
+👉 dùng gốc  
 
 👉 cách nhớ:
-> “muốn / dễ / khó → dùng gốc ます”
+> “muốn / dễ / khó / quá”
 
 ---
 
-# 7. V khả năng
+## 🔹 Cách chia
+
+- 書きます → 書き
+- 食べます → 食べ
+
+---
+
+# 7. Khả năng（V khả năng）
 
 ## 🔹 Ngữ pháp
 
-- khả năng cơ bản（có thể làm）
+- ～できる（có thể làm）
+- thể khả năng
 - ～ようになる（trở nên có thể）
 
 ---
 
 ## 🔹 NOTE CHUNG
 
-👉 TẤT CẢ đều:
-
-- nói về khả năng
-
-👉 cách nhớ:
-> “làm được hay không”
+👉 làm được  
 
 ---
 
-# 8. V bị động
+## 🔹 Cách chia
+
+- 書く → 書ける
+- 食べる → 食べられる
+- する → できる
+- 来る → 来られる
+
+---
+
+# 8. Bị động（V bị động）
 
 ## 🔹 Ngữ pháp
 
-- 被 động（bị làm）
 - ～に Vられる（bị ai đó làm）
+- ～によって（bởi…）
 
 ---
 
 ## 🔹 NOTE CHUNG
 
-👉 TẤT CẢ đều:
-
-- nghĩa **bị tác động**
-
-👉 cách nhớ:
-> “bị làm → bị động”
+👉 bị tác động  
 
 ---
 
-# 9. V sai khiến
+## 🔹 Cách chia
+
+- 書く → 書かれる
+- 食べる → 食べられる
+- する → される
+- 来る → 来られる
+
+---
+
+# 9. Sai khiến（V sai khiến）
 
 ## 🔹 Ngữ pháp
 
-- bắt làm
-- cho phép làm
+- ～させる（bắt / cho làm）
+- ～させてください（hãy cho tôi làm）
 
 ---
 
 ## 🔹 NOTE CHUNG
 
-👉 TẤT CẢ đều:
-
-- có 2 người
-
-👉 cách nhớ:
-> “sai khiến = bắt / cho”
+👉 có 2 người  
 
 ---
 
-# 10. い形容詞
+## 🔹 Cách chia
+
+- 書く → 書かせる
+- 食べる → 食べさせる
+- する → させる
+- 来る → 来させる
+
+---
+
+# 10. Điều kiện（Condition）
 
 ## 🔹 Ngữ pháp
 
-- ～くて（và）
-- ～くなる（trở nên）
-- ～くない（không）
-- ～かった（đã）
-- ～さ（độ）
+- ～と（hễ… là…）
+- ～たら（nếu / sau khi）
+- ～ば（nếu）
+- ～なら（nếu là…）
 
 ---
 
 ## 🔹 NOTE CHUNG
 
-👉 TẤT CẢ đều:
-
-- không có だ
-
-👉 cách nhớ:
-> “đuôi い thật = không だ”
+👉 các kiểu “nếu”  
 
 ---
 
-# 11. な形容詞
+## 🔹 Cách chia
+
+- 行く → 行くと
+- 行く → 行ったら
+- 行く → 行けば
+- 行く → 行くなら
+
+---
+
+# 11. Ý chí（Volitional）
 
 ## 🔹 Ngữ pháp
 
-- ～な + N（bổ nghĩa）
-- ～だ（khẳng định）
-- ～じゃない（không）
-- ～で（và）
+- ～よう（hãy / sẽ làm）
 
 ---
 
 ## 🔹 NOTE CHUNG
 
-👉 TẤT CẢ đều:
-
-- cần な / だ
-
-👉 cách nhớ:
-> “na-adj luôn có trợ giúp”
+👉 rủ rê / quyết định  
 
 ---
 
-# 12. 名詞（danh từ）
+## 🔹 Cách chia
 
-## 🔹 Ngữ pháp
-
-- ～だ（là）
-- ～じゃない（không phải）
-- ～の（của）
-- ～になる（trở thành）
-- ～にする（chọn / quyết định）
-- ～で（bằng / tại）
-
----
-
-## 🔹 NOTE CHUNG
-
-👉 TẤT CẢ đều:
-
-- danh từ cần trợ từ
-
+- 行く → 行こう
+- 食べる → 食べよう
+- する → しよう
+- 来る → 来よう
