@@ -1,5 +1,5 @@
 window.DOC_CONFIG = {
-  defaultKey: "theT",
+  defaultKey: "dongtu",
   docs: [
 
     {
