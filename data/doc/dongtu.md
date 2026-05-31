@@ -2,14 +2,35 @@
 
 ---
 
-# 1. Vる（dạng nguyên）
+# 1. 普通形 tổng hợp
 
 ## 🔹 Ngữ pháp
 
-- ～と思う（tôi nghĩ là）
+- ～と思う（tôi nghĩ）
 - ～と言う（nói rằng）
+- ～んです（giải thích）
 - ～でしょう（chắc là）
 - ～かもしれない（có thể）
+- bổ nghĩa danh từ（mô tả N）
+- điều kiện（nếu）
+
+---
+
+## 🔹 NOTE CHUNG
+
+👉 TẤT CẢ đều:
+
+- đứng trước cấu trúc khác
+
+👉 cách nhớ:
+> “trước cái khác → dùng 普通形”
+
+---
+
+# 2. Vる（dạng nguyên）
+
+## 🔹 Ngữ pháp
+
 - ～前に（trước khi）
 - ～ことができる（có thể làm）
 - ～のは（việc… thì）
@@ -36,7 +57,7 @@
 
 ---
 
-# 2. Vた（quá khứ）
+# 3. Vた（quá khứ）
 
 ## 🔹 Ngữ pháp
 
@@ -62,7 +83,7 @@
 
 ---
 
-# 3. Vて（て形）
+# 4. Vて（て形）
 
 ## 🔹 Ngữ pháp
 
@@ -94,7 +115,7 @@
 
 ---
 
-# 4. Vない（phủ định）
+# 5. Vない（phủ định）
 
 ## 🔹 Ngữ pháp
 
@@ -120,7 +141,7 @@
 
 ---
 
-# 5. Vます（gốc ます）
+# 6. Vます（gốc ます）
 
 ## 🔹 Ngữ pháp
 
@@ -143,7 +164,7 @@
 
 ---
 
-# 6. V khả năng
+# 7. V khả năng
 
 ## 🔹 Ngữ pháp
 
@@ -163,7 +184,7 @@
 
 ---
 
-# 7. V bị động
+# 8. V bị động
 
 ## 🔹 Ngữ pháp
 
@@ -183,7 +204,7 @@
 
 ---
 
-# 8. V sai khiến
+# 9. V sai khiến
 
 ## 🔹 Ngữ pháp
 
@@ -203,7 +224,7 @@
 
 ---
 
-# 9. い形容詞
+# 10. い形容詞
 
 ## 🔹 Ngữ pháp
 
@@ -226,7 +247,7 @@
 
 ---
 
-# 10. な形容詞
+# 11. な形容詞
 
 ## 🔹 Ngữ pháp
 
@@ -248,7 +269,7 @@
 
 ---
 
-# 11. 名詞（danh từ）
+# 12. 名詞（danh từ）
 
 ## 🔹 Ngữ pháp
 
@@ -267,27 +288,3 @@
 
 - danh từ cần trợ từ
 
----
-
-# 12. 普通形 tổng hợp
-
-## 🔹 Ngữ pháp
-
-- ～と思う（tôi nghĩ）
-- ～と言う（nói rằng）
-- ～んです（giải thích）
-- ～でしょう（chắc là）
-- ～かもしれない（có thể）
-- bổ nghĩa danh từ（mô tả N）
-- điều kiện（nếu）
-
----
-
-## 🔹 NOTE CHUNG
-
-👉 TẤT CẢ đều:
-
-- đứng trước cấu trúc khác
-
-👉 cách nhớ:
-> “trước cái khác → dùng 普通形”
