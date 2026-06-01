@@ -314,7 +314,8 @@
 
 ## 🔹 Ngữ pháp
 
-- ～よう（hãy / sẽ làm）
+- ～よう（hãy / sẽ làm）/ thiếu quy luật chia
+thiếu to ô mốt te i masu
 
 ---
 
