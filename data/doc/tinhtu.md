@@ -1,308 +1,247 @@
-# 形容詞 Grammar (Tính từ)
+## 形容詞 Grammar (Tính từ) - FINAL
 
 ---
 
-# 1. い形容詞
+## 1. い形容詞
 
-## 🔹 Ngữ pháp
+### 🔹 Dùng khi:
+- mô tả tính chất
 
-- ～い（hiện tại）  
-- ～くない（không）  
-- ～かった（đã）  
-- ～くなかった（đã không）  
-- ～くて（và）  
-
----
-
-## 🔹 ví dụ
-
-- 高い（cao）  
-- 高くない（không cao）  
-- 高かった（đã cao）  
-
----
-
-## 🔹 NOTE CHUNG
-
-👉 TẤT CẢ đều:
-
-- **không dùng だ**
-- tự đứng được
-- khi nối → đổi thành **く**
-
-👉 cách nhớ:
-> “đuôi い thật → không có だ”
-
----
-
-# 2. な形容詞
-
-## 🔹 Ngữ pháp
-
-- ～だ（là / khẳng định）  
-- ～じゃない（không）  
-- ～だった（đã）  
-- ～じゃなかった（đã không）  
-- ～な + N（bổ nghĩa）  
-- ～で（và）  
-
----
-
-## 🔹 ví dụ
-
-- きれいだ（đẹp）  
-- きれいな人（người đẹp）  
-
----
-
-## 🔹 NOTE CHUNG
-
-👉 TẤT CẢ đều:
-
-- cần:
-  - **な** (trước danh từ)
-  - **だ** (cuối câu)
-
-👉 cách nhớ:
-> “na-adj luôn cần trợ giúp”
-
----
-
-# 3. い-adj + くて
-
-## 🔹 Ngữ pháp
-
+### 🔹 Ngữ pháp
+- ～い（hiện tại）
+- ～くない（không）
+- ～かった（đã）
+- ～くなかった（đã không）
 - ～くて（và / vì）
 
+### 🔹 Nhận biết
+👉 đuôi:
+- kết thúc bằng い (高い, 安い)
+
+👉 rule:
+- KHÔNG có だ
+
 ---
 
-## 🔹 ví dụ
+## 2. な形容詞
 
-- 高くて安い（vừa cao vừa rẻ）
+### 🔹 Dùng khi:
+- mô tả nhưng cần hỗ trợ
+
+### 🔹 Ngữ pháp
+- ～だ（là）
+- ～じゃない（không）
+- ～だった（đã）
+- ～じゃなかった（đã không）
+- ～な + N（bổ nghĩa）
+- ～で（và）
+
+### 🔹 Nhận biết
+👉 hay gặp:
+- きれい / 便利 / 有名
+
+👉 rule:
+- trước N → + な
+- cuối câu → + だ
 
 ---
 
-## 🔹 NOTE CHUNG
+## 3. Nối tính từ
 
-👉 TẤT CẢ đều:
+### 🔹 Ngữ pháp
+- い-adj + くて
+- な-adj + で
 
+### 🔹 Dùng khi:
 - nối 2 tính chất
 
-👉 cách nhớ:
-> “2 tính chất → dùng くて”
+### 🔹 Nhận biết
+👉 “vừa A vừa B”
+
+👉 rule:
+- い → くて  
+- な → で  
 
 ---
 
-# 4. な-adj + で
+## 4. ～くなる / ～になる
 
-## 🔹 Ngữ pháp
+### 🔹 Dùng khi:
+- tự nhiên thay đổi
 
-- ～で（và / vì）
+### 🔹 Ngữ pháp
+- い → ～くなる
+- な → ～になる
 
----
+### 🔹 Nhận biết
+👉 có:
+- thay đổi theo thời gian
 
-## 🔹 ví dụ
-
-- きれいで静か（vừa đẹp vừa yên tĩnh）
-
----
-
-## 🔹 NOTE CHUNG
-
-👉 TẤT CẢ đều:
-
-- nối tính từ な
-
-👉 cách nhớ:
-> “na-adj → nối bằng で”
+👉 rule:
+- become
 
 ---
 
-# 5. ～くなる / ～になる
+## 5. ～くする / ～にする
 
-## 🔹 Ngữ pháp
+### 🔹 Dùng khi:
+- mình làm thay đổi
 
-- ～くなる（trở nên）  
-- ～になる（trở nên）  
+### 🔹 Ngữ pháp
+- い → ～くする
+- な → ～にする
 
----
+### 🔹 Nhận biết
+👉 có:
+- chủ ý (tôi làm)
 
-## 🔹 ví dụ
-
-- 高くなる（trở nên đắt）  
-- 静かになる（trở nên yên tĩnh）  
-
----
-
-## 🔹 NOTE CHUNG
-
-👉 TẤT CẢ đều:
-
-- nói về thay đổi
-
-👉 cách nhớ:
-> “なる = tự nhiên thay đổi”
+👉 rule:
+- make
 
 ---
 
-# 6. ～くする / ～にする
+## 6. ～さ
 
-## 🔹 Ngữ pháp
+### 🔹 Dùng khi:
+- biến thành danh từ (mức độ)
 
-- ～くする（làm cho）  
-- ～にする（làm cho）  
+### 🔹 Ngữ pháp
+- 高い → 高さ
 
----
-
-## 🔹 ví dụ
-
-- 高くする（làm cho đắt）  
-- 静かにする（làm cho yên tĩnh）  
+### 🔹 Nhận biết
+👉 nghĩa:
+- độ / mức
 
 ---
 
-## 🔹 NOTE CHUNG
+## 7. ～そう（RẤT QUAN TRỌNG）
 
-👉 TẤT CẢ đều:
+### 🔹 Dùng khi:
+- nhìn vào → đoán
 
-- có người tác động
+### 🔹 Ngữ pháp
+- おいしそう（trông ngon）
+- 高そう（có vẻ đắt）
 
-👉 cách nhớ:
-> “する = mình làm nó thay đổi”
+### 🔹 Nhận biết
+👉 dấu hiệu:
+- nhìn thấy → đoán
 
----
-
-# 7. ～さ
-
-## 🔹 Ngữ pháp
-
-- ～さ（độ / mức）
-
----
-
-## 🔹 ví dụ
-
-- 高さ（độ cao）  
+👉 rule:
+- KHÔNG dùng với:
+  - いい → よさそう
 
 ---
 
-## 🔹 NOTE CHUNG
+## 8. ～すぎる
 
-👉 TẤT CẢ đều:
+### 🔹 Dùng khi:
+- quá mức
 
-- biến thành danh từ đo mức độ
-
-👉 cách nhớ:
-> “さ = mức độ”
-
----
-
-# 8. ～そう（nhìn có vẻ）
-
-## 🔹 Ngữ pháp
-
-- ～そう（có vẻ）
-
----
-
-## 🔹 ví dụ
-
-- おいしそう（trông ngon）  
-- 高そう（có vẻ đắt）  
-
----
-
-## 🔹 NOTE CHUNG
-
-👉 TẤT CẢ đều:
-
-- dựa vào nhìn / cảm nhận
-
-👉 cách nhớ:
-> “nhìn vào → đoán”
-
----
-
-# 9. ～すぎる
-
-## 🔹 Ngữ pháp
-
-- ～すぎる（quá）
-
----
-
-## 🔹 ví dụ
-
+### 🔹 Ngữ pháp
 - 高すぎる（quá cao）
 
----
-
-## 🔹 NOTE CHUNG
-
-👉 TẤT CẢ đều:
-
-- mang nghĩa quá mức
-
-👉 cách nhớ:
-> “すぎる = quá”
+### 🔹 Nhận biết
+👉 nghĩa:
+- “quá”
 
 ---
 
-# 10. So sánh với tính từ
+## 9. So sánh
 
-## 🔹 Ngữ pháp
+### 🔹 Ngữ pháp
+- ～より（so với）
+- ～ほうが（thì hơn）
+- ～いちばん（nhất）
 
-- ～より（so với）  
-- ～ほうが（thì hơn）  
-- ～いちばん（nhất）  
-
----
-
-## 🔹 ví dụ
-
-- こっちのほうが高い（cái này đắt hơn）  
-- 一番おいしい（ngon nhất）  
+### 🔹 Nhận biết
+👉 pattern:
+- A より B のほうが
 
 ---
 
-## 🔹 NOTE CHUNG
-
-👉 TẤT CẢ đều:
-
-- dùng để so sánh
+## 10. Mẫu QUAN TRỌNG bổ sung
 
 ---
 
-# ✅ ✅ TỔNG KẾT CHO BẠN
+### 🔹 ～そうです（nghe nói）
 
-👉 Cực quan trọng:
+👉 khác với そう (nhìn):
+- nghe → thông tin
+- nhìn → cảm giác
 
-| Loại | Quy tắc |
-|------|--------|
-| い-adj | không có だ |
-| な-adj | có な / だ |
-| nối câu | い → くて / な → で |
-| thay đổi | なる / する |
-| mức độ | ～さ |
-| quá | ～すぎる |
+👉 nhận biết:
+- có nguồn
 
 ---
 
-# 🎯 Cách dùng nhanh (cho bạn)
+### 🔹 ～ようです
 
-👉 Khi gặp tính từ:
+👉 nghĩa:
+- hình như / có vẻ
 
-1. Trước danh từ?  
-→ い: giữ nguyên  
-→ な: thêm な  
-
-2. Nối nhiều tính chất?  
-→ い: くて  
-→ な: で  
-
-3. Muốn nói “trở nên”?  
-→ dùng なる  
+👉 nhận biết:
+- không chắc chắn
 
 ---
 
-``
+### 🔹 ～らしい
+
+👉 nghĩa:
+- nghe nói / đúng kiểu
+
+👉 nhận biết:
+- tin truyền miệng
+
+---
+
+### 🔹 ～すぎて
+
+👉 nghĩa:
+- quá nên
+
+👉 ví dụ:
+- 暑すぎて寝られない（quá nóng nên không ngủ được）
+
+---
+
+### 🔹 ～くて / ～で（nguyên nhân）
+
+👉 nghĩa:
+- vì… nên…
+
+👉 ví dụ:
+- 暑くて疲れた
+
+---
+
+## 🔥 RULE NHANH (chống loạn)
+
+👉 い-adj = KHÔNG có だ  
+👉 な-adj = cần な / だ  
+
+👉 nối:
+- い → くて  
+- な → で  
+
+👉 thay đổi:
+- tự nhiên → なる  
+- cố ý → する  
+
+👉 そう:
+- nhìn → vẻ ngoài  
+- nghe → thông tin  
+
+👉 không chắc:
+- よう / らしい  
+
+---
+
+## 🎯 Cách chọn nhanh (khi làm đề)
+
+👉 thấy “trông có vẻ” → そう  
+👉 thấy “nghe nói” → そうです / らしい  
+👉 thấy “quá” → すぎる  
+👉 thấy “vì… nên…” → くて / で  
+👉 thấy “trở nên” → なる  
+👉 thấy “làm cho” → する  

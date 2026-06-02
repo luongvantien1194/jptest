@@ -1,353 +1,312 @@
-# 名詞 Grammar (Danh từ)
+## 名詞 Grammar (Danh từ) - FINAL
 
 ---
 
-# 1. N + だ
+## 1. N + だ（thể thường）
 
-## 🔹 Ngữ pháp
+### 🔹 Dùng khi:
+- danh từ đứng trước cấu trúc khác
 
-- 普通形 (dạng đầy đủ)
-- ～と思う（tôi nghĩ là）
+### 🔹 Ngữ pháp
+- ～と思う（tôi nghĩ）
 - ～と言う（nói rằng）
 - ～んです（giải thích）
 
----
+### 🔹 Nhận biết
+👉 có:
+- 思う / 言う / giải thích
 
-## 🔹 Ví dụ
-
-- 学生だと思う
-- 雨だと言った
-
----
-
-## 🔹 NOTE CHUNG
-
-👉 TẤT CẢ đều:
-
-- danh từ đứng trước cấu trúc khác
-- cần **だ** để kết nối
-
-👉 cách nhớ:
-> “Danh từ đứng một mình KHÔNG đủ → phải thêm だ”
+👉 rule:
+- danh từ → phải có だ
 
 ---
 
-# 2. N + の
+## 2. N + の
 
-## 🔹 Ngữ pháp
+### 🔹 Dùng khi:
+- nối danh từ
 
+### 🔹 Ngữ pháp
 - sở hữu（của）
-- bổ nghĩa danh từ（... của ...）
-- danh từ hóa（biến câu thành danh từ）
+- bổ nghĩa danh từ
+- danh từ hóa（V → N）
+
+### 🔹 Nhận biết
+👉 dạng:
+- N の N
+
+👉 keyword:
+- “của”
 
 ---
 
-## 🔹 ví dụ
+## 3. N + に
 
-- 日本の車（xe của Nhật）
-- 私のかばん（cặp của tôi）
+### 🔹 Dùng khi:
+- điểm đến / thời gian / người nhận
 
----
-
-## 🔹 NOTE CHUNG
-
-👉 TẤT CẢ đều:
-
-- nối **2 danh từ**
-
-👉 cách nhớ:
-> “N + N → luôn cần の”
-
----
-
-# 3. N + に
-
-## 🔹 Ngữ pháp
-
-- chỉ thời gian（vào lúc）
-- chỉ nơi tồn tại（ở）
-- đối tượng nhận（cho）
+### 🔹 Ngữ pháp
+- thời gian（vào）
+- nơi tồn tại（ở）
+- đối tượng（cho）
 - mục đích（để）
 
----
+### 🔹 Nhận biết
+👉 có:
+- thời gian cụ thể (3時、月曜日)
+- người nhận (あげる・もらう)
 
-## 🔹 NOTE CHUNG
-
-👉 TẤT CẢ đều:
-
-- chỉ **đích / điểm đến / đối tượng**
-
-👉 cách nhớ:
-> “に = hướng tới cái gì”
+👉 rule:
+- に = “hướng tới”
 
 ---
 
-# 4. N + で
+## 4. N + で
 
-## 🔹 Ngữ pháp
+### 🔹 Dùng khi:
+- nơi hành động / cách làm
 
+### 🔹 Ngữ pháp
 - nơi xảy ra hành động（ở）
 - phương tiện（bằng）
-- nguyên nhân（vì / do）
-- số lượng（với / bằng）
+- nguyên nhân（do）
+- số lượng（với）
+
+### 🔹 Nhận biết
+👉 có:
+- hành động (ăn, học, làm)
+👉 khác に:
+- に = tồn tại
+- で = hành động
 
 ---
 
-## 🔹 NOTE CHUNG
+## 5. N + と / や
 
-👉 TẤT CẢ đều:
+### 🔹 Dùng khi:
+- liệt kê
 
-- chỉ **cách / nơi / lý do**
+### 🔹 Ngữ pháp
+- と（hết）
+- や（chưa hết）
 
-👉 cách nhớ:
-> “で = bằng cách gì / ở đâu”
+### 🔹 Nhận biết
+👉 list nhiều danh từ
 
----
-
-# 5. N + と / や
-
-## 🔹 Ngữ pháp
-
-- と（và – liệt kê hết）
-- や（và – chưa hết）
+👉 rule:
+- と = full list
+- や = ví dụ
 
 ---
 
-## 🔹 ví dụ
+## 6. N + も
 
-- 本とノート（sách và vở）
-- 本や雑誌（sách và tạp chí ...）
+### 🔹 Dùng khi:
+- “cũng”
 
----
-
-## 🔹 NOTE CHUNG
-
-👉 TẤT CẢ đều:
-
-- nối danh sách
-
-👉 cách nhớ:
-> “と = hết, や = còn nữa”
+### 🔹 Nhận biết
+👉 có:
+- so sánh / thêm thông tin
 
 ---
 
-# 6. N + も
+## 7. N + だけ / しか
 
-## 🔹 Ngữ pháp
+### 🔹 Dùng khi:
+- giới hạn
 
-- も（cũng）
-
----
-
-## 🔹 ví dụ
-
-- 私も行く（tôi cũng đi）
-
----
-
-## 🔹 NOTE CHUNG
-
-👉 TẤT CẢ đều:
-
-- thêm nghĩa “cũng”
-
----
-
-# 7. N + だけ / しか
-
-## 🔹 Ngữ pháp
-
+### 🔹 Ngữ pháp
 - だけ（chỉ）
 - しか + phủ định（chỉ có）
 
----
+### 🔹 Nhận biết
+👉 có:
+- số lượng nhỏ
 
-## 🔹 ví dụ
-
-- 水だけ飲む（chỉ uống nước）
-- 100円しかない（chỉ có 100 yên）
-
----
-
-## 🔹 NOTE CHUNG
-
-👉 TẤT CẢ đều:
-
-- giới hạn
-
-👉 cách nhớ:
-> “chỉ có / chỉ”
+👉 rule:
+- しか → luôn đi với phủ định
 
 ---
 
-# 8. N + になる / にする
+## 8. N + になる / にする
 
-## 🔹 Ngữ pháp
+### 🔹 Dùng khi:
+- thay đổi
 
+### 🔹 Ngữ pháp
 - になる（trở thành）
-- にする（chọn / quyết định）
+- にする（quyết định）
+
+### 🔹 Nhận biết
+👉 hay có:
+- nghề, lựa chọn
+
+👉 rule:
+- になる = tự nhiên
+- にする = ý chí
 
 ---
 
-## 🔹 ví dụ
+## 9. N + です
 
-- 医者になる（trở thành bác sĩ）
-- 水にする（chọn nước）
+### 🔹 Dùng khi:
+- kết thúc lịch sự
 
----
-
-## 🔹 NOTE CHUNG
-
-👉 TẤT CẢ đều:
-
-- thay đổi trạng thái
-
-👉 cách nhớ:
-> “になる = tự nhiên  
-にする = quyết định”
+### 🔹 Nhận biết
+👉 câu giới thiệu / thông tin
 
 ---
 
-# 9. N + です
+## 10. N + じゃない / ではない
 
-## 🔹 Ngữ pháp
-
-- です（là – lịch sự）
-
----
-
-## 🔹 ví dụ
-
-- 学生です（là học sinh）
-
----
-
-## 🔹 NOTE CHUNG
-
-👉 TẤT CẢ đều:
-
-- kết thúc câu lịch sự
-
----
-
-# 10. N + じゃない / ではない
-
-## 🔹 Ngữ pháp
-
-- じゃない（không phải – casual）
-- ではない（không phải – formal）
-
----
-
-## 🔹 ví dụ
-
-- 学生じゃない（không phải học sinh）
-
----
-
-## 🔹 NOTE CHUNG
-
-👉 TẤT CẢ đều:
-
+### 🔹 Dùng khi:
 - phủ định danh từ
 
----
-
-# 11. N + の + ほうが
-
-## 🔹 Ngữ pháp
-
-- ～のほうが（... thì hơn）
+### 🔹 Nhận biết
+👉 có:
+- “không phải”
 
 ---
 
-## 🔹 ví dụ
+## 11. N + のほうが
 
-- 犬のほうが好き（thích chó hơn）
+### 🔹 Dùng khi:
+- so sánh
 
----
-
-## 🔹 NOTE CHUNG
-
-👉 TẤT CẢ đều:
-
-- dùng trong so sánh
+### 🔹 Nhận biết
+👉 form:
+- A のほうが B より
 
 ---
 
-# 12. N + について
+## 12. N + について
 
-## 🔹 Ngữ pháp
-
-- ～について（về / liên quan đến）
-
----
-
-## 🔹 ví dụ
-
-- 日本について勉強する（học về Nhật）
-
----
-
-## 🔹 NOTE CHUNG
-
-👉 TẤT CẢ đều:
-
+### 🔹 Dùng khi:
 - nói về chủ đề
 
----
-
-# 13. ～のは / ～のが
-
-## 🔹 Ngữ pháp
-
-- ～のは（còn về việc…）
-- ～のが（việc… thì…）
+### 🔹 Nhận biết
+👉 có:
+- 勉強する / 話す
 
 ---
 
-## 🔹 ví dụ
+## 13. ～のは / ～のが
 
-- 日本に行くのが好き（thích đi Nhật）
-
----
-
-## 🔹 NOTE CHUNG
-
-👉 TẤT CẢ đều:
-
+### 🔹 Dùng khi:
 - biến hành động thành danh từ
 
----
+### 🔹 Nhận biết
+👉 hay có:
+- 好き / 上手 / 大切
 
-# 14. N + だけでなく
-
-## 🔹 Ngữ pháp
-
-- ～だけでなく（không chỉ… mà còn）
-
----
-
-## 🔹 NOTE CHUNG
-
-👉 thêm thông tin
+👉 rule:
+- のが = cảm xúc
+- のは = chủ đề
 
 ---
 
-# 15. N + のに
+## 14. N + だけでなく
 
-## 🔹 Ngữ pháp
+### 🔹 Dùng khi:
+- không chỉ
 
-- ～のに（để / dùng cho）
-
----
-
-## 🔹 ví dụ
-
-- 勉強するのにいい（tốt để học）
+### 🔹 Nhận biết
+👉 pattern:
+- A だけでなく B も
 
 ---
 
-## 🔹 NOTE CHUNG
+## 15. N + のに
 
-👉 dùng với mục đích
+### 🔹 Dùng khi:
+- mục đích / dùng để
+
+### 🔹 Nhận biết
+👉 có:
+- いい / 便利
+
+---
+
+# ✅ 16. Mẫu QUAN TRỌNG bị thiếu (bổ sung)
+
+---
+
+### 🔹 N + でも
+👉 ví dụ / gợi ý
+
+👉 ví dụ:
+- コーヒーでも飲もう
+
+👉 nhận biết:
+- “hay là…”
+
+---
+
+### 🔹 N + しかも
+👉 hơn nữa / thêm nữa
+
+---
+
+### 🔹 N + ばかり
+👉 toàn là
+
+👉 nhận biết:
+- nghĩa tiêu cực
+
+---
+
+### 🔹 N + らしい
+👉 nghe nói / đúng kiểu
+
+👉 nhận biết:
+- tin truyền miệng
+
+---
+
+### 🔹 N + みたい
+👉 giống như
+
+👉 nhận biết:
+- so sánh nhẹ
+
+---
+
+### 🔹 N + によって
+👉 bởi / tùy theo
+
+👉 nhận biết:
+- thay đổi theo điều kiện
+
+---
+
+### 🔹 N + によると
+👉 theo (nguồn thông tin)
+
+---
+
+### 🔹 N + の中で
+👉 trong số
+
+👉 ví dụ:
+- クラスの中で
+
+---
+
+### 🔹 N + に対して
+👉 đối với
+
+---
+
+## 🔥 RULE NHANH (chống loạn)
+
+👉 の = nối danh từ  
+👉 に = tới / thời gian / nhận  
+👉 で = hành động  
+
+👉 になる = become  
+👉 にする = choose  
+
+👉 しか = luôn phủ định  
+
+👉 không chắc → chọn の (an toàn)
+

@@ -21,6 +21,12 @@ window.DOC_CONFIG = {
       label: "Tính từ (Adjective)"
     },
     {
+      key: "tonghop",
+      file: "tongHop",
+      type: "md",
+      label: "Tổng hợp"
+    },
+    {
       key: "theT",
       file: "theT",
       type: "md",
