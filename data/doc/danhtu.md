@@ -310,3 +310,5 @@
 
 👉 không chắc → chọn の (an toàn)
 
+### N + ばかり: toàn là N
+
