@@ -150,15 +150,26 @@
       mdContent += line + "\n";
     });
 
-    var blob = new Blob([mdContent], { type: "text/markdown;charset=utf-8" });
-    var url = URL.createObjectURL(blob);
-    var link = document.createElement("a");
-    link.href = url;
-    link.download = "danh_sach_tu_vung_" + new Date().getTime() + ".md";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-    URL.revokeObjectURL(url);
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(mdContent).then(function() {
+        alert("Đã copy danh sách Markdown vào Clipboard thành công!");
+      }).catch(function(err) {
+        alert("Lỗi khi copy vào Clipboard: " + err);
+      });
+    } else {
+      // Fallback cho các trình duyệt cũ hoặc môi trường không hỗ trợ navigator.clipboard
+      var textArea = document.createElement("textarea");
+      textArea.value = mdContent;
+      document.body.appendChild(textArea);
+      textArea.select();
+      try {
+        document.execCommand('copy');
+        alert("Đã copy danh sách Markdown vào Clipboard thành công!");
+      } catch (err) {
+        alert("Không thể copy vào Clipboard.");
+      }
+      document.body.removeChild(textArea);
+    }
   }
 
   function findBestVoiceByLang(langPrefix) {
