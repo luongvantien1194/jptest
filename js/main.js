@@ -132,6 +132,36 @@
     }
   }
 
+  function exportVocabToMarkdown() {
+    var list = applyVocabFilters();
+    if (!list || list.length === 0) {
+      alert("Không có từ vựng nào trong danh sách lọc để xuất!");
+      return;
+    }
+
+    var mdContent = "";
+    list.forEach(function (raw) {
+      var hira = raw.hiragana != null ? raw.hiragana : raw.Hiragana;
+      var kanji = raw.kanji != null ? raw.kanji : raw.Kanji;
+      var mean = raw.meaning != null ? raw.meaning : raw.Meaning;
+      var lesson = raw.lesson != null ? raw.lesson : raw.Lesson;
+
+      // Mỗi từ là một dòng dạng danh sách
+      var line = "- **" + hira + "**" + (kanji ? " (" + kanji + ")" : "") + ": " + mean + " *(Bài " + lesson + ")*";
+      mdContent += line + "\n";
+    });
+
+    var blob = new Blob([mdContent], { type: "text/markdown;charset=utf-8" });
+    var url = URL.createObjectURL(blob);
+    var link = document.createElement("a");
+    link.href = url;
+    link.download = "danh_sach_tu_vung_" + new Date().getTime() + ".md";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    URL.revokeObjectURL(url);
+  }
+
   function findBestVoiceByLang(langPrefix) {
     try {
       var voices = window.speechSynthesis && window.speechSynthesis.getVoices
@@ -3878,6 +3908,13 @@
     if (ttsBtn) {
       ttsBtn.addEventListener("click", function () {
         toggleVocabTts();
+      });
+    }
+
+    var exportMdBtn = document.getElementById("vocab-export-md-btn");
+    if (exportMdBtn) {
+      exportMdBtn.addEventListener("click", function () {
+        exportVocabToMarkdown();
       });
     }
   }
