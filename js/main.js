@@ -144,10 +144,9 @@
       var hira = raw.hiragana != null ? raw.hiragana : raw.Hiragana;
       var kanji = raw.kanji != null ? raw.kanji : raw.Kanji;
       var mean = raw.meaning != null ? raw.meaning : raw.Meaning;
-      var lesson = raw.lesson != null ? raw.lesson : raw.Lesson;
 
       // Mỗi từ là một dòng dạng danh sách
-      var line = "- **" + hira + "**" + (kanji ? " (" + kanji + ")" : "") + ": " + mean + " *(Bài " + lesson + ")*";
+      var line = "- **" + hira + "**" + (kanji ? " (" + kanji + ")" : "") + ": " + mean;
       mdContent += line + "\n";
     });
 
