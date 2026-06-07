@@ -2523,7 +2523,7 @@
       );
       testMasteredBtn.id = "test-mastered-btn-current";
       testMasteredBtn.type = "button";
-      testMasteredBtn.title = "Đánh dấu từ vựng này đã thuộc";
+      testMasteredBtn.title = "Đánh dấu từ vựng này đã thuộc. Nếu trả lời sai sẽ tự động bỏ đánh dấu.";
       testMasteredBtn.addEventListener("click", function () {
         if (state.vocabMastered[vocabIdxForTest]) {
           delete state.vocabMastered[vocabIdxForTest];
@@ -4103,6 +4103,19 @@
 
     if (isCorrect) {
       testState.correctCount += 1;
+    } else {
+      // Nếu trả lời sai, hủy đánh dấu đã thuộc (nếu có)
+      if (vocabIndex >= 0 && state.vocabMastered[vocabIndex]) {
+        delete state.vocabMastered[vocabIndex];
+        saveVocabMastered();
+
+        // Cập nhật UI nút "Đã thuộc" về trạng thái chưa thuộc ngay lập tức để phản hồi
+        var mBtn = document.getElementById("test-mastered-btn-current");
+        if (mBtn) {
+          mBtn.textContent = "Đánh dấu đã thuộc";
+          mBtn.classList.remove("test-mastered-btn--active");
+        }
+      }
     }
 
     // Hiển thị cả hiragana và kanji trong kết quả
