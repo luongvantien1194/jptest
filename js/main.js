@@ -9,7 +9,8 @@
   const state = {
     currentTab: "vocab",
     filter: {
-      vocabLesson: "all",
+      vocabLessonFrom: "all",
+      vocabLessonTo: "all",
       vocabCategory: "all",
       kanjiRadical: [],
       grammarLesson: "all",
@@ -40,6 +41,7 @@
       questionField: "hiragana",
       answerField: "meaning",
       isStar: false,
+      isNotMastered: false,
     },
     tts: {
       active: false,
@@ -1772,9 +1774,13 @@
         }
       }
 
-      if (state.filter.vocabLesson !== "all" &&
-          String(lessonValue) !== String(state.filter.vocabLesson)) {
-        return false;
+      if (state.filter.vocabLessonFrom !== "all") {
+        var from = Number(state.filter.vocabLessonFrom);
+        var to = state.filter.vocabLessonTo === "all" ? from : Number(state.filter.vocabLessonTo);
+        var current = Number(lessonValue);
+        if (current < from || current > to) {
+          return false;
+        }
       }
       if (state.filter.vocabCategory !== "all" &&
           categoryValue !== state.filter.vocabCategory) {
@@ -1831,9 +1837,12 @@
       filteredList.map(function (v) { return v.category; })
     );
 
-    const lessonLabel = state.filter.vocabLesson === "all"
+    const lessonLabel = state.filter.vocabLessonFrom === "all"
       ? "Tất cả các bài"
-      : "Bài " + state.filter.vocabLesson;
+      : (state.filter.vocabLessonFrom === state.filter.vocabLessonTo || state.filter.vocabLessonTo === "all"
+          ? "Bài " + state.filter.vocabLessonFrom
+          : "Bài " + state.filter.vocabLessonFrom + " → " + state.filter.vocabLessonTo
+        );
     const categoryLabel = state.filter.vocabCategory === "all"
       ? "Tất cả loại từ"
       : state.filter.vocabCategory + (categoriesSet.size === 1 ? "" : " (filtered)");
@@ -2236,6 +2245,18 @@
     sStarField.appendChild(sStarInput);
     configGrid.appendChild(sStarField);
 
+    // Setting: chỉ test từ chưa thuộc
+    const sNotMasteredField = createElement("div", "field-group", "");
+    const sNotMasteredLabel = createElement("div", "field-label", "Chỉ test từ chưa thuộc");
+    const sNotMasteredInput = createElement("input", "", "");
+    sNotMasteredInput.checked = state.testState.isNotMastered;
+    sNotMasteredInput.type = 'checkbox';
+    sNotMasteredInput.style = 'text-align: left';
+    sNotMasteredInput.id = "vocab-test-not-mastered";
+    sNotMasteredField.appendChild(sNotMasteredLabel);
+    sNotMasteredField.appendChild(sNotMasteredInput);
+    configGrid.appendChild(sNotMasteredField);
+
     wrapper.appendChild(configGrid);
 
     const btnRow = createElement("div", "btn-row", "");
@@ -2286,16 +2307,21 @@
         lessonMax = tmp;
       }
       var isStar = sStarInput.checked || false;
+      var isNotMastered = sNotMasteredInput.checked || false;
 
       var pool = vocabData.filter(function (raw) {
         if (!raw) {
           return false;
         } 
+        var idx = vocabData.indexOf(raw);
         // Filter favorites only
         if (isStar) {
-          var idx = vocabData.indexOf(raw);
-          // console.log(idx);
           if (!state.vocabFavorites[idx]) {
+            return false;
+          }
+        }
+        if (isNotMastered) {
+          if (state.vocabMastered[idx]) {
             return false;
           }
         }
@@ -2334,6 +2360,7 @@
       state.testState.questionField = questionField;
       state.testState.answerField = answerField;
       state.testState.isStar = isStar;
+      state.testState.isNotMastered = isNotMastered;
       renderTestQuestion();
     });
 
@@ -3828,7 +3855,8 @@
   }
 
   function setupVocabFilters() {
-    const lessonSelect = document.getElementById("vocab-lesson-filter");
+    const lessonFrom = document.getElementById("vocab-lesson-from");
+    const lessonTo = document.getElementById("vocab-lesson-to");
     const categorySelect = document.getElementById("vocab-category-filter");
     const masteredSelect = document.getElementById("vocab-mastered-filter");
     const searchInput = document.getElementById("vocab-search-input");
@@ -3841,7 +3869,8 @@
     lessons.forEach(function (lesson) {
       const opt = createElement("option", "", "Bài " + lesson);
       opt.value = String(lesson);
-      lessonSelect.appendChild(opt);
+      lessonFrom.appendChild(opt.cloneNode(true));
+      lessonTo.appendChild(opt.cloneNode(true));
     });
 
     const categories = getUniqueSorted(
@@ -3853,8 +3882,16 @@
       categorySelect.appendChild(opt);
     });
 
-    lessonSelect.addEventListener("change", function () {
-      state.filter.vocabLesson = lessonSelect.value;
+    lessonFrom.addEventListener("change", function () {
+      state.filter.vocabLessonFrom = lessonFrom.value;
+      // Tự động set To bằng From
+      lessonTo.value = lessonFrom.value;
+      state.filter.vocabLessonTo = lessonFrom.value;
+      renderVocabList();
+    });
+
+    lessonTo.addEventListener("change", function () {
+      state.filter.vocabLessonTo = lessonTo.value;
       renderVocabList();
     });
 
@@ -3880,11 +3917,13 @@
 
     const resetBtn = document.getElementById("reset-vocab-filter-btn");
     resetBtn.addEventListener("click", function () {
-      state.filter.vocabLesson = "all";
+      state.filter.vocabLessonFrom = "all";
+      state.filter.vocabLessonTo = "all";
       state.filter.vocabCategory = "all";
       state.filter.vocabSearch = "";
       state.filter.vocabMastered = "all";
-      lessonSelect.value = "all";
+      lessonFrom.value = "all";
+      lessonTo.value = "all";
       categorySelect.value = "all";
       if (masteredSelect) {
         masteredSelect.value = "all";

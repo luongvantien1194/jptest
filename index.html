@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=20260435">
+  <link rel="stylesheet" href="css/style.css?v=20260436">
 </head>
 <body>
   <div class="app-shell">
@@ -57,11 +57,19 @@
               </div>
             </div>
             <div class="filters-row filters-row--hidden" id="vocab-filters-row">
-              <div class="field-group">
-                <div class="field-label">Lọc theo Bài</div>
-                <select id="vocab-lesson-filter">
-                  <option value="all">Tất cả</option>
-                </select>
+              <div class="field-group" style="display:flex; gap:4px; align-items:flex-end">
+                <div style="flex:1">
+                  <div class="field-label">Từ bài</div>
+                  <select id="vocab-lesson-from">
+                    <option value="all">Tất cả</option>
+                  </select>
+                </div>
+                <div style="flex:1">
+                  <div class="field-label">Đến bài</div>
+                  <select id="vocab-lesson-to">
+                    <option value="all">Tất cả</option>
+                  </select>
+                </div>
               </div>
               <div class="field-group">
                 <div class="field-label">Lọc theo danh mục</div>
@@ -372,6 +380,6 @@
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
   <script src="data/configDoc.js?v=20260536"></script>
-  <script src="js/main.js?v=20260447"></script>
+  <script src="js/main.js?v=20260448"></script>
 </body>
 </html>
