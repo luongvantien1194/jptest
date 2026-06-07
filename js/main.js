@@ -2574,6 +2574,9 @@
     const wrongList = testState.answers.filter(function (a) {
       return !a.isCorrect;
     });
+    const correctList = testState.answers.filter(function (a) {
+      return a.isCorrect;
+    });
 
     const wrapper = createElement("div", "test-result", "");
 
@@ -2644,6 +2647,32 @@
       });
 
       wrapper.appendChild(wrongContainer);
+    }
+
+    if (correctList.length > 0) {
+      const correctHeader = createElement("div", "card-subtitle", "Danh sách câu đúng:");
+      wrapper.appendChild(correctHeader);
+
+      const correctContainer = createElement("div", "wrong-list", "");
+      correctList.forEach(function (c) {
+        const item = createElement("div", "wrong-item", "");
+
+        const q = createElement("div", "wrong-q", c.questionWord);
+        item.appendChild(q);
+
+        const ansRow = createElement(
+          "div",
+          "wrong-a wrong-a--correct",
+          "Đáp án: "
+        );
+        const ansSpan = createElement("span", "", c.correctMeaning);
+        ansRow.appendChild(ansSpan);
+
+        item.appendChild(ansRow);
+        correctContainer.appendChild(item);
+      });
+
+      wrapper.appendChild(correctContainer);
     }
 
     if (detailModalState.bodyEl) {
