@@ -2521,8 +2521,9 @@
         "test-mastered-btn" + (state.vocabMastered[vocabIdxForTest] ? " test-mastered-btn--active" : ""),
         state.vocabMastered[vocabIdxForTest] ? "Đã đánh dấu thuộc" : "Đánh dấu đã thuộc"
       );
+      testMasteredBtn.id = "test-mastered-btn-current";
       testMasteredBtn.type = "button";
-      testMasteredBtn.title = "Chỉ khi bạn bấm mới lưu; không tự động khi trả lời đúng/sai.";
+      testMasteredBtn.title = "Sẽ tự động đánh dấu nếu trả lời đúng, và hủy đánh dấu nếu trả lời sai.";
       testMasteredBtn.addEventListener("click", function () {
         if (state.vocabMastered[vocabIdxForTest]) {
           delete state.vocabMastered[vocabIdxForTest];
@@ -2545,7 +2546,7 @@
       btn.appendChild(idxSpan);
       btn.appendChild(textSpan);
       btn.addEventListener("click", function () {
-        handleSelectAnswer(questionWord, correctAnswer, opt, vocabTextForTts);
+        handleSelectAnswer(questionWord, correctAnswer, opt, vocabTextForTts, vocabIdxForTest);
       });
       optionsGrid.appendChild(btn);
     });
@@ -4093,7 +4094,7 @@
   let isProcessing = false;
   var _overlayTimeout = null;
 
-  function handleSelectAnswer(questionWord, correctAnswer, selectedAnswer, ttsText) {
+  function handleSelectAnswer(questionWord, correctAnswer, selectedAnswer, ttsText, vocabIndex) {
     if (isProcessing) return; // chặn spam
     isProcessing = true;
 
@@ -4102,8 +4103,34 @@
 
     if (isCorrect) {
       testState.correctCount += 1;
+      // Tự động đánh dấu đã thuộc nếu trả lời đúng
+      if (vocabIndex >= 0) {
+        state.vocabMastered[vocabIndex] = true;
+        saveVocabMastered();
+
+        // Cập nhật UI nút "Đã thuộc" nếu đang hiển thị trong câu hỏi hiện tại
+        var mBtn = document.getElementById("test-mastered-btn-current");
+        if (mBtn) {
+          mBtn.textContent = "Đã đánh dấu thuộc";
+          mBtn.classList.add("test-mastered-btn--active");
+        }
+      }
+    } else {
+      // Nếu trả lời sai, hủy đánh dấu đã thuộc (nếu có)
+      if (vocabIndex >= 0) {
+        if (state.vocabMastered[vocabIndex]) {
+          delete state.vocabMastered[vocabIndex];
+          saveVocabMastered();
+        }
+
+        // Cập nhật UI nút "Đã thuộc" về trạng thái chưa thuộc ngay lập tức để phản hồi
+        var mBtn = document.getElementById("test-mastered-btn-current");
+        if (mBtn) {
+          mBtn.textContent = "Đánh dấu đã thuộc";
+          mBtn.classList.remove("test-mastered-btn--active");
+        }
+      }
     }
-    // Không tự động đánh dấu đã thuộc — chỉ khi người dùng bấm nút trong bài test / danh sách.
 
     // Hiển thị cả hiragana và kanji trong kết quả
     var labelParts = [];
