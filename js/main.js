@@ -4595,18 +4595,21 @@
     wrapper.appendChild(scoreMain);
     wrapper.appendChild(scoreDetail);
 
+    const modeLabels = {
+      1: "Kanji → Âm On", 2: "Kanji → Âm Kun",
+      3: "Hán Việt → Kanji", 4: "Kanji → Hán Việt",
+      5: "Từ vựng → Nghĩa", 6: "Nghĩa → Kanji",
+      7: "Nghĩa → Hiragana", 8: "Hiragana → Kanji", 9: "Hiragana → Nghĩa"
+    };
+
     const wrongList = testState.answers.filter(function (a) { return !a.isCorrect; });
+    const correctList = testState.answers.filter(function (a) { return a.isCorrect; });
+
     if (wrongList.length > 0) {
       const wrongHeader = createElement("div", "card-subtitle", "Danh sách câu sai:");
       wrapper.appendChild(wrongHeader);
 
       const wrongContainer = createElement("div", "wrong-list", "");
-      var modeLabels = {
-        1: "Kanji → Âm On", 2: "Kanji → Âm Kun",
-        3: "Hán Việt → Kanji", 4: "Kanji → Hán Việt",
-        5: "Từ vựng → Nghĩa", 6: "Nghĩa → Kanji",
-        7: "Nghĩa → Hiragana", 8: "Hiragana → Kanji", 9: "Hiragana → Nghĩa"
-      };
       wrongList.forEach(function (w, idx) {
         const itemBox = createElement("div", "wrong-item", "");
         const k = w.item || {};
@@ -4633,6 +4636,36 @@
       });
 
       wrapper.appendChild(wrongContainer);
+    }
+
+    if (correctList.length > 0) {
+      const correctHeader = createElement("div", "card-subtitle", "Danh sách câu đúng:");
+      wrapper.appendChild(correctHeader);
+
+      const correctContainer = createElement("div", "wrong-list", "");
+      correctList.forEach(function (c, idx) {
+        const itemBox = createElement("div", "wrong-item", "");
+        const k = c.item || {};
+
+        const titleText = (k.kanji ? k.kanji : "") + (k.name ? " (" + k.name + ")" : "") || ("Câu " + (idx + 1));
+        itemBox.appendChild(createElement("div", "wrong-q", titleText));
+
+        const modeBadge = createElement("div", "wrong-mode-badge", modeLabels[c.mode] || "");
+        itemBox.appendChild(modeBadge);
+
+        if (k.ve && (k.ve.word || k.ve.reading)) {
+          const veInfo = createElement("div", "wrong-a", k.ve.word + " (" + k.ve.reading + "): " + k.ve.meaning);
+          itemBox.appendChild(veInfo);
+        }
+
+        const correctRow = createElement("div", "wrong-a wrong-a--correct", "Đáp án: ");
+        correctRow.appendChild(createElement("span", "", c.correct));
+        itemBox.appendChild(correctRow);
+
+        correctContainer.appendChild(itemBox);
+      });
+
+      wrapper.appendChild(correctContainer);
     }
 
     const btnRow = createElement("div", "btn-row", "");
