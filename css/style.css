@@ -319,6 +319,7 @@ body {
   align-items: center;
   gap: 8px;
   margin-bottom: 4px;
+  flex-wrap: nowrap; /* Đảm bảo header luôn trên một dòng */
 }
 
 .section-title {
@@ -326,6 +327,11 @@ body {
   font-weight: 600;
   display: flex;
   align-items: baseline;
+  flex-grow: 1; /* Cho phép tiêu đề mở rộng */
+  flex-shrink: 1; /* Cho phép tiêu đề co lại nếu cần */
+  min-width: 0; /* Quan trọng để text-overflow hoạt động */
+  white-space: nowrap; /* Giữ tiêu đề trên một dòng */
+  overflow: hidden; /* Ẩn phần văn bản tràn */
   gap: 6px;
 }
 
@@ -338,6 +344,10 @@ body {
 .section-title-sub {
   font-size: 12px;
   color: var(--text-muted);
+}
+
+.section-header > div:last-child { /* Target the div containing select and buttons */
+  flex-shrink: 0; /* Ngăn không cho phần này co lại */
 }
 
 .chip {
