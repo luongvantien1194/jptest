@@ -67,7 +67,9 @@
       currentDocKey:
         window.DOC_CONFIG && window.DOC_CONFIG.defaultKey
           ? window.DOC_CONFIG.defaultKey
-          : null
+          : null,
+      fontSize: 14,
+      manualContent: null
     },
     selected: {
       vocabIndex: null,
@@ -140,7 +142,7 @@
     }
 
     var mdContent = "";
-    list.forEach(function (raw) {
+    list.forEach(function (raw, index) {
       var hira = raw.hiragana != null ? raw.hiragana : raw.Hiragana;
       var kanji = raw.kanji != null ? raw.kanji : raw.Kanji;
       var mean = raw.meaning != null ? raw.meaning : raw.Meaning;
@@ -148,11 +150,15 @@
       // Mỗi từ là một dòng dạng danh sách
       var line = "- **" + hira + "**" + (kanji ? " (" + kanji + ")" : "") + ": " + mean;
       mdContent += line + "\n";
+      if (index < list.length - 1) {
+        mdContent += "---\n";
+      }
     });
 
     if (navigator.clipboard && navigator.clipboard.writeText) {
       navigator.clipboard.writeText(mdContent).then(function() {
         alert("Đã copy danh sách Markdown vào Clipboard thành công!");
+        switchToManualNote(mdContent);
       }).catch(function(err) {
         alert("Lỗi khi copy vào Clipboard: " + err);
       });
@@ -165,11 +171,19 @@
       try {
         document.execCommand('copy');
         alert("Đã copy danh sách Markdown vào Clipboard thành công!");
+        switchToManualNote(mdContent);
       } catch (err) {
         alert("Không thể copy vào Clipboard.");
       }
       document.body.removeChild(textArea);
     }
+  }
+
+  function switchToManualNote(content) {
+    state.note.manualContent = content;
+    state.note.currentDocKey = "__manual__";
+    populateNoteSelect();
+    window.location.hash = "#note";
   }
 
   function findBestVoiceByLang(langPrefix) {
@@ -3473,16 +3487,22 @@
   }
 
   // ----- Note -----
-  function setupNoteSelect() {
-    if (!window.DOC_CONFIG || !Array.isArray(window.DOC_CONFIG.docs)) {
-      return;
-    }
+  function populateNoteSelect() {
     var select = document.getElementById("note-doc-select");
-    if (!select) {
+    if (!select || !window.DOC_CONFIG || !Array.isArray(window.DOC_CONFIG.docs)) {
       return;
     }
 
     select.innerHTML = "";
+
+    // Thêm tùy chọn cho nội dung Markdown vừa xuất nếu có
+    if (state.note.manualContent) {
+      var manualOpt = document.createElement("option");
+      manualOpt.value = "__manual__";
+      manualOpt.textContent = "[MD] Nội dung vừa xuất";
+      select.appendChild(manualOpt);
+    }
+
     window.DOC_CONFIG.docs.forEach(function (doc) {
       var opt = document.createElement("option");
       opt.value = doc.key;
@@ -3496,11 +3516,36 @@
       select.value = defaultKey;
       state.note.currentDocKey = defaultKey;
     }
+  }
+
+  function setupNoteSelect() {
+    populateNoteSelect();
+    var select = document.getElementById("note-doc-select");
+    if (!select) {
+      return;
+    }
 
     select.addEventListener("change", function () {
       state.note.currentDocKey = select.value;
       renderNoteContent();
     });
+
+    var incBtn = document.getElementById("note-font-inc");
+    var decBtn = document.getElementById("note-font-dec");
+    if (incBtn) {
+      incBtn.addEventListener("click", function () {
+        state.note.fontSize = Math.min(32, state.note.fontSize + 1);
+        var container = document.getElementById("note-content-container");
+        if (container) container.style.fontSize = state.note.fontSize + "px";
+      });
+    }
+    if (decBtn) {
+      decBtn.addEventListener("click", function () {
+        state.note.fontSize = Math.max(10, state.note.fontSize - 1);
+        var container = document.getElementById("note-content-container");
+        if (container) container.style.fontSize = state.note.fontSize + "px";
+      });
+    }
   }
 
   function renderNoteContent() {
@@ -3508,6 +3553,23 @@
     if (!container) {
       return;
     }
+    container.style.fontSize = state.note.fontSize + "px";
+
+    if (state.note.currentDocKey === "__manual__" && state.note.manualContent) {
+      container.classList.remove("note-content-markdown");
+      if (typeof marked !== "undefined") {
+        container.innerHTML = marked.parse(state.note.manualContent);
+        container.classList.add("note-content-markdown");
+      } else {
+        var pre = document.createElement("pre");
+        pre.className = "note-content-text";
+        pre.textContent = state.note.manualContent;
+        container.innerHTML = "";
+        container.appendChild(pre);
+      }
+      return;
+    }
+
     container.innerHTML = "<span class=\"detail-empty\">Đang tải...</span>";
 
     const docs = (window.DOC_CONFIG && window.DOC_CONFIG.docs) || [];

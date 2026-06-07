@@ -328,8 +328,14 @@
             <div class="section-title">
               <span id="section-note-title" class="section-title-main">Ghi chú</span>
             </div>
-            <div class="note-doc-select">
-              <select id="note-doc-select"></select>
+            <div style="display:flex; align-items:center; gap:8px">
+              <div class="note-doc-select">
+                <select id="note-doc-select"></select>
+              </div>
+              <div class="btn-row" style="margin-top:0">
+                <button type="button" class="btn-ghost" id="note-font-dec" title="Giảm cỡ chữ" style="padding: 2px 8px; min-width: 30px;">-</button>
+                <button type="button" class="btn-ghost" id="note-font-inc" title="Tăng cỡ chữ" style="padding: 2px 8px; min-width: 30px;">+</button>
+              </div>
             </div>
           </div>
           <div class="card">
@@ -365,7 +371,7 @@
   <!-- soundOverlay removed (no mp3 audio) -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
-  <script src="data/configDoc.js?v=20260534"></script>
+  <script src="data/configDoc.js?v=20260536"></script>
   <script src="js/main.js?v=20260447"></script>
 </body>
 </html>
