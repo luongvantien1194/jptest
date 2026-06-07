@@ -1401,7 +1401,7 @@ select:focus {
 }
 .note-content-text {
   margin: 0;
-  font-size: 13px;
+  font-size: 1em;
   line-height: 1.6;
   white-space: pre-wrap;
   word-break: break-word;
@@ -1411,20 +1411,20 @@ select:focus {
 
 /* Note tab: rendered Markdown */
 .note-content-markdown {
-  font-size: 13px;
+  font-size: 1em;
   line-height: 1.6;
   color: #111827;
 }
-.note-content-markdown h1 { font-size: 1.25rem; margin: 0 0 0.75rem; padding-bottom: 0.35rem; border-bottom: 1px solid #e5e7eb; }
-.note-content-markdown h2 { font-size: 1.1rem; margin: 1rem 0 0.5rem; }
-.note-content-markdown h3 { font-size: 1rem; margin: 0.75rem 0 0.4rem; }
-.note-content-markdown table { border-collapse: collapse; width: 100%; margin: 0.5rem 0; font-size: 12px; }
+.note-content-markdown h1 { font-size: 1.6em; margin: 0 0 0.75rem; padding-bottom: 0.35rem; border-bottom: 1px solid #e5e7eb; }
+.note-content-markdown h2 { font-size: 1.4em; margin: 1rem 0 0.5rem; }
+.note-content-markdown h3 { font-size: 1.2em; margin: 0.75rem 0 0.4rem; }
+.note-content-markdown table { border-collapse: collapse; width: 100%; margin: 0.5rem 0; font-size: 0.95em; }
 .note-content-markdown th,
 .note-content-markdown td { border: 1px solid #e5e7eb; padding: 6px 8px; text-align: left; }
 .note-content-markdown th { background: #f3f4f6; font-weight: 600; }
 .note-content-markdown blockquote { margin: 0.5rem 0; padding-left: 12px; border-left: 3px solid #9ca3af; color: #4b5563; }
 .note-content-markdown ul { padding-left: 1.25rem; margin: 0.35rem 0; }
-.note-content-markdown hr { border: none; border-top: 1px solid #e5e7eb; margin: 1rem 0; }
+.note-content-markdown hr { border: none; border-top: 1px solid #e5e7eb; margin: 0.4rem 0; }
 .note-content-markdown p { margin: 0.5rem 0; }
 
 .kd-kanji-back-btn {
