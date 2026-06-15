@@ -1,6 +1,12 @@
 window.DOC_CONFIG = {
   defaultKey: "dongtu",
   docs: [
+    {
+      key: "tudongnghia",
+      file: "tudongnghia",
+      type: "md",
+      label: "Từ đồng nghĩa"
+    },
      {
       key: "tuvung",
       file: "tuvung",
