@@ -32,14 +32,18 @@ html, body {
   font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: var(--text);
   -webkit-font-smoothing: antialiased;
-  overflow: scroll; /* Giới hạn app trong chiều cao viewport, scroll bên trong app-shell */
+  overflow-x: hidden; /* Ngăn cuộn ngang không mong muốn */
+  overflow-y: scroll; /* Giới hạn app trong chiều cao viewport, scroll bên trong app-shell */
 }
 
 body {
   display: flex;
   justify-content: center;
   align-items: flex-start;
-  padding: 2px 2px 2px;
+  padding: 2px;
+  @media (max-width: 420px) {
+    padding: 8px; /* Tăng padding cho body trên mobile */
+  }
 }
 
 .app-shell {
@@ -52,6 +56,9 @@ body {
   border: 1px solid rgba(148, 163, 184, 0.3);
   backdrop-filter: blur(12px);
   height: 100%;     /* cao đúng theo chiều cao trình duyệt */
+  @media (max-width: 420px) {
+    height: calc(100vh - 16px); /* Điều chỉnh chiều cao app-shell nếu body có padding */
+  }
   display: flex;
   flex-direction: column;
 }
@@ -63,7 +70,7 @@ body {
   align-items: center;
   gap: 10px;
   padding: 6px 12px 6px;
-  border-bottom: 1px solid rgba(209, 213, 219, 0.9);
+  border-bottom: 1px solid var(--border);
   background:
     radial-gradient(circle at 0% 0%, rgba(191, 219, 254, 0.7), transparent 65%),
     radial-gradient(circle at 100% 0%, rgba(167, 243, 208, 0.7), transparent 60%),
@@ -281,7 +288,7 @@ body {
   border-radius: var(--radius-lg);
   border: 1px solid rgba(209, 213, 219, 0.9);
   box-shadow: var(--shadow-card);
-  padding: 12px 12px 12px;
+  padding: 2px 2px 2px;
   position: relative;
   overflow: hidden;
   min-height: 0;
@@ -318,8 +325,7 @@ body {
   justify-content: space-between;
   align-items: center;
   gap: 8px;
-  margin-bottom: 4px;
-  flex-wrap: nowrap; /* Đảm bảo header luôn trên một dòng */
+  margin-bottom: 4px; /* Cho phép header wrap trên mobile */
 }
 
 .section-title {
@@ -327,7 +333,7 @@ body {
   font-weight: 600;
   display: flex;
   align-items: baseline;
-  flex-grow: 1; /* Cho phép tiêu đề mở rộng */
+  flex-grow: 1; /* Cho phép tiêu đề mở rộng */ /* Cho phép tiêu đề wrap trên mobile */
   flex-shrink: 1; /* Cho phép tiêu đề co lại nếu cần */
   min-width: 0; /* Quan trọng để text-overflow hoạt động */
   white-space: nowrap; /* Giữ tiêu đề trên một dòng */
@@ -348,6 +354,9 @@ body {
 
 .section-header > div:last-child { /* Target the div containing select and buttons */
   flex-shrink: 0; /* Ngăn không cho phần này co lại */
+  @media (max-width: 420px) {
+    flex-basis: 100%; /* Đẩy xuống dòng trên màn hình nhỏ */
+  }
 }
 
 .chip {
@@ -1388,9 +1397,9 @@ select:focus {
 }
 
 /* Note tab content */
-.note-content-wrap {
+/* .note-content-wrap {
   padding: 12px 14px;
-}
+} */
 
 .note-doc-select select {
   font-size: 12px;
@@ -2061,10 +2070,10 @@ select:focus {
   flex-direction: column;
   border-radius: 16px;
   border: 1px solid rgba(209, 213, 219, 0.95);
-  background: radial-gradient(circle at 0 0, #ffffff, #eff6ff);
+  background: radial-gradient(circle at 0 0, var(--bg-soft), var(--bg));
   box-shadow: 0 20px 45px rgba(15, 23, 42, 0.45);
   padding: 10px 10px 8px;
-  gap: 5px;
+  gap: 8px;
 }
 .detail-modal__dialog .detail-modal__body {
   flex: 1;
@@ -2073,14 +2082,16 @@ select:focus {
 }
 
 .detail-modal__header {
-  padding-left: 80px;
-  padding-right: 80px;
+  padding: 0 80px;
   display: grid;
   grid-template-columns: 1fr auto 1fr;
   align-items: center;
   gap: 1px;
   min-height: 36px;
   margin-bottom: 2px;
+  @media (max-width: 420px) {
+    padding: 0 12px; /* Giảm padding ngang trên mobile */
+  }
 }
 .detail-modal__nav {
   display: contents;
@@ -2682,7 +2693,7 @@ select:focus {
   justify-content: center;
   font-family: var(--font-jp);
   font-size: 86px;
-  color: rgba(0, 0, 0, 0.12);
+  color: rgba(0, 0, 0, 0.1);
   user-select: none;
   pointer-events: auto;
   order: 2;
@@ -3087,7 +3098,7 @@ select:focus {
   .kd-hero-body {
     padding-top: 1px;
   }
-  .kd-hero-main {
+  .kd-hero-main { /* Điều chỉnh lại hero-main để phù hợp với layout 1 cột */
     gap: 8px;
     align-items: flex-start;
     min-width: 0;
@@ -3098,6 +3109,12 @@ select:focus {
     margin-left: 5px;
     gap: 5px;
     align-items: center;
+    order: 3; /* Đảm bảo actions ở dưới cùng */
+    grid-column: 1; /* Chiếm toàn bộ chiều rộng */
+    justify-content: center; /* Căn giữa các nút */
+  }
+  .kd-hero-body { /* Chuyển sang layout 1 cột trên mobile */
+    grid-template-columns: 1fr;
     justify-content: flex-end;
   }
   .kd-hero .kd-char {
@@ -3128,6 +3145,14 @@ select:focus {
     min-height: 34px;
     display: inline-flex;
     align-items: center;
+  }
+  .kd-hero-mid-kanji { /* Đảm bảo ô kanji giữa cũng responsive */
+    width: min(40vmin, 160px); /* Kích thước tương đối với viewport */
+    height: min(40vmin, 160px);
+    font-size: clamp(60px, 18vmin, 86px); /* Kích thước chữ kanji trong ô */
+    order: 2;
+    grid-column: 1;
+    justify-self: center;
     justify-content: center;
   }
 
@@ -3140,8 +3165,14 @@ select:focus {
   .detail-modal__body .kd-hanviet {
     font-size: 13px;
   }
+  .detail-modal__dialog {
+    padding: 8px; /* Giảm padding của modal trên mobile */
+    gap: 6px;
+  }
 }
 .detail-modal__body .kd-section {
+  grid-column: 1 / -1; /* Đảm bảo các section chiếm toàn bộ chiều rộng */
+  margin-bottom: 6px;
   padding: 6px 8px 8px;
   margin-bottom: 3px;
 }
@@ -3201,8 +3232,8 @@ select:focus {
   border-top: 1px solid var(--border);
 }
 .kd-writing-canvas-wrap {
-  position: relative;
-  display: inline-block;
+  position: relative; /* Đảm bảo canvas responsive */
+  display: block;
   margin-bottom: 10px;
   border: 1px solid var(--border);
   border-radius: 10px;
@@ -3211,7 +3242,7 @@ select:focus {
 }
 .kd-writing-canvas {
   position: relative;
-  z-index: 2;
+  z-index: 2; /* Đảm bảo canvas responsive */
   display: block;
   width: 240px;
   height: 240px;
@@ -3221,14 +3252,14 @@ select:focus {
 }
 .kd-writing-reference {
   z-index: 1;
-  position: absolute;
+  position: absolute; /* Đảm bảo reference responsive */
   inset: 0;
   display: flex;
   align-items: center;
   justify-content: center;
   font-family: var(--font-jp);
   font-size: 140px;
-  color: rgba(0, 0, 0, 0.12);
+  color: rgba(0, 0, 0, 0.1);
   pointer-events: none;
   user-select: none;
 }
@@ -3318,8 +3349,8 @@ select:focus {
   width: 100%;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  gap: 10px;
+  align-items: center; /* Điều chỉnh canvas trong practice mode responsive */
+  gap: 12px;
   padding-bottom: 4px;
 }
 .detail-modal--practice .kd-writing-canvas-wrap {
