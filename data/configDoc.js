@@ -119,7 +119,7 @@ window.DOC_CONFIG = {
       key: "kanji3",
       file: "kanji3",
       type: "md",
-      label: "Kanji 3"
+      label: "Kanji 3  (học theo từ ghép)"
     },
     {
       key: "kanji4",
@@ -161,7 +161,7 @@ window.DOC_CONFIG = {
       key: "kanji10",
       file: "kanji10",
       type: "md",
-      label: "Kanji 10"
+      label: "Kanji 10 (học theo bộ thủ)"
     },
     {
       key: "kanji11",
