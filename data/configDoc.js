@@ -1,5 +1,5 @@
 window.DOC_CONFIG = {
-  defaultKey: "tudongnghia",
+  defaultKey: "dongtu",
   docs: [
     {
       key: "tudongnghia",

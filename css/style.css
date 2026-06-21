@@ -2090,7 +2090,7 @@ select:focus {
   min-height: 36px;
   margin-bottom: 2px;
   @media (max-width: 420px) {
-    padding: 0 12px; /* Giảm padding ngang trên mobile */
+    padding: 0 80px; /* Giảm padding ngang trên mobile */
   }
 }
 .detail-modal__nav {
