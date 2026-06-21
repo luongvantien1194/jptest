@@ -29,11 +29,7 @@ html, body {
   padding: 0;
   height: 100%;
   background: radial-gradient(circle at top, #e5edff, #f5f7fb 55%);
-font-family:
-  "Yu Mincho",
-  "Hiragino Mincho ProN",
-  "MS Mincho",
-  serif;  
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   color: var(--text);
   -webkit-font-smoothing: antialiased;
   overflow-x: hidden; /* Ngăn cuộn ngang không mong muốn */
