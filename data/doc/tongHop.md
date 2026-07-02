@@ -1,13 +1,5 @@
 # JLPT N4 Grammar by Form + Keyword
  
-> Cách học:
->
-> 1. Nhìn **Keyword**
-> 2. Xác định **Mẫu**
-> 3. Chọn đúng **Công thức**
- 
----
- 
 # 普通形（ふつうけい）- Thể thông thường
  
 | Mẫu | Công thức | Ý nghĩa | Keyword nhận diện |
