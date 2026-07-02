@@ -1,314 +1,474 @@
-## 名詞 Grammar (Danh từ) - FINAL
-
+# JLPT N4 Danh từ (名詞・めいし) Grammar by Form + Keyword
+ 
+# N + だ（Thể thường）
+ 
+| Mẫu | Công thức | Ý nghĩa | Keyword nhận diện |
+|------|------|------|------|
+| ～と思う（おもう） | N + だ + と思う | tôi nghĩ | 思う |
+| ～と言う（いう） | N + だ + と言う | nói rằng | 言う |
+| ～んです | N + な + んです | giải thích | 理由（りゆう） |
+ 
+Lưu ý:
+ 
+- 学生だと思います。
+- 先生だと言いました。
+ 
 ---
-
-## 1. N + だ（thể thường）
-
-### 🔹 Dùng khi:
-- danh từ đứng trước cấu trúc khác
-
-### 🔹 Ngữ pháp
-- ～と思う（tôi nghĩ）
-- ～と言う（nói rằng）
-- ～んです（giải thích）
-
-### 🔹 Nhận biết
-👉 có:
-- 思う / 言う / giải thích
-
-👉 rule:
-- danh từ → phải có だ
-
+ 
+# N + の
+ 
+| Mẫu | Công thức | Ý nghĩa | Keyword nhận diện |
+|------|------|------|------|
+| Sở hữu | N の N | của | sở hữu |
+| Bổ nghĩa | N の N | N mô tả N | danh từ đứng liền nhau |
+| Danh từ hóa | Vる + の | việc... | 好き（すき） |
+ 
+Ví dụ:
+ 
+- 私の本
+- 日本の会社
+- 本を読むのが好き
+ 
+Rule:
+ 
+✅ の = nối danh từ
+ 
 ---
-
-## 2. N + の
-
-### 🔹 Dùng khi:
-- nối danh từ
-
-### 🔹 Ngữ pháp
-- sở hữu（của）
-- bổ nghĩa danh từ
-- danh từ hóa（V → N）
-
-### 🔹 Nhận biết
-👉 dạng:
-- N の N
-
-👉 keyword:
-- “của”
-
+ 
+# N + に
+ 
+| Mẫu | Công thức | Ý nghĩa | Keyword nhận diện |
+|------|------|------|------|
+| Thời gian | Thời gian + に | vào lúc | ３時（さんじ） |
+| Điểm đến | N + に行く | đến | 行く（いく） |
+| Người nhận | N + にあげる | cho | あげる |
+| Đối tượng | N + に会う | gặp | 会う（あう） |
+| Mục đích | Vます + に行く | đi để | mục đích |
+ 
+Ví dụ:
+ 
+- ３時に帰ります
+- 学校に行きます
+- 友達にあげます
+ 
+Rule:
+ 
+✅ に = hướng tới
+ 
 ---
-
-## 3. N + に
-
-### 🔹 Dùng khi:
-- điểm đến / thời gian / người nhận
-
-### 🔹 Ngữ pháp
-- thời gian（vào）
-- nơi tồn tại（ở）
-- đối tượng（cho）
-- mục đích（để）
-
-### 🔹 Nhận biết
-👉 có:
-- thời gian cụ thể (3時、月曜日)
-- người nhận (あげる・もらう)
-
-👉 rule:
-- に = “hướng tới”
-
+ 
+# N + で
+ 
+| Mẫu | Công thức | Ý nghĩa | Keyword nhận diện |
+|------|------|------|------|
+| Nơi hành động | N + で | ở | hành động |
+| Phương tiện | N + で | bằng | バス・電車 |
+| Nguyên nhân | N + で | do | 病気（びょうき） |
+| Số lượng | N + で | với | 人数（にんずう） |
+ 
+Ví dụ:
+ 
+- 学校で勉強します
+- バスで行きます
+- 病気で休みます
+ 
+Rule:
+ 
+✅ に = tồn tại
+ 
+✅ で = hành động
+ 
 ---
-
-## 4. N + で
-
-### 🔹 Dùng khi:
-- nơi hành động / cách làm
-
-### 🔹 Ngữ pháp
-- nơi xảy ra hành động（ở）
-- phương tiện（bằng）
-- nguyên nhân（do）
-- số lượng（với）
-
-### 🔹 Nhận biết
-👉 có:
-- hành động (ăn, học, làm)
-👉 khác に:
-- に = tồn tại
-- で = hành động
-
+ 
+# N + と / や
+ 
+| Mẫu | Công thức | Ý nghĩa | Keyword nhận diện |
+|------|------|------|------|
+| ～と | N と N | và (liệt kê hết) | danh sách |
+| ～や | N や N | và... (ví dụ) | chưa hết |
+ 
+Ví dụ:
+ 
+- 本とノート
+- 本やノート
+ 
+Rule:
+ 
+✅ と = liệt kê đầy đủ
+ 
+✅ や = chỉ ví dụ
+ 
 ---
-
-## 5. N + と / や
-
-### 🔹 Dùng khi:
-- liệt kê
-
-### 🔹 Ngữ pháp
-- と（hết）
-- や（chưa hết）
-
-### 🔹 Nhận biết
-👉 list nhiều danh từ
-
-👉 rule:
-- と = full list
-- や = ví dụ
-
+ 
+# N + も
+ 
+| Mẫu | Công thức | Ý nghĩa | Keyword nhận diện |
+|------|------|------|------|
+| ～も | N + も | cũng | thêm thông tin |
+ 
+Ví dụ:
+ 
+- 私も行きます
+ 
 ---
-
-## 6. N + も
-
-### 🔹 Dùng khi:
-- “cũng”
-
-### 🔹 Nhận biết
-👉 có:
-- so sánh / thêm thông tin
-
+ 
+# N + だけ / しか
+ 
+| Mẫu | Công thức | Ý nghĩa | Keyword nhận diện |
+|------|------|------|------|
+| ～だけ | N + だけ | chỉ | giới hạn |
+| ～しか～ない | N + しか + Vない | chỉ có | phủ định |
+ 
+Ví dụ:
+ 
+- 水だけ飲みます
+- 100円しかありません
+ 
+Rule:
+ 
+✅ しか luôn đi với phủ định
+ 
 ---
-
-## 7. N + だけ / しか
-
-### 🔹 Dùng khi:
-- giới hạn
-
-### 🔹 Ngữ pháp
-- だけ（chỉ）
-- しか + phủ định（chỉ có）
-
-### 🔹 Nhận biết
-👉 có:
-- số lượng nhỏ
-
-👉 rule:
-- しか → luôn đi với phủ định
-
+ 
+# N + になる / にする
+ 
+| Mẫu | Công thức | Ý nghĩa | Keyword nhận diện |
+|------|------|------|------|
+| ～になる | N + になる | trở thành | thay đổi |
+| ～にする | N + にする | chọn | quyết định |
+ 
+Ví dụ:
+ 
+- 医者になりたいです
+- コーヒーにします
+ 
+Rule:
+ 
+✅ になる = thay đổi tự nhiên
+ 
+✅ にする = quyết định
+ 
 ---
-
-## 8. N + になる / にする
-
-### 🔹 Dùng khi:
-- thay đổi
-
-### 🔹 Ngữ pháp
-- になる（trở thành）
-- にする（quyết định）
-
-### 🔹 Nhận biết
-👉 hay có:
-- nghề, lựa chọn
-
-👉 rule:
-- になる = tự nhiên
-- にする = ý chí
-
+ 
+# N + です
+ 
+| Mẫu | Công thức | Ý nghĩa | Keyword nhận diện |
+|------|------|------|------|
+| ～です | N + です | là | giới thiệu |
+ 
+Ví dụ:
+ 
+- 私は学生です
+ 
 ---
-
-## 9. N + です
-
-### 🔹 Dùng khi:
-- kết thúc lịch sự
-
-### 🔹 Nhận biết
-👉 câu giới thiệu / thông tin
-
+ 
+# N + じゃない / ではない
+ 
+| Mẫu | Công thức | Ý nghĩa | Keyword nhận diện |
+|------|------|------|------|
+| ～じゃない | N + じゃない | không phải | phủ định |
+| ～ではない | N + ではない | không phải | văn viết |
+ 
+Ví dụ:
+ 
+- 学生じゃないです
+ 
 ---
-
-## 10. N + じゃない / ではない
-
-### 🔹 Dùng khi:
-- phủ định danh từ
-
-### 🔹 Nhận biết
-👉 có:
-- “không phải”
-
+ 
+# N + のほうが
+ 
+| Mẫu | Công thức | Ý nghĩa | Keyword nhận diện |
+|------|------|------|------|
+| ～のほうが | A のほうが B より | A hơn B | so sánh |
+ 
+Ví dụ:
+ 
+- 日本語のほうが難しいです
+ 
+Keyword:
+ 
+✅ より
+ 
+✅ 比べる（くらべる）
+ 
 ---
-
-## 11. N + のほうが
-
-### 🔹 Dùng khi:
-- so sánh
-
-### 🔹 Nhận biết
-👉 form:
-- A のほうが B より
-
+ 
+# N + について
+ 
+| Mẫu | Công thức | Ý nghĩa | Keyword nhận diện |
+|------|------|------|------|
+| ～について | N + について | về | chủ đề |
+ 
+Ví dụ:
+ 
+- 日本文化について勉強します
+ 
+Keyword:
+ 
+✅ 勉強する（べんきょうする）
+ 
+✅ 話す（はなす）
+ 
+✅ 調べる（しらべる）
+ 
 ---
-
-## 12. N + について
-
-### 🔹 Dùng khi:
-- nói về chủ đề
-
-### 🔹 Nhận biết
-👉 có:
-- 勉強する / 話す
-
+ 
+# ～のが / ～のは
+ 
+| Mẫu | Công thức | Ý nghĩa | Keyword nhận diện |
+|------|------|------|------|
+| ～のが | Vる + のが | việc... | cảm xúc |
+| ～のは | Vる + のは | việc... | chủ đề |
+ 
+Ví dụ:
+ 
+- 本を読むのが好きです
+- 日本語を勉強するのは楽しいです
+ 
+Keyword:
+ 
+✅ 好き（すき）
+ 
+✅ 嫌い（きらい）
+ 
+✅ 上手（じょうず）
+ 
+✅ 下手（へた）
+ 
+✅ 大切（たいせつ）
+ 
 ---
-
-## 13. ～のは / ～のが
-
-### 🔹 Dùng khi:
-- biến hành động thành danh từ
-
-### 🔹 Nhận biết
-👉 hay có:
-- 好き / 上手 / 大切
-
-👉 rule:
-- のが = cảm xúc
-- のは = chủ đề
-
+ 
+# N + だけでなく
+ 
+| Mẫu | Công thức | Ý nghĩa | Keyword nhận diện |
+|------|------|------|------|
+| ～だけでなく | AだけでなくBも | không chỉ A mà còn B | も |
+ 
+Ví dụ:
+ 
+- 日本語だけでなく英語も勉強します
+ 
 ---
-
-## 14. N + だけでなく
-
-### 🔹 Dùng khi:
-- không chỉ
-
-### 🔹 Nhận biết
-👉 pattern:
-- A だけでなく B も
-
+ 
+# N + のに
+ 
+| Mẫu | Công thức | Ý nghĩa | Keyword nhận diện |
+|------|------|------|------|
+| ～のに | N + のに | dùng để | tiện ích |
+ 
+Ví dụ:
+ 
+- このかばんは旅行のに便利です
+ 
+Keyword:
+ 
+✅ 便利（べんり）
+ 
+✅ いい
+ 
+✅ 使う（つかう）
+ 
 ---
-
-## 15. N + のに
-
-### 🔹 Dùng khi:
-- mục đích / dùng để
-
-### 🔹 Nhận biết
-👉 có:
-- いい / 便利
-
+ 
+# N + でも
+ 
+| Mẫu | Công thức | Ý nghĩa | Keyword nhận diện |
+|------|------|------|------|
+| ～でも | N + でも | hay là..., ví dụ như | đề nghị |
+ 
+Ví dụ:
+ 
+- コーヒーでも飲みませんか
+ 
+Keyword:
+ 
+✅ 提案（ていあん）
+ 
+✅ お茶でも
+ 
+✅ コーヒーでも
+ 
 ---
-
-# ✅ 16. Mẫu QUAN TRỌNG bị thiếu (bổ sung)
-
+ 
+# N + しかも
+ 
+| Mẫu | Công thức | Ý nghĩa | Keyword nhận diện |
+|------|------|------|------|
+| ～しかも | しかも + câu | hơn nữa | thêm thông tin |
+ 
+Ví dụ:
+ 
+- 安いです。しかもおいしいです
+ 
+Keyword:
+ 
+✅ thêm lý do
+ 
+✅ hơn nữa
+ 
 ---
-
-### 🔹 N + でも
-👉 ví dụ / gợi ý
-
-👉 ví dụ:
-- コーヒーでも飲もう
-
-👉 nhận biết:
-- “hay là…”
-
+ 
+# N + ばかり
+ 
+| Mẫu | Công thức | Ý nghĩa | Keyword nhận diện |
+|------|------|------|------|
+| ～ばかり | N + ばかり | toàn là | lặp nhiều |
+ 
+Ví dụ:
+ 
+- 甘い物ばかり食べています
+ 
+Keyword:
+ 
+✅ nhiều quá mức
+ 
+✅ thường mang nghĩa tiêu cực
+ 
 ---
-
-### 🔹 N + しかも
-👉 hơn nữa / thêm nữa
-
+ 
+# N + らしい
+ 
+| Mẫu | Công thức | Ý nghĩa | Keyword nhận diện |
+|------|------|------|------|
+| ～らしい | N + らしい | nghe nói / đúng chất | tin truyền miệng |
+ 
+Ví dụ:
+ 
+- 山田さんは結婚したらしいです
+ 
+Keyword:
+ 
+✅ うわさ
+ 
+✅ 聞いた（きいた）
+ 
 ---
-
-### 🔹 N + ばかり
-👉 toàn là
-
-👉 nhận biết:
-- nghĩa tiêu cực
-
+ 
+# N + みたい
+ 
+| Mẫu | Công thức | Ý nghĩa | Keyword nhận diện |
+|------|------|------|------|
+| ～みたい | N + みたい | giống như | so sánh |
+ 
+Ví dụ:
+ 
+- 彼は先生みたいです
+ 
+Keyword:
+ 
+✅ giống
+ 
+✅ như là
+ 
 ---
-
-### 🔹 N + らしい
-👉 nghe nói / đúng kiểu
-
-👉 nhận biết:
-- tin truyền miệng
-
+ 
+# N + によると
+ 
+| Mẫu | Công thức | Ý nghĩa | Keyword nhận diện |
+|------|------|------|------|
+| ～によると | N + によると | theo nguồn tin | nguồn thông tin |
+ 
+Ví dụ:
+ 
+- 天気予報によると雨です
+ 
+Keyword:
+ 
+✅ ニュース
+ 
+✅ 天気予報（てんきよほう）
+ 
+✅ 新聞（しんぶん）
+ 
 ---
-
-### 🔹 N + みたい
-👉 giống như
-
-👉 nhận biết:
-- so sánh nhẹ
-
+ 
+# N + の中で
+ 
+| Mẫu | Công thức | Ý nghĩa | Keyword nhận diện |
+|------|------|------|------|
+| ～の中で | Nの中で | trong số | phạm vi |
+ 
+Ví dụ:
+ 
+- クラスの中で一番です
+ 
+Keyword:
+ 
+✅ 一番（いちばん）
+ 
+✅ もっとも
+ 
 ---
-
-### 🔹 N + によって
-👉 bởi / tùy theo
-
-👉 nhận biết:
-- thay đổi theo điều kiện
-
+ 
+# N + に対して
+ 
+| Mẫu | Công thức | Ý nghĩa | Keyword nhận diện |
+|------|------|------|------|
+| ～に対して | N + に対して | đối với | đối tượng |
+ 
+Ví dụ:
+ 
+- お客様に対して丁寧です
+ 
+Keyword:
+ 
+✅ 態度（たいど）
+ 
+✅ 意見（いけん）
+ 
+✅ 対応（たいおう）
+ 
 ---
-
-### 🔹 N + によると
-👉 theo (nguồn thông tin)
-
----
-
-### 🔹 N + の中で
-👉 trong số
-
-👉 ví dụ:
-- クラスの中で
-
----
-
-### 🔹 N + に対して
-👉 đối với
-
----
-
-## 🔥 RULE NHANH (chống loạn)
-
-👉 の = nối danh từ  
-👉 に = tới / thời gian / nhận  
-👉 で = hành động  
-
-👉 になる = become  
-👉 にする = choose  
-
-👉 しか = luôn phủ định  
-
-👉 không chắc → chọn の (an toàn)
-
-### N + ばかり: toàn là N
-
+ 
+# Cheat Sheet 5 Giây
+ 
+| Keyword | Mẫu cần nhớ |
+|------|------|
+| sở hữu | の |
+| hướng tới | に |
+| nơi hành động | で |
+| liệt kê hết | と |
+| ví dụ | や |
+| cũng | も |
+| chỉ | だけ |
+| chỉ có | しか～ない |
+| trở thành | になる |
+| lựa chọn | にする |
+| so sánh | のほうが |
+| về chủ đề | について |
+| không chỉ | だけでなく |
+| dùng để | のに |
+| hay là | でも |
+| toàn là | ばかり |
+| nghe nói | らしい |
+| giống như | みたい |
+| theo nguồn tin | によると |
+| trong số | の中で |
+| đối với | に対して |
+ 
+# Rule Nhanh
+ 
+✅ の = nối danh từ
+ 
+✅ に = thời gian / nơi đến / người nhận
+ 
+✅ で = nơi hành động / phương tiện
+ 
+✅ と = liệt kê hết
+ 
+✅ や = liệt kê ví dụ
+ 
+✅ しか = luôn đi với phủ định
+ 
+✅ になる = trở thành
+ 
+✅ にする = lựa chọn
+ 
+✅ のほうが = so sánh
+ 
+✅ の中で = trong số
+ 
+✅ らしい = nghe nói
+ 
+✅ みたい = giống như
