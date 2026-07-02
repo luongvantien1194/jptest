@@ -1,247 +1,420 @@
-## 形容詞 Grammar (Tính từ) - FINAL
-
+# JLPT N4 Tính từ（形容詞・けいようし）Grammar by Form + Keyword
+ 
+# い形容詞
+ 
+Ví dụ:
+ 
+- 高い（たかい）cao
+- 安い（やすい）rẻ
+- 面白い（おもしろい）thú vị
+ 
+| Mẫu | Công thức | Ý nghĩa | Keyword nhận diện |
+|------|------|------|------|
+| Hiện tại | Aい | A | đuôi い |
+| Phủ định | Aくない | không A | phủ định |
+| Quá khứ | Aかった | đã A | quá khứ |
+| Quá khứ phủ định | Aくなかった | đã không A | quá khứ phủ định |
+| Nối câu | Aくて | và / vì | nối ý |
+ 
+Ví dụ:
+ 
+- 高い
+- 高くない
+- 高かった
+- 高くなかった
+- 高くて便利です
+ 
+Rule:
+ 
+✅ Không dùng だ
+ 
+✅ Đuôi い
+ 
 ---
-
-## 1. い形容詞
-
-### 🔹 Dùng khi:
-- mô tả tính chất
-
-### 🔹 Ngữ pháp
-- ～い（hiện tại）
-- ～くない（không）
-- ～かった（đã）
-- ～くなかった（đã không）
-- ～くて（và / vì）
-
-### 🔹 Nhận biết
-👉 đuôi:
-- kết thúc bằng い (高い, 安い)
-
-👉 rule:
-- KHÔNG có だ
-
+ 
+# な形容詞
+ 
+Ví dụ:
+ 
+- きれい（đẹp）
+- 有名（ゆうめい）nổi tiếng
+- 便利（べんり）tiện lợi
+ 
+| Mẫu | Công thức | Ý nghĩa | Keyword nhận diện |
+|------|------|------|------|
+| Hiện tại | Aだ | là A | cuối câu |
+| Phủ định | Aじゃない | không A | phủ định |
+| Quá khứ | Aだった | đã A | quá khứ |
+| Quá khứ phủ định | Aじゃなかった | đã không A | quá khứ phủ định |
+| Bổ nghĩa | Aな + N | N ... | trước danh từ |
+| Nối câu | Aで | và / vì | nối ý |
+ 
+Ví dụ:
+ 
+- 有名だ
+- 有名じゃない
+- 有名だった
+- 有名な店
+- 有名で便利です
+ 
+Rule:
+ 
+✅ Trước N → な
+ 
+✅ Cuối câu → だ
+ 
 ---
-
-## 2. な形容詞
-
-### 🔹 Dùng khi:
-- mô tả nhưng cần hỗ trợ
-
-### 🔹 Ngữ pháp
-- ～だ（là）
-- ～じゃない（không）
-- ～だった（đã）
-- ～じゃなかった（đã không）
-- ～な + N（bổ nghĩa）
-- ～で（và）
-
-### 🔹 Nhận biết
-👉 hay gặp:
-- きれい / 便利 / 有名
-
-👉 rule:
-- trước N → + な
-- cuối câu → + だ
-
+ 
+# Nối tính từ
+ 
+| Mẫu | Công thức | Ý nghĩa | Keyword nhận diện |
+|------|------|------|------|
+| い形容詞 | Aくて | vừa A vừa B | nối tính chất |
+| な形容詞 | Aで | vừa A vừa B | nối tính chất |
+ 
+Ví dụ:
+ 
+- 安くておいしい
+- 静かで便利
+ 
+Keyword:
+ 
+✅ Và
+ 
+✅ Vừa A vừa B
+ 
 ---
-
-## 3. Nối tính từ
-
-### 🔹 Ngữ pháp
-- い-adj + くて
-- な-adj + で
-
-### 🔹 Dùng khi:
-- nối 2 tính chất
-
-### 🔹 Nhận biết
-👉 “vừa A vừa B”
-
-👉 rule:
-- い → くて  
-- な → で  
-
+ 
+# Thay đổi tự nhiên
+ 
+## ～くなる / ～になる
+ 
+| Mẫu | Công thức | Ý nghĩa | Keyword nhận diện |
+|------|------|------|------|
+| い形容詞 | Aくなる | trở nên A | thay đổi |
+| な形容詞 | Aになる | trở nên A | thay đổi |
+ 
+Ví dụ:
+ 
+- 暑くなる
+- 元気になる
+ 
+Keyword:
+ 
+✅ 変化（へんか）thay đổi
+ 
+✅ Theo thời gian
+ 
+✅ Become
+ 
 ---
-
-## 4. ～くなる / ～になる
-
-### 🔹 Dùng khi:
-- tự nhiên thay đổi
-
-### 🔹 Ngữ pháp
-- い → ～くなる
-- な → ～になる
-
-### 🔹 Nhận biết
-👉 có:
-- thay đổi theo thời gian
-
-👉 rule:
-- become
-
+ 
+# Chủ động làm thay đổi
+ 
+## ～くする / ～にする
+ 
+| Mẫu | Công thức | Ý nghĩa | Keyword nhận diện |
+|------|------|------|------|
+| い形容詞 | Aくする | làm cho A | chủ ý |
+| な形容詞 | Aにする | làm cho A | chủ ý |
+ 
+Ví dụ:
+ 
+- 部屋を広くする
+- 部屋をきれいにする
+ 
+Keyword:
+ 
+✅ Tự mình làm
+ 
+✅ Quyết định thay đổi
+ 
 ---
-
-## 5. ～くする / ～にする
-
-### 🔹 Dùng khi:
-- mình làm thay đổi
-
-### 🔹 Ngữ pháp
-- い → ～くする
-- な → ～にする
-
-### 🔹 Nhận biết
-👉 có:
-- chủ ý (tôi làm)
-
-👉 rule:
-- make
-
+ 
+# ～さ
+ 
+| Mẫu | Công thức | Ý nghĩa | Keyword nhận diện |
+|------|------|------|------|
+| ～さ | Aい → Aさ | độ, mức độ | danh từ hóa |
+ 
+Ví dụ:
+ 
+- 高い → 高さ（たかさ）
+- 長い → 長さ（ながさ）
+ 
+Keyword:
+ 
+✅ Mức độ
+ 
+✅ Độ dài
+ 
+✅ Độ cao
+ 
 ---
-
-## 6. ～さ
-
-### 🔹 Dùng khi:
-- biến thành danh từ (mức độ)
-
-### 🔹 Ngữ pháp
-- 高い → 高さ
-
-### 🔹 Nhận biết
-👉 nghĩa:
-- độ / mức
-
+ 
+# ～そう
+ 
+## Có vẻ (nhìn thấy)
+ 
+| Mẫu | Công thức | Ý nghĩa | Keyword nhận diện |
+|------|------|------|------|
+| い形容詞 | Aそう | có vẻ A | nhìn bằng mắt |
+| な形容詞 | Aそう | có vẻ A | nhìn bằng mắt |
+ 
+Ví dụ:
+ 
+- おいしそう
+- 高そう
+- 元気そう
+ 
+Lưu ý:
+ 
+- いい → よさそう
+ 
+Keyword:
+ 
+✅ Nhìn thấy
+ 
+✅ Suy đoán ngay
+ 
+✅ 顔（かお）
+ 
+✅ 空（そら）
+ 
+✅ 様子（ようす）
+ 
 ---
-
-## 7. ～そう（RẤT QUAN TRỌNG）
-
-### 🔹 Dùng khi:
-- nhìn vào → đoán
-
-### 🔹 Ngữ pháp
-- おいしそう（trông ngon）
-- 高そう（có vẻ đắt）
-
-### 🔹 Nhận biết
-👉 dấu hiệu:
-- nhìn thấy → đoán
-
-👉 rule:
-- KHÔNG dùng với:
-  - いい → よさそう
-
+ 
+# ～そうです
+ 
+## Nghe nói
+ 
+| Mẫu | Công thức | Ý nghĩa | Keyword nhận diện |
+|------|------|------|------|
+| い形容詞 | Aい + そうです | nghe nói A | nguồn tin |
+| な形容詞 | Aだ + そうです | nghe nói A | nguồn tin |
+ 
+Ví dụ:
+ 
+- 安いそうです
+- 有名だそうです
+ 
+Keyword:
+ 
+✅ ニュース
+ 
+✅ 聞いた（きいた）
+ 
+✅ うわさ
+ 
 ---
-
-## 8. ～すぎる
-
-### 🔹 Dùng khi:
-- quá mức
-
-### 🔹 Ngữ pháp
-- 高すぎる（quá cao）
-
-### 🔹 Nhận biết
-👉 nghĩa:
-- “quá”
-
+ 
+# ～ようです
+ 
+| Mẫu | Công thức | Ý nghĩa | Keyword nhận diện |
+|------|------|------|------|
+| ～ようです | 普通形 + ようです | hình như | không chắc chắn |
+ 
+Ví dụ:
+ 
+- この店は人気があるようです
+ 
+Keyword:
+ 
+✅ Suy đoán
+ 
+✅ Không chắc
+ 
 ---
-
-## 9. So sánh
-
-### 🔹 Ngữ pháp
-- ～より（so với）
-- ～ほうが（thì hơn）
-- ～いちばん（nhất）
-
-### 🔹 Nhận biết
-👉 pattern:
-- A より B のほうが
-
+ 
+# ～らしい
+ 
+| Mẫu | Công thức | Ý nghĩa | Keyword nhận diện |
+|------|------|------|------|
+| ～らしい | 普通形 + らしい | nghe nói / đúng kiểu | tin truyền miệng |
+ 
+Ví dụ:
+ 
+- あの店は安いらしいです
+ 
+Keyword:
+ 
+✅ うわさ
+ 
+✅ 聞いた
+ 
+✅ Nghe người khác kể
+ 
 ---
-
-## 10. Mẫu QUAN TRỌNG bổ sung
-
+ 
+# ～すぎる
+ 
+| Mẫu | Công thức | Ý nghĩa | Keyword nhận diện |
+|------|------|------|------|
+| い形容詞 | Aすぎる | quá A | quá mức |
+| な形容詞 | Aすぎる | quá A | quá mức |
+ 
+Ví dụ:
+ 
+- 高すぎる
+- 静かすぎる
+ 
+Keyword:
+ 
+✅ Quá
+ 
+✅ Hơn mức bình thường
+ 
 ---
-
-### 🔹 ～そうです（nghe nói）
-
-👉 khác với そう (nhìn):
-- nghe → thông tin
-- nhìn → cảm giác
-
-👉 nhận biết:
-- có nguồn
-
+ 
+# ～すぎて
+ 
+| Mẫu | Công thức | Ý nghĩa | Keyword nhận diện |
+|------|------|------|------|
+| ～すぎて | Aすぎて | quá... nên... | nguyên nhân |
+ 
+Ví dụ:
+ 
+- 暑すぎて寝られない
+- 高すぎて買えない
+ 
+Keyword:
+ 
+✅ Vì quá...
+ 
+✅ Kết quả xấu
+ 
 ---
-
-### 🔹 ～ようです
-
-👉 nghĩa:
-- hình như / có vẻ
-
-👉 nhận biết:
-- không chắc chắn
-
----
-
-### 🔹 ～らしい
-
-👉 nghĩa:
-- nghe nói / đúng kiểu
-
-👉 nhận biết:
-- tin truyền miệng
-
----
-
-### 🔹 ～すぎて
-
-👉 nghĩa:
-- quá nên
-
-👉 ví dụ:
-- 暑すぎて寝られない（quá nóng nên không ngủ được）
-
----
-
-### 🔹 ～くて / ～で（nguyên nhân）
-
-👉 nghĩa:
-- vì… nên…
-
-👉 ví dụ:
+ 
+# ～くて / ～で (Nguyên nhân)
+ 
+| Mẫu | Công thức | Ý nghĩa | Keyword nhận diện |
+|------|------|------|------|
+| い形容詞 | Aくて | vì A nên | nguyên nhân |
+| な形容詞 | Aで | vì A nên | nguyên nhân |
+ 
+Ví dụ:
+ 
 - 暑くて疲れた
-
+- 静かで勉強しやすい
+ 
+Keyword:
+ 
+✅ Vì... nên...
+ 
+✅ Lý do
+ 
 ---
-
-## 🔥 RULE NHANH (chống loạn)
-
-👉 い-adj = KHÔNG có だ  
-👉 な-adj = cần な / だ  
-
-👉 nối:
-- い → くて  
-- な → で  
-
-👉 thay đổi:
-- tự nhiên → なる  
-- cố ý → する  
-
-👉 そう:
-- nhìn → vẻ ngoài  
-- nghe → thông tin  
-
-👉 không chắc:
-- よう / らしい  
-
+ 
+# So sánh
+ 
+## ～より
+ 
+| Mẫu | Công thức | Ý nghĩa | Keyword nhận diện |
+|------|------|------|------|
+| ～より | AよりB | so với | so sánh |
+ 
+Ví dụ:
+ 
+- 日本語より英語が難しい
+ 
 ---
-
-## 🎯 Cách chọn nhanh (khi làm đề)
-
-👉 thấy “trông có vẻ” → そう  
-👉 thấy “nghe nói” → そうです / らしい  
-👉 thấy “quá” → すぎる  
-👉 thấy “vì… nên…” → くて / で  
-👉 thấy “trở nên” → なる  
-👉 thấy “làm cho” → する  
+ 
+## ～ほうが
+ 
+| Mẫu | Công thức | Ý nghĩa | Keyword nhận diện |
+|------|------|------|------|
+| ～ほうが | AのほうがBより | A hơn B | so sánh |
+ 
+Ví dụ:
+ 
+- 日本語のほうが難しい
+ 
+---
+ 
+## ～いちばん
+ 
+| Mẫu | Công thức | Ý nghĩa | Keyword nhận diện |
+|------|------|------|------|
+| ～いちばん | Nの中でAがいちばん | nhất | phạm vi |
+ 
+Ví dụ:
+ 
+- クラスの中で田中さんがいちばん高い
+ 
+Keyword:
+ 
+✅ 一番（いちばん）
+ 
+✅ 最も（もっとも）
+ 
+---
+ 
+# Tính từ thường gặp JLPT N4
+ 
+| Kanji | Hiragana | Nghĩa |
+|------|------|------|
+| 高い | たかい | cao, đắt |
+| 安い | やすい | rẻ |
+| 新しい | あたらしい | mới |
+| 古い | ふるい | cũ |
+| 難しい | むずかしい | khó |
+| 優しい | やさしい | tốt bụng |
+| 暑い | あつい | nóng |
+| 寒い | さむい | lạnh |
+| 忙しい | いそがしい | bận |
+| 面白い | おもしろい | thú vị |
+| 有名 | ゆうめい | nổi tiếng |
+| 便利 | べんり | tiện lợi |
+| 静か | しずか | yên tĩnh |
+| 元気 | げんき | khỏe mạnh |
+| 大切 | たいせつ | quan trọng |
+| 好き | すき | thích |
+| 嫌い | きらい | ghét |
+| 上手 | じょうず | giỏi |
+| 下手 | へた | kém |
+ 
+---
+ 
+# Cheat Sheet 5 Giây
+ 
+| Keyword | Chọn mẫu |
+|------|------|
+| đuôi い | い形容詞 |
+| trước N | な |
+| trở nên | くなる / になる |
+| làm cho | くする / にする |
+| có vẻ | そう |
+| nghe nói | そうです |
+| hình như | ようです |
+| nghe đồn | らしい |
+| quá | すぎる |
+| quá nên | すぎて |
+| vì... nên | くて / で |
+| hơn | より |
+| hơn nữa | ほうが |
+| nhất | いちばん |
+ 
+# Rule Nhanh
+ 
+✅ い形容詞 → không dùng だ
+ 
+✅ な形容詞 → trước N dùng な
+ 
+✅ い → くて
+ 
+✅ な → で
+ 
+✅ tự nhiên thay đổi → なる
+ 
+✅ chủ động thay đổi → する
+ 
+✅ nhìn thấy → そう
+ 
+✅ nghe nói → そうです
+ 
+✅ không chắc → ようです
+ 
+✅ nghe đồn → らしい
+ 
+✅ quá → すぎる
