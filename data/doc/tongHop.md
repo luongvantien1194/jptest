@@ -193,4 +193,109 @@
 
 - Điều kiện:
   - もし + たら
+
+# TỔNG HỢP VOCAB – TÍNH CÁCH / CẢM XÚC / TÂM TRẠNG (JLPT N5–N4)
+
+---
+
+## 1. Tính cách & Thái độ con người (性格・態度)
+
+### a. Tích cực (ポジティブ)
+| Hiragana | Kanji | Nghĩa | Ghi chú |
+|----------|-------|------|--------|
+| しんせつ（な） | 親切 | tốt bụng, tử tế | |
+| まじめ（な） |  | chăm chỉ, nghiêm túc | |
+| ねっしん（な） | 熱心 | nhiệt tình | |
+| やさしい | 優しい | hiền lành, dịu dàng | tránh nhầm với 易しい (dễ) |
+| あかるい | 明るい | vui vẻ, cởi mở | nghĩa gốc: sáng sủa |
+| かしこい | 賢い | thông minh | |
+| すな お（な） | 素直 | ngoan ngoãn, dễ bảo | |
+
+### b. Tiêu cực (ネガティブ)
+| Hiragana | Kanji | Nghĩa | Ghi chú |
+|----------|-------|------|--------|
+| わるい | 悪い | xấu tính, tồi | |
+| くらい | 暗い | ủ rũ, ít nói | nghĩa gốc: tối tăm |
+| へん（な） | 変 | kỳ lạ, quái dị | |
+| けち（な） |  | kẹo kiệt, bủn xỉn | |
+| わがまま（な） |  | ích kỷ, bướng bỉnh | |
+| だらしない |  | lôi thôi, luộm thuộm | |
+
+---
+
+## 2. Cảm xúc nhất thời (感情)
+
+| Hiragana | Kanji | Nghĩa | Ghi chú |
+|----------|-------|------|--------|
+| うれしい | 嬉しい | vui mừng | hạnh phúc vì đạt mục đích |
+| たのしい | 楽しい | vui vẻ | không khí, hoạt động vui vẻ |
+| かなしい | 悲しい | buồn bã | |
+| さびしい | 寂しい | cô đơn, buồn bẻ | |
+| おかしい |  | kỳ cục, nực cười | |
+| いたい | 痛い | đau đớn | đau thể xác / tinh thần |
+| こわい | 怖い | sợ hãi | |
+
+---
+
+## 3. Tâm trạng & Trạng thái tinh thần (気分・状態)
+
+| Hiragana | Kanji | Nghĩa | Ghi chú |
+|----------|-------|------|--------|
+| しんぱい（な） | 心配 | lo lắng | |
+| あんしん（な） | 安心 | an tâm | |
+| びっくりする |  | giật mình, ngạc nhiên | |
+| がっかりする |  | thất vọng | |
+| はずかしい | 恥ずかしい | xấu hổ, ngượng ngùng | |
+| おこる | 怒る | tức giận | động từ |
+| なやむ | 悩む | băn khoăn, trăn trở | động từ |
+
+---
+
+## 4. Mong muốn & Cảm giác cơ thể (N5-N4 hay gặp)
+
+| Hiragana | Kanji | Nghĩa | Ghi chú |
+|----------|-------|------|--------|
+| ほしい | 欲しい | muốn có (đồ vật) | + が欲しい |
+| たい |  | muốn làm gì đó | đuôi V-たい |
+| ねむい | 眠い | buồn ngủ | |
+| つかれる | 疲れる | mệt mỏi | |
+| おなかがすく |  | đói bụng | |
+| のどがかわく |  | khát nước | |
+
+---
+
+## 5. Từ mô tả trạng thái cảm xúc (Phó từ / Từ láy)
+
+| Hiragana | Nghĩa | Ghi chú |
+|----------|------|--------|
+| わくわく | hồi hộp, háo hức | mong đợi điều tốt đẹp |
+| どきどき | tim đập thình thịch | do hồi hộp hoặc sợ hãi |
+| いらいら | sốt ruột, nóng ruột | |
+| ほっと | nhẹ nhõm, bớt lo | + する |
+| すっきり | sảng khoái, dễ chịu | |
+
+---
+
+## GHI CHÚ QUAN TRỌNG
+
+- Tránh trùng:
+  - Các từ mang tính chất cảm xúc ngắn hạn như びっくり, がっかり được xếp riêng vào nhóm **Tâm trạng & Trạng thái tinh thần**, không lẫn vào tính cách lâu dài.
+  - Phân biệt rõ うれしい (vui phát sinh từ sự việc cá nhân) và たのしい (vui do trải nghiệm, bối cảnh mang lại).
+- Nhóm theo **bản chất từ loại và ngữ cảnh thực tế** để làm bài chọn từ điền chỗ trống chính xác hơn.
+
+---
+
+## CÁCH DÙNG NHANH
+
+- Thể hiện mong muốn:
+  - ほしい (muốn danh từ) -> **N が ほしい**
+  - たい (muốn hành động) -> **V-ます (bỏ ます) + たい**
+
+- Biến đổi tâm trạng:
+  - **あんしんする** (an tâm) / **がっかりする** (thất vọng)
+
+- Đi với phó từ láy:
+  - **どきどき** + する (tim đập nhanh)
+  - **わくわく** + して待つ (háo hức chờ đợi)
+
 ``
