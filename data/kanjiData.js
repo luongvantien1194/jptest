@@ -1,6 +1,7 @@
 const kanjiData = [
   {
     "stt": 1,
+    "level": "n45",
     "kanji": "日",
     "hanviet": "NHẬT",
     "on_reading": "ニチ|ジツ",
@@ -15,6 +16,7 @@ const kanjiData = [
   },
   {
     "stt": 2,
+    "level": "n45",
     "kanji": "月",
     "hanviet": "NGUYỆT",
     "on_reading": "ゲツ|ガツ",
@@ -29,6 +31,7 @@ const kanjiData = [
   },
   {
     "stt": 3,
+    "level": "n45",
     "kanji": "木",
     "hanviet": "MỘC",
     "on_reading": "モク|ボク",
@@ -43,6 +46,7 @@ const kanjiData = [
   },
   {
     "stt": 4,
+    "level": "n45",
     "kanji": "山",
     "hanviet": "SƠN",
     "on_reading": "サン",
@@ -57,6 +61,7 @@ const kanjiData = [
   },
   {
     "stt": 5,
+    "level": "n45",
     "kanji": "川",
     "hanviet": "XUYÊN",
     "on_reading": "セン",
@@ -71,6 +76,7 @@ const kanjiData = [
   },
   {
     "stt": 6,
+    "level": "n45",
     "kanji": "田",
     "hanviet": "ĐIỀN",
     "on_reading": "デン",
@@ -85,6 +91,7 @@ const kanjiData = [
   },
   {
     "stt": 7,
+    "level": "n45",
     "kanji": "人",
     "hanviet": "NHÂN",
     "on_reading": "ジン|ニン",
@@ -99,6 +106,7 @@ const kanjiData = [
   },
   {
     "stt": 8,
+    "level": "n45",
     "kanji": "口",
     "hanviet": "KHẨU",
     "on_reading": "コウ|ク",
@@ -113,6 +121,7 @@ const kanjiData = [
   },
   {
     "stt": 9,
+    "level": "n45",
     "kanji": "車",
     "hanviet": "XA",
     "on_reading": "シャ",
@@ -127,6 +136,7 @@ const kanjiData = [
   },
   {
     "stt": 10,
+    "level": "n45",
     "kanji": "門",
     "hanviet": "MÔN",
     "on_reading": "モン",
@@ -141,6 +151,7 @@ const kanjiData = [
   },
   {
     "stt": 11,
+    "level": "n45",
     "kanji": "火",
     "hanviet": "HỎA",
     "on_reading": "カ",
@@ -155,6 +166,7 @@ const kanjiData = [
   },
   {
     "stt": 12,
+    "level": "n45",
     "kanji": "水",
     "hanviet": "THỦY",
     "on_reading": "スイ",
@@ -169,6 +181,7 @@ const kanjiData = [
   },
   {
     "stt": 13,
+    "level": "n45",
     "kanji": "金",
     "hanviet": "KIM",
     "on_reading": "キン|コン",
@@ -183,6 +196,7 @@ const kanjiData = [
   },
   {
     "stt": 14,
+    "level": "n45",
     "kanji": "土",
     "hanviet": "THỔ",
     "on_reading": "ド|ト",
@@ -197,6 +211,7 @@ const kanjiData = [
   },
   {
     "stt": 15,
+    "level": "n45",
     "kanji": "子",
     "hanviet": "TỬ",
     "on_reading": "シ|ス",
@@ -211,6 +226,7 @@ const kanjiData = [
   },
   {
     "stt": 16,
+    "level": "n45",
     "kanji": "女",
     "hanviet": "NỮ",
     "on_reading": "ジョ",
@@ -225,6 +241,7 @@ const kanjiData = [
   },
   {
     "stt": 17,
+    "level": "n45",
     "kanji": "学",
     "hanviet": "HỌC",
     "on_reading": "ガク",
@@ -239,6 +256,7 @@ const kanjiData = [
   },
   {
     "stt": 18,
+    "level": "n45",
     "kanji": "生",
     "hanviet": "SINH",
     "on_reading": "セイ|ショウ",
@@ -253,6 +271,7 @@ const kanjiData = [
   },
   {
     "stt": 19,
+    "level": "n45",
     "kanji": "先",
     "hanviet": "TIÊN",
     "on_reading": "セン",
@@ -267,6 +286,7 @@ const kanjiData = [
   },
   {
     "stt": 20,
+    "level": "n45",
     "kanji": "私",
     "hanviet": "TƯ",
     "on_reading": "シ",
@@ -281,6 +301,7 @@ const kanjiData = [
   },
   {
     "stt": 21,
+    "level": "n45",
     "kanji": "一",
     "hanviet": "NHẤT",
     "on_reading": "イチ|イツ",
@@ -295,6 +316,7 @@ const kanjiData = [
   },
   {
     "stt": 22,
+    "level": "n45",
     "kanji": "二",
     "hanviet": "NHỊ",
     "on_reading": "ニ|ジ",
@@ -309,6 +331,7 @@ const kanjiData = [
   },
   {
     "stt": 23,
+    "level": "n45",
     "kanji": "三",
     "hanviet": "TAM",
     "on_reading": "サン",
@@ -323,6 +346,7 @@ const kanjiData = [
   },
   {
     "stt": 24,
+    "level": "n45",
     "kanji": "四",
     "hanviet": "TỨ",
     "on_reading": "シ",
@@ -337,6 +361,7 @@ const kanjiData = [
   },
   {
     "stt": 25,
+    "level": "n45",
     "kanji": "五",
     "hanviet": "NGŨ",
     "on_reading": "ゴ",
@@ -351,6 +376,7 @@ const kanjiData = [
   },
   {
     "stt": 26,
+    "level": "n45",
     "kanji": "六",
     "hanviet": "LỤC",
     "on_reading": "ロク",
@@ -365,6 +391,7 @@ const kanjiData = [
   },
   {
     "stt": 27,
+    "level": "n45",
     "kanji": "七",
     "hanviet": "THẤT",
     "on_reading": "シチ",
@@ -379,6 +406,7 @@ const kanjiData = [
   },
   {
     "stt": 28,
+    "level": "n45",
     "kanji": "八",
     "hanviet": "BÁT",
     "on_reading": "ハチ",
@@ -393,6 +421,7 @@ const kanjiData = [
   },
   {
     "stt": 29,
+    "level": "n45",
     "kanji": "九",
     "hanviet": "CỬU",
     "on_reading": "キュウ|ク",
@@ -407,6 +436,7 @@ const kanjiData = [
   },
   {
     "stt": 30,
+    "level": "n45",
     "kanji": "十",
     "hanviet": "THẬP",
     "on_reading": "ジュウ",
@@ -421,6 +451,7 @@ const kanjiData = [
   },
   {
     "stt": 31,
+    "level": "n45",
     "kanji": "百",
     "hanviet": "BÁCH",
     "on_reading": "ヒャク",
@@ -435,6 +466,7 @@ const kanjiData = [
   },
   {
     "stt": 32,
+    "level": "n45",
     "kanji": "千",
     "hanviet": "THIÊN",
     "on_reading": "セン",
@@ -449,6 +481,7 @@ const kanjiData = [
   },
   {
     "stt": 33,
+    "level": "n45",
     "kanji": "万",
     "hanviet": "VẠN",
     "on_reading": "マン|バン",
@@ -463,6 +496,7 @@ const kanjiData = [
   },
   {
     "stt": 34,
+    "level": "n45",
     "kanji": "円",
     "hanviet": "VIÊN",
     "on_reading": "エン",
@@ -477,6 +511,7 @@ const kanjiData = [
   },
   {
     "stt": 35,
+    "level": "n45",
     "kanji": "年",
     "hanviet": "NIÊN",
     "on_reading": "ネン",
@@ -491,6 +526,7 @@ const kanjiData = [
   },
   {
     "stt": 36,
+    "level": "n45",
     "kanji": "上",
     "hanviet": "THƯỢNG",
     "on_reading": "ジョウ",
@@ -505,6 +541,7 @@ const kanjiData = [
   },
   {
     "stt": 37,
+    "level": "n45",
     "kanji": "下",
     "hanviet": "HẠ",
     "on_reading": "カ|ゲ",
@@ -519,6 +556,7 @@ const kanjiData = [
   },
   {
     "stt": 38,
+    "level": "n45",
     "kanji": "中",
     "hanviet": "TRUNG",
     "on_reading": "チュウ",
@@ -533,6 +571,7 @@ const kanjiData = [
   },
   {
     "stt": 39,
+    "level": "n45",
     "kanji": "大",
     "hanviet": "ĐẠI",
     "on_reading": "ダイ|タイ",
@@ -547,6 +586,7 @@ const kanjiData = [
   },
   {
     "stt": 40,
+    "level": "n45",
     "kanji": "小",
     "hanviet": "TIỂU",
     "on_reading": "ショウ",
@@ -561,6 +601,7 @@ const kanjiData = [
   },
   {
     "stt": 41,
+    "level": "n45",
     "kanji": "本",
     "hanviet": "BẢN",
     "on_reading": "ホン",
@@ -575,6 +616,7 @@ const kanjiData = [
   },
   {
     "stt": 42,
+    "level": "n45",
     "kanji": "半",
     "hanviet": "BÁN",
     "on_reading": "ハン",
@@ -589,6 +631,7 @@ const kanjiData = [
   },
   {
     "stt": 43,
+    "level": "n45",
     "kanji": "分",
     "hanviet": "PHÂN",
     "on_reading": "ブン|プン|フン",
@@ -603,6 +646,7 @@ const kanjiData = [
   },
   {
     "stt": 44,
+    "level": "n45",
     "kanji": "力",
     "hanviet": "LỰC",
     "on_reading": "リョク|リ",
@@ -617,6 +661,7 @@ const kanjiData = [
   },
   {
     "stt": 45,
+    "level": "n45",
     "kanji": "何",
     "hanviet": "HÀ",
     "on_reading": "カ",
@@ -631,6 +676,7 @@ const kanjiData = [
   },
   {
     "stt": 46,
+    "level": "n45",
     "kanji": "明",
     "hanviet": "MINH",
     "on_reading": "メイ|ミョウ",
@@ -645,6 +691,7 @@ const kanjiData = [
   },
   {
     "stt": 47,
+    "level": "n45",
     "kanji": "休",
     "hanviet": "HƯU",
     "on_reading": "キュウ",
@@ -659,6 +706,7 @@ const kanjiData = [
   },
   {
     "stt": 48,
+    "level": "n45",
     "kanji": "体",
     "hanviet": "THỂ",
     "on_reading": "タイ|テイ",
@@ -673,6 +721,7 @@ const kanjiData = [
   },
   {
     "stt": 49,
+    "level": "n45",
     "kanji": "好",
     "hanviet": "HẢO",
     "on_reading": "コウ",
@@ -687,6 +736,7 @@ const kanjiData = [
   },
   {
     "stt": 50,
+    "level": "n45",
     "kanji": "男",
     "hanviet": "NAM",
     "on_reading": "ダン|ナン",
@@ -701,6 +751,7 @@ const kanjiData = [
   },
   {
     "stt": 51,
+    "level": "n45",
     "kanji": "林",
     "hanviet": "LÂM",
     "on_reading": "リン",
@@ -715,6 +766,7 @@ const kanjiData = [
   },
   {
     "stt": 52,
+    "level": "n45",
     "kanji": "森",
     "hanviet": "SÂM",
     "on_reading": "シン",
@@ -729,6 +781,7 @@ const kanjiData = [
   },
   {
     "stt": 53,
+    "level": "n45",
     "kanji": "間",
     "hanviet": "GIAN",
     "on_reading": "カン|ケン",
@@ -743,6 +796,7 @@ const kanjiData = [
   },
   {
     "stt": 54,
+    "level": "n45",
     "kanji": "畑",
     "hanviet": "VƯỜN",
     "on_reading": "なし",
@@ -757,6 +811,7 @@ const kanjiData = [
   },
   {
     "stt": 55,
+    "level": "n45",
     "kanji": "岩",
     "hanviet": "NHAM",
     "on_reading": "ガン",
@@ -771,6 +826,7 @@ const kanjiData = [
   },
   {
     "stt": 56,
+    "level": "n45",
     "kanji": "目",
     "hanviet": "MỤC",
     "on_reading": "モク|ボク",
@@ -785,6 +841,7 @@ const kanjiData = [
   },
   {
     "stt": 57,
+    "level": "n45",
     "kanji": "耳",
     "hanviet": "NHĨ",
     "on_reading": "ジ",
@@ -799,6 +856,7 @@ const kanjiData = [
   },
   {
     "stt": 58,
+    "level": "n45",
     "kanji": "手",
     "hanviet": "THỦ",
     "on_reading": "シュ",
@@ -813,6 +871,7 @@ const kanjiData = [
   },
   {
     "stt": 59,
+    "level": "n45",
     "kanji": "足",
     "hanviet": "TÚC",
     "on_reading": "ソク",
@@ -827,6 +886,7 @@ const kanjiData = [
   },
   {
     "stt": 60,
+    "level": "n45",
     "kanji": "雨",
     "hanviet": "VŨ",
     "on_reading": "ウ",
@@ -841,6 +901,7 @@ const kanjiData = [
   },
   {
     "stt": 61,
+    "level": "n45",
     "kanji": "竹",
     "hanviet": "TRÚC",
     "on_reading": "チク",
@@ -855,6 +916,7 @@ const kanjiData = [
   },
   {
     "stt": 62,
+    "level": "n45",
     "kanji": "米",
     "hanviet": "MỄ",
     "on_reading": "マイ|ベイ",
@@ -869,6 +931,7 @@ const kanjiData = [
   },
   {
     "stt": 63,
+    "level": "n45",
     "kanji": "貝",
     "hanviet": "BỐI",
     "on_reading": "バイ",
@@ -883,6 +946,7 @@ const kanjiData = [
   },
   {
     "stt": 64,
+    "level": "n45",
     "kanji": "石",
     "hanviet": "THẠCH",
     "on_reading": "セキ",
@@ -897,6 +961,7 @@ const kanjiData = [
   },
   {
     "stt": 65,
+    "level": "n45",
     "kanji": "糸",
     "hanviet": "MỊCH",
     "on_reading": "シ",
@@ -911,6 +976,7 @@ const kanjiData = [
   },
   {
     "stt": 66,
+    "level": "n45",
     "kanji": "花",
     "hanviet": "HOA",
     "on_reading": "カ",
@@ -925,6 +991,7 @@ const kanjiData = [
   },
   {
     "stt": 67,
+    "level": "n45",
     "kanji": "茶",
     "hanviet": "TRÀ",
     "on_reading": "チャ|サ",
@@ -939,6 +1006,7 @@ const kanjiData = [
   },
   {
     "stt": 68,
+    "level": "n45",
     "kanji": "肉",
     "hanviet": "NHỤC",
     "on_reading": "ニク",
@@ -953,6 +1021,7 @@ const kanjiData = [
   },
   {
     "stt": 69,
+    "level": "n45",
     "kanji": "文",
     "hanviet": "VĂN",
     "on_reading": "ブン|モン",
@@ -967,6 +1036,7 @@ const kanjiData = [
   },
   {
     "stt": 70,
+    "level": "n45",
     "kanji": "字",
     "hanviet": "TỰ",
     "on_reading": "ジ",
@@ -981,6 +1051,7 @@ const kanjiData = [
   },
   {
     "stt": 71,
+    "level": "n45",
     "kanji": "物",
     "hanviet": "VẬT",
     "on_reading": "ブツ|モツ",
@@ -995,6 +1066,7 @@ const kanjiData = [
   },
   {
     "stt": 72,
+    "level": "n45",
     "kanji": "牛",
     "hanviet": "NGƯU",
     "on_reading": "ギュウ",
@@ -1009,6 +1081,7 @@ const kanjiData = [
   },
   {
     "stt": 73,
+    "level": "n45",
     "kanji": "馬",
     "hanviet": "MÃ",
     "on_reading": "バ",
@@ -1023,6 +1096,7 @@ const kanjiData = [
   },
   {
     "stt": 74,
+    "level": "n45",
     "kanji": "鳥",
     "hanviet": "ĐIỂU",
     "on_reading": "チョウ",
@@ -1037,6 +1111,7 @@ const kanjiData = [
   },
   {
     "stt": 75,
+    "level": "n45",
     "kanji": "魚",
     "hanviet": "NGƯ",
     "on_reading": "ギョ",
@@ -1051,6 +1126,7 @@ const kanjiData = [
   },
   {
     "stt": 76,
+    "level": "n45",
     "kanji": "新",
     "hanviet": "TÂN",
     "on_reading": "シン",
@@ -1065,6 +1141,7 @@ const kanjiData = [
   },
   {
     "stt": 77,
+    "level": "n45",
     "kanji": "古",
     "hanviet": "CỔ",
     "on_reading": "コ",
@@ -1079,6 +1156,7 @@ const kanjiData = [
   },
   {
     "stt": 78,
+    "level": "n45",
     "kanji": "長",
     "hanviet": "TRƯỜNG",
     "on_reading": "チョウ",
@@ -1093,6 +1171,7 @@ const kanjiData = [
   },
   {
     "stt": 79,
+    "level": "n45",
     "kanji": "短",
     "hanviet": "ĐOẢN",
     "on_reading": "タン",
@@ -1107,6 +1186,7 @@ const kanjiData = [
   },
   {
     "stt": 80,
+    "level": "n45",
     "kanji": "高",
     "hanviet": "CAO",
     "on_reading": "コウ",
@@ -1121,6 +1201,7 @@ const kanjiData = [
   },
   {
     "stt": 81,
+    "level": "n45",
     "kanji": "安",
     "hanviet": "AN",
     "on_reading": "アン",
@@ -1135,6 +1216,7 @@ const kanjiData = [
   },
   {
     "stt": 82,
+    "level": "n45",
     "kanji": "低",
     "hanviet": "ĐÊ",
     "on_reading": "テイ",
@@ -1149,6 +1231,7 @@ const kanjiData = [
   },
   {
     "stt": 83,
+    "level": "n45",
     "kanji": "暗",
     "hanviet": "ÁM",
     "on_reading": "アン",
@@ -1163,6 +1246,7 @@ const kanjiData = [
   },
   {
     "stt": 84,
+    "level": "n45",
     "kanji": "多",
     "hanviet": "ĐA",
     "on_reading": "タ",
@@ -1177,6 +1261,7 @@ const kanjiData = [
   },
   {
     "stt": 85,
+    "level": "n45",
     "kanji": "少",
     "hanviet": "THIỂU",
     "on_reading": "ショウ",
@@ -1191,6 +1276,7 @@ const kanjiData = [
   },
   {
     "stt": 86,
+    "level": "n45",
     "kanji": "行",
     "hanviet": "HÀNH",
     "on_reading": "コウ|ギョウ",
@@ -1205,6 +1291,7 @@ const kanjiData = [
   },
   {
     "stt": 87,
+    "level": "n45",
     "kanji": "来",
     "hanviet": "LAI",
     "on_reading": "ライ",
@@ -1219,6 +1306,7 @@ const kanjiData = [
   },
   {
     "stt": 88,
+    "level": "n45",
     "kanji": "帰",
     "hanviet": "QUY",
     "on_reading": "キ",
@@ -1233,6 +1321,7 @@ const kanjiData = [
   },
   {
     "stt": 89,
+    "level": "n45",
     "kanji": "食",
     "hanviet": "THỰC",
     "on_reading": "ショク",
@@ -1247,6 +1336,7 @@ const kanjiData = [
   },
   {
     "stt": 90,
+    "level": "n45",
     "kanji": "飲",
     "hanviet": "ẨM",
     "on_reading": "イン",
@@ -1261,6 +1351,7 @@ const kanjiData = [
   },
   {
     "stt": 91,
+    "level": "n45",
     "kanji": "見",
     "hanviet": "KIẾN",
     "on_reading": "ケン",
@@ -1275,6 +1366,7 @@ const kanjiData = [
   },
   {
     "stt": 92,
+    "level": "n45",
     "kanji": "聞",
     "hanviet": "VĂN",
     "on_reading": "ブン|モン",
@@ -1289,6 +1381,7 @@ const kanjiData = [
   },
   {
     "stt": 93,
+    "level": "n45",
     "kanji": "読",
     "hanviet": "ĐỘC",
     "on_reading": "ドク",
@@ -1303,6 +1396,7 @@ const kanjiData = [
   },
   {
     "stt": 94,
+    "level": "n45",
     "kanji": "書",
     "hanviet": "THƯ",
     "on_reading": "ショ",
@@ -1317,6 +1411,7 @@ const kanjiData = [
   },
   {
     "stt": 95,
+    "level": "n45",
     "kanji": "話",
     "hanviet": "THOẠI",
     "on_reading": "ワ",
@@ -1331,6 +1426,7 @@ const kanjiData = [
   },
   {
     "stt": 96,
+    "level": "n45",
     "kanji": "買",
     "hanviet": "MÃI",
     "on_reading": "バイ",
@@ -1345,6 +1441,7 @@ const kanjiData = [
   },
   {
     "stt": 97,
+    "level": "n45",
     "kanji": "教",
     "hanviet": "GIÁO",
     "on_reading": "キョウ",
@@ -1359,6 +1456,7 @@ const kanjiData = [
   },
   {
     "stt": 98,
+    "level": "n45",
     "kanji": "朝",
     "hanviet": "TRIỀU",
     "on_reading": "チョウ",
@@ -1373,6 +1471,7 @@ const kanjiData = [
   },
   {
     "stt": 99,
+    "level": "n45",
     "kanji": "昼",
     "hanviet": "TRÚ_TRÚ",
     "on_reading": "チュウ",
@@ -1387,6 +1486,7 @@ const kanjiData = [
   },
   {
     "stt": 100,
+    "level": "n45",
     "kanji": "夜",
     "hanviet": "DẠ",
     "on_reading": "ヤ",
@@ -1401,6 +1501,7 @@ const kanjiData = [
   },
   {
     "stt": 101,
+    "level": "n45",
     "kanji": "晩",
     "hanviet": "VÃN",
     "on_reading": "バン",
@@ -1415,6 +1516,7 @@ const kanjiData = [
   },
   {
     "stt": 102,
+    "level": "n45",
     "kanji": "夕",
     "hanviet": "TỊCH",
     "on_reading": "セキ",
@@ -1429,6 +1531,7 @@ const kanjiData = [
   },
   {
     "stt": 103,
+    "level": "n45",
     "kanji": "方",
     "hanviet": "PHƯƠNG",
     "on_reading": "ホウ",
@@ -1443,6 +1546,7 @@ const kanjiData = [
   },
   {
     "stt": 104,
+    "level": "n45",
     "kanji": "午",
     "hanviet": "NGỌ",
     "on_reading": "ゴ",
@@ -1457,6 +1561,7 @@ const kanjiData = [
   },
   {
     "stt": 105,
+    "level": "n45",
     "kanji": "前",
     "hanviet": "TIỀN",
     "on_reading": "ゼン",
@@ -1471,6 +1576,7 @@ const kanjiData = [
   },
   {
     "stt": 106,
+    "level": "n45",
     "kanji": "後",
     "hanviet": "HẬU",
     "on_reading": "ゴ|コウ",
@@ -1485,6 +1591,7 @@ const kanjiData = [
   },
   {
     "stt": 107,
+    "level": "n45",
     "kanji": "毎",
     "hanviet": "MỖI",
     "on_reading": "マイ",
@@ -1499,6 +1606,7 @@ const kanjiData = [
   },
   {
     "stt": 108,
+    "level": "n45",
     "kanji": "週",
     "hanviet": "CHU",
     "on_reading": "シュウ",
@@ -1513,6 +1621,7 @@ const kanjiData = [
   },
   {
     "stt": 109,
+    "level": "n45",
     "kanji": "曜",
     "hanviet": "DIỆU",
     "on_reading": "ヨウ",
@@ -1527,6 +1636,7 @@ const kanjiData = [
   },
   {
     "stt": 110,
+    "level": "n45",
     "kanji": "作",
     "hanviet": "TÁC",
     "on_reading": "サク|サ",
@@ -1541,6 +1651,7 @@ const kanjiData = [
   },
   {
     "stt": 111,
+    "level": "n45",
     "kanji": "泳",
     "hanviet": "VỊNH",
     "on_reading": "エイ",
@@ -1555,6 +1666,7 @@ const kanjiData = [
   },
   {
     "stt": 112,
+    "level": "n45",
     "kanji": "油",
     "hanviet": "DU",
     "on_reading": "ユ",
@@ -1569,6 +1681,7 @@ const kanjiData = [
   },
   {
     "stt": 113,
+    "level": "n45",
     "kanji": "海",
     "hanviet": "HẢI",
     "on_reading": "カイ",
@@ -1583,6 +1696,7 @@ const kanjiData = [
   },
   {
     "stt": 114,
+    "level": "n45",
     "kanji": "酒",
     "hanviet": "TỬU",
     "on_reading": "シュ",
@@ -1597,6 +1711,7 @@ const kanjiData = [
   },
   {
     "stt": 115,
+    "level": "n45",
     "kanji": "待",
     "hanviet": "ĐÃI",
     "on_reading": "タイ",
@@ -1611,6 +1726,7 @@ const kanjiData = [
   },
   {
     "stt": 116,
+    "level": "n45",
     "kanji": "校",
     "hanviet": "HIỆU",
     "on_reading": "コウ",
@@ -1625,6 +1741,7 @@ const kanjiData = [
   },
   {
     "stt": 117,
+    "level": "n45",
     "kanji": "時",
     "hanviet": "THỜI",
     "on_reading": "ジ",
@@ -1639,6 +1756,7 @@ const kanjiData = [
   },
   {
     "stt": 118,
+    "level": "n45",
     "kanji": "言",
     "hanviet": "NGÔN",
     "on_reading": "ゲン|ゴン",
@@ -1653,6 +1771,7 @@ const kanjiData = [
   },
   {
     "stt": 119,
+    "level": "n45",
     "kanji": "計",
     "hanviet": "KẾ",
     "on_reading": "ケイ",
@@ -1667,6 +1786,7 @@ const kanjiData = [
   },
   {
     "stt": 120,
+    "level": "n45",
     "kanji": "語",
     "hanviet": "NGỮ",
     "on_reading": "ゴ",
@@ -1681,6 +1801,7 @@ const kanjiData = [
   },
   {
     "stt": 121,
+    "level": "n45",
     "kanji": "飯",
     "hanviet": "PHẠN",
     "on_reading": "ハン",
@@ -1695,6 +1816,7 @@ const kanjiData = [
   },
   {
     "stt": 122,
+    "level": "n45",
     "kanji": "宅",
     "hanviet": "TRẠCH",
     "on_reading": "タク",
@@ -1709,6 +1831,7 @@ const kanjiData = [
   },
   {
     "stt": 123,
+    "level": "n45",
     "kanji": "客",
     "hanviet": "KHÁCH",
     "on_reading": "キャク|カク",
@@ -1723,6 +1846,7 @@ const kanjiData = [
   },
   {
     "stt": 124,
+    "level": "n45",
     "kanji": "室",
     "hanviet": "THẤT",
     "on_reading": "シツ",
@@ -1737,6 +1861,7 @@ const kanjiData = [
   },
   {
     "stt": 125,
+    "level": "n45",
     "kanji": "家",
     "hanviet": "GIA",
     "on_reading": "カ|ケ",
@@ -1751,6 +1876,7 @@ const kanjiData = [
   },
   {
     "stt": 126,
+    "level": "n45",
     "kanji": "英",
     "hanviet": "ANH",
     "on_reading": "エイ",
@@ -1765,6 +1891,7 @@ const kanjiData = [
   },
   {
     "stt": 127,
+    "level": "n45",
     "kanji": "薬",
     "hanviet": "ƯỚC",
     "on_reading": "ヤク",
@@ -1779,6 +1906,7 @@ const kanjiData = [
   },
   {
     "stt": 128,
+    "level": "n45",
     "kanji": "会",
     "hanviet": "HỘI",
     "on_reading": "カイ|エ",
@@ -1793,6 +1921,7 @@ const kanjiData = [
   },
   {
     "stt": 129,
+    "level": "n45",
     "kanji": "今",
     "hanviet": "KIM",
     "on_reading": "コン|キン",
@@ -1807,6 +1936,7 @@ const kanjiData = [
   },
   {
     "stt": 130,
+    "level": "n45",
     "kanji": "雪",
     "hanviet": "TUYẾT",
     "on_reading": "セツ",
@@ -1821,6 +1951,7 @@ const kanjiData = [
   },
   {
     "stt": 131,
+    "level": "n45",
     "kanji": "雲",
     "hanviet": "VÂN",
     "on_reading": "ウン",
@@ -1835,6 +1966,7 @@ const kanjiData = [
   },
   {
     "stt": 132,
+    "level": "n45",
     "kanji": "電",
     "hanviet": "ĐIỆN",
     "on_reading": "デン",
@@ -1849,6 +1981,7 @@ const kanjiData = [
   },
   {
     "stt": 133,
+    "level": "n45",
     "kanji": "売",
     "hanviet": "MẠI",
     "on_reading": "バイ",
@@ -1863,6 +1996,7 @@ const kanjiData = [
   },
   {
     "stt": 134,
+    "level": "n45",
     "kanji": "広",
     "hanviet": "QUẢNG",
     "on_reading": "コウ",
@@ -1877,6 +2011,7 @@ const kanjiData = [
   },
   {
     "stt": 135,
+    "level": "n45",
     "kanji": "店",
     "hanviet": "ĐIẾM",
     "on_reading": "テン",
@@ -1891,6 +2026,7 @@ const kanjiData = [
   },
   {
     "stt": 136,
+    "level": "n45",
     "kanji": "度",
     "hanviet": "ĐỘ",
     "on_reading": "ド|ト|タク",
@@ -1905,6 +2041,7 @@ const kanjiData = [
   },
   {
     "stt": 137,
+    "level": "n45",
     "kanji": "病",
     "hanviet": "BỆNH",
     "on_reading": "ビョウ",
@@ -1919,6 +2056,7 @@ const kanjiData = [
   },
   {
     "stt": 138,
+    "level": "n45",
     "kanji": "疲",
     "hanviet": "BÌ",
     "on_reading": "ヒ",
@@ -1933,6 +2071,7 @@ const kanjiData = [
   },
   {
     "stt": 139,
+    "level": "n45",
     "kanji": "痛",
     "hanviet": "THỐNG",
     "on_reading": "ツウ",
@@ -1947,6 +2086,7 @@ const kanjiData = [
   },
   {
     "stt": 140,
+    "level": "n45",
     "kanji": "屋",
     "hanviet": "ỐC",
     "on_reading": "オク",
@@ -1961,6 +2101,7 @@ const kanjiData = [
   },
   {
     "stt": 141,
+    "level": "n45",
     "kanji": "国",
     "hanviet": "QUỐC",
     "on_reading": "コク",
@@ -1975,6 +2116,7 @@ const kanjiData = [
   },
   {
     "stt": 142,
+    "level": "n45",
     "kanji": "回",
     "hanviet": "HỒI",
     "on_reading": "カイ|エ",
@@ -1989,6 +2131,7 @@ const kanjiData = [
   },
   {
     "stt": 143,
+    "level": "n45",
     "kanji": "困",
     "hanviet": "KHỐN",
     "on_reading": "コン",
@@ -2003,6 +2146,7 @@ const kanjiData = [
   },
   {
     "stt": 144,
+    "level": "n45",
     "kanji": "開",
     "hanviet": "KHAI",
     "on_reading": "カイ",
@@ -2017,6 +2161,7 @@ const kanjiData = [
   },
   {
     "stt": 145,
+    "level": "n45",
     "kanji": "閉",
     "hanviet": "BẾ",
     "on_reading": "ヘイ",
@@ -2031,6 +2176,7 @@ const kanjiData = [
   },
   {
     "stt": 146,
+    "level": "n45",
     "kanji": "近",
     "hanviet": "CẬN",
     "on_reading": "キン",
@@ -2045,6 +2191,7 @@ const kanjiData = [
   },
   {
     "stt": 147,
+    "level": "n45",
     "kanji": "遠",
     "hanviet": "VIỄN",
     "on_reading": "エン|オン",
@@ -2059,6 +2206,7 @@ const kanjiData = [
   },
   {
     "stt": 148,
+    "level": "n45",
     "kanji": "速",
     "hanviet": "TỐC",
     "on_reading": "ソク",
@@ -2073,6 +2221,7 @@ const kanjiData = [
   },
   {
     "stt": 149,
+    "level": "n45",
     "kanji": "遅",
     "hanviet": "TRÌ",
     "on_reading": "チ",
@@ -2087,6 +2236,7 @@ const kanjiData = [
   },
   {
     "stt": 150,
+    "level": "n45",
     "kanji": "道",
     "hanviet": "ĐẠO",
     "on_reading": "ドウ|トウ",
@@ -2101,6 +2251,7 @@ const kanjiData = [
   },
   {
     "stt": 151,
+    "level": "n45",
     "kanji": "青",
     "hanviet": "THANH",
     "on_reading": "セイ|ショウ",
@@ -2115,6 +2266,7 @@ const kanjiData = [
   },
   {
     "stt": 152,
+    "level": "n45",
     "kanji": "晴",
     "hanviet": "TÌNH",
     "on_reading": "セイ",
@@ -2129,6 +2281,7 @@ const kanjiData = [
   },
   {
     "stt": 153,
+    "level": "n45",
     "kanji": "静",
     "hanviet": "TĨNH",
     "on_reading": "セイ|ジョウ",
@@ -2143,6 +2296,7 @@ const kanjiData = [
   },
   {
     "stt": 154,
+    "level": "n45",
     "kanji": "寺",
     "hanviet": "TỰ",
     "on_reading": "ジ",
@@ -2157,6 +2311,7 @@ const kanjiData = [
   },
   {
     "stt": 155,
+    "level": "n45",
     "kanji": "持",
     "hanviet": "TRÌ",
     "on_reading": "ジ",
@@ -2171,6 +2326,7 @@ const kanjiData = [
   },
   {
     "stt": 156,
+    "level": "n45",
     "kanji": "荷",
     "hanviet": "HÀ",
     "on_reading": "カ",
@@ -2185,6 +2341,7 @@ const kanjiData = [
   },
   {
     "stt": 157,
+    "level": "n45",
     "kanji": "歌",
     "hanviet": "CA",
     "on_reading": "カ",
@@ -2199,6 +2356,7 @@ const kanjiData = [
   },
   {
     "stt": 158,
+    "level": "n45",
     "kanji": "友",
     "hanviet": "HỮU",
     "on_reading": "ユウ",
@@ -2213,6 +2371,7 @@ const kanjiData = [
   },
   {
     "stt": 159,
+    "level": "n45",
     "kanji": "父",
     "hanviet": "PHỤ",
     "on_reading": "フ",
@@ -2227,6 +2386,7 @@ const kanjiData = [
   },
   {
     "stt": 160,
+    "level": "n45",
     "kanji": "母",
     "hanviet": "MẪU",
     "on_reading": "ボ",
@@ -2241,6 +2401,7 @@ const kanjiData = [
   },
   {
     "stt": 161,
+    "level": "n45",
     "kanji": "兄",
     "hanviet": "HUYNH",
     "on_reading": "キョウ|ケイ",
@@ -2255,6 +2416,7 @@ const kanjiData = [
   },
   {
     "stt": 162,
+    "level": "n45",
     "kanji": "姉",
     "hanviet": "TỶ",
     "on_reading": "シ",
@@ -2269,6 +2431,7 @@ const kanjiData = [
   },
   {
     "stt": 163,
+    "level": "n45",
     "kanji": "弟",
     "hanviet": "ĐỆ",
     "on_reading": "テイ|ダイ",
@@ -2283,6 +2446,7 @@ const kanjiData = [
   },
   {
     "stt": 164,
+    "level": "n45",
     "kanji": "妹",
     "hanviet": "MUỘI",
     "on_reading": "マイ",
@@ -2297,6 +2461,7 @@ const kanjiData = [
   },
   {
     "stt": 165,
+    "level": "n45",
     "kanji": "夫",
     "hanviet": "PHU",
     "on_reading": "フ|フウ",
@@ -2311,6 +2476,7 @@ const kanjiData = [
   },
   {
     "stt": 166,
+    "level": "n45",
     "kanji": "妻",
     "hanviet": "THÊ",
     "on_reading": "サイ",
@@ -2325,6 +2491,7 @@ const kanjiData = [
   },
   {
     "stt": 167,
+    "level": "n45",
     "kanji": "彼",
     "hanviet": "BỈ",
     "on_reading": "ヒ",
@@ -2339,6 +2506,7 @@ const kanjiData = [
   },
   {
     "stt": 168,
+    "level": "n45",
     "kanji": "主",
     "hanviet": "CHỦ",
     "on_reading": "シュ",
@@ -2353,6 +2521,7 @@ const kanjiData = [
   },
   {
     "stt": 169,
+    "level": "n45",
     "kanji": "奥",
     "hanviet": "ÁO",
     "on_reading": "オウ",
@@ -2367,6 +2536,7 @@ const kanjiData = [
   },
   {
     "stt": 170,
+    "level": "n45",
     "kanji": "元",
     "hanviet": "NGUYÊN",
     "on_reading": "ゲン|ガン",
@@ -2381,6 +2551,7 @@ const kanjiData = [
   },
   {
     "stt": 171,
+    "level": "n45",
     "kanji": "気",
     "hanviet": "KHÍ",
     "on_reading": "キ",
@@ -2395,6 +2566,7 @@ const kanjiData = [
   },
   {
     "stt": 172,
+    "level": "n45",
     "kanji": "有",
     "hanviet": "HỮU",
     "on_reading": "ユウ|ウ",
@@ -2409,6 +2581,7 @@ const kanjiData = [
   },
   {
     "stt": 173,
+    "level": "n45",
     "kanji": "名",
     "hanviet": "DANH",
     "on_reading": "メイ|ミョウ",
@@ -2423,6 +2596,7 @@ const kanjiData = [
   },
   {
     "stt": 174,
+    "level": "n45",
     "kanji": "親",
     "hanviet": "THÂN",
     "on_reading": "シン",
@@ -2437,6 +2611,7 @@ const kanjiData = [
   },
   {
     "stt": 175,
+    "level": "n45",
     "kanji": "切",
     "hanviet": "THIẾT",
     "on_reading": "セツ",
@@ -2451,6 +2626,7 @@ const kanjiData = [
   },
   {
     "stt": 176,
+    "level": "n45",
     "kanji": "便",
     "hanviet": "TIỆN",
     "on_reading": "ベン|ビン",
@@ -2465,6 +2641,7 @@ const kanjiData = [
   },
   {
     "stt": 177,
+    "level": "n45",
     "kanji": "利",
     "hanviet": "LỢI",
     "on_reading": "リ",
@@ -2479,6 +2656,7 @@ const kanjiData = [
   },
   {
     "stt": 178,
+    "level": "n45",
     "kanji": "不",
     "hanviet": "BẤT",
     "on_reading": "フ|ブ",
@@ -2493,6 +2671,7 @@ const kanjiData = [
   },
   {
     "stt": 179,
+    "level": "n45",
     "kanji": "若",
     "hanviet": "NHƯỢC",
     "on_reading": "ジャク",
@@ -2507,6 +2686,7 @@ const kanjiData = [
   },
   {
     "stt": 180,
+    "level": "n45",
     "kanji": "早",
     "hanviet": "TẢO",
     "on_reading": "ソウ",
@@ -2521,6 +2701,7 @@ const kanjiData = [
   },
   {
     "stt": 181,
+    "level": "n45",
     "kanji": "忙",
     "hanviet": "MANG",
     "on_reading": "ボウ",
@@ -2535,6 +2716,7 @@ const kanjiData = [
   },
   {
     "stt": 182,
+    "level": "n45",
     "kanji": "出",
     "hanviet": "XUẤT",
     "on_reading": "シュツ",
@@ -2549,6 +2731,7 @@ const kanjiData = [
   },
   {
     "stt": 183,
+    "level": "n45",
     "kanji": "入",
     "hanviet": "NHẬP",
     "on_reading": "ニュウ",
@@ -2563,6 +2746,7 @@ const kanjiData = [
   },
   {
     "stt": 184,
+    "level": "n45",
     "kanji": "乗",
     "hanviet": "THỪA",
     "on_reading": "ジョウ",
@@ -2577,6 +2761,7 @@ const kanjiData = [
   },
   {
     "stt": 185,
+    "level": "n45",
     "kanji": "降",
     "hanviet": "GIÁNG",
     "on_reading": "コウ",
@@ -2591,6 +2776,7 @@ const kanjiData = [
   },
   {
     "stt": 186,
+    "level": "n45",
     "kanji": "着",
     "hanviet": "TRƯỚC",
     "on_reading": "チャク|ジャク",
@@ -2605,6 +2791,7 @@ const kanjiData = [
   },
   {
     "stt": 187,
+    "level": "n45",
     "kanji": "渡",
     "hanviet": "ĐỘ",
     "on_reading": "ト",
@@ -2619,6 +2806,7 @@ const kanjiData = [
   },
   {
     "stt": 188,
+    "level": "n45",
     "kanji": "通",
     "hanviet": "THÔNG",
     "on_reading": "ツウ",
@@ -2633,6 +2821,7 @@ const kanjiData = [
   },
   {
     "stt": 189,
+    "level": "n45",
     "kanji": "走",
     "hanviet": "TẨU",
     "on_reading": "ソウ",
@@ -2647,6 +2836,7 @@ const kanjiData = [
   },
   {
     "stt": 190,
+    "level": "n45",
     "kanji": "歩",
     "hanviet": "BỘ",
     "on_reading": "ホ",
@@ -2661,6 +2851,7 @@ const kanjiData = [
   },
   {
     "stt": 191,
+    "level": "n45",
     "kanji": "止",
     "hanviet": "CHỈ",
     "on_reading": "シ",
@@ -2675,6 +2866,7 @@ const kanjiData = [
   },
   {
     "stt": 192,
+    "level": "n45",
     "kanji": "動",
     "hanviet": "ĐỘNG",
     "on_reading": "ドウ",
@@ -2689,6 +2881,7 @@ const kanjiData = [
   },
   {
     "stt": 193,
+    "level": "n45",
     "kanji": "働",
     "hanviet": "ĐỘNG",
     "on_reading": "ドウ",
@@ -2703,6 +2896,7 @@ const kanjiData = [
   },
   {
     "stt": 194,
+    "level": "n45",
     "kanji": "右",
     "hanviet": "HỮU",
     "on_reading": "ウ|ユウ",
@@ -2717,6 +2911,7 @@ const kanjiData = [
   },
   {
     "stt": 195,
+    "level": "n45",
     "kanji": "左",
     "hanviet": "TẢ",
     "on_reading": "サ",
@@ -2731,6 +2926,7 @@ const kanjiData = [
   },
   {
     "stt": 196,
+    "level": "n45",
     "kanji": "東",
     "hanviet": "ĐÔNG",
     "on_reading": "トウ",
@@ -2745,6 +2941,7 @@ const kanjiData = [
   },
   {
     "stt": 197,
+    "level": "n45",
     "kanji": "西",
     "hanviet": "TÂY",
     "on_reading": "セイ|サイ",
@@ -2759,6 +2956,7 @@ const kanjiData = [
   },
   {
     "stt": 198,
+    "level": "n45",
     "kanji": "北",
     "hanviet": "BẮC",
     "on_reading": "ホク",
@@ -2773,6 +2971,7 @@ const kanjiData = [
   },
   {
     "stt": 199,
+    "level": "n45",
     "kanji": "南",
     "hanviet": "NAM",
     "on_reading": "ナン",
@@ -2787,6 +2986,7 @@ const kanjiData = [
   },
   {
     "stt": 200,
+    "level": "n45",
     "kanji": "外",
     "hanviet": "NGOẠI",
     "on_reading": "ガイ",
@@ -2801,6 +3001,7 @@ const kanjiData = [
   },
   {
     "stt": 201,
+    "level": "n45",
     "kanji": "内",
     "hanviet": "NỘI",
     "on_reading": "ナイ|ダイ",
@@ -2815,6 +3016,7 @@ const kanjiData = [
   },
   {
     "stt": 202,
+    "level": "n45",
     "kanji": "部",
     "hanviet": "BỘ",
     "on_reading": "ブ",
@@ -2829,6 +3031,7 @@ const kanjiData = [
   },
   {
     "stt": 203,
+    "level": "n45",
     "kanji": "駅",
     "hanviet": "DỊCH",
     "on_reading": "エキ",
@@ -2843,6 +3046,7 @@ const kanjiData = [
   },
   {
     "stt": 204,
+    "level": "n45",
     "kanji": "社",
     "hanviet": "XÃ",
     "on_reading": "シャ",
@@ -2857,6 +3061,7 @@ const kanjiData = [
   },
   {
     "stt": 205,
+    "level": "n45",
     "kanji": "院",
     "hanviet": "VIỆN",
     "on_reading": "イン",
@@ -2871,6 +3076,7 @@ const kanjiData = [
   },
   {
     "stt": 206,
+    "level": "n45",
     "kanji": "地",
     "hanviet": "ĐỊA",
     "on_reading": "チ|ジ",
@@ -2885,6 +3091,7 @@ const kanjiData = [
   },
   {
     "stt": 207,
+    "level": "n45",
     "kanji": "鉄",
     "hanviet": "THIẾT",
     "on_reading": "テツ",
@@ -2899,6 +3106,7 @@ const kanjiData = [
   },
   {
     "stt": 208,
+    "level": "n45",
     "kanji": "工",
     "hanviet": "CÔNG",
     "on_reading": "コウ|ク",
@@ -2913,6 +3121,7 @@ const kanjiData = [
   },
   {
     "stt": 209,
+    "level": "n45",
     "kanji": "場",
     "hanviet": "TRÀNG",
     "on_reading": "ジョウ",
@@ -2927,6 +3136,7 @@ const kanjiData = [
   },
   {
     "stt": 210,
+    "level": "n45",
     "kanji": "図",
     "hanviet": "ĐỒ",
     "on_reading": "ズ|ト",
@@ -2941,6 +3151,7 @@ const kanjiData = [
   },
   {
     "stt": 211,
+    "level": "n45",
     "kanji": "館",
     "hanviet": "QUÁN",
     "on_reading": "カン",
@@ -2955,6 +3166,7 @@ const kanjiData = [
   },
   {
     "stt": 212,
+    "level": "n45",
     "kanji": "公",
     "hanviet": "CÔNG",
     "on_reading": "コウ",
@@ -2969,6 +3181,7 @@ const kanjiData = [
   },
   {
     "stt": 213,
+    "level": "n45",
     "kanji": "園",
     "hanviet": "VIÊN",
     "on_reading": "エン",
@@ -2983,6 +3196,7 @@ const kanjiData = [
   },
   {
     "stt": 214,
+    "level": "n45",
     "kanji": "住",
     "hanviet": "TRÚ",
     "on_reading": "ジュウ",
@@ -2997,6 +3211,7 @@ const kanjiData = [
   },
   {
     "stt": 215,
+    "level": "n45",
     "kanji": "所",
     "hanviet": "SỞ",
     "on_reading": "ショ",
@@ -3011,6 +3226,7 @@ const kanjiData = [
   },
   {
     "stt": 216,
+    "level": "n45",
     "kanji": "番",
     "hanviet": "PHIÊN",
     "on_reading": "バン",
@@ -3025,6 +3241,7 @@ const kanjiData = [
   },
   {
     "stt": 217,
+    "level": "n45",
     "kanji": "号",
     "hanviet": "HIỆU",
     "on_reading": "ゴウ",
@@ -3039,6 +3256,7 @@ const kanjiData = [
   },
   {
     "stt": 218,
+    "level": "n45",
     "kanji": "市",
     "hanviet": "THỊ",
     "on_reading": "シ",
@@ -3053,6 +3271,7 @@ const kanjiData = [
   },
   {
     "stt": 219,
+    "level": "n45",
     "kanji": "町",
     "hanviet": "ĐINH",
     "on_reading": "チョウ",
@@ -3067,6 +3286,7 @@ const kanjiData = [
   },
   {
     "stt": 220,
+    "level": "n45",
     "kanji": "村",
     "hanviet": "THÔN",
     "on_reading": "ソン",
@@ -3081,6 +3301,7 @@ const kanjiData = [
   },
   {
     "stt": 221,
+    "level": "n45",
     "kanji": "区",
     "hanviet": "KHU",
     "on_reading": "ク",
@@ -3095,6 +3316,7 @@ const kanjiData = [
   },
   {
     "stt": 222,
+    "level": "n45",
     "kanji": "都",
     "hanviet": "ĐÔ",
     "on_reading": "ト|ツ",
@@ -3109,6 +3331,7 @@ const kanjiData = [
   },
   {
     "stt": 223,
+    "level": "n45",
     "kanji": "府",
     "hanviet": "PHỦ",
     "on_reading": "フ",
@@ -3123,6 +3346,7 @@ const kanjiData = [
   },
   {
     "stt": 224,
+    "level": "n45",
     "kanji": "県",
     "hanviet": "HUYỆN",
     "on_reading": "ケン",
@@ -3137,6 +3361,7 @@ const kanjiData = [
   },
   {
     "stt": 225,
+    "level": "n45",
     "kanji": "島",
     "hanviet": "ĐẢO",
     "on_reading": "トウ",
@@ -3151,6 +3376,7 @@ const kanjiData = [
   },
   {
     "stt": 226,
+    "level": "n45",
     "kanji": "京",
     "hanviet": "KINH",
     "on_reading": "キョウ|ケイ",
@@ -3165,6 +3391,7 @@ const kanjiData = [
   },
     {
       "stt": 227,
+    "level": "n45",
       "kanji": "様",
       "hanviet": "DẠNG",
       "on_reading": "ヨウ",
@@ -3179,6 +3406,7 @@ const kanjiData = [
     },
     {
       "stt": 228,
+    "level": "n45",
       "kanji": "練",
       "hanviet": "LUYỆN",
       "on_reading": "レン",
@@ -3193,6 +3421,7 @@ const kanjiData = [
     },
     {
       "stt": 229,
+    "level": "n45",
       "kanji": "習",
       "hanviet": "TẬP",
       "on_reading": "シュウ",
@@ -3207,6 +3436,7 @@ const kanjiData = [
     },
     {
       "stt": 230,
+    "level": "n45",
       "kanji": "勉",
       "hanviet": "MIỄN",
       "on_reading": "ベン",
@@ -3221,6 +3451,7 @@ const kanjiData = [
     },
     {
       "stt": 231,
+    "level": "n45",
       "kanji": "強",
       "hanviet": "CƯỜNG",
       "on_reading": "キョウ|ゴウ",
@@ -3235,6 +3466,7 @@ const kanjiData = [
     },
     {
       "stt": 232,
+    "level": "n45",
       "kanji": "研",
       "hanviet": "NGHIÊN",
       "on_reading": "ケン",
@@ -3249,6 +3481,7 @@ const kanjiData = [
     },
     {
       "stt": 233,
+    "level": "n45",
       "kanji": "究",
       "hanviet": "CỨU",
       "on_reading": "キュウ",
@@ -3263,6 +3496,7 @@ const kanjiData = [
     },
     {
       "stt": 234,
+    "level": "n45",
       "kanji": "留",
       "hanviet": "LƯU",
       "on_reading": "リュウ|ル",
@@ -3277,6 +3511,7 @@ const kanjiData = [
     },
     {
       "stt": 235,
+    "level": "n45",
       "kanji": "質",
       "hanviet": "CHẤT",
       "on_reading": "シツ|シチ",
@@ -3291,6 +3526,7 @@ const kanjiData = [
     },
     {
       "stt": 236,
+    "level": "n45",
       "kanji": "問",
       "hanviet": "VẤN",
       "on_reading": "モン",
@@ -3305,6 +3541,7 @@ const kanjiData = [
     },
     {
       "stt": 237,
+    "level": "n45",
       "kanji": "題",
       "hanviet": "ĐỀ",
       "on_reading": "ダイ",
@@ -3319,6 +3556,7 @@ const kanjiData = [
     },
     {
       "stt": 238,
+    "level": "n45",
       "kanji": "答",
       "hanviet": "ĐÁP",
       "on_reading": "トウ",
@@ -3333,6 +3571,7 @@ const kanjiData = [
     },
     {
       "stt": 239,
+    "level": "n45",
       "kanji": "宿",
       "hanviet": "TÚ|TÚC",
       "on_reading": "シュク",
@@ -3347,6 +3586,7 @@ const kanjiData = [
     },
     {
       "stt": 240,
+    "level": "n45",
       "kanji": "政",
       "hanviet": "CHÍNH",
       "on_reading": "セイ|ショウ",
@@ -3361,6 +3601,7 @@ const kanjiData = [
     },
     {
       "stt": 241,
+    "level": "n45",
       "kanji": "治",
       "hanviet": "TRỊ",
       "on_reading": "ジ|チ",
@@ -3375,6 +3616,7 @@ const kanjiData = [
     },
     {
       "stt": 242,
+    "level": "n45",
       "kanji": "制",
       "hanviet": "CHẾ",
       "on_reading": "セイ",
@@ -3389,6 +3631,7 @@ const kanjiData = [
     },
     {
       "stt": 243,
+    "level": "n45",
       "kanji": "済",
       "hanviet": "TẾ",
       "on_reading": "サイ|セイ",
@@ -3403,6 +3646,7 @@ const kanjiData = [
     },
     {
       "stt": 244,
+    "level": "n45",
       "kanji": "業",
       "hanviet": "NGHIỆP",
       "on_reading": "ギョウ|ゴウ",
@@ -3417,6 +3661,7 @@ const kanjiData = [
     },
     {
       "stt": 245,
+    "level": "n45",
       "kanji": "歴",
       "hanviet": "LỊCH",
       "on_reading": "レキ",
@@ -3431,6 +3676,7 @@ const kanjiData = [
     },
     {
       "stt": 246,
+    "level": "n45",
       "kanji": "育",
       "hanviet": "DỤC",
       "on_reading": "イク",
@@ -3445,6 +3691,7 @@ const kanjiData = [
     },
     {
       "stt": 247,
+    "level": "n45",
       "kanji": "変",
       "hanviet": "BIẾN",
       "on_reading": "ヘン",
@@ -3459,6 +3706,7 @@ const kanjiData = [
     },
     {
       "stt": 248,
+    "level": "n45",
       "kanji": "理",
       "hanviet": "LÝ",
       "on_reading": "リ",
@@ -3473,6 +3721,7 @@ const kanjiData = [
     },
     {
       "stt": 249,
+    "level": "n45",
       "kanji": "科",
       "hanviet": "KHOA",
       "on_reading": "カ",
@@ -3487,6 +3736,7 @@ const kanjiData = [
     },
     {
       "stt": 250,
+    "level": "n45",
       "kanji": "数",
       "hanviet": "SỐ",
       "on_reading": "スウ|ス",
@@ -3501,6 +3751,7 @@ const kanjiData = [
     },
     {
       "stt": 251,
+    "level": "n45",
       "kanji": "医",
       "hanviet": "Y",
       "on_reading": "イ",
@@ -3515,6 +3766,7 @@ const kanjiData = [
     },
     {
       "stt": 252,
+    "level": "n45",
       "kanji": "映",
       "hanviet": "ÁNH",
       "on_reading": "エイ",
@@ -3529,6 +3781,7 @@ const kanjiData = [
     },
     {
       "stt": 253,
+    "level": "n45",
       "kanji": "画",
       "hanviet": "HỌA|HOẠCH",
       "on_reading": "ガ|カク",
@@ -3543,6 +3796,7 @@ const kanjiData = [
     },
     {
       "stt": 254,
+    "level": "n45",
       "kanji": "写",
       "hanviet": "TẢ",
       "on_reading": "シャ",
@@ -3557,6 +3811,7 @@ const kanjiData = [
     },
     {
       "stt": 255,
+    "level": "n45",
       "kanji": "真",
       "hanviet": "CHÂN",
       "on_reading": "シン",
@@ -3571,6 +3826,7 @@ const kanjiData = [
     },
     {
       "stt": 256,
+    "level": "n45",
       "kanji": "音",
       "hanviet": "ÂM",
       "on_reading": "オン|イン",
@@ -3585,6 +3841,7 @@ const kanjiData = [
     },
     {
       "stt": 257,
+    "level": "n45",
       "kanji": "楽",
       "hanviet": "LẠC|NHẠC",
       "on_reading": "ガク|ラク",
@@ -3599,6 +3856,7 @@ const kanjiData = [
     },
     {
       "stt": 258,
+    "level": "n45",
       "kanji": "料",
       "hanviet": "LIÊU",
       "on_reading": "リョウ",
@@ -3613,6 +3871,7 @@ const kanjiData = [
     },
     {
       "stt": 259,
+    "level": "n45",
       "kanji": "理",
       "hanviet": "LÝ",
       "on_reading": "リ",
@@ -3627,6 +3886,7 @@ const kanjiData = [
     },
     {
       "stt": 260,
+    "level": "n45",
       "kanji": "思",
       "hanviet": "TƯ",
       "on_reading": "シ",
@@ -3641,6 +3901,7 @@ const kanjiData = [
     },
     {
       "stt": 261,
+    "level": "n45",
       "kanji": "意",
       "hanviet": "Ý",
       "on_reading": "イ",
@@ -3655,6 +3916,7 @@ const kanjiData = [
     },
     {
       "stt": 262,
+    "level": "n45",
       "kanji": "白",
       "hanviet": "BẠCH",
       "on_reading": "ハク|ビャク",
@@ -3669,6 +3931,7 @@ const kanjiData = [
     },
     {
       "stt": 263,
+    "level": "n45",
       "kanji": "黒",
       "hanviet": "HẮC",
       "on_reading": "コク",
@@ -3683,6 +3946,7 @@ const kanjiData = [
     },
     {
       "stt": 264,
+    "level": "n45",
       "kanji": "赤",
       "hanviet": "XÍCH",
       "on_reading": "セキ|シャク",
@@ -3697,6 +3961,7 @@ const kanjiData = [
     },
     {
       "stt": 265,
+    "level": "n45",
       "kanji": "起",
       "hanviet": "KHỞI",
       "on_reading": "キ",
@@ -3711,6 +3976,7 @@ const kanjiData = [
     },
     {
       "stt": 266,
+    "level": "n45",
       "kanji": "寝",
       "hanviet": "TẨM",
       "on_reading": "シン",
@@ -3725,6 +3991,7 @@ const kanjiData = [
     },
     {
       "stt": 267,
+    "level": "n45",
       "kanji": "遊",
       "hanviet": "DU",
       "on_reading": "ユウ|ユ",
@@ -3739,6 +4006,7 @@ const kanjiData = [
     },
     {
       "stt": 268,
+    "level": "n45",
       "kanji": "立",
       "hanviet": "LẬP",
       "on_reading": "リツ|リュウ",
@@ -3753,6 +4021,7 @@ const kanjiData = [
     },
     {
       "stt": 269,
+    "level": "n45",
       "kanji": "座",
       "hanviet": "TỌA",
       "on_reading": "ザ",
@@ -3767,6 +4036,7 @@ const kanjiData = [
     },
     {
       "stt": 270,
+    "level": "n45",
       "kanji": "使",
       "hanviet": "SỨ|SỬ",
       "on_reading": "シ",
@@ -3781,6 +4051,7 @@ const kanjiData = [
     },
     {
       "stt": 271,
+    "level": "n45",
       "kanji": "始",
       "hanviet": "THỦY",
       "on_reading": "シ",
@@ -3795,6 +4066,7 @@ const kanjiData = [
     },
     {
       "stt": 272,
+    "level": "n45",
       "kanji": "終",
       "hanviet": "CHUNG",
       "on_reading": "シュウ",
@@ -3809,6 +4081,7 @@ const kanjiData = [
     },
     {
       "stt": 273,
+    "level": "n45",
       "kanji": "貸",
       "hanviet": "THẢI",
       "on_reading": "タイ",
@@ -3823,6 +4096,7 @@ const kanjiData = [
     },
     {
       "stt": 274,
+    "level": "n45",
       "kanji": "借",
       "hanviet": "TÁ",
       "on_reading": "シャク",
@@ -3837,6 +4111,7 @@ const kanjiData = [
     },
     {
       "stt": 275,
+    "level": "n45",
       "kanji": "返",
       "hanviet": "PHẢN",
       "on_reading": "ヘン",
@@ -3851,6 +4126,7 @@ const kanjiData = [
     },
     {
       "stt": 276,
+    "level": "n45",
       "kanji": "送",
       "hanviet": "TỐNG",
       "on_reading": "ソウ",
@@ -3865,6 +4141,7 @@ const kanjiData = [
     },
     {
       "stt": 277,
+    "level": "n45",
       "kanji": "結",
       "hanviet": "KẾT",
       "on_reading": "ケツ",
@@ -3879,6 +4156,7 @@ const kanjiData = [
     },
     {
       "stt": 278,
+    "level": "n45",
       "kanji": "婚",
       "hanviet": "HÔN",
       "on_reading": "コン",
@@ -3893,6 +4171,7 @@ const kanjiData = [
     },
     {
       "stt": 279,
+    "level": "n45",
       "kanji": "離",
       "hanviet": "LY",
       "on_reading": "リ",
@@ -3907,6 +4186,7 @@ const kanjiData = [
     },
     {
       "stt": 280,
+    "level": "n45",
       "kanji": "席",
       "hanviet": "TỊCH",
       "on_reading": "セキ",
@@ -3921,6 +4201,7 @@ const kanjiData = [
     },
     {
       "stt": 281,
+    "level": "n45",
       "kanji": "欠",
       "hanviet": "KHIẾM",
       "on_reading": "ケツ",
@@ -3935,6 +4216,7 @@ const kanjiData = [
     },
     {
       "stt": 282,
+    "level": "n45",
       "kanji": "予",
       "hanviet": "DỰ",
       "on_reading": "ヨ",
@@ -3949,6 +4231,7 @@ const kanjiData = [
     },
     {
       "stt": 283,
+    "level": "n45",
       "kanji": "定",
       "hanviet": "ĐỊNH",
       "on_reading": "テイ|ジョウ",
@@ -3963,6 +4246,7 @@ const kanjiData = [
     },
     {
       "stt": 284,
+    "level": "n45",
       "kanji": "差",
       "hanviet": "SA",
       "on_reading": "サ",
@@ -3977,6 +4261,7 @@ const kanjiData = [
     },
     {
       "stt": 285,
+    "level": "n45",
       "kanji": "式",
       "hanviet": "THỨC",
       "on_reading": "シキ",
@@ -3991,6 +4276,7 @@ const kanjiData = [
     },
     {
       "stt": 286,
+    "level": "n45",
       "kanji": "和",
       "hanviet": "HÒA",
       "on_reading": "ワ|オ",
@@ -4005,6 +4291,7 @@ const kanjiData = [
     },
     {
       "stt": 287,
+    "level": "n45",
       "kanji": "活",
       "hanviet": "HOẠT",
       "on_reading": "カツ",
@@ -4019,6 +4306,7 @@ const kanjiData = [
     },
     {
       "stt": 288,
+    "level": "n45",
       "kanji": "春",
       "hanviet": "XUÂN",
       "on_reading": "シュン",
@@ -4033,6 +4321,7 @@ const kanjiData = [
     },
     {
       "stt": 289,
+    "level": "n45",
       "kanji": "夏",
       "hanviet": "HẠ",
       "on_reading": "カ|ゲ",
@@ -4047,6 +4336,7 @@ const kanjiData = [
     },
     {
       "stt": 290,
+    "level": "n45",
       "kanji": "秋",
       "hanviet": "THU",
       "on_reading": "シュウ",
@@ -4061,6 +4351,7 @@ const kanjiData = [
     },
     {
       "stt": 291,
+    "level": "n45",
       "kanji": "冬",
       "hanviet": "ĐÔNG",
       "on_reading": "トウ",
@@ -4075,6 +4366,7 @@ const kanjiData = [
     },
     {
       "stt": 292,
+    "level": "n45",
       "kanji": "暑",
       "hanviet": "THỬ",
       "on_reading": "ショ",
@@ -4089,6 +4381,7 @@ const kanjiData = [
     },
     {
       "stt": 293,
+    "level": "n45",
       "kanji": "熱",
       "hanviet": "NHIỆT",
       "on_reading": "ネツ",
@@ -4103,6 +4396,7 @@ const kanjiData = [
     },
     {
       "stt": 294,
+    "level": "n45",
       "kanji": "寒",
       "hanviet": "HÀN",
       "on_reading": "カン",
@@ -4117,6 +4411,7 @@ const kanjiData = [
     },
     {
       "stt": 295,
+    "level": "n45",
       "kanji": "冷",
       "hanviet": "LÃNH",
       "on_reading": "レイ",
@@ -4131,6 +4426,7 @@ const kanjiData = [
     },
     {
       "stt": 296,
+    "level": "n45",
       "kanji": "暖",
       "hanviet": "NOÃN",
       "on_reading": "ダン",
@@ -4145,6 +4441,7 @@ const kanjiData = [
     },
     {
       "stt": 297,
+    "level": "n45",
       "kanji": "温",
       "hanviet": "ÔN",
       "on_reading": "オン",
@@ -4159,6 +4456,7 @@ const kanjiData = [
     },
     {
       "stt": 298,
+    "level": "n45",
       "kanji": "涼",
       "hanviet": "LƯƠNG",
       "on_reading": "リョウ",
@@ -4173,6 +4471,7 @@ const kanjiData = [
     },
     {
       "stt": 299,
+    "level": "n45",
       "kanji": "天",
       "hanviet": "THIÊN",
       "on_reading": "テン",
@@ -4187,6 +4486,7 @@ const kanjiData = [
     },
     {
       "stt": 300,
+    "level": "n45",
       "kanji": "仕",
       "hanviet": "SĨ",
       "on_reading": "シ|ジ",
@@ -4201,6 +4501,7 @@ const kanjiData = [
     },
     {
       "stt": 301,
+    "level": "n45",
       "kanji": "事",
       "hanviet": "SỰ",
       "on_reading": "ジ|ズ",
@@ -4215,6 +4516,7 @@ const kanjiData = [
     },
     {
       "stt": 302,
+    "level": "n45",
       "kanji": "考",
       "hanviet": "KHẢO",
       "on_reading": "コウ",
@@ -4229,6 +4531,7 @@ const kanjiData = [
     },
     {
       "stt": 303,
+    "level": "n45",
       "kanji": "運",
       "hanviet": "VẬN",
       "on_reading": "ウン",
@@ -4243,6 +4546,7 @@ const kanjiData = [
     },
     {
       "stt": 304,
+    "level": "n45",
       "kanji": "転",
       "hanviet": "CHUYỂN",
       "on_reading": "テン",
@@ -4257,6 +4561,7 @@ const kanjiData = [
     },
     {
       "stt": 305,
+    "level": "n45",
       "kanji": "選",
       "hanviet": "TUYỂN",
       "on_reading": "セン",
@@ -4271,6 +4576,7 @@ const kanjiData = [
     },
     {
       "stt": 306,
+    "level": "n45",
       "kanji": "配",
       "hanviet": "PHỐI",
       "on_reading": "ハイ",
@@ -4285,6 +4591,7 @@ const kanjiData = [
     },
     {
       "stt": 307,
+    "level": "n45",
       "kanji": "議",
       "hanviet": "NGHỊ",
       "on_reading": "ギ",
@@ -4299,6 +4606,7 @@ const kanjiData = [
     },
     {
       "stt": 308,
+    "level": "n45",
       "kanji": "員",
       "hanviet": "VIÊN",
       "on_reading": "イン",
@@ -4313,6 +4621,7 @@ const kanjiData = [
     },
     {
       "stt": 309,
+    "level": "n45",
       "kanji": "業",
       "hanviet": "NGHIỆP",
       "on_reading": "ギョウ|ゴウ",
@@ -4327,6 +4636,7 @@ const kanjiData = [
     },
     {
       "stt": 310,
+    "level": "n45",
       "kanji": "菜",
       "hanviet": "THÁI",
       "on_reading": "サイ",
@@ -4341,6 +4651,7 @@ const kanjiData = [
     },
     {
       "stt": 311,
+    "level": "n45",
       "kanji": "農",
       "hanviet": "NÔNG",
       "on_reading": "ノウ",
@@ -4355,6 +4666,7 @@ const kanjiData = [
     },
     {
       "stt": 312,
+    "level": "n45",
       "kanji": "良",
       "hanviet": "LƯƠNG",
       "on_reading": "リョウ",
@@ -4369,6 +4681,7 @@ const kanjiData = [
     },
     {
       "stt": 313,
+    "level": "n45",
       "kanji": "悪",
       "hanviet": "ÁC",
       "on_reading": "アク|オ",
@@ -4383,6 +4696,7 @@ const kanjiData = [
     },
     {
       "stt": 314,
+    "level": "n45",
       "kanji": "点",
       "hanviet": "ĐIỂM",
       "on_reading": "テン",
@@ -4397,6 +4711,7 @@ const kanjiData = [
     },
     {
       "stt": 315,
+    "level": "n45",
       "kanji": "正",
       "hanviet": "CHÍNH",
       "on_reading": "セイ|ショウ",
@@ -4411,6 +4726,7 @@ const kanjiData = [
     },
     {
       "stt": 316,
+    "level": "n45",
       "kanji": "違",
       "hanviet": "VI",
       "on_reading": "イ",
@@ -4425,6 +4741,7 @@ const kanjiData = [
     },
     {
       "stt": 317,
+    "level": "n45",
       "kanji": "同",
       "hanviet": "ĐỒNG",
       "on_reading": "ドウ",
@@ -4439,6 +4756,7 @@ const kanjiData = [
     },
     {
       "stt": 318,
+    "level": "n45",
       "kanji": "適",
       "hanviet": "THÍCH",
       "on_reading": "テキ",
@@ -4453,6 +4771,7 @@ const kanjiData = [
     },
     {
       "stt": 319,
+    "level": "n45",
       "kanji": "当",
       "hanviet": "ĐƯƠNG",
       "on_reading": "トウ",
@@ -4467,6 +4786,7 @@ const kanjiData = [
     },
     {
       "stt": 320,
+    "level": "n45",
       "kanji": "難",
       "hanviet": "NAN",
       "on_reading": "ナン",
@@ -4481,6 +4801,7 @@ const kanjiData = [
     },
     {
       "stt": 321,
+    "level": "n45",
       "kanji": "次",
       "hanviet": "THỨ",
       "on_reading": "ジ|シ",
@@ -4495,6 +4816,7 @@ const kanjiData = [
     },
     {
       "stt": 322,
+    "level": "n45",
       "kanji": "形",
       "hanviet": "HÌNH",
       "on_reading": "ケイ|ギョウ",
@@ -4509,6 +4831,7 @@ const kanjiData = [
     },
     {
       "stt": 323,
+    "level": "n45",
       "kanji": "味",
       "hanviet": "VỊ",
       "on_reading": "ミ",
@@ -4523,6 +4846,7 @@ const kanjiData = [
     },
     {
       "stt": 324,
+    "level": "n45",
       "kanji": "試",
       "hanviet": "THÍ",
       "on_reading": "シ",
@@ -4537,6 +4861,7 @@ const kanjiData = [
     },
     {
       "stt": 325,
+    "level": "n45",
       "kanji": "験",
       "hanviet": "NGHIỆM",
       "on_reading": "ケン|ゲン",
@@ -4551,6 +4876,7 @@ const kanjiData = [
     },
     {
       "stt": 326,
+    "level": "n45",
       "kanji": "面",
       "hanviet": "DIỆN",
       "on_reading": "メン",
@@ -4565,6 +4891,7 @@ const kanjiData = [
     },
     {
       "stt": 327,
+    "level": "n45",
       "kanji": "接",
       "hanviet": "TIẾP",
       "on_reading": "セツ",
@@ -4579,6 +4906,7 @@ const kanjiData = [
     },
     {
       "stt": 328,
+    "level": "n45",
       "kanji": "説",
       "hanviet": "THUYẾT",
       "on_reading": "セツ",
@@ -4593,6 +4921,7 @@ const kanjiData = [
     },
     {
       "stt": 329,
+    "level": "n45",
       "kanji": "果",
       "hanviet": "QUẢ",
       "on_reading": "カ",
@@ -4607,6 +4936,7 @@ const kanjiData = [
     },
     {
       "stt": 330,
+    "level": "n45",
       "kanji": "合",
       "hanviet": "HỢP",
       "on_reading": "ゴウ|カッ",
@@ -4621,6 +4951,7 @@ const kanjiData = [
     },
     {
       "stt": 331,
+    "level": "n45",
       "kanji": "格",
       "hanviet": "CÁCH",
       "on_reading": "カク|コウ",
@@ -4635,6 +4966,7 @@ const kanjiData = [
     },
     {
       "stt": 332,
+    "level": "n45",
       "kanji": "受",
       "hanviet": "THỤ",
       "on_reading": "ジュ",
@@ -4649,6 +4981,7 @@ const kanjiData = [
     },
     {
       "stt": 333,
+    "level": "n45",
       "kanji": "落",
       "hanviet": "LẠC",
       "on_reading": "ラク",
@@ -4663,6 +4996,7 @@ const kanjiData = [
     },
     {
       "stt": 334,
+    "level": "n45",
       "kanji": "残",
       "hanviet": "TÀN",
       "on_reading": "ザン",
@@ -4677,6 +5011,7 @@ const kanjiData = [
     },
     {
       "stt": 335,
+    "level": "n45",
       "kanji": "念",
       "hanviet": "NIỆM",
       "on_reading": "ネン",
@@ -4691,6 +5026,7 @@ const kanjiData = [
     },
     {
       "stt": 336,
+    "level": "n45",
       "kanji": "指",
       "hanviet": "CHỈ",
       "on_reading": "シ",
@@ -4705,6 +5041,7 @@ const kanjiData = [
     },
     {
       "stt": 337,
+    "level": "n45",
       "kanji": "折",
       "hanviet": "CHIẾT",
       "on_reading": "セツ",
@@ -4719,6 +5056,7 @@ const kanjiData = [
     },
     {
       "stt": 338,
+    "level": "n45",
       "kanji": "払",
       "hanviet": "PHẤT",
       "on_reading": "フツ",
@@ -4733,6 +5071,7 @@ const kanjiData = [
     },
     {
       "stt": 339,
+    "level": "n45",
       "kanji": "投",
       "hanviet": "ĐẦU",
       "on_reading": "トウ",
@@ -4747,6 +5086,7 @@ const kanjiData = [
     },
     {
       "stt": 340,
+    "level": "n45",
       "kanji": "打",
       "hanviet": "ĐẢ",
       "on_reading": "ダ",
@@ -4761,6 +5101,7 @@ const kanjiData = [
     },
     {
       "stt": 341,
+    "level": "n45",
       "kanji": "深",
       "hanviet": "THÂM",
       "on_reading": "シン",
@@ -4775,6 +5116,7 @@ const kanjiData = [
     },
     {
       "stt": 342,
+    "level": "n45",
       "kanji": "洗",
       "hanviet": "TẨY",
       "on_reading": "セン",
@@ -4789,6 +5131,7 @@ const kanjiData = [
     },
     {
       "stt": 343,
+    "level": "n45",
       "kanji": "流",
       "hanviet": "LƯU",
       "on_reading": "リュウ|ル",
@@ -4803,6 +5146,7 @@ const kanjiData = [
     },
     {
       "stt": 344,
+    "level": "n45",
       "kanji": "消",
       "hanviet": "TIÊU",
       "on_reading": "ショウ",
@@ -4817,6 +5161,7 @@ const kanjiData = [
     },
     {
       "stt": 345,
+    "level": "n45",
       "kanji": "決",
       "hanviet": "QUYẾT",
       "on_reading": "ケツ",
@@ -4831,6 +5176,7 @@ const kanjiData = [
     },
     {
       "stt": 346,
+    "level": "n45",
       "kanji": "旅",
       "hanviet": "LỮ",
       "on_reading": "リョ",
@@ -4845,6 +5191,7 @@ const kanjiData = [
     },
     {
       "stt": 347,
+    "level": "n45",
       "kanji": "約",
       "hanviet": "ƯỚC",
       "on_reading": "ヤク",
@@ -4859,6 +5206,7 @@ const kanjiData = [
     },
     {
       "stt": 348,
+    "level": "n45",
       "kanji": "案",
       "hanviet": "ÁN",
       "on_reading": "アン",
@@ -4873,6 +5221,7 @@ const kanjiData = [
     },
     {
       "stt": 349,
+    "level": "n45",
       "kanji": "準",
       "hanviet": "CHUẨN",
       "on_reading": "ジュン",
@@ -4887,6 +5236,7 @@ const kanjiData = [
     },
     {
       "stt": 350,
+    "level": "n45",
       "kanji": "備",
       "hanviet": "BỊ",
       "on_reading": "ビ",
@@ -4901,6 +5251,7 @@ const kanjiData = [
     },
     {
       "stt": 351,
+    "level": "n45",
       "kanji": "相",
       "hanviet": "TƯƠNG|TƯỚNG",
       "on_reading": "ソウ|ショウ",
@@ -4915,6 +5266,7 @@ const kanjiData = [
     },
     {
       "stt": 352,
+    "level": "n45",
       "kanji": "談",
       "hanviet": "ĐÀM",
       "on_reading": "ダン",
@@ -4929,6 +5281,7 @@ const kanjiData = [
     },
     {
       "stt": 353,
+    "level": "n45",
       "kanji": "連",
       "hanviet": "LIÊN",
       "on_reading": "レン",
@@ -4943,6 +5296,7 @@ const kanjiData = [
     },
     {
       "stt": 354,
+    "level": "n45",
       "kanji": "絡",
       "hanviet": "LẠC",
       "on_reading": "ラク",
@@ -4957,6 +5311,7 @@ const kanjiData = [
     },
     {
       "stt": 355,
+    "level": "n45",
       "kanji": "泊",
       "hanviet": "BẠC",
       "on_reading": "ハク",
@@ -4971,6 +5326,7 @@ const kanjiData = [
     },
     {
       "stt": 356,
+    "level": "n45",
       "kanji": "特",
       "hanviet": "ĐẶC",
       "on_reading": "トク",
@@ -4985,6 +5341,7 @@ const kanjiData = [
     },
     {
       "stt": 357,
+    "level": "n45",
       "kanji": "急",
       "hanviet": "CẤP",
       "on_reading": "キュウ",
@@ -4999,6 +5356,7 @@ const kanjiData = [
     },
     {
       "stt": 358,
+    "level": "n45",
       "kanji": "線",
       "hanviet": "TUYẾN",
       "on_reading": "セン",
@@ -5013,6 +5371,7 @@ const kanjiData = [
     },
     {
       "stt": 359,
+    "level": "n45",
       "kanji": "發",
       "hanviet": "PHÁT",
       "on_reading": "ハツ|ホツ",
@@ -5027,6 +5386,7 @@ const kanjiData = [
     },
     {
       "stt": 360,
+    "level": "n45",
       "kanji": "到",
       "hanviet": "ĐÁO",
       "on_reading": "トウ",
@@ -5041,6 +5401,7 @@ const kanjiData = [
     },
     {
       "stt": 361,
+    "level": "n45",
       "kanji": "交",
       "hanviet": "GIAO",
       "on_reading": "コウ",
@@ -5055,6 +5416,7 @@ const kanjiData = [
     },
     {
       "stt": 362,
+    "level": "n45",
       "kanji": "機",
       "hanviet": "CƠ",
       "on_reading": "キ",
@@ -5069,6 +5431,7 @@ const kanjiData = [
     },
     {
       "stt": 363,
+    "level": "n45",
       "kanji": "関",
       "hanviet": "QUAN",
       "on_reading": "カン",
@@ -5083,6 +5446,7 @@ const kanjiData = [
     },
     {
       "stt": 364,
+    "level": "n45",
       "kanji": "局",
       "hanviet": "CỤC",
       "on_reading": "キョク",
@@ -5097,6 +5461,7 @@ const kanjiData = [
     },
     {
       "stt": 365,
+    "level": "n45",
       "kanji": "信",
       "hanviet": "TÍN",
       "on_reading": "シン",
@@ -5111,6 +5476,7 @@ const kanjiData = [
     },
     {
       "stt": 366,
+    "level": "n45",
       "kanji": "路",
       "hanviet": "LỘ",
       "on_reading": "ロ",
@@ -5125,6 +5491,7 @@ const kanjiData = [
     },
     {
       "stt": 367,
+    "level": "n45",
       "kanji": "故",
       "hanviet": "CỐ",
       "on_reading": "コ",
@@ -5139,6 +5506,7 @@ const kanjiData = [
     },
     {
       "stt": 368,
+    "level": "n45",
       "kanji": "注",
       "hanviet": "CHÚ",
       "on_reading": "チュウ",
@@ -5153,6 +5521,7 @@ const kanjiData = [
     },
     {
       "stt": 369,
+    "level": "n45",
       "kanji": "意",
       "hanviet": "Ý",
       "on_reading": "イ",
@@ -5167,6 +5536,7 @@ const kanjiData = [
     },
     {
       "stt": 370,
+    "level": "n45",
       "kanji": "押",
       "hanviet": "ÁP",
       "on_reading": "オウ",
@@ -5181,6 +5551,7 @@ const kanjiData = [
     },
     {
       "stt": 371,
+    "level": "n45",
       "kanji": "引",
       "hanviet": "DẪN",
       "on_reading": "イン",
@@ -5195,6 +5566,7 @@ const kanjiData = [
     },
     {
       "stt": 372,
+    "level": "n45",
       "kanji": "割",
       "hanviet": "CÁT",
       "on_reading": "カツ",
@@ -5209,6 +5581,7 @@ const kanjiData = [
     },
     {
       "stt": 373,
+    "level": "n45",
       "kanji": "営",
       "hanviet": "DOANH",
       "on_reading": "エイ",
@@ -5223,6 +5596,7 @@ const kanjiData = [
     },
     {
       "stt": 374,
+    "level": "n45",
       "kanji": "自",
       "hanviet": "TỰ",
       "on_reading": "ジ|シ",
@@ -5237,6 +5611,7 @@ const kanjiData = [
     },
     {
       "stt": 375,
+    "level": "n45",
       "kanji": "由",
       "hanviet": "DO",
       "on_reading": "ユ|ユウ",
@@ -5251,6 +5626,7 @@ const kanjiData = [
     },
     {
       "stt": 376,
+    "level": "n45",
       "kanji": "取",
       "hanviet": "THỦ",
       "on_reading": "シュ",
@@ -5265,6 +5641,7 @@ const kanjiData = [
     },
     {
       "stt": 377,
+    "level": "n45",
       "kanji": "求",
       "hanviet": "CẦU",
       "on_reading": "キュウ",
@@ -5279,6 +5656,7 @@ const kanjiData = [
     },
     {
       "stt": 378,
+    "level": "n45",
       "kanji": "願",
       "hanviet": "NGUYỆN",
       "on_reading": "ガン",
@@ -5293,6 +5671,7 @@ const kanjiData = [
     },
     {
       "stt": 379,
+    "level": "n45",
       "kanji": "知",
       "hanviet": "TRI",
       "on_reading": "チ",
@@ -5307,6 +5686,7 @@ const kanjiData = [
     },
     {
       "stt": 380,
+    "level": "n45",
       "kanji": "台",
       "hanviet": "ĐÀI",
       "on_reading": "ダイ|タイ",
@@ -5321,6 +5701,7 @@ const kanjiData = [
     },
     {
       "stt": 381,
+    "level": "n45",
       "kanji": "窓",
       "hanviet": "SONG",
       "on_reading": "ソウ",
@@ -5335,6 +5716,7 @@ const kanjiData = [
     },
     {
       "stt": 382,
+    "level": "n45",
       "kanji": "具",
       "hanviet": "CỤ",
       "on_reading": "グ",
@@ -5349,6 +5731,7 @@ const kanjiData = [
     },
     {
       "stt": 383,
+    "level": "n45",
       "kanji": "器",
       "hanviet": "KHÍ",
       "on_reading": "キ",
@@ -5363,6 +5746,7 @@ const kanjiData = [
     },
     {
       "stt": 384,
+    "level": "n45",
       "kanji": "用",
       "hanviet": "DỤNG",
       "on_reading": "ヨウ",
@@ -5377,6 +5761,7 @@ const kanjiData = [
     },
     {
       "stt": 385,
+    "level": "n45",
       "kanji": "服",
       "hanviet": "PHỤC",
       "on_reading": "フク",
@@ -5391,6 +5776,7 @@ const kanjiData = [
     },
     {
       "stt": 386,
+    "level": "n45",
       "kanji": "紙",
       "hanviet": "CHỈ",
       "on_reading": "シ",
@@ -5405,6 +5791,7 @@ const kanjiData = [
     },
     {
       "stt": 387,
+    "level": "n45",
       "kanji": "辞",
       "hanviet": "TỪ",
       "on_reading": "ジ",
@@ -5419,6 +5806,7 @@ const kanjiData = [
     },
     {
       "stt": 388,
+    "level": "n45",
       "kanji": "|雑",
       "hanviet": "TẠP",
       "on_reading": "ザツ|ゾウ",
@@ -5433,6 +5821,7 @@ const kanjiData = [
     },
     {
       "stt": 389,
+    "level": "n45",
       "kanji": "誌",
       "hanviet": "CHÍ",
       "on_reading": "シ",
@@ -5447,6 +5836,7 @@ const kanjiData = [
     },
     {
       "stt": 390,
+    "level": "n45",
       "kanji": "銀",
       "hanviet": "NGÂN",
       "on_reading": "ギン",
@@ -5461,6 +5851,7 @@ const kanjiData = [
     },
     {
       "stt": 391,
+    "level": "n45",
       "kanji": "資",
       "hanviet": "TƯ",
       "on_reading": "シ",
@@ -5475,6 +5866,7 @@ const kanjiData = [
     },
     {
       "stt": 392,
+    "level": "n45",
       "kanji": "品",
       "hanviet": "PHẨM",
       "on_reading": "ヒン",
@@ -5489,6 +5881,7 @@ const kanjiData = [
     },
     {
       "stt": 393,
+    "level": "n45",
       "kanji": "個",
       "hanviet": "CÁ",
       "on_reading": "コ",
@@ -5503,6 +5896,7 @@ const kanjiData = [
     },
     {
       "stt": 394,
+    "level": "n45",
       "kanji": "価",
       "hanviet": "GIÁ",
       "on_reading": "カ",
@@ -5517,6 +5911,7 @@ const kanjiData = [
     },
     {
       "stt": 395,
+    "level": "n45",
       "kanji": "産",
       "hanviet": "SẢN",
       "on_reading": "サン",
@@ -5531,6 +5926,7 @@ const kanjiData = [
     },
     {
       "stt": 396,
+    "level": "n45",
       "kanji": "期",
       "hanviet": "KỲ",
       "on_reading": "キ|ゴ",
@@ -5545,6 +5941,7 @@ const kanjiData = [
     },
     {
       "stt": 397,
+    "level": "n45",
       "kanji": "々",
       "hanviet": "ĐIỆP",
       "on_reading": "N/A",
@@ -5559,6 +5956,7 @@ const kanjiData = [
     },
     {
       "stt": 398,
+    "level": "n45",
       "kanji": "報",
       "hanviet": "BÁO",
       "on_reading": "ホウ",
@@ -5573,6 +5971,7 @@ const kanjiData = [
     },
     {
       "stt": 399,
+    "level": "n45",
       "kanji": "告",
       "hanviet": "CÁO",
       "on_reading": "コク",
@@ -5587,6 +5986,7 @@ const kanjiData = [
     },
     {
       "stt": 400,
+    "level": "n45",
       "kanji": "心",
       "hanviet": "TÂM",
       "on_reading": "シン",
@@ -5601,6 +6001,7 @@ const kanjiData = [
     },
     {
       "stt": 401,
+    "level": "n45",
       "kanji": "感",
       "hanviet": "CẢM",
       "on_reading": "カン",
@@ -5615,6 +6016,7 @@ const kanjiData = [
     },
     {
       "stt": 402,
+    "level": "n45",
       "kanji": "情",
       "hanviet": "TÌNH",
       "on_reading": "ジョウ|セイ",
@@ -5629,6 +6031,7 @@ const kanjiData = [
     },
     {
       "stt": 403,
+    "level": "n45",
       "kanji": "悲",
       "hanviet": "BI",
       "on_reading": "ヒ",
@@ -5643,6 +6046,7 @@ const kanjiData = [
     },
     {
       "stt": 404,
+    "level": "n45",
       "kanji": "泣",
       "hanviet": "KHẤP",
       "on_reading": "キュウ",
@@ -5657,6 +6061,7 @@ const kanjiData = [
     },
     {
       "stt": 405,
+    "level": "n45",
       "kanji": "笑",
       "hanviet": "TIẾU",
       "on_reading": "ショウ",
@@ -5671,6 +6076,7 @@ const kanjiData = [
     },
     {
       "stt": 406,
+    "level": "n45",
       "kanji": "頭",
       "hanviet": "ĐẦU",
       "on_reading": "トウ|ズ",
@@ -5685,6 +6091,7 @@ const kanjiData = [
     },
     {
       "stt": 407,
+    "level": "n45",
       "kanji": "覚",
       "hanviet": "GIÁC",
       "on_reading": "カク",
@@ -5699,6 +6106,7 @@ const kanjiData = [
     },
     {
       "stt": 408,
+    "level": "n45",
       "kanji": "忘",
       "hanviet": "VONG",
       "on_reading": "ボウ",
@@ -5713,6 +6121,7 @@ const kanjiData = [
     },
     {
       "stt": 409,
+    "level": "n45",
       "kanji": "考",
       "hanviet": "KHẢO",
       "on_reading": "コウ",
@@ -5727,6 +6136,7 @@ const kanjiData = [
     },
     {
       "stt": 410,
+    "level": "n45",
       "kanji": "伝",
       "hanviet": "TRUYỀN",
       "on_reading": "デン",
@@ -5741,6 +6151,7 @@ const kanjiData = [
     },
     {
       "stt": 411,
+    "level": "n45",
       "kanji": "代",
       "hanviet": "ĐẠI",
       "on_reading": "ダイ|タイ",
@@ -5755,6 +6166,7 @@ const kanjiData = [
     },
     {
       "stt": 412,
+    "level": "n45",
       "kanji": "呼",
       "hanviet": "HÔ",
       "on_reading": "コ",
@@ -5769,6 +6181,7 @@ const kanjiData = [
     },
     {
       "stt": 413,
+    "level": "n45",
       "kanji": "焼",
       "hanviet": "THIÊU",
       "on_reading": "ショウ",
@@ -5783,6 +6196,7 @@ const kanjiData = [
     },
     {
       "stt": 414,
+    "level": "n45",
       "kanji": "曲",
       "hanviet": "KHÚC",
       "on_reading": "キョク",
@@ -5797,6 +6211,7 @@ const kanjiData = [
     },
     {
       "stt": 415,
+    "level": "n45",
       "kanji": "脱",
       "hanviet": "THOÁT",
       "on_reading": "ダツ",
@@ -5811,6 +6226,7 @@ const kanjiData = [
     },
     {
       "stt": 416,
+    "level": "n45",
       "kanji": "別",
       "hanviet": "BIỆT",
       "on_reading": "ベツ",
@@ -5825,6 +6241,7 @@ const kanjiData = [
     },
     {
       "stt": 417,
+    "level": "n45",
       "kanji": "集",
       "hanviet": "TẬP",
       "on_reading": "シュウ",
@@ -5839,6 +6256,7 @@ const kanjiData = [
     },
     {
       "stt": 418,
+    "level": "n45",
       "kanji": "並",
       "hanviet": "TỊNH",
       "on_reading": "ヘイ",
@@ -5853,6 +6271,7 @@ const kanjiData = [
     },
     {
       "stt": 419,
+    "level": "n45",
       "kanji": "喜",
       "hanviet": "HỈ",
       "on_reading": "キ",
@@ -5867,6 +6286,7 @@ const kanjiData = [
     },
     {
       "stt": 420,
+    "level": "n45",
       "kanji": "載",
       "hanviet": "TẢI",
       "on_reading": "サイ",
@@ -5881,6 +6301,7 @@ const kanjiData = [
     },
     {
       "stt": 421,
+    "level": "n45",
       "kanji": "細",
       "hanviet": "TẾ",
       "on_reading": "サイ",
@@ -5895,6 +6316,7 @@ const kanjiData = [
     },
     {
       "stt": 422,
+    "level": "n45",
       "kanji": "太",
       "hanviet": "THÁI",
       "on_reading": "タイ|タ",
@@ -5909,6 +6331,7 @@ const kanjiData = [
     },
     {
       "stt": 423,
+    "level": "n45",
       "kanji": "重",
       "hanviet": "TRỌNG|TRÙNG",
       "on_reading": "ジュウ|チョウ",
@@ -5923,6 +6346,7 @@ const kanjiData = [
     },
     {
       "stt": 424,
+    "level": "n45",
       "kanji": "軽",
       "hanviet": "KHINH",
       "on_reading": "ケイ",
@@ -5937,6 +6361,7 @@ const kanjiData = [
     },
     {
       "stt": 425,
+    "level": "n45",
       "kanji": "狭",
       "hanviet": "HIỆP",
       "on_reading": "キョウ",
@@ -5951,6 +6376,7 @@ const kanjiData = [
     },
     {
       "stt": 426,
+    "level": "n45",
       "kanji": "弱",
       "hanviet": "NHƯỢC",
       "on_reading": "ジャク",
@@ -5965,6 +6391,7 @@ const kanjiData = [
     },
     {
       "stt": 427,
+    "level": "n45",
       "kanji": "眠",
       "hanviet": "MIÊN",
       "on_reading": "ミン",
@@ -5979,6 +6406,7 @@ const kanjiData = [
     },
     {
       "stt": 428,
+    "level": "n45",
       "kanji": "苦",
       "hanviet": "KHỔ",
       "on_reading": "ク",
@@ -5993,6 +6421,7 @@ const kanjiData = [
     },
     {
       "stt": 429,
+    "level": "n45",
       "kanji": "|簡",
       "hanviet": "GIẢN",
       "on_reading": "カン",
@@ -6007,6 +6436,7 @@ const kanjiData = [
     },
     {
       "stt": 430,
+    "level": "n45",
       "kanji": "単",
       "hanviet": "ĐƠN",
       "on_reading": "タン",
@@ -6021,6 +6451,7 @@ const kanjiData = [
     },
     {
       "stt": 431,
+    "level": "n45",
       "kanji": "空",
       "hanviet": "KHÔNG",
       "on_reading": "クウ",
@@ -6035,6 +6466,7 @@ const kanjiData = [
     },
     {
       "stt": 432,
+    "level": "n45",
       "kanji": "港",
       "hanviet": "CẢNG",
       "on_reading": "コウ",
@@ -6049,6 +6481,7 @@ const kanjiData = [
     },
     {
       "stt": 433,
+    "level": "n45",
       "kanji": "飛",
       "hanviet": "PHI",
       "on_reading": "ヒ",
@@ -6063,6 +6496,7 @@ const kanjiData = [
     },
     {
       "stt": 434,
+    "level": "n45",
       "kanji": "階",
       "hanviet": "GIAI",
       "on_reading": "カイ",
@@ -6077,6 +6511,7 @@ const kanjiData = [
     },
     {
       "stt": 435,
+    "level": "n45",
       "kanji": "建",
       "hanviet": "KIẾN",
       "on_reading": "ケン",
@@ -6091,6 +6526,7 @@ const kanjiData = [
     },
     {
       "stt": 436,
+    "level": "n45",
       "kanji": "設",
       "hanviet": "THIẾT",
       "on_reading": "セツ",
@@ -6105,6 +6541,7 @@ const kanjiData = [
     },
     {
       "stt": 437,
+    "level": "n45",
       "kanji": "完",
       "hanviet": "HOÀN",
       "on_reading": "カン",
@@ -6119,6 +6556,7 @@ const kanjiData = [
     },
     {
       "stt": 438,
+    "level": "n45",
       "kanji": "成",
       "hanviet": "THÀNH",
       "on_reading": "セイ|ジョウ",
@@ -6133,6 +6571,7 @@ const kanjiData = [
     },
     {
       "stt": 439,
+    "level": "n45",
       "kanji": "費",
       "hanviet": "PHÍ",
       "on_reading": "ヒ",
@@ -6147,6 +6586,7 @@ const kanjiData = [
     },
     {
       "stt": 440,
+    "level": "n45",
       "kanji": "放",
       "hanviet": "PHÓNG",
       "on_reading": "ホウ",
@@ -6161,6 +6601,7 @@ const kanjiData = [
     },
     {
       "stt": 441,
+    "level": "n45",
       "kanji": "位",
       "hanviet": "VỊ",
       "on_reading": "イ",
@@ -6175,6 +6616,7 @@ const kanjiData = [
     },
     {
       "stt": 442,
+    "level": "n45",
       "kanji": "置",
       "hanviet": "TRÍ",
       "on_reading": "チ",
@@ -6189,6 +6631,7 @@ const kanjiData = [
     },
     {
       "stt": 443,
+    "level": "n45",
       "kanji": "横",
       "hanviet": "HOÀNH",
       "on_reading": "オウ",
@@ -6203,6 +6646,7 @@ const kanjiData = [
     },
     {
       "stt": 444,
+    "level": "n45",
       "kanji": "向",
       "hanviet": "HƯỚNG",
       "on_reading": "コウ",
@@ -6217,6 +6661,7 @@ const kanjiData = [
     },
     {
       "stt": 445,
+    "level": "n45",
       "kanji": "原",
       "hanviet": "NGUYÊN",
       "on_reading": "ゲン",
@@ -6231,6 +6676,7 @@ const kanjiData = [
     },
     {
       "stt": 446,
+    "level": "n45",
       "kanji": "平",
       "hanviet": "BÌNH",
       "on_reading": "ヘイ|ビョウ",
@@ -6245,6 +6691,7 @@ const kanjiData = [
     },
     {
       "stt": 447,
+    "level": "n45",
       "kanji": "野",
       "hanviet": "DÃ",
       "on_reading": "ヤ",
@@ -6259,6 +6706,7 @@ const kanjiData = [
     },
     {
       "stt": 448,
+    "level": "n45",
       "kanji": "風",
       "hanviet": "PHONG",
       "on_reading": "フウ|フ",
@@ -6273,6 +6721,7 @@ const kanjiData = [
     },
     {
       "stt": 449,
+    "level": "n45",
       "kanji": "間",
       "hanviet": "GIAN",
       "on_reading": "カン|ケン",
@@ -6287,6 +6736,7 @@ const kanjiData = [
     },
     {
       "stt": 450,
+    "level": "n45",
       "kanji": "橋",
       "hanviet": "KIỀU",
       "on_reading": "キョウ",
@@ -6301,6 +6751,7 @@ const kanjiData = [
     },
     {
       "stt": 451,
+    "level": "n45",
       "kanji": "老",
       "hanviet": "LÃO",
       "on_reading": "ロウ",
@@ -6315,6 +6766,7 @@ const kanjiData = [
     },
     {
       "stt": 452,
+    "level": "n45",
       "kanji": "族",
       "hanviet": "TỘC",
       "on_reading": "ゾク",
@@ -6329,6 +6781,7 @@ const kanjiData = [
     },
     {
       "stt": 453,
+    "level": "n45",
       "kanji": "配",
       "hanviet": "PHỐI",
       "on_reading": "ハイ",
@@ -6343,6 +6796,7 @@ const kanjiData = [
     },
     {
       "stt": 454,
+    "level": "n45",
       "kanji": "術",
       "hanviet": "THUẬT",
       "on_reading": "ジュツ",
@@ -6357,6 +6811,7 @@ const kanjiData = [
     },
     {
       "stt": 455,
+    "level": "n45",
       "kanji": "退",
       "hanviet": "THOÁI",
       "on_reading": "タイ",
@@ -6371,6 +6826,7 @@ const kanjiData = [
     },
     {
       "stt": 456,
+    "level": "n45",
       "kanji": "効",
       "hanviet": "HIỆU",
       "on_reading": "コウ",
@@ -6385,6 +6841,7 @@ const kanjiData = [
     },
     {
       "stt": 457,
+    "level": "n45",
       "kanji": "民",
       "hanviet": "DÂN",
       "on_reading": "ミン",
@@ -6399,6 +6856,7 @@ const kanjiData = [
     },
     {
       "stt": 458,
+    "level": "n45",
       "kanji": "訪",
       "hanviet": "PHỎNG|PHÓNG",
       "on_reading": "ホウ",
@@ -6413,6 +6871,7 @@ const kanjiData = [
     },
     {
       "stt": 459,
+    "level": "n45",
       "kanji": "顔",
       "hanviet": "NHAN",
       "on_reading": "ガン",
@@ -6427,6 +6886,7 @@ const kanjiData = [
     },
     {
       "stt": 460,
+    "level": "n45",
       "kanji": "困",
       "hanviet": "KHỐN",
       "on_reading": "コン",
@@ -6441,6 +6901,7 @@ const kanjiData = [
     },
     {
       "stt": 461,
+    "level": "n45",
       "kanji": "卒",
       "hanviet": "TỐT",
       "on_reading": "ソツ",
@@ -6455,6 +6916,7 @@ const kanjiData = [
     },
     {
       "stt": 462,
+    "level": "n45",
       "kanji": "論",
       "hanviet": "LUẬN",
       "on_reading": "ロン",
@@ -6469,6 +6931,7 @@ const kanjiData = [
     },
     {
       "stt": 463,
+    "level": "n45",
       "kanji": "実",
       "hanviet": "THỰC",
       "on_reading": "ジツ",
@@ -6483,6 +6946,7 @@ const kanjiData = [
     },
     {
       "stt": 464,
+    "level": "n45",
       "kanji": "調",
       "hanviet": "ĐIỀU|ĐIỆU",
       "on_reading": "チョウ",
@@ -6497,6 +6961,7 @@ const kanjiData = [
     },
     {
       "stt": 465,
+    "level": "n45",
       "kanji": "必",
       "hanviet": "TẤT",
       "on_reading": "ヒツ",
@@ -6511,6 +6976,7 @@ const kanjiData = [
     },
     {
       "stt": 466,
+    "level": "n45",
       "kanji": "要",
       "hanviet": "YẾU",
       "on_reading": "ヨウ",
@@ -6525,6 +6991,7 @@ const kanjiData = [
     },
     {
       "stt": 467,
+    "level": "n45",
       "kanji": "類",
       "hanviet": "LOẠI",
       "on_reading": "ルイ",
@@ -6539,6 +7006,7 @@ const kanjiData = [
     },
     {
       "stt": 468,
+    "level": "n45",
       "kanji": "得",
       "hanviet": "ĐẮC",
       "on_reading": "トク",
@@ -6553,6 +7021,7 @@ const kanjiData = [
     },
     {
       "stt": 469,
+    "level": "n45",
       "kanji": "失",
       "hanviet": "THẤT",
       "on_reading": "シツ",
@@ -6567,6 +7036,7 @@ const kanjiData = [
     },
     {
       "stt": 470,
+    "level": "n45",
       "kanji": "礼",
       "hanviet": "LỄ",
       "on_reading": "レイ|ライ",
@@ -6581,6 +7051,7 @@ const kanjiData = [
     },
     {
       "stt": 471,
+    "level": "n45",
       "kanji": "増",
       "hanviet": "TĂNG",
       "on_reading": "ゾウ",
@@ -6595,6 +7066,7 @@ const kanjiData = [
     },
     {
       "stt": 472,
+    "level": "n45",
       "kanji": "加",
       "hanviet": "GIA",
       "on_reading": "カ",
@@ -6609,6 +7081,7 @@ const kanjiData = [
     },
     {
       "stt": 473,
+    "level": "n45",
       "kanji": "減",
       "hanviet": "GIẢM",
       "on_reading": "ゲン",
@@ -6623,6 +7096,7 @@ const kanjiData = [
     },
     {
       "stt": 474,
+    "level": "n45",
       "kanji": "変",
       "hanviet": "BIẾN",
       "on_reading": "ヘン",
@@ -6637,6 +7111,7 @@ const kanjiData = [
     },
     {
       "stt": 475,
+    "level": "n45",
       "kanji": "移",
       "hanviet": "DI",
       "on_reading": "イ",
@@ -6651,6 +7126,7 @@ const kanjiData = [
     },
     {
       "stt": 476,
+    "level": "n45",
       "kanji": "統",
       "hanviet": "THỐNG",
       "on_reading": "トウ",
@@ -6665,6 +7141,7 @@ const kanjiData = [
     },
     {
       "stt": 477,
+    "level": "n45",
       "kanji": "過",
       "hanviet": "QUÁ",
       "on_reading": "カ",
@@ -6679,6 +7156,7 @@ const kanjiData = [
     },
     {
       "stt": 478,
+    "level": "n45",
       "kanji": "進",
       "hanviet": "TIẾN",
       "on_reading": "シン",
@@ -6693,6 +7171,7 @@ const kanjiData = [
     },
     {
       "stt": 479,
+    "level": "n45",
       "kanji": "以",
       "hanviet": "DĨ",
       "on_reading": "イ",
@@ -6707,6 +7186,7 @@ const kanjiData = [
     },
     {
       "stt": 480,
+    "level": "n45",
       "kanji": "美",
       "hanviet": "MỸ",
       "on_reading": "ビ",
@@ -6721,6 +7201,7 @@ const kanjiData = [
     },
     {
       "stt": 481,
+    "level": "n45",
       "kanji": "比",
       "hanviet": "BỈ",
       "on_reading": "ヒ",
@@ -6735,6 +7216,7 @@ const kanjiData = [
     },
     {
       "stt": 482,
+    "level": "n45",
       "kanji": "較",
       "hanviet": "GIẢO",
       "on_reading": "カク",
@@ -6749,6 +7231,7 @@ const kanjiData = [
     },
     {
       "stt": 483,
+    "level": "n45",
       "kanji": "反",
       "hanviet": "PHẢN",
       "on_reading": "ハン|ホン",
@@ -6763,6 +7246,7 @@ const kanjiData = [
     },
     {
       "stt": 484,
+    "level": "n45",
       "kanji": "対",
       "hanviet": "ĐỐI",
       "on_reading": "タイ|ツイ",
@@ -6777,6 +7261,7 @@ const kanjiData = [
     },
     {
       "stt": 485,
+    "level": "n45",
       "kanji": "賛",
       "hanviet": "TÁN",
       "on_reading": "サン",
@@ -6791,6 +7276,7 @@ const kanjiData = [
     },
     {
       "stt": 486,
+    "level": "n45",
       "kanji": "共",
       "hanviet": "CỘNG",
       "on_reading": "キョウ",
@@ -6805,6 +7291,7 @@ const kanjiData = [
     },
     {
       "stt": 487,
+    "level": "n45",
       "kanji": "直",
       "hanviet": "TRỰC",
       "on_reading": "チョク|ジキ",
@@ -6819,6 +7306,7 @@ const kanjiData = [
     },
     {
       "stt": 488,
+    "level": "n45",
       "kanji": "表",
       "hanviet": "BIỂU",
       "on_reading": "ヒョウ",
@@ -6833,6 +7321,7 @@ const kanjiData = [
     },
     {
       "stt": 489,
+    "level": "n45",
       "kanji": "現",
       "hanviet": "HIỆN",
       "on_reading": "ゲン",
@@ -6847,6 +7336,7 @@ const kanjiData = [
     },
     {
       "stt": 490,
+    "level": "n45",
       "kanji": "初",
       "hanviet": "SƠ",
       "on_reading": "ショ",
@@ -6861,6 +7351,7 @@ const kanjiData = [
     },
     {
       "stt": 491,
+    "level": "n45",
       "kanji": "全",
       "hanviet": "TOÀN",
       "on_reading": "ゼン",
@@ -6875,6 +7366,7 @@ const kanjiData = [
     },
     {
       "stt": 492,
+    "level": "n45",
       "kanji": "最",
       "hanviet": "TỐI",
       "on_reading": "サイ",
@@ -6889,6 +7381,7 @@ const kanjiData = [
     },
     {
       "stt": 493,
+    "level": "n45",
       "kanji": "無",
       "hanviet": "VÔ",
       "on_reading": "ム|ブ",
@@ -6903,6 +7396,7 @@ const kanjiData = [
     },
     {
       "stt": 494,
+    "level": "n45",
       "kanji": "非",
       "hanviet": "PHI",
       "on_reading": "ヒ",
@@ -6917,6 +7411,7 @@ const kanjiData = [
     },
     {
       "stt": 495,
+    "level": "n45",
       "kanji": "第",
       "hanviet": "ĐỆ",
       "on_reading": "ダイ",
@@ -6931,6 +7426,7 @@ const kanjiData = [
     },
     {
       "stt": 496,
+    "level": "n45",
       "kanji": "ĐÍCH",
       "hanviet": "テキ",
       "on_reading": "まと",
@@ -6945,6 +7441,7 @@ const kanjiData = [
     },
     {
       "stt": 497,
+    "level": "n45",
       "kanji": "性",
       "hanviet": "TÍNH",
       "on_reading": "セイ|ショウ",
@@ -6959,6 +7456,7 @@ const kanjiData = [
     },
     {
       "stt": 498,
+    "level": "n45",
       "kanji": "法",
       "hanviet": "PHÁP",
       "on_reading": "ホウ|ハッ",
@@ -6973,6 +7471,7 @@ const kanjiData = [
     },
     {
       "stt": 499,
+    "level": "n45",
       "kanji": "制",
       "hanviet": "CHẾ",
       "on_reading": "セイ",
@@ -6987,6 +7486,7 @@ const kanjiData = [
     },
     {
       "stt": 500,
+    "level": "n45",
       "kanji": "課",
       "hanviet": "KHÓA",
       "on_reading": "カ",
