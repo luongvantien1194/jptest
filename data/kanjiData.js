@@ -7427,7 +7427,7 @@ const kanjiData = [
     {
       "stt": 496,
     "level": "n45",
-      "kanji": "ĐÍCH",
+      "kanji": "的",
       "hanviet": "テキ",
       "on_reading": "まと",
       "kun_reading": 8,
