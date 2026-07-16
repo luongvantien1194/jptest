@@ -1326,6 +1326,11 @@ select:focus {
   padding: 0 2px;
 }
 
+.vocab-kanji b.vocab-kanji--linked {
+  color: #1d4ed8;
+  cursor: pointer;
+}
+
 .vocab-hira {
   font-family: var(--font-jp);
   font-size: 20px;
