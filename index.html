@@ -18,7 +18,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="css/style.css?v=20260716">
+<link rel="stylesheet" href="css/style.css?v=20260717">
 </head>
 <body>
 <div class="app-shell">
@@ -60,15 +60,14 @@
 <button type="button" class="filter-icon-btn" id="display-settings-toggle-link" title="Tuỳ chọn cột">⊞</button>
 <button class="filter-icon-btn" type="button" id="start-vocab-test-btn" title="Test từ vựng">T</button>
 <button class="filter-icon-btn" type="button" id="vocab-export-md-btn" title="Copy kết quả tìm kiếm (Markdown)">MD</button>
-<button class="filter-icon-btn" type="button" id="reset-vocab-filter-btn" title="Xoá bộ lọc">↺</button>
 </div>
 <div class="filters-row" id="vocab-filters-row">
 <div class="field-group" style="display:flex; gap:4px; align-items:flex-end">
-<div style="flex:1">
+<div style="flex:1; min-width:0">
 <div class="field-label">Từ bài</div>
 <input type="number" id="vocab-lesson-from" placeholder="Tất cả" min="0" class="input-text" style="width:100%" />
 </div>
-<div style="flex:1">
+<div style="flex:1; min-width:0">
 <div class="field-label">Đến bài</div>
 <input type="number" id="vocab-lesson-to" placeholder="Tất cả" min="0" class="input-text" style="width:100%" />
 </div>
@@ -90,6 +89,7 @@
 </select>
 </div>
 </div>
+<button class="filter-icon-btn" type="button" id="reset-vocab-filter-btn" title="Xoá bộ lọc" style="align-self:flex-end">↺</button>
 </div>
 <div class="settings-panel settings-panel--hidden">
 <div class="settings-header" id="display-settings-toggle">
@@ -173,15 +173,15 @@ Bấm "Test từ vựng" để bắt đầu bài test 20 câu. Sau khi kết th�
 <div class="kanji-count-jump-wrap">
 <div class="chip"><span id="kanji-count-label">0 chữ</span></div>
 <input
-  id="kanji-stt-jump-input"
-  type="number"
-  min="1"
-  step="1"
-  class="input-kanji-stt-jump"
-  inputmode="numeric"
-  placeholder="STT"
-  title="Nhập số thứ tự (như trên ô lưới), đổi giá trị để cuộn tới Kanji đó"
-  aria-label="Nhảy tới Kanji theo số thứ tự"
+  id="kanji-stt-jump-input"
+  type="number"
+  min="1"
+  step="1"
+  class="input-kanji-stt-jump"
+  inputmode="numeric"
+  placeholder="STT"
+  title="Nhập số thứ tự (như trên ô lưới), đổi giá trị để cuộn tới Kanji đó"
+  aria-label="Nhảy tới Kanji theo số thứ tự"
 />
 <div class="chip-group" id="kanji-level-chips" style="display:flex;gap:4px;align-items:center">
 <button type="button" class="chip" data-level="all">Tất cả</button>
@@ -339,16 +339,17 @@ Chọn một cấu trúc ngữ pháp để xem nội dung chi tiết.
 </div>
 <!-- Navigation menu popup (shared, positioned by JS) -->
 <div class="nav-menu-popup" id="nav-menu-popup">
-  <button class="nav-menu-item" data-tab="vocab">Từ vựng</button>
-  <button class="nav-menu-item" data-tab="kanji">Kanji</button>
-  <button class="nav-menu-item" data-tab="stars">⭐ Yêu thích</button>
-  <button class="nav-menu-item" data-tab="grammar">Ngữ pháp</button>
-  <button class="nav-menu-item" data-tab="note">Ghi chú</button>
+  <button class="nav-menu-item" data-tab="vocab">Từ vựng</button>
+  <button class="nav-menu-item" data-tab="kanji">Kanji</button>
+  <button class="nav-menu-item" data-tab="stars">⭐ Yêu thích</button>
+  <button class="nav-menu-item" data-tab="grammar">Ngữ pháp</button>
+  <button class="nav-menu-item" data-tab="note">Ghi chú</button>
 </div>
 <!-- soundOverlay removed (no mp3 audio) -->
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
 <script src="data/configDoc.js?v=20260540"></script>
-<script src="js/main.js?v=20260716"></script>
+<script src="js/main.js?v=20260717"></script>
 </body>
 </html>
+ 
