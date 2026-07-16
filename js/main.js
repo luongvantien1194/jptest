@@ -9,10 +9,11 @@
   const state = {
     currentTab: "vocab",
     filter: {
-      vocabLessonFrom: "all",
-      vocabLessonTo: "all",
+      vocabLessonFrom: "1",
+      vocabLessonTo: "",
       vocabCategory: "all",
       kanjiRadical: [],
+      kanjiLevel: "n3",
       grammarLesson: "all",
       vocabSearch: "",
       vocabMastered: "all",
@@ -1774,34 +1775,36 @@
         }
       }
 
-      if (state.filter.vocabLessonFrom !== "all") {
-        var from = Number(state.filter.vocabLessonFrom);
-        var to = state.filter.vocabLessonTo === "all" ? from : Number(state.filter.vocabLessonTo);
-        var current = Number(lessonValue);
-        if (current < from || current > to) {
+      if (!search) {
+        if (state.filter.vocabLessonFrom !== "" || state.filter.vocabLessonTo !== "") {
+          var from = state.filter.vocabLessonFrom !== "" ? Number(state.filter.vocabLessonFrom) : -Infinity;
+          var to = state.filter.vocabLessonTo !== "" ? Number(state.filter.vocabLessonTo) : Infinity;
+          var current = Number(lessonValue);
+          if (current < from || current > to) {
+            return false;
+          }
+        }
+        if (state.filter.vocabCategory !== "all" &&
+            categoryValue !== state.filter.vocabCategory) {
           return false;
         }
-      }
-      if (state.filter.vocabCategory !== "all" &&
-          categoryValue !== state.filter.vocabCategory) {
-        return false;
-      }
 
-      var vIdx = vocabData.indexOf(item);
+        var vIdx = vocabData.indexOf(item);
 
-      // Filter favorites only
-      if (state.vocabFavOnly) {
-        if (!state.vocabFavorites[vIdx]) {
+        // Filter favorites only
+        if (state.vocabFavOnly) {
+          if (!state.vocabFavorites[vIdx]) {
+            return false;
+          }
+        }
+
+        var mastered = !!state.vocabMastered[vIdx];
+        if (state.filter.vocabMastered === "mastered" && !mastered) {
           return false;
         }
-      }
-
-      var mastered = !!state.vocabMastered[vIdx];
-      if (state.filter.vocabMastered === "mastered" && !mastered) {
-        return false;
-      }
-      if (state.filter.vocabMastered === "not" && mastered) {
-        return false;
+        if (state.filter.vocabMastered === "not" && mastered) {
+          return false;
+        }
       }
 
       return true;
@@ -1828,6 +1831,7 @@
 
   function renderVocabFilterSummary(filteredList) {
     const el = document.getElementById("vocab-filter-summary");
+    if (!el) return;
     const lessonsSet = new Set(
       filteredList.map(function (v) {
         return v.lesson != null ? v.lesson : v.Lesson;
@@ -1837,11 +1841,12 @@
       filteredList.map(function (v) { return v.category; })
     );
 
-    const lessonLabel = state.filter.vocabLessonFrom === "all"
+    const lessonLabel = (state.filter.vocabLessonFrom === "" && state.filter.vocabLessonTo === "")
       ? "Tất cả các bài"
-      : (state.filter.vocabLessonFrom === state.filter.vocabLessonTo || state.filter.vocabLessonTo === "all"
-          ? "Bài " + state.filter.vocabLessonFrom
-          : "Bài " + state.filter.vocabLessonFrom + " → " + state.filter.vocabLessonTo
+      : (state.filter.vocabLessonTo === "" || state.filter.vocabLessonFrom === state.filter.vocabLessonTo
+          ? "Bài " + (state.filter.vocabLessonFrom || state.filter.vocabLessonTo)
+          : (state.filter.vocabLessonFrom === "" ? "≤ Bài " + state.filter.vocabLessonTo
+              : "Bài " + state.filter.vocabLessonFrom + " → " + state.filter.vocabLessonTo)
         );
     const categoryLabel = state.filter.vocabCategory === "all"
       ? "Tất cả loại từ"
@@ -2068,7 +2073,7 @@
       }
     }
     if (linkToggle) {
-      linkToggle.textContent = isOpen ? "Ẩn tuỳ chọn cột" : "Hiện tuỳ chọn cột";
+      linkToggle.textContent = isOpen ? "✕" : "⊞";
     }
 
     if (!body) {
@@ -2688,6 +2693,11 @@
   // ----- Kanji -----
   function applyKanjiFilter() {
     return kanjiData.filter(function (item) {
+      if (state.filter.kanjiLevel !== "all") {
+        if ((item.level || "n45") !== state.filter.kanjiLevel) {
+          return false;
+        }
+      }
       var selectedRadicals = Array.isArray(state.filter.kanjiRadical)
         ? state.filter.kanjiRadical
         : [];
@@ -3285,7 +3295,7 @@
     container.innerHTML = "";
 
     const filtered = applyGrammarFilter();
-    countLabel.textContent = filtered.length + " mẫu";
+    countLabel.textContent = filtered.length;
 
     if (filtered.length === 0) {
       const empty = createElement("div", "detail-empty", "Không có mẫu ngữ pháp phù hợp với bộ lọc hiện tại.");
@@ -3891,18 +3901,6 @@
     const masteredSelect = document.getElementById("vocab-mastered-filter");
     const searchInput = document.getElementById("vocab-search-input");
 
-    const lessons = getUniqueSorted(
-      vocabData.map(function (v) {
-        return v.lesson != null ? v.lesson : v.Lesson;
-      })
-    );
-    lessons.forEach(function (lesson) {
-      const opt = createElement("option", "", "Bài " + lesson);
-      opt.value = String(lesson);
-      lessonFrom.appendChild(opt.cloneNode(true));
-      lessonTo.appendChild(opt.cloneNode(true));
-    });
-
     const categories = getUniqueSorted(
       vocabData.map(function (v) { return v.category; }).filter(function (c) { return c; })
     );
@@ -3912,16 +3910,15 @@
       categorySelect.appendChild(opt);
     });
 
-    lessonFrom.addEventListener("change", function () {
-      state.filter.vocabLessonFrom = lessonFrom.value;
-      // Tự động set To bằng From
-      lessonTo.value = lessonFrom.value;
-      state.filter.vocabLessonTo = lessonFrom.value;
+    lessonFrom.value = "1";
+
+    lessonFrom.addEventListener("input", function () {
+      state.filter.vocabLessonFrom = lessonFrom.value.trim();
       renderVocabList();
     });
 
-    lessonTo.addEventListener("change", function () {
-      state.filter.vocabLessonTo = lessonTo.value;
+    lessonTo.addEventListener("input", function () {
+      state.filter.vocabLessonTo = lessonTo.value.trim();
       renderVocabList();
     });
 
@@ -3947,13 +3944,13 @@
 
     const resetBtn = document.getElementById("reset-vocab-filter-btn");
     resetBtn.addEventListener("click", function () {
-      state.filter.vocabLessonFrom = "all";
-      state.filter.vocabLessonTo = "all";
+      state.filter.vocabLessonFrom = "1";
+      state.filter.vocabLessonTo = "";
       state.filter.vocabCategory = "all";
       state.filter.vocabSearch = "";
       state.filter.vocabMastered = "all";
-      lessonFrom.value = "all";
-      lessonTo.value = "all";
+      lessonFrom.value = "1";
+      lessonTo.value = "";
       categorySelect.value = "all";
       if (masteredSelect) {
         masteredSelect.value = "all";
@@ -4009,13 +4006,47 @@
       }
       toggle.addEventListener("click", function () {
         const isHidden = row.classList.toggle("filters-row--hidden");
-        toggle.textContent = isHidden ? "Hiện bộ lọc" : "Ẩn bộ lọc";
+        if (toggle.classList.contains("filter-icon-btn")) {
+          toggle.textContent = isHidden ? "☰" : "✕";
+        } else {
+          toggle.textContent = isHidden ? "Hiện bộ lọc" : "Ẩn bộ lọc";
+        }
       });
     }
 
-    attachFilterToggle("vocab-filters-toggle", "vocab-filters-row");
+    // Nav menu shared popup (☰ ở mọi section)
+    var navMenuPopup = document.getElementById("nav-menu-popup");
+    if (navMenuPopup) {
+      function closeNavMenu() {
+        navMenuPopup.classList.remove("nav-menu-popup--open");
+        document.querySelectorAll(".nav-menu-btn").forEach(function (b) { b.textContent = "☰"; });
+      }
+      document.addEventListener("click", function (e) {
+        var btn = e.target.closest(".nav-menu-btn");
+        if (btn) {
+          e.stopPropagation();
+          var isOpen = navMenuPopup.classList.contains("nav-menu-popup--open");
+          closeNavMenu();
+          if (!isOpen) {
+            var rect = btn.getBoundingClientRect();
+            navMenuPopup.style.top = (rect.bottom + 6) + "px";
+            navMenuPopup.style.left = rect.left + "px";
+            navMenuPopup.classList.add("nav-menu-popup--open");
+            btn.textContent = "✕";
+          }
+          return;
+        }
+        if (!navMenuPopup.contains(e.target)) closeNavMenu();
+      });
+      navMenuPopup.addEventListener("click", function (e) {
+        var item = e.target.closest("[data-tab]");
+        if (!item) return;
+        var tabBtn = document.querySelector('.tab[data-tab="' + item.getAttribute("data-tab") + '"]');
+        if (tabBtn) tabBtn.click();
+        closeNavMenu();
+      });
+    }
     attachFilterToggle("kanji-filters-toggle", "kanji-filters-row");
-    attachFilterToggle("grammar-filters-toggle", "grammar-filters-row");
 
     // Star filter toggles
     var vocabFavBtn = document.getElementById("vocab-fav-filter");
@@ -4805,12 +4836,36 @@
       });
     }
 
+    var levelChipsContainer = document.getElementById("kanji-level-chips");
+    if (levelChipsContainer) {
+      levelChipsContainer.addEventListener("click", function (e) {
+        var btn = e.target.closest("[data-level]");
+        if (!btn) return;
+        state.filter.kanjiLevel = btn.getAttribute("data-level");
+        Array.prototype.forEach.call(
+          levelChipsContainer.querySelectorAll("[data-level]"),
+          function (b) { b.classList.remove("chip--active"); }
+        );
+        btn.classList.add("chip--active");
+        renderKanjiList();
+      });
+    }
+
     var resetKanjiFilterBtn = document.getElementById("reset-kanji-filter-btn");
     if (resetKanjiFilterBtn) {
       resetKanjiFilterBtn.addEventListener("click", function () {
         state.filter.kanjiRadical = [];
+        state.filter.kanjiLevel = "n3";
         state.filter.kanjiSearch = "";
         state.kanjiFavOnly = false;
+        if (levelChipsContainer) {
+          Array.prototype.forEach.call(
+            levelChipsContainer.querySelectorAll("[data-level]"),
+            function (b) { b.classList.remove("chip--active"); }
+          );
+          var n3Chip = levelChipsContainer.querySelector('[data-level="n3"]');
+          if (n3Chip) n3Chip.classList.add("chip--active");
+        }
         if (radicalSelect) {
           Array.prototype.forEach.call(radicalSelect.options, function (opt) {
             opt.selected = false;
@@ -4932,8 +4987,14 @@
   // ========================
 
   document.addEventListener("DOMContentLoaded", function () {
-    // Toàn bộ dữ liệu (vocabData, kanjiData, grammarData) đã được dán sẵn trong code.
-    // Không cần fetch / load từ CSV để tránh lỗi CORS khi mở file trực tiếp.
+    // Merge N3 vocab từ các file vocabData_1.js, vocabData_2.js (nếu có)
+    if (window._vocabExtra && window._vocabExtra.length) {
+      vocabData.push.apply(vocabData, window._vocabExtra);
+    }
+    // Merge N3 kanji từ các file kanjiData_1.js, kanjiData_2.js (nếu có)
+    if (window._kanjiExtra && window._kanjiExtra.length) {
+      kanjiData.push.apply(kanjiData, window._kanjiExtra);
+    }
 
     setupTabs();
     setupKanjiDetailResumeListeners();
