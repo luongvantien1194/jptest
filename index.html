@@ -1,4 +1,4 @@
-�ｻｿ<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ja">
 <head>
 <meta charset="UTF-8" />
@@ -8,10 +8,10 @@
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 <meta name="theme-color" content="#6366f1" />
 <script src="data/kanjiData.js?v=20260330"></script>
-<!-- N3 kanji files: m盻擁 file push vﾃ�o window._kanjiExtra v盻嬖 level:"n3", stt ﾄ妥｡nh t盻ｫ 1 -->
+<!-- N3 kanji files: mỗi file push vào window._kanjiExtra với level:"n3", stt đánh từ 1 -->
 <script src="data/kanjiData_1.js?v=20260330"></script>
 <script src="data/vocabData.js?v=20260330"></script>
-<!-- N3 vocab files: thﾃｪm script tag 盻� ﾄ妥｢y theo th盻ｩ t盻ｱ, m盻擁 file push vﾃ�o window._vocabExtra -->
+<!-- N3 vocab files: thêm script tag ở đây theo thứ tự, mỗi file push vào window._vocabExtra -->
 <script src="data/vocabData_1.js?v=20260330"></script>
 <!-- <script src="data/vocabData_2.js?v=20260330"></script> -->
 <script src="data/grammarData.js?v=20260530"></script>
@@ -25,7 +25,7 @@
 <header class="app-header">
 <nav class="tabs" aria-label="Sections">
 <button class="tab" data-tab="vocab" type="button">
-<span class="tab-label-main">T盻ｫ v盻ｱng</span>
+<span class="tab-label-main">Từ vựng</span>
 <span class="tab-indicator"></span>
 </button>
 <button class="tab" data-tab="kanji" type="button">
@@ -33,15 +33,15 @@
 <span class="tab-indicator"></span>
 </button>
 <button class="tab" data-tab="stars" type="button">
-<span class="tab-label-main">箝�(kanji)</span>
+<span class="tab-label-main">⭐(kanji)</span>
 <span class="tab-indicator"></span>
 </button>
 <button class="tab" data-tab="grammar" type="button">
-<span class="tab-label-main">Ng盻ｯ phﾃ｡p</span>
+<span class="tab-label-main">Ngữ pháp</span>
 <span class="tab-indicator"></span>
 </button>
 <button class="tab" data-tab="note" type="button">
-<span class="tab-label-main">Ghi chﾃｺ</span>
+<span class="tab-label-main">Ghi chú</span>
 <span class="tab-indicator"></span>
 </button>
 </nav>
@@ -53,40 +53,40 @@
 <div class="section-inner">
 <div>
 <div class="field-group" style="margin-bottom:6px;display:flex;flex-direction:row;align-items:center;gap:6px">
-<button type="button" class="filter-icon-btn nav-menu-btn" title="Menu ﾄ訴盻「 hﾆｰ盻嬾g">笘ｰ</button>
+<button type="button" class="filter-icon-btn nav-menu-btn" title="Menu điều hướng">☰</button>
 <input id="vocab-search-input" type="text" placeholder="Hiragana / Kanji / Romaji / Meaning" class="input-text" />
-<button type="button" class="star-filter-btn" id="vocab-fav-filter" title="Ch盻� hi盻㌻ yﾃｪu thﾃｭch">笘�</button>
+<button type="button" class="star-filter-btn" id="vocab-fav-filter" title="Chỉ hiện yêu thích">☆</button>
 <span class="vocab-count-chip" id="vocab-count-label">0</span>
-<button type="button" class="filter-icon-btn" id="display-settings-toggle-link" title="Tu盻ｳ ch盻肱 c盻冲">竓�</button>
-<button class="filter-icon-btn" type="button" id="start-vocab-test-btn" title="Test t盻ｫ v盻ｱng">T</button>
-<button class="filter-icon-btn" type="button" id="vocab-export-md-btn" title="Copy k蘯ｿt qu蘯｣ tﾃｬm ki蘯ｿm (Markdown)">MD</button>
-<button class="filter-icon-btn" type="button" id="reset-vocab-filter-btn" title="Xoﾃ｡ b盻� l盻皇">竊ｺ</button>
+<button type="button" class="filter-icon-btn" id="display-settings-toggle-link" title="Tuỳ chọn cột">⊞</button>
+<button class="filter-icon-btn" type="button" id="start-vocab-test-btn" title="Test từ vựng">T</button>
+<button class="filter-icon-btn" type="button" id="vocab-export-md-btn" title="Copy kết quả tìm kiếm (Markdown)">MD</button>
+<button class="filter-icon-btn" type="button" id="reset-vocab-filter-btn" title="Xoá bộ lọc">↺</button>
 </div>
 <div class="filters-row" id="vocab-filters-row">
 <div class="field-group" style="display:flex; gap:4px; align-items:flex-end">
 <div style="flex:1">
-<div class="field-label">T盻ｫ bﾃ�i</div>
-<input type="number" id="vocab-lesson-from" placeholder="T蘯･t c蘯｣" min="0" class="input-text" style="width:100%" />
+<div class="field-label">Từ bài</div>
+<input type="number" id="vocab-lesson-from" placeholder="Tất cả" min="0" class="input-text" style="width:100%" />
 </div>
 <div style="flex:1">
-<div class="field-label">ﾄ雪ｺｿn bﾃ�i</div>
-<input type="number" id="vocab-lesson-to" placeholder="T蘯･t c蘯｣" min="0" class="input-text" style="width:100%" />
+<div class="field-label">Đến bài</div>
+<input type="number" id="vocab-lesson-to" placeholder="Tất cả" min="0" class="input-text" style="width:100%" />
 </div>
 </div>
 <div class="field-group" style="display:flex; gap:4px; align-items:flex-end">
 <div style="flex:1">
-<div class="field-label">Danh m盻･c</div>
+<div class="field-label">Danh mục</div>
 <select id="vocab-category-filter" style="width:100%">
-<option value="all">T蘯･t c蘯｣</option>
+<option value="all">Tất cả</option>
 <!-- populated by JS -->
 </select>
 </div>
 <div style="flex:1">
-<div class="field-label">ﾄ静｣ thu盻冂</div>
+<div class="field-label">Đã thuộc</div>
 <select id="vocab-mastered-filter" style="width:100%">
-<option value="all">T蘯･t c蘯｣</option>
-<option value="mastered">ﾄ静｣ thu盻冂</option>
-<option value="not">Chﾆｰa thu盻冂</option>
+<option value="all">Tất cả</option>
+<option value="mastered">Đã thuộc</option>
+<option value="not">Chưa thuộc</option>
 </select>
 </div>
 </div>
@@ -94,12 +94,12 @@
 <div class="settings-panel settings-panel--hidden">
 <div class="settings-header" id="display-settings-toggle">
 <div class="settings-title">
-<span>Settings hi盻ハ th盻�</span>
-<span class="settings-subtitle">Ch盻肱 trﾆｰ盻拵g mu盻創 hi盻ハ th盻� trong list</span>
+<span>Settings hiển thị</span>
+<span class="settings-subtitle">Chọn trường muốn hiển thị trong list</span>
 </div>
 <div class="settings-toggle" id="display-settings-toggle-btn">
-<span class="settings-toggle-icon">笆ｼ</span>
-<span>Thu nh盻�</span>
+<span class="settings-toggle-icon">▼</span>
+<span>Thu nhỏ</span>
 </div>
 </div>
 <div class="settings-body" id="display-settings-body">
@@ -113,19 +113,19 @@
 </label>
 <label class="checkbox-chip checkbox-chip--active">
 <input type="checkbox" data-display-field="meaning" checked />
-<span>Nghﾄｩa</span>
+<span>Nghĩa</span>
 </label>
 <label class="checkbox-chip">
 <input type="checkbox" data-display-field="vru" />
-<span>V繧�</span>
+<span>Vる</span>
 </label>
 <label class="checkbox-chip checkbox-chip--active">
 <input type="checkbox" data-display-field="type" />
-<span>Nhﾃｳm</span>
+<span>Nhóm</span>
 </label>
 <label class="checkbox-chip">
 <input type="checkbox" data-display-field="note" />
-<span>Ghi chﾃｺ</span>
+<span>Ghi chú</span>
 </label>
 </div>
 </div>
@@ -139,7 +139,7 @@
 <div class="card card--vocab-detail-hidden">
 <div class="card-body scroll-thin" id="vocab-detail-container">
 <div class="detail-empty">
-Ch盻肱 m盻冲 t盻ｫ v盻ｱng 盻� danh sﾃ｡ch bﾃｪn trﾃ｡i ﾄ黛ｻ� xem chi ti蘯ｿt.
+Chọn một từ vựng ở danh sách bên trái để xem chi tiết.
 </div>
 </div>
 </div>
@@ -152,7 +152,7 @@ Ch盻肱 m盻冲 t盻ｫ v盻ｱng 盻� danh sﾃ｡ch bﾃｪn trﾃ｡i ﾄ�
 </div>
 <div class="card-body card-body--test scroll-thin" id="vocab-test-container">
 <div class="detail-empty">
-B蘯･m "Test t盻ｫ v盻ｱng" ﾄ黛ｻ� b蘯ｯt ﾄ黛ｺｧu bﾃ�i test 20 cﾃ｢u. Sau khi k蘯ｿt thﾃｺc s蘯ｽ xem ﾄ柁ｰ盻｣c ﾄ訴盻ノ vﾃ� danh sﾃ｡ch cﾃ｢u sai.
+Bấm "Test từ vựng" để bắt đầu bài test 20 câu. Sau khi kết thúc sẽ xem được điểm và danh sách câu sai.
 </div>
 </div>
 </div>
@@ -163,39 +163,39 @@ B蘯･m "Test t盻ｫ v盻ｱng" ﾄ黛ｻ� b蘯ｯt ﾄ黛ｺｧu bﾃ�i t
 <section class="section" id="section-kanji" aria-labelledby="section-kanji-title">
 <div class="section-inner">
 <div class="field-group" style="margin-bottom:6px;display:flex;flex-direction:row;align-items:center;gap:6px">
-<button type="button" class="filter-icon-btn nav-menu-btn" title="Menu ﾄ訴盻「 hﾆｰ盻嬾g">笘ｰ</button>
-<input id="kanji-search-input" type="text" placeholder="Kanji / Hﾃ｡n Vi盻㏄" class="input-text" />
-<button type="button" class="star-filter-btn" id="kanji-fav-filter" title="Ch盻� hi盻㌻ yﾃｪu thﾃｭch">笘�</button>
+<button type="button" class="filter-icon-btn nav-menu-btn" title="Menu điều hướng">☰</button>
+<input id="kanji-search-input" type="text" placeholder="Kanji / Hán Việt" class="input-text" />
+<button type="button" class="star-filter-btn" id="kanji-fav-filter" title="Chỉ hiện yêu thích">☆</button>
 <button class="filter-icon-btn" type="button" id="start-kanji-test-btn" title="Test Kanji">T</button>
-<button class="filter-icon-btn" type="button" id="reset-kanji-filter-btn" title="Reset filter">竊ｺ</button>
+<button class="filter-icon-btn" type="button" id="reset-kanji-filter-btn" title="Reset filter">↺</button>
 </div>
 <div class="filters-toggle-row">
 <div class="kanji-count-jump-wrap">
-<div class="chip"><span id="kanji-count-label">0 ch盻ｯ</span></div>
+<div class="chip"><span id="kanji-count-label">0 chữ</span></div>
 <input
-  id="kanji-stt-jump-input"
-  type="number"
-  min="1"
-  step="1"
-  class="input-kanji-stt-jump"
-  inputmode="numeric"
-  placeholder="STT"
-  title="Nh蘯ｭp s盻� th盻ｩ t盻ｱ (nhﾆｰ trﾃｪn ﾃｴ lﾆｰ盻嬖), ﾄ黛ｻ品 giﾃ｡ tr盻� ﾄ黛ｻ� cu盻冢 t盻嬖 Kanji ﾄ妥ｳ"
-  aria-label="Nh蘯｣y t盻嬖 Kanji theo s盻� th盻ｩ t盻ｱ"
+  id="kanji-stt-jump-input"
+  type="number"
+  min="1"
+  step="1"
+  class="input-kanji-stt-jump"
+  inputmode="numeric"
+  placeholder="STT"
+  title="Nhập số thứ tự (như trên ô lưới), đổi giá trị để cuộn tới Kanji đó"
+  aria-label="Nhảy tới Kanji theo số thứ tự"
 />
 <div class="chip-group" id="kanji-level-chips" style="display:flex;gap:4px;align-items:center">
-<button type="button" class="chip" data-level="all">T蘯･t c蘯｣</button>
+<button type="button" class="chip" data-level="all">Tất cả</button>
 <button type="button" class="chip" data-level="n45">N4-N5</button>
 <button type="button" class="chip chip--active" data-level="n3">N3</button>
 </div>
 </div>
 <div class="filters-toggle-row-actions">
-<button type="button" class="filters-toggle" id="kanji-filters-toggle">Hi盻㌻ b盻� l盻皇</button>
+<button type="button" class="filters-toggle" id="kanji-filters-toggle">Hiện bộ lọc</button>
 </div>
 </div>
 <div class="filters-row filters-row--hidden" id="kanji-filters-row">
 <div class="field-group">
-<div class="field-label">L盻皇 theo b盻� th盻ｧ (gi盻ｯ Ctrl/Shift ﾄ黛ｻ� ch盻肱 nhi盻「)</div>
+<div class="field-label">Lọc theo bộ thủ (giữ Ctrl/Shift để chọn nhiều)</div>
 <select id="kanji-radical-filter" multiple size="6">
 <!-- populated by JS -->
 </select>
@@ -210,7 +210,7 @@ B蘯･m "Test t盻ｫ v盻ｱng" ﾄ黛ｻ� b蘯ｯt ﾄ黛ｺｧu bﾃ�i t
 <div class="card card--kanji-detail-hidden">
 <div class="card-body scroll-thin" id="kanji-detail-container">
 <div class="detail-empty">
-Ch盻肱 1 Kanji t盻ｫ danh sﾃ｡ch ﾄ黛ｻ� xem chi ti蘯ｿt (Kun, On, vﾃｭ d盻･).
+Chọn 1 Kanji từ danh sách để xem chi tiết (Kun, On, ví dụ).
 </div>
 </div>
 </div>
@@ -222,16 +222,16 @@ Ch盻肱 1 Kanji t盻ｫ danh sﾃ｡ch ﾄ黛ｻ� xem chi ti蘯ｿt (Kun, On,
 <section class="section" id="section-grammar" aria-labelledby="section-grammar-title">
 <div class="section-inner">
 <div class="field-group" style="margin-bottom:6px;display:flex;flex-direction:row;align-items:center;gap:6px">
-<button type="button" class="filter-icon-btn nav-menu-btn" title="Menu ﾄ訴盻「 hﾆｰ盻嬾g">笘ｰ</button>
+<button type="button" class="filter-icon-btn nav-menu-btn" title="Menu điều hướng">☰</button>
 <input id="grammar-search-input" type="text" class="input-text" placeholder="Structure / Meaning / Explanation" />
 <span class="vocab-count-chip" id="grammar-count-label">0</span>
-<button class="filter-icon-btn" type="button" id="reset-grammar-filter-btn" title="Reset b盻� l盻皇">竊ｺ</button>
+<button class="filter-icon-btn" type="button" id="reset-grammar-filter-btn" title="Reset bộ lọc">↺</button>
 </div>
 <div class="filters-row" id="grammar-filters-row">
 <div class="field-group">
-<div class="field-label">L盻皇 theo Lesson</div>
+<div class="field-label">Lọc theo Lesson</div>
 <select id="grammar-lesson-filter">
-<option value="all">T蘯･t c蘯｣</option>
+<option value="all">Tất cả</option>
 <!-- populated by JS -->
 </select>
 </div>
@@ -245,7 +245,7 @@ Ch盻肱 1 Kanji t盻ｫ danh sﾃ｡ch ﾄ黛ｻ� xem chi ti蘯ｿt (Kun, On,
 <div class="card card--grammar-detail-hidden">
 <div class="card-body scroll-thin" id="grammar-detail-container">
 <div class="detail-empty">
-Ch盻肱 m盻冲 c蘯･u trﾃｺc ng盻ｯ phﾃ｡p ﾄ黛ｻ� xem n盻冓 dung chi ti蘯ｿt.
+Chọn một cấu trúc ngữ pháp để xem nội dung chi tiết.
 </div>
 </div>
 </div>
@@ -256,7 +256,7 @@ Ch盻肱 m盻冲 c蘯･u trﾃｺc ng盻ｯ phﾃ｡p ﾄ黛ｻ� xem n盻冓 
 <!-- Stars Section -->
 <section class="section" id="section-stars" aria-labelledby="section-stars-title">
 <div class="section-inner">
-<button type="button" class="filter-icon-btn nav-menu-btn" title="Menu ﾄ訴盻「 hﾆｰ盻嬾g" style="margin-bottom:6px">笘ｰ</button>
+<button type="button" class="filter-icon-btn nav-menu-btn" title="Menu điều hướng" style="margin-bottom:6px">☰</button>
 <div class="stars-tab-stack">
 <div class="card">
 <div class="card-body scroll-thin" id="stars-kanji-vocab-list"></div>
@@ -269,52 +269,52 @@ Ch盻肱 m盻冲 c蘯･u trﾃｺc ng盻ｯ phﾃ｡p ﾄ黛ｻ� xem n盻冓 
 <section class="section" id="section-note" aria-labelledby="section-note-title">
 <div class="section-inner">
 <div class="section-header">
-<button type="button" class="filter-icon-btn nav-menu-btn" title="Menu ﾄ訴盻「 hﾆｰ盻嬾g">笘ｰ</button>
+<button type="button" class="filter-icon-btn nav-menu-btn" title="Menu điều hướng">☰</button>
 <div style="display:flex; align-items:center; gap:8px; flex:1; min-width:0;">
 <div class="note-doc-select">
 <select id="note-doc-select">
-<option value="tudongnghia">T盻ｫ ﾄ黛ｻ渡g nghﾄｩa</option>
-<option value="tuvung">T盻ｫ v盻ｱng ﾄ疎ng h盻皇</option>
-<option value="dongtu">Cﾃ｡c th盻� c盻ｧa ﾄ黛ｻ冢g t盻ｫ vﾃ� trﾆｰ盻拵g h盻｣p s盻ｭ d盻･ng</option>
-<option value="danhtu">Danh t盻ｫ (Noun)</option>
-<option value="tinhtu">Tﾃｭnh t盻ｫ (Adjective)</option>
-<option value="tonghop">T盻貧g h盻｣p</option>
-<option value="theT">Th盻� 縺ｦ (縺ｦ蠖｢)</option>
-<option value="theThongThuong">Th盻� thﾃｴng thﾆｰ盻拵g (譎ｮ騾壼ｽ｢)</option>
-<option value="theTa">Th盻� 縺� (縺溷ｽ｢)</option>
-<option value="theNai">Th盻� 縺ｪ縺� (縺ｪ縺�蠖｢)</option>
-<option value="theDieuKien">Th盻� ﾄ訴盻「 ki盻㌻</option>
-<option value="theYDinh">Th盻� ﾃｽ ﾄ黛ｻ杵h</option>
-<option value="theKhaNang">Th盻� kh蘯｣ nﾄハg</option>
-<option value="theBiDong">Th盻� b盻� ﾄ黛ｻ冢g</option>
-<option value="theSaiKhien">Th盻� sai khi蘯ｿn</option>
-<option value="theSaiKhienBiDong">Th盻� sai khi蘯ｿn b盻� ﾄ黛ｻ冢g</option>
-<option value="niOGa">N1: 縺ｫ (ni) / 繧� (wo) / 縺� (ga)</option>
+<option value="tudongnghia">Từ đồng nghĩa</option>
+<option value="tuvung">Từ vựng đang học</option>
+<option value="dongtu">Các thể của động từ và trường hợp sử dụng</option>
+<option value="danhtu">Danh từ (Noun)</option>
+<option value="tinhtu">Tính từ (Adjective)</option>
+<option value="tonghop">Tổng hợp</option>
+<option value="theT">Thể て (て形)</option>
+<option value="theThongThuong">Thể thông thường (普通形)</option>
+<option value="theTa">Thể た (た形)</option>
+<option value="theNai">Thể ない (ない形)</option>
+<option value="theDieuKien">Thể điều kiện</option>
+<option value="theYDinh">Thể ý định</option>
+<option value="theKhaNang">Thể khả năng</option>
+<option value="theBiDong">Thể bị động</option>
+<option value="theSaiKhien">Thể sai khiến</option>
+<option value="theSaiKhienBiDong">Thể sai khiến bị động</option>
+<option value="niOGa">N1: に (ni) / を (wo) / が (ga)</option>
 <option value="kanji1">Kanji 1</option>
 <option value="kanji2">Kanji 2</option>
-<option value="kanji3">Kanji 3 (h盻皇 theo t盻ｫ ghﾃｩp)</option>
+<option value="kanji3">Kanji 3 (học theo từ ghép)</option>
 <option value="kanji4">Kanji 4</option>
 <option value="kanji5">Kanji 5</option>
 <option value="kanji6">Kanji 6</option>
 <option value="kanji7">Kanji 7</option>
 <option value="kanji8">Kanji 8</option>
 <option value="kanji9">Kanji 9</option>
-<option value="kanji10">Kanji 10 (h盻皇 theo b盻� th盻ｧ)</option>
+<option value="kanji10">Kanji 10 (học theo bộ thủ)</option>
 <option value="kanji11">Kanji 11</option>
 <option value="kanji12">Kanji 12</option>
 <option value="kanji13">Kanji 13</option>
 </select>
 </div>
 <div class="btn-row" style="margin-top:0">
-<button type="button" class="btn-ghost" id="note-font-dec" title="Gi蘯｣m c盻｡ ch盻ｯ" style="padding: 2px 8px; min-width: 30px;">-</button>
-<button type="button" class="btn-ghost" id="note-font-inc" title="Tﾄハg c盻｡ ch盻ｯ" style="padding: 2px 8px; min-width: 30px;">+</button>
+<button type="button" class="btn-ghost" id="note-font-dec" title="Giảm cỡ chữ" style="padding: 2px 8px; min-width: 30px;">-</button>
+<button type="button" class="btn-ghost" id="note-font-inc" title="Tăng cỡ chữ" style="padding: 2px 8px; min-width: 30px;">+</button>
 </div>
 </div>
 </div>
 <div class="card">
 <div class="card-body scroll-thin note-content-wrap">
 <div id="note-content-container" class="note-content">
-<span class="detail-empty">ﾄ紳ng t蘯｣i...</span>
+<span class="detail-empty">Đang tải...</span>
 </div>
 </div>
 </div>
@@ -328,7 +328,7 @@ Ch盻肱 m盻冲 c蘯･u trﾃｺc ng盻ｯ phﾃ｡p ﾄ黛ｻ� xem n盻冓 
 <div class="detail-modal__backdrop"></div>
 <div class="detail-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="detail-modal-title">
 <button class="detail-modal__close" type="button" id="detail-modal-close-btn" aria-label="Close detail">
-ﾃ�
+×
 </button>
 <div class="detail-modal__header">
 <div class="detail-modal__nav" id="detail-modal-nav"></div>
@@ -339,11 +339,11 @@ Ch盻肱 m盻冲 c蘯･u trﾃｺc ng盻ｯ phﾃ｡p ﾄ黛ｻ� xem n盻冓 
 </div>
 <!-- Navigation menu popup (shared, positioned by JS) -->
 <div class="nav-menu-popup" id="nav-menu-popup">
-  <button class="nav-menu-item" data-tab="vocab">T盻ｫ v盻ｱng</button>
-  <button class="nav-menu-item" data-tab="kanji">Kanji</button>
-  <button class="nav-menu-item" data-tab="stars">箝� Yﾃｪu thﾃｭch</button>
-  <button class="nav-menu-item" data-tab="grammar">Ng盻ｯ phﾃ｡p</button>
-  <button class="nav-menu-item" data-tab="note">Ghi chﾃｺ</button>
+  <button class="nav-menu-item" data-tab="vocab">Từ vựng</button>
+  <button class="nav-menu-item" data-tab="kanji">Kanji</button>
+  <button class="nav-menu-item" data-tab="stars">⭐ Yêu thích</button>
+  <button class="nav-menu-item" data-tab="grammar">Ngữ pháp</button>
+  <button class="nav-menu-item" data-tab="note">Ghi chú</button>
 </div>
 <!-- soundOverlay removed (no mp3 audio) -->
 <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
@@ -352,4 +352,3 @@ Ch盻肱 m盻冲 c蘯･u trﾃｺc ng盻ｯ phﾃ｡p ﾄ黛ｻ� xem n盻冓 
 <script src="js/main.js?v=20260716"></script>
 </body>
 </html>
- 
