@@ -1,7 +1,6 @@
 const vocabData = [
   {
-    "id": 1,
-    "Lesson": 1,
+    "Lesson": 0,
     "Hiragana": "わたし",
     "Romaji": "watashi",
     "Kanji": "私",
@@ -12,8 +11,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 2,
-    "Lesson": 1,
+    "Lesson": 0,
     "Hiragana": "わたしたち",
     "Romaji": "watashitachi",
     "Kanji": "私たち",
@@ -24,8 +22,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 3,
-    "Lesson": 1,
+    "Lesson": 0,
     "Hiragana": "あなた",
     "Romaji": "anata",
     "Kanji": "",
@@ -36,8 +33,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 4,
-    "Lesson": 1,
+    "Lesson": 0,
     "Hiragana": "あのひと",
     "Romaji": "ano hito",
     "Kanji": "あの人",
@@ -48,8 +44,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 5,
-    "Lesson": 1,
+    "Lesson": 0,
     "Hiragana": "あのかた",
     "Romaji": "ano kata",
     "Kanji": "あの方",
@@ -60,8 +55,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 6,
-    "Lesson": 1,
+    "Lesson": 0,
     "Hiragana": "みなさん",
     "Romaji": "minasan",
     "Kanji": "",
@@ -72,8 +66,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 7,
-    "Lesson": 1,
+    "Lesson": 0,
     "Hiragana": "～さん",
     "Romaji": "～san",
     "Kanji": "",
@@ -84,8 +77,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 8,
-    "Lesson": 1,
+    "Lesson": 0,
     "Hiragana": "～ちゃん",
     "Romaji": "～chan",
     "Kanji": "",
@@ -96,8 +88,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 9,
-    "Lesson": 1,
+    "Lesson": 0,
     "Hiragana": "～くん",
     "Romaji": "～kun",
     "Kanji": "",
@@ -108,8 +99,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 10,
-    "Lesson": 1,
+    "Lesson": 0,
     "Hiragana": "～じん",
     "Romaji": "～jin",
     "Kanji": "～人",
@@ -120,8 +110,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 11,
-    "Lesson": 1,
+    "Lesson": 0,
     "Hiragana": "せんせい",
     "Romaji": "sensei",
     "Kanji": "先生",
@@ -132,8 +121,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 12,
-    "Lesson": 1,
+    "Lesson": 0,
     "Hiragana": "きょうし",
     "Romaji": "kyoushi",
     "Kanji": "教師",
@@ -144,8 +132,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 13,
-    "Lesson": 1,
+    "Lesson": 0,
     "Hiragana": "がくせい",
     "Romaji": "gakusei",
     "Kanji": "学生",
@@ -156,8 +143,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 14,
-    "Lesson": 1,
+    "Lesson": 0,
     "Hiragana": "かいしゃいん",
     "Romaji": "kaishain",
     "Kanji": "会社員",
@@ -168,8 +154,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 15,
-    "Lesson": 1,
+    "Lesson": 0,
     "Hiragana": "～しゃいん",
     "Romaji": "～shain",
     "Kanji": "社員",
@@ -180,8 +165,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 16,
-    "Lesson": 1,
+    "Lesson": 0,
     "Hiragana": "ぎんこういん",
     "Romaji": "ginkouin",
     "Kanji": "銀行員",
@@ -192,8 +176,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 17,
-    "Lesson": 1,
+    "Lesson": 0,
     "Hiragana": "いしゃ",
     "Romaji": "isha",
     "Kanji": "医者",
@@ -204,8 +187,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 18,
-    "Lesson": 1,
+    "Lesson": 0,
     "Hiragana": "けんきゅうしゃ",
     "Romaji": "kenkyuusha",
     "Kanji": "研究者",
@@ -216,8 +198,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 19,
-    "Lesson": 1,
+    "Lesson": 0,
     "Hiragana": "エンジニア",
     "Romaji": "enjinia",
     "Kanji": "",
@@ -228,8 +209,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 20,
-    "Lesson": 1,
+    "Lesson": 0,
     "Hiragana": "だいがく",
     "Romaji": "daigaku",
     "Kanji": "大学",
@@ -240,8 +220,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 21,
-    "Lesson": 1,
+    "Lesson": 0,
     "Hiragana": "びょういん",
     "Romaji": "byouin",
     "Kanji": "病院",
@@ -252,8 +231,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 22,
-    "Lesson": 1,
+    "Lesson": 0,
     "Hiragana": "でんき",
     "Romaji": "denki",
     "Kanji": "電気",
@@ -264,8 +242,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 23,
-    "Lesson": 1,
+    "Lesson": 0,
     "Hiragana": "だれ（どなた）",
     "Romaji": "dare (donata)",
     "Kanji": "誰",
@@ -276,8 +253,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 24,
-    "Lesson": 1,
+    "Lesson": 0,
     "Hiragana": "―さい",
     "Romaji": "―sai",
     "Kanji": "～歳",
@@ -288,8 +264,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 25,
-    "Lesson": 1,
+    "Lesson": 0,
     "Hiragana": "なんさい",
     "Romaji": "nansai",
     "Kanji": "何歳",
@@ -300,8 +275,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 26,
-    "Lesson": 1,
+    "Lesson": 0,
     "Hiragana": "はい",
     "Romaji": "hai",
     "Kanji": "",
@@ -312,8 +286,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 27,
-    "Lesson": 1,
+    "Lesson": 0,
     "Hiragana": "いいえ",
     "Romaji": "iie",
     "Kanji": "",
@@ -324,8 +297,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 28,
-    "Lesson": 1,
+    "Lesson": 0,
     "Hiragana": "しつれいですが",
     "Romaji": "shitsurei desu ga",
     "Kanji": "失礼ですが",
@@ -336,8 +308,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 29,
-    "Lesson": 1,
+    "Lesson": 0,
     "Hiragana": "おなまえは？",
     "Romaji": "onamae wa?",
     "Kanji": "お名前は",
@@ -348,8 +319,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 30,
-    "Lesson": 1,
+    "Lesson": 0,
     "Hiragana": "はじめまして。",
     "Romaji": "hajimemashite",
     "Kanji": "初めて",
@@ -360,8 +330,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 31,
-    "Lesson": 1,
+    "Lesson": 0,
     "Hiragana": "どうぞよろしく[おねがいします]。",
     "Romaji": "douzo yoroshiku [onegaishimasu]",
     "Kanji": "どうぞよろしく「お願いします」",
@@ -372,8 +341,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 32,
-    "Lesson": 1,
+    "Lesson": 0,
     "Hiragana": "こちらは～さんです。",
     "Romaji": "kochira wa ~san desu",
     "Kanji": "",
@@ -384,8 +352,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 33,
-    "Lesson": 1,
+    "Lesson": 0,
     "Hiragana": "～からきました。",
     "Romaji": "～kara kimashita",
     "Kanji": "～から来ました",
@@ -396,8 +363,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 34,
-    "Lesson": 1,
+    "Lesson": 0,
     "Hiragana": "アメリカ",
     "Romaji": "amerika",
     "Kanji": "",
@@ -408,8 +374,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 35,
-    "Lesson": 1,
+    "Lesson": 0,
     "Hiragana": "イギリス",
     "Romaji": "igirisu",
     "Kanji": "",
@@ -420,8 +385,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 36,
-    "Lesson": 1,
+    "Lesson": 0,
     "Hiragana": "インド",
     "Romaji": "indo",
     "Kanji": "",
@@ -432,8 +396,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 37,
-    "Lesson": 1,
+    "Lesson": 0,
     "Hiragana": "インドネシア",
     "Romaji": "indoneshia",
     "Kanji": "",
@@ -444,8 +407,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 38,
-    "Lesson": 1,
+    "Lesson": 0,
     "Hiragana": "かんこく",
     "Romaji": "kankoku",
     "Kanji": "韓国",
@@ -456,8 +418,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 39,
-    "Lesson": 1,
+    "Lesson": 0,
     "Hiragana": "タイ",
     "Romaji": "tai",
     "Kanji": "",
@@ -468,8 +429,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 40,
-    "Lesson": 1,
+    "Lesson": 0,
     "Hiragana": "ちゅうごく",
     "Romaji": "chuugoku",
     "Kanji": "中国",
@@ -480,8 +440,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 41,
-    "Lesson": 1,
+    "Lesson": 0,
     "Hiragana": "ドイツ",
     "Romaji": "doitsu",
     "Kanji": "",
@@ -492,8 +451,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 42,
-    "Lesson": 1,
+    "Lesson": 0,
     "Hiragana": "にほん",
     "Romaji": "nihon",
     "Kanji": "日本",
@@ -504,8 +462,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 43,
-    "Lesson": 1,
+    "Lesson": 0,
     "Hiragana": "フランス",
     "Romaji": "furansu",
     "Kanji": "",
@@ -516,8 +473,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 44,
-    "Lesson": 1,
+    "Lesson": 0,
     "Hiragana": "ブラジル",
     "Romaji": "burajiru",
     "Kanji": "",
@@ -528,8 +484,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 45,
-    "Lesson": 1,
+    "Lesson": 0,
     "Hiragana": "さくらだいがく",
     "Romaji": "sakura daigaku",
     "Kanji": "さくら大学",
@@ -540,8 +495,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 46,
-    "Lesson": 2,
+    "Lesson": 0,
     "Hiragana": "これ",
     "Romaji": "kore",
     "Kanji": "",
@@ -552,8 +506,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 47,
-    "Lesson": 2,
+    "Lesson": 0,
     "Hiragana": "それ",
     "Romaji": "sore",
     "Kanji": "",
@@ -564,8 +517,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 48,
-    "Lesson": 2,
+    "Lesson": 0,
     "Hiragana": "あれ",
     "Romaji": "are",
     "Kanji": "",
@@ -576,8 +528,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 49,
-    "Lesson": 2,
+    "Lesson": 0,
     "Hiragana": "この~",
     "Romaji": "kono~",
     "Kanji": "",
@@ -588,8 +539,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 50,
-    "Lesson": 2,
+    "Lesson": 0,
     "Hiragana": "その~",
     "Romaji": "sono~",
     "Kanji": "",
@@ -600,8 +550,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 51,
-    "Lesson": 2,
+    "Lesson": 0,
     "Hiragana": "あの~",
     "Romaji": "ano~",
     "Kanji": "",
@@ -612,8 +561,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 52,
-    "Lesson": 2,
+    "Lesson": 0,
     "Hiragana": "ほん",
     "Romaji": "hon",
     "Kanji": "本",
@@ -624,8 +572,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 53,
-    "Lesson": 2,
+    "Lesson": 0,
     "Hiragana": "じしょ",
     "Romaji": "jisho",
     "Kanji": "辞書",
@@ -636,8 +583,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 54,
-    "Lesson": 2,
+    "Lesson": 0,
     "Hiragana": "ざっし",
     "Romaji": "zasshi",
     "Kanji": "雑誌",
@@ -648,8 +594,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 55,
-    "Lesson": 2,
+    "Lesson": 0,
     "Hiragana": "しんぶん",
     "Romaji": "shinbun",
     "Kanji": "新聞",
@@ -660,8 +605,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 56,
-    "Lesson": 2,
+    "Lesson": 0,
     "Hiragana": "ノート",
     "Romaji": "no-to",
     "Kanji": "",
@@ -672,8 +616,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 57,
-    "Lesson": 2,
+    "Lesson": 0,
     "Hiragana": "てちょう",
     "Romaji": "techou",
     "Kanji": "手帳",
@@ -684,8 +627,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 58,
-    "Lesson": 2,
+    "Lesson": 0,
     "Hiragana": "めいし",
     "Romaji": "meishi",
     "Kanji": "名詞",
@@ -696,8 +638,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 59,
-    "Lesson": 2,
+    "Lesson": 0,
     "Hiragana": "カード",
     "Romaji": "ka-do",
     "Kanji": "",
@@ -708,8 +649,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 60,
-    "Lesson": 2,
+    "Lesson": 0,
     "Hiragana": "テレホンカード",
     "Romaji": "terehon ka-do",
     "Kanji": "",
@@ -720,8 +660,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 61,
-    "Lesson": 2,
+    "Lesson": 0,
     "Hiragana": "えんぴつ",
     "Romaji": "enpitsu",
     "Kanji": "鉛筆",
@@ -732,8 +671,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 62,
-    "Lesson": 2,
+    "Lesson": 0,
     "Hiragana": "ボールペン",
     "Romaji": "bo-rupen",
     "Kanji": "",
@@ -744,8 +682,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 63,
-    "Lesson": 2,
+    "Lesson": 0,
     "Hiragana": "シャープペンシル",
     "Romaji": "sha-pupenshiru",
     "Kanji": "",
@@ -756,8 +693,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 64,
-    "Lesson": 2,
+    "Lesson": 0,
     "Hiragana": "かぎ",
     "Romaji": "kagi",
     "Kanji": "",
@@ -768,8 +704,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 65,
-    "Lesson": 2,
+    "Lesson": 0,
     "Hiragana": "とけい",
     "Romaji": "tokei",
     "Kanji": "時計",
@@ -780,8 +715,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 66,
-    "Lesson": 2,
+    "Lesson": 0,
     "Hiragana": "かさ",
     "Romaji": "kasa",
     "Kanji": "傘",
@@ -792,8 +726,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 67,
-    "Lesson": 2,
+    "Lesson": 0,
     "Hiragana": "かばん",
     "Romaji": "kaban",
     "Kanji": "",
@@ -804,8 +737,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 68,
-    "Lesson": 2,
+    "Lesson": 0,
     "Hiragana": "カセットテープ",
     "Romaji": "kasetto te-pu",
     "Kanji": "",
@@ -816,8 +748,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 69,
-    "Lesson": 2,
+    "Lesson": 0,
     "Hiragana": "テープレコーダー",
     "Romaji": "te-pu reko-da-",
     "Kanji": "",
@@ -828,8 +759,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 70,
-    "Lesson": 2,
+    "Lesson": 0,
     "Hiragana": "テレビ",
     "Romaji": "terebi",
     "Kanji": "",
@@ -840,8 +770,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 71,
-    "Lesson": 2,
+    "Lesson": 0,
     "Hiragana": "ラジオ",
     "Romaji": "rajio",
     "Kanji": "",
@@ -852,8 +781,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 72,
-    "Lesson": 2,
+    "Lesson": 0,
     "Hiragana": "カメラ",
     "Romaji": "kamera",
     "Kanji": "",
@@ -864,8 +792,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 73,
-    "Lesson": 2,
+    "Lesson": 0,
     "Hiragana": "コンピュータ",
     "Romaji": "konpyu-ta",
     "Kanji": "",
@@ -876,8 +803,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 74,
-    "Lesson": 2,
+    "Lesson": 0,
     "Hiragana": "じどうしゃ",
     "Romaji": "jidousha",
     "Kanji": "自動車",
@@ -888,8 +814,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 75,
-    "Lesson": 2,
+    "Lesson": 0,
     "Hiragana": "つくえ",
     "Romaji": "tsukue",
     "Kanji": "机",
@@ -900,8 +825,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 76,
-    "Lesson": 2,
+    "Lesson": 0,
     "Hiragana": "いす",
     "Romaji": "isu",
     "Kanji": "",
@@ -912,8 +836,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 77,
-    "Lesson": 2,
+    "Lesson": 0,
     "Hiragana": "チョコレート",
     "Romaji": "chokore-to",
     "Kanji": "",
@@ -924,8 +847,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 78,
-    "Lesson": 2,
+    "Lesson": 0,
     "Hiragana": "コーヒー",
     "Romaji": "ko-hi-",
     "Kanji": "",
@@ -936,8 +858,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 79,
-    "Lesson": 2,
+    "Lesson": 0,
     "Hiragana": "えいご",
     "Romaji": "eigo",
     "Kanji": "英語",
@@ -948,8 +869,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 80,
-    "Lesson": 2,
+    "Lesson": 0,
     "Hiragana": "にほんご",
     "Romaji": "nihongo",
     "Kanji": "日本語",
@@ -960,8 +880,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 81,
-    "Lesson": 2,
+    "Lesson": 0,
     "Hiragana": "～ご",
     "Romaji": "～go",
     "Kanji": "～語",
@@ -972,8 +891,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 82,
-    "Lesson": 2,
+    "Lesson": 0,
     "Hiragana": "なん",
     "Romaji": "nan",
     "Kanji": "何",
@@ -984,8 +902,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 83,
-    "Lesson": 2,
+    "Lesson": 0,
     "Hiragana": "そう",
     "Romaji": "sou",
     "Kanji": "",
@@ -996,8 +913,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 84,
-    "Lesson": 2,
+    "Lesson": 0,
     "Hiragana": "ちがいます。",
     "Romaji": "chigaimasu",
     "Kanji": "違います",
@@ -1008,8 +924,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 85,
-    "Lesson": 2,
+    "Lesson": 0,
     "Hiragana": "そうですか。",
     "Romaji": "sou desu ka",
     "Kanji": "",
@@ -1020,8 +935,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 86,
-    "Lesson": 2,
+    "Lesson": 0,
     "Hiragana": "あのう",
     "Romaji": "anou",
     "Kanji": "",
@@ -1032,8 +946,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 87,
-    "Lesson": 2,
+    "Lesson": 0,
     "Hiragana": "ほんのきもちです",
     "Romaji": "hon no kimochi desu",
     "Kanji": "ほんの気持ちです",
@@ -1044,8 +957,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 88,
-    "Lesson": 2,
+    "Lesson": 0,
     "Hiragana": "どうぞ",
     "Romaji": "douzo",
     "Kanji": "",
@@ -1056,8 +968,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 89,
-    "Lesson": 2,
+    "Lesson": 0,
     "Hiragana": "どうも",
     "Romaji": "doumo",
     "Kanji": "",
@@ -1068,8 +979,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 90,
-    "Lesson": 2,
+    "Lesson": 0,
     "Hiragana": "ありがとうございます",
     "Romaji": "arigatou gozaimasu",
     "Kanji": "",
@@ -1080,8 +990,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 91,
-    "Lesson": 2,
+    "Lesson": 0,
     "Hiragana": "これから おせわになります",
     "Romaji": "korekara osewa ni narimasu",
     "Kanji": "これから お世話になります",
@@ -1092,8 +1001,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 92,
-    "Lesson": 2,
+    "Lesson": 0,
     "Hiragana": "こちらこそ よろしく",
     "Romaji": "kochirakoso yoroshiku",
     "Kanji": "",
@@ -1104,8 +1012,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 93,
-    "Lesson": 3,
+    "Lesson": 0,
     "Hiragana": "ここ",
     "Romaji": "koko",
     "Kanji": "",
@@ -1116,8 +1023,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 94,
-    "Lesson": 3,
+    "Lesson": 0,
     "Hiragana": "そこ",
     "Romaji": "soko",
     "Kanji": "",
@@ -1128,8 +1034,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 95,
-    "Lesson": 3,
+    "Lesson": 0,
     "Hiragana": "あそこ",
     "Romaji": "asoko",
     "Kanji": "",
@@ -1140,8 +1045,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 96,
-    "Lesson": 3,
+    "Lesson": 0,
     "Hiragana": "どこ",
     "Romaji": "doko",
     "Kanji": "",
@@ -1152,8 +1056,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 97,
-    "Lesson": 3,
+    "Lesson": 0,
     "Hiragana": "こちら",
     "Romaji": "kochira",
     "Kanji": "",
@@ -1164,8 +1067,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 98,
-    "Lesson": 3,
+    "Lesson": 0,
     "Hiragana": "そちら",
     "Romaji": "sochira",
     "Kanji": "",
@@ -1176,8 +1078,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 99,
-    "Lesson": 3,
+    "Lesson": 0,
     "Hiragana": "あちら",
     "Romaji": "achira",
     "Kanji": "",
@@ -1188,8 +1089,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 100,
-    "Lesson": 3,
+    "Lesson": 0,
     "Hiragana": "どちら",
     "Romaji": "dochira",
     "Kanji": "",
@@ -1200,8 +1100,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 101,
-    "Lesson": 3,
+    "Lesson": 0,
     "Hiragana": "きょうしつ",
     "Romaji": "kyoushitsu",
     "Kanji": "教室",
@@ -1212,8 +1111,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 102,
-    "Lesson": 3,
+    "Lesson": 0,
     "Hiragana": "しょくどう",
     "Romaji": "shokudou",
     "Kanji": "食堂",
@@ -1224,8 +1122,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 103,
-    "Lesson": 3,
+    "Lesson": 0,
     "Hiragana": "じむしょ",
     "Romaji": "jimusho",
     "Kanji": "事務所",
@@ -1236,8 +1133,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 104,
-    "Lesson": 3,
+    "Lesson": 0,
     "Hiragana": "かいぎしつ",
     "Romaji": "kaigishitsu",
     "Kanji": "会議室",
@@ -1248,8 +1144,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 105,
-    "Lesson": 3,
+    "Lesson": 0,
     "Hiragana": "うけつけ",
     "Romaji": "uketsuke",
     "Kanji": "受付",
@@ -1260,8 +1155,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 106,
-    "Lesson": 3,
+    "Lesson": 0,
     "Hiragana": "ロビー",
     "Romaji": "robi-",
     "Kanji": "",
@@ -1272,8 +1166,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 107,
-    "Lesson": 3,
+    "Lesson": 0,
     "Hiragana": "へや",
     "Romaji": "heya",
     "Kanji": "部屋",
@@ -1284,8 +1177,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 108,
-    "Lesson": 3,
+    "Lesson": 0,
     "Hiragana": "トイレ（おてあらい）",
     "Romaji": "toire (otearai)",
     "Kanji": "トイレ（お手洗い）",
@@ -1296,8 +1188,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 109,
-    "Lesson": 3,
+    "Lesson": 0,
     "Hiragana": "かいだん",
     "Romaji": "kaidan",
     "Kanji": "階段",
@@ -1308,8 +1199,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 110,
-    "Lesson": 3,
+    "Lesson": 0,
     "Hiragana": "エレベーター",
     "Romaji": "erebe-ta-",
     "Kanji": "",
@@ -1320,8 +1210,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 111,
-    "Lesson": 3,
+    "Lesson": 0,
     "Hiragana": "エスカレーター",
     "Romaji": "esukare-ta-",
     "Kanji": "",
@@ -1332,8 +1221,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 112,
-    "Lesson": 3,
+    "Lesson": 0,
     "Hiragana": "くに",
     "Romaji": "kuni",
     "Kanji": "国",
@@ -1344,8 +1232,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 113,
-    "Lesson": 3,
+    "Lesson": 0,
     "Hiragana": "かいしゃ",
     "Romaji": "kaisha",
     "Kanji": "会社",
@@ -1356,8 +1243,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 114,
-    "Lesson": 3,
+    "Lesson": 0,
     "Hiragana": "うち",
     "Romaji": "uchi",
     "Kanji": "",
@@ -1368,8 +1254,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 115,
-    "Lesson": 3,
+    "Lesson": 0,
     "Hiragana": "でんわ",
     "Romaji": "denwa",
     "Kanji": "電話",
@@ -1380,8 +1265,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 116,
-    "Lesson": 3,
+    "Lesson": 0,
     "Hiragana": "くつ",
     "Romaji": "kutsu",
     "Kanji": "靴",
@@ -1392,8 +1276,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 117,
-    "Lesson": 3,
+    "Lesson": 0,
     "Hiragana": "ネクタイ",
     "Romaji": "nekutai",
     "Kanji": "",
@@ -1404,8 +1287,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 118,
-    "Lesson": 3,
+    "Lesson": 0,
     "Hiragana": "ワイン",
     "Romaji": "wain",
     "Kanji": "",
@@ -1416,8 +1298,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 119,
-    "Lesson": 3,
+    "Lesson": 0,
     "Hiragana": "たばこ",
     "Romaji": "tabako",
     "Kanji": "",
@@ -1428,8 +1309,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 120,
-    "Lesson": 3,
+    "Lesson": 0,
     "Hiragana": "うりば",
     "Romaji": "uriba",
     "Kanji": "売り場",
@@ -1440,8 +1320,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 121,
-    "Lesson": 3,
+    "Lesson": 0,
     "Hiragana": "ちか",
     "Romaji": "chika",
     "Kanji": "地下",
@@ -1452,8 +1331,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 122,
-    "Lesson": 3,
+    "Lesson": 0,
     "Hiragana": "―かい（－がい）",
     "Romaji": "―kai (－gai)",
     "Kanji": "－階",
@@ -1464,8 +1342,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 123,
-    "Lesson": 3,
+    "Lesson": 0,
     "Hiragana": "なんがい",
     "Romaji": "nangai",
     "Kanji": "何階",
@@ -1476,8 +1353,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 124,
-    "Lesson": 3,
+    "Lesson": 0,
     "Hiragana": "―えん",
     "Romaji": "―en",
     "Kanji": "―円",
@@ -1488,8 +1364,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 125,
-    "Lesson": 3,
+    "Lesson": 0,
     "Hiragana": "いくら",
     "Romaji": "ikura",
     "Kanji": "",
@@ -1500,8 +1375,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 126,
-    "Lesson": 3,
+    "Lesson": 0,
     "Hiragana": "ひゃく",
     "Romaji": "hyaku",
     "Kanji": "百",
@@ -1512,8 +1386,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 127,
-    "Lesson": 3,
+    "Lesson": 0,
     "Hiragana": "せん",
     "Romaji": "sen",
     "Kanji": "千",
@@ -1524,8 +1397,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 128,
-    "Lesson": 3,
+    "Lesson": 0,
     "Hiragana": "まん",
     "Romaji": "man",
     "Kanji": "万",
@@ -1536,8 +1408,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 129,
-    "Lesson": 3,
+    "Lesson": 0,
     "Hiragana": "すみません",
     "Romaji": "sumimasen",
     "Kanji": "",
@@ -1548,8 +1419,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 130,
-    "Lesson": 3,
+    "Lesson": 0,
     "Hiragana": "～でございます",
     "Romaji": "~de gozaimasu",
     "Kanji": "",
@@ -1560,8 +1430,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 131,
-    "Lesson": 3,
+    "Lesson": 0,
     "Hiragana": "みせてください",
     "Romaji": "misete kudasai",
     "Kanji": "見せてください",
@@ -1572,8 +1441,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 132,
-    "Lesson": 3,
+    "Lesson": 0,
     "Hiragana": "じゃ",
     "Romaji": "ja",
     "Kanji": "",
@@ -1584,8 +1452,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 133,
-    "Lesson": 3,
+    "Lesson": 0,
     "Hiragana": "ください",
     "Romaji": "kudasai",
     "Kanji": "",
@@ -1596,8 +1463,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 134,
-    "Lesson": 3,
+    "Lesson": 0,
     "Hiragana": "しんおおさka",
     "Romaji": "shin oosaka",
     "Kanji": "新大阪",
@@ -1608,8 +1474,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 135,
-    "Lesson": 3,
+    "Lesson": 0,
     "Hiragana": "イタリア",
     "Romaji": "itaria",
     "Kanji": "",
@@ -1620,8 +1485,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 136,
-    "Lesson": 3,
+    "Lesson": 0,
     "Hiragana": "スイス",
     "Romaji": "suisu",
     "Kanji": "",
@@ -1632,8 +1496,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 137,
-    "Lesson": 3,
+    "Lesson": 0,
     "Hiragana": "ＭＴ/ヨーネン/アキックス",
     "Romaji": "MT / yo-nen / akikkusu",
     "Kanji": "",
@@ -1644,8 +1507,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 138,
-    "Lesson": 4,
+    "Lesson": 0,
     "Hiragana": "おきます",
     "Romaji": "okimasu",
     "Kanji": "",
@@ -1656,8 +1518,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 139,
-    "Lesson": 4,
+    "Lesson": 0,
     "Hiragana": "ねます",
     "Romaji": "nemasu",
     "Kanji": "寝ます",
@@ -1668,8 +1529,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 140,
-    "Lesson": 4,
+    "Lesson": 0,
     "Hiragana": "はたらきます",
     "Romaji": "hatarakimasu",
     "Kanji": "働きます",
@@ -1680,8 +1540,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 141,
-    "Lesson": 4,
+    "Lesson": 0,
     "Hiragana": "やすみます",
     "Romaji": "yasumimasu",
     "Kanji": "休みます",
@@ -1692,8 +1551,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 142,
-    "Lesson": 4,
+    "Lesson": 0,
     "Hiragana": "べんきょうします",
     "Romaji": "benkyoushimasu",
     "Kanji": "勉強します",
@@ -1704,8 +1562,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 143,
-    "Lesson": 4,
+    "Lesson": 0,
     "Hiragana": "おわります",
     "Romaji": "owarimasu",
     "Kanji": "終わります",
@@ -1716,8 +1573,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 144,
-    "Lesson": 4,
+    "Lesson": 0,
     "Hiragana": "デパート",
     "Romaji": "depa-to",
     "Kanji": "",
@@ -1728,8 +1584,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 145,
-    "Lesson": 4,
+    "Lesson": 0,
     "Hiragana": "ぎんこう",
     "Romaji": "ginkou",
     "Kanji": "銀行",
@@ -1740,8 +1595,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 146,
-    "Lesson": 4,
+    "Lesson": 0,
     "Hiragana": "ゆうびんきょく",
     "Romaji": "yuubinkyoku",
     "Kanji": "郵便局",
@@ -1752,8 +1606,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 147,
-    "Lesson": 4,
+    "Lesson": 0,
     "Hiragana": "としょかん",
     "Romaji": "toshokan",
     "Kanji": "図書館",
@@ -1764,8 +1617,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 148,
-    "Lesson": 4,
+    "Lesson": 0,
     "Hiragana": "びじゅつかん",
     "Romaji": "bijutsukan",
     "Kanji": "美術館",
@@ -1776,8 +1628,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 149,
-    "Lesson": 4,
+    "Lesson": 0,
     "Hiragana": "でんわばんごう",
     "Romaji": "denwa bangou",
     "Kanji": "電話番号",
@@ -1788,8 +1639,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 150,
-    "Lesson": 4,
+    "Lesson": 0,
     "Hiragana": "なんばん",
     "Romaji": "nanban",
     "Kanji": "何番",
@@ -1800,8 +1650,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 151,
-    "Lesson": 4,
+    "Lesson": 0,
     "Hiragana": "いま",
     "Romaji": "ima",
     "Kanji": "今",
@@ -1812,8 +1661,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 152,
-    "Lesson": 4,
+    "Lesson": 0,
     "Hiragana": "～じ",
     "Romaji": "～ji",
     "Kanji": "～時",
@@ -1824,8 +1672,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 153,
-    "Lesson": 4,
+    "Lesson": 0,
     "Hiragana": "～ふん / ～ぷん",
     "Romaji": "～fun / ～pun",
     "Kanji": "～分",
@@ -1836,8 +1683,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 154,
-    "Lesson": 4,
+    "Lesson": 0,
     "Hiragana": "はん",
     "Romaji": "han",
     "Kanji": "半",
@@ -1848,8 +1694,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 155,
-    "Lesson": 4,
+    "Lesson": 0,
     "Hiragana": "なんじ",
     "Romaji": "nanji",
     "Kanji": "何時",
@@ -1860,8 +1705,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 156,
-    "Lesson": 4,
+    "Lesson": 0,
     "Hiragana": "なんぷん",
     "Romaji": "nanpun",
     "Kanji": "何分",
@@ -1872,8 +1716,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 157,
-    "Lesson": 4,
+    "Lesson": 0,
     "Hiragana": "ごぜん",
     "Romaji": "gozen",
     "Kanji": "午前",
@@ -1884,8 +1727,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 158,
-    "Lesson": 4,
+    "Lesson": 0,
     "Hiragana": "ごご",
     "Romaji": "gogo",
     "Kanji": "午後",
@@ -1896,8 +1738,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 159,
-    "Lesson": 4,
+    "Lesson": 0,
     "Hiragana": "あさ",
     "Romaji": "asa",
     "Kanji": "朝",
@@ -1908,8 +1749,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 160,
-    "Lesson": 4,
+    "Lesson": 0,
     "Hiragana": "ひる",
     "Romaji": "hiru",
     "Kanji": "昼",
@@ -1920,8 +1760,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 161,
-    "Lesson": 4,
+    "Lesson": 0,
     "Hiragana": "ばん",
     "Romaji": "ban",
     "Kanji": "晩",
@@ -1932,8 +1771,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 162,
-    "Lesson": 4,
+    "Lesson": 0,
     "Hiragana": "よる",
     "Romaji": "yoru",
     "Kanji": "夜",
@@ -1944,8 +1782,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 163,
-    "Lesson": 4,
+    "Lesson": 0,
     "Hiragana": "おととい",
     "Romaji": "ototoi",
     "Kanji": "",
@@ -1956,8 +1793,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 164,
-    "Lesson": 4,
+    "Lesson": 0,
     "Hiragana": "きのう",
     "Romaji": "kinou",
     "Kanji": "",
@@ -1968,8 +1804,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 165,
-    "Lesson": 4,
+    "Lesson": 0,
     "Hiragana": "きょう",
     "Romaji": "kyou",
     "Kanji": "今日",
@@ -1980,8 +1815,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 166,
-    "Lesson": 4,
+    "Lesson": 0,
     "Hiragana": "あした",
     "Romaji": "ashita",
     "Kanji": "明日",
@@ -1992,8 +1826,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 167,
-    "Lesson": 4,
+    "Lesson": 0,
     "Hiragana": "あさって",
     "Romaji": "asatte",
     "Kanji": "",
@@ -2004,8 +1837,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 168,
-    "Lesson": 4,
+    "Lesson": 0,
     "Hiragana": "けさ",
     "Romaji": "kesa",
     "Kanji": "今朝",
@@ -2016,8 +1848,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 169,
-    "Lesson": 4,
+    "Lesson": 0,
     "Hiragana": "こんばん",
     "Romaji": "konban",
     "Kanji": "",
@@ -2028,8 +1859,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 170,
-    "Lesson": 4,
+    "Lesson": 0,
     "Hiragana": "ゆうべ",
     "Romaji": "yuube",
     "Kanji": "",
@@ -2040,8 +1870,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 171,
-    "Lesson": 4,
+    "Lesson": 0,
     "Hiragana": "やすみ",
     "Romaji": "yasumi",
     "Kanji": "休み",
@@ -2052,8 +1881,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 172,
-    "Lesson": 4,
+    "Lesson": 0,
     "Hiragana": "ひるやすみ",
     "Romaji": "hiruyasumi",
     "Kanji": "昼休み",
@@ -2064,8 +1892,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 173,
-    "Lesson": 4,
+    "Lesson": 0,
     "Hiragana": "まいあさ",
     "Romaji": "maiasa",
     "Kanji": "毎朝",
@@ -2076,8 +1903,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 174,
-    "Lesson": 4,
+    "Lesson": 0,
     "Hiragana": "まいばん",
     "Romaji": "maiban",
     "Kanji": "毎晩",
@@ -2088,8 +1914,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 175,
-    "Lesson": 4,
+    "Lesson": 0,
     "Hiragana": "まいにち",
     "Romaji": "mainichi",
     "Kanji": "毎日",
@@ -2100,8 +1925,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 176,
-    "Lesson": 4,
+    "Lesson": 0,
     "Hiragana": "ペキン",
     "Romaji": "pekin",
     "Kanji": "",
@@ -2112,8 +1936,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 177,
-    "Lesson": 4,
+    "Lesson": 0,
     "Hiragana": "バンコク",
     "Romaji": "bankoku",
     "Kanji": "",
@@ -2124,8 +1947,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 178,
-    "Lesson": 4,
+    "Lesson": 0,
     "Hiragana": "ロンドン",
     "Romaji": "rondon",
     "Kanji": "",
@@ -2136,8 +1958,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 179,
-    "Lesson": 4,
+    "Lesson": 0,
     "Hiragana": "ロサンゼルス",
     "Romaji": "rosanzerusu",
     "Kanji": "",
@@ -2148,8 +1969,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 180,
-    "Lesson": 4,
+    "Lesson": 0,
     "Hiragana": "たいへんですね",
     "Romaji": "taihen desu ne",
     "Kanji": "大変ですね",
@@ -2160,8 +1980,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 181,
-    "Lesson": 4,
+    "Lesson": 0,
     "Hiragana": "ばんごうあんない",
     "Romaji": "bangou annai",
     "Kanji": "",
@@ -2172,8 +1991,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 182,
-    "Lesson": 4,
+    "Lesson": 0,
     "Hiragana": "おといあわせ",
     "Romaji": "otoiawase",
     "Kanji": "",
@@ -2184,8 +2002,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 183,
-    "Lesson": 5,
+    "Lesson": 0,
     "Hiragana": "～ばんせん",
     "Romaji": "～bansen",
     "Kanji": "～番線",
@@ -2196,8 +2013,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 184,
-    "Lesson": 5,
+    "Lesson": 0,
     "Hiragana": "いきます",
     "Romaji": "ikimasu",
     "Kanji": "行きます",
@@ -2208,8 +2024,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 185,
-    "Lesson": 5,
+    "Lesson": 0,
     "Hiragana": "きます",
     "Romaji": "kimasu",
     "Kanji": "来ます",
@@ -2220,8 +2035,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 186,
-    "Lesson": 5,
+    "Lesson": 0,
     "Hiragana": "かえります",
     "Romaji": "kaerimasu",
     "Kanji": "帰ります",
@@ -2232,8 +2046,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 187,
-    "Lesson": 5,
+    "Lesson": 0,
     "Hiragana": "がっこう",
     "Romaji": "gakkou",
     "Kanji": "学校",
@@ -2244,8 +2057,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 188,
-    "Lesson": 5,
+    "Lesson": 0,
     "Hiragana": "スーパー",
     "Romaji": "su-pa-",
     "Kanji": "",
@@ -2256,8 +2068,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 189,
-    "Lesson": 5,
+    "Lesson": 0,
     "Hiragana": "えき",
     "Romaji": "eki",
     "Kanji": "駅",
@@ -2268,8 +2079,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 190,
-    "Lesson": 5,
+    "Lesson": 0,
     "Hiragana": "ひこうき",
     "Romaji": "hikouki",
     "Kanji": "飛行機",
@@ -2280,8 +2090,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 191,
-    "Lesson": 5,
+    "Lesson": 0,
     "Hiragana": "ふね",
     "Romaji": "fune",
     "Kanji": "船",
@@ -2292,8 +2101,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 192,
-    "Lesson": 5,
+    "Lesson": 0,
     "Hiragana": "でんしゃ",
     "Romaji": "densha",
     "Kanji": "電車",
@@ -2304,8 +2112,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 193,
-    "Lesson": 5,
+    "Lesson": 0,
     "Hiragana": "ちかてつ",
     "Romaji": "chikatetsu",
     "Kanji": "地下鉄",
@@ -2316,8 +2123,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 194,
-    "Lesson": 5,
+    "Lesson": 0,
     "Hiragana": "しんかんせん",
     "Romaji": "shinkansen",
     "Kanji": "新幹線",
@@ -2328,8 +2134,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 195,
-    "Lesson": 5,
+    "Lesson": 0,
     "Hiragana": "バス",
     "Romaji": "basu",
     "Kanji": "",
@@ -2340,8 +2145,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 196,
-    "Lesson": 5,
+    "Lesson": 0,
     "Hiragana": "タクシー",
     "Romaji": "takushi-",
     "Kanji": "",
@@ -2352,8 +2156,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 197,
-    "Lesson": 5,
+    "Lesson": 0,
     "Hiragana": "じてんしゃ",
     "Romaji": "jitensha",
     "Kanji": "自転車",
@@ -2364,8 +2167,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 198,
-    "Lesson": 5,
+    "Lesson": 0,
     "Hiragana": "あるいて",
     "Romaji": "aruite",
     "Kanji": "歩いて",
@@ -2376,8 +2178,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 199,
-    "Lesson": 5,
+    "Lesson": 0,
     "Hiragana": "ひと",
     "Romaji": "hito",
     "Kanji": "人",
@@ -2388,8 +2189,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 200,
-    "Lesson": 5,
+    "Lesson": 0,
     "Hiragana": "ともだち",
     "Romaji": "tomodachi",
     "Kanji": "友達",
@@ -2400,8 +2200,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 201,
-    "Lesson": 5,
+    "Lesson": 0,
     "Hiragana": "かれ",
     "Romaji": "kare",
     "Kanji": "彼",
@@ -2412,8 +2211,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 202,
-    "Lesson": 5,
+    "Lesson": 0,
     "Hiragana": "かのじょ",
     "Romaji": "kanojo",
     "Kanji": "彼女",
@@ -2424,8 +2222,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 203,
-    "Lesson": 5,
+    "Lesson": 0,
     "Hiragana": "かぞく",
     "Romaji": "kazoku",
     "Kanji": "家族",
@@ -2436,8 +2233,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 204,
-    "Lesson": 5,
+    "Lesson": 0,
     "Hiragana": "せんしゅう",
     "Romaji": "senshuu",
     "Kanji": "先週",
@@ -2448,8 +2244,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 205,
-    "Lesson": 5,
+    "Lesson": 0,
     "Hiragana": "こんしゅう",
     "Romaji": "konshuu",
     "Kanji": "今週",
@@ -2460,8 +2255,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 206,
-    "Lesson": 5,
+    "Lesson": 0,
     "Hiragana": "らいしゅう",
     "Romaji": "raishuu",
     "Kanji": "来週",
@@ -2472,8 +2266,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 207,
-    "Lesson": 5,
+    "Lesson": 0,
     "Hiragana": "せんげつ",
     "Romaji": "sengetsu",
     "Kanji": "先月",
@@ -2484,8 +2277,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 208,
-    "Lesson": 5,
+    "Lesson": 0,
     "Hiragana": "こんげつ",
     "Romaji": "kongetsu",
     "Kanji": "今月",
@@ -2496,8 +2288,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 209,
-    "Lesson": 5,
+    "Lesson": 0,
     "Hiragana": "らいげつ",
     "Romaji": "raigetsu",
     "Kanji": "来月",
@@ -2508,8 +2299,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 210,
-    "Lesson": 5,
+    "Lesson": 0,
     "Hiragana": "きょねん",
     "Romaji": "kyonen",
     "Kanji": "去年",
@@ -2520,8 +2310,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 211,
-    "Lesson": 5,
+    "Lesson": 0,
     "Hiragana": "ことし",
     "Romaji": "kotoshi",
     "Kanji": "",
@@ -2532,8 +2321,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 212,
-    "Lesson": 5,
+    "Lesson": 0,
     "Hiragana": "らいねん",
     "Romaji": "rainen",
     "Kanji": "来年",
@@ -2544,8 +2332,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 213,
-    "Lesson": 5,
+    "Lesson": 0,
     "Hiragana": "～がつ",
     "Romaji": "～gatsu",
     "Kanji": "～月",
@@ -2556,8 +2343,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 214,
-    "Lesson": 5,
+    "Lesson": 0,
     "Hiragana": "なんがつ",
     "Romaji": "nangatsu",
     "Kanji": "何月",
@@ -2568,8 +2354,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 215,
-    "Lesson": 5,
+    "Lesson": 0,
     "Hiragana": "ついたち",
     "Romaji": "tsuitachi",
     "Kanji": "１日",
@@ -2580,8 +2365,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 216,
-    "Lesson": 5,
+    "Lesson": 0,
     "Hiragana": "ふつか",
     "Romaji": "futsuka",
     "Kanji": "２日",
@@ -2592,8 +2376,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 217,
-    "Lesson": 5,
+    "Lesson": 0,
     "Hiragana": "みっか",
     "Romaji": "mikka",
     "Kanji": "３日",
@@ -2604,8 +2387,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 218,
-    "Lesson": 5,
+    "Lesson": 0,
     "Hiragana": "よっか",
     "Romaji": "yokka",
     "Kanji": "４日",
@@ -2616,8 +2398,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 219,
-    "Lesson": 5,
+    "Lesson": 0,
     "Hiragana": "いつか",
     "Romaji": "itsuka",
     "Kanji": "５日",
@@ -2628,8 +2409,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 220,
-    "Lesson": 5,
+    "Lesson": 0,
     "Hiragana": "むいか",
     "Romaji": "muika",
     "Kanji": "６日",
@@ -2640,8 +2420,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 221,
-    "Lesson": 5,
+    "Lesson": 0,
     "Hiragana": "なのか",
     "Romaji": "nanoka",
     "Kanji": "７日",
@@ -2652,8 +2431,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 222,
-    "Lesson": 5,
+    "Lesson": 0,
     "Hiragana": "ようか",
     "Romaji": "youka",
     "Kanji": "８日",
@@ -2664,8 +2442,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 223,
-    "Lesson": 5,
+    "Lesson": 0,
     "Hiragana": "ここのか",
     "Romaji": "kokonoka",
     "Kanji": "９日",
@@ -2676,8 +2453,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 224,
-    "Lesson": 5,
+    "Lesson": 0,
     "Hiragana": "とおか",
     "Romaji": "tooka",
     "Kanji": "１０日",
@@ -2688,8 +2464,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 225,
-    "Lesson": 5,
+    "Lesson": 0,
     "Hiragana": "じゅうよっか",
     "Romaji": "juuyokka",
     "Kanji": "１４日",
@@ -2700,8 +2475,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 226,
-    "Lesson": 5,
+    "Lesson": 0,
     "Hiragana": "はつか",
     "Romaji": "hatsuka",
     "Kanji": "２０日",
@@ -2712,8 +2486,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 227,
-    "Lesson": 5,
+    "Lesson": 0,
     "Hiragana": "にじゅうよっか",
     "Romaji": "nijuuyokka",
     "Kanji": "２４日",
@@ -2724,8 +2497,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 228,
-    "Lesson": 5,
+    "Lesson": 0,
     "Hiragana": "～にち",
     "Romaji": "～nichi",
     "Kanji": "～日",
@@ -2736,8 +2508,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 229,
-    "Lesson": 5,
+    "Lesson": 0,
     "Hiragana": "なんにち",
     "Romaji": "nannichi",
     "Kanji": "何日",
@@ -2748,8 +2519,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 230,
-    "Lesson": 5,
+    "Lesson": 0,
     "Hiragana": "いつ",
     "Romaji": "itsu",
     "Kanji": "",
@@ -2760,8 +2530,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 231,
-    "Lesson": 5,
+    "Lesson": 0,
     "Hiragana": "たんじょうび",
     "Romaji": "tanjoubi",
     "Kanji": "誕生日",
@@ -2772,8 +2541,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 232,
-    "Lesson": 5,
+    "Lesson": 0,
     "Hiragana": "ふつう",
     "Romaji": "futsuu",
     "Kanji": "普通",
@@ -2784,8 +2552,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 233,
-    "Lesson": 5,
+    "Lesson": 0,
     "Hiragana": "きゅうこう",
     "Romaji": "kyuukou",
     "Kanji": "急行",
@@ -2796,8 +2563,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 234,
-    "Lesson": 5,
+    "Lesson": 0,
     "Hiragana": "とっきゅう",
     "Romaji": "tokkyuu",
     "Kanji": "特急",
@@ -2808,8 +2574,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 235,
-    "Lesson": 5,
+    "Lesson": 0,
     "Hiragana": "つぎの",
     "Romaji": "tsugi no",
     "Kanji": "次の",
@@ -2820,8 +2585,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 236,
-    "Lesson": 5,
+    "Lesson": 0,
     "Hiragana": "どういたしまして",
     "Romaji": "dou itashimashite",
     "Kanji": "",
@@ -2832,8 +2596,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 237,
-    "Lesson": 6,
+    "Lesson": 0,
     "Hiragana": "たべます",
     "Romaji": "tabemasu",
     "Kanji": "食べます",
@@ -2844,8 +2607,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 238,
-    "Lesson": 6,
+    "Lesson": 0,
     "Hiragana": "のみます",
     "Romaji": "nomimasu",
     "Kanji": "飲みます",
@@ -2856,8 +2618,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 239,
-    "Lesson": 6,
+    "Lesson": 0,
     "Hiragana": "すいます",
     "Romaji": "suimasu",
     "Kanji": "吸います",
@@ -2868,8 +2629,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 240,
-    "Lesson": 6,
+    "Lesson": 0,
     "Hiragana": "みます",
     "Romaji": "mimasu",
     "Kanji": "見ます",
@@ -2880,8 +2640,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 241,
-    "Lesson": 6,
+    "Lesson": 0,
     "Hiragana": "ききます",
     "Romaji": "kikimasu",
     "Kanji": "聞きます",
@@ -2892,8 +2651,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 242,
-    "Lesson": 6,
+    "Lesson": 0,
     "Hiragana": "よみます",
     "Romaji": "yomimasu",
     "Kanji": "読みます",
@@ -2904,8 +2662,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 243,
-    "Lesson": 6,
+    "Lesson": 0,
     "Hiragana": "かきます",
     "Romaji": "kakimasu",
     "Kanji": "書きます",
@@ -2916,8 +2673,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 244,
-    "Lesson": 6,
+    "Lesson": 0,
     "Hiragana": "かいます",
     "Romaji": "kaimasu",
     "Kanji": "買います",
@@ -2928,8 +2684,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 245,
-    "Lesson": 6,
+    "Lesson": 0,
     "Hiragana": "とります",
     "Romaji": "torimasu",
     "Kanji": "撮ります",
@@ -2940,8 +2695,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 246,
-    "Lesson": 6,
+    "Lesson": 0,
     "Hiragana": "します",
     "Romaji": "shimasu",
     "Kanji": "",
@@ -2952,8 +2706,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 247,
-    "Lesson": 6,
+    "Lesson": 0,
     "Hiragana": "あいます",
     "Romaji": "aimasu",
     "Kanji": "会います",
@@ -2964,8 +2717,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 248,
-    "Lesson": 6,
+    "Lesson": 0,
     "Hiragana": "ごはん",
     "Romaji": "gohan",
     "Kanji": "",
@@ -2976,8 +2728,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 249,
-    "Lesson": 6,
+    "Lesson": 0,
     "Hiragana": "あさごはん",
     "Romaji": "asagohan",
     "Kanji": "朝ごはん",
@@ -2988,8 +2739,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 250,
-    "Lesson": 6,
+    "Lesson": 0,
     "Hiragana": "ひるごはん",
     "Romaji": "hirugohan",
     "Kanji": "昼ごはん",
@@ -3000,8 +2750,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 251,
-    "Lesson": 6,
+    "Lesson": 0,
     "Hiragana": "ばんごはん",
     "Romaji": "bangohan",
     "Kanji": "晩ごはん",
@@ -3012,8 +2761,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 252,
-    "Lesson": 6,
+    "Lesson": 0,
     "Hiragana": "パン",
     "Romaji": "pan",
     "Kanji": "",
@@ -3024,8 +2772,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 253,
-    "Lesson": 6,
+    "Lesson": 0,
     "Hiragana": "たまご",
     "Romaji": "tamago",
     "Kanji": "卵",
@@ -3036,8 +2783,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 254,
-    "Lesson": 6,
+    "Lesson": 0,
     "Hiragana": "にく",
     "Romaji": "niku",
     "Kanji": "肉",
@@ -3048,8 +2794,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 255,
-    "Lesson": 6,
+    "Lesson": 0,
     "Hiragana": "さかな",
     "Romaji": "sakana",
     "Kanji": "魚",
@@ -3060,8 +2805,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 256,
-    "Lesson": 6,
+    "Lesson": 0,
     "Hiragana": "やさい",
     "Romaji": "yasai",
     "Kanji": "野菜",
@@ -3072,8 +2816,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 257,
-    "Lesson": 6,
+    "Lesson": 0,
     "Hiragana": "くだもの",
     "Romaji": "kudamono",
     "Kanji": "果物",
@@ -3084,8 +2827,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 258,
-    "Lesson": 6,
+    "Lesson": 0,
     "Hiragana": "みず",
     "Romaji": "mizu",
     "Kanji": "水",
@@ -3096,8 +2838,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 259,
-    "Lesson": 6,
+    "Lesson": 0,
     "Hiragana": "おちゃ",
     "Romaji": "ocha",
     "Kanji": "お茶",
@@ -3108,8 +2849,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 260,
-    "Lesson": 6,
+    "Lesson": 0,
     "Hiragana": "こうちゃ",
     "Romaji": "koucha",
     "Kanji": "紅茶",
@@ -3120,8 +2860,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 261,
-    "Lesson": 6,
+    "Lesson": 0,
     "Hiragana": "ぎゅうにゅう (ミルク)",
     "Romaji": "gyuunyuu (miruku)",
     "Kanji": "牛乳",
@@ -3132,8 +2871,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 262,
-    "Lesson": 6,
+    "Lesson": 0,
     "Hiragana": "ジュース",
     "Romaji": "ju-su",
     "Kanji": "",
@@ -3144,8 +2882,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 263,
-    "Lesson": 6,
+    "Lesson": 0,
     "Hiragana": "ビール",
     "Romaji": "bi-ru",
     "Kanji": "",
@@ -3156,8 +2893,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 264,
-    "Lesson": 6,
+    "Lesson": 0,
     "Hiragana": "おさけ",
     "Romaji": "osake",
     "Kanji": "お酒",
@@ -3168,8 +2904,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 265,
-    "Lesson": 6,
+    "Lesson": 0,
     "Hiragana": "ビデオ",
     "Romaji": "bideo",
     "Kanji": "",
@@ -3180,8 +2915,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 266,
-    "Lesson": 6,
+    "Lesson": 0,
     "Hiragana": "えいが",
     "Romaji": "eiga",
     "Kanji": "映画",
@@ -3192,8 +2926,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 267,
-    "Lesson": 6,
+    "Lesson": 0,
     "Hiragana": "ＣＤ",
     "Romaji": "shi-di-",
     "Kanji": "",
@@ -3204,8 +2937,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 268,
-    "Lesson": 6,
+    "Lesson": 0,
     "Hiragana": "てがみ",
     "Romaji": "tegami",
     "Kanji": "手紙",
@@ -3216,8 +2948,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 269,
-    "Lesson": 6,
+    "Lesson": 0,
     "Hiragana": "レポート",
     "Romaji": "repo-to",
     "Kanji": "",
@@ -3228,8 +2959,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 270,
-    "Lesson": 6,
+    "Lesson": 0,
     "Hiragana": "しゃしん",
     "Romaji": "shashin",
     "Kanji": "写真",
@@ -3240,8 +2970,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 271,
-    "Lesson": 6,
+    "Lesson": 0,
     "Hiragana": "みせ",
     "Romaji": "mise",
     "Kanji": "店",
@@ -3252,8 +2981,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 272,
-    "Lesson": 6,
+    "Lesson": 0,
     "Hiragana": "レストラン",
     "Romaji": "resutoran",
     "Kanji": "",
@@ -3264,8 +2992,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 273,
-    "Lesson": 6,
+    "Lesson": 0,
     "Hiragana": "にわ",
     "Romaji": "niwa",
     "Kanji": "庭",
@@ -3276,8 +3003,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 274,
-    "Lesson": 6,
+    "Lesson": 0,
     "Hiragana": "しゅくだい",
     "Romaji": "shukudai",
     "Kanji": "宿題",
@@ -3288,8 +3014,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 275,
-    "Lesson": 6,
+    "Lesson": 0,
     "Hiragana": "テニス",
     "Romaji": "tenisu",
     "Kanji": "",
@@ -3300,8 +3025,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 276,
-    "Lesson": 6,
+    "Lesson": 0,
     "Hiragana": "サッカー",
     "Romaji": "sakka-",
     "Kanji": "",
@@ -3312,8 +3036,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 277,
-    "Lesson": 6,
+    "Lesson": 0,
     "Hiragana": "おはなみ",
     "Romaji": "ohanami",
     "Kanji": "お花見",
@@ -3324,8 +3047,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 278,
-    "Lesson": 6,
+    "Lesson": 0,
     "Hiragana": "なに",
     "Romaji": "nani",
     "Kanji": "何",
@@ -3336,8 +3058,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 279,
-    "Lesson": 6,
+    "Lesson": 0,
     "Hiragana": "いっしょに",
     "Romaji": "isshoni",
     "Kanji": "",
@@ -3348,8 +3069,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 280,
-    "Lesson": 6,
+    "Lesson": 0,
     "Hiragana": "ちょっと",
     "Romaji": "chotto",
     "Kanji": "",
@@ -3360,8 +3080,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 281,
-    "Lesson": 6,
+    "Lesson": 0,
     "Hiragana": "いつも",
     "Romaji": "itsumo",
     "Kanji": "",
@@ -3372,8 +3091,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 282,
-    "Lesson": 6,
+    "Lesson": 0,
     "Hiragana": "ときどき",
     "Romaji": "tokidoki",
     "Kanji": "時々",
@@ -3384,8 +3102,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 283,
-    "Lesson": 6,
+    "Lesson": 0,
     "Hiragana": "それから",
     "Romaji": "sorekara",
     "Kanji": "",
@@ -3396,8 +3113,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 284,
-    "Lesson": 6,
+    "Lesson": 0,
     "Hiragana": "ええ",
     "Romaji": "ee",
     "Kanji": "",
@@ -3408,8 +3124,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 285,
-    "Lesson": 6,
+    "Lesson": 0,
     "Hiragana": "いいですね。",
     "Romaji": "ii desu ne",
     "Kanji": "",
@@ -3420,8 +3135,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 286,
-    "Lesson": 6,
+    "Lesson": 0,
     "Hiragana": "わかりました。",
     "Romaji": "wakari mashita",
     "Kanji": "",
@@ -3432,8 +3146,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 287,
-    "Lesson": 6,
+    "Lesson": 0,
     "Hiragana": "なんですか",
     "Romaji": "nan desu ka",
     "Kanji": "何ですか",
@@ -3444,8 +3157,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 288,
-    "Lesson": 6,
+    "Lesson": 0,
     "Hiragana": "じゃ,また[あした]。",
     "Romaji": "ja, mata [ashita]",
     "Kanji": "",
@@ -3456,8 +3168,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 289,
-    "Lesson": 6,
+    "Lesson": 0,
     "Hiragana": "メキシコ",
     "Romaji": "mekishiko",
     "Kanji": "",
@@ -3468,8 +3179,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 290,
-    "Lesson": 7,
+    "Lesson": 0,
     "Hiragana": "きる",
     "Romaji": "kiru",
     "Kanji": "切る",
@@ -3480,8 +3190,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 291,
-    "Lesson": 7,
+    "Lesson": 0,
     "Hiragana": "おくる",
     "Romaji": "okuru",
     "Kanji": "送る",
@@ -3492,8 +3201,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 292,
-    "Lesson": 7,
+    "Lesson": 0,
     "Hiragana": "あげる",
     "Romaji": "ageru",
     "Kanji": "",
@@ -3504,8 +3212,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 293,
-    "Lesson": 7,
+    "Lesson": 0,
     "Hiragana": "もらう",
     "Romaji": "morau",
     "Kanji": "",
@@ -3516,8 +3223,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 294,
-    "Lesson": 7,
+    "Lesson": 0,
     "Hiragana": "かす",
     "Romaji": "kasu",
     "Kanji": "貸す",
@@ -3528,8 +3234,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 295,
-    "Lesson": 7,
+    "Lesson": 0,
     "Hiragana": "かりる",
     "Romaji": "kariru",
     "Kanji": "借りる",
@@ -3540,8 +3245,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 296,
-    "Lesson": 7,
+    "Lesson": 0,
     "Hiragana": "かける",
     "Romaji": "kakeru",
     "Kanji": "",
@@ -3552,8 +3256,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 297,
-    "Lesson": 7,
+    "Lesson": 0,
     "Hiragana": "て",
     "Romaji": "te",
     "Kanji": "手",
@@ -3564,8 +3267,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 298,
-    "Lesson": 7,
+    "Lesson": 0,
     "Hiragana": "はし",
     "Romaji": "hashi",
     "Kanji": "",
@@ -3576,8 +3278,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 299,
-    "Lesson": 7,
+    "Lesson": 0,
     "Hiragana": "スプーン",
     "Romaji": "supu-n",
     "Kanji": "",
@@ -3588,8 +3289,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 300,
-    "Lesson": 7,
+    "Lesson": 0,
     "Hiragana": "ナイフ",
     "Romaji": "naifu",
     "Kanji": "",
@@ -3600,8 +3300,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 301,
-    "Lesson": 7,
+    "Lesson": 0,
     "Hiragana": "フォーク",
     "Romaji": "fo-ku",
     "Kanji": "",
@@ -3612,8 +3311,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 302,
-    "Lesson": 7,
+    "Lesson": 0,
     "Hiragana": "はさみ",
     "Romaji": "hasami",
     "Kanji": "",
@@ -3624,8 +3322,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 303,
-    "Lesson": 7,
+    "Lesson": 0,
     "Hiragana": "ファクス",
     "Romaji": "fakusu",
     "Kanji": "",
@@ -3636,8 +3333,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 304,
-    "Lesson": 7,
+    "Lesson": 0,
     "Hiragana": "ワープロ",
     "Romaji": "wa-puro",
     "Kanji": "",
@@ -3648,8 +3344,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 305,
-    "Lesson": 7,
+    "Lesson": 0,
     "Hiragana": "パソコン",
     "Romaji": "pasokon",
     "Kanji": "",
@@ -3660,8 +3355,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 306,
-    "Lesson": 7,
+    "Lesson": 0,
     "Hiragana": "パンチ",
     "Romaji": "panchi",
     "Kanji": "",
@@ -3672,8 +3366,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 307,
-    "Lesson": 7,
+    "Lesson": 0,
     "Hiragana": "ホッチキス",
     "Romaji": "hocchikisu",
     "Kanji": "",
@@ -3684,8 +3377,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 308,
-    "Lesson": 7,
+    "Lesson": 0,
     "Hiragana": "セロテープ",
     "Romaji": "serote-pu",
     "Kanji": "",
@@ -3696,8 +3388,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 309,
-    "Lesson": 7,
+    "Lesson": 0,
     "Hiragana": "けしゴム",
     "Romaji": "keshigomu",
     "Kanji": "",
@@ -3708,8 +3399,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 310,
-    "Lesson": 7,
+    "Lesson": 0,
     "Hiragana": "かみ",
     "Romaji": "kami",
     "Kanji": "",
@@ -3720,8 +3410,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 311,
-    "Lesson": 7,
+    "Lesson": 0,
     "Hiragana": "はな",
     "Romaji": "hana",
     "Kanji": "花",
@@ -3732,8 +3421,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 312,
-    "Lesson": 7,
+    "Lesson": 0,
     "Hiragana": "シャツ",
     "Romaji": "shatsu",
     "Kanji": "",
@@ -3744,8 +3432,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 313,
-    "Lesson": 7,
+    "Lesson": 0,
     "Hiragana": "プレゼント",
     "Romaji": "purezento",
     "Kanji": "",
@@ -3756,8 +3443,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 314,
-    "Lesson": 7,
+    "Lesson": 0,
     "Hiragana": "にもつ",
     "Romaji": "nimotsu",
     "Kanji": "荷物",
@@ -3768,8 +3454,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 315,
-    "Lesson": 7,
+    "Lesson": 0,
     "Hiragana": "おかね",
     "Romaji": "okane",
     "Kanji": "お金",
@@ -3780,8 +3465,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 316,
-    "Lesson": 7,
+    "Lesson": 0,
     "Hiragana": "きっぷ",
     "Romaji": "kippu",
     "Kanji": "",
@@ -3792,8 +3476,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 317,
-    "Lesson": 7,
+    "Lesson": 0,
     "Hiragana": "クリスマス",
     "Romaji": "kurisumasu",
     "Kanji": "",
@@ -3804,8 +3487,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 318,
-    "Lesson": 7,
+    "Lesson": 0,
     "Hiragana": "ちち",
     "Romaji": "chichi",
     "Kanji": "父",
@@ -3816,8 +3498,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 319,
-    "Lesson": 7,
+    "Lesson": 0,
     "Hiragana": "はは",
     "Romaji": "haha",
     "Kanji": "母",
@@ -3828,8 +3509,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 320,
-    "Lesson": 7,
+    "Lesson": 0,
     "Hiragana": "これから",
     "Romaji": "korekara",
     "Kanji": "",
@@ -3840,8 +3520,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 321,
-    "Lesson": 7,
+    "Lesson": 0,
     "Hiragana": "おとうさん",
     "Romaji": "otousan",
     "Kanji": "お父さん",
@@ -3852,8 +3531,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 322,
-    "Lesson": 7,
+    "Lesson": 0,
     "Hiragana": "おかあさん",
     "Romaji": "okaasan",
     "Kanji": "お母さん",
@@ -3864,8 +3542,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 323,
-    "Lesson": 7,
+    "Lesson": 0,
     "Hiragana": "もう",
     "Romaji": "mou",
     "Kanji": "",
@@ -3876,8 +3553,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 324,
-    "Lesson": 7,
+    "Lesson": 0,
     "Hiragana": "まだ",
     "Romaji": "mada",
     "Kanji": "",
@@ -3888,8 +3564,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 325,
-    "Lesson": 7,
+    "Lesson": 0,
     "Hiragana": "ごめんなさい",
     "Romaji": "gomennasai",
     "Kanji": "",
@@ -3900,8 +3575,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 326,
-    "Lesson": 7,
+    "Lesson": 0,
     "Hiragana": "いらっしゃい",
     "Romaji": "irasshai",
     "Kanji": "",
@@ -3912,8 +3586,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 327,
-    "Lesson": 7,
+    "Lesson": 0,
     "Hiragana": "いってきます",
     "Romaji": "ittekimasu",
     "Kanji": "",
@@ -3924,8 +3597,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 328,
-    "Lesson": 7,
+    "Lesson": 0,
     "Hiragana": "しつれいします",
     "Romaji": "shitsureishimasu",
     "Kanji": "",
@@ -3936,8 +3608,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 329,
-    "Lesson": 7,
+    "Lesson": 0,
     "Hiragana": "りょこう",
     "Romaji": "ryokou",
     "Kanji": "旅行",
@@ -3948,8 +3619,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 330,
-    "Lesson": 7,
+    "Lesson": 0,
     "Hiragana": "おみやげ",
     "Romaji": "omiyage",
     "Kanji": "お土産",
@@ -3960,8 +3630,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 331,
-    "Lesson": 7,
+    "Lesson": 0,
     "Hiragana": "ヨーロッパ",
     "Romaji": "yo-roppa",
     "Kanji": "",
@@ -3972,8 +3641,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 332,
-    "Lesson": 8,
+    "Lesson": 0,
     "Hiragana": "みにくい",
     "Romaji": "minikui",
     "Kanji": "",
@@ -3984,8 +3652,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 333,
-    "Lesson": 8,
+    "Lesson": 0,
     "Hiragana": "ハンサム(な)",
     "Romaji": "hansamu(na)",
     "Kanji": "",
@@ -3996,8 +3663,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi な"
   },
   {
-    "id": 334,
-    "Lesson": 8,
+    "Lesson": 0,
     "Hiragana": "きれい(な)",
     "Romaji": "kirei(na)",
     "Kanji": "",
@@ -4008,8 +3674,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi な"
   },
   {
-    "id": 335,
-    "Lesson": 8,
+    "Lesson": 0,
     "Hiragana": "しずか(な)",
     "Romaji": "shizuka(na)",
     "Kanji": "静か(な)",
@@ -4020,8 +3685,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi な"
   },
   {
-    "id": 336,
-    "Lesson": 8,
+    "Lesson": 0,
     "Hiragana": "にぎやか(な)",
     "Romaji": "nigiyaka(na)",
     "Kanji": "賑やか(na)",
@@ -4032,8 +3696,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi な"
   },
   {
-    "id": 337,
-    "Lesson": 8,
+    "Lesson": 0,
     "Hiragana": "ゆうめい(な)",
     "Romaji": "yuumei(na)",
     "Kanji": "有名(na)",
@@ -4044,8 +3707,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi な"
   },
   {
-    "id": 338,
-    "Lesson": 8,
+    "Lesson": 0,
     "Hiragana": "しんせつ(な)",
     "Romaji": "shinsetsu(na)",
     "Kanji": "親切(na)",
@@ -4056,8 +3718,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi な"
   },
   {
-    "id": 339,
-    "Lesson": 8,
+    "Lesson": 0,
     "Hiragana": "げんき(な)",
     "Romaji": "genki(na)",
     "Kanji": "元気(na)",
@@ -4068,8 +3729,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi な"
   },
   {
-    "id": 340,
-    "Lesson": 8,
+    "Lesson": 0,
     "Hiragana": "ひま(な)",
     "Romaji": "hima(na)",
     "Kanji": "暇(na)",
@@ -4080,8 +3740,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi な"
   },
   {
-    "id": 341,
-    "Lesson": 8,
+    "Lesson": 0,
     "Hiragana": "いそがしい",
     "Romaji": "isogashii",
     "Kanji": "忙しい",
@@ -4092,8 +3751,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 342,
-    "Lesson": 8,
+    "Lesson": 0,
     "Hiragana": "べんり(な)",
     "Romaji": "benri(na)",
     "Kanji": "便利(na)",
@@ -4104,8 +3762,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi な"
   },
   {
-    "id": 343,
-    "Lesson": 8,
+    "Lesson": 0,
     "Hiragana": "すてき(な)",
     "Romaji": "suteki(na)",
     "Kanji": "",
@@ -4116,8 +3773,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi な"
   },
   {
-    "id": 344,
-    "Lesson": 8,
+    "Lesson": 0,
     "Hiragana": "おおきい",
     "Romaji": "ookii",
     "Kanji": "大きい",
@@ -4128,8 +3784,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 345,
-    "Lesson": 8,
+    "Lesson": 0,
     "Hiragana": "ちいさい",
     "Romaji": "chiisai",
     "Kanji": "小さい",
@@ -4140,8 +3795,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 346,
-    "Lesson": 8,
+    "Lesson": 0,
     "Hiragana": "あたらしい",
     "Romaji": "atarashii",
     "Kanji": "新しい",
@@ -4152,8 +3806,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 347,
-    "Lesson": 8,
+    "Lesson": 0,
     "Hiragana": "ふるい",
     "Romaji": "furui",
     "Kanji": "古い",
@@ -4164,8 +3817,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 348,
-    "Lesson": 8,
+    "Lesson": 0,
     "Hiragana": "いい",
     "Romaji": "ii",
     "Kanji": "",
@@ -4176,8 +3828,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 349,
-    "Lesson": 8,
+    "Lesson": 0,
     "Hiragana": "わるい",
     "Romaji": "warui",
     "Kanji": "悪い",
@@ -4188,8 +3839,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 350,
-    "Lesson": 8,
+    "Lesson": 0,
     "Hiragana": "あつい",
     "Romaji": "atsui",
     "Kanji": "熱い",
@@ -4200,8 +3850,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 351,
-    "Lesson": 8,
+    "Lesson": 0,
     "Hiragana": "つめたい",
     "Romaji": "tsumetai",
     "Kanji": "冷たい",
@@ -4212,8 +3861,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 352,
-    "Lesson": 8,
+    "Lesson": 0,
     "Hiragana": "あつい",
     "Romaji": "atsui",
     "Kanji": "暑い",
@@ -4224,8 +3872,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 353,
-    "Lesson": 8,
+    "Lesson": 0,
     "Hiragana": "さむい",
     "Romaji": "samui",
     "Kanji": "寒い",
@@ -4236,8 +3883,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 354,
-    "Lesson": 8,
+    "Lesson": 0,
     "Hiragana": "むずかしい",
     "Romaji": "muzukashii",
     "Kanji": "難しい",
@@ -4248,8 +3894,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 355,
-    "Lesson": 8,
+    "Lesson": 0,
     "Hiragana": "やさしい",
     "Romaji": "yasashii",
     "Kanji": "優しい",
@@ -4260,8 +3905,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 356,
-    "Lesson": 8,
+    "Lesson": 0,
     "Hiragana": "きびしい",
     "Romaji": "kibishii",
     "Kanji": "",
@@ -4272,8 +3916,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 357,
-    "Lesson": 8,
+    "Lesson": 0,
     "Hiragana": "やさしい",
     "Romaji": "yasashii",
     "Kanji": "",
@@ -4284,8 +3927,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 358,
-    "Lesson": 8,
+    "Lesson": 0,
     "Hiragana": "たかい",
     "Romaji": "takai",
     "Kanji": "高い",
@@ -4296,8 +3938,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 359,
-    "Lesson": 8,
+    "Lesson": 0,
     "Hiragana": "安い",
     "Romaji": "yasui",
     "Kanji": "安い",
@@ -4308,8 +3949,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 360,
-    "Lesson": 8,
+    "Lesson": 0,
     "Hiragana": "ひくい",
     "Romaji": "hikui",
     "Kanji": "低い",
@@ -4320,8 +3960,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 361,
-    "Lesson": 8,
+    "Lesson": 0,
     "Hiragana": "おもしろい",
     "Romaji": "omishiroi",
     "Kanji": "",
@@ -4332,8 +3971,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 362,
-    "Lesson": 8,
+    "Lesson": 0,
     "Hiragana": "おいしい",
     "Romaji": "oishii",
     "Kanji": "",
@@ -4344,8 +3982,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 363,
-    "Lesson": 8,
+    "Lesson": 0,
     "Hiragana": "たのしい",
     "Romaji": "tanoshii",
     "Kanji": "楽しい",
@@ -4356,8 +3993,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 364,
-    "Lesson": 8,
+    "Lesson": 0,
     "Hiragana": "しろい",
     "Romaji": "shiroi",
     "Kanji": "白い",
@@ -4368,8 +4004,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 365,
-    "Lesson": 8,
+    "Lesson": 0,
     "Hiragana": "くろい",
     "Romaji": "kuroi",
     "Kanji": "黒い",
@@ -4380,8 +4015,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 366,
-    "Lesson": 8,
+    "Lesson": 0,
     "Hiragana": "あかい",
     "Romaji": "akai",
     "Kanji": "赤い",
@@ -4392,8 +4026,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 367,
-    "Lesson": 8,
+    "Lesson": 0,
     "Hiragana": "あおい",
     "Romaji": "aoi",
     "Kanji": "青い",
@@ -4404,8 +4037,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 368,
-    "Lesson": 8,
+    "Lesson": 0,
     "Hiragana": "さくら",
     "Romaji": "sakura",
     "Kanji": "桜",
@@ -4416,8 +4048,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 369,
-    "Lesson": 8,
+    "Lesson": 0,
     "Hiragana": "やま",
     "Romaji": "yama",
     "Kanji": "山",
@@ -4428,8 +4059,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 370,
-    "Lesson": 8,
+    "Lesson": 0,
     "Hiragana": "まち",
     "Romaji": "machi",
     "Kanji": "町",
@@ -4440,8 +4070,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 371,
-    "Lesson": 8,
+    "Lesson": 0,
     "Hiragana": "たべもの",
     "Romaji": "tabemono",
     "Kanji": "食べ物",
@@ -4452,8 +4081,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 372,
-    "Lesson": 8,
+    "Lesson": 0,
     "Hiragana": "ところ",
     "Romaji": "tokoro",
     "Kanji": "所",
@@ -4464,8 +4092,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 373,
-    "Lesson": 8,
+    "Lesson": 0,
     "Hiragana": "りょう",
     "Romaji": "ryou",
     "Kanji": "",
@@ -4476,8 +4103,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 374,
-    "Lesson": 8,
+    "Lesson": 0,
     "Hiragana": "べんきょう",
     "Romaji": "benkyou",
     "Kanji": "勉強",
@@ -4488,8 +4114,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 375,
-    "Lesson": 8,
+    "Lesson": 0,
     "Hiragana": "せいかつ",
     "Romaji": "seikatsu",
     "Kanji": "生活",
@@ -4500,8 +4125,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 376,
-    "Lesson": 8,
+    "Lesson": 0,
     "Hiragana": "おしごと",
     "Romaji": "oshigoto",
     "Kanji": "お仕事",
@@ -4512,8 +4136,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 377,
-    "Lesson": 8,
+    "Lesson": 0,
     "Hiragana": "どう",
     "Romaji": "dou",
     "Kanji": "",
@@ -4524,8 +4147,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 378,
-    "Lesson": 8,
+    "Lesson": 0,
     "Hiragana": "どんな",
     "Romaji": "donna",
     "Kanji": "",
@@ -4536,8 +4158,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 379,
-    "Lesson": 8,
+    "Lesson": 0,
     "Hiragana": "どれ",
     "Romaji": "dore",
     "Kanji": "",
@@ -4548,8 +4169,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 380,
-    "Lesson": 9,
+    "Lesson": 0,
     "Hiragana": "わかります",
     "Romaji": "wakarimasu",
     "Kanji": "分かります",
@@ -4560,8 +4180,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 381,
-    "Lesson": 9,
+    "Lesson": 0,
     "Hiragana": "あります",
     "Romaji": "arimasu",
     "Kanji": "",
@@ -4572,8 +4191,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 382,
-    "Lesson": 9,
+    "Lesson": 0,
     "Hiragana": "すき[な]",
     "Romaji": "suki[na]",
     "Kanji": "好き[な]",
@@ -4584,8 +4202,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi な"
   },
   {
-    "id": 383,
-    "Lesson": 9,
+    "Lesson": 0,
     "Hiragana": "きらい[な]",
     "Romaji": "kirai[na]",
     "Kanji": "嫌い[na]",
@@ -4596,8 +4213,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi な"
   },
   {
-    "id": 384,
-    "Lesson": 9,
+    "Lesson": 0,
     "Hiragana": "じょうず[な]",
     "Romaji": "jouzu[na]",
     "Kanji": "上手[na]",
@@ -4608,8 +4224,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi な"
   },
   {
-    "id": 385,
-    "Lesson": 9,
+    "Lesson": 0,
     "Hiragana": "へた[な]",
     "Romaji": "heta[na]",
     "Kanji": "下手[na]",
@@ -4620,8 +4235,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi な"
   },
   {
-    "id": 386,
-    "Lesson": 9,
+    "Lesson": 0,
     "Hiragana": "りょうり",
     "Romaji": "ryouri",
     "Kanji": "料理",
@@ -4632,8 +4246,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 387,
-    "Lesson": 9,
+    "Lesson": 0,
     "Hiragana": "のみもの",
     "Romaji": "nomimono",
     "Kanji": "飲み物",
@@ -4644,8 +4257,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 388,
-    "Lesson": 9,
+    "Lesson": 0,
     "Hiragana": "スポーツ",
     "Romaji": "supo-tsu",
     "Kanji": "",
@@ -4656,8 +4268,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 389,
-    "Lesson": 9,
+    "Lesson": 0,
     "Hiragana": "やきゅう",
     "Romaji": "yakyuu",
     "Kanji": "野球",
@@ -4668,8 +4279,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 390,
-    "Lesson": 9,
+    "Lesson": 0,
     "Hiragana": "ダンス",
     "Romaji": "dansu",
     "Kanji": "",
@@ -4680,8 +4290,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 391,
-    "Lesson": 9,
+    "Lesson": 0,
     "Hiragana": "おんがく",
     "Romaji": "ongaku",
     "Kanji": "音楽",
@@ -4692,8 +4301,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 392,
-    "Lesson": 9,
+    "Lesson": 0,
     "Hiragana": "うた",
     "Romaji": "uta",
     "Kanji": "歌",
@@ -4704,8 +4312,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 393,
-    "Lesson": 9,
+    "Lesson": 0,
     "Hiragana": "クラシック",
     "Romaji": "kurashikku",
     "Kanji": "",
@@ -4716,8 +4323,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 394,
-    "Lesson": 9,
+    "Lesson": 0,
     "Hiragana": "ジャズ",
     "Romaji": "jazu",
     "Kanji": "",
@@ -4728,8 +4334,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 395,
-    "Lesson": 9,
+    "Lesson": 0,
     "Hiragana": "コンサート",
     "Romaji": "konsa-to",
     "Kanji": "",
@@ -4740,8 +4345,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 396,
-    "Lesson": 9,
+    "Lesson": 0,
     "Hiragana": "カラオケ",
     "Romaji": "karaoke",
     "Kanji": "",
@@ -4752,8 +4356,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 397,
-    "Lesson": 9,
+    "Lesson": 0,
     "Hiragana": "かぶき",
     "Romaji": "kabuki",
     "Kanji": "歌舞伎",
@@ -4764,8 +4367,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 398,
-    "Lesson": 9,
+    "Lesson": 0,
     "Hiragana": "え",
     "Romaji": "e",
     "Kanji": "絵",
@@ -4776,8 +4378,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 399,
-    "Lesson": 9,
+    "Lesson": 0,
     "Hiragana": "じ",
     "Romaji": "ji",
     "Kanji": "字",
@@ -4788,8 +4389,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 400,
-    "Lesson": 9,
+    "Lesson": 0,
     "Hiragana": "かんじ",
     "Romaji": "kanji",
     "Kanji": "漢字",
@@ -4800,8 +4400,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 401,
-    "Lesson": 9,
+    "Lesson": 0,
     "Hiragana": "ひらがな",
     "Romaji": "hiragana",
     "Kanji": "",
@@ -4812,8 +4411,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 402,
-    "Lesson": 9,
+    "Lesson": 0,
     "Hiragana": "かたかな",
     "Romaji": "katakana",
     "Kanji": "",
@@ -4824,8 +4422,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 403,
-    "Lesson": 9,
+    "Lesson": 0,
     "Hiragana": "ローマじ",
     "Romaji": "ro-maji",
     "Kanji": "ローマ字",
@@ -4836,8 +4433,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 404,
-    "Lesson": 9,
+    "Lesson": 0,
     "Hiragana": "こまかいおかね",
     "Romaji": "komakai okane",
     "Kanji": "細かいお金",
@@ -4848,8 +4444,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 405,
-    "Lesson": 9,
+    "Lesson": 0,
     "Hiragana": "チケット",
     "Romaji": "chiketto",
     "Kanji": "",
@@ -4860,8 +4455,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 406,
-    "Lesson": 9,
+    "Lesson": 0,
     "Hiragana": "じかん",
     "Romaji": "jikan",
     "Kanji": "時間",
@@ -4872,8 +4466,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 407,
-    "Lesson": 9,
+    "Lesson": 0,
     "Hiragana": "ようじ",
     "Romaji": "youji",
     "Kanji": "用事",
@@ -4884,8 +4477,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 408,
-    "Lesson": 9,
+    "Lesson": 0,
     "Hiragana": "やくそく",
     "Romaji": "yakusoku",
     "Kanji": "約束",
@@ -4896,8 +4488,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 409,
-    "Lesson": 9,
+    "Lesson": 0,
     "Hiragana": "ごしゅじん",
     "Romaji": "goshujin",
     "Kanji": "ご主人",
@@ -4908,8 +4499,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 410,
-    "Lesson": 9,
+    "Lesson": 0,
     "Hiragana": "おっと / しゅじん",
     "Romaji": "otto / shujin",
     "Kanji": "夫 / 主人",
@@ -4920,8 +4510,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 411,
-    "Lesson": 9,
+    "Lesson": 0,
     "Hiragana": "おくさん",
     "Romaji": "okusan",
     "Kanji": "奥さん",
@@ -4932,8 +4521,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 412,
-    "Lesson": 9,
+    "Lesson": 0,
     "Hiragana": "つま / かない",
     "Romaji": "tsuma / kanai",
     "Kanji": "妻 / 家内",
@@ -4944,8 +4532,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 413,
-    "Lesson": 9,
+    "Lesson": 0,
     "Hiragana": "こども",
     "Romaji": "kodomo",
     "Kanji": "子ども",
@@ -4956,8 +4543,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 414,
-    "Lesson": 9,
+    "Lesson": 0,
     "Hiragana": "よく",
     "Romaji": "yoku",
     "Kanji": "",
@@ -4968,8 +4554,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 415,
-    "Lesson": 9,
+    "Lesson": 0,
     "Hiragana": "だいたい",
     "Romaji": "daitai",
     "Kanji": "",
@@ -4980,8 +4565,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 416,
-    "Lesson": 9,
+    "Lesson": 0,
     "Hiragana": "たくさん",
     "Romaji": "takusan",
     "Kanji": "",
@@ -4992,8 +4576,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 417,
-    "Lesson": 9,
+    "Lesson": 0,
     "Hiragana": "すこし",
     "Romaji": "sukoshi",
     "Kanji": "少し",
@@ -5004,8 +4587,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 418,
-    "Lesson": 9,
+    "Lesson": 0,
     "Hiragana": "ぜんぜん",
     "Romaji": "zenzen",
     "Kanji": "全然",
@@ -5016,8 +4598,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 419,
-    "Lesson": 9,
+    "Lesson": 0,
     "Hiragana": "はやく",
     "Romaji": "hayaku",
     "Kanji": "早く,速く",
@@ -5028,8 +4609,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 420,
-    "Lesson": 9,
+    "Lesson": 0,
     "Hiragana": "～から",
     "Romaji": "～kara",
     "Kanji": "",
@@ -5040,8 +4620,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 421,
-    "Lesson": 9,
+    "Lesson": 0,
     "Hiragana": "どうして",
     "Romaji": "doushite",
     "Kanji": "",
@@ -5052,8 +4631,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 422,
-    "Lesson": 9,
+    "Lesson": 0,
     "Hiragana": "ざんねんです[ね]",
     "Romaji": "zannen desu [ne]",
     "Kanji": "残念です[ね]",
@@ -5064,8 +4642,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 423,
-    "Lesson": 9,
+    "Lesson": 0,
     "Hiragana": "すみません",
     "Romaji": "sumimasen",
     "Kanji": "",
@@ -5076,8 +4653,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 424,
-    "Lesson": 9,
+    "Lesson": 0,
     "Hiragana": "もしもし",
     "Romaji": "moshimoshi",
     "Kanji": "",
@@ -5088,8 +4664,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 425,
-    "Lesson": 9,
+    "Lesson": 0,
     "Hiragana": "ああ",
     "Romaji": "aa",
     "Kanji": "",
@@ -5100,8 +4675,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 426,
-    "Lesson": 9,
+    "Lesson": 0,
     "Hiragana": "いっしょにいかがですか",
     "Romaji": "isshoni ikaga desu ka",
     "Kanji": "",
@@ -5112,8 +4686,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 427,
-    "Lesson": 9,
+    "Lesson": 0,
     "Hiragana": "ちょっと….",
     "Romaji": "chotto....",
     "Kanji": "",
@@ -5124,8 +4697,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 428,
-    "Lesson": 9,
+    "Lesson": 0,
     "Hiragana": "だめですか。",
     "Romaji": "dame desu ka",
     "Kanji": "",
@@ -5136,8 +4708,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 429,
-    "Lesson": 9,
+    "Lesson": 0,
     "Hiragana": "またこんどおねがいします",
     "Romaji": "mata kondo onegaishimasu",
     "Kanji": "",
@@ -5148,8 +4719,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 430,
-    "Lesson": 10,
+    "Lesson": 0,
     "Hiragana": "います",
     "Romaji": "imasu",
     "Kanji": "",
@@ -5160,8 +4730,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 431,
-    "Lesson": 10,
+    "Lesson": 0,
     "Hiragana": "あります",
     "Romaji": "arimasu",
     "Kanji": "",
@@ -5172,8 +4741,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 432,
-    "Lesson": 10,
+    "Lesson": 0,
     "Hiragana": "いろいろ[な]",
     "Romaji": "iroiro[na]",
     "Kanji": "",
@@ -5184,8 +4752,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi な"
   },
   {
-    "id": 433,
-    "Lesson": 10,
+    "Lesson": 0,
     "Hiragana": "おとこのひと",
     "Romaji": "otoko no hito",
     "Kanji": "男の人",
@@ -5196,8 +4763,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 434,
-    "Lesson": 10,
+    "Lesson": 0,
     "Hiragana": "おんなのひと",
     "Romaji": "onna no hito",
     "Kanji": "女の人",
@@ -5208,8 +4774,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 435,
-    "Lesson": 10,
+    "Lesson": 0,
     "Hiragana": "おとこのこ",
     "Romaji": "otoko no ko",
     "Kanji": "男の子",
@@ -5220,8 +4785,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 436,
-    "Lesson": 10,
+    "Lesson": 0,
     "Hiragana": "おんなのこ",
     "Romaji": "onna no ko",
     "Kanji": "女の子",
@@ -5232,8 +4796,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 437,
-    "Lesson": 10,
+    "Lesson": 0,
     "Hiragana": "いぬ",
     "Romaji": "inu",
     "Kanji": "犬",
@@ -5244,8 +4807,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 438,
-    "Lesson": 10,
+    "Lesson": 0,
     "Hiragana": "ねこ",
     "Romaji": "neko",
     "Kanji": "猫",
@@ -5256,8 +4818,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 439,
-    "Lesson": 10,
+    "Lesson": 0,
     "Hiragana": "き",
     "Romaji": "ki",
     "Kanji": "木",
@@ -5268,8 +4829,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 440,
-    "Lesson": 10,
+    "Lesson": 0,
     "Hiragana": "もの",
     "Romaji": "mono",
     "Kanji": "物",
@@ -5280,8 +4840,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 441,
-    "Lesson": 10,
+    "Lesson": 0,
     "Hiragana": "フィルム",
     "Romaji": "firumu",
     "Kanji": "",
@@ -5292,8 +4851,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 442,
-    "Lesson": 10,
+    "Lesson": 0,
     "Hiragana": "でんち",
     "Romaji": "denchi",
     "Kanji": "電池",
@@ -5304,8 +4862,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 443,
-    "Lesson": 10,
+    "Lesson": 0,
     "Hiragana": "はこ",
     "Romaji": "hako",
     "Kanji": "箱",
@@ -5316,8 +4873,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 444,
-    "Lesson": 10,
+    "Lesson": 0,
     "Hiragana": "スイッチ",
     "Romaji": "suicchi",
     "Kanji": "",
@@ -5328,8 +4884,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 445,
-    "Lesson": 10,
+    "Lesson": 0,
     "Hiragana": "れいぞうこ",
     "Romaji": "reizouko",
     "Kanji": "冷蔵庫",
@@ -5340,8 +4895,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 446,
-    "Lesson": 10,
+    "Lesson": 0,
     "Hiragana": "テーブル",
     "Romaji": "te-buru",
     "Kanji": "",
@@ -5352,8 +4906,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 447,
-    "Lesson": 10,
+    "Lesson": 0,
     "Hiragana": "ベッド",
     "Romaji": "beddo",
     "Kanji": "",
@@ -5364,8 +4917,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 448,
-    "Lesson": 10,
+    "Lesson": 0,
     "Hiragana": "たな",
     "Romaji": "tana",
     "Kanji": "棚",
@@ -5376,8 +4928,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 449,
-    "Lesson": 10,
+    "Lesson": 0,
     "Hiragana": "ドア",
     "Romaji": "doa",
     "Kanji": "",
@@ -5388,8 +4939,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 450,
-    "Lesson": 10,
+    "Lesson": 0,
     "Hiragana": "まど",
     "Romaji": "mado",
     "Kanji": "窓",
@@ -5400,8 +4950,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 451,
-    "Lesson": 10,
+    "Lesson": 0,
     "Hiragana": "ポスト",
     "Romaji": "posuto",
     "Kanji": "",
@@ -5412,8 +4961,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 452,
-    "Lesson": 10,
+    "Lesson": 0,
     "Hiragana": "ビル",
     "Romaji": "biru",
     "Kanji": "",
@@ -5424,8 +4972,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 453,
-    "Lesson": 10,
+    "Lesson": 0,
     "Hiragana": "こうえん",
     "Romaji": "kouen",
     "Kanji": "公園",
@@ -5436,8 +4983,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 454,
-    "Lesson": 10,
+    "Lesson": 0,
     "Hiragana": "きっさてん",
     "Romaji": "kissaten",
     "Kanji": "喫茶店",
@@ -5448,8 +4994,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 455,
-    "Lesson": 10,
+    "Lesson": 0,
     "Hiragana": "ほんや",
     "Romaji": "honya",
     "Kanji": "本屋",
@@ -5460,8 +5005,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 456,
-    "Lesson": 10,
+    "Lesson": 0,
     "Hiragana": "～や",
     "Romaji": "～ya",
     "Kanji": "～屋",
@@ -5472,8 +5016,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 457,
-    "Lesson": 10,
+    "Lesson": 0,
     "Hiragana": "のりば",
     "Romaji": "noriba",
     "Kanji": "乗り場",
@@ -5484,8 +5027,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 458,
-    "Lesson": 10,
+    "Lesson": 0,
     "Hiragana": "けん",
     "Romaji": "ken",
     "Kanji": "県",
@@ -5496,8 +5038,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 459,
-    "Lesson": 10,
+    "Lesson": 0,
     "Hiragana": "うえ",
     "Romaji": "ue",
     "Kanji": "上",
@@ -5508,8 +5049,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 460,
-    "Lesson": 10,
+    "Lesson": 0,
     "Hiragana": "した",
     "Romaji": "shita",
     "Kanji": "下",
@@ -5520,8 +5060,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 461,
-    "Lesson": 10,
+    "Lesson": 0,
     "Hiragana": "まえ",
     "Romaji": "mae",
     "Kanji": "前",
@@ -5532,8 +5071,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 462,
-    "Lesson": 10,
+    "Lesson": 0,
     "Hiragana": "うしろ",
     "Romaji": "ushiro",
     "Kanji": "後ろ",
@@ -5544,8 +5082,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 463,
-    "Lesson": 10,
+    "Lesson": 0,
     "Hiragana": "みぎ",
     "Romaji": "migi",
     "Kanji": "右",
@@ -5556,8 +5093,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 464,
-    "Lesson": 10,
+    "Lesson": 0,
     "Hiragana": "ひだり",
     "Romaji": "hidari",
     "Kanji": "左",
@@ -5568,8 +5104,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 465,
-    "Lesson": 10,
+    "Lesson": 0,
     "Hiragana": "なか",
     "Romaji": "naka",
     "Kanji": "中",
@@ -5580,8 +5115,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 466,
-    "Lesson": 10,
+    "Lesson": 0,
     "Hiragana": "そと",
     "Romaji": "soto",
     "Kanji": "外",
@@ -5592,8 +5126,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 467,
-    "Lesson": 10,
+    "Lesson": 0,
     "Hiragana": "となり",
     "Romaji": "tonari",
     "Kanji": "隣",
@@ -5604,8 +5137,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 468,
-    "Lesson": 10,
+    "Lesson": 0,
     "Hiragana": "ちかく",
     "Romaji": "chikaku",
     "Kanji": "近く",
@@ -5616,8 +5148,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 469,
-    "Lesson": 10,
+    "Lesson": 0,
     "Hiragana": "あいだ",
     "Romaji": "aida",
     "Kanji": "間",
@@ -5628,8 +5159,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 470,
-    "Lesson": 10,
+    "Lesson": 0,
     "Hiragana": "～や～[など]",
     "Romaji": "～ya～[nado]",
     "Kanji": "",
@@ -5640,8 +5170,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 471,
-    "Lesson": 10,
+    "Lesson": 0,
     "Hiragana": "いちばん～",
     "Romaji": "ichiban～",
     "Kanji": "",
@@ -5652,8 +5181,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 472,
-    "Lesson": 10,
+    "Lesson": 0,
     "Hiragana": "―だんめ",
     "Romaji": "―danme",
     "Kanji": "―段目",
@@ -5664,8 +5192,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 473,
-    "Lesson": 10,
+    "Lesson": 0,
     "Hiragana": "すみません",
     "Romaji": "sumimasen",
     "Kanji": "",
@@ -5676,8 +5203,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 474,
-    "Lesson": 10,
+    "Lesson": 0,
     "Hiragana": "チリソース",
     "Romaji": "chiri so-su",
     "Kanji": "",
@@ -5688,8 +5214,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 475,
-    "Lesson": 11,
+    "Lesson": 0,
     "Hiragana": "います",
     "Romaji": "imasu",
     "Kanji": "",
@@ -5700,8 +5225,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 476,
-    "Lesson": 11,
+    "Lesson": 0,
     "Hiragana": "かかります",
     "Romaji": "kakarimasu",
     "Kanji": "",
@@ -5712,8 +5236,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 477,
-    "Lesson": 11,
+    "Lesson": 0,
     "Hiragana": "やすみます",
     "Romaji": "yasumimasu",
     "Kanji": "休みます",
@@ -5724,8 +5247,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 478,
-    "Lesson": 11,
+    "Lesson": 0,
     "Hiragana": "ひとつ",
     "Romaji": "hitotsu",
     "Kanji": "",
@@ -5736,8 +5258,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 479,
-    "Lesson": 11,
+    "Lesson": 0,
     "Hiragana": "ふたつ",
     "Romaji": "futatsu",
     "Kanji": "",
@@ -5748,8 +5269,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 480,
-    "Lesson": 11,
+    "Lesson": 0,
     "Hiragana": "みっつ",
     "Romaji": "mittsu",
     "Kanji": "",
@@ -5760,8 +5280,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 481,
-    "Lesson": 11,
+    "Lesson": 0,
     "Hiragana": "よっつ",
     "Romaji": "yottsu",
     "Kanji": "",
@@ -5772,8 +5291,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 482,
-    "Lesson": 11,
+    "Lesson": 0,
     "Hiragana": "いつつ",
     "Romaji": "itsutsu",
     "Kanji": "",
@@ -5784,8 +5302,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 483,
-    "Lesson": 11,
+    "Lesson": 0,
     "Hiragana": "むっつ",
     "Romaji": "muttsu",
     "Kanji": "",
@@ -5796,8 +5313,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 484,
-    "Lesson": 11,
+    "Lesson": 0,
     "Hiragana": "ななつ",
     "Romaji": "nanatsu",
     "Kanji": "",
@@ -5808,8 +5324,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 485,
-    "Lesson": 11,
+    "Lesson": 0,
     "Hiragana": "やっつ",
     "Romaji": "yattsu",
     "Kanji": "",
@@ -5820,8 +5335,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 486,
-    "Lesson": 11,
+    "Lesson": 0,
     "Hiragana": "ここのつ",
     "Romaji": "kokonotsu",
     "Kanji": "",
@@ -5832,8 +5346,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 487,
-    "Lesson": 11,
+    "Lesson": 0,
     "Hiragana": "とお",
     "Romaji": "too",
     "Kanji": "",
@@ -5844,8 +5357,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 488,
-    "Lesson": 11,
+    "Lesson": 0,
     "Hiragana": "いくつ",
     "Romaji": "ikutsu",
     "Kanji": "",
@@ -5856,8 +5368,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 489,
-    "Lesson": 11,
+    "Lesson": 0,
     "Hiragana": "ひとり",
     "Romaji": "hitori",
     "Kanji": "一人",
@@ -5868,8 +5379,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 490,
-    "Lesson": 11,
+    "Lesson": 0,
     "Hiragana": "ふたり",
     "Romaji": "futari",
     "Kanji": "二人",
@@ -5880,8 +5390,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 491,
-    "Lesson": 11,
+    "Lesson": 0,
     "Hiragana": "～にん",
     "Romaji": "～nin",
     "Kanji": "～人",
@@ -5892,8 +5401,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 492,
-    "Lesson": 11,
+    "Lesson": 0,
     "Hiragana": "～だい",
     "Romaji": "～dai",
     "Kanji": "",
@@ -5904,8 +5412,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 493,
-    "Lesson": 11,
+    "Lesson": 0,
     "Hiragana": "～まい",
     "Romaji": "～mai",
     "Kanji": "",
@@ -5916,8 +5423,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 494,
-    "Lesson": 11,
+    "Lesson": 0,
     "Hiragana": "～かい",
     "Romaji": "～kai",
     "Kanji": "",
@@ -5928,8 +5434,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 495,
-    "Lesson": 11,
+    "Lesson": 0,
     "Hiragana": "りんご",
     "Romaji": "ringo",
     "Kanji": "",
@@ -5940,8 +5445,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 496,
-    "Lesson": 11,
+    "Lesson": 0,
     "Hiragana": "みかん",
     "Romaji": "mikan",
     "Kanji": "",
@@ -5952,8 +5456,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 497,
-    "Lesson": 11,
+    "Lesson": 0,
     "Hiragana": "サンドイッチ",
     "Romaji": "sandoicchi",
     "Kanji": "",
@@ -5964,8 +5467,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 498,
-    "Lesson": 11,
+    "Lesson": 0,
     "Hiragana": "カレー(ライス)",
     "Romaji": "kare-(raisu)",
     "Kanji": "",
@@ -5976,8 +5478,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 499,
-    "Lesson": 11,
+    "Lesson": 0,
     "Hiragana": "アイスクリーム",
     "Romaji": "aisukuri-mu",
     "Kanji": "",
@@ -5988,8 +5489,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 500,
-    "Lesson": 11,
+    "Lesson": 0,
     "Hiragana": "きって",
     "Romaji": "kitte",
     "Kanji": "切手",
@@ -6000,8 +5500,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 501,
-    "Lesson": 11,
+    "Lesson": 0,
     "Hiragana": "はがき",
     "Romaji": "hagaki",
     "Kanji": "葉書",
@@ -6012,8 +5511,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 502,
-    "Lesson": 11,
+    "Lesson": 0,
     "Hiragana": "ふうとう",
     "Romaji": "fuutou",
     "Kanji": "封筒",
@@ -6024,8 +5522,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 503,
-    "Lesson": 11,
+    "Lesson": 0,
     "Hiragana": "そくたつ",
     "Romaji": "sokutatsu",
     "Kanji": "速達",
@@ -6036,8 +5533,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 504,
-    "Lesson": 11,
+    "Lesson": 0,
     "Hiragana": "かきとめ",
     "Romaji": "kakitome",
     "Kanji": "書留",
@@ -6048,8 +5544,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 505,
-    "Lesson": 12,
+    "Lesson": 0,
     "Hiragana": "かんたん「な」",
     "Romaji": "kantan",
     "Kanji": "簡単「な」",
@@ -6060,8 +5555,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi な"
   },
   {
-    "id": 506,
-    "Lesson": 12,
+    "Lesson": 0,
     "Hiragana": "ちかい",
     "Romaji": "chikai",
     "Kanji": "近い",
@@ -6072,8 +5566,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 507,
-    "Lesson": 12,
+    "Lesson": 0,
     "Hiragana": "とおい",
     "Romaji": "tooi",
     "Kanji": "遠い",
@@ -6084,8 +5577,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 508,
-    "Lesson": 12,
+    "Lesson": 0,
     "Hiragana": "はやい",
     "Romaji": "hayai",
     "Kanji": "速い,早い",
@@ -6096,8 +5588,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 509,
-    "Lesson": 12,
+    "Lesson": 0,
     "Hiragana": "おそい",
     "Romaji": "osoi",
     "Kanji": "遅い",
@@ -6108,8 +5599,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 510,
-    "Lesson": 12,
+    "Lesson": 0,
     "Hiragana": "おおい",
     "Romaji": "ooi",
     "Kanji": "多い",
@@ -6120,8 +5610,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 511,
-    "Lesson": 12,
+    "Lesson": 0,
     "Hiragana": "すくない",
     "Romaji": "sukunai",
     "Kanji": "少ない",
@@ -6132,8 +5621,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 512,
-    "Lesson": 12,
+    "Lesson": 0,
     "Hiragana": "あたたかい",
     "Romaji": "atatakai",
     "Kanji": "温かい,暖かい",
@@ -6144,8 +5632,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 513,
-    "Lesson": 12,
+    "Lesson": 0,
     "Hiragana": "すずしい",
     "Romaji": "suzushii",
     "Kanji": "涼しい",
@@ -6156,8 +5643,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 514,
-    "Lesson": 12,
+    "Lesson": 0,
     "Hiragana": "あまい",
     "Romaji": "amai",
     "Kanji": "甘い",
@@ -6168,8 +5654,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 515,
-    "Lesson": 12,
+    "Lesson": 0,
     "Hiragana": "からい",
     "Romaji": "karai",
     "Kanji": "辛い",
@@ -6180,8 +5665,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 516,
-    "Lesson": 12,
+    "Lesson": 0,
     "Hiragana": "おもい",
     "Romaji": "omoi",
     "Kanji": "重い",
@@ -6192,8 +5676,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 517,
-    "Lesson": 12,
+    "Lesson": 0,
     "Hiragana": "かるい",
     "Romaji": "karui",
     "Kanji": "軽い",
@@ -6204,8 +5687,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 518,
-    "Lesson": 12,
+    "Lesson": 0,
     "Hiragana": "いい",
     "Romaji": "ii",
     "Kanji": "",
@@ -6216,8 +5698,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 519,
-    "Lesson": 12,
+    "Lesson": 0,
     "Hiragana": "きせつ",
     "Romaji": "kisetsu",
     "Kanji": "季節",
@@ -6228,8 +5709,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 520,
-    "Lesson": 12,
+    "Lesson": 0,
     "Hiragana": "はる",
     "Romaji": "haru",
     "Kanji": "春",
@@ -6240,8 +5720,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 521,
-    "Lesson": 12,
+    "Lesson": 0,
     "Hiragana": "なつ",
     "Romaji": "natsu",
     "Kanji": "夏",
@@ -6252,8 +5731,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 522,
-    "Lesson": 12,
+    "Lesson": 0,
     "Hiragana": "あき",
     "Romaji": "aki",
     "Kanji": "秋",
@@ -6264,8 +5742,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 523,
-    "Lesson": 12,
+    "Lesson": 0,
     "Hiragana": "ふゆ",
     "Romaji": "fuyu",
     "Kanji": "冬",
@@ -6276,8 +5753,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 524,
-    "Lesson": 12,
+    "Lesson": 0,
     "Hiragana": "てんき",
     "Romaji": "tenki",
     "Kanji": "天気",
@@ -6288,8 +5764,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 525,
-    "Lesson": 12,
+    "Lesson": 0,
     "Hiragana": "あめ",
     "Romaji": "ame",
     "Kanji": "雨",
@@ -6300,8 +5775,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 526,
-    "Lesson": 12,
+    "Lesson": 0,
     "Hiragana": "ゆき",
     "Romaji": "yuki",
     "Kanji": "雪",
@@ -6312,8 +5786,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 527,
-    "Lesson": 12,
+    "Lesson": 0,
     "Hiragana": "くもり",
     "Romaji": "kumori",
     "Kanji": "曇り",
@@ -6324,8 +5797,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 528,
-    "Lesson": 12,
+    "Lesson": 0,
     "Hiragana": "ホテル",
     "Romaji": "hoteru",
     "Kanji": "",
@@ -6336,8 +5808,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 529,
-    "Lesson": 12,
+    "Lesson": 0,
     "Hiragana": "くうこう",
     "Romaji": "kuukou",
     "Kanji": "空港",
@@ -6348,8 +5819,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 530,
-    "Lesson": 12,
+    "Lesson": 0,
     "Hiragana": "うみ",
     "Romaji": "umi",
     "Kanji": "海",
@@ -6360,8 +5830,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 531,
-    "Lesson": 12,
+    "Lesson": 0,
     "Hiragana": "せかい",
     "Romaji": "sekai",
     "Kanji": "世界",
@@ -6372,8 +5841,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 532,
-    "Lesson": 12,
+    "Lesson": 0,
     "Hiragana": "パーティー",
     "Romaji": "pa-ti-",
     "Kanji": "",
@@ -6384,8 +5852,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 533,
-    "Lesson": 12,
+    "Lesson": 0,
     "Hiragana": "おまつり",
     "Romaji": "omatsuri",
     "Kanji": "お祭り",
@@ -6396,8 +5863,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 534,
-    "Lesson": 12,
+    "Lesson": 0,
     "Hiragana": "しけん",
     "Romaji": "shiken",
     "Kanji": "試験",
@@ -6408,8 +5874,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 535,
-    "Lesson": 12,
+    "Lesson": 0,
     "Hiragana": "すきやき",
     "Romaji": "sukiyaki",
     "Kanji": "すき焼き",
@@ -6420,8 +5885,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 536,
-    "Lesson": 12,
+    "Lesson": 0,
     "Hiragana": "さしみ",
     "Romaji": "sashimi",
     "Kanji": "刺身",
@@ -6432,8 +5896,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 537,
-    "Lesson": 12,
+    "Lesson": 0,
     "Hiragana": "おすし",
     "Romaji": "osushi",
     "Kanji": "",
@@ -6444,8 +5907,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 538,
-    "Lesson": 12,
+    "Lesson": 0,
     "Hiragana": "てんぷら",
     "Romaji": "tenpura",
     "Kanji": "",
@@ -6456,8 +5918,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 539,
-    "Lesson": 12,
+    "Lesson": 0,
     "Hiragana": "いけばな",
     "Romaji": "ikebana",
     "Kanji": "生け花",
@@ -6468,8 +5929,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 540,
-    "Lesson": 12,
+    "Lesson": 0,
     "Hiragana": "もみじ",
     "Romaji": "momiji",
     "Kanji": "紅葉",
@@ -6480,8 +5940,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 541,
-    "Lesson": 12,
+    "Lesson": 0,
     "Hiragana": "どちら",
     "Romaji": "dochira",
     "Kanji": "",
@@ -6492,8 +5951,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 542,
-    "Lesson": 12,
+    "Lesson": 0,
     "Hiragana": "はじめて",
     "Romaji": "hajimete",
     "Kanji": "初めて",
@@ -6504,8 +5962,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 543,
-    "Lesson": 12,
+    "Lesson": 0,
     "Hiragana": "どちらも",
     "Romaji": "dochira mo",
     "Kanji": "",
@@ -6516,8 +5973,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 544,
-    "Lesson": 12,
+    "Lesson": 0,
     "Hiragana": "ずっと",
     "Romaji": "zutto",
     "Kanji": "",
@@ -6528,8 +5984,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 545,
-    "Lesson": 12,
+    "Lesson": 0,
     "Hiragana": "ただいま。",
     "Romaji": "tadaima",
     "Kanji": "",
@@ -6540,8 +5995,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 546,
-    "Lesson": 12,
+    "Lesson": 0,
     "Hiragana": "おかえりなさい。",
     "Romaji": "okaerinasai",
     "Kanji": "",
@@ -6552,8 +6006,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 547,
-    "Lesson": 12,
+    "Lesson": 0,
     "Hiragana": "すごいですね。",
     "Romaji": "sugoi desu ne",
     "Kanji": "",
@@ -6564,8 +6017,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 548,
-    "Lesson": 12,
+    "Lesson": 0,
     "Hiragana": "でも",
     "Romaji": "demo",
     "Kanji": "",
@@ -6576,8 +6028,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 549,
-    "Lesson": 12,
+    "Lesson": 0,
     "Hiragana": "つかれました",
     "Romaji": "tsukaremashita",
     "Kanji": "疲れました",
@@ -6588,8 +6039,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 550,
-    "Lesson": 12,
+    "Lesson": 0,
     "Hiragana": "ホンコン",
     "Romaji": "honkon",
     "Kanji": "",
@@ -6600,8 +6050,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 551,
-    "Lesson": 12,
+    "Lesson": 0,
     "Hiragana": "シンガポール",
     "Romaji": "shingapo-ru",
     "Kanji": "",
@@ -6612,8 +6061,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 552,
-    "Lesson": 13,
+    "Lesson": 0,
     "Hiragana": "あそびます",
     "Romaji": "asobimasu",
     "Kanji": "遊びます",
@@ -6624,8 +6072,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 553,
-    "Lesson": 13,
+    "Lesson": 0,
     "Hiragana": "およぎます",
     "Romaji": "oyogimasu",
     "Kanji": "泳ぎます",
@@ -6636,8 +6083,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 554,
-    "Lesson": 13,
+    "Lesson": 0,
     "Hiragana": "むかえます",
     "Romaji": "mukaemasu",
     "Kanji": "迎えます",
@@ -6648,8 +6094,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 555,
-    "Lesson": 13,
+    "Lesson": 0,
     "Hiragana": "つかれます",
     "Romaji": "tsukaremasu",
     "Kanji": "疲れます",
@@ -6660,8 +6105,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 556,
-    "Lesson": 13,
+    "Lesson": 0,
     "Hiragana": "だします",
     "Romaji": "dashimasu",
     "Kanji": "出します",
@@ -6672,8 +6116,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 557,
-    "Lesson": 13,
+    "Lesson": 0,
     "Hiragana": "はいります",
     "Romaji": "hairimasu",
     "Kanji": "入ります",
@@ -6684,8 +6127,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 558,
-    "Lesson": 13,
+    "Lesson": 0,
     "Hiragana": "でます",
     "Romaji": "demasu",
     "Kanji": "出ます",
@@ -6696,8 +6138,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 559,
-    "Lesson": 13,
+    "Lesson": 0,
     "Hiragana": "けっこんします",
     "Romaji": "kekkon shimasu",
     "Kanji": "結婚します",
@@ -6708,8 +6149,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 560,
-    "Lesson": 13,
+    "Lesson": 0,
     "Hiragana": "かいものします",
     "Romaji": "kaimono shimasu",
     "Kanji": "買い物します",
@@ -6720,8 +6160,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 561,
-    "Lesson": 13,
+    "Lesson": 0,
     "Hiragana": "しょくじします",
     "Romaji": "shokuji shimasu",
     "Kanji": "食事します",
@@ -6732,8 +6171,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 562,
-    "Lesson": 13,
+    "Lesson": 0,
     "Hiragana": "さんぽします",
     "Romaji": "sanpo shimasu",
     "Kanji": "散歩します",
@@ -6744,8 +6182,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 563,
-    "Lesson": 13,
+    "Lesson": 0,
     "Hiragana": "たいへん「な」",
     "Romaji": "taihen",
     "Kanji": "大変「な」",
@@ -6756,8 +6193,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi な"
   },
   {
-    "id": 564,
-    "Lesson": 13,
+    "Lesson": 0,
     "Hiragana": "ほしい",
     "Romaji": "hoshii",
     "Kanji": "欲しい",
@@ -6768,8 +6204,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 565,
-    "Lesson": 13,
+    "Lesson": 0,
     "Hiragana": "さびしい",
     "Romaji": "sabishii",
     "Kanji": "寂しい",
@@ -6780,8 +6215,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 566,
-    "Lesson": 13,
+    "Lesson": 0,
     "Hiragana": "ひろい",
     "Romaji": "hiroi",
     "Kanji": "広い",
@@ -6792,8 +6226,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 567,
-    "Lesson": 13,
+    "Lesson": 0,
     "Hiragana": "せまい",
     "Romaji": "semai",
     "Kanji": "狭い",
@@ -6804,8 +6237,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 568,
-    "Lesson": 13,
+    "Lesson": 0,
     "Hiragana": "しやくしょ",
     "Romaji": "shiyakusho",
     "Kanji": "市役所",
@@ -6816,8 +6248,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 569,
-    "Lesson": 13,
+    "Lesson": 0,
     "Hiragana": "プール",
     "Romaji": "pu-ru",
     "Kanji": "",
@@ -6828,8 +6259,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 570,
-    "Lesson": 13,
+    "Lesson": 0,
     "Hiragana": "かわ",
     "Romaji": "kawa",
     "Kanji": "川",
@@ -6840,8 +6270,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 571,
-    "Lesson": 13,
+    "Lesson": 0,
     "Hiragana": "けいざい",
     "Romaji": "keizai",
     "Kanji": "経済",
@@ -6852,8 +6281,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 572,
-    "Lesson": 13,
+    "Lesson": 0,
     "Hiragana": "びじゅつ",
     "Romaji": "bijutsu",
     "Kanji": "美術",
@@ -6864,8 +6292,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 573,
-    "Lesson": 13,
+    "Lesson": 0,
     "Hiragana": "つり",
     "Romaji": "tsuri",
     "Kanji": "釣り",
@@ -6876,8 +6303,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 574,
-    "Lesson": 13,
+    "Lesson": 0,
     "Hiragana": "スキー",
     "Romaji": "suki-",
     "Kanji": "",
@@ -6888,8 +6314,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 575,
-    "Lesson": 13,
+    "Lesson": 0,
     "Hiragana": "かいぎ",
     "Romaji": "kaigi",
     "Kanji": "会議",
@@ -6900,8 +6325,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 576,
-    "Lesson": 13,
+    "Lesson": 0,
     "Hiragana": "とうろく",
     "Romaji": "touroku",
     "Kanji": "登録",
@@ -6912,8 +6336,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 577,
-    "Lesson": 13,
+    "Lesson": 0,
     "Hiragana": "しゅうまつ",
     "Romaji": "shuumatsu",
     "Kanji": "週末",
@@ -6924,8 +6347,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 578,
-    "Lesson": 13,
+    "Lesson": 0,
     "Hiragana": "～ごろ",
     "Romaji": "～goro",
     "Kanji": "",
@@ -6936,8 +6358,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 579,
-    "Lesson": 13,
+    "Lesson": 0,
     "Hiragana": "なにか",
     "Romaji": "nanika",
     "Kanji": "何か",
@@ -6948,8 +6369,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 580,
-    "Lesson": 13,
+    "Lesson": 0,
     "Hiragana": "どこか",
     "Romaji": "dokoka",
     "Kanji": "",
@@ -6960,8 +6380,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 581,
-    "Lesson": 13,
+    "Lesson": 0,
     "Hiragana": "おなかが すきました。",
     "Romaji": "onaka ga sukimashita",
     "Kanji": "",
@@ -6972,8 +6391,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 582,
-    "Lesson": 13,
+    "Lesson": 0,
     "Hiragana": "おなかが いっぱいです。",
     "Romaji": "onaka ga ippai desu",
     "Kanji": "",
@@ -6984,8 +6402,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi な"
   },
   {
-    "id": 583,
-    "Lesson": 13,
+    "Lesson": 0,
     "Hiragana": "のどが かわきました。",
     "Romaji": "nodo ga kawakimashita",
     "Kanji": "",
@@ -6996,8 +6413,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 584,
-    "Lesson": 13,
+    "Lesson": 0,
     "Hiragana": "そうですね。",
     "Romaji": "sou desu ne",
     "Kanji": "",
@@ -7008,8 +6424,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 585,
-    "Lesson": 13,
+    "Lesson": 0,
     "Hiragana": "ロシア",
     "Romaji": "roshia",
     "Kanji": "",
@@ -7020,8 +6435,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 586,
-    "Lesson": 13,
+    "Lesson": 0,
     "Hiragana": "そうしましょう。",
     "Romaji": "sou shimashou",
     "Kanji": "",
@@ -7032,8 +6446,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 587,
-    "Lesson": 13,
+    "Lesson": 0,
     "Hiragana": "ていしょく",
     "Romaji": "teishoku",
     "Kanji": "",
@@ -7044,8 +6457,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 588,
-    "Lesson": 13,
+    "Lesson": 0,
     "Hiragana": "ごちゅうもんは",
     "Romaji": "gochuumon wa",
     "Kanji": "ご注文は",
@@ -7056,8 +6468,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 589,
-    "Lesson": 13,
+    "Lesson": 0,
     "Hiragana": "ぎゅうどん",
     "Romaji": "gyuudon",
     "Kanji": "牛どん",
@@ -7068,8 +6479,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 590,
-    "Lesson": 13,
+    "Lesson": 0,
     "Hiragana": "しょうしょう おまちください",
     "Romaji": "shoushou omachi kudasai",
     "Kanji": "少々お待ちください",
@@ -7080,8 +6490,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 591,
-    "Lesson": 13,
+    "Lesson": 0,
     "Hiragana": "べつべつに",
     "Romaji": "betsubetsu ni",
     "Kanji": "別々に",
@@ -7092,8 +6501,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 592,
-    "Lesson": 14,
+    "Lesson": 0,
     "Hiragana": "つけます",
     "Romaji": "tsukemasu",
     "Kanji": "",
@@ -7104,8 +6512,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 593,
-    "Lesson": 14,
+    "Lesson": 0,
     "Hiragana": "けします",
     "Romaji": "keshimasu",
     "Kanji": "消します",
@@ -7116,8 +6523,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 594,
-    "Lesson": 14,
+    "Lesson": 0,
     "Hiragana": "あけます",
     "Romaji": "akemasu",
     "Kanji": "開けます",
@@ -7128,8 +6534,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 595,
-    "Lesson": 14,
+    "Lesson": 0,
     "Hiragana": "しめます",
     "Romaji": "shimemasu",
     "Kanji": "閉めます",
@@ -7140,8 +6545,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 596,
-    "Lesson": 14,
+    "Lesson": 0,
     "Hiragana": "いそぎます",
     "Romaji": "isogimasu",
     "Kanji": "急ぎます",
@@ -7152,8 +6556,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 597,
-    "Lesson": 14,
+    "Lesson": 0,
     "Hiragana": "まちます",
     "Romaji": "machimasu",
     "Kanji": "待ちます",
@@ -7164,8 +6567,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 598,
-    "Lesson": 14,
+    "Lesson": 0,
     "Hiragana": "とめます",
     "Romaji": "tomemasu",
     "Kanji": "止めます",
@@ -7176,8 +6578,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 599,
-    "Lesson": 14,
+    "Lesson": 0,
     "Hiragana": "まがります",
     "Romaji": "magarimasu",
     "Kanji": "曲がります",
@@ -7188,8 +6589,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 600,
-    "Lesson": 14,
+    "Lesson": 0,
     "Hiragana": "もちます",
     "Romaji": "mochimasu",
     "Kanji": "持ちます",
@@ -7200,8 +6600,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 601,
-    "Lesson": 14,
+    "Lesson": 0,
     "Hiragana": "とります",
     "Romaji": "torimasu",
     "Kanji": "取ります",
@@ -7212,8 +6611,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 602,
-    "Lesson": 14,
+    "Lesson": 0,
     "Hiragana": "てつだいます",
     "Romaji": "tetsudaimasu",
     "Kanji": "手伝います",
@@ -7224,8 +6622,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 603,
-    "Lesson": 14,
+    "Lesson": 0,
     "Hiragana": "よびます",
     "Romaji": "yobimasu",
     "Kanji": "呼びます",
@@ -7236,8 +6633,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 604,
-    "Lesson": 14,
+    "Lesson": 0,
     "Hiragana": "はなします",
     "Romaji": "hanashimasu",
     "Kanji": "話します",
@@ -7248,8 +6644,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 605,
-    "Lesson": 14,
+    "Lesson": 0,
     "Hiragana": "みせます",
     "Romaji": "misemasu",
     "Kanji": "見せます",
@@ -7260,8 +6655,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 606,
-    "Lesson": 14,
+    "Lesson": 0,
     "Hiragana": "おしえます",
     "Romaji": "oshiemasu",
     "Kanji": "教えます",
@@ -7272,8 +6666,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 607,
-    "Lesson": 14,
+    "Lesson": 0,
     "Hiragana": "はじめます",
     "Romaji": "hajimemasu",
     "Kanji": "始めます",
@@ -7284,8 +6677,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 608,
-    "Lesson": 14,
+    "Lesson": 0,
     "Hiragana": "ふります",
     "Romaji": "furimasu",
     "Kanji": "降ります",
@@ -7296,8 +6688,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 609,
-    "Lesson": 14,
+    "Lesson": 0,
     "Hiragana": "コピーします",
     "Romaji": "kopi- shimasu",
     "Kanji": "",
@@ -7308,8 +6699,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 610,
-    "Lesson": 14,
+    "Lesson": 0,
     "Hiragana": "エアコン",
     "Romaji": "eakon",
     "Kanji": "",
@@ -7320,8 +6710,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 611,
-    "Lesson": 14,
+    "Lesson": 0,
     "Hiragana": "パスポート",
     "Romaji": "pasupo-to",
     "Kanji": "",
@@ -7332,8 +6721,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 612,
-    "Lesson": 14,
+    "Lesson": 0,
     "Hiragana": "なまえ",
     "Romaji": "namae",
     "Kanji": "名前",
@@ -7344,8 +6732,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 613,
-    "Lesson": 14,
+    "Lesson": 0,
     "Hiragana": "じゅうしょ",
     "Romaji": "juusho",
     "Kanji": "住所",
@@ -7356,8 +6743,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 614,
-    "Lesson": 14,
+    "Lesson": 0,
     "Hiragana": "ちず",
     "Romaji": "chizu",
     "Kanji": "地図",
@@ -7368,8 +6754,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 615,
-    "Lesson": 14,
+    "Lesson": 0,
     "Hiragana": "しお",
     "Romaji": "shio",
     "Kanji": "塩",
@@ -7380,8 +6765,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 616,
-    "Lesson": 14,
+    "Lesson": 0,
     "Hiragana": "さとう",
     "Romaji": "satou",
     "Kanji": "砂糖",
@@ -7392,8 +6776,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 617,
-    "Lesson": 14,
+    "Lesson": 0,
     "Hiragana": "よみかた",
     "Romaji": "yomikata",
     "Kanji": "読み方",
@@ -7404,8 +6787,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 618,
-    "Lesson": 14,
+    "Lesson": 0,
     "Hiragana": "～かた",
     "Romaji": "～kata",
     "Kanji": "～方",
@@ -7416,8 +6798,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 619,
-    "Lesson": 14,
+    "Lesson": 0,
     "Hiragana": "ゆっくり",
     "Romaji": "yukkuri",
     "Kanji": "",
@@ -7428,8 +6809,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 620,
-    "Lesson": 14,
+    "Lesson": 0,
     "Hiragana": "すぐ",
     "Romaji": "sugu",
     "Kanji": "",
@@ -7440,8 +6820,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 621,
-    "Lesson": 14,
+    "Lesson": 0,
     "Hiragana": "また",
     "Romaji": "mata",
     "Kanji": "",
@@ -7452,8 +6831,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 622,
-    "Lesson": 14,
+    "Lesson": 0,
     "Hiragana": "あとで",
     "Romaji": "ato de",
     "Kanji": "",
@@ -7464,8 +6842,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 623,
-    "Lesson": 14,
+    "Lesson": 0,
     "Hiragana": "もう すこし",
     "Romaji": "mou sukoshi",
     "Kanji": "もう 少し",
@@ -7476,8 +6853,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 624,
-    "Lesson": 14,
+    "Lesson": 0,
     "Hiragana": "もう～",
     "Romaji": "mou～",
     "Kanji": "",
@@ -7488,8 +6864,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 625,
-    "Lesson": 14,
+    "Lesson": 0,
     "Hiragana": "いいですよ。",
     "Romaji": "ii desu yo",
     "Kanji": "",
@@ -7500,8 +6875,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 626,
-    "Lesson": 14,
+    "Lesson": 0,
     "Hiragana": "さあ",
     "Romaji": "saa",
     "Kanji": "",
@@ -7512,8 +6886,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 627,
-    "Lesson": 14,
+    "Lesson": 0,
     "Hiragana": "あれ？",
     "Romaji": "are?",
     "Kanji": "",
@@ -7524,8 +6897,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 628,
-    "Lesson": 14,
+    "Lesson": 0,
     "Hiragana": "まっすぐ",
     "Romaji": "massugu",
     "Kanji": "",
@@ -7536,8 +6908,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 629,
-    "Lesson": 14,
+    "Lesson": 0,
     "Hiragana": "おつり",
     "Romaji": "otsuri",
     "Kanji": "お釣り",
@@ -7548,8 +6919,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 630,
-    "Lesson": 14,
+    "Lesson": 0,
     "Hiragana": "これでおねがいします",
     "Romaji": "kore de onegaishimasu",
     "Kanji": "これでお願いします",
@@ -7560,8 +6930,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 631,
-    "Lesson": 15,
+    "Lesson": 0,
     "Hiragana": "たちます",
     "Romaji": "tachimasu",
     "Kanji": "立ちます",
@@ -7572,8 +6941,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 632,
-    "Lesson": 15,
+    "Lesson": 0,
     "Hiragana": "すわります",
     "Romaji": "suwarimasu",
     "Kanji": "座ります",
@@ -7584,8 +6952,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 633,
-    "Lesson": 15,
+    "Lesson": 0,
     "Hiragana": "つかいます",
     "Romaji": "tsukaimasu",
     "Kanji": "使います",
@@ -7596,8 +6963,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 634,
-    "Lesson": 15,
+    "Lesson": 0,
     "Hiragana": "おきます",
     "Romaji": "okimasu",
     "Kanji": "置きます",
@@ -7608,8 +6974,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 635,
-    "Lesson": 15,
+    "Lesson": 0,
     "Hiragana": "つくります",
     "Romaji": "tsukurimasu",
     "Kanji": "作ります,造ります",
@@ -7620,8 +6985,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 636,
-    "Lesson": 15,
+    "Lesson": 0,
     "Hiragana": "うります",
     "Romaji": "urimasu",
     "Kanji": "売ります",
@@ -7632,8 +6996,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 637,
-    "Lesson": 15,
+    "Lesson": 0,
     "Hiragana": "しります",
     "Romaji": "shirimasu",
     "Kanji": "知ります",
@@ -7644,8 +7007,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 638,
-    "Lesson": 15,
+    "Lesson": 0,
     "Hiragana": "すみます",
     "Romaji": "sumimasu",
     "Kanji": "住みます",
@@ -7656,8 +7018,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 639,
-    "Lesson": 15,
+    "Lesson": 0,
     "Hiragana": "けんきゅうします",
     "Romaji": "kenkyuushimasu",
     "Kanji": "研究します",
@@ -7668,8 +7029,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 640,
-    "Lesson": 15,
+    "Lesson": 0,
     "Hiragana": "しっています",
     "Romaji": "shitte imasu",
     "Kanji": "知っています",
@@ -7680,8 +7040,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 641,
-    "Lesson": 15,
+    "Lesson": 0,
     "Hiragana": "すんでいます",
     "Romaji": "sunde imasu",
     "Kanji": "住んでいます",
@@ -7692,8 +7051,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 642,
-    "Lesson": 15,
+    "Lesson": 0,
     "Hiragana": "しりょう",
     "Romaji": "shiryou",
     "Kanji": "資料",
@@ -7704,8 +7062,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 643,
-    "Lesson": 15,
+    "Lesson": 0,
     "Hiragana": "カタログ",
     "Romaji": "katarogu",
     "Kanji": "",
@@ -7716,8 +7073,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 644,
-    "Lesson": 15,
+    "Lesson": 0,
     "Hiragana": "じこくひょう",
     "Romaji": "jikokuhyou",
     "Kanji": "時刻表",
@@ -7728,8 +7084,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 645,
-    "Lesson": 15,
+    "Lesson": 0,
     "Hiragana": "ふく",
     "Romaji": "fuku",
     "Kanji": "服",
@@ -7740,8 +7095,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 646,
-    "Lesson": 15,
+    "Lesson": 0,
     "Hiragana": "せいひん",
     "Romaji": "seihin",
     "Kanji": "製品",
@@ -7752,8 +7106,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 647,
-    "Lesson": 15,
+    "Lesson": 0,
     "Hiragana": "ソフト",
     "Romaji": "sofuto",
     "Kanji": "",
@@ -7764,8 +7117,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 648,
-    "Lesson": 15,
+    "Lesson": 0,
     "Hiragana": "せんもん",
     "Romaji": "senmon",
     "Kanji": "専門",
@@ -7776,8 +7128,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 649,
-    "Lesson": 15,
+    "Lesson": 0,
     "Hiragana": "はいしゃ",
     "Romaji": "haisha",
     "Kanji": "歯医者",
@@ -7788,8 +7139,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 650,
-    "Lesson": 15,
+    "Lesson": 0,
     "Hiragana": "とこや",
     "Romaji": "tokoya",
     "Kanji": "床屋",
@@ -7800,8 +7150,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 651,
-    "Lesson": 15,
+    "Lesson": 0,
     "Hiragana": "プレイガイド",
     "Romaji": "pureigaido",
     "Kanji": "",
@@ -7812,8 +7161,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 652,
-    "Lesson": 15,
+    "Lesson": 0,
     "Hiragana": "どくしん",
     "Romaji": "dokushin",
     "Kanji": "独身",
@@ -7824,8 +7172,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 653,
-    "Lesson": 15,
+    "Lesson": 0,
     "Hiragana": "とくに",
     "Romaji": "tokuni",
     "Kanji": "特に",
@@ -7836,8 +7183,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 654,
-    "Lesson": 15,
+    "Lesson": 0,
     "Hiragana": "おもいだします",
     "Romaji": "omoidashimasu",
     "Kanji": "思い出します",
@@ -7848,8 +7194,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 655,
-    "Lesson": 15,
+    "Lesson": 0,
     "Hiragana": "ごかぞく",
     "Romaji": "gokazoku",
     "Kanji": "ご家族",
@@ -7860,8 +7205,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 656,
-    "Lesson": 15,
+    "Lesson": 0,
     "Hiragana": "いらっしゃいます",
     "Romaji": "irasshaimasu",
     "Kanji": "",
@@ -7872,8 +7216,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 657,
-    "Lesson": 15,
+    "Lesson": 0,
     "Hiragana": "こうこう",
     "Romaji": "koukou",
     "Kanji": "高校",
@@ -7884,8 +7227,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 658,
-    "Lesson": 16,
+    "Lesson": 0,
     "Hiragana": "のります",
     "Romaji": "norimasu",
     "Kanji": "乗ります",
@@ -7896,8 +7238,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 659,
-    "Lesson": 16,
+    "Lesson": 0,
     "Hiragana": "おります",
     "Romaji": "orimasu",
     "Kanji": "降ります",
@@ -7908,8 +7249,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 660,
-    "Lesson": 16,
+    "Lesson": 0,
     "Hiragana": "のりかえます",
     "Romaji": "norikaemasu",
     "Kanji": "乗り換えます",
@@ -7920,8 +7260,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 661,
-    "Lesson": 16,
+    "Lesson": 0,
     "Hiragana": "あびます",
     "Romaji": "abimasu",
     "Kanji": "浴びます",
@@ -7932,8 +7271,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 662,
-    "Lesson": 16,
+    "Lesson": 0,
     "Hiragana": "いれます",
     "Romaji": "iremasu",
     "Kanji": "入れます",
@@ -7944,8 +7282,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 663,
-    "Lesson": 16,
+    "Lesson": 0,
     "Hiragana": "だします",
     "Romaji": "dashimasu",
     "Kanji": "出します",
@@ -7956,8 +7293,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 664,
-    "Lesson": 16,
+    "Lesson": 0,
     "Hiragana": "はいります",
     "Romaji": "hairimasu",
     "Kanji": "入ります",
@@ -7968,8 +7304,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 665,
-    "Lesson": 16,
+    "Lesson": 0,
     "Hiragana": "でます",
     "Romaji": "demasu",
     "Kanji": "出ます",
@@ -7980,8 +7315,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 666,
-    "Lesson": 16,
+    "Lesson": 0,
     "Hiragana": "やめます",
     "Romaji": "yamemasu",
     "Kanji": "やめます",
@@ -7992,8 +7326,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 667,
-    "Lesson": 16,
+    "Lesson": 0,
     "Hiragana": "おします",
     "Romaji": "oshimasu",
     "Kanji": "押します",
@@ -8004,8 +7337,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 668,
-    "Lesson": 16,
+    "Lesson": 0,
     "Hiragana": "わかい",
     "Romaji": "wakai",
     "Kanji": "若い",
@@ -8016,8 +7348,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 669,
-    "Lesson": 16,
+    "Lesson": 0,
     "Hiragana": "ながい",
     "Romaji": "nagai",
     "Kanji": "長い",
@@ -8028,8 +7359,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 670,
-    "Lesson": 16,
+    "Lesson": 0,
     "Hiragana": "みじかい",
     "Romaji": "mijikai",
     "Kanji": "短い",
@@ -8040,8 +7370,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 671,
-    "Lesson": 16,
+    "Lesson": 0,
     "Hiragana": "あかるい",
     "Romaji": "akarui",
     "Kanji": "明るい",
@@ -8052,8 +7381,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 672,
-    "Lesson": 16,
+    "Lesson": 0,
     "Hiragana": "くらい",
     "Romaji": "kurai",
     "Kanji": "暗い",
@@ -8064,8 +7392,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 673,
-    "Lesson": 16,
+    "Lesson": 0,
     "Hiragana": "せが たかい",
     "Romaji": "se ga takai",
     "Kanji": "背が 高い",
@@ -8076,8 +7403,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 674,
-    "Lesson": 16,
+    "Lesson": 0,
     "Hiragana": "あたまが いい",
     "Romaji": "atama ga ii",
     "Kanji": "頭が いい",
@@ -8088,8 +7414,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 675,
-    "Lesson": 16,
+    "Lesson": 0,
     "Hiragana": "からだ",
     "Romaji": "karada",
     "Kanji": "体",
@@ -8100,8 +7425,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 676,
-    "Lesson": 16,
+    "Lesson": 0,
     "Hiragana": "あたま",
     "Romaji": "atama",
     "Kanji": "頭",
@@ -8112,8 +7436,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 677,
-    "Lesson": 16,
+    "Lesson": 0,
     "Hiragana": "かみ",
     "Romaji": "kami",
     "Kanji": "髪",
@@ -8124,8 +7447,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 678,
-    "Lesson": 16,
+    "Lesson": 0,
     "Hiragana": "なまえ",
     "Romaji": "namae",
     "Kanji": "名前",
@@ -8136,8 +7458,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 679,
-    "Lesson": 16,
+    "Lesson": 0,
     "Hiragana": "かお",
     "Romaji": "kao",
     "Kanji": "顔",
@@ -8148,8 +7469,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 680,
-    "Lesson": 16,
+    "Lesson": 0,
     "Hiragana": "め",
     "Romaji": "me",
     "Kanji": "目",
@@ -8160,8 +7480,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 681,
-    "Lesson": 16,
+    "Lesson": 0,
     "Hiragana": "みみ",
     "Romaji": "mimi",
     "Kanji": "耳",
@@ -8172,8 +7491,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 682,
-    "Lesson": 16,
+    "Lesson": 0,
     "Hiragana": "は",
     "Romaji": "ha",
     "Kanji": "歯",
@@ -8184,8 +7502,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 683,
-    "Lesson": 16,
+    "Lesson": 0,
     "Hiragana": "おなか",
     "Romaji": "onaka",
     "Kanji": "",
@@ -8196,8 +7513,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 684,
-    "Lesson": 16,
+    "Lesson": 0,
     "Hiragana": "あし",
     "Romaji": "ashi",
     "Kanji": "足",
@@ -8208,8 +7524,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 685,
-    "Lesson": 16,
+    "Lesson": 0,
     "Hiragana": "サービス",
     "Romaji": "sa-bisu",
     "Kanji": "",
@@ -8220,8 +7535,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 686,
-    "Lesson": 16,
+    "Lesson": 0,
     "Hiragana": "ジョギング",
     "Romaji": "jogingu",
     "Kanji": "",
@@ -8232,8 +7546,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 687,
-    "Lesson": 16,
+    "Lesson": 0,
     "Hiragana": "シャワー",
     "Romaji": "shawa-",
     "Kanji": "",
@@ -8244,8 +7557,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 688,
-    "Lesson": 16,
+    "Lesson": 0,
     "Hiragana": "みどり",
     "Romaji": "midori",
     "Kanji": "緑",
@@ -8256,8 +7568,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 689,
-    "Lesson": 16,
+    "Lesson": 0,
     "Hiragana": "おてら",
     "Romaji": "otera",
     "Kanji": "お寺",
@@ -8268,8 +7579,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 690,
-    "Lesson": 16,
+    "Lesson": 0,
     "Hiragana": "じんじゃ",
     "Romaji": "jinja",
     "Kanji": "神社",
@@ -8280,8 +7590,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 691,
-    "Lesson": 16,
+    "Lesson": 0,
     "Hiragana": "りゅうがくせい",
     "Romaji": "ryuugakusei",
     "Kanji": "",
@@ -8292,8 +7601,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 692,
-    "Lesson": 16,
+    "Lesson": 0,
     "Hiragana": "いちばん",
     "Romaji": "ichiban",
     "Kanji": "一番",
@@ -8304,8 +7612,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 693,
-    "Lesson": 16,
+    "Lesson": 0,
     "Hiragana": "どうやって",
     "Romaji": "douyatte",
     "Kanji": "",
@@ -8316,8 +7623,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 694,
-    "Lesson": 16,
+    "Lesson": 0,
     "Hiragana": "どの～",
     "Romaji": "dono～",
     "Kanji": "",
@@ -8328,8 +7634,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 695,
-    "Lesson": 16,
+    "Lesson": 0,
     "Hiragana": "まだまだです",
     "Romaji": "mada mada desu",
     "Kanji": "",
@@ -8340,8 +7645,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 696,
-    "Lesson": 16,
+    "Lesson": 0,
     "Hiragana": "まず",
     "Romaji": "mazu",
     "Kanji": "",
@@ -8352,8 +7656,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 697,
-    "Lesson": 16,
+    "Lesson": 0,
     "Hiragana": "キャッシュカード",
     "Romaji": "kyasshuka-do",
     "Kanji": "",
@@ -8364,8 +7667,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 698,
-    "Lesson": 16,
+    "Lesson": 0,
     "Hiragana": "あんしょうばんごう",
     "Romaji": "anshou bangou",
     "Kanji": "暗証番号",
@@ -8376,8 +7678,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 699,
-    "Lesson": 16,
+    "Lesson": 0,
     "Hiragana": "つぎに",
     "Romaji": "tsugi ni",
     "Kanji": "次に",
@@ -8388,8 +7689,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 700,
-    "Lesson": 16,
+    "Lesson": 0,
     "Hiragana": "かくにん",
     "Romaji": "kakunin",
     "Kanji": "確認",
@@ -8400,8 +7700,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 701,
-    "Lesson": 16,
+    "Lesson": 0,
     "Hiragana": "きんがく",
     "Romaji": "kingaku",
     "Kanji": "金額",
@@ -8412,8 +7711,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 702,
-    "Lesson": 16,
+    "Lesson": 0,
     "Hiragana": "ボタン",
     "Romaji": "botan",
     "Kanji": "",
@@ -8424,8 +7722,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 703,
-    "Lesson": 16,
+    "Lesson": 0,
     "Hiragana": "アジア",
     "Romaji": "ajia",
     "Kanji": "",
@@ -8436,8 +7733,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 704,
-    "Lesson": 16,
+    "Lesson": 0,
     "Hiragana": "ベトナム",
     "Romaji": "betonamu",
     "Kanji": "",
@@ -8448,8 +7744,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 705,
-    "Lesson": 17,
+    "Lesson": 0,
     "Hiragana": "おぼえます",
     "Romaji": "oboemasu",
     "Kanji": "覚えます",
@@ -8460,8 +7755,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 706,
-    "Lesson": 17,
+    "Lesson": 0,
     "Hiragana": "わすれます",
     "Romaji": "wasuremasu",
     "Kanji": "忘れます",
@@ -8472,8 +7766,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 707,
-    "Lesson": 17,
+    "Lesson": 0,
     "Hiragana": "なくします",
     "Romaji": "nakushimasu",
     "Kanji": "",
@@ -8484,8 +7777,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 708,
-    "Lesson": 17,
+    "Lesson": 0,
     "Hiragana": "だします",
     "Romaji": "dashimasu",
     "Kanji": "出します",
@@ -8496,8 +7788,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 709,
-    "Lesson": 17,
+    "Lesson": 0,
     "Hiragana": "はらいます",
     "Romaji": "haraimasu",
     "Kanji": "払います",
@@ -8508,8 +7799,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 710,
-    "Lesson": 17,
+    "Lesson": 0,
     "Hiragana": "かえします",
     "Romaji": "kaeshimasu",
     "Kanji": "返します",
@@ -8520,8 +7810,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 711,
-    "Lesson": 17,
+    "Lesson": 0,
     "Hiragana": "でかけます",
     "Romaji": "dekakemasu",
     "Kanji": "出かけます",
@@ -8532,8 +7821,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 712,
-    "Lesson": 17,
+    "Lesson": 0,
     "Hiragana": "ぬぎます",
     "Romaji": "nugimasu",
     "Kanji": "脱ぎます",
@@ -8544,8 +7832,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 713,
-    "Lesson": 17,
+    "Lesson": 0,
     "Hiragana": "もっていきます",
     "Romaji": "motte ikimasu",
     "Kanji": "持って行きます",
@@ -8556,8 +7843,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 714,
-    "Lesson": 17,
+    "Lesson": 0,
     "Hiragana": "もってきます",
     "Romaji": "motte kimasu",
     "Kanji": "持って来ます",
@@ -8568,8 +7854,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 715,
-    "Lesson": 17,
+    "Lesson": 0,
     "Hiragana": "しんぱいします",
     "Romaji": "shinpai shimasu",
     "Kanji": "心配します",
@@ -8580,8 +7865,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 716,
-    "Lesson": 17,
+    "Lesson": 0,
     "Hiragana": "ざんぎょうします",
     "Romaji": "zangyou shimasu",
     "Kanji": "残業します",
@@ -8592,8 +7876,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 717,
-    "Lesson": 17,
+    "Lesson": 0,
     "Hiragana": "しゅっちょうします",
     "Romaji": "shucchou shimasu",
     "Kanji": "出張します",
@@ -8604,8 +7887,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 718,
-    "Lesson": 17,
+    "Lesson": 0,
     "Hiragana": "のみます",
     "Romaji": "nomimasu",
     "Kanji": "飲みます",
@@ -8616,8 +7898,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 719,
-    "Lesson": 17,
+    "Lesson": 0,
     "Hiragana": "はいります",
     "Romaji": "hairimasu",
     "Kanji": "入ります",
@@ -8628,8 +7909,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 720,
-    "Lesson": 17,
+    "Lesson": 0,
     "Hiragana": "たいせつ[な]",
     "Romaji": "taisetsu[na]",
     "Kanji": "大切[な]",
@@ -8640,8 +7920,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi な"
   },
   {
-    "id": 721,
-    "Lesson": 17,
+    "Lesson": 0,
     "Hiragana": "だいじょうぶ[な]",
     "Romaji": "daijoubu[na]",
     "Kanji": "大丈夫[な]",
@@ -8652,8 +7931,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi な"
   },
   {
-    "id": 722,
-    "Lesson": 17,
+    "Lesson": 0,
     "Hiragana": "あぶない",
     "Romaji": "abunai",
     "Kanji": "危ない",
@@ -8664,8 +7942,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 723,
-    "Lesson": 17,
+    "Lesson": 0,
     "Hiragana": "もんだい",
     "Romaji": "mondai",
     "Kanji": "問題",
@@ -8676,8 +7953,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 724,
-    "Lesson": 17,
+    "Lesson": 0,
     "Hiragana": "こたえ",
     "Romaji": "kotae",
     "Kanji": "答え",
@@ -8688,8 +7964,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 725,
-    "Lesson": 17,
+    "Lesson": 0,
     "Hiragana": "きんえん",
     "Romaji": "kinen",
     "Kanji": "禁煙",
@@ -8700,8 +7975,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 726,
-    "Lesson": 17,
+    "Lesson": 0,
     "Hiragana": "ほけんしょう",
     "Romaji": "hokenshou",
     "Kanji": "健康保険証",
@@ -8712,8 +7986,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 727,
-    "Lesson": 17,
+    "Lesson": 0,
     "Hiragana": "かぜ",
     "Romaji": "kaze",
     "Kanji": "風",
@@ -8724,8 +7997,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 728,
-    "Lesson": 17,
+    "Lesson": 0,
     "Hiragana": "ねつ",
     "Romaji": "netsu",
     "Kanji": "熱",
@@ -8736,8 +8008,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 729,
-    "Lesson": 17,
+    "Lesson": 0,
     "Hiragana": "びょうき",
     "Romaji": "byouki",
     "Kanji": "病気",
@@ -8748,8 +8019,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 730,
-    "Lesson": 17,
+    "Lesson": 0,
     "Hiragana": "くすり",
     "Romaji": "kusuri",
     "Kanji": "薬",
@@ -8760,8 +8030,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 731,
-    "Lesson": 17,
+    "Lesson": 0,
     "Hiragana": "おふろ",
     "Romaji": "ofuro",
     "Kanji": "",
@@ -8772,8 +8041,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 732,
-    "Lesson": 17,
+    "Lesson": 0,
     "Hiragana": "うわぎ",
     "Romaji": "uwagi",
     "Kanji": "上着",
@@ -8784,8 +8052,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 733,
-    "Lesson": 17,
+    "Lesson": 0,
     "Hiragana": "したぎ",
     "Romaji": "shitagi",
     "Kanji": "下着",
@@ -8796,8 +8063,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 734,
-    "Lesson": 17,
+    "Lesson": 0,
     "Hiragana": "せんせい",
     "Romaji": "sensei",
     "Kanji": "先生",
@@ -8808,8 +8074,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 735,
-    "Lesson": 17,
+    "Lesson": 0,
     "Hiragana": "に,さんにち",
     "Romaji": "ni, sannichi",
     "Kanji": "２,３日",
@@ -8820,8 +8085,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 736,
-    "Lesson": 17,
+    "Lesson": 0,
     "Hiragana": "に,さん～",
     "Romaji": "ni, san～",
     "Kanji": "２,３～",
@@ -8832,8 +8096,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 737,
-    "Lesson": 17,
+    "Lesson": 0,
     "Hiragana": "までに",
     "Romaji": "madeni",
     "Kanji": "",
@@ -8844,8 +8107,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 738,
-    "Lesson": 17,
+    "Lesson": 0,
     "Hiragana": "ですから",
     "Romaji": "desukara",
     "Kanji": "",
@@ -8856,8 +8118,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 739,
-    "Lesson": 17,
+    "Lesson": 0,
     "Hiragana": "どうしましたか",
     "Romaji": "dou shimashita ka",
     "Kanji": "",
@@ -8868,8 +8129,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 740,
-    "Lesson": 17,
+    "Lesson": 0,
     "Hiragana": "いたいです",
     "Romaji": "itai desu",
     "Kanji": "",
@@ -8880,8 +8140,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 741,
-    "Lesson": 17,
+    "Lesson": 0,
     "Hiragana": "のど",
     "Romaji": "nodo",
     "Kanji": "",
@@ -8892,8 +8151,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 742,
-    "Lesson": 17,
+    "Lesson": 0,
     "Hiragana": "おだいじに",
     "Romaji": "odaiji ni",
     "Kanji": "",
@@ -8904,8 +8162,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 743,
-    "Lesson": 18,
+    "Lesson": 0,
     "Hiragana": "できます",
     "Romaji": "dekimasu",
     "Kanji": "",
@@ -8916,8 +8173,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 744,
-    "Lesson": 18,
+    "Lesson": 0,
     "Hiragana": "あらいます",
     "Romaji": "araimasu",
     "Kanji": "洗います",
@@ -8928,8 +8184,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 745,
-    "Lesson": 18,
+    "Lesson": 0,
     "Hiragana": "ひきます",
     "Romaji": "hikimasu",
     "Kanji": "弾きます",
@@ -8940,8 +8195,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 746,
-    "Lesson": 18,
+    "Lesson": 0,
     "Hiragana": "うたいます",
     "Romaji": "utaimasu",
     "Kanji": "歌います",
@@ -8952,8 +8206,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 747,
-    "Lesson": 18,
+    "Lesson": 0,
     "Hiragana": "あつめます",
     "Romaji": "atsumemasu",
     "Kanji": "集めます",
@@ -8964,8 +8217,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 748,
-    "Lesson": 18,
+    "Lesson": 0,
     "Hiragana": "すてます",
     "Romaji": "sutemasu",
     "Kanji": "捨てます",
@@ -8976,8 +8228,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 749,
-    "Lesson": 18,
+    "Lesson": 0,
     "Hiragana": "かえます",
     "Romaji": "kaemasu",
     "Kanji": "",
@@ -8988,8 +8239,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 750,
-    "Lesson": 18,
+    "Lesson": 0,
     "Hiragana": "うんてんします",
     "Romaji": "unten shimasu",
     "Kanji": "運転します",
@@ -9000,8 +8250,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 751,
-    "Lesson": 18,
+    "Lesson": 0,
     "Hiragana": "よやくします",
     "Romaji": "yoyaku shimasu",
     "Kanji": "予約します",
@@ -9012,8 +8261,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 752,
-    "Lesson": 18,
+    "Lesson": 0,
     "Hiragana": "けんがくします",
     "Romaji": "kengaku shimasu",
     "Kanji": "見学します",
@@ -9024,8 +8272,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 753,
-    "Lesson": 18,
+    "Lesson": 0,
     "Hiragana": "こくさい～",
     "Romaji": "kokusai～",
     "Kanji": "国際",
@@ -9036,8 +8283,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 754,
-    "Lesson": 18,
+    "Lesson": 0,
     "Hiragana": "げんきん",
     "Romaji": "genkin",
     "Kanji": "現金",
@@ -9048,8 +8294,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 755,
-    "Lesson": 18,
+    "Lesson": 0,
     "Hiragana": "しゅみ",
     "Romaji": "shumi",
     "Kanji": "趣味",
@@ -9060,8 +8305,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 756,
-    "Lesson": 18,
+    "Lesson": 0,
     "Hiragana": "にっき",
     "Romaji": "nikki",
     "Kanji": "日記",
@@ -9072,8 +8316,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 757,
-    "Lesson": 18,
+    "Lesson": 0,
     "Hiragana": "いのり",
     "Romaji": "inori",
     "Kanji": "祈り",
@@ -9084,8 +8327,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 758,
-    "Lesson": 18,
+    "Lesson": 0,
     "Hiragana": "かちょう",
     "Romaji": "kachou",
     "Kanji": "課長",
@@ -9096,8 +8338,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 759,
-    "Lesson": 18,
+    "Lesson": 0,
     "Hiragana": "ぶちょう",
     "Romaji": "buchou",
     "Kanji": "部長",
@@ -9108,8 +8349,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 760,
-    "Lesson": 18,
+    "Lesson": 0,
     "Hiragana": "しゃちょう",
     "Romaji": "shachou",
     "Kanji": "社長",
@@ -9120,8 +8360,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 761,
-    "Lesson": 18,
+    "Lesson": 0,
     "Hiragana": "どうぶつ",
     "Romaji": "doubutsu",
     "Kanji": "動物",
@@ -9132,8 +8371,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 762,
-    "Lesson": 18,
+    "Lesson": 0,
     "Hiragana": "うま",
     "Romaji": "uma",
     "Kanji": "馬",
@@ -9144,8 +8382,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 763,
-    "Lesson": 18,
+    "Lesson": 0,
     "Hiragana": "へえ",
     "Romaji": "hee",
     "Kanji": "",
@@ -9156,8 +8393,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 764,
-    "Lesson": 18,
+    "Lesson": 0,
     "Hiragana": "ピアノ",
     "Romaji": "piano",
     "Kanji": "",
@@ -9168,8 +8404,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 765,
-    "Lesson": 18,
+    "Lesson": 0,
     "Hiragana": "―メートル",
     "Romaji": "―me-toru",
     "Kanji": "",
@@ -9180,8 +8415,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 766,
-    "Lesson": 18,
+    "Lesson": 0,
     "Hiragana": "それはおもしろいですね",
     "Romaji": "sore wa omoshiroi desu ne",
     "Kanji": "",
@@ -9192,8 +8426,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 767,
-    "Lesson": 18,
+    "Lesson": 0,
     "Hiragana": "ぼくじょう",
     "Romaji": "bokujou",
     "Kanji": "牧場",
@@ -9204,8 +8437,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 768,
-    "Lesson": 18,
+    "Lesson": 0,
     "Hiragana": "ほんとうですか",
     "Romaji": "hontou desu ka",
     "Kanji": "本当ですか",
@@ -9216,8 +8448,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 769,
-    "Lesson": 18,
+    "Lesson": 0,
     "Hiragana": "ぜひ",
     "Romaji": "zehi",
     "Kanji": "",
@@ -9228,8 +8459,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 770,
-    "Lesson": 19,
+    "Lesson": 0,
     "Hiragana": "のぼります",
     "Romaji": "noborimasu",
     "Kanji": "登ります",
@@ -9240,8 +8470,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 771,
-    "Lesson": 19,
+    "Lesson": 0,
     "Hiragana": "れんしゅうします",
     "Romaji": "renshuu shimasu",
     "Kanji": "練習します",
@@ -9252,8 +8481,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 772,
-    "Lesson": 19,
+    "Lesson": 0,
     "Hiragana": "そうじします",
     "Romaji": "souji shimasu",
     "Kanji": "掃除します",
@@ -9264,8 +8492,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 773,
-    "Lesson": 19,
+    "Lesson": 0,
     "Hiragana": "せんたくします",
     "Romaji": "sentaku shimasu",
     "Kanji": "洗濯します",
@@ -9276,8 +8503,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 774,
-    "Lesson": 19,
+    "Lesson": 0,
     "Hiragana": "なります",
     "Romaji": "narimasu",
     "Kanji": "",
@@ -9288,8 +8514,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 775,
-    "Lesson": 19,
+    "Lesson": 0,
     "Hiragana": "とまります",
     "Romaji": "tomarimasu",
     "Kanji": "泊まります",
@@ -9300,8 +8525,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 776,
-    "Lesson": 19,
+    "Lesson": 0,
     "Hiragana": "ねむい",
     "Romaji": "nemui",
     "Kanji": "眠い",
@@ -9312,8 +8536,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 777,
-    "Lesson": 19,
+    "Lesson": 0,
     "Hiragana": "つよい",
     "Romaji": "tsuyoi",
     "Kanji": "強い",
@@ -9324,8 +8547,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 778,
-    "Lesson": 19,
+    "Lesson": 0,
     "Hiragana": "よわい",
     "Romaji": "yowai",
     "Kanji": "弱い",
@@ -9336,8 +8558,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 779,
-    "Lesson": 19,
+    "Lesson": 0,
     "Hiragana": "ちょうし",
     "Romaji": "choushi",
     "Kanji": "調子",
@@ -9348,8 +8569,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 780,
-    "Lesson": 19,
+    "Lesson": 0,
     "Hiragana": "ちょうしがわるい",
     "Romaji": "choushi ga warui",
     "Kanji": "調子が悪い",
@@ -9360,8 +8580,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 781,
-    "Lesson": 19,
+    "Lesson": 0,
     "Hiragana": "ちょうしがいい",
     "Romaji": "choushi ga ii",
     "Kanji": "調子がいい",
@@ -9372,8 +8591,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 782,
-    "Lesson": 19,
+    "Lesson": 0,
     "Hiragana": "おちゃ",
     "Romaji": "ocha",
     "Kanji": "お茶",
@@ -9384,8 +8602,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 783,
-    "Lesson": 19,
+    "Lesson": 0,
     "Hiragana": "すもう",
     "Romaji": "sumou",
     "Kanji": "相撲",
@@ -9396,8 +8613,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 784,
-    "Lesson": 19,
+    "Lesson": 0,
     "Hiragana": "パチンコ",
     "Romaji": "pachinko",
     "Kanji": "",
@@ -9408,8 +8624,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 785,
-    "Lesson": 19,
+    "Lesson": 0,
     "Hiragana": "ゴルフ",
     "Romaji": "gorufu",
     "Kanji": "",
@@ -9420,8 +8635,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 786,
-    "Lesson": 19,
+    "Lesson": 0,
     "Hiragana": "ひ",
     "Romaji": "hi",
     "Kanji": "日",
@@ -9432,8 +8646,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 787,
-    "Lesson": 19,
+    "Lesson": 0,
     "Hiragana": "もうすぐ",
     "Romaji": "mousugu",
     "Kanji": "",
@@ -9444,8 +8657,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 788,
-    "Lesson": 19,
+    "Lesson": 0,
     "Hiragana": "だんだん",
     "Romaji": "dandan",
     "Kanji": "",
@@ -9456,8 +8668,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 789,
-    "Lesson": 19,
+    "Lesson": 0,
     "Hiragana": "いちど",
     "Romaji": "ichido",
     "Kanji": "一度",
@@ -9468,8 +8679,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 790,
-    "Lesson": 19,
+    "Lesson": 0,
     "Hiragana": "いちども",
     "Romaji": "ichidomo",
     "Kanji": "一度も",
@@ -9480,8 +8690,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 791,
-    "Lesson": 19,
+    "Lesson": 0,
     "Hiragana": "おかげさまで",
     "Romaji": "okagesama de",
     "Kanji": "",
@@ -9492,8 +8701,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 792,
-    "Lesson": 19,
+    "Lesson": 0,
     "Hiragana": "かんぱい",
     "Romaji": "kanpai",
     "Kanji": "乾杯",
@@ -9504,8 +8712,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 793,
-    "Lesson": 19,
+    "Lesson": 0,
     "Hiragana": "じつは",
     "Romaji": "jitsu wa",
     "Kanji": "実は",
@@ -9516,8 +8723,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 794,
-    "Lesson": 19,
+    "Lesson": 0,
     "Hiragana": "ダイエット",
     "Romaji": "daietto",
     "Kanji": "",
@@ -9528,8 +8734,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 795,
-    "Lesson": 19,
+    "Lesson": 0,
     "Hiragana": "なんかいも",
     "Romaji": "nankai mo",
     "Kanji": "何回も",
@@ -9540,8 +8745,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 796,
-    "Lesson": 19,
+    "Lesson": 0,
     "Hiragana": "しかし",
     "Romaji": "shikashi",
     "Kanji": "",
@@ -9552,8 +8756,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 797,
-    "Lesson": 19,
+    "Lesson": 0,
     "Hiragana": "むり「な」",
     "Romaji": "muri",
     "Kanji": "無理「な」",
@@ -9564,8 +8767,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi な"
   },
   {
-    "id": 798,
-    "Lesson": 19,
+    "Lesson": 0,
     "Hiragana": "からだにいい",
     "Romaji": "karada ni ii",
     "Kanji": "体にいい",
@@ -9576,8 +8778,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 799,
-    "Lesson": 19,
+    "Lesson": 0,
     "Hiragana": "ケーキ",
     "Romaji": "ke-ki",
     "Kanji": "",
@@ -9588,8 +8789,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 800,
-    "Lesson": 20,
+    "Lesson": 0,
     "Hiragana": "いります",
     "Romaji": "irimasu",
     "Kanji": "要ります",
@@ -9600,8 +8800,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 801,
-    "Lesson": 20,
+    "Lesson": 0,
     "Hiragana": "しらべます",
     "Romaji": "shirabemasu",
     "Kanji": "調べます",
@@ -9612,8 +8811,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 802,
-    "Lesson": 20,
+    "Lesson": 0,
     "Hiragana": "なおします",
     "Romaji": "naoshimasu",
     "Kanji": "直します",
@@ -9624,8 +8822,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 803,
-    "Lesson": 20,
+    "Lesson": 0,
     "Hiragana": "しゅうりします",
     "Romaji": "shuuri shimasu",
     "Kanji": "修理します",
@@ -9636,8 +8833,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 804,
-    "Lesson": 20,
+    "Lesson": 0,
     "Hiragana": "でんわします",
     "Romaji": "denwa shimasu",
     "Kanji": "電話します",
@@ -9648,8 +8844,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 805,
-    "Lesson": 20,
+    "Lesson": 0,
     "Hiragana": "ぼく",
     "Romaji": "boku",
     "Kanji": "僕",
@@ -9660,8 +8855,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 806,
-    "Lesson": 20,
+    "Lesson": 0,
     "Hiragana": "きみ",
     "Romaji": "kimi",
     "Kanji": "君",
@@ -9672,8 +8866,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 807,
-    "Lesson": 20,
+    "Lesson": 0,
     "Hiragana": "～くん",
     "Romaji": "～kun",
     "Kanji": "～君",
@@ -9684,8 +8877,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 808,
-    "Lesson": 20,
+    "Lesson": 0,
     "Hiragana": "うん",
     "Romaji": "un",
     "Kanji": "",
@@ -9696,8 +8888,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 809,
-    "Lesson": 20,
+    "Lesson": 0,
     "Hiragana": "ううん",
     "Romaji": "uun",
     "Kanji": "",
@@ -9708,8 +8899,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 810,
-    "Lesson": 20,
+    "Lesson": 0,
     "Hiragana": "サラリーマン",
     "Romaji": "sarari-man",
     "Kanji": "",
@@ -9720,8 +8910,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 811,
-    "Lesson": 20,
+    "Lesson": 0,
     "Hiragana": "ことば",
     "Romaji": "kotoba",
     "Kanji": "言葉",
@@ -9732,8 +8921,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 812,
-    "Lesson": 20,
+    "Lesson": 0,
     "Hiragana": "ぶっか",
     "Romaji": "bukka",
     "Kanji": "物価",
@@ -9744,8 +8932,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 813,
-    "Lesson": 20,
+    "Lesson": 0,
     "Hiragana": "きもの",
     "Romaji": "kimono",
     "Kanji": "着物",
@@ -9756,8 +8943,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 814,
-    "Lesson": 20,
+    "Lesson": 0,
     "Hiragana": "ビザ",
     "Romaji": "biza",
     "Kanji": "",
@@ -9768,8 +8954,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 815,
-    "Lesson": 20,
+    "Lesson": 0,
     "Hiragana": "はじめ",
     "Romaji": "hajime",
     "Kanji": "始め",
@@ -9780,8 +8965,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 816,
-    "Lesson": 20,
+    "Lesson": 0,
     "Hiragana": "おわり",
     "Romaji": "owari",
     "Kanji": "終わり",
@@ -9792,8 +8976,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 817,
-    "Lesson": 20,
+    "Lesson": 0,
     "Hiragana": "こっち",
     "Romaji": "kocchi",
     "Kanji": "",
@@ -9804,8 +8987,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 818,
-    "Lesson": 20,
+    "Lesson": 0,
     "Hiragana": "そっち",
     "Romaji": "socchi",
     "Kanji": "",
@@ -9816,8 +8998,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 819,
-    "Lesson": 20,
+    "Lesson": 0,
     "Hiragana": "あっち",
     "Romaji": "acchi",
     "Kanji": "",
@@ -9828,8 +9009,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 820,
-    "Lesson": 20,
+    "Lesson": 0,
     "Hiragana": "どっち",
     "Romaji": "docchi",
     "Kanji": "",
@@ -9840,8 +9020,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 821,
-    "Lesson": 20,
+    "Lesson": 0,
     "Hiragana": "このあいだ",
     "Romaji": "kono aida",
     "Kanji": "この間",
@@ -9852,8 +9031,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 822,
-    "Lesson": 20,
+    "Lesson": 0,
     "Hiragana": "みんなで",
     "Romaji": "minna de",
     "Kanji": "",
@@ -9864,8 +9042,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 823,
-    "Lesson": 20,
+    "Lesson": 0,
     "Hiragana": "～けど",
     "Romaji": "～kedo",
     "Kanji": "",
@@ -9876,8 +9053,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 824,
-    "Lesson": 20,
+    "Lesson": 0,
     "Hiragana": "くにへかえるの",
     "Romaji": "kuni he kaeru no",
     "Kanji": "国へ帰るの",
@@ -9888,8 +9064,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 825,
-    "Lesson": 20,
+    "Lesson": 0,
     "Hiragana": "どうするの",
     "Romaji": "dou suru no",
     "Kanji": "",
@@ -9900,8 +9075,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 826,
-    "Lesson": 20,
+    "Lesson": 0,
     "Hiragana": "どうしようかな",
     "Romaji": "dou shiyou kana",
     "Kanji": "",
@@ -9912,8 +9086,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 827,
-    "Lesson": 20,
+    "Lesson": 0,
     "Hiragana": "よかったら",
     "Romaji": "yokattara",
     "Kanji": "良かったら",
@@ -9924,8 +9097,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 828,
-    "Lesson": 20,
+    "Lesson": 0,
     "Hiragana": "いろいろ",
     "Romaji": "iroiro",
     "Kanji": "色々",
@@ -9936,8 +9108,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 829,
-    "Lesson": 21,
+    "Lesson": 0,
     "Hiragana": "おもいます",
     "Romaji": "omoimasu",
     "Kanji": "思います",
@@ -9948,8 +9119,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 830,
-    "Lesson": 21,
+    "Lesson": 0,
     "Hiragana": "いいます",
     "Romaji": "iimasu",
     "Kanji": "言います",
@@ -9960,8 +9130,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 831,
-    "Lesson": 21,
+    "Lesson": 0,
     "Hiragana": "たります",
     "Romaji": "tarimasu",
     "Kanji": "足ります",
@@ -9972,8 +9141,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 832,
-    "Lesson": 21,
+    "Lesson": 0,
     "Hiragana": "かちます",
     "Romaji": "kachimasu",
     "Kanji": "勝ちます",
@@ -9984,8 +9152,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 833,
-    "Lesson": 21,
+    "Lesson": 0,
     "Hiragana": "まけます",
     "Romaji": "makemasu",
     "Kanji": "負けます",
@@ -9996,8 +9163,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 834,
-    "Lesson": 21,
+    "Lesson": 0,
     "Hiragana": "あります",
     "Romaji": "arimasu",
     "Kanji": "",
@@ -10008,8 +9174,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 835,
-    "Lesson": 21,
+    "Lesson": 0,
     "Hiragana": "やくにたちます",
     "Romaji": "yaku ni tachimasu",
     "Kanji": "役に立ちます",
@@ -10020,8 +9185,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 836,
-    "Lesson": 21,
+    "Lesson": 0,
     "Hiragana": "むだ",
     "Romaji": "muda",
     "Kanji": "",
@@ -10032,8 +9196,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi な"
   },
   {
-    "id": 837,
-    "Lesson": 21,
+    "Lesson": 0,
     "Hiragana": "ふべん",
     "Romaji": "fuben",
     "Kanji": "不便",
@@ -10044,8 +9207,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi な"
   },
   {
-    "id": 838,
-    "Lesson": 21,
+    "Lesson": 0,
     "Hiragana": "おなじ",
     "Romaji": "onaji",
     "Kanji": "同じ",
@@ -10056,8 +9218,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi な\" (nhưng bổ nghĩa danh từ không dùng な)"
   },
   {
-    "id": 839,
-    "Lesson": 21,
+    "Lesson": 0,
     "Hiragana": "すごい",
     "Romaji": "sugoi",
     "Kanji": "",
@@ -10068,8 +9229,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 840,
-    "Lesson": 21,
+    "Lesson": 0,
     "Hiragana": "しゅしょう",
     "Romaji": "shushou",
     "Kanji": "首相",
@@ -10080,8 +9240,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 841,
-    "Lesson": 21,
+    "Lesson": 0,
     "Hiragana": "だいとうりょう",
     "Romaji": "daitouryou",
     "Kanji": "大統領",
@@ -10092,8 +9251,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 842,
-    "Lesson": 21,
+    "Lesson": 0,
     "Hiragana": "せいじ",
     "Romaji": "seiji",
     "Kanji": "政治",
@@ -10104,8 +9262,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 843,
-    "Lesson": 21,
+    "Lesson": 0,
     "Hiragana": "ニュース",
     "Romaji": "nyu-su",
     "Kanji": "",
@@ -10116,8 +9273,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 844,
-    "Lesson": 21,
+    "Lesson": 0,
     "Hiragana": "スピーチ",
     "Romaji": "supi-chi",
     "Kanji": "",
@@ -10128,8 +9284,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 845,
-    "Lesson": 21,
+    "Lesson": 0,
     "Hiragana": "しあい",
     "Romaji": "shiai",
     "Kanji": "試合",
@@ -10140,8 +9295,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 846,
-    "Lesson": 21,
+    "Lesson": 0,
     "Hiragana": "アルバイト",
     "Romaji": "arubaito",
     "Kanji": "",
@@ -10152,8 +9306,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 847,
-    "Lesson": 21,
+    "Lesson": 0,
     "Hiragana": "いけん",
     "Romaji": "iken",
     "Kanji": "意見",
@@ -10164,8 +9317,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 848,
-    "Lesson": 21,
+    "Lesson": 0,
     "Hiragana": "はなし",
     "Romaji": "hanashi",
     "Kanji": "話",
@@ -10176,8 +9328,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 849,
-    "Lesson": 21,
+    "Lesson": 0,
     "Hiragana": "ユーモア",
     "Romaji": "yu-moa",
     "Kanji": "",
@@ -10188,8 +9339,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 850,
-    "Lesson": 21,
+    "Lesson": 0,
     "Hiragana": "デザイン",
     "Romaji": "dezain",
     "Kanji": "",
@@ -10200,8 +9350,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 851,
-    "Lesson": 21,
+    "Lesson": 0,
     "Hiragana": "こうつう",
     "Romaji": "koutsuu",
     "Kanji": "交通",
@@ -10212,8 +9361,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 852,
-    "Lesson": 21,
+    "Lesson": 0,
     "Hiragana": "ラッシュ",
     "Romaji": "rasshu",
     "Kanji": "",
@@ -10224,8 +9372,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 853,
-    "Lesson": 21,
+    "Lesson": 0,
     "Hiragana": "さいきん",
     "Romaji": "saikin",
     "Kanji": "最近",
@@ -10236,8 +9383,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 854,
-    "Lesson": 21,
+    "Lesson": 0,
     "Hiragana": "たぶん",
     "Romaji": "tabun",
     "Kanji": "",
@@ -10248,8 +9394,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 855,
-    "Lesson": 21,
+    "Lesson": 0,
     "Hiragana": "きっと",
     "Romaji": "kitto",
     "Kanji": "",
@@ -10260,8 +9405,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 856,
-    "Lesson": 21,
+    "Lesson": 0,
     "Hiragana": "ほんとうに",
     "Romaji": "hontou ni",
     "Kanji": "本当に",
@@ -10272,8 +9416,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 857,
-    "Lesson": 21,
+    "Lesson": 0,
     "Hiragana": "そんなに",
     "Romaji": "sonna ni",
     "Kanji": "",
@@ -10284,8 +9427,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 858,
-    "Lesson": 21,
+    "Lesson": 0,
     "Hiragana": "～について",
     "Romaji": "～ ni tsuite",
     "Kanji": "",
@@ -10296,8 +9438,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 859,
-    "Lesson": 21,
+    "Lesson": 0,
     "Hiragana": "しかたがありません",
     "Romaji": "shikata ga arimasen",
     "Kanji": "",
@@ -10308,8 +9449,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 860,
-    "Lesson": 21,
+    "Lesson": 0,
     "Hiragana": "しばらくですね",
     "Romaji": "shibaraku desu ne",
     "Kanji": "",
@@ -10320,8 +9460,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 861,
-    "Lesson": 21,
+    "Lesson": 0,
     "Hiragana": "～でものみませんか",
     "Romaji": "～ demo nomimasen ka",
     "Kanji": "",
@@ -10332,8 +9471,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 862,
-    "Lesson": 21,
+    "Lesson": 0,
     "Hiragana": "みないと…",
     "Romaji": "minaito…",
     "Kanji": "",
@@ -10344,8 +9482,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 863,
-    "Lesson": 21,
+    "Lesson": 0,
     "Hiragana": "もちろん",
     "Romaji": "mochiron",
     "Kanji": "",
@@ -10356,8 +9493,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 864,
-    "Lesson": 21,
+    "Lesson": 0,
     "Hiragana": "カンガルー",
     "Romaji": "kangaru-",
     "Kanji": "",
@@ -10368,8 +9504,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 865,
-    "Lesson": 22,
+    "Lesson": 0,
     "Hiragana": "きます",
     "Romaji": "kimasu",
     "Kanji": "着ます",
@@ -10380,8 +9515,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 866,
-    "Lesson": 22,
+    "Lesson": 0,
     "Hiragana": "はきます",
     "Romaji": "hakimasu",
     "Kanji": "",
@@ -10392,8 +9526,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 867,
-    "Lesson": 22,
+    "Lesson": 0,
     "Hiragana": "かぶります",
     "Romaji": "kaburimasu",
     "Kanji": "",
@@ -10404,8 +9537,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 868,
-    "Lesson": 22,
+    "Lesson": 0,
     "Hiragana": "かけます",
     "Romaji": "kakemasu",
     "Kanji": "",
@@ -10416,8 +9548,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 869,
-    "Lesson": 22,
+    "Lesson": 0,
     "Hiragana": "うまれます",
     "Romaji": "umaremasu",
     "Kanji": "生まれます",
@@ -10428,8 +9559,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 870,
-    "Lesson": 22,
+    "Lesson": 0,
     "Hiragana": "コート",
     "Romaji": "ko-to",
     "Kanji": "",
@@ -10440,8 +9570,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 871,
-    "Lesson": 22,
+    "Lesson": 0,
     "Hiragana": "スーツ",
     "Romaji": "su-tsu",
     "Kanji": "",
@@ -10452,8 +9581,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 872,
-    "Lesson": 22,
+    "Lesson": 0,
     "Hiragana": "セーター",
     "Romaji": "se-ta-",
     "Kanji": "",
@@ -10464,8 +9592,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 873,
-    "Lesson": 22,
+    "Lesson": 0,
     "Hiragana": "ぼうし",
     "Romaji": "boushi",
     "Kanji": "帽子",
@@ -10476,8 +9603,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 874,
-    "Lesson": 22,
+    "Lesson": 0,
     "Hiragana": "めがね",
     "Romaji": "megane",
     "Kanji": "眼鏡",
@@ -10488,8 +9614,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 875,
-    "Lesson": 22,
+    "Lesson": 0,
     "Hiragana": "よく",
     "Romaji": "yoku",
     "Kanji": "",
@@ -10500,8 +9625,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 876,
-    "Lesson": 22,
+    "Lesson": 0,
     "Hiragana": "おめでとうございます",
     "Romaji": "omedetou gozaimasu",
     "Kanji": "",
@@ -10512,8 +9636,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 877,
-    "Lesson": 22,
+    "Lesson": 0,
     "Hiragana": "こちら",
     "Romaji": "kochira",
     "Kanji": "",
@@ -10524,8 +9647,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 878,
-    "Lesson": 22,
+    "Lesson": 0,
     "Hiragana": "やちん",
     "Romaji": "yachin",
     "Kanji": "家賃",
@@ -10536,8 +9658,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 879,
-    "Lesson": 22,
+    "Lesson": 0,
     "Hiragana": "うーん。",
     "Romaji": "u-n",
     "Kanji": "",
@@ -10548,8 +9669,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 880,
-    "Lesson": 22,
+    "Lesson": 0,
     "Hiragana": "ダイニングキッチン",
     "Romaji": "dainingu kicchin",
     "Kanji": "",
@@ -10560,8 +9680,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 881,
-    "Lesson": 22,
+    "Lesson": 0,
     "Hiragana": "わしつ",
     "Romaji": "washitsu",
     "Kanji": "和室",
@@ -10572,8 +9691,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 882,
-    "Lesson": 22,
+    "Lesson": 0,
     "Hiragana": "おしいれ",
     "Romaji": "oshiire",
     "Kanji": "押し入れ",
@@ -10584,8 +9702,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 883,
-    "Lesson": 22,
+    "Lesson": 0,
     "Hiragana": "ふとん",
     "Romaji": "futon",
     "Kanji": "布団",
@@ -10596,8 +9713,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 884,
-    "Lesson": 22,
+    "Lesson": 0,
     "Hiragana": "アパート",
     "Romaji": "apa-to",
     "Kanji": "",
@@ -10608,8 +9724,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 885,
-    "Lesson": 22,
+    "Lesson": 0,
     "Hiragana": "パリ",
     "Romaji": "pari",
     "Kanji": "",
@@ -10620,8 +9735,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 886,
-    "Lesson": 22,
+    "Lesson": 0,
     "Hiragana": "ばんりのちょうじょう",
     "Romaji": "banri no choujou",
     "Kanji": "万里の長城",
@@ -10632,8 +9746,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 887,
-    "Lesson": 22,
+    "Lesson": 0,
     "Hiragana": "よかかいはつセンター",
     "Romaji": "yoka kaihatsu senta-",
     "Kanji": "",
@@ -10644,8 +9757,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 888,
-    "Lesson": 22,
+    "Lesson": 0,
     "Hiragana": "レジャーはくしょ",
     "Romaji": "reja- hakusho",
     "Kanji": "",
@@ -10656,8 +9768,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 889,
-    "Lesson": 23,
+    "Lesson": 0,
     "Hiragana": "ききます",
     "Romaji": "kikimasu",
     "Kanji": "聞きます",
@@ -10668,8 +9779,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 890,
-    "Lesson": 23,
+    "Lesson": 0,
     "Hiragana": "みち",
     "Romaji": "michi",
     "Kanji": "道",
@@ -10680,8 +9790,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 891,
-    "Lesson": 23,
+    "Lesson": 0,
     "Hiragana": "こうさてん",
     "Romaji": "kousaten",
     "Kanji": "交差点",
@@ -10692,8 +9801,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 892,
-    "Lesson": 23,
+    "Lesson": 0,
     "Hiragana": "しんごう",
     "Romaji": "shingou",
     "Kanji": "信号",
@@ -10704,8 +9812,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 893,
-    "Lesson": 23,
+    "Lesson": 0,
     "Hiragana": "ひっこしします",
     "Romaji": "hikkoshi shimasu",
     "Kanji": "引越しします",
@@ -10716,8 +9823,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 894,
-    "Lesson": 23,
+    "Lesson": 0,
     "Hiragana": "まわします",
     "Romaji": "mawashimasu",
     "Kanji": "回します",
@@ -10728,8 +9834,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 895,
-    "Lesson": 23,
+    "Lesson": 0,
     "Hiragana": "ひきます",
     "Romaji": "hikimasu",
     "Kanji": "引きます",
@@ -10740,8 +9845,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 896,
-    "Lesson": 23,
+    "Lesson": 0,
     "Hiragana": "かえます",
     "Romaji": "kaemasu",
     "Kanji": "変えます",
@@ -10752,8 +9856,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 897,
-    "Lesson": 23,
+    "Lesson": 0,
     "Hiragana": "さわります",
     "Romaji": "sawarimasu",
     "Kanji": "触ります",
@@ -10764,8 +9867,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 898,
-    "Lesson": 23,
+    "Lesson": 0,
     "Hiragana": "でます",
     "Romaji": "demasu",
     "Kanji": "出ます",
@@ -10776,8 +9878,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 899,
-    "Lesson": 23,
+    "Lesson": 0,
     "Hiragana": "うごきます",
     "Romaji": "ugokimasu",
     "Kanji": "動きます",
@@ -10788,8 +9889,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 900,
-    "Lesson": 23,
+    "Lesson": 0,
     "Hiragana": "あるきます",
     "Romaji": "arukimasu",
     "Kanji": "歩きます",
@@ -10800,8 +9900,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 901,
-    "Lesson": 23,
+    "Lesson": 0,
     "Hiragana": "わたります",
     "Romaji": "watarimasu",
     "Kanji": "渡ります",
@@ -10812,8 +9911,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 902,
-    "Lesson": 23,
+    "Lesson": 0,
     "Hiragana": "きをつけます",
     "Romaji": "ki wo tsukemasu",
     "Kanji": "気を付けます",
@@ -10824,8 +9922,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 903,
-    "Lesson": 23,
+    "Lesson": 0,
     "Hiragana": "でんきや",
     "Romaji": "denkiya",
     "Kanji": "電気屋",
@@ -10836,8 +9933,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 904,
-    "Lesson": 23,
+    "Lesson": 0,
     "Hiragana": "こしょう",
     "Romaji": "koshou",
     "Kanji": "故障",
@@ -10848,8 +9944,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 905,
-    "Lesson": 23,
+    "Lesson": 0,
     "Hiragana": "～や",
     "Romaji": "～ya",
     "Kanji": "～屋",
@@ -10860,8 +9955,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 906,
-    "Lesson": 23,
+    "Lesson": 0,
     "Hiragana": "サイズ",
     "Romaji": "saizu",
     "Kanji": "",
@@ -10872,8 +9966,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 907,
-    "Lesson": 23,
+    "Lesson": 0,
     "Hiragana": "おと",
     "Romaji": "oto",
     "Kanji": "音",
@@ -10884,8 +9977,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 908,
-    "Lesson": 23,
+    "Lesson": 0,
     "Hiragana": "きかい",
     "Romaji": "kikai",
     "Kanji": "機械",
@@ -10896,8 +9988,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 909,
-    "Lesson": 23,
+    "Lesson": 0,
     "Hiragana": "つまみ",
     "Romaji": "tsumami",
     "Kanji": "",
@@ -10908,8 +9999,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 910,
-    "Lesson": 23,
+    "Lesson": 0,
     "Hiragana": "かど",
     "Romaji": "kado",
     "Kanji": "角",
@@ -10920,8 +10010,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 911,
-    "Lesson": 23,
+    "Lesson": 0,
     "Hiragana": "はし",
     "Romaji": "hashi",
     "Kanji": "橋",
@@ -10932,8 +10021,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 912,
-    "Lesson": 23,
+    "Lesson": 0,
     "Hiragana": "ちゅうしゃじょう",
     "Romaji": "chuushajou",
     "Kanji": "駐車場",
@@ -10944,8 +10032,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 913,
-    "Lesson": 23,
+    "Lesson": 0,
     "Hiragana": "おしょうがつ",
     "Romaji": "oshougatsu",
     "Kanji": "お正月",
@@ -10956,8 +10043,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 914,
-    "Lesson": 23,
+    "Lesson": 0,
     "Hiragana": "ごちそうさまでした",
     "Romaji": "gochisousama deshita",
     "Kanji": "",
@@ -10968,8 +10054,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 915,
-    "Lesson": 23,
+    "Lesson": 0,
     "Hiragana": "～め",
     "Romaji": "～me",
     "Kanji": "～目",
@@ -10980,8 +10065,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 916,
-    "Lesson": 23,
+    "Lesson": 0,
     "Hiragana": "たてもの",
     "Romaji": "tatemono",
     "Kanji": "建物",
@@ -10992,8 +10076,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 917,
-    "Lesson": 23,
+    "Lesson": 0,
     "Hiragana": "がいこくじんとうろくしょう",
     "Romaji": "gaikokujin tourokushou",
     "Kanji": "外国人登録証",
@@ -11004,8 +10087,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 918,
-    "Lesson": 24,
+    "Lesson": 0,
     "Hiragana": "くれます",
     "Romaji": "kuremasu",
     "Kanji": "",
@@ -11016,8 +10098,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 919,
-    "Lesson": 24,
+    "Lesson": 0,
     "Hiragana": "つれていきます",
     "Romaji": "tsurete ikimasu",
     "Kanji": "連れて行きます",
@@ -11028,8 +10109,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 920,
-    "Lesson": 24,
+    "Lesson": 0,
     "Hiragana": "つれてきます",
     "Romaji": "tsurete kimasu",
     "Kanji": "連れて来ます",
@@ -11040,8 +10120,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 921,
-    "Lesson": 24,
+    "Lesson": 0,
     "Hiragana": "おくります",
     "Romaji": "okurimasu",
     "Kanji": "送る",
@@ -11052,8 +10131,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 922,
-    "Lesson": 24,
+    "Lesson": 0,
     "Hiragana": "しょうかいします",
     "Romaji": "shoukai shimasu",
     "Kanji": "紹介します",
@@ -11064,8 +10142,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 923,
-    "Lesson": 24,
+    "Lesson": 0,
     "Hiragana": "あんないします",
     "Romaji": "annai shimasu",
     "Kanji": "案内します",
@@ -11076,8 +10153,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 924,
-    "Lesson": 24,
+    "Lesson": 0,
     "Hiragana": "せつめいします",
     "Romaji": "setsumei shimasu",
     "Kanji": "説明します",
@@ -11088,8 +10164,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 925,
-    "Lesson": 24,
+    "Lesson": 0,
     "Hiragana": "いれます",
     "Romaji": "iremasu",
     "Kanji": "",
@@ -11100,8 +10175,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 926,
-    "Lesson": 24,
+    "Lesson": 0,
     "Hiragana": "おじいさん / おじいちゃん",
     "Romaji": "ojiisan / ojiichan",
     "Kanji": "",
@@ -11112,8 +10186,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 927,
-    "Lesson": 24,
+    "Lesson": 0,
     "Hiragana": "おばあさん / おばあちゃん",
     "Romaji": "obaasan / obaachan",
     "Kanji": "",
@@ -11124,8 +10197,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 928,
-    "Lesson": 24,
+    "Lesson": 0,
     "Hiragana": "じゅんび",
     "Romaji": "junbi",
     "Kanji": "準備",
@@ -11136,8 +10208,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 929,
-    "Lesson": 24,
+    "Lesson": 0,
     "Hiragana": "いみ",
     "Romaji": "imi",
     "Kanji": "意味",
@@ -11148,8 +10219,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 930,
-    "Lesson": 24,
+    "Lesson": 0,
     "Hiragana": "おかし",
     "Romaji": "okashi",
     "Kanji": "お菓子",
@@ -11160,8 +10230,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 931,
-    "Lesson": 24,
+    "Lesson": 0,
     "Hiragana": "ぜんぶ",
     "Romaji": "zenbu",
     "Kanji": "全部",
@@ -11172,8 +10241,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 932,
-    "Lesson": 25,
+    "Lesson": 0,
     "Hiragana": "かんがえます",
     "Romaji": "kangaemasu",
     "Kanji": "考えます",
@@ -11184,8 +10252,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 933,
-    "Lesson": 25,
+    "Lesson": 0,
     "Hiragana": "つきます",
     "Romaji": "tsukimasu",
     "Kanji": "着きます",
@@ -11196,8 +10263,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 934,
-    "Lesson": 25,
+    "Lesson": 0,
     "Hiragana": "りゅうがくします",
     "Romaji": "ryuugaku shimasu",
     "Kanji": "留学します",
@@ -11208,8 +10274,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 935,
-    "Lesson": 25,
+    "Lesson": 0,
     "Hiragana": "とります",
     "Romaji": "torimasu",
     "Kanji": "取ります",
@@ -11220,8 +10285,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 936,
-    "Lesson": 25,
+    "Lesson": 0,
     "Hiragana": "いなか",
     "Romaji": "inaka",
     "Kanji": "田舎",
@@ -11232,8 +10296,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 937,
-    "Lesson": 25,
+    "Lesson": 0,
     "Hiragana": "たいしかん",
     "Romaji": "taishikan",
     "Kanji": "大使館",
@@ -11244,8 +10307,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 938,
-    "Lesson": 25,
+    "Lesson": 0,
     "Hiragana": "グループ",
     "Romaji": "guru-pu",
     "Kanji": "",
@@ -11256,8 +10318,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 939,
-    "Lesson": 25,
+    "Lesson": 0,
     "Hiragana": "チャンス",
     "Romaji": "chansu",
     "Kanji": "",
@@ -11268,8 +10329,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 940,
-    "Lesson": 25,
+    "Lesson": 0,
     "Hiragana": "おく",
     "Romaji": "oku",
     "Kanji": "億",
@@ -11280,8 +10340,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 941,
-    "Lesson": 25,
+    "Lesson": 0,
     "Hiragana": "もし",
     "Romaji": "moshi",
     "Kanji": "",
@@ -11292,8 +10351,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 942,
-    "Lesson": 25,
+    "Lesson": 0,
     "Hiragana": "いくら",
     "Romaji": "ikura",
     "Kanji": "",
@@ -11304,8 +10362,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 943,
-    "Lesson": 25,
+    "Lesson": 0,
     "Hiragana": "てんきん",
     "Romaji": "tenkin",
     "Kanji": "転勤",
@@ -11316,8 +10373,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 944,
-    "Lesson": 25,
+    "Lesson": 0,
     "Hiragana": "こと",
     "Romaji": "koto",
     "Kanji": "",
@@ -11328,8 +10384,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 945,
-    "Lesson": 25,
+    "Lesson": 0,
     "Hiragana": "いっぱいのみましょう",
     "Romaji": "ippai nomimashou",
     "Kanji": "一杯飲みましょう",
@@ -11340,8 +10395,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 946,
-    "Lesson": 25,
+    "Lesson": 0,
     "Hiragana": "どうぞおげんきで",
     "Romaji": "douzo ogenki de",
     "Kanji": "どうぞ元気で",
@@ -11352,8 +10406,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 947,
-    "Lesson": 25,
+    "Lesson": 0,
     "Hiragana": "おせわになりました",
     "Romaji": "osewa ni narimashita",
     "Kanji": "お世話になりました",
@@ -11364,8 +10417,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 948,
-    "Lesson": 25,
+    "Lesson": 0,
     "Hiragana": "がんばります",
     "Romaji": "ganbarimasu",
     "Kanji": "頑張ります",
@@ -11376,8 +10428,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 949,
-    "Lesson": 26,
+    "Lesson": 0,
     "Hiragana": "みます",
     "Romaji": "mimasu",
     "Kanji": "見る",
@@ -11388,8 +10439,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 950,
-    "Lesson": 26,
+    "Lesson": 0,
     "Hiragana": "みます",
     "Romaji": "mimasu",
     "Kanji": "診る",
@@ -11400,8 +10450,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 951,
-    "Lesson": 26,
+    "Lesson": 0,
     "Hiragana": "さがします",
     "Romaji": "sagashimasu",
     "Kanji": "捜す",
@@ -11412,8 +10461,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 952,
-    "Lesson": 26,
+    "Lesson": 0,
     "Hiragana": "さがします",
     "Romaji": "sagashimasu",
     "Kanji": "探す",
@@ -11424,8 +10472,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 953,
-    "Lesson": 26,
+    "Lesson": 0,
     "Hiragana": "おくれます",
     "Romaji": "okuremasu",
     "Kanji": "遅れる",
@@ -11436,8 +10483,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 954,
-    "Lesson": 26,
+    "Lesson": 0,
     "Hiragana": "まにあいます",
     "Romaji": "maniauimasu",
     "Kanji": "間に合います",
@@ -11448,8 +10494,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 955,
-    "Lesson": 26,
+    "Lesson": 0,
     "Hiragana": "やります",
     "Romaji": "yarimasu",
     "Kanji": "",
@@ -11460,8 +10505,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 956,
-    "Lesson": 26,
+    "Lesson": 0,
     "Hiragana": "ひろいます",
     "Romaji": "hiroimasu",
     "Kanji": "拾います",
@@ -11472,8 +10516,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 957,
-    "Lesson": 26,
+    "Lesson": 0,
     "Hiragana": "れんらくします",
     "Romaji": "renraku shimasu",
     "Kanji": "連絡します",
@@ -11484,8 +10527,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 958,
-    "Lesson": 26,
+    "Lesson": 0,
     "Hiragana": "きぶんがいい",
     "Romaji": "kibun ga ii",
     "Kanji": "気分がいい",
@@ -11496,8 +10538,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 959,
-    "Lesson": 26,
+    "Lesson": 0,
     "Hiragana": "きぶんがわるい",
     "Romaji": "kibun ga warui",
     "Kanji": "気分が悪い",
@@ -11508,8 +10549,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 960,
-    "Lesson": 26,
+    "Lesson": 0,
     "Hiragana": "うんどうかい",
     "Romaji": "undoukai",
     "Kanji": "運動会",
@@ -11520,8 +10560,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 961,
-    "Lesson": 26,
+    "Lesson": 0,
     "Hiragana": "ぼんおどり",
     "Romaji": "bon-odori",
     "Kanji": "盆踊り",
@@ -11532,8 +10571,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 962,
-    "Lesson": 26,
+    "Lesson": 0,
     "Hiragana": "フリーマーケット",
     "Romaji": "furi- ma-ketto",
     "Kanji": "",
@@ -11544,8 +10582,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 963,
-    "Lesson": 26,
+    "Lesson": 0,
     "Hiragana": "ばしょ",
     "Romaji": "basho",
     "Kanji": "場所",
@@ -11556,8 +10593,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 964,
-    "Lesson": 26,
+    "Lesson": 0,
     "Hiragana": "ボランティア",
     "Romaji": "borantia",
     "Kanji": "",
@@ -11568,8 +10604,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 965,
-    "Lesson": 26,
+    "Lesson": 0,
     "Hiragana": "さいふ",
     "Romaji": "saifu",
     "Kanji": "財布",
@@ -11580,8 +10615,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 966,
-    "Lesson": 26,
+    "Lesson": 0,
     "Hiragana": "ごみ",
     "Romaji": "gomi",
     "Kanji": "",
@@ -11592,8 +10626,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 967,
-    "Lesson": 26,
+    "Lesson": 0,
     "Hiragana": "こっかいぎじどう",
     "Romaji": "kokkaigijidou",
     "Kanji": "国会議事堂",
@@ -11604,8 +10637,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 968,
-    "Lesson": 26,
+    "Lesson": 0,
     "Hiragana": "へいじつ",
     "Romaji": "heijitsu",
     "Kanji": "平日",
@@ -11616,8 +10648,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 969,
-    "Lesson": 26,
+    "Lesson": 0,
     "Hiragana": "おおさかべん",
     "Romaji": "oosakaben",
     "Kanji": "大阪弁",
@@ -11628,8 +10659,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 970,
-    "Lesson": 26,
+    "Lesson": 0,
     "Hiragana": "こんど",
     "Romaji": "kondo",
     "Kanji": "今度",
@@ -11640,8 +10670,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 971,
-    "Lesson": 26,
+    "Lesson": 0,
     "Hiragana": "ずいぶん",
     "Romaji": "zuibun",
     "Kanji": "",
@@ -11652,8 +10681,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 972,
-    "Lesson": 26,
+    "Lesson": 0,
     "Hiragana": "ちょくせつ",
     "Romaji": "chokusetsu",
     "Kanji": "直接",
@@ -11664,8 +10692,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 973,
-    "Lesson": 26,
+    "Lesson": 0,
     "Hiragana": "いつでも",
     "Romaji": "itsu demo",
     "Kanji": "",
@@ -11676,8 +10703,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 974,
-    "Lesson": 26,
+    "Lesson": 0,
     "Hiragana": "どこでも",
     "Romaji": "doko demo",
     "Kanji": "",
@@ -11688,8 +10714,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 975,
-    "Lesson": 26,
+    "Lesson": 0,
     "Hiragana": "だれでも",
     "Romaji": "dare demo",
     "Kanji": "",
@@ -11700,8 +10725,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 976,
-    "Lesson": 26,
+    "Lesson": 0,
     "Hiragana": "なんでも",
     "Romaji": "nan demo",
     "Kanji": "",
@@ -11712,8 +10736,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 977,
-    "Lesson": 26,
+    "Lesson": 0,
     "Hiragana": "こんな",
     "Romaji": "konna",
     "Kanji": "",
@@ -11724,8 +10747,7 @@ const vocabData = [
     "note": "Bổ nghĩa danh từ"
   },
   {
-    "id": 978,
-    "Lesson": 26,
+    "Lesson": 0,
     "Hiragana": "そんな",
     "Romaji": "sonna",
     "Kanji": "",
@@ -11736,8 +10758,7 @@ const vocabData = [
     "note": "Bổ nghĩa danh từ"
   },
   {
-    "id": 979,
-    "Lesson": 26,
+    "Lesson": 0,
     "Hiragana": "あんな",
     "Romaji": "anna",
     "Kanji": "",
@@ -11748,8 +10769,7 @@ const vocabData = [
     "note": "Bổ nghĩa danh từ"
   },
   {
-    "id": 980,
-    "Lesson": 26,
+    "Lesson": 0,
     "Hiragana": "かたづきます",
     "Romaji": "katadukimasu",
     "Kanji": "片付く",
@@ -11760,8 +10780,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 981,
-    "Lesson": 26,
+    "Lesson": 0,
     "Hiragana": "だします",
     "Romaji": "dashimasu",
     "Kanji": "出す",
@@ -11772,8 +10791,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 982,
-    "Lesson": 26,
+    "Lesson": 0,
     "Hiragana": "もえるごみ",
     "Romaji": "moeru gomi",
     "Kanji": "燃えるごみ",
@@ -11784,8 +10802,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 983,
-    "Lesson": 26,
+    "Lesson": 0,
     "Hiragana": "おきば",
     "Romaji": "okiba",
     "Kanji": "置き場",
@@ -11796,8 +10813,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 984,
-    "Lesson": 26,
+    "Lesson": 0,
     "Hiragana": "よこ",
     "Romaji": "yoko",
     "Kanji": "横",
@@ -11808,8 +10824,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 985,
-    "Lesson": 26,
+    "Lesson": 0,
     "Hiragana": "びん",
     "Romaji": "bin",
     "Kanji": "瓶",
@@ -11820,8 +10835,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 986,
-    "Lesson": 26,
+    "Lesson": 0,
     "Hiragana": "かん",
     "Romaji": "kan",
     "Kanji": "缶",
@@ -11832,8 +10846,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 987,
-    "Lesson": 26,
+    "Lesson": 0,
     "Hiragana": "ガス",
     "Romaji": "gasu",
     "Kanji": "",
@@ -11844,8 +10857,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 988,
-    "Lesson": 26,
+    "Lesson": 0,
     "Hiragana": "ガスがいしゃ",
     "Romaji": "gasu gaisha",
     "Kanji": "ガス会社",
@@ -11856,8 +10868,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 989,
-    "Lesson": 26,
+    "Lesson": 0,
     "Hiragana": "うちゅう",
     "Romaji": "uchuu",
     "Kanji": "宇宙",
@@ -11868,8 +10879,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 990,
-    "Lesson": 26,
+    "Lesson": 0,
     "Hiragana": "さま",
     "Romaji": "sama",
     "Kanji": "様",
@@ -11880,8 +10890,7 @@ const vocabData = [
     "note": "Hậu tố lịch sự"
   },
   {
-    "id": 991,
-    "Lesson": 26,
+    "Lesson": 0,
     "Hiragana": "うちゅうせん",
     "Romaji": "uchuusen",
     "Kanji": "宇宙船",
@@ -11892,8 +10901,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 992,
-    "Lesson": 26,
+    "Lesson": 0,
     "Hiragana": "こわい",
     "Romaji": "kowai",
     "Kanji": "怖い",
@@ -11904,8 +10912,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 993,
-    "Lesson": 26,
+    "Lesson": 0,
     "Hiragana": "ちがいます",
     "Romaji": "chigaimasu",
     "Kanji": "違う",
@@ -11916,8 +10923,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 994,
-    "Lesson": 26,
+    "Lesson": 0,
     "Hiragana": "うちゅうひこうし",
     "Romaji": "uchuuhikoushi",
     "Kanji": "宇宙飛行士",
@@ -11928,8 +10934,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 995,
-    "Lesson": 27,
+    "Lesson": 0,
     "Hiragana": "かいます",
     "Romaji": "kaimasu",
     "Kanji": "飼います",
@@ -11940,8 +10945,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 996,
-    "Lesson": 27,
+    "Lesson": 0,
     "Hiragana": "たてます",
     "Romaji": "tatemasu",
     "Kanji": "建てます",
@@ -11952,8 +10956,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 997,
-    "Lesson": 27,
+    "Lesson": 0,
     "Hiragana": "はしります",
     "Romaji": "hashirimasu",
     "Kanji": "走ります",
@@ -11964,8 +10967,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 998,
-    "Lesson": 27,
+    "Lesson": 0,
     "Hiragana": "とります",
     "Romaji": "torimasu",
     "Kanji": "取ります",
@@ -11976,8 +10978,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 999,
-    "Lesson": 27,
+    "Lesson": 0,
     "Hiragana": "みえます",
     "Romaji": "miemasu",
     "Kanji": "見えます",
@@ -11988,8 +10989,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1000,
-    "Lesson": 27,
+    "Lesson": 0,
     "Hiragana": "きこえます",
     "Romaji": "kikoemasu",
     "Kanji": "聞こえます",
@@ -12000,8 +11000,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1001,
-    "Lesson": 27,
+    "Lesson": 0,
     "Hiragana": "できます",
     "Romaji": "dekimasu",
     "Kanji": "",
@@ -12012,8 +11011,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1002,
-    "Lesson": 27,
+    "Lesson": 0,
     "Hiragana": "ひらきます",
     "Romaji": "hirakimasu",
     "Kanji": "開きます",
@@ -12024,8 +11022,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1003,
-    "Lesson": 27,
+    "Lesson": 0,
     "Hiragana": "ペット",
     "Romaji": "petto",
     "Kanji": "",
@@ -12036,8 +11033,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1004,
-    "Lesson": 27,
+    "Lesson": 0,
     "Hiragana": "とり",
     "Romaji": "tori",
     "Kanji": "鳥",
@@ -12048,8 +11044,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1005,
-    "Lesson": 27,
+    "Lesson": 0,
     "Hiragana": "こえ",
     "Romaji": "koe",
     "Kanji": "声",
@@ -12060,8 +11055,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1006,
-    "Lesson": 27,
+    "Lesson": 0,
     "Hiragana": "なみ",
     "Romaji": "nami",
     "Kanji": "波",
@@ -12072,8 +11066,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1007,
-    "Lesson": 27,
+    "Lesson": 0,
     "Hiragana": "はなび",
     "Romaji": "hanabi",
     "Kanji": "花火",
@@ -12084,8 +11077,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1008,
-    "Lesson": 27,
+    "Lesson": 0,
     "Hiragana": "けしき",
     "Romaji": "keshiki",
     "Kanji": "景色",
@@ -12096,8 +11088,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1009,
-    "Lesson": 27,
+    "Lesson": 0,
     "Hiragana": "ひるま",
     "Romaji": "hiruma",
     "Kanji": "昼間",
@@ -12108,8 +11099,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1010,
-    "Lesson": 27,
+    "Lesson": 0,
     "Hiragana": "むかし",
     "Romaji": "mukashi",
     "Kanji": "昔",
@@ -12120,8 +11110,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1011,
-    "Lesson": 27,
+    "Lesson": 0,
     "Hiragana": "どうぐ",
     "Romaji": "dougu",
     "Kanji": "道具",
@@ -12132,8 +11121,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1012,
-    "Lesson": 27,
+    "Lesson": 0,
     "Hiragana": "じどうはんばいき",
     "Romaji": "jidouhanbaiki",
     "Kanji": "自動販売機",
@@ -12144,8 +11132,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1013,
-    "Lesson": 27,
+    "Lesson": 0,
     "Hiragana": "つうしんはんばい",
     "Romaji": "tsuushinhanbai",
     "Kanji": "通信販売",
@@ -12156,8 +11143,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1014,
-    "Lesson": 27,
+    "Lesson": 0,
     "Hiragana": "クリーニング",
     "Romaji": "kuri-ningu",
     "Kanji": "",
@@ -12168,8 +11154,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1015,
-    "Lesson": 27,
+    "Lesson": 0,
     "Hiragana": "マンション",
     "Romaji": "manshon",
     "Kanji": "",
@@ -12180,8 +11165,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1016,
-    "Lesson": 27,
+    "Lesson": 0,
     "Hiragana": "だいどころ",
     "Romaji": "daidokoro",
     "Kanji": "台所",
@@ -12192,8 +11176,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1017,
-    "Lesson": 27,
+    "Lesson": 0,
     "Hiragana": "～ご",
     "Romaji": "～go",
     "Kanji": "～後",
@@ -12204,8 +11187,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1018,
-    "Lesson": 27,
+    "Lesson": 0,
     "Hiragana": "～しか",
     "Romaji": "～shika",
     "Kanji": "",
@@ -12216,8 +11198,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1019,
-    "Lesson": 27,
+    "Lesson": 0,
     "Hiragana": "～きょうしつ",
     "Romaji": "～kyoushitsu",
     "Kanji": "～教室",
@@ -12228,8 +11209,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1020,
-    "Lesson": 27,
+    "Lesson": 0,
     "Hiragana": "パーティールーム",
     "Romaji": "pa-ti-ru-mu",
     "Kanji": "",
@@ -12240,8 +11220,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1021,
-    "Lesson": 27,
+    "Lesson": 0,
     "Hiragana": "かんさいくうこう",
     "Romaji": "kansai kuukou",
     "Kanji": "関西空港",
@@ -12252,8 +11231,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1022,
-    "Lesson": 27,
+    "Lesson": 0,
     "Hiragana": "あきはばら",
     "Romaji": "akihabara",
     "Kanji": "秋葉原",
@@ -12264,8 +11242,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1023,
-    "Lesson": 27,
+    "Lesson": 0,
     "Hiragana": "いず",
     "Romaji": "izu",
     "Kanji": "伊豆",
@@ -12276,8 +11253,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1024,
-    "Lesson": 27,
+    "Lesson": 0,
     "Hiragana": "にちようびだいく",
     "Romaji": "nichiyoubi daiku",
     "Kanji": "日曜日大工",
@@ -12288,8 +11264,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1025,
-    "Lesson": 27,
+    "Lesson": 0,
     "Hiragana": "ほんだな",
     "Romaji": "hondana",
     "Kanji": "本棚",
@@ -12300,8 +11275,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1026,
-    "Lesson": 27,
+    "Lesson": 0,
     "Hiragana": "いつか",
     "Romaji": "itsuka",
     "Kanji": "",
@@ -12312,8 +11286,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1027,
-    "Lesson": 27,
+    "Lesson": 0,
     "Hiragana": "ゆめ",
     "Romaji": "yume",
     "Kanji": "夢",
@@ -12324,8 +11297,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1028,
-    "Lesson": 27,
+    "Lesson": 0,
     "Hiragana": "いえ",
     "Romaji": "ie",
     "Kanji": "家",
@@ -12336,8 +11308,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1029,
-    "Lesson": 27,
+    "Lesson": 0,
     "Hiragana": "すばらしい",
     "Romaji": "subarashii",
     "Kanji": "素晴らしい",
@@ -12348,8 +11319,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 1030,
-    "Lesson": 27,
+    "Lesson": 0,
     "Hiragana": "こどもたち",
     "Romaji": "kodomotachi",
     "Kanji": "子どもたち",
@@ -12360,8 +11330,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1031,
-    "Lesson": 27,
+    "Lesson": 0,
     "Hiragana": "だいすき",
     "Romaji": "daisuki",
     "Kanji": "大好き",
@@ -12372,8 +11341,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi な"
   },
   {
-    "id": 1032,
-    "Lesson": 27,
+    "Lesson": 0,
     "Hiragana": "まんが",
     "Romaji": "manga",
     "Kanji": "漫画",
@@ -12384,8 +11352,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1033,
-    "Lesson": 27,
+    "Lesson": 0,
     "Hiragana": "しゅじんこう",
     "Romaji": "shujinkou",
     "Kanji": "主人公",
@@ -12396,8 +11363,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1034,
-    "Lesson": 27,
+    "Lesson": 0,
     "Hiragana": "かたち",
     "Romaji": "katachi",
     "Kanji": "形",
@@ -12408,8 +11374,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1035,
-    "Lesson": 27,
+    "Lesson": 0,
     "Hiragana": "ロボット",
     "Romaji": "robotto",
     "Kanji": "",
@@ -12420,8 +11385,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1036,
-    "Lesson": 27,
+    "Lesson": 0,
     "Hiragana": "ふしぎな",
     "Romaji": "fushigina",
     "Kanji": "不思議な",
@@ -12432,8 +11396,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi な"
   },
   {
-    "id": 1037,
-    "Lesson": 27,
+    "Lesson": 0,
     "Hiragana": "ポケット",
     "Romaji": "poketto",
     "Kanji": "",
@@ -12444,8 +11407,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1038,
-    "Lesson": 27,
+    "Lesson": 0,
     "Hiragana": "たとえば",
     "Romaji": "tatoeba",
     "Kanji": "例えば",
@@ -12456,8 +11418,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1039,
-    "Lesson": 27,
+    "Lesson": 0,
     "Hiragana": "つけます",
     "Romaji": "tsukemasu",
     "Kanji": "付けます",
@@ -12468,8 +11429,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1040,
-    "Lesson": 27,
+    "Lesson": 0,
     "Hiragana": "じゆうに",
     "Romaji": "jiyuu ni",
     "Kanji": "自由に",
@@ -12480,8 +11440,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1041,
-    "Lesson": 27,
+    "Lesson": 0,
     "Hiragana": "そら",
     "Romaji": "sora",
     "Kanji": "空",
@@ -12492,8 +11451,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1042,
-    "Lesson": 27,
+    "Lesson": 0,
     "Hiragana": "とびます",
     "Romaji": "tobimasu",
     "Kanji": "飛びます",
@@ -12504,8 +11462,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1043,
-    "Lesson": 27,
+    "Lesson": 0,
     "Hiragana": "じぶん",
     "Romaji": "jibun",
     "Kanji": "自分",
@@ -12516,8 +11473,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1044,
-    "Lesson": 27,
+    "Lesson": 0,
     "Hiragana": "しょうらい",
     "Romaji": "shourai",
     "Kanji": "将来",
@@ -12528,8 +11484,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1045,
-    "Lesson": 27,
+    "Lesson": 0,
     "Hiragana": "ドラえもん",
     "Romaji": "doraemon",
     "Kanji": "",
@@ -12540,8 +11495,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1046,
-    "Lesson": 28,
+    "Lesson": 0,
     "Hiragana": "うれます",
     "Romaji": "uremasu",
     "Kanji": "売れます",
@@ -12552,8 +11506,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1047,
-    "Lesson": 28,
+    "Lesson": 0,
     "Hiragana": "おどります",
     "Romaji": "odorimasu",
     "Kanji": "踊ります",
@@ -12564,8 +11517,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1048,
-    "Lesson": 28,
+    "Lesson": 0,
     "Hiragana": "かみます",
     "Romaji": "kamimasu",
     "Kanji": "",
@@ -12576,8 +11528,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1049,
-    "Lesson": 28,
+    "Lesson": 0,
     "Hiragana": "えらびます",
     "Romaji": "erabimasu",
     "Kanji": "選びます",
@@ -12588,8 +11539,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1050,
-    "Lesson": 28,
+    "Lesson": 0,
     "Hiragana": "かよいます",
     "Romaji": "kayouimasu",
     "Kanji": "通います",
@@ -12600,8 +11550,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1051,
-    "Lesson": 28,
+    "Lesson": 0,
     "Hiragana": "メモします",
     "Romaji": "memo shimasu",
     "Kanji": "",
@@ -12612,8 +11561,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1052,
-    "Lesson": 28,
+    "Lesson": 0,
     "Hiragana": "まじめ",
     "Romaji": "majime",
     "Kanji": "真面目",
@@ -12624,8 +11572,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi な"
   },
   {
-    "id": 1053,
-    "Lesson": 28,
+    "Lesson": 0,
     "Hiragana": "ねっしん",
     "Romaji": "nesshin",
     "Kanji": "熱心",
@@ -12636,8 +11583,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi な"
   },
   {
-    "id": 1054,
-    "Lesson": 28,
+    "Lesson": 0,
     "Hiragana": "えらい",
     "Romaji": "erai",
     "Kanji": "偉い",
@@ -12648,8 +11594,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 1055,
-    "Lesson": 28,
+    "Lesson": 0,
     "Hiragana": "ちょうどいい",
     "Romaji": "choudo ii",
     "Kanji": "丁度いい",
@@ -12660,8 +11605,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 1056,
-    "Lesson": 28,
+    "Lesson": 0,
     "Hiragana": "やさしい",
     "Romaji": "yasashii",
     "Kanji": "優しい",
@@ -12672,8 +11616,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 1057,
-    "Lesson": 28,
+    "Lesson": 0,
     "Hiragana": "しゅうかん",
     "Romaji": "shuukan",
     "Kanji": "習慣",
@@ -12684,8 +11627,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1058,
-    "Lesson": 28,
+    "Lesson": 0,
     "Hiragana": "けいけん",
     "Romaji": "keiken",
     "Kanji": "経験",
@@ -12696,8 +11638,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1059,
-    "Lesson": 28,
+    "Lesson": 0,
     "Hiragana": "ちから",
     "Romaji": "chikara",
     "Kanji": "力",
@@ -12708,8 +11649,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1060,
-    "Lesson": 28,
+    "Lesson": 0,
     "Hiragana": "にんき",
     "Romaji": "ninki",
     "Kanji": "人気",
@@ -12720,8 +11660,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1061,
-    "Lesson": 28,
+    "Lesson": 0,
     "Hiragana": "かたち",
     "Romaji": "katachi",
     "Kanji": "形",
@@ -12732,8 +11671,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1062,
-    "Lesson": 28,
+    "Lesson": 0,
     "Hiragana": "いろ",
     "Romaji": "iro",
     "Kanji": "色",
@@ -12744,8 +11682,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1063,
-    "Lesson": 28,
+    "Lesson": 0,
     "Hiragana": "あじ",
     "Romaji": "aji",
     "Kanji": "味",
@@ -12756,8 +11693,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1064,
-    "Lesson": 28,
+    "Lesson": 0,
     "Hiragana": "ガム",
     "Romaji": "gamu",
     "Kanji": "",
@@ -12768,8 +11704,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1065,
-    "Lesson": 28,
+    "Lesson": 0,
     "Hiragana": "しなもの",
     "Romaji": "shinamono",
     "Kanji": "品物",
@@ -12780,8 +11715,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1066,
-    "Lesson": 28,
+    "Lesson": 0,
     "Hiragana": "ねだん",
     "Romaji": "nedan",
     "Kanji": "値段",
@@ -12792,8 +11726,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1067,
-    "Lesson": 28,
+    "Lesson": 0,
     "Hiragana": "きゅうりょう",
     "Romaji": "kyuuryou",
     "Kanji": "給料",
@@ -12804,8 +11737,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1068,
-    "Lesson": 28,
+    "Lesson": 0,
     "Hiragana": "ボーナス",
     "Romaji": "bo-nasu",
     "Kanji": "",
@@ -12816,8 +11748,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1069,
-    "Lesson": 28,
+    "Lesson": 0,
     "Hiragana": "ばんぐみ",
     "Romaji": "bangumi",
     "Kanji": "番組",
@@ -12828,8 +11759,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1070,
-    "Lesson": 28,
+    "Lesson": 0,
     "Hiragana": "ドラマ",
     "Romaji": "dorama",
     "Kanji": "",
@@ -12840,8 +11770,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1071,
-    "Lesson": 28,
+    "Lesson": 0,
     "Hiragana": "しょうせつ",
     "Romaji": "shousetsu",
     "Kanji": "小説",
@@ -12852,8 +11781,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1072,
-    "Lesson": 28,
+    "Lesson": 0,
     "Hiragana": "しょうせつか",
     "Romaji": "shousetsuka",
     "Kanji": "小説家",
@@ -12864,8 +11792,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1073,
-    "Lesson": 28,
+    "Lesson": 0,
     "Hiragana": "かしゅ",
     "Romaji": "kashu",
     "Kanji": "歌手",
@@ -12876,8 +11803,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1074,
-    "Lesson": 28,
+    "Lesson": 0,
     "Hiragana": "かんりにん",
     "Romaji": "kannrinin",
     "Kanji": "管理人",
@@ -12888,8 +11814,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1075,
-    "Lesson": 28,
+    "Lesson": 0,
     "Hiragana": "むすこ",
     "Romaji": "musuko",
     "Kanji": "息子",
@@ -12900,8 +11825,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1076,
-    "Lesson": 28,
+    "Lesson": 0,
     "Hiragana": "むすこさん",
     "Romaji": "musuko-san",
     "Kanji": "息子さん",
@@ -12912,8 +11836,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1077,
-    "Lesson": 28,
+    "Lesson": 0,
     "Hiragana": "むすめ",
     "Romaji": "musume",
     "Kanji": "娘",
@@ -12924,8 +11847,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1078,
-    "Lesson": 28,
+    "Lesson": 0,
     "Hiragana": "むすめさん",
     "Romaji": "musume-san",
     "Kanji": "娘さん",
@@ -12936,8 +11858,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1079,
-    "Lesson": 28,
+    "Lesson": 0,
     "Hiragana": "じぶん",
     "Romaji": "jibun",
     "Kanji": "自分",
@@ -12948,8 +11869,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1080,
-    "Lesson": 28,
+    "Lesson": 0,
     "Hiragana": "しょうらい",
     "Romaji": "shourai",
     "Kanji": "将来",
@@ -12960,8 +11880,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1081,
-    "Lesson": 28,
+    "Lesson": 0,
     "Hiragana": "しばらく",
     "Romaji": "shibaraku",
     "Kanji": "",
@@ -12972,8 +11891,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1082,
-    "Lesson": 28,
+    "Lesson": 0,
     "Hiragana": "たいてい",
     "Romaji": "taitei",
     "Kanji": "",
@@ -12984,8 +11902,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1083,
-    "Lesson": 28,
+    "Lesson": 0,
     "Hiragana": "それに",
     "Romaji": "sore ni",
     "Kanji": "",
@@ -12996,8 +11913,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1084,
-    "Lesson": 28,
+    "Lesson": 0,
     "Hiragana": "それで",
     "Romaji": "sore de",
     "Kanji": "",
@@ -13008,8 +11924,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1085,
-    "Lesson": 28,
+    "Lesson": 0,
     "Hiragana": "おねがいがあるんですが",
     "Romaji": "onegai ga aru n desu ga",
     "Kanji": "お願いがあるんですが",
@@ -13020,8 +11935,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1086,
-    "Lesson": 28,
+    "Lesson": 0,
     "Hiragana": "ホームステイ",
     "Romaji": "ho-musutei",
     "Kanji": "",
@@ -13032,8 +11946,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1087,
-    "Lesson": 28,
+    "Lesson": 0,
     "Hiragana": "かいわ",
     "Romaji": "kaiwa",
     "Kanji": "会話",
@@ -13044,8 +11957,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1088,
-    "Lesson": 28,
+    "Lesson": 0,
     "Hiragana": "おしゃべりします",
     "Romaji": "oshaberi shimasu",
     "Kanji": "",
@@ -13056,8 +11968,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1089,
-    "Lesson": 28,
+    "Lesson": 0,
     "Hiragana": "おしらせ",
     "Romaji": "oshirase",
     "Kanji": "お知らせ",
@@ -13068,8 +11979,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1090,
-    "Lesson": 28,
+    "Lesson": 0,
     "Hiragana": "ひにち",
     "Romaji": "hinichi",
     "Kanji": "日にち",
@@ -13080,8 +11990,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1091,
-    "Lesson": 28,
+    "Lesson": 0,
     "Hiragana": "ど",
     "Romaji": "do",
     "Kanji": "土",
@@ -13092,8 +12001,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1092,
-    "Lesson": 28,
+    "Lesson": 0,
     "Hiragana": "たいいくかん",
     "Romaji": "taiikukan",
     "Kanji": "体育館",
@@ -13104,8 +12012,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1093,
-    "Lesson": 28,
+    "Lesson": 0,
     "Hiragana": "むりょう",
     "Romaji": "muryou",
     "Kanji": "無料",
@@ -13116,8 +12023,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1094,
-    "Lesson": 29,
+    "Lesson": 0,
     "Hiragana": "あきます",
     "Romaji": "akimasu",
     "Kanji": "開きます",
@@ -13128,8 +12034,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1095,
-    "Lesson": 29,
+    "Lesson": 0,
     "Hiragana": "しまります",
     "Romaji": "shimarimasu",
     "Kanji": "閉まります",
@@ -13140,8 +12045,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1096,
-    "Lesson": 29,
+    "Lesson": 0,
     "Hiragana": "つきます",
     "Romaji": "tsukimasu",
     "Kanji": "",
@@ -13152,8 +12056,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1097,
-    "Lesson": 29,
+    "Lesson": 0,
     "Hiragana": "きえます",
     "Romaji": "kiemasu",
     "Kanji": "消えます",
@@ -13164,8 +12067,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1098,
-    "Lesson": 29,
+    "Lesson": 0,
     "Hiragana": "こみます",
     "Romaji": "komimasu",
     "Kanji": "込みます",
@@ -13176,8 +12078,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1099,
-    "Lesson": 29,
+    "Lesson": 0,
     "Hiragana": "すきます",
     "Romaji": "sukimasu",
     "Kanji": "",
@@ -13188,8 +12089,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1100,
-    "Lesson": 29,
+    "Lesson": 0,
     "Hiragana": "こわれます",
     "Romaji": "kowaremasu",
     "Kanji": "壊れます",
@@ -13200,8 +12100,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1101,
-    "Lesson": 29,
+    "Lesson": 0,
     "Hiragana": "われます",
     "Romaji": "waremasu",
     "Kanji": "割れます",
@@ -13212,8 +12111,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1102,
-    "Lesson": 29,
+    "Lesson": 0,
     "Hiragana": "おれます",
     "Romaji": "oremasu",
     "Kanji": "折れます",
@@ -13224,8 +12122,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1103,
-    "Lesson": 29,
+    "Lesson": 0,
     "Hiragana": "やぶれます",
     "Romaji": "yaburemasu",
     "Kanji": "破れます",
@@ -13236,8 +12133,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1104,
-    "Lesson": 29,
+    "Lesson": 0,
     "Hiragana": "よごれます",
     "Romaji": "yogoremasu",
     "Kanji": "汚れます",
@@ -13248,8 +12144,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1105,
-    "Lesson": 29,
+    "Lesson": 0,
     "Hiragana": "つきます",
     "Romaji": "tsukimasu",
     "Kanji": "付きます",
@@ -13260,8 +12155,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1106,
-    "Lesson": 29,
+    "Lesson": 0,
     "Hiragana": "はずれます",
     "Romaji": "hazuremasu",
     "Kanji": "外れます",
@@ -13272,8 +12166,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1107,
-    "Lesson": 29,
+    "Lesson": 0,
     "Hiragana": "とまります",
     "Romaji": "tomarimasu",
     "Kanji": "止まります",
@@ -13284,8 +12177,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1108,
-    "Lesson": 29,
+    "Lesson": 0,
     "Hiragana": "まちがえます",
     "Romaji": "machigaemasu",
     "Kanji": "",
@@ -13296,8 +12188,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1109,
-    "Lesson": 29,
+    "Lesson": 0,
     "Hiragana": "おとします",
     "Romaji": "otoshimasu",
     "Kanji": "落とします",
@@ -13308,8 +12199,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1110,
-    "Lesson": 29,
+    "Lesson": 0,
     "Hiragana": "かかります",
     "Romaji": "kakarimasu",
     "Kanji": "掛かります",
@@ -13320,8 +12210,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1111,
-    "Lesson": 29,
+    "Lesson": 0,
     "Hiragana": "ふきます",
     "Romaji": "fukimasu",
     "Kanji": "",
@@ -13332,8 +12221,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1112,
-    "Lesson": 29,
+    "Lesson": 0,
     "Hiragana": "とりかえます",
     "Romaji": "torikaemasu",
     "Kanji": "",
@@ -13344,8 +12232,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1113,
-    "Lesson": 29,
+    "Lesson": 0,
     "Hiragana": "かたづけます",
     "Romaji": "katadukemasu",
     "Kanji": "片付けます",
@@ -13356,8 +12243,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1114,
-    "Lesson": 29,
+    "Lesson": 0,
     "Hiragana": "さら",
     "Romaji": "sara",
     "Kanji": "皿",
@@ -13368,8 +12254,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1115,
-    "Lesson": 29,
+    "Lesson": 0,
     "Hiragana": "ちゃわん",
     "Romaji": "chawan",
     "Kanji": "茶碗",
@@ -13380,8 +12265,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1116,
-    "Lesson": 29,
+    "Lesson": 0,
     "Hiragana": "コップ",
     "Romaji": "koppu",
     "Kanji": "",
@@ -13392,8 +12276,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1117,
-    "Lesson": 29,
+    "Lesson": 0,
     "Hiragana": "ガラス",
     "Romaji": "garasu",
     "Kanji": "",
@@ -13404,8 +12287,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1118,
-    "Lesson": 29,
+    "Lesson": 0,
     "Hiragana": "ふくろ",
     "Romaji": "fukuro",
     "Kanji": "袋",
@@ -13416,8 +12298,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1119,
-    "Lesson": 29,
+    "Lesson": 0,
     "Hiragana": "しょるい",
     "Romaji": "shorui",
     "Kanji": "書類",
@@ -13428,8 +12309,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1120,
-    "Lesson": 29,
+    "Lesson": 0,
     "Hiragana": "えだ",
     "Romaji": "eda",
     "Kanji": "枝",
@@ -13440,8 +12320,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1121,
-    "Lesson": 29,
+    "Lesson": 0,
     "Hiragana": "えきいん",
     "Romaji": "ekiin",
     "Kanji": "駅員",
@@ -13452,8 +12331,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1122,
-    "Lesson": 29,
+    "Lesson": 0,
     "Hiragana": "こうばん",
     "Romaji": "kouban",
     "Kanji": "交番",
@@ -13464,8 +12342,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1123,
-    "Lesson": 29,
+    "Lesson": 0,
     "Hiragana": "スピーチ",
     "Romaji": "supi-chi",
     "Kanji": "",
@@ -13476,8 +12353,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1124,
-    "Lesson": 29,
+    "Lesson": 0,
     "Hiragana": "へんじ",
     "Romaji": "henji",
     "Kanji": "返事",
@@ -13488,8 +12364,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1125,
-    "Lesson": 29,
+    "Lesson": 0,
     "Hiragana": "おさきにどうぞ",
     "Romaji": "osaki ni douzo",
     "Kanji": "お先にどうぞ",
@@ -13500,8 +12375,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1126,
-    "Lesson": 29,
+    "Lesson": 0,
     "Hiragana": "げんじものがたり",
     "Romaji": "genji monogatari",
     "Kanji": "源氏物語",
@@ -13512,8 +12386,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1127,
-    "Lesson": 29,
+    "Lesson": 0,
     "Hiragana": "いまのでんしゃ",
     "Romaji": "ima no densha",
     "Kanji": "今の電車",
@@ -13524,8 +12397,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1128,
-    "Lesson": 29,
+    "Lesson": 0,
     "Hiragana": "わすれもの",
     "Romaji": "wasuremono",
     "Kanji": "忘れ物",
@@ -13536,8 +12408,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1129,
-    "Lesson": 29,
+    "Lesson": 0,
     "Hiragana": "このくらい",
     "Romaji": "kono kurai",
     "Kanji": "",
@@ -13548,8 +12419,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1130,
-    "Lesson": 29,
+    "Lesson": 0,
     "Hiragana": "がわ",
     "Romaji": "gawa",
     "Kanji": "側",
@@ -13560,8 +12430,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1131,
-    "Lesson": 29,
+    "Lesson": 0,
     "Hiragana": "ポケット",
     "Romaji": "poketto",
     "Kanji": "",
@@ -13572,8 +12441,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1132,
-    "Lesson": 29,
+    "Lesson": 0,
     "Hiragana": "へん",
     "Romaji": "hen",
     "Kanji": "辺",
@@ -13584,8 +12452,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1133,
-    "Lesson": 29,
+    "Lesson": 0,
     "Hiragana": "おぼえていません",
     "Romaji": "oboete imasen",
     "Kanji": "覚えていません",
@@ -13596,8 +12463,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1134,
-    "Lesson": 29,
+    "Lesson": 0,
     "Hiragana": "あみだな",
     "Romaji": "amidana",
     "Kanji": "網棚",
@@ -13608,8 +12474,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1135,
-    "Lesson": 29,
+    "Lesson": 0,
     "Hiragana": "たしか",
     "Romaji": "tashika",
     "Kanji": "確か",
@@ -13620,8 +12485,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1136,
-    "Lesson": 29,
+    "Lesson": 0,
     "Hiragana": "ああ,よかった",
     "Romaji": "aa yokatta",
     "Kanji": "",
@@ -13632,8 +12496,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1137,
-    "Lesson": 29,
+    "Lesson": 0,
     "Hiragana": "じしん",
     "Romaji": "jishin",
     "Kanji": "地震",
@@ -13644,8 +12507,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1138,
-    "Lesson": 29,
+    "Lesson": 0,
     "Hiragana": "かべ",
     "Romaji": "kabe",
     "Kanji": "壁",
@@ -13656,8 +12518,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1139,
-    "Lesson": 29,
+    "Lesson": 0,
     "Hiragana": "はり",
     "Romaji": "hari",
     "Kanji": "針",
@@ -13668,8 +12529,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1140,
-    "Lesson": 29,
+    "Lesson": 0,
     "Hiragana": "さします",
     "Romaji": "sashimasu",
     "Kanji": "",
@@ -13680,8 +12540,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1141,
-    "Lesson": 29,
+    "Lesson": 0,
     "Hiragana": "えきまえ",
     "Romaji": "ekimae",
     "Kanji": "駅前",
@@ -13692,8 +12551,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1142,
-    "Lesson": 29,
+    "Lesson": 0,
     "Hiragana": "たおれます",
     "Romaji": "taoremasu",
     "Kanji": "倒れます",
@@ -13704,8 +12562,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1143,
-    "Lesson": 29,
+    "Lesson": 0,
     "Hiragana": "にしのほう",
     "Romaji": "nishi no hou",
     "Kanji": "西の方",
@@ -13716,8 +12573,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1144,
-    "Lesson": 29,
+    "Lesson": 0,
     "Hiragana": "もえます",
     "Romaji": "moemasu",
     "Kanji": "燃えます",
@@ -13728,8 +12584,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1145,
-    "Lesson": 30,
+    "Lesson": 0,
     "Hiragana": "はります",
     "Romaji": "harimasu",
     "Kanji": "",
@@ -13740,8 +12595,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1146,
-    "Lesson": 30,
+    "Lesson": 0,
     "Hiragana": "かけます",
     "Romaji": "kakemasu",
     "Kanji": "掛けます",
@@ -13752,8 +12606,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1147,
-    "Lesson": 30,
+    "Lesson": 0,
     "Hiragana": "かざります",
     "Romaji": "kazarimasu",
     "Kanji": "飾ります",
@@ -13764,8 +12617,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1148,
-    "Lesson": 30,
+    "Lesson": 0,
     "Hiragana": "ならべます",
     "Romaji": "narabemasu",
     "Kanji": "並べます",
@@ -13776,8 +12628,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1149,
-    "Lesson": 30,
+    "Lesson": 0,
     "Hiragana": "うえます",
     "Romaji": "uemasu",
     "Kanji": "植えます",
@@ -13788,8 +12639,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1150,
-    "Lesson": 30,
+    "Lesson": 0,
     "Hiragana": "もどします",
     "Romaji": "modoshimasu",
     "Kanji": "戻します",
@@ -13800,8 +12650,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1151,
-    "Lesson": 30,
+    "Lesson": 0,
     "Hiragana": "まとめます",
     "Romaji": "matomemasu",
     "Kanji": "",
@@ -13812,8 +12661,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1152,
-    "Lesson": 30,
+    "Lesson": 0,
     "Hiragana": "かたづけます",
     "Romaji": "katadukemasu",
     "Kanji": "片付けます",
@@ -13824,8 +12672,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1153,
-    "Lesson": 30,
+    "Lesson": 0,
     "Hiragana": "しまいます",
     "Romaji": "shimarimasu",
     "Kanji": "",
@@ -13836,8 +12683,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1154,
-    "Lesson": 30,
+    "Lesson": 0,
     "Hiragana": "きめます",
     "Romaji": "kimemasu",
     "Kanji": "決めます",
@@ -13848,8 +12694,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1155,
-    "Lesson": 30,
+    "Lesson": 0,
     "Hiragana": "しらせます",
     "Romaji": "shirasemasu",
     "Kanji": "知らせます",
@@ -13860,8 +12705,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1156,
-    "Lesson": 30,
+    "Lesson": 0,
     "Hiragana": "そうだんします",
     "Romaji": "soudan shimasu",
     "Kanji": "相談します",
@@ -13872,8 +12716,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1157,
-    "Lesson": 30,
+    "Lesson": 0,
     "Hiragana": "よしゅうします",
     "Romaji": "yoshuu shimasu",
     "Kanji": "予習します",
@@ -13884,8 +12727,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1158,
-    "Lesson": 30,
+    "Lesson": 0,
     "Hiragana": "ふくしゅうします",
     "Romaji": "fukushuu shimasu",
     "Kanji": "復習します",
@@ -13896,8 +12738,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1159,
-    "Lesson": 30,
+    "Lesson": 0,
     "Hiragana": "そのままにします",
     "Romaji": "sonomama ni shimasu",
     "Kanji": "",
@@ -13908,8 +12749,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1160,
-    "Lesson": 30,
+    "Lesson": 0,
     "Hiragana": "おこさん",
     "Romaji": "okosan",
     "Kanji": "お子さん",
@@ -13920,8 +12760,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1161,
-    "Lesson": 30,
+    "Lesson": 0,
     "Hiragana": "じゅぎょう",
     "Romaji": "jugyou",
     "Kanji": "授業",
@@ -13932,8 +12771,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1162,
-    "Lesson": 30,
+    "Lesson": 0,
     "Hiragana": "こうぎ",
     "Romaji": "kougi",
     "Kanji": "講義",
@@ -13944,8 +12782,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1163,
-    "Lesson": 30,
+    "Lesson": 0,
     "Hiragana": "ミーティング",
     "Romaji": "mi-tingu",
     "Kanji": "",
@@ -13956,8 +12793,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1164,
-    "Lesson": 30,
+    "Lesson": 0,
     "Hiragana": "よてい",
     "Romaji": "yotei",
     "Kanji": "予定",
@@ -13968,8 +12804,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1165,
-    "Lesson": 30,
+    "Lesson": 0,
     "Hiragana": "おしらせ",
     "Romaji": "oshirase",
     "Kanji": "お知らせ",
@@ -13980,8 +12815,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1166,
-    "Lesson": 30,
+    "Lesson": 0,
     "Hiragana": "あんないしょ",
     "Romaji": "annaisho",
     "Kanji": "案内書",
@@ -13992,8 +12826,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1167,
-    "Lesson": 30,
+    "Lesson": 0,
     "Hiragana": "カレンダー",
     "Romaji": "karenda-",
     "Kanji": "",
@@ -14004,8 +12837,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1168,
-    "Lesson": 30,
+    "Lesson": 0,
     "Hiragana": "ポスター",
     "Romaji": "posuta-",
     "Kanji": "",
@@ -14016,8 +12848,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1169,
-    "Lesson": 30,
+    "Lesson": 0,
     "Hiragana": "ごみばこ",
     "Romaji": "gomibako",
     "Kanji": "ごみ箱",
@@ -14028,8 +12859,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1170,
-    "Lesson": 30,
+    "Lesson": 0,
     "Hiragana": "にんにょう",
     "Romaji": "ningyou",
     "Kanji": "人形",
@@ -14040,8 +12870,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1171,
-    "Lesson": 30,
+    "Lesson": 0,
     "Hiragana": "かびん",
     "Romaji": "kabin",
     "Kanji": "花瓶",
@@ -14052,8 +12881,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1172,
-    "Lesson": 30,
+    "Lesson": 0,
     "Hiragana": "かがみ",
     "Romaji": "kagami",
     "Kanji": "鏡",
@@ -14064,8 +12892,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1173,
-    "Lesson": 30,
+    "Lesson": 0,
     "Hiragana": "ひきだし",
     "Romaji": "hikidashi",
     "Kanji": "引き出し",
@@ -14076,8 +12903,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1174,
-    "Lesson": 30,
+    "Lesson": 0,
     "Hiragana": "げんかん",
     "Romaji": "genkan",
     "Kanji": "玄関",
@@ -14088,8 +12914,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1175,
-    "Lesson": 30,
+    "Lesson": 0,
     "Hiragana": "ろうか",
     "Romaji": "rouka",
     "Kanji": "廊下",
@@ -14100,8 +12925,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1176,
-    "Lesson": 30,
+    "Lesson": 0,
     "Hiragana": "かべ",
     "Romaji": "kabe",
     "Kanji": "壁",
@@ -14112,8 +12936,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1177,
-    "Lesson": 30,
+    "Lesson": 0,
     "Hiragana": "いけ",
     "Romaji": "ike",
     "Kanji": "池",
@@ -14124,8 +12947,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1178,
-    "Lesson": 30,
+    "Lesson": 0,
     "Hiragana": "こうばん",
     "Romaji": "kouban",
     "Kanji": "交番",
@@ -14136,8 +12958,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1179,
-    "Lesson": 30,
+    "Lesson": 0,
     "Hiragana": "もとのところ",
     "Romaji": "moto no tokoro",
     "Kanji": "元の所",
@@ -14148,8 +12969,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1180,
-    "Lesson": 30,
+    "Lesson": 0,
     "Hiragana": "まわり",
     "Romaji": "mawari",
     "Kanji": "周り",
@@ -14160,8 +12980,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1181,
-    "Lesson": 30,
+    "Lesson": 0,
     "Hiragana": "まんなか",
     "Romaji": "mannaka",
     "Kanji": "真ん中",
@@ -14172,8 +12991,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1182,
-    "Lesson": 30,
+    "Lesson": 0,
     "Hiragana": "すみ",
     "Romaji": "sumi",
     "Kanji": "",
@@ -14184,8 +13002,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1183,
-    "Lesson": 30,
+    "Lesson": 0,
     "Hiragana": "まだ",
     "Romaji": "mada",
     "Kanji": "",
@@ -14196,8 +13013,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1184,
-    "Lesson": 30,
+    "Lesson": 0,
     "Hiragana": "～ほど",
     "Romaji": "～hodo",
     "Kanji": "",
@@ -14208,8 +13024,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1185,
-    "Lesson": 30,
+    "Lesson": 0,
     "Hiragana": "よていひょう",
     "Romaji": "yoteihyou",
     "Kanji": "予定表",
@@ -14220,8 +13035,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1186,
-    "Lesson": 30,
+    "Lesson": 0,
     "Hiragana": "ごくろうさま",
     "Romaji": "gokurousama",
     "Kanji": "",
@@ -14232,8 +13046,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1187,
-    "Lesson": 30,
+    "Lesson": 0,
     "Hiragana": "きぼう",
     "Romaji": "kibou",
     "Kanji": "希望",
@@ -14244,8 +13057,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1188,
-    "Lesson": 30,
+    "Lesson": 0,
     "Hiragana": "なにかごきぼうがありますか",
     "Romaji": "nanika gokibou ga arimasu ka",
     "Kanji": "何かご希望がありますか",
@@ -14256,8 +13068,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1189,
-    "Lesson": 30,
+    "Lesson": 0,
     "Hiragana": "ミュージカル",
     "Romaji": "myu-jikaru",
     "Kanji": "",
@@ -14268,8 +13079,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1190,
-    "Lesson": 30,
+    "Lesson": 0,
     "Hiragana": "それはいいですね",
     "Romaji": "sore wa ii desu ne",
     "Kanji": "",
@@ -14280,8 +13090,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1191,
-    "Lesson": 30,
+    "Lesson": 0,
     "Hiragana": "まるい",
     "Romaji": "marui",
     "Kanji": "丸い",
@@ -14292,8 +13101,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 1192,
-    "Lesson": 30,
+    "Lesson": 0,
     "Hiragana": "つき",
     "Romaji": "tsuki",
     "Kanji": "月",
@@ -14304,8 +13112,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1193,
-    "Lesson": 30,
+    "Lesson": 0,
     "Hiragana": "ちきゅう",
     "Romaji": "chikyuu",
     "Kanji": "地球",
@@ -14316,8 +13123,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1194,
-    "Lesson": 30,
+    "Lesson": 0,
     "Hiragana": "うれしい",
     "Romaji": "ureshii",
     "Kanji": "",
@@ -14328,8 +13134,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 1195,
-    "Lesson": 30,
+    "Lesson": 0,
     "Hiragana": "いや[な]",
     "Romaji": "iya",
     "Kanji": "",
@@ -14340,8 +13145,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi な"
   },
   {
-    "id": 1196,
-    "Lesson": 30,
+    "Lesson": 0,
     "Hiragana": "すると",
     "Romaji": "suruto",
     "Kanji": "",
@@ -14352,8 +13156,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1197,
-    "Lesson": 30,
+    "Lesson": 0,
     "Hiragana": "めがさめます",
     "Romaji": "me ga samemasu",
     "Kanji": "目が覚めます",
@@ -14364,8 +13167,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1198,
-    "Lesson": 31,
+    "Lesson": 0,
     "Hiragana": "はじまります",
     "Romaji": "hajimarimasu",
     "Kanji": "始まります",
@@ -14376,8 +13178,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1199,
-    "Lesson": 31,
+    "Lesson": 0,
     "Hiragana": "つづけます",
     "Romaji": "tsudukemasu",
     "Kanji": "続けます",
@@ -14388,8 +13189,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1200,
-    "Lesson": 31,
+    "Lesson": 0,
     "Hiragana": "みつけます",
     "Romaji": "mitsukemasu",
     "Kanji": "見つけます",
@@ -14400,8 +13200,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1201,
-    "Lesson": 31,
+    "Lesson": 0,
     "Hiragana": "うけます",
     "Romaji": "ukemasu",
     "Kanji": "受けます",
@@ -14412,8 +13211,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1202,
-    "Lesson": 31,
+    "Lesson": 0,
     "Hiragana": "にゅうがくします",
     "Romaji": "nyuugaku shimasu",
     "Kanji": "入学します",
@@ -14424,8 +13222,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1203,
-    "Lesson": 31,
+    "Lesson": 0,
     "Hiragana": "そつぎょうします",
     "Romaji": "sotsugyou shimasu",
     "Kanji": "卒業します",
@@ -14436,8 +13233,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1204,
-    "Lesson": 31,
+    "Lesson": 0,
     "Hiragana": "きゅうけいします",
     "Romaji": "kyuukei shimasu",
     "Kanji": "休憩します",
@@ -14448,8 +13244,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1205,
-    "Lesson": 31,
+    "Lesson": 0,
     "Hiragana": "れんきゅう",
     "Romaji": "renkyuu",
     "Kanji": "連休",
@@ -14460,8 +13255,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1206,
-    "Lesson": 31,
+    "Lesson": 0,
     "Hiragana": "さくぶん",
     "Romaji": "sakubun",
     "Kanji": "作文",
@@ -14472,8 +13266,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1207,
-    "Lesson": 31,
+    "Lesson": 0,
     "Hiragana": "てんらんかい",
     "Romaji": "tenrankai",
     "Kanji": "展覧会",
@@ -14484,8 +13277,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1208,
-    "Lesson": 31,
+    "Lesson": 0,
     "Hiragana": "けっこんしき",
     "Romaji": "kekkonshiki",
     "Kanji": "結婚式",
@@ -14496,8 +13288,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1209,
-    "Lesson": 31,
+    "Lesson": 0,
     "Hiragana": "そうしき",
     "Romaji": "soushiki",
     "Kanji": "葬式",
@@ -14508,8 +13299,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1210,
-    "Lesson": 31,
+    "Lesson": 0,
     "Hiragana": "しき",
     "Romaji": "shiki",
     "Kanji": "式",
@@ -14520,8 +13310,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1211,
-    "Lesson": 31,
+    "Lesson": 0,
     "Hiragana": "ほんしゃ",
     "Romaji": "honsha",
     "Kanji": "本社",
@@ -14532,8 +13321,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1212,
-    "Lesson": 31,
+    "Lesson": 0,
     "Hiragana": "してん",
     "Romaji": "shiten",
     "Kanji": "支店",
@@ -14544,8 +13332,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1213,
-    "Lesson": 31,
+    "Lesson": 0,
     "Hiragana": "きょうかい",
     "Romaji": "kyoukai",
     "Kanji": "教会",
@@ -14556,8 +13343,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1214,
-    "Lesson": 31,
+    "Lesson": 0,
     "Hiragana": "だいがくいん",
     "Romaji": "daigakuin",
     "Kanji": "大学院",
@@ -14568,8 +13354,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1215,
-    "Lesson": 31,
+    "Lesson": 0,
     "Hiragana": "どうぶつえん",
     "Romaji": "doubutsuen",
     "Kanji": "動物園",
@@ -14580,8 +13365,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1216,
-    "Lesson": 31,
+    "Lesson": 0,
     "Hiragana": "おんせん",
     "Romaji": "onsen",
     "Kanji": "温泉",
@@ -14592,8 +13376,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1217,
-    "Lesson": 31,
+    "Lesson": 0,
     "Hiragana": "おきゃくさん",
     "Romaji": "okyakusan",
     "Kanji": "お客さん",
@@ -14604,8 +13387,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1218,
-    "Lesson": 31,
+    "Lesson": 0,
     "Hiragana": "だれか",
     "Romaji": "dareka",
     "Kanji": "",
@@ -14616,8 +13398,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1219,
-    "Lesson": 31,
+    "Lesson": 0,
     "Hiragana": "～のほう",
     "Romaji": "～no hou",
     "Kanji": "～の方",
@@ -14628,8 +13409,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1220,
-    "Lesson": 31,
+    "Lesson": 0,
     "Hiragana": "ずっと",
     "Romaji": "zutto",
     "Kanji": "",
@@ -14640,8 +13420,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1221,
-    "Lesson": 31,
+    "Lesson": 0,
     "Hiragana": "のこります",
     "Romaji": "nokorimasu",
     "Kanji": "残ります",
@@ -14652,8 +13431,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1222,
-    "Lesson": 31,
+    "Lesson": 0,
     "Hiragana": "つきに",
     "Romaji": "tsuki ni",
     "Kanji": "月に",
@@ -14664,8 +13442,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1223,
-    "Lesson": 31,
+    "Lesson": 0,
     "Hiragana": "ふつうの",
     "Romaji": "futsuu no",
     "Kanji": "普通の",
@@ -14676,8 +13453,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1224,
-    "Lesson": 31,
+    "Lesson": 0,
     "Hiragana": "インターネット",
     "Romaji": "inta-netto",
     "Kanji": "",
@@ -14688,8 +13464,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1225,
-    "Lesson": 31,
+    "Lesson": 0,
     "Hiragana": "むら",
     "Romaji": "mura",
     "Kanji": "村",
@@ -14700,8 +13475,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1226,
-    "Lesson": 31,
+    "Lesson": 0,
     "Hiragana": "えいがかん",
     "Romaji": "eigakan",
     "Kanji": "映画館",
@@ -14712,8 +13486,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1227,
-    "Lesson": 31,
+    "Lesson": 0,
     "Hiragana": "いや[な]",
     "Romaji": "iya",
     "Kanji": "嫌[な]",
@@ -14724,8 +13497,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi な"
   },
   {
-    "id": 1228,
-    "Lesson": 31,
+    "Lesson": 0,
     "Hiragana": "そら",
     "Romaji": "sora",
     "Kanji": "空",
@@ -14736,8 +13508,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1229,
-    "Lesson": 31,
+    "Lesson": 0,
     "Hiragana": "とじます",
     "Romaji": "tojimasu",
     "Kanji": "閉じます",
@@ -14748,8 +13519,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1230,
-    "Lesson": 31,
+    "Lesson": 0,
     "Hiragana": "とかい",
     "Romaji": "tokai",
     "Kanji": "都会",
@@ -14760,8 +13530,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1231,
-    "Lesson": 31,
+    "Lesson": 0,
     "Hiragana": "こどもたち",
     "Romaji": "kodomotachi",
     "Kanji": "子供たち",
@@ -14772,8 +13541,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1232,
-    "Lesson": 31,
+    "Lesson": 0,
     "Hiragana": "じゆうに",
     "Romaji": "jiyuu ni",
     "Kanji": "自由に",
@@ -14784,8 +13552,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1233,
-    "Lesson": 31,
+    "Lesson": 0,
     "Hiragana": "せかいじゅう",
     "Romaji": "sekaijuu",
     "Kanji": "世界中",
@@ -14796,8 +13563,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1234,
-    "Lesson": 31,
+    "Lesson": 0,
     "Hiragana": "あつまります",
     "Romaji": "atsumarimasu",
     "Kanji": "集まります",
@@ -14808,8 +13574,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1235,
-    "Lesson": 31,
+    "Lesson": 0,
     "Hiragana": "うつくしい",
     "Romaji": "utsukushii",
     "Kanji": "美しい",
@@ -14820,8 +13585,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 1236,
-    "Lesson": 31,
+    "Lesson": 0,
     "Hiragana": "しぜん",
     "Romaji": "shizen",
     "Kanji": "自然",
@@ -14832,8 +13596,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1237,
-    "Lesson": 31,
+    "Lesson": 0,
     "Hiragana": "すばらしさ",
     "Romaji": "subarashisa",
     "Kanji": "",
@@ -14844,8 +13607,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1238,
-    "Lesson": 31,
+    "Lesson": 0,
     "Hiragana": "きがつきます",
     "Romaji": "ki ga tsukimasu",
     "Kanji": "気が付きます",
@@ -14856,8 +13618,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1239,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "うんどうします",
     "Romaji": "undou shimasu",
     "Kanji": "運動します",
@@ -14868,8 +13629,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1240,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "せいこうします",
     "Romaji": "seikou shimasu",
     "Kanji": "成功します",
@@ -14880,8 +13640,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1241,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "しっぱいします",
     "Romaji": "shippai shimasu",
     "Kanji": "失敗します",
@@ -14892,8 +13651,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1242,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "ごうかくします",
     "Romaji": "goukaku shimasu",
     "Kanji": "合格します",
@@ -14904,8 +13662,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1243,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "もどります",
     "Romaji": "modorimasu",
     "Kanji": "戻ります",
@@ -14916,8 +13673,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1244,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "やみます",
     "Romaji": "yamimasu",
     "Kanji": "",
@@ -14928,8 +13684,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1245,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "はれます",
     "Romaji": "haremasu",
     "Kanji": "晴れます",
@@ -14940,8 +13695,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1246,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "くもります",
     "Romaji": "kumorimasu",
     "Kanji": "曇ります",
@@ -14952,8 +13706,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1247,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "ふきます",
     "Romaji": "fukimasu",
     "Kanji": "吹きます",
@@ -14964,8 +13717,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1248,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "なおります",
     "Romaji": "naorimasu",
     "Kanji": "治ります,直ります",
@@ -14976,8 +13728,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1249,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "つづきます",
     "Romaji": "tsudukimasu",
     "Kanji": "",
@@ -14988,8 +13739,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1250,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "ひやします",
     "Romaji": "hiyashimasu",
     "Kanji": "冷やします",
@@ -15000,8 +13750,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1251,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "しんぱい[な]",
     "Romaji": "shinpai[na]",
     "Kanji": "心配[な]",
@@ -15012,8 +13761,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi な"
   },
   {
-    "id": 1252,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "じゅうぶん[な]",
     "Romaji": "juubun[na]",
     "Kanji": "十分[な]",
@@ -15024,8 +13772,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi な"
   },
   {
-    "id": 1253,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "おかしい",
     "Romaji": "okashii",
     "Kanji": "",
@@ -15036,8 +13783,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 1254,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "うるさい",
     "Romaji": "urusai",
     "Kanji": "",
@@ -15048,8 +13794,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 1255,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "やけど",
     "Romaji": "yakedo",
     "Kanji": "",
@@ -15060,8 +13805,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1256,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "けが",
     "Romaji": "kega",
     "Kanji": "",
@@ -15072,8 +13816,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1257,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "せき",
     "Romaji": "seki",
     "Kanji": "",
@@ -15084,8 +13827,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1258,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "インフルエンザ",
     "Romaji": "infuruenza",
     "Kanji": "",
@@ -15096,8 +13838,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1259,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "そら",
     "Romaji": "sora",
     "Kanji": "空",
@@ -15108,8 +13849,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1260,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "たいよう",
     "Romaji": "taiyou",
     "Kanji": "太陽",
@@ -15120,8 +13860,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1261,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "ほし",
     "Romaji": "hoshi",
     "Kanji": "星",
@@ -15132,8 +13871,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1262,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "つき",
     "Romaji": "tsuki",
     "Kanji": "月",
@@ -15144,8 +13882,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1263,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "かぜ",
     "Romaji": "kaze",
     "Kanji": "風",
@@ -15156,8 +13893,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1264,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "きた",
     "Romaji": "kita",
     "Kanji": "北",
@@ -15168,8 +13904,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1265,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "みなみ",
     "Romaji": "minami",
     "Kanji": "南",
@@ -15180,8 +13915,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1266,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "にし",
     "Romaji": "nishi",
     "Kanji": "西",
@@ -15192,8 +13926,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1267,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "ひがし",
     "Romaji": "higashi",
     "Kanji": "東",
@@ -15204,8 +13937,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1268,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "すいどう",
     "Romaji": "suidou",
     "Kanji": "水道",
@@ -15216,8 +13948,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1269,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "エンジン",
     "Romaji": "enjin",
     "Kanji": "",
@@ -15228,8 +13959,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1270,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "チーム",
     "Romaji": "chi-mu",
     "Kanji": "",
@@ -15240,8 +13970,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1271,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "こんや",
     "Romaji": "konya",
     "Kanji": "今夜",
@@ -15252,8 +13981,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1272,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "ゆうがた",
     "Romaji": "yuugata",
     "Kanji": "夕方",
@@ -15264,8 +13992,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1273,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "まえ",
     "Romaji": "mae",
     "Kanji": "前",
@@ -15276,8 +14003,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1274,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "おそく",
     "Romaji": "osoku",
     "Kanji": "遅く",
@@ -15288,8 +14014,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1275,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "こんなに",
     "Romaji": "konna ni",
     "Kanji": "",
@@ -15300,8 +14025,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1276,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "そんなに",
     "Romaji": "sonna ni",
     "Kanji": "",
@@ -15312,8 +14036,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1277,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "あんなに",
     "Romaji": "anna ni",
     "Kanji": "",
@@ -15324,8 +14047,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1278,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "もしかしたら",
     "Romaji": "moshikashitara",
     "Kanji": "",
@@ -15336,8 +14058,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1279,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "それはいけませんね",
     "Romaji": "sore wa ikemasen ne",
     "Kanji": "",
@@ -15348,8 +14069,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1280,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "オリンピック",
     "Romaji": "orinpikku",
     "Kanji": "",
@@ -15360,8 +14080,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1281,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "げんき",
     "Romaji": "genki",
     "Kanji": "元気",
@@ -15372,8 +14091,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1282,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "い",
     "Romaji": "i",
     "Kanji": "胃",
@@ -15384,8 +14102,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1283,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "はたらきすぎ",
     "Romaji": "hatarakisugi",
     "Kanji": "働きすぎ",
@@ -15396,8 +14113,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1284,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "ストレス",
     "Romaji": "sutoresu",
     "Kanji": "",
@@ -15408,8 +14124,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1285,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "むりをします",
     "Romaji": "muri wo shimasu",
     "Kanji": "無理をします",
@@ -15420,8 +14135,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1286,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "ゆっくりします",
     "Romaji": "yukkuri shimasu",
     "Kanji": "",
@@ -15432,8 +14146,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1287,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "ほしうらない",
     "Romaji": "hoshiuranai",
     "Kanji": "星占い",
@@ -15444,8 +14157,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1288,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "おうしざ",
     "Romaji": "oushiya",
     "Kanji": "牡牛座",
@@ -15456,8 +14168,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1289,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "こまります",
     "Romaji": "komarimasu",
     "Kanji": "困ります",
@@ -15468,8 +14179,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1290,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "たからくじ",
     "Romaji": "takarakuji",
     "Kanji": "宝くじ",
@@ -15480,8 +14190,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1291,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "あたります",
     "Romaji": "atarimasu",
     "Kanji": "当たります",
@@ -15492,8 +14201,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1292,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "けんこう",
     "Romaji": "kenkou",
     "Kanji": "健康",
@@ -15504,8 +14212,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1293,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "れんあい",
     "Romaji": "renai",
     "Kanji": "恋愛",
@@ -15516,8 +14223,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1294,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "こいびと",
     "Romaji": "koibito",
     "Kanji": "恋人",
@@ -15528,8 +14234,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1295,
-    "Lesson": 32,
+    "Lesson": 0,
     "Hiragana": "おかねもち",
     "Romaji": "okane mochi",
     "Kanji": "お)金持ち",
@@ -15540,8 +14245,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1296,
-    "Lesson": 33,
+    "Lesson": 0,
     "Hiragana": "にげます",
     "Romaji": "nigemasu",
     "Kanji": "逃げます",
@@ -15552,8 +14256,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1297,
-    "Lesson": 33,
+    "Lesson": 0,
     "Hiragana": "さわぎます",
     "Romaji": "sawagimasu",
     "Kanji": "騒ぎます",
@@ -15564,8 +14267,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1298,
-    "Lesson": 33,
+    "Lesson": 0,
     "Hiragana": "あきらめます",
     "Romaji": "akiramemasu",
     "Kanji": "",
@@ -15576,8 +14278,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1299,
-    "Lesson": 33,
+    "Lesson": 0,
     "Hiragana": "なげます",
     "Romaji": "nagemasu",
     "Kanji": "投げます",
@@ -15588,8 +14289,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1300,
-    "Lesson": 33,
+    "Lesson": 0,
     "Hiragana": "まもります",
     "Romaji": "mamorimasu",
     "Kanji": "守ります",
@@ -15600,8 +14300,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1301,
-    "Lesson": 33,
+    "Lesson": 0,
     "Hiragana": "あげます",
     "Romaji": "agemasu",
     "Kanji": "上げます",
@@ -15612,8 +14311,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1302,
-    "Lesson": 33,
+    "Lesson": 0,
     "Hiragana": "さげます",
     "Romaji": "sagemasu",
     "Kanji": "下げます",
@@ -15624,8 +14322,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1303,
-    "Lesson": 33,
+    "Lesson": 0,
     "Hiragana": "つたえます",
     "Romaji": "tsutaemasu",
     "Kanji": "伝えます",
@@ -15636,8 +14333,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1304,
-    "Lesson": 33,
+    "Lesson": 0,
     "Hiragana": "ちゅういします",
     "Romaji": "chuui shimasu",
     "Kanji": "注意します",
@@ -15648,8 +14344,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1305,
-    "Lesson": 33,
+    "Lesson": 0,
     "Hiragana": "はずします",
     "Romaji": "hazushimasu",
     "Kanji": "外します",
@@ -15660,8 +14355,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1306,
-    "Lesson": 33,
+    "Lesson": 0,
     "Hiragana": "だめ[な]",
     "Romaji": "dame[na]",
     "Kanji": "",
@@ -15672,8 +14366,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi な"
   },
   {
-    "id": 1307,
-    "Lesson": 33,
+    "Lesson": 0,
     "Hiragana": "せき",
     "Romaji": "seki",
     "Kanji": "席",
@@ -15684,8 +14377,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1308,
-    "Lesson": 33,
+    "Lesson": 0,
     "Hiragana": "ファイト",
     "Romaji": "faito",
     "Kanji": "",
@@ -15696,8 +14388,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1309,
-    "Lesson": 33,
+    "Lesson": 0,
     "Hiragana": "マーク",
     "Romaji": "ma-ku",
     "Kanji": "",
@@ -15708,8 +14399,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1310,
-    "Lesson": 33,
+    "Lesson": 0,
     "Hiragana": "ボール",
     "Romaji": "bo-ru",
     "Kanji": "",
@@ -15720,8 +14410,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1311,
-    "Lesson": 33,
+    "Lesson": 0,
     "Hiragana": "せんたくき",
     "Romaji": "sentakuki",
     "Kanji": "洗濯機",
@@ -15732,8 +14421,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1312,
-    "Lesson": 33,
+    "Lesson": 0,
     "Hiragana": "～き",
     "Romaji": "～ki",
     "Kanji": "～機",
@@ -15744,8 +14432,7 @@ const vocabData = [
     "note": "Hậu tố"
   },
   {
-    "id": 1313,
-    "Lesson": 33,
+    "Lesson": 0,
     "Hiragana": "きそく",
     "Romaji": "kisoku",
     "Kanji": "規則",
@@ -15756,8 +14443,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1314,
-    "Lesson": 33,
+    "Lesson": 0,
     "Hiragana": "しようきんし",
     "Romaji": "shiyou kinshi",
     "Kanji": "使用禁止",
@@ -15768,8 +14454,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1315,
-    "Lesson": 33,
+    "Lesson": 0,
     "Hiragana": "たちいりきんし",
     "Romaji": "tachiiri kinshi",
     "Kanji": "立ち入り禁止",
@@ -15780,8 +14465,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1316,
-    "Lesson": 33,
+    "Lesson": 0,
     "Hiragana": "いりぐち",
     "Romaji": "iriguchi",
     "Kanji": "入口",
@@ -15792,8 +14476,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1317,
-    "Lesson": 33,
+    "Lesson": 0,
     "Hiragana": "でぐち",
     "Romaji": "deguchi",
     "Kanji": "出口",
@@ -15804,8 +14487,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1318,
-    "Lesson": 33,
+    "Lesson": 0,
     "Hiragana": "ひじょうぐち",
     "Romaji": "hijouguchi",
     "Kanji": "非常口",
@@ -15816,8 +14498,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1319,
-    "Lesson": 33,
+    "Lesson": 0,
     "Hiragana": "むりょう",
     "Romaji": "muryou",
     "Kanji": "無料",
@@ -15828,8 +14509,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1320,
-    "Lesson": 33,
+    "Lesson": 0,
     "Hiragana": "ほんじつきゅうぎょう",
     "Romaji": "honjitsu kyuugyou",
     "Kanji": "本日休業",
@@ -15840,8 +14520,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1321,
-    "Lesson": 33,
+    "Lesson": 0,
     "Hiragana": "えいぎょうちゅう",
     "Romaji": "eigyou chuu",
     "Kanji": "営業中",
@@ -15852,8 +14531,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1322,
-    "Lesson": 33,
+    "Lesson": 0,
     "Hiragana": "しようちゅう",
     "Romaji": "shiyou chuu",
     "Kanji": "使用中",
@@ -15864,8 +14542,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1323,
-    "Lesson": 33,
+    "Lesson": 0,
     "Hiragana": "～ちゅう",
     "Romaji": "～chuu",
     "Kanji": "～中",
@@ -15876,8 +14553,7 @@ const vocabData = [
     "note": "Hậu tố"
   },
   {
-    "id": 1324,
-    "Lesson": 33,
+    "Lesson": 0,
     "Hiragana": "どういう",
     "Romaji": "douiu",
     "Kanji": "",
@@ -15888,8 +14564,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1325,
-    "Lesson": 33,
+    "Lesson": 0,
     "Hiragana": "もう",
     "Romaji": "mou",
     "Kanji": "",
@@ -15900,8 +14575,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1326,
-    "Lesson": 33,
+    "Lesson": 0,
     "Hiragana": "あと",
     "Romaji": "ato",
     "Kanji": "",
@@ -15912,8 +14586,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1327,
-    "Lesson": 33,
+    "Lesson": 0,
     "Hiragana": "ちゅうしゃいはn",
     "Romaji": "chuusha ihan",
     "Kanji": "駐車違反",
@@ -15924,8 +14597,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1328,
-    "Lesson": 33,
+    "Lesson": 0,
     "Hiragana": "そりゃあ",
     "Romaji": "soryaa",
     "Kanji": "",
@@ -15936,8 +14608,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1329,
-    "Lesson": 33,
+    "Lesson": 0,
     "Hiragana": "～いない",
     "Romaji": "～inai",
     "Kanji": "～以内",
@@ -15948,8 +14619,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1330,
-    "Lesson": 33,
+    "Lesson": 0,
     "Hiragana": "けいさつ",
     "Romaji": "keisatsu",
     "Kanji": "警察",
@@ -15960,8 +14630,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1331,
-    "Lesson": 33,
+    "Lesson": 0,
     "Hiragana": "ばっきん",
     "Romaji": "bakkin",
     "Kanji": "罰金",
@@ -15972,8 +14641,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1332,
-    "Lesson": 33,
+    "Lesson": 0,
     "Hiragana": "でんぽう",
     "Romaji": "denpou",
     "Kanji": "電報",
@@ -15984,8 +14652,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1333,
-    "Lesson": 33,
+    "Lesson": 0,
     "Hiragana": "ひとびと",
     "Romaji": "hitobito",
     "Kanji": "人々",
@@ -15996,8 +14663,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1334,
-    "Lesson": 33,
+    "Lesson": 0,
     "Hiragana": "きゅうよう",
     "Romaji": "kyuuyou",
     "Kanji": "急用",
@@ -16008,8 +14674,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1335,
-    "Lesson": 33,
+    "Lesson": 0,
     "Hiragana": "うちます",
     "Romaji": "uchimasu",
     "Kanji": "打ちます",
@@ -16020,8 +14685,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1336,
-    "Lesson": 33,
+    "Lesson": 0,
     "Hiragana": "でんぽうだい",
     "Romaji": "denpoudai",
     "Kanji": "電報代",
@@ -16032,8 +14696,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1337,
-    "Lesson": 33,
+    "Lesson": 0,
     "Hiragana": "できるだけ",
     "Romaji": "dekiru dake",
     "Kanji": "",
@@ -16044,8 +14707,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1338,
-    "Lesson": 33,
+    "Lesson": 0,
     "Hiragana": "みじかく",
     "Romaji": "mijikaku",
     "Kanji": "短く",
@@ -16056,8 +14718,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1339,
-    "Lesson": 33,
+    "Lesson": 0,
     "Hiragana": "また",
     "Romaji": "mata",
     "Kanji": "",
@@ -16068,8 +14729,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1340,
-    "Lesson": 33,
+    "Lesson": 0,
     "Hiragana": "たとえば",
     "Romaji": "tatoeba",
     "Kanji": "例えば",
@@ -16080,8 +14740,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1341,
-    "Lesson": 33,
+    "Lesson": 0,
     "Hiragana": "きとく",
     "Romaji": "kitoku",
     "Kanji": "危篤",
@@ -16092,8 +14751,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1342,
-    "Lesson": 33,
+    "Lesson": 0,
     "Hiragana": "おもいびょうき",
     "Romaji": "omoi byouki",
     "Kanji": "重い病気",
@@ -16104,8 +14762,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1343,
-    "Lesson": 33,
+    "Lesson": 0,
     "Hiragana": "あす",
     "Romaji": "asu",
     "Kanji": "明日",
@@ -16116,8 +14773,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1344,
-    "Lesson": 33,
+    "Lesson": 0,
     "Hiragana": "るす",
     "Romaji": "rusu",
     "Kanji": "留守",
@@ -16128,8 +14784,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1345,
-    "Lesson": 33,
+    "Lesson": 0,
     "Hiragana": "るすばん",
     "Romaji": "rusuban",
     "Kanji": "留守番",
@@ -16140,8 +14795,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1346,
-    "Lesson": 33,
+    "Lesson": 0,
     "Hiragana": "おいわい",
     "Romaji": "oiwai",
     "Kanji": "お祝い",
@@ -16152,8 +14806,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1347,
-    "Lesson": 33,
+    "Lesson": 0,
     "Hiragana": "なくなります",
     "Romaji": "nakunarimasu",
     "Kanji": "",
@@ -16164,8 +14817,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1348,
-    "Lesson": 33,
+    "Lesson": 0,
     "Hiragana": "かなしい",
     "Romaji": "kanashii",
     "Kanji": "悲しい",
@@ -16176,8 +14828,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 1349,
-    "Lesson": 33,
+    "Lesson": 0,
     "Hiragana": "りようします",
     "Romaji": "riyou shimasu",
     "Kanji": "利用します",
@@ -16188,8 +14839,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1350,
-    "Lesson": 34,
+    "Lesson": 0,
     "Hiragana": "みがきます",
     "Romaji": "migakimasu",
     "Kanji": "磨きます",
@@ -16200,8 +14850,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1351,
-    "Lesson": 34,
+    "Lesson": 0,
     "Hiragana": "くみたてます",
     "Romaji": "kumitateramasu",
     "Kanji": "組み立てます",
@@ -16212,8 +14861,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1352,
-    "Lesson": 34,
+    "Lesson": 0,
     "Hiragana": "おります",
     "Romaji": "orimasu",
     "Kanji": "おります",
@@ -16224,8 +14872,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1353,
-    "Lesson": 34,
+    "Lesson": 0,
     "Hiragana": "きがつきます",
     "Romaji": "ki ga tsukimasu",
     "Kanji": "気が付きます",
@@ -16236,8 +14883,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1354,
-    "Lesson": 34,
+    "Lesson": 0,
     "Hiragana": "つけます",
     "Romaji": "tsukemasu",
     "Kanji": "付けます",
@@ -16248,8 +14894,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1355,
-    "Lesson": 34,
+    "Lesson": 0,
     "Hiragana": "みつかります",
     "Romaji": "mitsukarimasu",
     "Kanji": "見つかります",
@@ -16260,8 +14905,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1356,
-    "Lesson": 34,
+    "Lesson": 0,
     "Hiragana": "します",
     "Romaji": "shimasu",
     "Kanji": "",
@@ -16272,8 +14916,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1357,
-    "Lesson": 34,
+    "Lesson": 0,
     "Hiragana": "しつもんします",
     "Romaji": "shitsumon shimasu",
     "Kanji": "質問します",
@@ -16284,8 +14927,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1358,
-    "Lesson": 34,
+    "Lesson": 0,
     "Hiragana": "ほそい",
     "Romaji": "hosoi",
     "Kanji": "細い",
@@ -16296,8 +14938,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 1359,
-    "Lesson": 34,
+    "Lesson": 0,
     "Hiragana": "ふとい",
     "Romaji": "futoi",
     "Kanji": "太い",
@@ -16308,8 +14949,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 1360,
-    "Lesson": 34,
+    "Lesson": 0,
     "Hiragana": "ぼんおどり",
     "Romaji": "bon-odori",
     "Kanji": "盆踊り",
@@ -16320,8 +14960,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1361,
-    "Lesson": 34,
+    "Lesson": 0,
     "Hiragana": "スポーツクラブ",
     "Romaji": "supo-tsu kurabu",
     "Kanji": "",
@@ -16332,8 +14971,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1362,
-    "Lesson": 34,
+    "Lesson": 0,
     "Hiragana": "かぐ",
     "Romaji": "kagu",
     "Kanji": "家具",
@@ -16344,8 +14982,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1363,
-    "Lesson": 34,
+    "Lesson": 0,
     "Hiragana": "キー",
     "Romaji": "ki-",
     "Kanji": "",
@@ -16356,8 +14993,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1364,
-    "Lesson": 34,
+    "Lesson": 0,
     "Hiragana": "シートベルト",
     "Romaji": "shi-toberuto",
     "Kanji": "",
@@ -16368,8 +15004,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1365,
-    "Lesson": 34,
+    "Lesson": 0,
     "Hiragana": "せつめいしょ",
     "Romaji": "setsumeisho",
     "Kanji": "説明書",
@@ -16380,8 +15015,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1366,
-    "Lesson": 34,
+    "Lesson": 0,
     "Hiragana": "ず",
     "Romaji": "zu",
     "Kanji": "図",
@@ -16392,8 +15026,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1367,
-    "Lesson": 34,
+    "Lesson": 0,
     "Hiragana": "せん",
     "Romaji": "sen",
     "Kanji": "線",
@@ -16404,8 +15037,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1368,
-    "Lesson": 34,
+    "Lesson": 0,
     "Hiragana": "やじるし",
     "Romaji": "yajirushi",
     "Kanji": "矢印",
@@ -16416,8 +15048,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1369,
-    "Lesson": 34,
+    "Lesson": 0,
     "Hiragana": "くろ",
     "Romaji": "kuro",
     "Kanji": "黒",
@@ -16428,8 +15059,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1370,
-    "Lesson": 34,
+    "Lesson": 0,
     "Hiragana": "しろ",
     "Romaji": "shiro",
     "Kanji": "白",
@@ -16440,8 +15070,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1371,
-    "Lesson": 34,
+    "Lesson": 0,
     "Hiragana": "あか",
     "Romaji": "aka",
     "Kanji": "赤",
@@ -16452,8 +15081,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1372,
-    "Lesson": 34,
+    "Lesson": 0,
     "Hiragana": "あお",
     "Romaji": "ao",
     "Kanji": "青",
@@ -16464,8 +15092,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1373,
-    "Lesson": 34,
+    "Lesson": 0,
     "Hiragana": "こん",
     "Romaji": "kon",
     "Kanji": "紺",
@@ -16476,8 +15103,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1374,
-    "Lesson": 34,
+    "Lesson": 0,
     "Hiragana": "きいろ",
     "Romaji": "kiiro",
     "Kanji": "黄色",
@@ -16488,8 +15114,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1375,
-    "Lesson": 34,
+    "Lesson": 0,
     "Hiragana": "ちゃいろ",
     "Romaji": "chairo",
     "Kanji": "茶色",
@@ -16500,8 +15125,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1376,
-    "Lesson": 34,
+    "Lesson": 0,
     "Hiragana": "しょうゆ",
     "Romaji": "shouyu",
     "Kanji": "",
@@ -16512,8 +15136,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1377,
-    "Lesson": 34,
+    "Lesson": 0,
     "Hiragana": "ソース",
     "Romaji": "so-su",
     "Kanji": "",
@@ -16524,8 +15147,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1378,
-    "Lesson": 34,
+    "Lesson": 0,
     "Hiragana": "ゆうべ",
     "Romaji": "yuube",
     "Kanji": "",
@@ -16536,8 +15158,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1379,
-    "Lesson": 34,
+    "Lesson": 0,
     "Hiragana": "さっき",
     "Romaji": "sakki",
     "Kanji": "",
@@ -16548,8 +15169,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1380,
-    "Lesson": 34,
+    "Lesson": 0,
     "Hiragana": "さどう",
     "Romaji": "sadou",
     "Kanji": "茶道",
@@ -16560,8 +15180,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1381,
-    "Lesson": 34,
+    "Lesson": 0,
     "Hiragana": "おちゃをたてます",
     "Romaji": "ocha wo tatemasu",
     "Kanji": "お茶をたてます",
@@ -16572,8 +15191,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1382,
-    "Lesson": 34,
+    "Lesson": 0,
     "Hiragana": "さきに",
     "Romaji": "saki ni",
     "Kanji": "先に",
@@ -16584,8 +15202,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1383,
-    "Lesson": 34,
+    "Lesson": 0,
     "Hiragana": "のせます",
     "Romaji": "nosemasu",
     "Kanji": "載せます",
@@ -16596,8 +15213,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1384,
-    "Lesson": 34,
+    "Lesson": 0,
     "Hiragana": "これでいいですか",
     "Romaji": "kore de ii desu ka",
     "Kanji": "",
@@ -16608,8 +15224,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1385,
-    "Lesson": 34,
+    "Lesson": 0,
     "Hiragana": "にがい",
     "Romaji": "nigai",
     "Kanji": "苦い",
@@ -16620,8 +15235,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 1386,
-    "Lesson": 34,
+    "Lesson": 0,
     "Hiragana": "おやこどんぶり",
     "Romaji": "oyako donburi",
     "Kanji": "親子どんぶり",
@@ -16632,8 +15246,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1387,
-    "Lesson": 34,
+    "Lesson": 0,
     "Hiragana": "ざいりょう",
     "Romaji": "zairyou",
     "Kanji": "材料",
@@ -16644,8 +15257,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1388,
-    "Lesson": 34,
+    "Lesson": 0,
     "Hiragana": "～ぶん",
     "Romaji": "～bun",
     "Kanji": "～分",
@@ -16656,8 +15268,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1389,
-    "Lesson": 34,
+    "Lesson": 0,
     "Hiragana": "とりにく",
     "Romaji": "toriniku",
     "Kanji": "鶏肉",
@@ -16668,8 +15279,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1390,
-    "Lesson": 34,
+    "Lesson": 0,
     "Hiragana": "～グラム",
     "Romaji": "～guramu",
     "Kanji": "",
@@ -16680,8 +15290,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1391,
-    "Lesson": 34,
+    "Lesson": 0,
     "Hiragana": "たまねぎ",
     "Romaji": "tamanegi",
     "Kanji": "",
@@ -16692,8 +15301,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1392,
-    "Lesson": 34,
+    "Lesson": 0,
     "Hiragana": "よんぶんのいち",
     "Romaji": "yon bun no ichi",
     "Kanji": "４分の１",
@@ -16704,8 +15312,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1393,
-    "Lesson": 34,
+    "Lesson": 0,
     "Hiragana": "ちょうみりょう",
     "Romaji": "choumiryou",
     "Kanji": "調味料",
@@ -16716,8 +15323,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1394,
-    "Lesson": 34,
+    "Lesson": 0,
     "Hiragana": "なべ",
     "Romaji": "nabe",
     "Kanji": "",
@@ -16728,8 +15334,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1395,
-    "Lesson": 34,
+    "Lesson": 0,
     "Hiragana": "ひ",
     "Romaji": "hi",
     "Kanji": "火",
@@ -16740,8 +15345,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1396,
-    "Lesson": 34,
+    "Lesson": 0,
     "Hiragana": "ひにかけます",
     "Romaji": "hi ni kakemasu",
     "Kanji": "火にかけます",
@@ -16752,8 +15356,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1397,
-    "Lesson": 34,
+    "Lesson": 0,
     "Hiragana": "にます",
     "Romaji": "nimasu",
     "Kanji": "煮ます",
@@ -16764,8 +15367,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1398,
-    "Lesson": 34,
+    "Lesson": 0,
     "Hiragana": "にえます",
     "Romaji": "niemasu",
     "Kanji": "煮えます",
@@ -16776,8 +15378,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1399,
-    "Lesson": 34,
+    "Lesson": 0,
     "Hiragana": "どんぶり",
     "Romaji": "donburi",
     "Kanji": "",
@@ -16788,8 +15389,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1400,
-    "Lesson": 35,
+    "Lesson": 0,
     "Hiragana": "さきます",
     "Romaji": "sakimasu",
     "Kanji": "咲きます",
@@ -16800,8 +15400,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1401,
-    "Lesson": 35,
+    "Lesson": 0,
     "Hiragana": "かわります",
     "Romaji": "kawarimasu",
     "Kanji": "変わります",
@@ -16812,8 +15411,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1402,
-    "Lesson": 35,
+    "Lesson": 0,
     "Hiragana": "こまります",
     "Romaji": "komarimasu",
     "Kanji": "困ります",
@@ -16824,8 +15422,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1403,
-    "Lesson": 35,
+    "Lesson": 0,
     "Hiragana": "つけます",
     "Romaji": "tsukemasu",
     "Kanji": "付けます",
@@ -16836,8 +15433,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1404,
-    "Lesson": 35,
+    "Lesson": 0,
     "Hiragana": "ひろいます",
     "Romaji": "hiroimasu",
     "Kanji": "拾います",
@@ -16848,8 +15444,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1405,
-    "Lesson": 35,
+    "Lesson": 0,
     "Hiragana": "かかります",
     "Romaji": "kakarimasu",
     "Kanji": "",
@@ -16860,8 +15455,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1406,
-    "Lesson": 35,
+    "Lesson": 0,
     "Hiragana": "らく[な]",
     "Romaji": "raku[na]",
     "Kanji": "楽[な]",
@@ -16872,8 +15466,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi な"
   },
   {
-    "id": 1407,
-    "Lesson": 35,
+    "Lesson": 0,
     "Hiragana": "ただしい",
     "Romaji": "tadashii",
     "Kanji": "正しい",
@@ -16884,8 +15477,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 1408,
-    "Lesson": 35,
+    "Lesson": 0,
     "Hiragana": "めずらしい",
     "Romaji": "mezurashii",
     "Kanji": "珍しい",
@@ -16896,8 +15488,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 1409,
-    "Lesson": 35,
+    "Lesson": 0,
     "Hiragana": "かた",
     "Romaji": "kata",
     "Kanji": "方",
@@ -16908,8 +15499,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1410,
-    "Lesson": 35,
+    "Lesson": 0,
     "Hiragana": "むこう",
     "Romaji": "mukou",
     "Kanji": "向こう",
@@ -16920,8 +15510,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1411,
-    "Lesson": 35,
+    "Lesson": 0,
     "Hiragana": "しま",
     "Romaji": "shima",
     "Kanji": "島",
@@ -16932,8 +15521,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1412,
-    "Lesson": 35,
+    "Lesson": 0,
     "Hiragana": "むら",
     "Romaji": "mura",
     "Kanji": "村",
@@ -16944,8 +15532,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1413,
-    "Lesson": 35,
+    "Lesson": 0,
     "Hiragana": "みなと",
     "Romaji": "minato",
     "Kanji": "港",
@@ -16956,8 +15543,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1414,
-    "Lesson": 35,
+    "Lesson": 0,
     "Hiragana": "きんじょ",
     "Romaji": "kinjo",
     "Kanji": "近所",
@@ -16968,8 +15554,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1415,
-    "Lesson": 35,
+    "Lesson": 0,
     "Hiragana": "おくじょう",
     "Romaji": "okujou",
     "Kanji": "屋上",
@@ -16980,8 +15565,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1416,
-    "Lesson": 35,
+    "Lesson": 0,
     "Hiragana": "かいがい",
     "Romaji": "kaigai",
     "Kanji": "海外",
@@ -16992,8 +15576,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1417,
-    "Lesson": 35,
+    "Lesson": 0,
     "Hiragana": "やまのぼり",
     "Romaji": "yamanobori",
     "Kanji": "山登り",
@@ -17004,8 +15587,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1418,
-    "Lesson": 35,
+    "Lesson": 0,
     "Hiragana": "ハイキング",
     "Romaji": "haikingu",
     "Kanji": "",
@@ -17016,8 +15598,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1419,
-    "Lesson": 35,
+    "Lesson": 0,
     "Hiragana": "きかい",
     "Romaji": "kikai",
     "Kanji": "機会",
@@ -17028,8 +15609,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1420,
-    "Lesson": 35,
+    "Lesson": 0,
     "Hiragana": "きょか",
     "Romaji": "kyoka",
     "Kanji": "許可",
@@ -17040,8 +15620,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1421,
-    "Lesson": 35,
+    "Lesson": 0,
     "Hiragana": "まる",
     "Romaji": "maru",
     "Kanji": "丸",
@@ -17052,8 +15631,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1422,
-    "Lesson": 35,
+    "Lesson": 0,
     "Hiragana": "そうさ",
     "Romaji": "sousa",
     "Kanji": "操作",
@@ -17064,8 +15642,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1423,
-    "Lesson": 35,
+    "Lesson": 0,
     "Hiragana": "ほうほう",
     "Romaji": "houhou",
     "Kanji": "方法",
@@ -17076,8 +15653,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1424,
-    "Lesson": 35,
+    "Lesson": 0,
     "Hiragana": "せつび",
     "Romaji": "setsubi",
     "Kanji": "設備",
@@ -17088,8 +15664,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1425,
-    "Lesson": 35,
+    "Lesson": 0,
     "Hiragana": "カーテン",
     "Romaji": "ka-ten",
     "Kanji": "",
@@ -17100,8 +15675,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1426,
-    "Lesson": 35,
+    "Lesson": 0,
     "Hiragana": "ひも",
     "Romaji": "himo",
     "Kanji": "",
@@ -17112,8 +15686,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1427,
-    "Lesson": 35,
+    "Lesson": 0,
     "Hiragana": "ふた",
     "Romaji": "futa",
     "Kanji": "",
@@ -17124,8 +15697,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1428,
-    "Lesson": 35,
+    "Lesson": 0,
     "Hiragana": "は",
     "Romaji": "ha",
     "Kanji": "葉",
@@ -17136,8 +15708,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1429,
-    "Lesson": 35,
+    "Lesson": 0,
     "Hiragana": "きょく",
     "Romaji": "kyoku",
     "Kanji": "曲",
@@ -17148,8 +15719,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1430,
-    "Lesson": 35,
+    "Lesson": 0,
     "Hiragana": "たのしみ",
     "Romaji": "tanoshimi",
     "Kanji": "楽しみ",
@@ -17160,8 +15730,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1431,
-    "Lesson": 35,
+    "Lesson": 0,
     "Hiragana": "もっと",
     "Romaji": "motto",
     "Kanji": "",
@@ -17172,8 +15741,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1432,
-    "Lesson": 35,
+    "Lesson": 0,
     "Hiragana": "はじめに",
     "Romaji": "hajime ni",
     "Kanji": "初めに",
@@ -17184,8 +15752,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1433,
-    "Lesson": 35,
+    "Lesson": 0,
     "Hiragana": "これでおわります",
     "Romaji": "kore de owarimasu",
     "Kanji": "これで終わります",
@@ -17196,8 +15763,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1434,
-    "Lesson": 35,
+    "Lesson": 0,
     "Hiragana": "それなら",
     "Romaji": "sorenara",
     "Kanji": "",
@@ -17208,8 +15774,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1435,
-    "Lesson": 35,
+    "Lesson": 0,
     "Hiragana": "やこうバス",
     "Romaji": "yakou basu",
     "Kanji": "夜行バス",
@@ -17220,8 +15785,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1436,
-    "Lesson": 35,
+    "Lesson": 0,
     "Hiragana": "りょこうしゃ",
     "Romaji": "ryokousha",
     "Kanji": "旅行社",
@@ -17232,8 +15796,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1437,
-    "Lesson": 35,
+    "Lesson": 0,
     "Hiragana": "くわしい",
     "Romaji": "kuwashii",
     "Kanji": "詳しい",
@@ -17244,8 +15807,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 1438,
-    "Lesson": 35,
+    "Lesson": 0,
     "Hiragana": "スキーじょう",
     "Romaji": "suki-jou",
     "Kanji": "スキー場",
@@ -17256,8 +15818,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1439,
-    "Lesson": 35,
+    "Lesson": 0,
     "Hiragana": "しゅ",
     "Romaji": "shu",
     "Kanji": "朱",
@@ -17268,8 +15829,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1440,
-    "Lesson": 35,
+    "Lesson": 0,
     "Hiragana": "まじわります",
     "Romaji": "majiwarimasu",
     "Kanji": "交わります",
@@ -17280,8 +15840,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1441,
-    "Lesson": 35,
+    "Lesson": 0,
     "Hiragana": "ことわざ",
     "Romaji": "kotowaza",
     "Kanji": "",
@@ -17292,8 +15851,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1442,
-    "Lesson": 35,
+    "Lesson": 0,
     "Hiragana": "なかよくします",
     "Romaji": "nakayoku shimasu",
     "Kanji": "仲よくします",
@@ -17304,8 +15862,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1443,
-    "Lesson": 35,
+    "Lesson": 0,
     "Hiragana": "ひつよう[な]",
     "Romaji": "hitsuyou[na]",
     "Kanji": "必要[na]",
@@ -17316,8 +15873,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi な"
   },
   {
-    "id": 1444,
-    "Lesson": 36,
+    "Lesson": 0,
     "Hiragana": "とどきます",
     "Romaji": "todokimasu",
     "Kanji": "届きます",
@@ -17328,8 +15884,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1445,
-    "Lesson": 36,
+    "Lesson": 0,
     "Hiragana": "でます",
     "Romaji": "demasu",
     "Kanji": "出ます",
@@ -17340,8 +15895,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1446,
-    "Lesson": 36,
+    "Lesson": 0,
     "Hiragana": "うちます",
     "Romaji": "uchimasu",
     "Kanji": "打ちます",
@@ -17352,8 +15906,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1447,
-    "Lesson": 36,
+    "Lesson": 0,
     "Hiragana": "ちょきんします",
     "Romaji": "chokin shimasu",
     "Kanji": "貯金します",
@@ -17364,8 +15917,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1448,
-    "Lesson": 36,
+    "Lesson": 0,
     "Hiragana": "ふとります",
     "Romaji": "futorimasu",
     "Kanji": "太ります",
@@ -17376,8 +15928,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1449,
-    "Lesson": 36,
+    "Lesson": 0,
     "Hiragana": "やせます",
     "Romaji": "yasemasu",
     "Kanji": "",
@@ -17388,8 +15939,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1450,
-    "Lesson": 36,
+    "Lesson": 0,
     "Hiragana": "すぎます",
     "Romaji": "sugimasu",
     "Kanji": "過ぎます",
@@ -17400,8 +15950,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1451,
-    "Lesson": 36,
+    "Lesson": 0,
     "Hiragana": "なれます",
     "Romaji": "naremasu",
     "Kanji": "",
@@ -17412,8 +15961,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1452,
-    "Lesson": 36,
+    "Lesson": 0,
     "Hiragana": "かたい",
     "Romaji": "katai",
     "Kanji": "固い",
@@ -17424,8 +15972,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 1453,
-    "Lesson": 36,
+    "Lesson": 0,
     "Hiragana": "やわらかい",
     "Romaji": "yawarakai",
     "Kanji": "軟らかい",
@@ -17436,8 +15983,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 1454,
-    "Lesson": 36,
+    "Lesson": 0,
     "Hiragana": "でんし",
     "Romaji": "denshi",
     "Kanji": "電子",
@@ -17448,8 +15994,7 @@ const vocabData = [
     "note": "Thường dùng làm tiền tố"
   },
   {
-    "id": 1455,
-    "Lesson": 36,
+    "Lesson": 0,
     "Hiragana": "けいたい",
     "Romaji": "keitai",
     "Kanji": "携帯",
@@ -17460,8 +16005,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1456,
-    "Lesson": 36,
+    "Lesson": 0,
     "Hiragana": "こうじょう",
     "Romaji": "koujou",
     "Kanji": "工場",
@@ -17472,8 +16016,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1457,
-    "Lesson": 36,
+    "Lesson": 0,
     "Hiragana": "けんこう",
     "Romaji": "kenkou",
     "Kanji": "健康",
@@ -17484,8 +16027,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1458,
-    "Lesson": 36,
+    "Lesson": 0,
     "Hiragana": "けんどう",
     "Romaji": "kendou",
     "Kanji": "剣道",
@@ -17496,8 +16038,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1459,
-    "Lesson": 36,
+    "Lesson": 0,
     "Hiragana": "まいしゅう",
     "Romaji": "maishuu",
     "Kanji": "毎週",
@@ -17508,8 +16049,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1460,
-    "Lesson": 36,
+    "Lesson": 0,
     "Hiragana": "まいつき",
     "Romaji": "maitsuki",
     "Kanji": "毎月",
@@ -17520,8 +16060,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1461,
-    "Lesson": 36,
+    "Lesson": 0,
     "Hiragana": "まいとし / まいねん",
     "Romaji": "maitoshi / mainen",
     "Kanji": "毎年",
@@ -17532,8 +16071,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1462,
-    "Lesson": 36,
+    "Lesson": 0,
     "Hiragana": "やっと",
     "Romaji": "yatto",
     "Kanji": "",
@@ -17544,8 +16082,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1463,
-    "Lesson": 36,
+    "Lesson": 0,
     "Hiragana": "かなり",
     "Romaji": "kanari",
     "Kanji": "",
@@ -17556,8 +16093,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1464,
-    "Lesson": 36,
+    "Lesson": 0,
     "Hiragana": "かならず",
     "Romaji": "kanarazu",
     "Kanji": "必ず",
@@ -17568,8 +16104,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1465,
-    "Lesson": 36,
+    "Lesson": 0,
     "Hiragana": "ぜったいに",
     "Romaji": "zettai ni",
     "Kanji": "絶対に",
@@ -17580,8 +16115,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1466,
-    "Lesson": 36,
+    "Lesson": 0,
     "Hiragana": "じょうずに",
     "Romaji": "jouzu ni",
     "Kanji": "上手に",
@@ -17592,8 +16126,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1467,
-    "Lesson": 36,
+    "Lesson": 0,
     "Hiragana": "できるだけ",
     "Romaji": "dekiru dake",
     "Kanji": "",
@@ -17604,8 +16137,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1468,
-    "Lesson": 36,
+    "Lesson": 0,
     "Hiragana": "このごろ",
     "Romaji": "konogoro",
     "Kanji": "",
@@ -17616,8 +16148,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1469,
-    "Lesson": 36,
+    "Lesson": 0,
     "Hiragana": "～のほうが",
     "Romaji": "～no hou ga",
     "Kanji": "",
@@ -17628,8 +16159,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1470,
-    "Lesson": 36,
+    "Lesson": 0,
     "Hiragana": "おきゃくさま",
     "Romaji": "okyakusama",
     "Kanji": "お客様",
@@ -17640,8 +16170,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1471,
-    "Lesson": 36,
+    "Lesson": 0,
     "Hiragana": "とくべつ[な]",
     "Romaji": "tokubetsu[na]",
     "Kanji": "特別[な]",
@@ -17652,8 +16181,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi な"
   },
   {
-    "id": 1472,
-    "Lesson": 36,
+    "Lesson": 0,
     "Hiragana": "していらっしゃいます",
     "Romaji": "shite irasshaimasu",
     "Kanji": "",
@@ -17664,8 +16192,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1473,
-    "Lesson": 36,
+    "Lesson": 0,
     "Hiragana": "すいえい",
     "Romaji": "suiei",
     "Kanji": "水泳",
@@ -17676,8 +16203,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1474,
-    "Lesson": 36,
+    "Lesson": 0,
     "Hiragana": "～とか,～とか",
     "Romaji": "～toka, ～toka",
     "Kanji": "",
@@ -17688,8 +16214,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1475,
-    "Lesson": 36,
+    "Lesson": 0,
     "Hiragana": "タンゴ",
     "Romaji": "tango",
     "Kanji": "",
@@ -17700,8 +16225,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1476,
-    "Lesson": 36,
+    "Lesson": 0,
     "Hiragana": "チャレンジします",
     "Romaji": "charenji shimasu",
     "Kanji": "",
@@ -17712,8 +16236,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1477,
-    "Lesson": 36,
+    "Lesson": 0,
     "Hiragana": "きもち",
     "Romaji": "kimochi",
     "Kanji": "気持ち",
@@ -17724,8 +16247,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1478,
-    "Lesson": 36,
+    "Lesson": 0,
     "Hiragana": "のりもの",
     "Romaji": "norimono",
     "Kanji": "乗り物",
@@ -17736,8 +16258,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1479,
-    "Lesson": 36,
+    "Lesson": 0,
     "Hiragana": "れきし",
     "Romaji": "rekishi",
     "Kanji": "歴史",
@@ -17748,8 +16269,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1480,
-    "Lesson": 36,
+    "Lesson": 0,
     "Hiragana": "～せいき",
     "Romaji": "～seiki",
     "Kanji": "～世紀",
@@ -17760,8 +16280,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1481,
-    "Lesson": 36,
+    "Lesson": 0,
     "Hiragana": "とおく",
     "Romaji": "tooku",
     "Kanji": "遠く",
@@ -17772,8 +16291,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1482,
-    "Lesson": 36,
+    "Lesson": 0,
     "Hiragana": "きしゃ",
     "Romaji": "kisha",
     "Kanji": "汽車",
@@ -17784,8 +16302,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1483,
-    "Lesson": 36,
+    "Lesson": 0,
     "Hiragana": "きせん",
     "Romaji": "kisen",
     "Kanji": "汽船",
@@ -17796,8 +16313,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1484,
-    "Lesson": 36,
+    "Lesson": 0,
     "Hiragana": "おおぜいの～",
     "Romaji": "oozei no",
     "Kanji": "",
@@ -17808,8 +16324,7 @@ const vocabData = [
     "note": "Dùng cho người"
   },
   {
-    "id": 1485,
-    "Lesson": 36,
+    "Lesson": 0,
     "Hiragana": "はこびます",
     "Romaji": "hakobimasu",
     "Kanji": "運びます",
@@ -17820,8 +16335,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1486,
-    "Lesson": 36,
+    "Lesson": 0,
     "Hiragana": "あんぜん[な]",
     "Romaji": "anzen[na]",
     "Kanji": "安全[な]",
@@ -17832,8 +16346,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi な"
   },
   {
-    "id": 1487,
-    "Lesson": 36,
+    "Lesson": 0,
     "Hiragana": "とびます",
     "Romaji": "tobimasu",
     "Kanji": "飛びます",
@@ -17844,8 +16357,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1488,
-    "Lesson": 36,
+    "Lesson": 0,
     "Hiragana": "うちゅう",
     "Romaji": "uchuu",
     "Kanji": "宇宙",
@@ -17856,8 +16368,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1489,
-    "Lesson": 36,
+    "Lesson": 0,
     "Hiragana": "ちきゅう",
     "Romaji": "chikyuu",
     "Kanji": "地球",
@@ -17868,8 +16379,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1490,
-    "Lesson": 37,
+    "Lesson": 0,
     "Hiragana": "ほめます",
     "Romaji": "homemasu",
     "Kanji": "褒めます",
@@ -17880,8 +16390,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1491,
-    "Lesson": 37,
+    "Lesson": 0,
     "Hiragana": "しかります",
     "Romaji": "shikarimasu",
     "Kanji": "",
@@ -17892,8 +16401,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1492,
-    "Lesson": 37,
+    "Lesson": 0,
     "Hiragana": "さそいます",
     "Romaji": "sasoimasu",
     "Kanji": "誘います",
@@ -17904,8 +16412,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1493,
-    "Lesson": 37,
+    "Lesson": 0,
     "Hiragana": "おこします",
     "Romaji": "okoshimasu",
     "Kanji": "起こします",
@@ -17916,8 +16423,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1494,
-    "Lesson": 37,
+    "Lesson": 0,
     "Hiragana": "しょうたいします",
     "Romaji": "shoutai shimasu",
     "Kanji": "招待します",
@@ -17928,8 +16434,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1495,
-    "Lesson": 37,
+    "Lesson": 0,
     "Hiragana": "たのみます",
     "Romaji": "tanomimasu",
     "Kanji": "頼みます",
@@ -17940,8 +16445,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1496,
-    "Lesson": 37,
+    "Lesson": 0,
     "Hiragana": "ちゅういします",
     "Romaji": "chuui shimasu",
     "Kanji": "注意します",
@@ -17952,8 +16456,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1497,
-    "Lesson": 37,
+    "Lesson": 0,
     "Hiragana": "とります",
     "Romaji": "torimasu",
     "Kanji": "",
@@ -17964,8 +16467,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1498,
-    "Lesson": 37,
+    "Lesson": 0,
     "Hiragana": "ふみます",
     "Romaji": "fumimasu",
     "Kanji": "踏みます",
@@ -17976,8 +16478,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1499,
-    "Lesson": 37,
+    "Lesson": 0,
     "Hiragana": "こわします",
     "Romaji": "kowashimasu",
     "Kanji": "壊します",
@@ -17988,8 +16489,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1500,
-    "Lesson": 37,
+    "Lesson": 0,
     "Hiragana": "よごします",
     "Romaji": "yogoshimasu",
     "Kanji": "汚します",
@@ -18000,8 +16500,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1501,
-    "Lesson": 37,
+    "Lesson": 0,
     "Hiragana": "おこないます",
     "Romaji": "okonaimasu",
     "Kanji": "行います",
@@ -18012,8 +16511,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1502,
-    "Lesson": 37,
+    "Lesson": 0,
     "Hiragana": "ゆしゅつします",
     "Romaji": "yushutsu shimasu",
     "Kanji": "輸出します",
@@ -18024,8 +16522,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1503,
-    "Lesson": 37,
+    "Lesson": 0,
     "Hiragana": "ゆにゅうします",
     "Romaji": "yunyuu shimasu",
     "Kanji": "輸入します",
@@ -18036,8 +16533,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1504,
-    "Lesson": 37,
+    "Lesson": 0,
     "Hiragana": "ほんやくします",
     "Romaji": "hon'yaku shimasu",
     "Kanji": "翻訳します",
@@ -18048,8 +16544,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1505,
-    "Lesson": 37,
+    "Lesson": 0,
     "Hiragana": "はつめいします",
     "Romaji": "hatsumei shimasu",
     "Kanji": "発明します",
@@ -18060,8 +16555,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1506,
-    "Lesson": 37,
+    "Lesson": 0,
     "Hiragana": "はっけんします",
     "Romaji": "hakken shimasu",
     "Kanji": "発見します",
@@ -18072,8 +16566,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1507,
-    "Lesson": 37,
+    "Lesson": 0,
     "Hiragana": "せっけいします",
     "Romaji": "sekkei shimasu",
     "Kanji": "設計します",
@@ -18084,8 +16577,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1508,
-    "Lesson": 37,
+    "Lesson": 0,
     "Hiragana": "こめ",
     "Romaji": "kome",
     "Kanji": "米",
@@ -18096,8 +16588,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1509,
-    "Lesson": 37,
+    "Lesson": 0,
     "Hiragana": "むぎ",
     "Romaji": "mugi",
     "Kanji": "麦",
@@ -18108,8 +16599,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1510,
-    "Lesson": 37,
+    "Lesson": 0,
     "Hiragana": "せきゆ",
     "Romaji": "sekiyu",
     "Kanji": "石油",
@@ -18120,8 +16610,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1511,
-    "Lesson": 37,
+    "Lesson": 0,
     "Hiragana": "げんりょう",
     "Romaji": "genryou",
     "Kanji": "原料",
@@ -18132,8 +16621,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1512,
-    "Lesson": 37,
+    "Lesson": 0,
     "Hiragana": "デート",
     "Romaji": "de-to",
     "Kanji": "",
@@ -18144,8 +16632,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1513,
-    "Lesson": 37,
+    "Lesson": 0,
     "Hiragana": "どろぼう",
     "Romaji": "dorobou",
     "Kanji": "泥棒",
@@ -18156,8 +16643,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1514,
-    "Lesson": 37,
+    "Lesson": 0,
     "Hiragana": "けいかん",
     "Romaji": "keikan",
     "Kanji": "警官",
@@ -18168,8 +16654,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1515,
-    "Lesson": 37,
+    "Lesson": 0,
     "Hiragana": "けんちくか",
     "Romaji": "kenchikuka",
     "Kanji": "建築家",
@@ -18180,8 +16665,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1516,
-    "Lesson": 37,
+    "Lesson": 0,
     "Hiragana": "かがくしゃ",
     "Romaji": "kagakusha",
     "Kanji": "科学者",
@@ -18192,8 +16676,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1517,
-    "Lesson": 37,
+    "Lesson": 0,
     "Hiragana": "まんが",
     "Romaji": "manga",
     "Kanji": "漫画",
@@ -18204,8 +16687,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1518,
-    "Lesson": 37,
+    "Lesson": 0,
     "Hiragana": "せかいじゅう",
     "Romaji": "sekaijuu",
     "Kanji": "世界中",
@@ -18216,8 +16698,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1519,
-    "Lesson": 37,
+    "Lesson": 0,
     "Hiragana": "～じゅう",
     "Romaji": "～juu",
     "Kanji": "～中",
@@ -18228,8 +16709,7 @@ const vocabData = [
     "note": "Hậu tố"
   },
   {
-    "id": 1520,
-    "Lesson": 37,
+    "Lesson": 0,
     "Hiragana": "によって",
     "Romaji": "ni yotte",
     "Kanji": "",
@@ -18240,8 +16720,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1521,
-    "Lesson": 37,
+    "Lesson": 0,
     "Hiragana": "よかったですね",
     "Romaji": "yokatta desu ne",
     "Kanji": "",
@@ -18252,8 +16731,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1522,
-    "Lesson": 37,
+    "Lesson": 0,
     "Hiragana": "うめたてます",
     "Romaji": "umetateramasu",
     "Kanji": "埋め立てます",
@@ -18264,8 +16742,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1523,
-    "Lesson": 37,
+    "Lesson": 0,
     "Hiragana": "ぎじゅつ",
     "Romaji": "gijutsu",
     "Kanji": "技術",
@@ -18276,8 +16753,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1524,
-    "Lesson": 37,
+    "Lesson": 0,
     "Hiragana": "とち",
     "Romaji": "tochi",
     "Kanji": "土地",
@@ -18288,8 +16764,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1525,
-    "Lesson": 37,
+    "Lesson": 0,
     "Hiragana": "そうおん",
     "Romaji": "souon",
     "Kanji": "騒音",
@@ -18300,8 +16775,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1526,
-    "Lesson": 37,
+    "Lesson": 0,
     "Hiragana": "りようします",
     "Romaji": "riyou shimasu",
     "Kanji": "利用します",
@@ -18312,8 +16786,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1527,
-    "Lesson": 37,
+    "Lesson": 0,
     "Hiragana": "アクセス",
     "Romaji": "akusesu",
     "Kanji": "",
@@ -18324,8 +16797,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1528,
-    "Lesson": 37,
+    "Lesson": 0,
     "Hiragana": "ドミニカ",
     "Romaji": "dominika",
     "Kanji": "",
@@ -18336,8 +16808,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1529,
-    "Lesson": 37,
+    "Lesson": 0,
     "Hiragana": "～せいき",
     "Romaji": "～seiki",
     "Kanji": "～世紀",
@@ -18348,8 +16819,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1530,
-    "Lesson": 37,
+    "Lesson": 0,
     "Hiragana": "ごうか[な]",
     "Romaji": "gouka[na]",
     "Kanji": "豪華[な]",
@@ -18360,8 +16830,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi な"
   },
   {
-    "id": 1531,
-    "Lesson": 37,
+    "Lesson": 0,
     "Hiragana": "ちょうこく",
     "Romaji": "choukoku",
     "Kanji": "彫刻",
@@ -18372,8 +16841,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1532,
-    "Lesson": 37,
+    "Lesson": 0,
     "Hiragana": "ねむります",
     "Romaji": "nemurimasu",
     "Kanji": "眠ります",
@@ -18384,8 +16852,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1533,
-    "Lesson": 37,
+    "Lesson": 0,
     "Hiragana": "ほります",
     "Romaji": "horimasu",
     "Kanji": "彫ります",
@@ -18396,8 +16863,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1534,
-    "Lesson": 37,
+    "Lesson": 0,
     "Hiragana": "なかま",
     "Romaji": "nakama",
     "Kanji": "仲間",
@@ -18408,8 +16874,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1535,
-    "Lesson": 37,
+    "Lesson": 0,
     "Hiragana": "そのあと",
     "Romaji": "sono ato",
     "Kanji": "",
@@ -18420,8 +16885,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1536,
-    "Lesson": 37,
+    "Lesson": 0,
     "Hiragana": "いっしょうけんめい",
     "Romaji": "isshoukenmei",
     "Kanji": "一生懸命",
@@ -18432,8 +16896,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1537,
-    "Lesson": 37,
+    "Lesson": 0,
     "Hiragana": "ねずみ",
     "Romaji": "nezumi",
     "Kanji": "",
@@ -18444,8 +16907,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1538,
-    "Lesson": 37,
+    "Lesson": 0,
     "Hiragana": "いっぴきもいません",
     "Romaji": "ippiki mo imasen",
     "Kanji": "一匹もいません",
@@ -18456,8 +16918,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1539,
-    "Lesson": 38,
+    "Lesson": 0,
     "Hiragana": "そだてます",
     "Romaji": "sodatemasu",
     "Kanji": "育てます",
@@ -18468,8 +16929,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1540,
-    "Lesson": 38,
+    "Lesson": 0,
     "Hiragana": "はこびます",
     "Romaji": "hakobimasu",
     "Kanji": "運びます",
@@ -18480,8 +16940,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1541,
-    "Lesson": 38,
+    "Lesson": 0,
     "Hiragana": "なくなります",
     "Romaji": "nakunarimasu",
     "Kanji": "亡くなります",
@@ -18492,8 +16951,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1542,
-    "Lesson": 38,
+    "Lesson": 0,
     "Hiragana": "にゅういんします",
     "Romaji": "nyuuin shimasu",
     "Kanji": "入院します",
@@ -18504,8 +16962,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1543,
-    "Lesson": 38,
+    "Lesson": 0,
     "Hiragana": "たいいんします",
     "Romaji": "taiin shimasu",
     "Kanji": "退院します",
@@ -18516,8 +16973,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1544,
-    "Lesson": 38,
+    "Lesson": 0,
     "Hiragana": "いれます",
     "Romaji": "iremasu",
     "Kanji": "入れます",
@@ -18528,8 +16984,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1545,
-    "Lesson": 38,
+    "Lesson": 0,
     "Hiragana": "きります",
     "Romaji": "kirimasu",
     "Kanji": "切ります",
@@ -18540,8 +16995,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1546,
-    "Lesson": 38,
+    "Lesson": 0,
     "Hiragana": "かけます",
     "Romaji": "kakemasu",
     "Kanji": "掛けます",
@@ -18552,8 +17006,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1547,
-    "Lesson": 38,
+    "Lesson": 0,
     "Hiragana": "きもちがいい",
     "Romaji": "kibun ga ii",
     "Kanji": "気持ちがいい",
@@ -18564,8 +17017,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 1548,
-    "Lesson": 38,
+    "Lesson": 0,
     "Hiragana": "きもちがわるい",
     "Romaji": "kibun ga warui",
     "Kanji": "気持ちが悪い",
@@ -18576,8 +17028,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 1549,
-    "Lesson": 38,
+    "Lesson": 0,
     "Hiragana": "おおきな～",
     "Romaji": "ookina",
     "Kanji": "",
@@ -18588,8 +17039,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1550,
-    "Lesson": 38,
+    "Lesson": 0,
     "Hiragana": "ちいさな～",
     "Romaji": "chiisana",
     "Kanji": "",
@@ -18600,8 +17050,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1551,
-    "Lesson": 38,
+    "Lesson": 0,
     "Hiragana": "あかちゃん",
     "Romaji": "akachan",
     "Kanji": "赤ちゃん",
@@ -18612,8 +17061,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1552,
-    "Lesson": 38,
+    "Lesson": 0,
     "Hiragana": "しょうがっこう",
     "Romaji": "shougakkou",
     "Kanji": "小学校",
@@ -18624,8 +17072,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1553,
-    "Lesson": 38,
+    "Lesson": 0,
     "Hiragana": "ちゅうがっこう",
     "Romaji": "chuugakkou",
     "Kanji": "中学校",
@@ -18636,8 +17083,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1554,
-    "Lesson": 38,
+    "Lesson": 0,
     "Hiragana": "えきまえ",
     "Romaji": "ekimae",
     "Kanji": "駅前",
@@ -18648,8 +17094,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1555,
-    "Lesson": 38,
+    "Lesson": 0,
     "Hiragana": "かいがん",
     "Romaji": "kaigan",
     "Kanji": "海岸",
@@ -18660,8 +17105,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1556,
-    "Lesson": 38,
+    "Lesson": 0,
     "Hiragana": "うそ",
     "Romaji": "uso",
     "Kanji": "",
@@ -18672,8 +17116,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1557,
-    "Lesson": 38,
+    "Lesson": 0,
     "Hiragana": "しょるい",
     "Romaji": "shorui",
     "Kanji": "書類",
@@ -18684,8 +17127,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1558,
-    "Lesson": 38,
+    "Lesson": 0,
     "Hiragana": "でんげん",
     "Romaji": "dengen",
     "Kanji": "電源",
@@ -18696,8 +17138,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1559,
-    "Lesson": 38,
+    "Lesson": 0,
     "Hiragana": "～せい",
     "Romaji": "～sei",
     "Kanji": "～製",
@@ -18708,8 +17149,7 @@ const vocabData = [
     "note": "Hậu tố"
   },
   {
-    "id": 1560,
-    "Lesson": 38,
+    "Lesson": 0,
     "Hiragana": "あ,いけない",
     "Romaji": "a, ikenai",
     "Kanji": "",
@@ -18720,8 +17160,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1561,
-    "Lesson": 38,
+    "Lesson": 0,
     "Hiragana": "おさきに",
     "Romaji": "osaki ni",
     "Kanji": "お先に",
@@ -18732,8 +17171,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1562,
-    "Lesson": 38,
+    "Lesson": 0,
     "Hiragana": "かいらん",
     "Romaji": "kairan",
     "Kanji": "回覧",
@@ -18744,8 +17182,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1563,
-    "Lesson": 38,
+    "Lesson": 0,
     "Hiragana": "けんきゅうしつ",
     "Romaji": "kenkyuushitsu",
     "Kanji": "研究室",
@@ -18756,8 +17193,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1564,
-    "Lesson": 38,
+    "Lesson": 0,
     "Hiragana": "きちんと",
     "Romaji": "kichinto",
     "Kanji": "",
@@ -18768,8 +17204,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1565,
-    "Lesson": 38,
+    "Lesson": 0,
     "Hiragana": "せいりします",
     "Romaji": "seiri shimasu",
     "Kanji": "整理します",
@@ -18780,8 +17215,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1566,
-    "Lesson": 38,
+    "Lesson": 0,
     "Hiragana": "はんこ",
     "Romaji": "hanko",
     "Kanji": "",
@@ -18792,8 +17226,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1567,
-    "Lesson": 38,
+    "Lesson": 0,
     "Hiragana": "おします",
     "Romaji": "oshimasu",
     "Kanji": "押します",
@@ -18804,8 +17237,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1568,
-    "Lesson": 38,
+    "Lesson": 0,
     "Hiragana": "ふたご",
     "Romaji": "futago",
     "Kanji": "双子",
@@ -18816,8 +17248,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1569,
-    "Lesson": 38,
+    "Lesson": 0,
     "Hiragana": "しまい",
     "Romaji": "shimai",
     "Kanji": "姉妹",
@@ -18828,8 +17259,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1570,
-    "Lesson": 38,
+    "Lesson": 0,
     "Hiragana": "～ねんせい",
     "Romaji": "～nensei",
     "Kanji": "～年生",
@@ -18840,8 +17270,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1571,
-    "Lesson": 38,
+    "Lesson": 0,
     "Hiragana": "にています",
     "Romaji": "nite imasu",
     "Kanji": "似ています",
@@ -18852,8 +17281,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1572,
-    "Lesson": 38,
+    "Lesson": 0,
     "Hiragana": "せいかく",
     "Romaji": "seikaku",
     "Kanji": "性格",
@@ -18864,8 +17292,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1573,
-    "Lesson": 38,
+    "Lesson": 0,
     "Hiragana": "おとなしい",
     "Romaji": "otonashii",
     "Kanji": "",
@@ -18876,8 +17303,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 1574,
-    "Lesson": 38,
+    "Lesson": 0,
     "Hiragana": "せわをします",
     "Romaji": "sewa wo shimasu",
     "Kanji": "世話をします",
@@ -18888,8 +17314,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1575,
-    "Lesson": 38,
+    "Lesson": 0,
     "Hiragana": "じかんがたちます",
     "Romaji": "jikan ga tachimasu",
     "Kanji": "時間がたちます",
@@ -18900,8 +17325,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1576,
-    "Lesson": 38,
+    "Lesson": 0,
     "Hiragana": "だいすき",
     "Romaji": "daisuki",
     "Kanji": "大好き",
@@ -18912,8 +17336,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi な"
   },
   {
-    "id": 1577,
-    "Lesson": 38,
+    "Lesson": 0,
     "Hiragana": "クラス",
     "Romaji": "kurasu",
     "Kanji": "",
@@ -18924,8 +17347,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1578,
-    "Lesson": 38,
+    "Lesson": 0,
     "Hiragana": "けんかします",
     "Romaji": "kenka shimasu",
     "Kanji": "",
@@ -18936,8 +17358,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1579,
-    "Lesson": 38,
+    "Lesson": 0,
     "Hiragana": "ふしぎ[な]",
     "Romaji": "fushigi[na]",
     "Kanji": "不思議[な]",
@@ -18948,8 +17369,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi な"
   },
   {
-    "id": 1580,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "かぞえます",
     "Romaji": "kazoemasu",
     "Kanji": "数えます",
@@ -18960,8 +17380,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1581,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "はかります",
     "Romaji": "hakarimasu",
     "Kanji": "測ります / 量ります",
@@ -18972,8 +17391,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1582,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "たしかめます",
     "Romaji": "tashikamemasu",
     "Kanji": "確かめます",
@@ -18984,8 +17402,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1583,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "あいます",
     "Romaji": "aimasu",
     "Kanji": "合います",
@@ -18996,8 +17413,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1584,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "しゅっぱつします",
     "Romaji": "shuppatsu shimasu",
     "Kanji": "出発します",
@@ -19008,8 +17424,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1585,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "とうちゃくします",
     "Romaji": "touchaku shimasu",
     "Kanji": "到着します",
@@ -19020,8 +17435,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1586,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "よいます",
     "Romaji": "yoimasu",
     "Kanji": "酔います",
@@ -19032,8 +17446,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1587,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "きけん[な]",
     "Romaji": "kiken[na]",
     "Kanji": "危険[な]",
@@ -19044,8 +17457,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi な"
   },
   {
-    "id": 1588,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "ひつよう[な]",
     "Romaji": "hitsuyou[na]",
     "Kanji": "必要[な]",
@@ -19056,8 +17468,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi な"
   },
   {
-    "id": 1589,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "うちゅう",
     "Romaji": "uchuu",
     "Kanji": "宇宙",
@@ -19068,8 +17479,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1590,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "ちきゅう",
     "Romaji": "chikyuu",
     "Kanji": "地球",
@@ -19080,8 +17490,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1591,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "ぼうねんかい",
     "Romaji": "bounenkai",
     "Kanji": "忘年会",
@@ -19092,8 +17501,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1592,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "しんねんかい",
     "Romaji": "shinnenkai",
     "Kanji": "新年会",
@@ -19104,8 +17512,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1593,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "にじかい",
     "Romaji": "nijikai",
     "Kanji": "二次会",
@@ -19116,8 +17523,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1594,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "たいかい",
     "Romaji": "taikai",
     "Kanji": "大会",
@@ -19128,8 +17534,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1595,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "マラソン",
     "Romaji": "marason",
     "Kanji": "",
@@ -19140,8 +17545,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1596,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "コンテスト",
     "Romaji": "kontesuto",
     "Kanji": "",
@@ -19152,8 +17556,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1597,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "おもて",
     "Romaji": "omote",
     "Kanji": "表",
@@ -19164,8 +17567,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1598,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "うら",
     "Romaji": "ura",
     "Kanji": "裏",
@@ -19176,8 +17578,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1599,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "へんじ",
     "Romaji": "henji",
     "Kanji": "返事",
@@ -19188,8 +17589,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1600,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "もうしこみ",
     "Romaji": "moushikomi",
     "Kanji": "申し込み",
@@ -19200,8 +17600,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1601,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "ほんとう",
     "Romaji": "hontou",
     "Kanji": "本当",
@@ -19212,8 +17611,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1602,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "まちがい",
     "Romaji": "machigai",
     "Kanji": "",
@@ -19224,8 +17622,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1603,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "きず",
     "Romaji": "kizu",
     "Kanji": "傷",
@@ -19236,8 +17633,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1604,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "ズボン",
     "Romaji": "zubon",
     "Kanji": "",
@@ -19248,8 +17644,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1605,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "ながさ",
     "Romaji": "nagasa",
     "Kanji": "長さ",
@@ -19260,8 +17655,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1606,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "おもさ",
     "Romaji": "omosa",
     "Kanji": "重さ",
@@ -19272,8 +17666,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1607,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "たかさ",
     "Romaji": "takasa",
     "Kanji": "高さ",
@@ -19284,8 +17677,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1608,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "おおきさ",
     "Romaji": "ookisa",
     "Kanji": "大きさ",
@@ -19296,8 +17688,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1609,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "～びん",
     "Romaji": "～bin",
     "Kanji": "～便",
@@ -19308,8 +17699,7 @@ const vocabData = [
     "note": "Hậu tố"
   },
   {
-    "id": 1610,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "～ごう",
     "Romaji": "～gou",
     "Kanji": "～号",
@@ -19320,8 +17710,7 @@ const vocabData = [
     "note": "Hậu tố"
   },
   {
-    "id": 1611,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "～こ",
     "Romaji": "～ko",
     "Kanji": "～個",
@@ -19332,8 +17721,7 @@ const vocabData = [
     "note": "Hậu tố"
   },
   {
-    "id": 1612,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "～ほん",
     "Romaji": "～hon",
     "Kanji": "～本",
@@ -19344,8 +17732,7 @@ const vocabData = [
     "note": "Hậu tố"
   },
   {
-    "id": 1613,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "～はい",
     "Romaji": "～hai",
     "Kanji": "～杯",
@@ -19356,8 +17743,7 @@ const vocabData = [
     "note": "Hậu tố"
   },
   {
-    "id": 1614,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "～キロ",
     "Romaji": "～kiro",
     "Kanji": "",
@@ -19368,8 +17754,7 @@ const vocabData = [
     "note": "Hậu tố"
   },
   {
-    "id": 1615,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "～グラム",
     "Romaji": "～guramu",
     "Kanji": "",
@@ -19380,8 +17765,7 @@ const vocabData = [
     "note": "Hậu tố"
   },
   {
-    "id": 1616,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "～センチ",
     "Romaji": "～senchi",
     "Kanji": "",
@@ -19392,8 +17776,7 @@ const vocabData = [
     "note": "Hậu tố"
   },
   {
-    "id": 1617,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "～ミリ",
     "Romaji": "～miri",
     "Kanji": "",
@@ -19404,8 +17787,7 @@ const vocabData = [
     "note": "Hậu tố"
   },
   {
-    "id": 1618,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "～いじょう",
     "Romaji": "～ijou",
     "Kanji": "～以上",
@@ -19416,8 +17798,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1619,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "～いか",
     "Romaji": "～ika",
     "Kanji": "～以下",
@@ -19428,8 +17809,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1620,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "さあ",
     "Romaji": "saa",
     "Kanji": "",
@@ -19440,8 +17820,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1621,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "どうでしょうか",
     "Romaji": "dou deshou ka",
     "Kanji": "",
@@ -19452,8 +17831,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1622,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "クラス",
     "Romaji": "kurasu",
     "Kanji": "",
@@ -19464,8 +17842,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1623,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "テスト",
     "Romaji": "tesuto",
     "Kanji": "",
@@ -19476,8 +17853,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1624,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "せいせき",
     "Romaji": "seiseki",
     "Kanji": "成績",
@@ -19488,8 +17864,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1625,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "ところで",
     "Romaji": "tokorode",
     "Kanji": "",
@@ -19500,8 +17875,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1626,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "いらっしゃいます",
     "Romaji": "irasshaimasu",
     "Kanji": "",
@@ -19512,8 +17886,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1627,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "ようす",
     "Romaji": "yousu",
     "Kanji": "様子",
@@ -19524,8 +17897,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1628,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "じけん",
     "Romaji": "jiken",
     "Kanji": "事件",
@@ -19536,8 +17908,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1629,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "オートバイ",
     "Romaji": "o-tobai",
     "Kanji": "",
@@ -19548,8 +17919,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1630,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "ばくだん",
     "Romaji": "bakudan",
     "Kanji": "爆弾",
@@ -19560,8 +17930,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1631,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "つみます",
     "Romaji": "tsumimasu",
     "Kanji": "積みます",
@@ -19572,8 +17941,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1632,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "うんてんしゅ",
     "Romaji": "untenshu",
     "Kanji": "運転手",
@@ -19584,8 +17952,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1633,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "はなれた",
     "Romaji": "hanareta",
     "Kanji": "離れた",
@@ -19596,8 +17963,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1634,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "が",
     "Romaji": "ga",
     "Kanji": "",
@@ -19608,8 +17974,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1635,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "きゅうに",
     "Romaji": "kyuu ni",
     "Kanji": "急に",
@@ -19620,8 +17985,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1636,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "うごかします",
     "Romaji": "ugokashimasu",
     "Kanji": "動かします",
@@ -19632,8 +17996,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1637,
-    "Lesson": 40,
+    "Lesson": 0,
     "Hiragana": "いっしょうけんめい",
     "Romaji": "isshoukenmei",
     "Kanji": "一生懸命",
@@ -19644,8 +18007,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1638,
-    "Lesson": 41,
+    "Lesson": 0,
     "Hiragana": "いただきます",
     "Romaji": "itadakimasu",
     "Kanji": "",
@@ -19656,8 +18018,7 @@ const vocabData = [
     "note": "Khiêm nhường ngữ"
   },
   {
-    "id": 1639,
-    "Lesson": 41,
+    "Lesson": 0,
     "Hiragana": "くださいます",
     "Romaji": "kudasaimasu",
     "Kanji": "",
@@ -19668,8 +18029,7 @@ const vocabData = [
     "note": "Tôn kính ngữ"
   },
   {
-    "id": 1640,
-    "Lesson": 41,
+    "Lesson": 0,
     "Hiragana": "やります",
     "Romaji": "yarimasu",
     "Kanji": "",
@@ -19680,8 +18040,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1641,
-    "Lesson": 41,
+    "Lesson": 0,
     "Hiragana": "よびます",
     "Romaji": "yobimasu",
     "Kanji": "呼びます",
@@ -19692,8 +18051,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1642,
-    "Lesson": 41,
+    "Lesson": 0,
     "Hiragana": "とりかえます",
     "Romaji": "torikaemasu",
     "Kanji": "取り替えます",
@@ -19704,8 +18062,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1643,
-    "Lesson": 41,
+    "Lesson": 0,
     "Hiragana": "しんせつにします",
     "Romaji": "shinsetsu ni shimasu",
     "Kanji": "親切にします",
@@ -19716,8 +18073,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1644,
-    "Lesson": 41,
+    "Lesson": 0,
     "Hiragana": "かわいい",
     "Romaji": "kawaii",
     "Kanji": "",
@@ -19728,8 +18084,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 1645,
-    "Lesson": 41,
+    "Lesson": 0,
     "Hiragana": "おいわい",
     "Romaji": "oiwai",
     "Kanji": "お祝い",
@@ -19740,8 +18095,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1646,
-    "Lesson": 41,
+    "Lesson": 0,
     "Hiragana": "おとしだま",
     "Romaji": "otoshidama",
     "Kanji": "お年玉",
@@ -19752,8 +18106,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1647,
-    "Lesson": 41,
+    "Lesson": 0,
     "Hiragana": "おみまい",
     "Romaji": "omimai",
     "Kanji": "お見舞い",
@@ -19764,8 +18117,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1648,
-    "Lesson": 41,
+    "Lesson": 0,
     "Hiragana": "きょうみ",
     "Romaji": "kyoumi",
     "Kanji": "興味",
@@ -19776,8 +18128,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1649,
-    "Lesson": 41,
+    "Lesson": 0,
     "Hiragana": "じょうほう",
     "Romaji": "jouhou",
     "Kanji": "情報",
@@ -19788,8 +18139,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1650,
-    "Lesson": 41,
+    "Lesson": 0,
     "Hiragana": "ぶんぽう",
     "Romaji": "bunpou",
     "Kanji": "文法",
@@ -19800,8 +18150,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1651,
-    "Lesson": 41,
+    "Lesson": 0,
     "Hiragana": "はつおん",
     "Romaji": "hatsuon",
     "Kanji": "発音",
@@ -19812,8 +18161,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1652,
-    "Lesson": 41,
+    "Lesson": 0,
     "Hiragana": "さる",
     "Romaji": "saru",
     "Kanji": "猿",
@@ -19824,8 +18172,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1653,
-    "Lesson": 41,
+    "Lesson": 0,
     "Hiragana": "えさ",
     "Romaji": "esa",
     "Kanji": "",
@@ -19836,8 +18183,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1654,
-    "Lesson": 41,
+    "Lesson": 0,
     "Hiragana": "おもちゃ",
     "Romaji": "omocha",
     "Kanji": "",
@@ -19848,8 +18194,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1655,
-    "Lesson": 41,
+    "Lesson": 0,
     "Hiragana": "えほん",
     "Romaji": "ehon",
     "Kanji": "絵本",
@@ -19860,8 +18205,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1656,
-    "Lesson": 41,
+    "Lesson": 0,
     "Hiragana": "えはがき",
     "Romaji": "ehagaki",
     "Kanji": "絵はがき",
@@ -19872,8 +18216,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1657,
-    "Lesson": 41,
+    "Lesson": 0,
     "Hiragana": "ドライバー",
     "Romaji": "doraiba-",
     "Kanji": "",
@@ -19884,8 +18227,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1658,
-    "Lesson": 41,
+    "Lesson": 0,
     "Hiragana": "ハンカチ",
     "Romaji": "hankachi",
     "Kanji": "",
@@ -19896,8 +18238,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1659,
-    "Lesson": 41,
+    "Lesson": 0,
     "Hiragana": "くつした",
     "Romaji": "kutsushita",
     "Kanji": "靴下",
@@ -19908,8 +18249,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1660,
-    "Lesson": 41,
+    "Lesson": 0,
     "Hiragana": "てぶくろ",
     "Romaji": "tebukuro",
     "Kanji": "手袋",
@@ -19920,8 +18260,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1661,
-    "Lesson": 41,
+    "Lesson": 0,
     "Hiragana": "ゆびわ",
     "Romaji": "yubiwa",
     "Kanji": "指輪",
@@ -19932,8 +18271,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1662,
-    "Lesson": 41,
+    "Lesson": 0,
     "Hiragana": "バッグ",
     "Romaji": "baggu",
     "Kanji": "",
@@ -19944,8 +18282,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1663,
-    "Lesson": 41,
+    "Lesson": 0,
     "Hiragana": "そふ",
     "Romaji": "sofu",
     "Kanji": "祖父",
@@ -19956,8 +18293,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1664,
-    "Lesson": 41,
+    "Lesson": 0,
     "Hiragana": "そぼ",
     "Romaji": "sobo",
     "Kanji": "祖母",
@@ -19968,8 +18304,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1665,
-    "Lesson": 41,
+    "Lesson": 0,
     "Hiragana": "まご",
     "Romaji": "mago",
     "Kanji": "孫",
@@ -19980,8 +18315,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1666,
-    "Lesson": 41,
+    "Lesson": 0,
     "Hiragana": "おじ",
     "Romaji": "oji",
     "Kanji": "",
@@ -19992,8 +18326,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1667,
-    "Lesson": 41,
+    "Lesson": 0,
     "Hiragana": "おじさん",
     "Romaji": "ojisan",
     "Kanji": "",
@@ -20004,8 +18337,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1668,
-    "Lesson": 41,
+    "Lesson": 0,
     "Hiragana": "おば",
     "Romaji": "oba",
     "Kanji": "",
@@ -20016,8 +18348,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1669,
-    "Lesson": 41,
+    "Lesson": 0,
     "Hiragana": "おばさん",
     "Romaji": "obasan",
     "Kanji": "",
@@ -20028,8 +18359,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1670,
-    "Lesson": 41,
+    "Lesson": 0,
     "Hiragana": "おととし",
     "Romaji": "ototoshi",
     "Kanji": "",
@@ -20040,8 +18370,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1671,
-    "Lesson": 41,
+    "Lesson": 0,
     "Hiragana": "はあ",
     "Romaji": "haa",
     "Kanji": "",
@@ -20052,8 +18381,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1672,
-    "Lesson": 41,
+    "Lesson": 0,
     "Hiragana": "もうしわけありません",
     "Romaji": "moushiwake arimasen",
     "Kanji": "申し訳ありません",
@@ -20064,8 +18392,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1673,
-    "Lesson": 41,
+    "Lesson": 0,
     "Hiragana": "あずかります",
     "Romaji": "azukarimasu",
     "Kanji": "預かります",
@@ -20076,8 +18403,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1674,
-    "Lesson": 41,
+    "Lesson": 0,
     "Hiragana": "せんじつ",
     "Romaji": "senjitsu",
     "Kanji": "先日",
@@ -20088,8 +18414,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1675,
-    "Lesson": 41,
+    "Lesson": 0,
     "Hiragana": "たすかります",
     "Romaji": "tasukarimasu",
     "Kanji": "助かります",
@@ -20100,8 +18425,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1676,
-    "Lesson": 41,
+    "Lesson": 0,
     "Hiragana": "むかしばなし",
     "Romaji": "mukashibanashi",
     "Kanji": "昔話",
@@ -20112,8 +18436,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1677,
-    "Lesson": 41,
+    "Lesson": 0,
     "Hiragana": "ある～",
     "Romaji": "aru～",
     "Kanji": "",
@@ -20124,8 +18447,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1678,
-    "Lesson": 41,
+    "Lesson": 0,
     "Hiragana": "おとこ",
     "Romaji": "otoko",
     "Kanji": "男",
@@ -20136,8 +18458,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1679,
-    "Lesson": 41,
+    "Lesson": 0,
     "Hiragana": "こどもたち",
     "Romaji": "kodomotachi",
     "Kanji": "子どもたち",
@@ -20148,8 +18469,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1680,
-    "Lesson": 41,
+    "Lesson": 0,
     "Hiragana": "いじめます",
     "Romaji": "ijimemasu",
     "Kanji": "",
@@ -20160,8 +18480,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1681,
-    "Lesson": 41,
+    "Lesson": 0,
     "Hiragana": "かめ",
     "Romaji": "kame",
     "Kanji": "亀",
@@ -20172,8 +18491,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1682,
-    "Lesson": 41,
+    "Lesson": 0,
     "Hiragana": "たすけます",
     "Romaji": "tasukemasu",
     "Kanji": "助けます",
@@ -20184,8 +18502,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1683,
-    "Lesson": 41,
+    "Lesson": 0,
     "Hiragana": "おしろ",
     "Romaji": "oshiro",
     "Kanji": "お城",
@@ -20196,8 +18513,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1684,
-    "Lesson": 41,
+    "Lesson": 0,
     "Hiragana": "おひめさま",
     "Romaji": "ohimesama",
     "Kanji": "お姫様",
@@ -20208,8 +18524,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1685,
-    "Lesson": 41,
+    "Lesson": 0,
     "Hiragana": "たのしく",
     "Romaji": "tanoshiku",
     "Kanji": "楽しく",
@@ -20220,8 +18535,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1686,
-    "Lesson": 41,
+    "Lesson": 0,
     "Hiragana": "くらします",
     "Romaji": "kurashimasu",
     "Kanji": "暮らします",
@@ -20232,8 +18546,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1687,
-    "Lesson": 41,
+    "Lesson": 0,
     "Hiragana": "りく",
     "Romaji": "riku",
     "Kanji": "陸",
@@ -20244,8 +18557,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1688,
-    "Lesson": 41,
+    "Lesson": 0,
     "Hiragana": "すると",
     "Romaji": "suruto",
     "Kanji": "",
@@ -20256,8 +18568,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1689,
-    "Lesson": 41,
+    "Lesson": 0,
     "Hiragana": "けむり",
     "Romaji": "kemuri",
     "Kanji": "煙",
@@ -20268,8 +18579,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1690,
-    "Lesson": 41,
+    "Lesson": 0,
     "Hiragana": "まっしろ[な]",
     "Romaji": "masshiro[na]",
     "Kanji": "真っ白[な]",
@@ -20280,8 +18590,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi な"
   },
   {
-    "id": 1691,
-    "Lesson": 41,
+    "Lesson": 0,
     "Hiragana": "なかみ",
     "Romaji": "nakami",
     "Kanji": "中身",
@@ -20292,8 +18601,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1692,
-    "Lesson": 42,
+    "Lesson": 0,
     "Hiragana": "つつみます",
     "Romaji": "tsutsumimasu",
     "Kanji": "包みます",
@@ -20304,8 +18612,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1693,
-    "Lesson": 42,
+    "Lesson": 0,
     "Hiragana": "わかします",
     "Romaji": "wakashimasu",
     "Kanji": "沸かします",
@@ -20316,8 +18623,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1694,
-    "Lesson": 42,
+    "Lesson": 0,
     "Hiragana": "まぜます",
     "Romaji": "mazemasu",
     "Kanji": "混ぜます",
@@ -20328,8 +18634,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1695,
-    "Lesson": 42,
+    "Lesson": 0,
     "Hiragana": "けいさんします",
     "Romaji": "keisan shimasu",
     "Kanji": "計算します",
@@ -20340,8 +18645,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1696,
-    "Lesson": 42,
+    "Lesson": 0,
     "Hiragana": "あつい",
     "Romaji": "atsui",
     "Kanji": "厚い",
@@ -20352,8 +18656,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 1697,
-    "Lesson": 42,
+    "Lesson": 0,
     "Hiragana": "うすい",
     "Romaji": "usui",
     "Kanji": "薄い",
@@ -20364,8 +18667,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 1698,
-    "Lesson": 42,
+    "Lesson": 0,
     "Hiragana": "べんごし",
     "Romaji": "bengoshi",
     "Kanji": "弁護士",
@@ -20376,8 +18678,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1699,
-    "Lesson": 42,
+    "Lesson": 0,
     "Hiragana": "おんがくか",
     "Romaji": "ongakuka",
     "Kanji": "音楽家",
@@ -20388,8 +18689,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1700,
-    "Lesson": 42,
+    "Lesson": 0,
     "Hiragana": "こどもたち",
     "Romaji": "kodomotachi",
     "Kanji": "子どもたち",
@@ -20400,8 +18700,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1701,
-    "Lesson": 42,
+    "Lesson": 0,
     "Hiragana": "ふたり",
     "Romaji": "futari",
     "Kanji": "二人",
@@ -20412,8 +18711,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1702,
-    "Lesson": 42,
+    "Lesson": 0,
     "Hiragana": "きょういく",
     "Romaji": "kyouiku",
     "Kanji": "教育",
@@ -20424,8 +18722,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1703,
-    "Lesson": 42,
+    "Lesson": 0,
     "Hiragana": "れきし",
     "Romaji": "rekishi",
     "Kanji": "歴史",
@@ -20436,8 +18733,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1704,
-    "Lesson": 42,
+    "Lesson": 0,
     "Hiragana": "ぶんか",
     "Romaji": "bunka",
     "Kanji": "文化",
@@ -20448,8 +18744,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1705,
-    "Lesson": 42,
+    "Lesson": 0,
     "Hiragana": "しゃかい",
     "Romaji": "shakai",
     "Kanji": "社会",
@@ -20460,8 +18755,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1706,
-    "Lesson": 42,
+    "Lesson": 0,
     "Hiragana": "ほうりつ",
     "Romaji": "houritsu",
     "Kanji": "法律",
@@ -20472,8 +18766,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1707,
-    "Lesson": 42,
+    "Lesson": 0,
     "Hiragana": "せんそう",
     "Romaji": "sensou",
     "Kanji": "戦争",
@@ -20484,8 +18777,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1708,
-    "Lesson": 42,
+    "Lesson": 0,
     "Hiragana": "へいわ",
     "Romaji": "heiwa",
     "Kanji": "平和",
@@ -20496,8 +18788,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1709,
-    "Lesson": 42,
+    "Lesson": 0,
     "Hiragana": "もくてき",
     "Romaji": "mokuteki",
     "Kanji": "目的",
@@ -20508,8 +18799,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1710,
-    "Lesson": 42,
+    "Lesson": 0,
     "Hiragana": "あんぜん",
     "Romaji": "anzen",
     "Kanji": "安全",
@@ -20520,8 +18810,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1711,
-    "Lesson": 42,
+    "Lesson": 0,
     "Hiragana": "ろんぶん",
     "Romaji": "ronbun",
     "Kanji": "論文",
@@ -20532,8 +18821,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1712,
-    "Lesson": 42,
+    "Lesson": 0,
     "Hiragana": "かんけい",
     "Romaji": "kankei",
     "Kanji": "関係",
@@ -20544,8 +18832,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1713,
-    "Lesson": 42,
+    "Lesson": 0,
     "Hiragana": "ミキサー",
     "Romaji": "mikisa-",
     "Kanji": "",
@@ -20556,8 +18843,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1714,
-    "Lesson": 42,
+    "Lesson": 0,
     "Hiragana": "やかん",
     "Romaji": "yakan",
     "Kanji": "",
@@ -20568,8 +18854,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1715,
-    "Lesson": 42,
+    "Lesson": 0,
     "Hiragana": "せんぬき",
     "Romaji": "sennuki",
     "Kanji": "栓抜き",
@@ -20580,8 +18865,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1716,
-    "Lesson": 42,
+    "Lesson": 0,
     "Hiragana": "かんきり",
     "Romaji": "kankiri",
     "Kanji": "缶切り",
@@ -20592,8 +18876,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1717,
-    "Lesson": 42,
+    "Lesson": 0,
     "Hiragana": "かんづめ",
     "Romaji": "kanzume",
     "Kanji": "缶詰",
@@ -20604,8 +18887,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1718,
-    "Lesson": 42,
+    "Lesson": 0,
     "Hiragana": "ふろしki",
     "Romaji": "furoshiki",
     "Kanji": "",
@@ -20616,8 +18898,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1719,
-    "Lesson": 42,
+    "Lesson": 0,
     "Hiragana": "そろばん",
     "Romaji": "soroban",
     "Kanji": "",
@@ -20628,8 +18909,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1720,
-    "Lesson": 42,
+    "Lesson": 0,
     "Hiragana": "たいおんけい",
     "Romaji": "taionkei",
     "Kanji": "体温計",
@@ -20640,8 +18920,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1721,
-    "Lesson": 42,
+    "Lesson": 0,
     "Hiragana": "ざいりょう",
     "Romaji": "zairyou",
     "Kanji": "材料",
@@ -20652,8 +18931,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1722,
-    "Lesson": 42,
+    "Lesson": 0,
     "Hiragana": "いし",
     "Romaji": "ishi",
     "Kanji": "石",
@@ -20664,8 +18942,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1723,
-    "Lesson": 42,
+    "Lesson": 0,
     "Hiragana": "ピラミッド",
     "Romaji": "piramiddo",
     "Kanji": "",
@@ -20676,8 +18953,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1724,
-    "Lesson": 42,
+    "Lesson": 0,
     "Hiragana": "データ",
     "Romaji": "de-ta",
     "Kanji": "",
@@ -20688,8 +18964,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1725,
-    "Lesson": 42,
+    "Lesson": 0,
     "Hiragana": "ファイル",
     "Romaji": "fairu",
     "Kanji": "",
@@ -20700,8 +18975,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1726,
-    "Lesson": 42,
+    "Lesson": 0,
     "Hiragana": "ある～",
     "Romaji": "aru～",
     "Kanji": "",
@@ -20712,8 +18986,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1727,
-    "Lesson": 42,
+    "Lesson": 0,
     "Hiragana": "いっしょうけんめい",
     "Romaji": "isshoukenmei",
     "Kanji": "一生懸命",
@@ -20724,8 +18997,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1728,
-    "Lesson": 42,
+    "Lesson": 0,
     "Hiragana": "なぜ",
     "Romaji": "naze",
     "Kanji": "",
@@ -20736,8 +19008,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1729,
-    "Lesson": 42,
+    "Lesson": 0,
     "Hiragana": "こくれん",
     "Romaji": "kokuren",
     "Kanji": "国連",
@@ -20748,8 +19019,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1730,
-    "Lesson": 42,
+    "Lesson": 0,
     "Hiragana": "こくさいれんごう",
     "Romaji": "kokusai rengou",
     "Kanji": "国際連合",
@@ -20760,8 +19030,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1731,
-    "Lesson": 42,
+    "Lesson": 0,
     "Hiragana": "ポーランド",
     "Romaji": "po-rando",
     "Kanji": "",
@@ -20772,8 +19041,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1732,
-    "Lesson": 42,
+    "Lesson": 0,
     "Hiragana": "ローン",
     "Romaji": "ro-n",
     "Kanji": "",
@@ -20784,8 +19052,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1733,
-    "Lesson": 42,
+    "Lesson": 0,
     "Hiragana": "セット",
     "Romaji": "setto",
     "Kanji": "",
@@ -20796,8 +19063,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1734,
-    "Lesson": 42,
+    "Lesson": 0,
     "Hiragana": "あとは",
     "Romaji": "ato wa",
     "Kanji": "",
@@ -20808,8 +19074,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1735,
-    "Lesson": 42,
+    "Lesson": 0,
     "Hiragana": "カップラーメン",
     "Romaji": "kappu ra-men",
     "Kanji": "",
@@ -20820,8 +19085,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1736,
-    "Lesson": 42,
+    "Lesson": 0,
     "Hiragana": "インスタントラーメン",
     "Romaji": "insutanto ra-men",
     "Kanji": "",
@@ -20832,8 +19096,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1737,
-    "Lesson": 42,
+    "Lesson": 0,
     "Hiragana": "なべ",
     "Romaji": "nabe",
     "Kanji": "",
@@ -20844,8 +19107,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1738,
-    "Lesson": 42,
+    "Lesson": 0,
     "Hiragana": "どんぶり",
     "Romaji": "donburi",
     "Kanji": "",
@@ -20856,8 +19118,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1739,
-    "Lesson": 42,
+    "Lesson": 0,
     "Hiragana": "しょくひん",
     "Romaji": "shokuhin",
     "Kanji": "食品",
@@ -20868,8 +19129,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1740,
-    "Lesson": 42,
+    "Lesson": 0,
     "Hiragana": "ちょうさ",
     "Romaji": "chousa",
     "Kanji": "調査",
@@ -20880,8 +19140,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1741,
-    "Lesson": 42,
+    "Lesson": 0,
     "Hiragana": "カップ",
     "Romaji": "kappu",
     "Kanji": "",
@@ -20892,8 +19151,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1742,
-    "Lesson": 42,
+    "Lesson": 0,
     "Hiragana": "また",
     "Romaji": "mata",
     "Kanji": "",
@@ -20904,8 +19162,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1743,
-    "Lesson": 42,
+    "Lesson": 0,
     "Hiragana": "～のかわりに",
     "Romaji": "～no kawari ni",
     "Kanji": "～の代わりに",
@@ -20916,8 +19173,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1744,
-    "Lesson": 42,
+    "Lesson": 0,
     "Hiragana": "どこででも",
     "Romaji": "doko de demo",
     "Kanji": "",
@@ -20928,8 +19184,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1745,
-    "Lesson": 42,
+    "Lesson": 0,
     "Hiragana": "今では",
     "Romaji": "ima de wa",
     "Kanji": "今では",
@@ -20940,8 +19195,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1746,
-    "Lesson": 43,
+    "Lesson": 0,
     "Hiragana": "ふえます",
     "Romaji": "fuemasu",
     "Kanji": "増えます",
@@ -20952,8 +19206,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1747,
-    "Lesson": 43,
+    "Lesson": 0,
     "Hiragana": "へります",
     "Romaji": "herimasu",
     "Kanji": "減ります",
@@ -20964,8 +19217,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1748,
-    "Lesson": 43,
+    "Lesson": 0,
     "Hiragana": "あがります",
     "Romaji": "agarimasu",
     "Kanji": "上がります",
@@ -20976,8 +19228,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1749,
-    "Lesson": 43,
+    "Lesson": 0,
     "Hiragana": "さがります",
     "Romaji": "sagarimasu",
     "Kanji": "下がります",
@@ -20988,8 +19239,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1750,
-    "Lesson": 43,
+    "Lesson": 0,
     "Hiragana": "きれます",
     "Romaji": "kiremasu",
     "Kanji": "切れます",
@@ -21000,8 +19250,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1751,
-    "Lesson": 43,
+    "Lesson": 0,
     "Hiragana": "とれます",
     "Romaji": "toremasu",
     "Kanji": "",
@@ -21012,8 +19261,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1752,
-    "Lesson": 43,
+    "Lesson": 0,
     "Hiragana": "おちます",
     "Romaji": "ochimasu",
     "Kanji": "落ちます",
@@ -21024,8 +19272,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1753,
-    "Lesson": 43,
+    "Lesson": 0,
     "Hiragana": "なくなります",
     "Romaji": "nakunarimasu",
     "Kanji": "",
@@ -21036,8 +19283,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1754,
-    "Lesson": 43,
+    "Lesson": 0,
     "Hiragana": "じょうぶ[な]",
     "Romaji": "joubu[na]",
     "Kanji": "丈夫[な]",
@@ -21048,8 +19294,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi な"
   },
   {
-    "id": 1755,
-    "Lesson": 43,
+    "Lesson": 0,
     "Hiragana": "へん[な]",
     "Romaji": "hen[na]",
     "Kanji": "変[な]",
@@ -21060,8 +19305,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi な"
   },
   {
-    "id": 1756,
-    "Lesson": 43,
+    "Lesson": 0,
     "Hiragana": "しあわせ[な]",
     "Romaji": "shiawase[na]",
     "Kanji": "幸せ[な]",
@@ -21072,8 +19316,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi な"
   },
   {
-    "id": 1757,
-    "Lesson": 43,
+    "Lesson": 0,
     "Hiragana": "うまい",
     "Romaji": "umai",
     "Kanji": "",
@@ -21084,8 +19327,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 1758,
-    "Lesson": 43,
+    "Lesson": 0,
     "Hiragana": "まずい",
     "Romaji": "mazui",
     "Kanji": "",
@@ -21096,8 +19338,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 1759,
-    "Lesson": 43,
+    "Lesson": 0,
     "Hiragana": "つまらない",
     "Romaji": "tsumaranai",
     "Kanji": "",
@@ -21108,8 +19349,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 1760,
-    "Lesson": 43,
+    "Lesson": 0,
     "Hiragana": "ガソリン",
     "Romaji": "gasorin",
     "Kanji": "",
@@ -21120,8 +19360,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1761,
-    "Lesson": 43,
+    "Lesson": 0,
     "Hiragana": "ひ",
     "Romaji": "hi",
     "Kanji": "火",
@@ -21132,8 +19371,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1762,
-    "Lesson": 43,
+    "Lesson": 0,
     "Hiragana": "だんぼう",
     "Romaji": "danbou",
     "Kanji": "暖房",
@@ -21144,8 +19382,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1763,
-    "Lesson": 43,
+    "Lesson": 0,
     "Hiragana": "れいぼう",
     "Romaji": "reibou",
     "Kanji": "冷房",
@@ -21156,8 +19393,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1764,
-    "Lesson": 43,
+    "Lesson": 0,
     "Hiragana": "センス",
     "Romaji": "sensu",
     "Kanji": "",
@@ -21168,8 +19404,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1765,
-    "Lesson": 43,
+    "Lesson": 0,
     "Hiragana": "いまにも",
     "Romaji": "ima ni mo",
     "Kanji": "今にも",
@@ -21180,8 +19415,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1766,
-    "Lesson": 43,
+    "Lesson": 0,
     "Hiragana": "わあ",
     "Romaji": "waa",
     "Kanji": "",
@@ -21192,8 +19426,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1767,
-    "Lesson": 43,
+    "Lesson": 0,
     "Hiragana": "かいいん",
     "Romaji": "kaiin",
     "Kanji": "会員",
@@ -21204,8 +19437,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1768,
-    "Lesson": 43,
+    "Lesson": 0,
     "Hiragana": "てきとう[な]",
     "Romaji": "tekitou[na]",
     "Kanji": "適当[な]",
@@ -21216,8 +19448,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi な"
   },
   {
-    "id": 1769,
-    "Lesson": 43,
+    "Lesson": 0,
     "Hiragana": "ねんれい",
     "Romaji": "nenrei",
     "Kanji": "年齢",
@@ -21228,8 +19459,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1770,
-    "Lesson": 43,
+    "Lesson": 0,
     "Hiragana": "しゅうにゅう",
     "Romaji": "shuunyuu",
     "Kanji": "収入",
@@ -21240,8 +19470,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1771,
-    "Lesson": 43,
+    "Lesson": 0,
     "Hiragana": "ぴったり",
     "Romaji": "pittari",
     "Kanji": "",
@@ -21252,8 +19481,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1772,
-    "Lesson": 43,
+    "Lesson": 0,
     "Hiragana": "そのうえ",
     "Romaji": "sono ue",
     "Kanji": "",
@@ -21264,8 +19492,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1773,
-    "Lesson": 43,
+    "Lesson": 0,
     "Hiragana": "～といいます",
     "Romaji": "～to iimasu",
     "Kanji": "～と言います",
@@ -21276,8 +19503,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1774,
-    "Lesson": 43,
+    "Lesson": 0,
     "Hiragana": "ばら",
     "Romaji": "bara",
     "Kanji": "",
@@ -21288,8 +19514,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1775,
-    "Lesson": 43,
+    "Lesson": 0,
     "Hiragana": "ドライブ",
     "Romaji": "doraibu",
     "Kanji": "",
@@ -21300,8 +19525,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1776,
-    "Lesson": 44,
+    "Lesson": 0,
     "Hiragana": "なきます",
     "Romaji": "nakimasu",
     "Kanji": "泣きます",
@@ -21312,8 +19536,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1777,
-    "Lesson": 44,
+    "Lesson": 0,
     "Hiragana": "わらいます",
     "Romaji": "waraimasu",
     "Kanji": "笑います",
@@ -21324,8 +19547,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1778,
-    "Lesson": 44,
+    "Lesson": 0,
     "Hiragana": "かわきます",
     "Romaji": "kawakimasu",
     "Kanji": "乾きます",
@@ -21336,8 +19558,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1779,
-    "Lesson": 44,
+    "Lesson": 0,
     "Hiragana": "ぬれます",
     "Romaji": "nuremasu",
     "Kanji": "",
@@ -21348,8 +19569,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1780,
-    "Lesson": 44,
+    "Lesson": 0,
     "Hiragana": "すべります",
     "Romaji": "suberimasu",
     "Kanji": "滑ります",
@@ -21360,8 +19580,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1781,
-    "Lesson": 44,
+    "Lesson": 0,
     "Hiragana": "おきます",
     "Romaji": "okimasu",
     "Kanji": "起きます",
@@ -21372,8 +19591,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1782,
-    "Lesson": 44,
+    "Lesson": 0,
     "Hiragana": "ちょうせつします",
     "Romaji": "chousetsu shimasu",
     "Kanji": "調節します",
@@ -21384,8 +19602,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1783,
-    "Lesson": 44,
+    "Lesson": 0,
     "Hiragana": "あんぜん[な]",
     "Romaji": "anzen[na]",
     "Kanji": "安全[な]",
@@ -21396,8 +19613,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi な"
   },
   {
-    "id": 1784,
-    "Lesson": 44,
+    "Lesson": 0,
     "Hiragana": "ていねい[な]",
     "Romaji": "teinei[na]",
     "Kanji": "丁寧[な]",
@@ -21408,8 +19624,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi な"
   },
   {
-    "id": 1785,
-    "Lesson": 44,
+    "Lesson": 0,
     "Hiragana": "こまかい",
     "Romaji": "komakai",
     "Kanji": "細かい",
@@ -21420,8 +19635,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 1786,
-    "Lesson": 44,
+    "Lesson": 0,
     "Hiragana": "こい",
     "Romaji": "koi",
     "Kanji": "濃い",
@@ -21432,8 +19646,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 1787,
-    "Lesson": 44,
+    "Lesson": 0,
     "Hiragana": "うすい",
     "Romaji": "usui",
     "Kanji": "薄い",
@@ -21444,8 +19657,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 1788,
-    "Lesson": 44,
+    "Lesson": 0,
     "Hiragana": "くうき",
     "Romaji": "kuuki",
     "Kanji": "空気",
@@ -21456,8 +19668,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1789,
-    "Lesson": 44,
+    "Lesson": 0,
     "Hiragana": "なみだ",
     "Romaji": "namida",
     "Kanji": "涙",
@@ -21468,8 +19679,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1790,
-    "Lesson": 44,
+    "Lesson": 0,
     "Hiragana": "わしょく",
     "Romaji": "washoku",
     "Kanji": "和食",
@@ -21480,8 +19690,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1791,
-    "Lesson": 44,
+    "Lesson": 0,
     "Hiragana": "ようしょく",
     "Romaji": "youshoku",
     "Kanji": "洋食",
@@ -21492,8 +19701,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1792,
-    "Lesson": 44,
+    "Lesson": 0,
     "Hiragana": "おかず",
     "Romaji": "okazu",
     "Kanji": "",
@@ -21504,8 +19712,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1793,
-    "Lesson": 44,
+    "Lesson": 0,
     "Hiragana": "りょう",
     "Romaji": "ryou",
     "Kanji": "量",
@@ -21516,8 +19723,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1794,
-    "Lesson": 44,
+    "Lesson": 0,
     "Hiragana": "～ばい",
     "Romaji": "～bai",
     "Kanji": "～倍",
@@ -21528,8 +19734,7 @@ const vocabData = [
     "note": "Hậu tố"
   },
   {
-    "id": 1795,
-    "Lesson": 44,
+    "Lesson": 0,
     "Hiragana": "はんぶん",
     "Romaji": "hanbun",
     "Kanji": "半分",
@@ -21540,8 +19745,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1796,
-    "Lesson": 44,
+    "Lesson": 0,
     "Hiragana": "シングル",
     "Romaji": "shinguru",
     "Kanji": "",
@@ -21552,8 +19756,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1797,
-    "Lesson": 44,
+    "Lesson": 0,
     "Hiragana": "ツイン",
     "Romaji": "tsuin",
     "Kanji": "",
@@ -21564,8 +19767,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1798,
-    "Lesson": 44,
+    "Lesson": 0,
     "Hiragana": "たんす",
     "Romaji": "tansu",
     "Kanji": "",
@@ -21576,8 +19778,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1799,
-    "Lesson": 44,
+    "Lesson": 0,
     "Hiragana": "せんたくもの",
     "Romaji": "sentakumono",
     "Kanji": "洗濯物",
@@ -21588,8 +19789,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1800,
-    "Lesson": 44,
+    "Lesson": 0,
     "Hiragana": "りゆう",
     "Romaji": "riyuu",
     "Kanji": "理由",
@@ -21600,8 +19800,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1801,
-    "Lesson": 44,
+    "Lesson": 0,
     "Hiragana": "どうなさいますか",
     "Romaji": "dou nasaimasu ka",
     "Kanji": "",
@@ -21612,8 +19811,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1802,
-    "Lesson": 44,
+    "Lesson": 0,
     "Hiragana": "カット",
     "Romaji": "katto",
     "Kanji": "",
@@ -21624,8 +19822,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1803,
-    "Lesson": 44,
+    "Lesson": 0,
     "Hiragana": "シャンプー",
     "Romaji": "shanpu-",
     "Kanji": "",
@@ -21636,8 +19833,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1804,
-    "Lesson": 44,
+    "Lesson": 0,
     "Hiragana": "どういうふうになさいますか",
     "Romaji": "douiu fuu ni nasaimasu ka",
     "Kanji": "",
@@ -21648,8 +19844,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1805,
-    "Lesson": 44,
+    "Lesson": 0,
     "Hiragana": "ショート",
     "Romaji": "sho-to",
     "Kanji": "",
@@ -21660,8 +19855,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1806,
-    "Lesson": 44,
+    "Lesson": 0,
     "Hiragana": "～みたいにしてください",
     "Romaji": "～mitai ni shite kudasai",
     "Kanji": "",
@@ -21672,8 +19866,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1807,
-    "Lesson": 44,
+    "Lesson": 0,
     "Hiragana": "これでよろしいでしょうか",
     "Romaji": "kore de yoroshii deshou ka",
     "Kanji": "",
@@ -21684,8 +19877,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1808,
-    "Lesson": 44,
+    "Lesson": 0,
     "Hiragana": "おつかれさまでした",
     "Romaji": "otsukaresama deshita",
     "Kanji": "",
@@ -21696,8 +19888,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1809,
-    "Lesson": 44,
+    "Lesson": 0,
     "Hiragana": "いやがります",
     "Romaji": "iyagarimasu",
     "Kanji": "嫌がります",
@@ -21708,8 +19899,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1810,
-    "Lesson": 44,
+    "Lesson": 0,
     "Hiragana": "また",
     "Romaji": "mata",
     "Kanji": "",
@@ -21720,8 +19910,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1811,
-    "Lesson": 44,
+    "Lesson": 0,
     "Hiragana": "じゅんじょ",
     "Romaji": "junjo",
     "Kanji": "順序",
@@ -21732,8 +19921,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1812,
-    "Lesson": 44,
+    "Lesson": 0,
     "Hiragana": "ひょうげん",
     "Romaji": "hyougen",
     "Kanji": "表現",
@@ -21744,8 +19932,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1813,
-    "Lesson": 44,
+    "Lesson": 0,
     "Hiragana": "たとえば",
     "Romaji": "tatoeba",
     "Kanji": "例えば",
@@ -21756,8 +19943,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1814,
-    "Lesson": 44,
+    "Lesson": 0,
     "Hiragana": "わかれます",
     "Romaji": "wakaremasu",
     "Kanji": "別れます",
@@ -21768,8 +19954,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1815,
-    "Lesson": 44,
+    "Lesson": 0,
     "Hiragana": "これら",
     "Romaji": "korera",
     "Kanji": "",
@@ -21780,8 +19965,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1816,
-    "Lesson": 44,
+    "Lesson": 0,
     "Hiragana": "えんぎがわるい",
     "Romaji": "engi ga warui",
     "Kanji": "縁起が悪い",
@@ -21792,8 +19976,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1817,
-    "Lesson": 45,
+    "Lesson": 0,
     "Hiragana": "あやまります",
     "Romaji": "ayamarimasu",
     "Kanji": "謝ります",
@@ -21804,8 +19987,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1818,
-    "Lesson": 45,
+    "Lesson": 0,
     "Hiragana": "あいます",
     "Romaji": "aimasu",
     "Kanji": "",
@@ -21816,8 +19998,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1819,
-    "Lesson": 45,
+    "Lesson": 0,
     "Hiragana": "しんじます",
     "Romaji": "shinjimasu",
     "Kanji": "信じます",
@@ -21828,8 +20009,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1820,
-    "Lesson": 45,
+    "Lesson": 0,
     "Hiragana": "よういします",
     "Romaji": "youi shimasu",
     "Kanji": "用意します",
@@ -21840,8 +20020,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1821,
-    "Lesson": 45,
+    "Lesson": 0,
     "Hiragana": "キャンセルします",
     "Romaji": "kyanseru shimasu",
     "Kanji": "",
@@ -21852,8 +20031,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1822,
-    "Lesson": 45,
+    "Lesson": 0,
     "Hiragana": "うまくいきます",
     "Romaji": "umaku ikimasu",
     "Kanji": "",
@@ -21864,8 +20042,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1823,
-    "Lesson": 45,
+    "Lesson": 0,
     "Hiragana": "ほしょうしょ",
     "Romaji": "hoshousho",
     "Kanji": "保証書",
@@ -21876,8 +20053,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1824,
-    "Lesson": 45,
+    "Lesson": 0,
     "Hiragana": "りょうしゅうしょ",
     "Romaji": "ryoushuusho",
     "Kanji": "領収書",
@@ -21888,8 +20064,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1825,
-    "Lesson": 45,
+    "Lesson": 0,
     "Hiragana": "おくりもの",
     "Romaji": "okurimono",
     "Kanji": "贈り物",
@@ -21900,8 +20075,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1826,
-    "Lesson": 45,
+    "Lesson": 0,
     "Hiragana": "まちがいでんわ",
     "Romaji": "machigai denwa",
     "Kanji": "間違い電話",
@@ -21912,8 +20086,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1827,
-    "Lesson": 45,
+    "Lesson": 0,
     "Hiragana": "キャンプ",
     "Romaji": "kyanpu",
     "Kanji": "",
@@ -21924,8 +20097,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1828,
-    "Lesson": 45,
+    "Lesson": 0,
     "Hiragana": "かかり",
     "Romaji": "kakari",
     "Kanji": "係",
@@ -21936,8 +20108,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1829,
-    "Lesson": 45,
+    "Lesson": 0,
     "Hiragana": "ちゅうし",
     "Romaji": "chuushi",
     "Kanji": "中止",
@@ -21948,8 +20119,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1830,
-    "Lesson": 45,
+    "Lesson": 0,
     "Hiragana": "てん",
     "Romaji": "ten",
     "Kanji": "点",
@@ -21960,8 +20130,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1831,
-    "Lesson": 45,
+    "Lesson": 0,
     "Hiragana": "レバー",
     "Romaji": "reba-",
     "Kanji": "",
@@ -21972,8 +20141,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1832,
-    "Lesson": 45,
+    "Lesson": 0,
     "Hiragana": "～さつ",
     "Romaji": "～satsu",
     "Kanji": "～札",
@@ -21984,8 +20152,7 @@ const vocabData = [
     "note": "Hậu tố"
   },
   {
-    "id": 1833,
-    "Lesson": 45,
+    "Lesson": 0,
     "Hiragana": "ちゃんと",
     "Romaji": "chanto",
     "Kanji": "",
@@ -21996,8 +20163,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1834,
-    "Lesson": 45,
+    "Lesson": 0,
     "Hiragana": "きゅうに",
     "Romaji": "kyuu ni",
     "Kanji": "急に",
@@ -22008,8 +20174,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1835,
-    "Lesson": 45,
+    "Lesson": 0,
     "Hiragana": "たのしみにしています",
     "Romaji": "tanoshimi ni shite imasu",
     "Kanji": "楽しみにしています",
@@ -22020,8 +20185,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1836,
-    "Lesson": 45,
+    "Lesson": 0,
     "Hiragana": "いじょうです",
     "Romaji": "ijou desu",
     "Kanji": "以上です",
@@ -22032,8 +20196,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1837,
-    "Lesson": 45,
+    "Lesson": 0,
     "Hiragana": "かかりいん",
     "Romaji": "kakariin",
     "Kanji": "係員",
@@ -22044,8 +20207,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1838,
-    "Lesson": 45,
+    "Lesson": 0,
     "Hiragana": "コース",
     "Romaji": "ko-su",
     "Kanji": "",
@@ -22056,8 +20218,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1839,
-    "Lesson": 45,
+    "Lesson": 0,
     "Hiragana": "スタート",
     "Romaji": "suta-to",
     "Kanji": "",
@@ -22068,8 +20229,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1840,
-    "Lesson": 45,
+    "Lesson": 0,
     "Hiragana": "ゆうしょうします",
     "Romaji": "yuushou shimasu",
     "Kanji": "優勝します",
@@ -22080,8 +20240,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1841,
-    "Lesson": 45,
+    "Lesson": 0,
     "Hiragana": "なやみ",
     "Romaji": "nayami",
     "Kanji": "悩み",
@@ -22092,8 +20251,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1842,
-    "Lesson": 45,
+    "Lesson": 0,
     "Hiragana": "めざましどけい",
     "Romaji": "mezamashidokei",
     "Kanji": "目覚まし時計",
@@ -22104,8 +20262,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1843,
-    "Lesson": 45,
+    "Lesson": 0,
     "Hiragana": "ねむります",
     "Romaji": "nemurimasu",
     "Kanji": "眠ります",
@@ -22116,8 +20273,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1844,
-    "Lesson": 45,
+    "Lesson": 0,
     "Hiragana": "めがさめます",
     "Romaji": "me ga samemasu",
     "Kanji": "目が覚めます",
@@ -22128,8 +20284,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1845,
-    "Lesson": 45,
+    "Lesson": 0,
     "Hiragana": "だいがくせい",
     "Romaji": "daigakusei",
     "Kanji": "大学生",
@@ -22140,8 +20295,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1846,
-    "Lesson": 45,
+    "Lesson": 0,
     "Hiragana": "かいとう",
     "Romaji": "kaitou",
     "Kanji": "回答",
@@ -22152,8 +20306,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1847,
-    "Lesson": 45,
+    "Lesson": 0,
     "Hiragana": "なります",
     "Romaji": "narimasu",
     "Kanji": "",
@@ -22164,8 +20317,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1848,
-    "Lesson": 45,
+    "Lesson": 0,
     "Hiragana": "セットします",
     "Romaji": "setto shimasu",
     "Kanji": "",
@@ -22176,8 +20328,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1849,
-    "Lesson": 45,
+    "Lesson": 0,
     "Hiragana": "それでも",
     "Romaji": "soredemo",
     "Kanji": "",
@@ -22188,8 +20339,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1850,
-    "Lesson": 46,
+    "Lesson": 0,
     "Hiragana": "やきます",
     "Romaji": "yakimasu",
     "Kanji": "焼きます",
@@ -22200,8 +20350,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1851,
-    "Lesson": 46,
+    "Lesson": 0,
     "Hiragana": "わたします",
     "Romaji": "watashimasu",
     "Kanji": "渡します",
@@ -22212,8 +20361,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1852,
-    "Lesson": 46,
+    "Lesson": 0,
     "Hiragana": "かえってきます",
     "Romaji": "kaette kimasu",
     "Kanji": "帰ってきます",
@@ -22224,8 +20372,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1853,
-    "Lesson": 46,
+    "Lesson": 0,
     "Hiragana": "でます",
     "Romaji": "demasu",
     "Kanji": "出ます",
@@ -22236,8 +20383,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1854,
-    "Lesson": 46,
+    "Lesson": 0,
     "Hiragana": "るす",
     "Romaji": "rusu",
     "Kanji": "留守",
@@ -22248,8 +20394,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1855,
-    "Lesson": 46,
+    "Lesson": 0,
     "Hiragana": "たくはいびん",
     "Romaji": "takuhaibin",
     "Kanji": "宅配便",
@@ -22260,8 +20405,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1856,
-    "Lesson": 46,
+    "Lesson": 0,
     "Hiragana": "げんいん",
     "Romaji": "genin",
     "Kanji": "原因",
@@ -22272,8 +20416,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1857,
-    "Lesson": 46,
+    "Lesson": 0,
     "Hiragana": "ちゅうしゃ",
     "Romaji": "chuusha",
     "Kanji": "注射",
@@ -22284,8 +20427,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1858,
-    "Lesson": 46,
+    "Lesson": 0,
     "Hiragana": "しょくよく",
     "Romaji": "shokuyoku",
     "Kanji": "食欲",
@@ -22296,8 +20438,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1859,
-    "Lesson": 46,
+    "Lesson": 0,
     "Hiragana": "パンフレット",
     "Romaji": "panfuretto",
     "Kanji": "",
@@ -22308,8 +20449,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1860,
-    "Lesson": 46,
+    "Lesson": 0,
     "Hiragana": "ステレオ",
     "Romaji": "sutereo",
     "Kanji": "",
@@ -22320,8 +20460,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1861,
-    "Lesson": 46,
+    "Lesson": 0,
     "Hiragana": "こちら",
     "Romaji": "kochira",
     "Kanji": "",
@@ -22332,8 +20471,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1862,
-    "Lesson": 46,
+    "Lesson": 0,
     "Hiragana": "～のところ",
     "Romaji": "～no tokoro",
     "Kanji": "～の所",
@@ -22344,8 +20482,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1863,
-    "Lesson": 46,
+    "Lesson": 0,
     "Hiragana": "ちょうど",
     "Romaji": "choudo",
     "Kanji": "",
@@ -22356,8 +20493,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1864,
-    "Lesson": 46,
+    "Lesson": 0,
     "Hiragana": "たったいま",
     "Romaji": "tatta ima",
     "Kanji": "たった今",
@@ -22368,8 +20504,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1865,
-    "Lesson": 46,
+    "Lesson": 0,
     "Hiragana": "いまいいでしょうか",
     "Romaji": "ima ii deshou ka",
     "Kanji": "今いいでしょうか",
@@ -22380,8 +20515,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1866,
-    "Lesson": 46,
+    "Lesson": 0,
     "Hiragana": "ガスサービスセンター",
     "Romaji": "gasu sa-bisu senta-",
     "Kanji": "",
@@ -22392,8 +20526,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1867,
-    "Lesson": 46,
+    "Lesson": 0,
     "Hiragana": "ガスコンロ",
     "Romaji": "gasukonro",
     "Kanji": "",
@@ -22404,8 +20537,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1868,
-    "Lesson": 46,
+    "Lesson": 0,
     "Hiragana": "ぐあい",
     "Romaji": "guai",
     "Kanji": "具合",
@@ -22416,8 +20548,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1869,
-    "Lesson": 46,
+    "Lesson": 0,
     "Hiragana": "どちらさまでしょうか",
     "Romaji": "dochira sama deshou ka",
     "Kanji": "どちら様でしょうか",
@@ -22428,8 +20559,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1870,
-    "Lesson": 46,
+    "Lesson": 0,
     "Hiragana": "むかいます",
     "Romaji": "mukaimasu",
     "Kanji": "向かいます",
@@ -22440,8 +20570,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1871,
-    "Lesson": 46,
+    "Lesson": 0,
     "Hiragana": "おまたせしました",
     "Romaji": "omatase shimashita",
     "Kanji": "お待たせしました",
@@ -22452,8 +20581,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1872,
-    "Lesson": 46,
+    "Lesson": 0,
     "Hiragana": "ちしき",
     "Romaji": "chishiki",
     "Kanji": "知識",
@@ -22464,8 +20592,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1873,
-    "Lesson": 46,
+    "Lesson": 0,
     "Hiragana": "ほうこ",
     "Romaji": "houko",
     "Kanji": "宝庫",
@@ -22476,8 +20603,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1874,
-    "Lesson": 46,
+    "Lesson": 0,
     "Hiragana": "なやみ",
     "Romaji": "nayami",
     "Kanji": "",
@@ -22488,8 +20614,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1875,
-    "Lesson": 46,
+    "Lesson": 0,
     "Hiragana": "てにはいります",
     "Romaji": "te ni hairimasu",
     "Kanji": "手に入ります",
@@ -22500,8 +20625,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1876,
-    "Lesson": 46,
+    "Lesson": 0,
     "Hiragana": "システム",
     "Romaji": "shisutemu",
     "Kanji": "",
@@ -22512,8 +20636,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1877,
-    "Lesson": 46,
+    "Lesson": 0,
     "Hiragana": "キーワード",
     "Romaji": "ki-wa-do",
     "Kanji": "",
@@ -22524,8 +20647,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1878,
-    "Lesson": 46,
+    "Lesson": 0,
     "Hiragana": "いちぶぶん",
     "Romaji": "ichibubun",
     "Kanji": "一部分",
@@ -22536,8 +20658,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1879,
-    "Lesson": 46,
+    "Lesson": 0,
     "Hiragana": "にゅうりょくします",
     "Romaji": "nyuuryoku shimasu",
     "Kanji": "入力します",
@@ -22548,8 +20669,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1880,
-    "Lesson": 46,
+    "Lesson": 0,
     "Hiragana": "びょう",
     "Romaji": "byou",
     "Kanji": "秒",
@@ -22560,8 +20680,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1881,
-    "Lesson": 46,
+    "Lesson": 0,
     "Hiragana": "でます",
     "Romaji": "demasu",
     "Kanji": "出ます",
@@ -22572,8 +20691,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1882,
-    "Lesson": 47,
+    "Lesson": 0,
     "Hiragana": "あつまります",
     "Romaji": "atsumarimasu",
     "Kanji": "集まります",
@@ -22584,8 +20702,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1883,
-    "Lesson": 47,
+    "Lesson": 0,
     "Hiragana": "わかれます",
     "Romaji": "wakaremasu",
     "Kanji": "別れます",
@@ -22596,8 +20713,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1884,
-    "Lesson": 47,
+    "Lesson": 0,
     "Hiragana": "ながいきします",
     "Romaji": "nagaiki shimasu",
     "Kanji": "長生きします",
@@ -22608,8 +20724,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1885,
-    "Lesson": 47,
+    "Lesson": 0,
     "Hiragana": "おと・こえがします",
     "Romaji": "oto/koe ga shimasu",
     "Kanji": "音・声がします",
@@ -22620,8 +20735,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1886,
-    "Lesson": 47,
+    "Lesson": 0,
     "Hiragana": "あじがします",
     "Romaji": "aji ga shimasu",
     "Kanji": "味がします",
@@ -22632,8 +20746,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1887,
-    "Lesson": 47,
+    "Lesson": 0,
     "Hiragana": "においがします",
     "Romaji": "nioi ga shimasu",
     "Kanji": "においがします",
@@ -22644,8 +20757,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1888,
-    "Lesson": 47,
+    "Lesson": 0,
     "Hiragana": "かさをさします",
     "Romaji": "kasa wo sashimasu",
     "Kanji": "傘をさします",
@@ -22656,8 +20768,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1889,
-    "Lesson": 47,
+    "Lesson": 0,
     "Hiragana": "ひどい",
     "Romaji": "hidoi",
     "Kanji": "",
@@ -22668,8 +20779,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 1890,
-    "Lesson": 47,
+    "Lesson": 0,
     "Hiragana": "こわい",
     "Romaji": "kowai",
     "Kanji": "怖い",
@@ -22680,8 +20790,7 @@ const vocabData = [
     "note": "Tính từ \"đuôi い"
   },
   {
-    "id": 1891,
-    "Lesson": 47,
+    "Lesson": 0,
     "Hiragana": "てんきよほう",
     "Romaji": "tenki yohou",
     "Kanji": "天気予報",
@@ -22692,8 +20801,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1892,
-    "Lesson": 47,
+    "Lesson": 0,
     "Hiragana": "はっぴょう",
     "Romaji": "happyou",
     "Kanji": "発表",
@@ -22704,8 +20812,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1893,
-    "Lesson": 47,
+    "Lesson": 0,
     "Hiragana": "じっけん",
     "Romaji": "jikken",
     "Kanji": "実験",
@@ -22716,8 +20823,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1894,
-    "Lesson": 47,
+    "Lesson": 0,
     "Hiragana": "じんこう",
     "Romaji": "jinkou",
     "Kanji": "人口",
@@ -22728,8 +20834,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1895,
-    "Lesson": 47,
+    "Lesson": 0,
     "Hiragana": "におい",
     "Romaji": "nioi",
     "Kanji": "",
@@ -22740,8 +20845,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1896,
-    "Lesson": 47,
+    "Lesson": 0,
     "Hiragana": "かがく",
     "Romaji": "kagaku",
     "Kanji": "科学",
@@ -22752,8 +20856,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1897,
-    "Lesson": 47,
+    "Lesson": 0,
     "Hiragana": "いがく",
     "Romaji": "igaku",
     "Kanji": "医学",
@@ -22764,8 +20867,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1898,
-    "Lesson": 47,
+    "Lesson": 0,
     "Hiragana": "ぶんがく",
     "Romaji": "bungaku",
     "Kanji": "文学",
@@ -22776,8 +20878,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1899,
-    "Lesson": 47,
+    "Lesson": 0,
     "Hiragana": "パトカー",
     "Romaji": "patoka-",
     "Kanji": "",
@@ -22788,8 +20889,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1900,
-    "Lesson": 47,
+    "Lesson": 0,
     "Hiragana": "きゅうきゅうしゃ",
     "Romaji": "kyuukyuusha",
     "Kanji": "救急車",
@@ -22800,8 +20900,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1901,
-    "Lesson": 47,
+    "Lesson": 0,
     "Hiragana": "さんせい",
     "Romaji": "sansei",
     "Kanji": "賛成",
@@ -22812,8 +20911,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1902,
-    "Lesson": 47,
+    "Lesson": 0,
     "Hiragana": "はんたい",
     "Romaji": "hantai",
     "Kanji": "反対",
@@ -22824,8 +20922,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1903,
-    "Lesson": 47,
+    "Lesson": 0,
     "Hiragana": "だんせい",
     "Romaji": "dansei",
     "Kanji": "男性",
@@ -22836,8 +20933,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1904,
-    "Lesson": 47,
+    "Lesson": 0,
     "Hiragana": "じょせい",
     "Romaji": "josei",
     "Kanji": "女性",
@@ -22848,8 +20944,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1905,
-    "Lesson": 47,
+    "Lesson": 0,
     "Hiragana": "どうも",
     "Romaji": "doumo",
     "Kanji": "",
@@ -22860,8 +20955,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1906,
-    "Lesson": 47,
+    "Lesson": 0,
     "Hiragana": "～によると",
     "Romaji": "～ni yoru to",
     "Kanji": "",
@@ -22872,8 +20966,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1907,
-    "Lesson": 47,
+    "Lesson": 0,
     "Hiragana": "イラン",
     "Romaji": "iran",
     "Kanji": "",
@@ -22884,8 +20977,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1908,
-    "Lesson": 47,
+    "Lesson": 0,
     "Hiragana": "こいびと",
     "Romaji": "koibito",
     "Kanji": "恋人",
@@ -22896,8 +20988,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1909,
-    "Lesson": 47,
+    "Lesson": 0,
     "Hiragana": "こんやくします",
     "Romaji": "kon'yaku shimasu",
     "Kanji": "婚約します",
@@ -22908,8 +20999,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1910,
-    "Lesson": 47,
+    "Lesson": 0,
     "Hiragana": "あいて",
     "Romaji": "aite",
     "Kanji": "相手",
@@ -22920,8 +21010,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1911,
-    "Lesson": 47,
+    "Lesson": 0,
     "Hiragana": "しりあいます",
     "Romaji": "shiriaimasu",
     "Kanji": "知り合います",
@@ -22932,8 +21021,7 @@ const vocabData = [
     "note": "Tự động từ"
   },
   {
-    "id": 1912,
-    "Lesson": 47,
+    "Lesson": 0,
     "Hiragana": "へいきんじゅみょう",
     "Romaji": "heikin jumyou",
     "Kanji": "平均寿命",
@@ -22944,8 +21032,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1913,
-    "Lesson": 47,
+    "Lesson": 0,
     "Hiragana": "くらべます",
     "Romaji": "kurabemasu",
     "Kanji": "比べます",
@@ -22956,8 +21043,7 @@ const vocabData = [
     "note": "Tha động từ"
   },
   {
-    "id": 1914,
-    "Lesson": 47,
+    "Lesson": 0,
     "Hiragana": "はかせ",
     "Romaji": "hakase",
     "Kanji": "博士",
@@ -22968,8 +21054,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1915,
-    "Lesson": 47,
+    "Lesson": 0,
     "Hiragana": "のう",
     "Romaji": "nou",
     "Kanji": "脳",
@@ -22980,8 +21065,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1916,
-    "Lesson": 47,
+    "Lesson": 0,
     "Hiragana": "ホルモン",
     "Romaji": "horumon",
     "Kanji": "",
@@ -22992,8 +21076,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1917,
-    "Lesson": 47,
+    "Lesson": 0,
     "Hiragana": "けしょうひん",
     "Romaji": "keshouhin",
     "Kanji": "化粧品",
@@ -23004,8 +21087,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1918,
-    "Lesson": 47,
+    "Lesson": 0,
     "Hiragana": "しらべ",
     "Romaji": "shirabe",
     "Kanji": "調べ",
@@ -23016,8 +21098,7 @@ const vocabData = [
     "note": ""
   },
   {
-    "id": 1919,
-    "Lesson": 47,
+    "Lesson": 0,
     "Hiragana": "けしょう",
     "Romaji": "keshou",
     "Kanji": "化粧",
@@ -23028,8 +21109,7 @@ const vocabData = [
     "note": ""
   },
     {
-      "id": 1920,
-      "Lesson": 39,
+      "Lesson": 0,
       "Hiragana": "こたえます",
       "Romaji": "kotaemasu",
       "Kanji": "答えます",
@@ -23040,8 +21120,7 @@ const vocabData = [
       "note": "Tự động từ"
     },
     {
-      "id": 1921,
-      "Lesson": 39,
+      "Lesson": 0,
       "Hiragana": "たおれます",
       "Romaji": "taoremasu",
       "Kanji": "倒れます",
@@ -23052,8 +21131,7 @@ const vocabData = [
       "note": "Tự động từ"
     },
     {
-      "id": 1922,
-      "Lesson": 39,
+      "Lesson": 0,
       "Hiragana": "とおります",
       "Romaji": "toorimasu",
       "Kanji": "通ります",
@@ -23064,8 +21142,7 @@ const vocabData = [
       "note": "Tự động từ"
     },
     {
-      "id": 1923,
-      "Lesson": 39,
+      "Lesson": 0,
       "Hiragana": "しにます",
       "Romaji": "shinimasu",
       "Kanji": "死にます",
@@ -23076,8 +21153,7 @@ const vocabData = [
       "note": "Tự động từ"
     },
     {
-      "id": 1924,
-      "Lesson": 39,
+      "Lesson": 0,
       "Hiragana": "びっくりします",
       "Romaji": "bikkurishimasu",
       "Kanji": "",
@@ -23088,8 +21164,7 @@ const vocabData = [
       "note": "Tự động từ"
     },
     {
-      "id": 1925,
-      "Lesson": 39,
+      "Lesson": 0,
       "Hiragana": "がっかりします",
       "Romaji": "gakkarishimasu",
       "Kanji": "",
@@ -23100,8 +21175,7 @@ const vocabData = [
       "note": "Tự động từ"
     },
     {
-      "id": 1926,
-      "Lesson": 39,
+      "Lesson": 0,
       "Hiragana": "あんしんします",
       "Romaji": "anshinshimasu",
       "Kanji": "安心します",
@@ -23112,8 +21186,7 @@ const vocabData = [
       "note": "Tự động từ"
     },
     {
-      "id": 1927,
-      "Lesson": 39,
+      "Lesson": 0,
       "Hiragana": "けんかします",
       "Romaji": "kenkashimasu",
       "Kanji": "",
@@ -23124,8 +21197,7 @@ const vocabData = [
       "note": "Tự động từ"
     },
     {
-      "id": 1928,
-      "Lesson": 39,
+      "Lesson": 0,
       "Hiragana": "りこんします",
       "Romaji": "rikonshimasu",
       "Kanji": "離婚します",
@@ -23136,8 +21208,7 @@ const vocabData = [
       "note": "Tự động từ"
     },
     {
-      "id": 1929,
-      "Lesson": 39,
+      "Lesson": 0,
       "Hiragana": "ふとります",
       "Romaji": "futorimasu",
       "Kanji": "太ります",
@@ -23148,8 +21219,7 @@ const vocabData = [
       "note": "Tự động từ"
     },
     {
-      "id": 1930,
-      "Lesson": 39,
+      "Lesson": 0,
       "Hiragana": "やせます",
       "Romaji": "yasemasu",
       "Kanji": "",
@@ -23160,8 +21230,7 @@ const vocabData = [
       "note": "Tự động từ"
     },
     {
-      "id": 1931,
-      "Lesson": 39,
+      "Lesson": 0,
       "Hiragana": "ふくざつ",
       "Romaji": "fukuzatsu",
       "Kanji": "複雑",
@@ -23172,8 +21241,7 @@ const vocabData = [
       "note": "Tính từ \"đuôi な"
     },
     {
-      "id": 1932,
-      "Lesson": 39,
+      "Lesson": 0,
       "Hiragana": "じゃま",
       "Romaji": "jama",
       "Kanji": "邪魔",
@@ -23184,8 +21252,7 @@ const vocabData = [
       "note": "Tính từ \"đuôi な"
     },
     {
-      "id": 1933,
-      "Lesson": 39,
+      "Lesson": 0,
       "Hiragana": "かたい",
       "Romaji": "katai",
       "Kanji": "硬い",
@@ -23196,8 +21263,7 @@ const vocabData = [
       "note": "Tính từ \"đuôi い"
     },
     {
-      "id": 1934,
-      "Lesson": 39,
+      "Lesson": 0,
       "Hiragana": "やわらかい",
       "Romaji": "yawarakai",
       "Kanji": "軟らかい",
@@ -23208,8 +21274,7 @@ const vocabData = [
       "note": "Tính từ \"đuôi い"
     },
     {
-      "id": 1935,
-      "Lesson": 39,
+      "Lesson": 0,
       "Hiragana": "きたない",
       "Romaji": "kitanai",
       "Kanji": "汚い",
@@ -23220,8 +21285,7 @@ const vocabData = [
       "note": "Tính từ \"đuôi い"
     },
     {
-      "id": 1936,
-      "Lesson": 39,
+      "Lesson": 0,
       "Hiragana": "うれしい",
       "Romaji": "ureshii",
       "Kanji": "",
@@ -23232,8 +21296,7 @@ const vocabData = [
       "note": "Tính từ \"đuôi い"
     },
     {
-      "id": 1937,
-      "Lesson": 39,
+      "Lesson": 0,
       "Hiragana": "かなしい",
       "Romaji": "kanashii",
       "Kanji": "悲しい",
@@ -23244,8 +21307,7 @@ const vocabData = [
       "note": "Tính từ \"đuôi い"
     },
     {
-      "id": 1938,
-      "Lesson": 39,
+      "Lesson": 0,
       "Hiragana": "はずかしい",
       "Romaji": "hazukashii",
       "Kanji": "恥ずかしい",
@@ -23256,8 +21318,7 @@ const vocabData = [
       "note": "Tính từ \"đuôi い"
     },
     {
-      "id": 1939,
-      "Lesson": 39,
+      "Lesson": 0,
       "Hiragana": "しゅしょう",
       "Romaji": "shushou",
       "Kanji": "首相",
@@ -23268,8 +21329,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 1940,
-      "Lesson": 39,
+      "Lesson": 0,
       "Hiragana": "じしん",
       "Romaji": "jishin",
       "Kanji": "地震",
@@ -23280,8 +21340,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 1941,
-      "Lesson": 39,
+      "Lesson": 0,
       "Hiragana": "つなみ",
       "Romaji": "tsunami",
       "Kanji": "津波",
@@ -23292,8 +21351,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 1942,
-      "Lesson": 39,
+      "Lesson": 0,
       "Hiragana": "たいふう",
       "Romaji": "taifuu",
       "Kanji": "台風",
@@ -23304,8 +21362,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 1943,
-      "Lesson": 39,
+      "Lesson": 0,
       "Hiragana": "かみなり",
       "Romaji": "kaminari",
       "Kanji": "雷",
@@ -23316,8 +21373,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 1944,
-      "Lesson": 39,
+      "Lesson": 0,
       "Hiragana": "かじ",
       "Romaji": "kaji",
       "Kanji": "火事",
@@ -23328,8 +21384,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 1945,
-      "Lesson": 39,
+      "Lesson": 0,
       "Hiragana": "じこ",
       "Romaji": "jiko",
       "Kanji": "事故",
@@ -23340,8 +21395,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 1946,
-      "Lesson": 39,
+      "Lesson": 0,
       "Hiragana": "バイキング",
       "Romaji": "baikingu",
       "Kanji": "",
@@ -23352,8 +21406,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 1947,
-      "Lesson": 39,
+      "Lesson": 0,
       "Hiragana": "おみあい",
       "Romaji": "omiai",
       "Kanji": "見合い",
@@ -23364,8 +21417,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 1948,
-      "Lesson": 39,
+      "Lesson": 0,
       "Hiragana": "そうさ",
       "Romaji": "sousa",
       "Kanji": "操作",
@@ -23376,8 +21428,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 1949,
-      "Lesson": 39,
+      "Lesson": 0,
       "Hiragana": "かいじょう",
       "Romaji": "kaijou",
       "Kanji": "会場",
@@ -23388,8 +21439,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 1950,
-      "Lesson": 39,
+      "Lesson": 0,
       "Hiragana": "だい",
       "Romaji": "dai",
       "Kanji": "代",
@@ -23400,8 +21450,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 1951,
-      "Lesson": 39,
+      "Lesson": 0,
       "Hiragana": "や",
       "Romaji": "ya",
       "Kanji": "屋",
@@ -23412,8 +21461,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 1952,
-      "Lesson": 39,
+      "Lesson": 0,
       "Hiragana": "フロント",
       "Romaji": "furonto",
       "Kanji": "",
@@ -23424,8 +21472,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 1953,
-      "Lesson": 39,
+      "Lesson": 0,
       "Hiragana": "ごうしつ",
       "Romaji": "goushitsu",
       "Kanji": "号室",
@@ -23436,8 +21483,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 1954,
-      "Lesson": 39,
+      "Lesson": 0,
       "Hiragana": "タオル",
       "Romaji": "taoru",
       "Kanji": "",
@@ -23448,8 +21494,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 1955,
-      "Lesson": 39,
+      "Lesson": 0,
       "Hiragana": "せっけん",
       "Romaji": "sekken",
       "Kanji": "",
@@ -23460,8 +21505,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 1956,
-      "Lesson": 39,
+      "Lesson": 0,
       "Hiragana": "おおぜい",
       "Romaji": "oozei",
       "Kanji": "大勢",
@@ -23472,8 +21516,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 1957,
-      "Lesson": 39,
+      "Lesson": 0,
       "Hiragana": "おつかれさま",
       "Romaji": "otsukaresama",
       "Kanji": "お疲れさま",
@@ -23484,8 +21527,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 1958,
-      "Lesson": 39,
+      "Lesson": 0,
       "Hiragana": "うかがいます",
       "Romaji": "ukagaimasu",
       "Kanji": "伺います",
@@ -23496,8 +21538,7 @@ const vocabData = [
       "note": "Khiêm nhường ngữ"
     },
     {
-      "id": 1959,
-      "Lesson": 39,
+      "Lesson": 0,
       "Hiragana": "とちゅうで",
       "Romaji": "tochuude",
       "Kanji": "途中で",
@@ -23508,8 +21549,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 1960,
-      "Lesson": 39,
+      "Lesson": 0,
       "Hiragana": "トラック",
       "Romaji": "torakku",
       "Kanji": "",
@@ -23520,8 +21560,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 1961,
-      "Lesson": 39,
+      "Lesson": 0,
       "Hiragana": "ぶつかります",
       "Romaji": "butsukarimasu",
       "Kanji": "",
@@ -23532,8 +21571,7 @@ const vocabData = [
       "note": "Tự động từ"
     },
     {
-      "id": 1962,
-      "Lesson": 39,
+      "Lesson": 0,
       "Hiragana": "おとな",
       "Romaji": "otona",
       "Kanji": "大人",
@@ -23544,8 +21582,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 1963,
-      "Lesson": 39,
+      "Lesson": 0,
       "Hiragana": "しかし",
       "Romaji": "shikashi",
       "Kanji": "",
@@ -23556,8 +21593,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 1964,
-      "Lesson": 39,
+      "Lesson": 0,
       "Hiragana": "また",
       "Romaji": "mata",
       "Kanji": "",
@@ -23568,8 +21604,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 1965,
-      "Lesson": 39,
+      "Lesson": 0,
       "Hiragana": "ようふく",
       "Romaji": "youfuku",
       "Kanji": "洋服",
@@ -23580,8 +21615,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 1966,
-      "Lesson": 39,
+      "Lesson": 0,
       "Hiragana": "せいようかします",
       "Romaji": "seiyoukashimasu",
       "Kanji": "西洋化します",
@@ -23592,8 +21626,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 1967,
-      "Lesson": 39,
+      "Lesson": 0,
       "Hiragana": "あいます",
       "Romaji": "aimasu",
       "Kanji": "会います",
@@ -23604,8 +21637,7 @@ const vocabData = [
       "note": "Tự động từ"
     },
     {
-      "id": 1968,
-      "Lesson": 39,
+      "Lesson": 0,
       "Hiragana": "いまでは",
       "Romaji": "imadeha",
       "Kanji": "今では",
@@ -23616,8 +21648,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 1969,
-      "Lesson": 39,
+      "Lesson": 0,
       "Hiragana": "せいじんしき",
       "Romaji": "seijinshiki",
       "Kanji": "成人式",
@@ -23628,8 +21659,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 1970,
-      "Lesson": 39,
+      "Lesson": 0,
       "Hiragana": "でんとうてき",
       "Romaji": "dentouteki",
       "Kanji": "伝統的",
@@ -23640,8 +21670,7 @@ const vocabData = [
       "note": "Tính từ \"đuôi な"
     },
     {
-      "id": 1971,
-      "Lesson": 48,
+      "Lesson": 0,
       "Hiragana": "おろします",
       "Romaji": "oroshimasu",
       "Kanji": "降ろします",
@@ -23652,8 +21681,7 @@ const vocabData = [
       "note": "Tha động từ"
     },
     {
-      "id": 1972,
-      "Lesson": 48,
+      "Lesson": 0,
       "Hiragana": "とどけます",
       "Romaji": "todokemasu",
       "Kanji": "届けます",
@@ -23664,8 +21692,7 @@ const vocabData = [
       "note": "Tha động từ"
     },
     {
-      "id": 1973,
-      "Lesson": 48,
+      "Lesson": 0,
       "Hiragana": "せわをします",
       "Romaji": "sewaoshimasu",
       "Kanji": "世話をします",
@@ -23676,8 +21703,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 1974,
-      "Lesson": 48,
+      "Lesson": 0,
       "Hiragana": "ろくおんします",
       "Romaji": "rokuonshimasu",
       "Kanji": "録音します",
@@ -23688,8 +21714,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 1975,
-      "Lesson": 48,
+      "Lesson": 0,
       "Hiragana": "いや",
       "Romaji": "iya",
       "Kanji": "嫌",
@@ -23700,8 +21725,7 @@ const vocabData = [
       "note": "Tính từ \"đuôi な"
     },
     {
-      "id": 1976,
-      "Lesson": 48,
+      "Lesson": 0,
       "Hiragana": "じゅく",
       "Romaji": "juku",
       "Kanji": "塾",
@@ -23712,8 +21736,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 1977,
-      "Lesson": 48,
+      "Lesson": 0,
       "Hiragana": "せいと",
       "Romaji": "seito",
       "Kanji": "生徒",
@@ -23724,8 +21747,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 1978,
-      "Lesson": 48,
+      "Lesson": 0,
       "Hiragana": "ファイル",
       "Romaji": "fairu",
       "Kanji": "",
@@ -23736,8 +21758,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 1979,
-      "Lesson": 48,
+      "Lesson": 0,
       "Hiragana": "じゆうに",
       "Romaji": "jiyuuni",
       "Kanji": "自由に",
@@ -23748,8 +21769,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 1980,
-      "Lesson": 48,
+      "Lesson": 0,
       "Hiragana": "かん",
       "Romaji": "kan",
       "Kanji": "間",
@@ -23760,8 +21780,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 1981,
-      "Lesson": 48,
+      "Lesson": 0,
       "Hiragana": "いいことですね",
       "Romaji": "iikotodesune",
       "Kanji": "",
@@ -23772,8 +21791,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 1982,
-      "Lesson": 48,
+      "Lesson": 0,
       "Hiragana": "おいそがしいですか",
       "Romaji": "oisogashiidesuka",
       "Kanji": "お忙しいですか",
@@ -23784,8 +21802,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 1983,
-      "Lesson": 48,
+      "Lesson": 0,
       "Hiragana": "えいぎょう",
       "Romaji": "eigyou",
       "Kanji": "営業",
@@ -23796,8 +21813,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 1984,
-      "Lesson": 48,
+      "Lesson": 0,
       "Hiragana": "それまでに",
       "Romaji": "soremadeni",
       "Kanji": "",
@@ -23808,8 +21824,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 1985,
-      "Lesson": 48,
+      "Lesson": 0,
       "Hiragana": "かまいません",
       "Romaji": "kamaimasen",
       "Kanji": "",
@@ -23820,8 +21835,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 1986,
-      "Lesson": 48,
+      "Lesson": 0,
       "Hiragana": "たのしみます",
       "Romaji": "tanoshimimasu",
       "Kanji": "楽しみます",
@@ -23832,8 +21846,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 1987,
-      "Lesson": 48,
+      "Lesson": 0,
       "Hiragana": "おya",
       "Romaji": "oya",
       "Kanji": "親",
@@ -23844,8 +21857,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 1988,
-      "Lesson": 48,
+      "Lesson": 0,
       "Hiragana": "しょうがくせい",
       "Romaji": "shougakusei",
       "Kanji": "小学生",
@@ -23856,8 +21868,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 1989,
-      "Lesson": 48,
+      "Lesson": 0,
       "Hiragana": "パーセント",
       "Romaji": "paasento",
       "Kanji": "",
@@ -23868,8 +21879,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 1990,
-      "Lesson": 48,
+      "Lesson": 0,
       "Hiragana": "そのつぎ",
       "Romaji": "sonotsugi",
       "Kanji": "その次",
@@ -23880,8 +21890,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 1991,
-      "Lesson": 48,
+      "Lesson": 0,
       "Hiragana": "しゅうじ",
       "Romaji": "shuuji",
       "Kanji": "習字",
@@ -23892,8 +21901,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 1992,
-      "Lesson": 48,
+      "Lesson": 0,
       "Hiragana": "ふつうの",
       "Romaji": "futsuuno",
       "Kanji": "普通の",
@@ -23904,8 +21912,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 1993,
-      "Lesson": 49,
+      "Lesson": 0,
       "Hiragana": "りようします",
       "Romaji": "riyoushimasu",
       "Kanji": "利用します",
@@ -23916,8 +21923,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 1994,
-      "Lesson": 49,
+      "Lesson": 0,
       "Hiragana": "つとめます",
       "Romaji": "tsutomemasu",
       "Kanji": "勤めます",
@@ -23928,8 +21934,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 1995,
-      "Lesson": 49,
+      "Lesson": 0,
       "Hiragana": "かけます",
       "Romaji": "kakemasu",
       "Kanji": "掛けます",
@@ -23940,8 +21945,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 1996,
-      "Lesson": 49,
+      "Lesson": 0,
       "Hiragana": "すごします",
       "Romaji": "sugoshimasu",
       "Kanji": "過ごします",
@@ -23952,8 +21956,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 1997,
-      "Lesson": 49,
+      "Lesson": 0,
       "Hiragana": "いらっしゃいます",
       "Romaji": "irasshaimasu",
       "Kanji": "",
@@ -23964,8 +21967,7 @@ const vocabData = [
       "note": "Kính ngữ"
     },
     {
-      "id": 1998,
-      "Lesson": 49,
+      "Lesson": 0,
       "Hiragana": "めしあがります",
       "Romaji": "meshiagarimasu",
       "Kanji": "召し上がります",
@@ -23976,8 +21978,7 @@ const vocabData = [
       "note": "Kính ngữ"
     },
     {
-      "id": 1999,
-      "Lesson": 49,
+      "Lesson": 0,
       "Hiragana": "おっしゃいます",
       "Romaji": "osshaimasu",
       "Kanji": "",
@@ -23988,8 +21989,7 @@ const vocabData = [
       "note": "Kính ngữ"
     },
     {
-      "id": 2000,
-      "Lesson": 49,
+      "Lesson": 0,
       "Hiragana": "なさいます",
       "Romaji": "nasaimasu",
       "Kanji": "",
@@ -24000,8 +22000,7 @@ const vocabData = [
       "note": "Kính ngữ"
     },
     {
-      "id": 2001,
-      "Lesson": 49,
+      "Lesson": 0,
       "Hiragana": "ごらんになります",
       "Romaji": "goranninarimasu",
       "Kanji": "ご覧になります",
@@ -24012,8 +22011,7 @@ const vocabData = [
       "note": "Kính ngữ"
     },
     {
-      "id": 2002,
-      "Lesson": 49,
+      "Lesson": 0,
       "Hiragana": "ごぞんじです",
       "Romaji": "gozonjidesu",
       "Kanji": "ご存じです",
@@ -24024,8 +22022,7 @@ const vocabData = [
       "note": "Kính ngữ"
     },
     {
-      "id": 2003,
-      "Lesson": 49,
+      "Lesson": 0,
       "Hiragana": "あいさつ",
       "Romaji": "aisatsu",
       "Kanji": "",
@@ -24036,8 +22033,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 2004,
-      "Lesson": 49,
+      "Lesson": 0,
       "Hiragana": "りょかん",
       "Romaji": "ryokan",
       "Kanji": "",
@@ -24048,8 +22044,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 2005,
-      "Lesson": 49,
+      "Lesson": 0,
       "Hiragana": "バスてい",
       "Romaji": "basutei",
       "Kanji": "",
@@ -24060,8 +22055,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 2006,
-      "Lesson": 49,
+      "Lesson": 0,
       "Hiragana": "おくさま",
       "Romaji": "okusama",
       "Kanji": "奥様",
@@ -24072,8 +22066,7 @@ const vocabData = [
       "note": "Kính ngữ"
     },
     {
-      "id": 2007,
-      "Lesson": 49,
+      "Lesson": 0,
       "Hiragana": "さま",
       "Romaji": "sama",
       "Kanji": "様",
@@ -24084,8 +22077,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 2008,
-      "Lesson": 49,
+      "Lesson": 0,
       "Hiragana": "たまに",
       "Romaji": "tamani",
       "Kanji": "",
@@ -24096,8 +22088,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 2009,
-      "Lesson": 49,
+      "Lesson": 0,
       "Hiragana": "どなたでも",
       "Romaji": "donatademo",
       "Kanji": "",
@@ -24108,8 +22099,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 2010,
-      "Lesson": 49,
+      "Lesson": 0,
       "Hiragana": "といいます",
       "Romaji": "toiimasu",
       "Kanji": "",
@@ -24120,8 +22110,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 2011,
-      "Lesson": 49,
+      "Lesson": 0,
       "Hiragana": "ねんくみ",
       "Romaji": "nenkumi",
       "Kanji": "年組",
@@ -24132,8 +22121,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 2012,
-      "Lesson": 49,
+      "Lesson": 0,
       "Hiragana": "だします",
       "Romaji": "dashimasu",
       "Kanji": "出します",
@@ -24144,8 +22132,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 2013,
-      "Lesson": 49,
+      "Lesson": 0,
       "Hiragana": "よろしくおつたえください",
       "Romaji": "yoroshikuotsutaekudasai",
       "Kanji": "よろしくお伝えください",
@@ -24156,8 +22143,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 2014,
-      "Lesson": 49,
+      "Lesson": 0,
       "Hiragana": "しつれいいたします",
       "Romaji": "shitsureiitashimasu",
       "Kanji": "失礼いたします",
@@ -24168,8 +22154,7 @@ const vocabData = [
       "note": "Kính ngữ"
     },
     {
-      "id": 2015,
-      "Lesson": 49,
+      "Lesson": 0,
       "Hiragana": "ひまわりしょうがっこう",
       "Romaji": "himawarishougakkou",
       "Kanji": "ひまわり小学校",
@@ -24180,8 +22165,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 2016,
-      "Lesson": 49,
+      "Lesson": 0,
       "Hiragana": "けいれき",
       "Romaji": "keireki",
       "Kanji": "経歴",
@@ -24192,8 +22176,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 2017,
-      "Lesson": 49,
+      "Lesson": 0,
       "Hiragana": "いがくぶ",
       "Romaji": "igakubu",
       "Kanji": "医学部",
@@ -24204,8 +22187,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 2018,
-      "Lesson": 49,
+      "Lesson": 0,
       "Hiragana": "めざします",
       "Romaji": "mezashimasu",
       "Kanji": "目指します",
@@ -24216,8 +22198,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 2019,
-      "Lesson": 49,
+      "Lesson": 0,
       "Hiragana": "すすみます",
       "Romaji": "susumimasu",
       "Kanji": "進みます",
@@ -24228,8 +22209,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 2020,
-      "Lesson": 49,
+      "Lesson": 0,
       "Hiragana": "IPSさいぼう",
       "Romaji": "IPSsaibou",
       "Kanji": "IPS細胞",
@@ -24240,8 +22220,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 2021,
-      "Lesson": 49,
+      "Lesson": 0,
       "Hiragana": "かいはつします",
       "Romaji": "kaihatsushimasu",
       "Kanji": "開発します",
@@ -24252,8 +22231,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 2022,
-      "Lesson": 49,
+      "Lesson": 0,
       "Hiragana": "マウス",
       "Romaji": "mausu",
       "Kanji": "",
@@ -24264,8 +22242,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 2023,
-      "Lesson": 49,
+      "Lesson": 0,
       "Hiragana": "ヒト",
       "Romaji": "hito",
       "Kanji": "",
@@ -24276,8 +22253,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 2024,
-      "Lesson": 49,
+      "Lesson": 0,
       "Hiragana": "じゅしょうします",
       "Romaji": "jushoushimasu",
       "Kanji": "受賞します",
@@ -24288,8 +22264,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 2025,
-      "Lesson": 49,
+      "Lesson": 0,
       "Hiragana": "こうえんかい",
       "Romaji": "kouenkai",
       "Kanji": "講演会",
@@ -24300,8 +22275,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 2026,
-      "Lesson": 49,
+      "Lesson": 0,
       "Hiragana": "やまなかしんや",
       "Romaji": "yamanakashinya",
       "Kanji": "山中伸弥",
@@ -24312,8 +22286,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 2027,
-      "Lesson": 49,
+      "Lesson": 0,
       "Hiragana": "ノーベルしょう",
       "Romaji": "nooberushou",
       "Kanji": "ノーベル賞",
@@ -24324,8 +22297,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 2028,
-      "Lesson": 50,
+      "Lesson": 0,
       "Hiragana": "まいります",
       "Romaji": "mairimasu",
       "Kanji": "参ります",
@@ -24336,8 +22308,7 @@ const vocabData = [
       "note": "Khiêm nhường ngữ"
     },
     {
-      "id": 2029,
-      "Lesson": 50,
+      "Lesson": 0,
       "Hiragana": "おりまsu",
       "Romaji": "orimasu",
       "Kanji": "",
@@ -24348,8 +22319,7 @@ const vocabData = [
       "note": "Khiêm nhường ngữ"
     },
     {
-      "id": 2030,
-      "Lesson": 50,
+      "Lesson": 0,
       "Hiragana": "いただきます",
       "Romaji": "itadakimasu",
       "Kanji": "",
@@ -24360,8 +22330,7 @@ const vocabData = [
       "note": "Khiêm nhường ngữ"
     },
     {
-      "id": 2031,
-      "Lesson": 50,
+      "Lesson": 0,
       "Hiragana": "もうします",
       "Romaji": "moushimasu",
       "Kanji": "申します",
@@ -24372,8 +22341,7 @@ const vocabData = [
       "note": "Khiêm nhường ngữ"
     },
     {
-      "id": 2032,
-      "Lesson": 50,
+      "Lesson": 0,
       "Hiragana": "いたします",
       "Romaji": "itashimasu",
       "Kanji": "",
@@ -24384,8 +22352,7 @@ const vocabData = [
       "note": "Khiêm nhường ngữ"
     },
     {
-      "id": 2033,
-      "Lesson": 50,
+      "Lesson": 0,
       "Hiragana": "はいけんします",
       "Romaji": "haikenshimasu",
       "Kanji": "拝見します",
@@ -24396,8 +22363,7 @@ const vocabData = [
       "note": "Khiêm nhường ngữ"
     },
     {
-      "id": 2034,
-      "Lesson": 50,
+      "Lesson": 0,
       "Hiragana": "ぞんじます",
       "Romaji": "zonjimasu",
       "Kanji": "存じます",
@@ -24408,8 +22374,7 @@ const vocabData = [
       "note": "Khiêm nhường ngữ"
     },
     {
-      "id": 2035,
-      "Lesson": 50,
+      "Lesson": 0,
       "Hiragana": "うかがいます",
       "Romaji": "ukagaimasu",
       "Kanji": "伺います",
@@ -24420,8 +22385,7 @@ const vocabData = [
       "note": "Khiêm nhường ngữ"
     },
     {
-      "id": 2036,
-      "Lesson": 50,
+      "Lesson": 0,
       "Hiragana": "おめにかかります",
       "Romaji": "omenikakarimasu",
       "Kanji": "お目にかかります",
@@ -24432,8 +22396,7 @@ const vocabData = [
       "note": "Khiêm nhường ngữ"
     },
     {
-      "id": 2037,
-      "Lesson": 50,
+      "Lesson": 0,
       "Hiragana": "いれます",
       "Romaji": "iremasu",
       "Kanji": "入れます",
@@ -24444,8 +22407,7 @@ const vocabData = [
       "note": "Tha động từ"
     },
     {
-      "id": 2038,
-      "Lesson": 50,
+      "Lesson": 0,
       "Hiragana": "よういします",
       "Romaji": "youishimasu",
       "Kanji": "用意します",
@@ -24456,8 +22418,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 2039,
-      "Lesson": 50,
+      "Lesson": 0,
       "Hiragana": "わたくし",
       "Romaji": "watakushi",
       "Kanji": "私",
@@ -24468,8 +22429,7 @@ const vocabData = [
       "note": "Khiêm nhường ngữ"
     },
     {
-      "id": 2040,
-      "Lesson": 50,
+      "Lesson": 0,
       "Hiragana": "ガイド",
       "Romaji": "gaido",
       "Kanji": "",
@@ -24480,8 +22440,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 2041,
-      "Lesson": 50,
+      "Lesson": 0,
       "Hiragana": "メールアドレス",
       "Romaji": "meeruadoresu",
       "Kanji": "",
@@ -24492,8 +22451,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 2042,
-      "Lesson": 50,
+      "Lesson": 0,
       "Hiragana": "スケジュール",
       "Romaji": "sukejuuru",
       "Kanji": "",
@@ -24504,8 +22462,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 2043,
-      "Lesson": 50,
+      "Lesson": 0,
       "Hiragana": "さらいしゅう",
       "Romaji": "saraishuu",
       "Kanji": "再来週",
@@ -24516,8 +22473,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 2044,
-      "Lesson": 50,
+      "Lesson": 0,
       "Hiragana": "さらいげつ",
       "Romaji": "saraigetsu",
       "Kanji": "再来月",
@@ -24528,8 +22484,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 2045,
-      "Lesson": 50,
+      "Lesson": 0,
       "Hiragana": "さらいねん",
       "Romaji": "sarainen",
       "Kanji": "再来年",
@@ -24540,8 +22495,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 2046,
-      "Lesson": 50,
+      "Lesson": 0,
       "Hiragana": "はじめに",
       "Romaji": "hajimeni",
       "Kanji": "初めに",
@@ -24552,8 +22506,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 2047,
-      "Lesson": 50,
+      "Lesson": 0,
       "Hiragana": "えどとうきょうはくぶつかん",
       "Romaji": "edotoukyouhakubutsukan",
       "Kanji": "江戸東京博物館",
@@ -24564,8 +22517,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 2048,
-      "Lesson": 50,
+      "Lesson": 0,
       "Hiragana": "きんちょうします",
       "Romaji": "kinchoushimasu",
       "Kanji": "緊張します",
@@ -24576,8 +22528,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 2049,
-      "Lesson": 50,
+      "Lesson": 0,
       "Hiragana": "しょうきん",
       "Romaji": "shoukin",
       "Kanji": "賞金",
@@ -24588,8 +22539,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 2050,
-      "Lesson": 50,
+      "Lesson": 0,
       "Hiragana": "きりん",
       "Romaji": "kirin",
       "Kanji": "",
@@ -24600,8 +22550,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 2051,
-      "Lesson": 50,
+      "Lesson": 0,
       "Hiragana": "ころ",
       "Romaji": "koro",
       "Kanji": "",
@@ -24612,8 +22561,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 2052,
-      "Lesson": 50,
+      "Lesson": 0,
       "Hiragana": "かないます",
       "Romaji": "kanaimasu",
       "Kanji": "",
@@ -24624,8 +22572,7 @@ const vocabData = [
       "note": "Tự động từ"
     },
     {
-      "id": 2053,
-      "Lesson": 50,
+      "Lesson": 0,
       "Hiragana": "おうえんします",
       "Romaji": "ouenshimasu",
       "Kanji": "応援します",
@@ -24636,8 +22583,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 2054,
-      "Lesson": 50,
+      "Lesson": 0,
       "Hiragana": "こころから",
       "Romaji": "kokorokara",
       "Kanji": "心から",
@@ -24648,8 +22594,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 2055,
-      "Lesson": 50,
+      "Lesson": 0,
       "Hiragana": "かんしゃします",
       "Romaji": "kanshashimasu",
       "Kanji": "感謝します",
@@ -24660,8 +22605,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 2056,
-      "Lesson": 50,
+      "Lesson": 0,
       "Hiragana": "おれい",
       "Romaji": "orei",
       "Kanji": "お礼",
@@ -24672,8 +22616,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 2057,
-      "Lesson": 50,
+      "Lesson": 0,
       "Hiragana": "おげんきでいらっしゃいますか",
       "Romaji": "ogenkideirasshaimasuka",
       "Kanji": "お元気でいらっしゃいますか",
@@ -24684,8 +22627,7 @@ const vocabData = [
       "note": "Kính ngữ"
     },
     {
-      "id": 2058,
-      "Lesson": 50,
+      "Lesson": 0,
       "Hiragana": "めいわくをかけます",
       "Romaji": "meiwakuokakemasu",
       "Kanji": "迷惑をかけます",
@@ -24696,8 +22638,7 @@ const vocabData = [
       "note": ""
     },
     {
-      "id": 2059,
-      "Lesson": 50,
+      "Lesson": 0,
       "Hiragana": "いかします",
       "Romaji": "ikashimasu",
       "Kanji": "生かします",
@@ -24708,8 +22649,7 @@ const vocabData = [
       "note": "Tha động từ"
     },
     {
-      "id": 2060,
-      "Lesson": 50,
+      "Lesson": 0,
       "Hiragana": "ミュンヘン",
       "Romaji": "myunhen",
       "Kanji": "",
