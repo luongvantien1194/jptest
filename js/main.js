@@ -349,6 +349,8 @@
     if (savedKF) state.kanjiFavorites = JSON.parse(savedKF);
     var savedKVF = localStorage.getItem("jp_kanji_vocab_favorites");
     if (savedKVF) state.kanjiVocabFavorites = JSON.parse(savedKVF);
+    var savedDS = localStorage.getItem("jp_display_settings");
+    if (savedDS) Object.assign(state.displaySettings, JSON.parse(savedDS));
   } catch (e) {
     // ignore parse errors
   }
@@ -358,6 +360,9 @@
   }
   function saveVocabMastered() {
     try { localStorage.setItem("jp_vocab_mastered", JSON.stringify(state.vocabMastered)); } catch (e) {}
+  }
+  function saveDisplaySettings() {
+    try { localStorage.setItem("jp_display_settings", JSON.stringify(state.displaySettings)); } catch (e) {}
   }
   function saveKanjiFavorites() {
     try { localStorage.setItem("jp_kanji_favorites", JSON.stringify(state.kanjiFavorites)); } catch (e) {}
@@ -1966,22 +1971,24 @@
       
       if (state.displaySettings.kanji && item.kanji) {
         const outputKanji = boldKanji(item.kanji);
-      
+
         const kanjiEl = createElement("div", "vocab-kanji");
         kanjiEl.innerHTML = "(" + outputKanji + ") ";
 
         // Thêm event cho các thẻ <b> bên trong
         kanjiEl.querySelectorAll("b").forEach(b => {
-          b.addEventListener("click", function () {
-              const index = kanjiData.findIndex(item => item.kanji === this.textContent);
+          const index = kanjiData.findIndex(k => k.kanji === b.textContent);
+          if (index > 0) b.classList.add("vocab-kanji--linked");
 
-              if (index > 0) {
-                state.selected.kanjiIndex = index;
+          b.addEventListener("click", function () {
+              const idx = kanjiData.findIndex(item => item.kanji === this.textContent);
+
+              if (idx > 0) {
+                state.selected.kanjiIndex = idx;
                 renderKanjiDetail();
               } else {
                 openDetailModal("Thông báo", "<p>Không có data của chữ này!</p>");
               }
-
           });
         });
       
@@ -3992,6 +3999,7 @@
         return;
       }
       state.displaySettings[field] = target.checked;
+      saveDisplaySettings();
       renderDisplaySettingsUI();
       renderVocabList();
     });
