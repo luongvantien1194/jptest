@@ -23,6 +23,7 @@
     displaySettings: {
       hiragana: true,
       kanji: true,
+      hanviet: true,
       meaning: true,
       vru: false,
       type: true,
@@ -1994,6 +1995,14 @@
       
         fields.push(kanjiEl);
       }
+      if (state.displaySettings.hanviet && item.kanji && window.getHanViet) {
+        const hv = window.getHanViet(item.kanji);
+        if (hv) {
+          const hvEl = createElement("div", "vocab-hanviet", "[" + hv + "]");
+          fields.push(hvEl);
+        }
+      }
+
       if (state.displaySettings.meaning && item.meaning) {
         const meanEl = createElement("div", "vocab-meaning", " "+item.meaning);
         fields.push(meanEl);
