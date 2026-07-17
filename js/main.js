@@ -3914,7 +3914,7 @@
     const lessonFrom = document.getElementById("vocab-lesson-from");
     const lessonTo = document.getElementById("vocab-lesson-to");
     const categorySelect = document.getElementById("vocab-category-filter");
-    const masteredSelect = document.getElementById("vocab-mastered-filter");
+    const notMasteredCb = document.getElementById("vocab-not-mastered-cb");
     const searchInput = document.getElementById("vocab-search-input");
 
     const categories = getUniqueSorted(
@@ -3943,10 +3943,10 @@
       renderVocabList();
     });
 
-    if (masteredSelect) {
-      masteredSelect.value = state.filter.vocabMastered || "all";
-      masteredSelect.addEventListener("change", function () {
-        state.filter.vocabMastered = masteredSelect.value || "all";
+    if (notMasteredCb) {
+      notMasteredCb.checked = (state.filter.vocabMastered === "not");
+      notMasteredCb.addEventListener("change", function () {
+        state.filter.vocabMastered = notMasteredCb.checked ? "not" : "all";
         renderVocabList();
       });
     }
@@ -3968,9 +3968,7 @@
       lessonFrom.value = "1";
       lessonTo.value = "";
       categorySelect.value = "all";
-      if (masteredSelect) {
-        masteredSelect.value = "all";
-      }
+      if (notMasteredCb) notMasteredCb.checked = false;
       if (searchInput) {
         searchInput.value = "";
       }
