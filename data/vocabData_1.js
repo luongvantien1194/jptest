@@ -1,4 +1,4 @@
-// N3 Vocab - Lesson 1-31
+// N3 Vocab - Lesson 1-71
 window._vocabExtra = window._vocabExtra || [];
 window._vocabExtra.push(
   // --- Lesson 1: だんせい ---
@@ -112,5 +112,128 @@ window._vocabExtra.push(
   { "Lesson": 30, "Hiragana": "げっきゅう", "Romaji": "gekkyuu", "Kanji": "月給", "Meaning": "Lương theo tháng", "category": "noun", "Vru": "", "type": "related", "note": "" },
   // --- Lesson 31: めんせつ ---
   { "Lesson": 31, "Hiragana": "めんせつ", "Romaji": "mensetsu", "Kanji": "面接", "Meaning": "Phỏng vấn", "category": "noun", "Vru": "", "type": "", "note": "" },
-  { "Lesson": 31, "Hiragana": "めんせつかん", "Romaji": "mensetsukan", "Kanji": "面接官", "Meaning": "Người (Hội đồng) phỏng vấn", "category": "noun", "Vru": "", "type": "compound", "note": "" }
+  { "Lesson": 31, "Hiragana": "めんせつかん", "Romaji": "mensetsukan", "Kanji": "面接官", "Meaning": "Người (Hội đồng) phỏng vấn", "category": "noun", "Vru": "", "type": "compound", "note": "" },
+  // --- Lesson 32: きゅうけい ---
+  { "Lesson": 32, "Hiragana": "きゅうけい", "Romaji": "kyuukei", "Kanji": "休憩", "Meaning": "Nghỉ giải lao", "category": "noun", "Vru": "", "type": "", "note": "" },
+  { "Lesson": 32, "Hiragana": "きゅうけいじかん", "Romaji": "kyuukeijikan", "Kanji": "休憩時間", "Meaning": "Thời gian nghỉ ngơi", "category": "noun", "Vru": "", "type": "compound", "note": "" },
+  { "Lesson": 32, "Hiragana": "きゅうけいじょ", "Romaji": "kyuukeijo", "Kanji": "休憩所", "Meaning": "Chỗ nghỉ", "category": "noun", "Vru": "", "type": "compound", "note": "" },
+  // --- Lesson 33: かんこう ---
+  { "Lesson": 33, "Hiragana": "かんこう", "Romaji": "kankou", "Kanji": "観光", "Meaning": "Tham quan, du lịch", "category": "noun", "Vru": "", "type": "", "note": "" },
+  { "Lesson": 33, "Hiragana": "かんこうきゃく", "Romaji": "kankoukyaku", "Kanji": "観光客", "Meaning": "Khách tham quan", "category": "noun", "Vru": "", "type": "compound", "note": "" },
+  { "Lesson": 33, "Hiragana": "かんこうりょこう", "Romaji": "kankouryokou", "Kanji": "観光旅行", "Meaning": "Chuyến du lịch tham quan", "category": "noun", "Vru": "", "type": "compound", "note": "" },
+  { "Lesson": 33, "Hiragana": "かんこうち", "Romaji": "kankouichi", "Kanji": "観光地", "Meaning": "Địa điểm tham quan", "category": "noun", "Vru": "", "type": "compound", "note": "" },
+  // --- Lesson 34: きこく ---
+  { "Lesson": 34, "Hiragana": "きこく", "Romaji": "kikoku", "Kanji": "帰国", "Meaning": "Về nước", "category": "noun", "Vru": "", "type": "", "note": "" },
+  // --- Lesson 35: きせい ---
+  { "Lesson": 35, "Hiragana": "きせい", "Romaji": "kisei", "Kanji": "帰省", "Meaning": "Về quê", "category": "noun", "Vru": "", "type": "", "note": "" },
+  // --- Lesson 36: きたく ---
+  { "Lesson": 36, "Hiragana": "きたく", "Romaji": "kitaku", "Kanji": "帰宅", "Meaning": "Về nhà", "category": "noun", "Vru": "", "type": "", "note": "" },
+  { "Lesson": 36, "Hiragana": "きたくじかん", "Romaji": "kitakujikan", "Kanji": "帰宅時間", "Meaning": "Thời gian về nhà", "category": "noun", "Vru": "", "type": "compound", "note": "" },
+  // --- Lesson 37: さんか ---
+  { "Lesson": 37, "Hiragana": "さんか", "Romaji": "sanka", "Kanji": "参加", "Meaning": "Tham gia", "category": "noun", "Vru": "", "type": "", "note": "" },
+  { "Lesson": 37, "Hiragana": "さんかしゃ", "Romaji": "sankasha", "Kanji": "参加者", "Meaning": "Người tham gia", "category": "noun", "Vru": "", "type": "compound", "note": "" },
+  { "Lesson": 37, "Hiragana": "ふさんか", "Romaji": "fusanka", "Kanji": "不参加", "Meaning": "Không tham gia", "category": "noun", "Vru": "", "type": "antonym", "note": "" },
+  // --- Lesson 38: しゅっせき ---
+  { "Lesson": 38, "Hiragana": "しゅっせき", "Romaji": "shusseki", "Kanji": "出席", "Meaning": "Tham gia, có mặt", "category": "noun", "Vru": "", "type": "", "note": "" },
+  { "Lesson": 38, "Hiragana": "けっせき", "Romaji": "kesseki", "Kanji": "欠席", "Meaning": "Vắng mặt", "category": "noun", "Vru": "", "type": "antonym", "note": "" },
+  // --- Lesson 39: けっせき ---
+  { "Lesson": 39, "Hiragana": "けっせき", "Romaji": "kesseki", "Kanji": "欠席", "Meaning": "Vắng mặt", "category": "noun", "Vru": "", "type": "", "note": "" },
+  { "Lesson": 39, "Hiragana": "しゅっせき", "Romaji": "shusseki", "Kanji": "出席", "Meaning": "Có mặt", "category": "noun", "Vru": "", "type": "antonym", "note": "" },
+  { "Lesson": 39, "Hiragana": "けっせきしゃ", "Romaji": "kessekisha", "Kanji": "欠席者", "Meaning": "Người vắng mặt", "category": "noun", "Vru": "", "type": "compound", "note": "" },
+  { "Lesson": 39, "Hiragana": "けっせきとどけ", "Romaji": "kessekitodoke", "Kanji": "欠席届", "Meaning": "Đơn xin nghỉ, thông báo vắng mặt", "category": "noun", "Vru": "", "type": "compound", "note": "" },
+  // --- Lesson 40: ちこく ---
+  { "Lesson": 40, "Hiragana": "ちこく", "Romaji": "chikoku", "Kanji": "遅刻", "Meaning": "Đến muộn", "category": "noun", "Vru": "", "type": "", "note": "" },
+  // --- Lesson 41: けしょう ---
+  { "Lesson": 41, "Hiragana": "けしょう", "Romaji": "keshou", "Kanji": "化粧", "Meaning": "Trang điểm", "category": "noun", "Vru": "", "type": "", "note": "" },
+  { "Lesson": 41, "Hiragana": "けしょうひん", "Romaji": "keshouhin", "Kanji": "化粧品", "Meaning": "Mỹ phẩm", "category": "noun", "Vru": "", "type": "compound", "note": "" },
+  { "Lesson": 41, "Hiragana": "メイク", "Romaji": "meiku", "Kanji": "", "Meaning": "Trang điểm (make-up)", "category": "noun", "Vru": "", "type": "synonym", "note": "" },
+  { "Lesson": 41, "Hiragana": "くちべに", "Romaji": "kuchibeni", "Kanji": "口紅", "Meaning": "Son môi, thỏi son", "category": "noun", "Vru": "", "type": "related", "note": "" },
+  // --- Lesson 42: けいさん ---
+  { "Lesson": 42, "Hiragana": "けいさん", "Romaji": "keisan", "Kanji": "計算", "Meaning": "Tính toán, thanh toán", "category": "noun", "Vru": "", "type": "", "note": "" },
+  { "Lesson": 42, "Hiragana": "でんたく", "Romaji": "dentaku", "Kanji": "電卓", "Meaning": "Máy tính điện tử", "category": "noun", "Vru": "", "type": "related", "note": "" },
+  // --- Lesson 43: けいかく ---
+  { "Lesson": 43, "Hiragana": "けいかく", "Romaji": "keikaku", "Kanji": "計画", "Meaning": "Kế hoạch", "category": "noun", "Vru": "", "type": "", "note": "" },
+  { "Lesson": 43, "Hiragana": "プラン", "Romaji": "puran", "Kanji": "", "Meaning": "Kế hoạch", "category": "noun", "Vru": "", "type": "synonym", "note": "" },
+  // --- Lesson 44: せいこう ---
+  { "Lesson": 44, "Hiragana": "せいこう", "Romaji": "seikou", "Kanji": "成功", "Meaning": "Thành công", "category": "noun", "Vru": "", "type": "", "note": "" },
+  { "Lesson": 44, "Hiragana": "しっぱい", "Romaji": "shippai", "Kanji": "失敗", "Meaning": "Thất bại", "category": "noun", "Vru": "", "type": "antonym", "note": "" },
+  // --- Lesson 45: しっぱい ---
+  { "Lesson": 45, "Hiragana": "しっぱい", "Romaji": "shippai", "Kanji": "失敗", "Meaning": "Thất bại", "category": "noun", "Vru": "", "type": "", "note": "" },
+  { "Lesson": 45, "Hiragana": "せいこう", "Romaji": "seikou", "Kanji": "成功", "Meaning": "Thành công", "category": "noun", "Vru": "", "type": "antonym", "note": "" },
+  // --- Lesson 46: じゅんび ---
+  { "Lesson": 46, "Hiragana": "じゅんび", "Romaji": "junbi", "Kanji": "準備", "Meaning": "Chuẩn bị", "category": "noun", "Vru": "", "type": "", "note": "" },
+  { "Lesson": 46, "Hiragana": "ようい", "Romaji": "youi", "Kanji": "用意", "Meaning": "Chuẩn bị sẵn sàng, sửa soạn", "category": "noun", "Vru": "", "type": "synonym", "note": "" },
+  // --- Lesson 47: せいり ---
+  { "Lesson": 47, "Hiragana": "せいり", "Romaji": "seiri", "Kanji": "整理", "Meaning": "Sắp xếp, vứt bỏ", "category": "noun", "Vru": "", "type": "", "note": "" },
+  // --- Lesson 48: ちゅうもん ---
+  { "Lesson": 48, "Hiragana": "ちゅうもん", "Romaji": "chuumon", "Kanji": "注文", "Meaning": "Đặt hàng, gọi đồ, yêu cầu", "category": "noun", "Vru": "", "type": "", "note": "" },
+  // --- Lesson 49: ちょきん ---
+  { "Lesson": 49, "Hiragana": "ちょきん", "Romaji": "chokin", "Kanji": "貯金", "Meaning": "Tiền tiết kiệm, gửi tiền tiết kiệm", "category": "noun", "Vru": "", "type": "", "note": "" },
+  { "Lesson": 49, "Hiragana": "よきん", "Romaji": "yokin", "Kanji": "預金", "Meaning": "Tiền gửi ngân hàng", "category": "noun", "Vru": "", "type": "related", "note": "" },
+  { "Lesson": 49, "Hiragana": "ていきよきん", "Romaji": "teikiyokin", "Kanji": "定期預金", "Meaning": "Tiền gửi định kỳ", "category": "noun", "Vru": "", "type": "related", "note": "" },
+  // --- Lesson 50: てつや ---
+  { "Lesson": 50, "Hiragana": "てつや", "Romaji": "tetsuya", "Kanji": "徹夜", "Meaning": "Thức suốt đêm, thức trắng đêm", "category": "noun", "Vru": "", "type": "", "note": "" },
+  // --- Lesson 51: ひっこし ---
+  { "Lesson": 51, "Hiragana": "ひっこし", "Romaji": "hikkoshi", "Kanji": "引っ越し", "Meaning": "Chuyển nhà", "category": "noun", "Vru": "", "type": "", "note": "" },
+  { "Lesson": 51, "Hiragana": "ひっこす", "Romaji": "hikkosu", "Kanji": "引っ越す", "Meaning": "Chuyển nhà", "category": "verb", "Vru": "", "type": "related", "note": "" },
+  // --- Lesson 52: しんちょう ---
+  { "Lesson": 52, "Hiragana": "しんちょう", "Romaji": "shinchou", "Kanji": "身長", "Meaning": "Chiều cao cơ thể", "category": "noun", "Vru": "", "type": "", "note": "" },
+  { "Lesson": 52, "Hiragana": "せ", "Romaji": "se", "Kanji": "背", "Meaning": "Chiều cao, vóc người", "category": "noun", "Vru": "", "type": "synonym", "note": "" },
+  // --- Lesson 53: たいじゅう ---
+  { "Lesson": 53, "Hiragana": "たいじゅう", "Romaji": "taijuu", "Kanji": "体重", "Meaning": "Cân nặng, trọng lượng", "category": "noun", "Vru": "", "type": "", "note": "" },
+  { "Lesson": 53, "Hiragana": "たいじゅうけい", "Romaji": "taijuukei", "Kanji": "体重計", "Meaning": "Cân (dụng cụ cân)", "category": "noun", "Vru": "", "type": "compound", "note": "" },
+  // --- Lesson 54: けが ---
+  { "Lesson": 54, "Hiragana": "けが", "Romaji": "kega", "Kanji": "怪我", "Meaning": "Vết thương", "category": "noun", "Vru": "", "type": "", "note": "" },
+  { "Lesson": 54, "Hiragana": "こっせつ", "Romaji": "kossetsu", "Kanji": "骨折", "Meaning": "Gãy xương", "category": "noun", "Vru": "", "type": "related", "note": "" },
+  // --- Lesson 55: かい ---
+  { "Lesson": 55, "Hiragana": "かい", "Romaji": "kai", "Kanji": "会", "Meaning": "Bữa tiệc, buổi họp mặt", "category": "noun", "Vru": "", "type": "", "note": "" },
+  { "Lesson": 55, "Hiragana": "ぼうねんかい", "Romaji": "bounenkai", "Kanji": "忘年会", "Meaning": "Tiệc cuối năm", "category": "noun", "Vru": "", "type": "compound", "note": "" },
+  { "Lesson": 55, "Hiragana": "しんねんかい", "Romaji": "shinnenkai", "Kanji": "新年会", "Meaning": "Tiệc năm mới", "category": "noun", "Vru": "", "type": "compound", "note": "" },
+  { "Lesson": 55, "Hiragana": "そうべつかい", "Romaji": "soubetsukai", "Kanji": "送別会", "Meaning": "Tiệc chia tay", "category": "noun", "Vru": "", "type": "compound", "note": "" },
+  { "Lesson": 55, "Hiragana": "かんげいかい", "Romaji": "kangeikai", "Kanji": "歓迎会", "Meaning": "Tiệc chào mừng", "category": "noun", "Vru": "", "type": "compound", "note": "" },
+  { "Lesson": 55, "Hiragana": "のみかい", "Romaji": "nomikai", "Kanji": "飲み会", "Meaning": "Bữa nhậu", "category": "noun", "Vru": "", "type": "compound", "note": "" },
+  { "Lesson": 55, "Hiragana": "えんかい", "Romaji": "enkai", "Kanji": "宴会", "Meaning": "Yến tiệc", "category": "noun", "Vru": "", "type": "compound", "note": "" },
+  { "Lesson": 55, "Hiragana": "どうそうかい", "Romaji": "dousoukai", "Kanji": "同窓会", "Meaning": "Họp lớp", "category": "noun", "Vru": "", "type": "compound", "note": "" },
+  // --- Lesson 56: しゅみ ---
+  { "Lesson": 56, "Hiragana": "しゅみ", "Romaji": "shumi", "Kanji": "趣味", "Meaning": "Sở thích, thẩm mỹ", "category": "noun", "Vru": "", "type": "", "note": "" },
+  // --- Lesson 57: きょうみ ---
+  { "Lesson": 57, "Hiragana": "きょうみ", "Romaji": "kyoumi", "Kanji": "興味", "Meaning": "Hứng thú", "category": "noun", "Vru": "", "type": "", "note": "" },
+  { "Lesson": 57, "Hiragana": "かんしん", "Romaji": "kanshin", "Kanji": "関心", "Meaning": "Quan tâm", "category": "noun", "Vru": "", "type": "related", "note": "" },
+  // --- Lesson 58: おもいで ---
+  { "Lesson": 58, "Hiragana": "おもいで", "Romaji": "omoide", "Kanji": "思い出", "Meaning": "Kỉ niệm", "category": "noun", "Vru": "", "type": "", "note": "" },
+  { "Lesson": 58, "Hiragana": "おもいだす", "Romaji": "omoidasu", "Kanji": "思い出す", "Meaning": "Nhớ lại, hồi tưởng lại", "category": "verb", "Vru": "", "type": "related", "note": "" },
+  // --- Lesson 59: じょうだん ---
+  { "Lesson": 59, "Hiragana": "じょうだん", "Romaji": "joudan", "Kanji": "冗談", "Meaning": "Nói đùa, câu nói đùa", "category": "noun", "Vru": "", "type": "", "note": "" },
+  // --- Lesson 60: もくてき ---
+  { "Lesson": 60, "Hiragana": "もくてき", "Romaji": "mokuteki", "Kanji": "目的", "Meaning": "Mục đích", "category": "noun", "Vru": "", "type": "", "note": "" },
+  { "Lesson": 60, "Hiragana": "もくひょう", "Romaji": "mokuhyou", "Kanji": "目標", "Meaning": "Mục tiêu", "category": "noun", "Vru": "", "type": "related", "note": "" },
+  // --- Lesson 61: やくそく ---
+  { "Lesson": 61, "Hiragana": "やくそく", "Romaji": "yakusoku", "Kanji": "約束", "Meaning": "Hẹn, hứa hẹn", "category": "noun", "Vru": "", "type": "", "note": "" },
+  // --- Lesson 62: おしゃべり ---
+  { "Lesson": 62, "Hiragana": "おしゃべり", "Romaji": "oshaberi", "Kanji": "", "Meaning": "Nói chuyện, nói nhiều", "category": "noun", "Vru": "", "type": "", "note": "" },
+  // --- Lesson 63: えんりょ ---
+  { "Lesson": 63, "Hiragana": "えんりょ", "Romaji": "enryo", "Kanji": "遠慮", "Meaning": "Khách khí, ngại ngùng", "category": "noun", "Vru": "", "type": "", "note": "" },
+  // --- Lesson 64: がまん ---
+  { "Lesson": 64, "Hiragana": "がまん", "Romaji": "gaman", "Kanji": "我慢", "Meaning": "Nhẫn nại, chịu đựng", "category": "noun", "Vru": "", "type": "", "note": "" },
+  // --- Lesson 65: めいわく ---
+  { "Lesson": 65, "Hiragana": "めいわく", "Romaji": "meiwaku", "Kanji": "迷惑", "Meaning": "Làm phiền, quấy rầy", "category": "noun", "Vru": "", "type": "", "note": "" },
+  // --- Lesson 66: きぼう ---
+  { "Lesson": 66, "Hiragana": "きぼう", "Romaji": "kibou", "Kanji": "希望", "Meaning": "Hy vọng, mong ước", "category": "noun", "Vru": "", "type": "", "note": "" },
+  { "Lesson": 66, "Hiragana": "のぞみ", "Romaji": "nozomi", "Kanji": "望み", "Meaning": "Niềm mong ước, khát khao", "category": "noun", "Vru": "", "type": "related", "note": "" },
+  { "Lesson": 66, "Hiragana": "のぞむ", "Romaji": "nozomu", "Kanji": "望む", "Meaning": "Mong ước, mong muốn", "category": "verb", "Vru": "", "type": "related", "note": "" },
+  // --- Lesson 67: ゆめ ---
+  { "Lesson": 67, "Hiragana": "ゆめ", "Romaji": "yume", "Kanji": "夢", "Meaning": "Giấc mơ, ước mơ", "category": "noun", "Vru": "", "type": "", "note": "" },
+  // --- Lesson 68: さんせい ---
+  { "Lesson": 68, "Hiragana": "さんせい", "Romaji": "sansei", "Kanji": "賛成", "Meaning": "Tán thành, đồng ý", "category": "noun", "Vru": "", "type": "", "note": "" },
+  { "Lesson": 68, "Hiragana": "はんたい", "Romaji": "hantai", "Kanji": "反対", "Meaning": "Phản đối", "category": "noun", "Vru": "", "type": "antonym", "note": "" },
+  // --- Lesson 69: はんたい ---
+  { "Lesson": 69, "Hiragana": "はんたい", "Romaji": "hantai", "Kanji": "反対", "Meaning": "Đối ngược, phản đối", "category": "noun", "Vru": "", "type": "", "note": "" },
+  { "Lesson": 69, "Hiragana": "さんせい", "Romaji": "sansei", "Kanji": "賛成", "Meaning": "Tán thành, đồng ý", "category": "noun", "Vru": "", "type": "antonym", "note": "" },
+  { "Lesson": 69, "Hiragana": "はんたいがわ", "Romaji": "hantaigawa", "Kanji": "反対側", "Meaning": "Phía ngược lại, mặt trái", "category": "noun", "Vru": "", "type": "compound", "note": "" },
+  { "Lesson": 69, "Hiragana": "はんたいいけん", "Romaji": "hantaiiken", "Kanji": "反対意見", "Meaning": "Ý kiến phản đối", "category": "noun", "Vru": "", "type": "compound", "note": "" },
+  // --- Lesson 70: そうぞう ---
+  { "Lesson": 70, "Hiragana": "そうぞう", "Romaji": "souzou", "Kanji": "想像", "Meaning": "Tưởng tượng", "category": "noun", "Vru": "", "type": "", "note": "" },
+  { "Lesson": 70, "Hiragana": "そうぞうりょく", "Romaji": "souzouryoku", "Kanji": "想像力", "Meaning": "Trí tưởng tượng", "category": "noun", "Vru": "", "type": "compound", "note": "" },
+  // --- Lesson 71: どりょく ---
+  { "Lesson": 71, "Hiragana": "どりょく", "Romaji": "doryoku", "Kanji": "努力", "Meaning": "Nỗ lực, sự cố gắng", "category": "noun", "Vru": "", "type": "", "note": "" }
 );
