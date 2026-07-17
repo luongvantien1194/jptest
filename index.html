@@ -7,6 +7,7 @@
 <meta name="apple-mobile-web-app-capable" content="yes" />
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
 <meta name="theme-color" content="#6366f1" />
+<script src="js/kanjiHanViet.js?v=20260717"></script>
 <script src="data/kanjiData.js?v=20260330"></script>
 <!-- N3 kanji files: mỗi file push vào window._kanjiExtra với level:"n3", stt đánh từ 1 -->
 <script src="data/kanjiData_1.js?v=20260330"></script>
@@ -24,7 +25,7 @@
 <div class="app-shell">
 <header class="app-header">
 <nav class="tabs" aria-label="Sections">
-<button class="tab" data-tab="vocab" type="button">
+<button class="tab tab--active" data-tab="vocab" type="button">
 <span class="tab-label-main">Từ vựng</span>
 <span class="tab-indicator"></span>
 </button>
@@ -49,7 +50,7 @@
 <main class="app-body">
 
 <!-- Vocab Section -->
-<section class="section" id="section-vocab" aria-labelledby="section-vocab-title">
+<section class="section section--active" id="section-vocab" aria-labelledby="section-vocab-title">
 <div class="section-inner">
 <div>
 <div class="field-group" style="margin-bottom:6px;display:flex;flex-direction:row;align-items:center;gap:6px">
@@ -110,6 +111,10 @@
 <label class="checkbox-chip checkbox-chip--active">
 <input type="checkbox" data-display-field="kanji" checked />
 <span>Kanji</span>
+</label>
+<label class="checkbox-chip checkbox-chip--active">
+<input type="checkbox" data-display-field="hanviet" checked />
+<span>Hán Việt</span>
 </label>
 <label class="checkbox-chip checkbox-chip--active">
 <input type="checkbox" data-display-field="meaning" checked />
@@ -352,4 +357,3 @@ Chọn một cấu trúc ngữ pháp để xem nội dung chi tiết.
 <script src="js/main.js?v=20260717"></script>
 </body>
 </html>
- 
