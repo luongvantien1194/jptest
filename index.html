@@ -10,7 +10,7 @@
 <script src="js/kanjiHanViet.js?v=20260717"></script>
 <script src="data/kanjiData.js?v=20260330"></script>
 <!-- N3 kanji files: mỗi file push vào window._kanjiExtra với level:"n3", stt đánh từ 1 -->
-<script src="data/kanjiData_1.js?v=20260331"></script>
+<script src="data/kanjiData_1.js?v=20260330"></script>
 <script src="data/vocabData.js?v=20260330"></script>
 <!-- N3 vocab files: thêm script tag ở đây theo thứ tự, mỗi file push vào window._vocabExtra -->
 <script src="data/vocabData_1.js?v=20260330"></script>
@@ -82,12 +82,10 @@
 </select>
 </div>
 <div style="flex:1">
-<div class="field-label">Đã thuộc</div>
-<select id="vocab-mastered-filter" style="width:100%">
-<option value="all">Tất cả</option>
-<option value="mastered">Đã thuộc</option>
-<option value="not">Chưa thuộc</option>
-</select>
+<div class="field-label">Chưa thuộc</div>
+<div style="display:flex;align-items:center;padding:2px 0">
+<input type="checkbox" id="vocab-not-mastered-cb" style="cursor:pointer">
+</div>
 </div>
 </div>
 <button class="filter-icon-btn" type="button" id="reset-vocab-filter-btn" title="Xoá bộ lọc" style="align-self:flex-end">↺</button>
