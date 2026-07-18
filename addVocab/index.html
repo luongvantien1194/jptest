@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Quản lý Từ Vựng Extra - Siêu Gọn</title>
+    <style>
+        :root {
+            --primary-color: #007aff;
+            --danger-color: #ff3b30;
+            --success-color: #34c759;
+            --bg-color: #f2f2f7;
+            --card-bg: #ffffff;
+            --text-color: #1c1c1e;
+            --text-muted: #8e8e93;
+            --border-color: #e5e5ea;
+            --safe-top: env(safe-area-inset-top, 44px);
+            --safe-bottom: env(safe-area-inset-bottom, 20px);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            padding-top: var(--safe-top);
+            padding-bottom: calc(var(--safe-bottom) + 10px);
+            line-height: 1.2;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 14px;
+            background: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header h1 { font-size: 16px; font-weight: 700; }
+
+        .header-actions { display: flex; gap: 6px; }
+
+        .btn-icon {
+            border: none; width: 32px; height: 32px; border-radius: 50%;
+            font-size: 14px; cursor: pointer; display: flex;
+            align-items: center; justify-content: center;
+        }
+        .btn-icon-add { background: #e1f0ff; color: var(--primary-color); }
+        .btn-icon-copy { background: #e8f7ed; color: var(--success-color); }
+        .btn-icon-delete { background: #ffebeb; color: var(--danger-color); }
+
+        .container { padding: 6px; }
+
+        .vocab-list { display: flex; flex-direction: column; gap: 4px; }
+
+        /* Ép chặt kích thước thẻ - Siêu tiết kiệm dòng */
+        .vocab-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 6px 10px;
+            box-shadow: 0 1px 1px rgba(0,0,0,0.03);
+            display: grid;
+            grid-template-columns: 1fr auto; /* Cột trái chứa data, cột phải chứa nút thao tác */
+            align-items: center;
+            gap: 8px;
+        }
+
+        .vocab-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        /* Dòng chính: Chữ Nhật + Romaji */
+        .vocab-main-line {
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .vocab-kanji { color: var(--primary-color); margin-left: 4px; font-weight: 600; }
+        .vocab-romaji { font-size: 11px; color: var(--text-muted); font-weight: 400; margin-left: 6px; }
+
+        /* Dòng phụ: Nghĩa tiếng Việt nối liền các Tag thông tin */
+        .vocab-sub-line {
+            font-size: 12px;
+            color: #3a3a3c;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .mini-tag {
+            font-size: 10px;
+            padding: 0px 4px;
+            background: #f2f2f7;
+            color: #555;
+            border-radius: 4px;
+            font-weight: 500;
+            display: inline-block;
+        }
+        
+        .tag-vru { background: #e5f6ff; color: #0051a8; }
+        .tag-note { background: #fff9e6; color: #b27b00; }
+
+        /* Thu gọn nút Sửa/Xóa thành text liền kề bên phải */
+        .card-actions {
+            display: flex;
+            gap: 10px;
+            border-left: 1px solid var(--border-color);
+            padding-left: 8px;
+        }
+
+        .action-link {
+            font-size: 11px;
+            font-weight: 600;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px 0;
+        }
+        .link-edit { color: var(--primary-color); }
+        .link-delete { color: var(--danger-color); }
+
+        /* Modal Form giữ nguyên tính năng chống zoom iOS */
+        .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.4); z-index: 999; display: none; }
+        .modal {
+            position: fixed; left: 0; right: 0; bottom: 0; background: var(--card-bg);
+            border-top-left-radius: 14px; border-top-right-radius: 14px; max-height: 85vh;
+            overflow-y: auto; z-index: 1000; transform: translateY(100%);
+            transition: transform 0.2s ease-out; padding: 14px;
+            padding-bottom: calc(var(--safe-bottom) + 14px);
+        }
+        body.modal-open .modal-overlay { display: block; }
+        body.modal-open .modal { transform: translateY(0); }
+        .modal-header { display: flex; justify-content: space-between; margin-bottom: 12px; }
+        .form-group { margin-bottom: 10px; }
+        .form-group label { display: block; font-size: 12px; font-weight: 600; margin-bottom: 3px; }
+        .form-control { width: 100%; padding: 8px 10px; border: 1px solid var(--border-color); background: #f2f2f7; border-radius: 6px; font-size: 16px; outline: none; }
+        .form-control:focus { background: #fff; border-color: var(--primary-color); }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
+        .btn-submit { background: var(--primary-color); color: white; border: none; padding: 10px; border-radius: 8px; width: 100%; font-weight: 600; margin-top: 6px; }
+
+        /* Toast */
+        .toast {
+            position: fixed; top: 16px; left: 50%; transform: translateX(-50%) translateY(-100px);
+            background: rgba(0,0,0,0.85); color: white; padding: 8px 16px;
+            border-radius: 16px; font-size: 12px; z-index: 9999; transition: transform 0.2s ease;
+            pointer-events: none; text-align: center; width: 60%;
+        }
+        .toast.show { transform: translateX(-50%) translateY(var(--safe-top)); }
+        .empty-state { text-align: center; padding: 30px; color: var(--text-muted); font-size: 13px; }
+    </style>
+</head>
+<body>
+
+<header>
+        <div style="display: flex; align-items: center; gap: 8px;">
+            <!-- Link về trang chủ index.html -->
+            <a href="https://luongvantien1194.github.io/jptest/index.html" class="btn-icon" style="text-decoration: none; background: #f2f2f7; color: var(--text-color);" title="Về trang chủ">🏠</a>
+            <h1>Từ vựng Extra</h1>
+        </div>
+        <div class="header-actions">
+            <button class="btn-icon btn-icon-add" onclick="openModal()">＋</button>
+            <button class="btn-icon btn-icon-copy" onclick="copyAllCode()">📋</button>
+            <button class="btn-icon btn-icon-delete" id="btn-delete-all" onclick="deleteAllVocab()" style="display: none;">🗑️</button>
+        </div>
+    </header>
+
+    <main class="container">
+        <div id="vocab-list-container" class="vocab-list"></div>
+    </main>
+
+    <!-- Form Nhập Liệu -->
+    <div class="modal-overlay" onclick="closeModal()"></div>
+    <div class="modal" id="vocab-modal">
+        <div class="modal-header">
+            <h3 id="modal-title" style="font-size: 14px;">Thêm từ mới</h3>
+            <span style="color: var(--primary-color); font-size: 13px; font-weight:600;" onclick="closeModal()">Đóng</span>
+        </div>
+        <form id="vocab-form" onsubmit="saveVocab(event)">
+            <input type="hidden" id="edit-id">
+            <div class="form-group">
+                <label>Hiragana *</label>
+                <input type="text" id="inp-hiragana" class="form-control" required>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Kanji</label>
+                    <input type="text" id="inp-kanji" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Romaji</label>
+                    <input type="text" id="inp-romaji" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Ý nghĩa *</label>
+                <input type="text" id="inp-meaning" class="form-control" required>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Từ loại (Category)</label>
+                    <input type="text" id="inp-category" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Thể từ điển (Vru)</label>
+                    <input type="text" id="inp-vru" class="form-control">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Type</label>
+                    <input type="text" id="inp-type" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Ghi chú (Note)</label>
+                    <input type="text" id="inp-note" class="form-control">
+                </div>
+            </div>
+            <button type="submit" class="btn-submit">Lưu lại</button>
+        </form>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <script>
+        let vocabData = JSON.parse(localStorage.getItem('vocab_extra_list')) || [];
+
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            t.innerText = msg; t.classList.add('show');
+            setTimeout(() => t.classList.remove('show'), 1500);
+        }
+
+        function renderList() {
+            const container = document.getElementById('vocab-list-container');
+            const btnDelAll = document.getElementById('btn-delete-all');
+            
+            if (vocabData.length === 0) {
+                container.innerHTML = `<div class="empty-state">Chưa có từ vựng bổ sung nào.</div>`;
+                btnDelAll.style.display = 'none';
+                return;
+            }
+
+            btnDelAll.style.display = 'inline-flex';
+            container.innerHTML = '';
+
+            vocabData.forEach((item, index) => {
+                const card = document.createElement('div');
+                card.className = 'vocab-card';
+                
+                // Gom nhỏ các nhãn phụ để hiển thị cùng dòng với nghĩa tiếng Việt
+                let tagsHtml = '';
+                if(item.category) tagsHtml += `<span class="mini-tag">${item.category}</span>`;
+                if(item.Vru) tagsHtml += `<span class="mini-tag tag-vru">Vru: ${item.Vru}</span>`;
+                if(item.type) tagsHtml += `<span class="mini-tag">${item.type}</span>`;
+                if(item.note) tagsHtml += `<span class="mini-tag tag-note">📌 ${item.note}</span>`;
+
+                card.innerHTML = `
+                    <div class="vocab-info">
+                        <div class="vocab-main-line">
+                            <span>${item.Hiragana}</span>
+                            ${item.Kanji ? `<span class="vocab-kanji">(${item.Kanji})</span>` : ''}
+                            ${item.Romaji ? `<span class="vocab-romaji">${item.Romaji}</span>` : ''}
+                        </div>
+                        <div class="vocab-sub-line">
+                            <span style="font-weight:500; color:#000;">${item.Meaning}</span>
+                            ${tagsHtml}
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="action-link link-edit" onclick="editVocab(${index})">Sửa</button>
+                        <button class="action-link link-delete" onclick="deleteVocab(${index})">Xóa</button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function openModal(isEdit = false) {
+            document.getElementById('vocab-form').reset();
+            document.getElementById('edit-id').value = '';
+            document.getElementById('modal-title').innerText = isEdit ? 'Chỉnh sửa' : 'Thêm từ mới';
+            document.body.classList.add('modal-open');
+        }
+
+        function closeModal() { document.body.classList.remove('modal-open'); }
+
+        function saveVocab(e) {
+            e.preventDefault();
+            const id = document.getElementById('edit-id').value;
+            const item = {
+                "Lesson": 9999,
+                "Hiragana": document.getElementById('inp-hiragana').value.trim(),
+                "Romaji": document.getElementById('inp-romaji').value.trim(),
+                "Kanji": document.getElementById('inp-kanji').value.trim(),
+                "Meaning": document.getElementById('inp-meaning').value.trim(),
+                "category": document.getElementById('inp-category').value.trim(),
+                "Vru": document.getElementById('inp-vru').value.trim(),
+                "type": document.getElementById('inp-type').value.trim(),
+                "note": document.getElementById('inp-note').value.trim()
+            };
+
+            if (id !== '') { vocabData[parseInt(id)] = item; showToast('Đã sửa!'); } 
+            else { vocabData.push(item); showToast('Đã thêm!'); }
+
+            localStorage.setItem('vocab_extra_list', JSON.stringify(vocabData));
+            closeModal(); renderList();
+        }
+
+        function editVocab(index) {
+            const item = vocabData[index]; openModal(true);
+            document.getElementById('edit-id').value = index;
+            document.getElementById('inp-hiragana').value = item.Hiragana;
+            document.getElementById('inp-romaji').value = item.Romaji;
+            document.getElementById('inp-kanji').value = item.Kanji;
+            document.getElementById('inp-meaning').value = item.Meaning;
+            document.getElementById('inp-category').value = item.category;
+            document.getElementById('inp-vru').value = item.Vru;
+            document.getElementById('inp-type').value = item.type;
+            document.getElementById('inp-note').value = item.note;
+        }
+
+        function deleteVocab(index) {
+            if (confirm(`Xóa từ này?`)) {
+                vocabData.splice(index, 1);
+                localStorage.setItem('vocab_extra_list', JSON.stringify(vocabData));
+                renderList(); showToast('Đã xóa!');
+            }
+        }
+
+        function deleteAllVocab() {
+            if (confirm('Xóa sạch danh sách?')) {
+                vocabData = []; localStorage.removeItem('vocab_extra_list');
+                renderList(); showToast('Đã xóa sạch!');
+            }
+        }
+
+        function copyAllCode() {
+            if (vocabData.length === 0) { showToast('Không có dữ liệu!'); return; }
+            let txt = `// N3 Vocab - Extra\nwindow._vocabExtra = window._vocabExtra || [];\nwindow._vocabExtra.push(\n`;
+            vocabData.forEach(i => {
+                txt += `  // --- Lesson add: ${i.Hiragana} ---\n`;
+                txt += `  { "Lesson": ${i.Lesson}, "Hiragana": "${i.Hiragana}", "Romaji": "${i.Romaji}", "Kanji": "${i.Kanji}", "Meaning": "${i.Meaning}", "category": "${i.category}", "Vru": "${i.Vru}", "type": "${i.type}", "note": "${i.note}" },\n`;
+            });
+            txt += `);`;
+            navigator.clipboard.writeText(txt).then(() => showToast('📋 Đã copy code JS!'));
+        }
+
+        document.addEventListener('DOMContentLoaded', renderList);
+    </script>
+</body>
+</html>
