@@ -3926,8 +3926,10 @@
             state.filter.vocabLessonTo = lessonFrom.value.trim();
             renderVocabList();
             lessonTo.readOnly = true; // Chuyển sang chế độ chỉ đọc
+            lessonTo.classList.add("disabled-gray");
         } else {
             lessonTo.readOnly = false; // Mở lại quyền chỉnh sửa khi bỏ chọn
+            lessonTo.classList.remove("disabled-gray");
         }
     }
 
