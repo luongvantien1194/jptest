@@ -3621,6 +3621,10 @@ select:focus {
   to { transform: scale(1.15); }
 }
 
+.hidden {
+    display: none !important;
+}
+
 /* ===== SECTION IDs ===== */
 #section-vocab,
 #section-kanji,

@@ -3917,6 +3917,24 @@
     const notMasteredCb = document.getElementById("vocab-not-mastered-cb");
     const searchInput = document.getElementById("vocab-search-input");
 
+
+    const isOnelesson = document.getElementById("vocab-one-lesson");
+
+    function syncLessons() {
+        if (isOnelesson.checked) {
+            lessonTo.value = lessonFrom.value;
+            state.filter.vocabLessonTo = lessonFrom.value.trim();
+            renderVocabList();
+            lessonTo.readOnly = true; // Chuyển sang chế độ chỉ đọc
+        } else {
+            lessonTo.readOnly = false; // Mở lại quyền chỉnh sửa khi bỏ chọn
+        }
+    }
+
+    // Lắng nghe sự kiện
+    isOnelesson.addEventListener("change", syncLessons);
+    lessonFrom.addEventListener("input", syncLessons);
+
     const categories = getUniqueSorted(
       vocabData.map(function (v) { return v.category; }).filter(function (c) { return c; })
     );
