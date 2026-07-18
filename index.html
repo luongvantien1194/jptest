@@ -12,7 +12,26 @@
   <script src="data/kanjiData.js?v=20260330"></script>
   <!-- N3 kanji files: mỗi file push vào window._kanjiExtra với level:"n3", stt đánh từ 1 -->
   <script src="data/kanjiData_1.js?v=20260330"></script>
+
+  <script>
+    const TOTAL_FILES_KANJI = 100;
+    const folderPathKanji = 'data/kanjiExtra/';
+
+    for (let i = 1; i <= TOTAL_FILES_KANJI; i++) {
+      const script = document.createElement('script');
+      script.src = `${folderPathKanji}${i}.js`;
+
+      // Giữ nguyên thứ tự thực thi từ 1 đến 1000 (Rất quan trọng nếu các file phụ thuộc nhau)
+      script.async = false;
+
+      document.head.appendChild(script);
+    }
+  </script>
+
+
   <script src="data/vocabData.js?v=20260330"></script>
+  <!-- N3 vocab files: thêm script tag ở đây theo thứ tự, mỗi file push vào window._vocabExtra -->
+  <script src="data/vocabData_1.js?v=20260330"></script>
 
   <script>
     const TOTAL_FILES = 100;
@@ -30,8 +49,6 @@
   </script>
 
 
-  <!-- N3 vocab files: thêm script tag ở đây theo thứ tự, mỗi file push vào window._vocabExtra -->
-  <script src="data/vocabData_1.js?v=20260330"></script>
   <!-- <script src="data/vocabData_2.js?v=20260330"></script> -->
   <script src="data/grammarData.js?v=20260530"></script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -211,6 +228,7 @@
                 <button type="button" class="chip" data-level="all">Tất cả</button>
                 <button type="button" class="chip" data-level="n45">N4-N5</button>
                 <button type="button" class="chip chip--active" data-level="n3">N3</button>
+                <a href="addKanji/index.html">+</a>
               </div>
             </div>
             <div class="filters-toggle-row-actions">
