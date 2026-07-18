@@ -26,7 +26,7 @@ window._vocabExtra.push(
   // --- Lesson 23: しゅうしょくしけん ---
   { "Lesson": 23, "Hiragana": "しゅうしょくしけん", "Romaji": "", "Kanji": "就職試験", "Meaning": "Kỳ thi xin việc", "category": "", "Vru": "", "type": "", "note": "" },
   // --- Lesson 23: しゅうでょくなん ---
-  { "Lesson": 23, "Hiragana": "しゅうでょくなん", "Romaji": "", "Kanji": "就職難", "Meaning": "Khó tìm việc", "category": "", "Vru": "", "type": "", "note": "" },
+  { "Lesson": 23, "Hiragana": "しゅうしょくなん", "Romaji": "", "Kanji": "就職難", "Meaning": "Khó tìm việc", "category": "", "Vru": "", "type": "", "note": "" },
   // --- Lesson 23: りれきしょ ---
   { "Lesson": 23, "Hiragana": "りれきしょ", "Romaji": "", "Kanji": "履歴書", "Meaning": "Sơ yếu lý lịch", "category": "", "Vru": "", "type": "", "note": "" },
   // --- Lesson 24: ていねんたいしょく ---
