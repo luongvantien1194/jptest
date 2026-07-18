@@ -48,6 +48,16 @@
     }
   </script>
 
+  <script>
+    window._vocabExtra = window._vocabExtra || [];
+
+    // Lấy dữ liệu từ localStorage, nếu không có thì mặc định là một mảng rỗng []
+    const localData = JSON.parse(localStorage.getItem('vocab_extra_list')) || [];
+
+    // Đẩy toàn bộ dữ liệu từ localStorage vào mảng window._vocabExtra
+    window._vocabExtra.push(...localData);
+  </script>
+
 
   <!-- <script src="data/vocabData_2.js?v=20260330"></script> -->
   <script src="data/grammarData.js?v=20260530"></script>
@@ -105,12 +115,12 @@
             </div>
             <div class="filters-row" id="vocab-filters-row">
               <div class="field-group" style="display:flex; gap:4px; align-items:flex-end">
-                <div style="flex:1; min-width:0">
+                <div style="flex:0.5; min-width:0">
                   <div class="field-label">Từ bài</div>
                   <input type="number" id="vocab-lesson-from" placeholder="Tất cả" min="0" class="input-text"
                     style="width:100%" />
                 </div>
-                <div style="flex:1; min-width:0">
+                <div style="flex:0.5; min-width:0">
                   <div class="field-label">Đến bài</div>
                   <input type="number" id="vocab-lesson-to" placeholder="Tất cả" min="0" class="input-text"
                     style="width:100%" />
@@ -131,9 +141,11 @@
                   </div>
                 </div>
               </div>
-              <button class="filter-icon-btn" type="button" id="reset-vocab-filter-btn" title="Xoá bộ lọc" style="align-self:flex-end">↺</button>
-              <button class="filter-icon-btn" type="button" id="reset-vocab-filter-btn" title="Xoá bộ lọc" style="align-self:flex-end"><a style="text-decoration: none;" href="addVocab/index.html">+</a></button>
-              
+              <button class="filter-icon-btn" type="button" id="reset-vocab-filter-btn" title="Xoá bộ lọc"
+                style="align-self:flex-end">↺</button>
+              <button class="filter-icon-btn" type="button" id="reset-vocab-filter-btn" title="Xoá bộ lọc"
+                style="align-self:flex-end"><a style="text-decoration: none;" href="addVocab/index.html">+</a></button>
+
             </div>
             <div class="settings-panel settings-panel--hidden">
               <div class="settings-header" id="display-settings-toggle">

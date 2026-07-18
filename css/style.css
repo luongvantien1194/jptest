@@ -592,7 +592,7 @@ select:focus {
 
 #section-vocab .filters-row .field-group select,
 #section-vocab .filters-row .field-group .input-text {
-  font-size: 11px;
+  font-size: 16px;
   padding: 6px 8px;
 }
 

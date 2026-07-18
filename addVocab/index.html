@@ -107,6 +107,7 @@
         
         .tag-vru { background: #e5f6ff; color: #0051a8; }
         .tag-note { background: #fff9e6; color: #b27b00; }
+        .tag-lesson { background: #eaeaea; color: #333; font-weight: 600; }
 
         /* Thu gọn nút Sửa/Xóa thành text liền kề bên phải */
         .card-actions {
@@ -159,9 +160,8 @@
 </head>
 <body>
 
-<header>
+    <header>
         <div style="display: flex; align-items: center; gap: 8px;">
-            <!-- Link về trang chủ index.html -->
             <a href="https://luongvantien1194.github.io/jptest/index.html" class="btn-icon" style="text-decoration: none; background: #f2f2f7; color: var(--text-color);" title="Về trang chủ">🏠</a>
             <h1>Từ vựng Extra</h1>
         </div>
@@ -185,10 +185,18 @@
         </div>
         <form id="vocab-form" onsubmit="saveVocab(event)">
             <input type="hidden" id="edit-id">
-            <div class="form-group">
-                <label>Hiragana *</label>
-                <input type="text" id="inp-hiragana" class="form-control" required>
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Hiragana *</label>
+                    <input type="text" id="inp-hiragana" class="form-control" required>
+                </div>
+                <div class="form-group">
+                    <label>Bài học (Lesson)</label>
+                    <input type="number" id="inp-lesson" class="form-control" placeholder="Mặc định 9999" min="1">
+                </div>
             </div>
+
             <div class="form-row">
                 <div class="form-group">
                     <label>Kanji</label>
@@ -255,8 +263,9 @@
                 const card = document.createElement('div');
                 card.className = 'vocab-card';
                 
-                // Gom nhỏ các nhãn phụ để hiển thị cùng dòng với nghĩa tiếng Việt
                 let tagsHtml = '';
+                // Hiển thị nhãn số bài nếu khác 9999 để giao diện gọn gàng hơn
+                if(item.Lesson && item.Lesson !== 9999) tagsHtml += `<span class="mini-tag tag-lesson">L. ${item.Lesson}</span>`;
                 if(item.category) tagsHtml += `<span class="mini-tag">${item.category}</span>`;
                 if(item.Vru) tagsHtml += `<span class="mini-tag tag-vru">Vru: ${item.Vru}</span>`;
                 if(item.type) tagsHtml += `<span class="mini-tag">${item.type}</span>`;
@@ -295,8 +304,13 @@
         function saveVocab(e) {
             e.preventDefault();
             const id = document.getElementById('edit-id').value;
+            
+            // Xử lý giá trị Lesson nhập vào: rỗng hoặc không hợp lệ thì gán 9999
+            const lessonInput = document.getElementById('inp-lesson').value.trim();
+            const lessonValue = lessonInput !== '' ? parseInt(lessonInput, 10) : 9999;
+
             const item = {
-                "Lesson": 9999,
+                "Lesson": isNaN(lessonValue) ? 9999 : lessonValue,
                 "Hiragana": document.getElementById('inp-hiragana').value.trim(),
                 "Romaji": document.getElementById('inp-romaji').value.trim(),
                 "Kanji": document.getElementById('inp-kanji').value.trim(),
@@ -318,6 +332,10 @@
             const item = vocabData[index]; openModal(true);
             document.getElementById('edit-id').value = index;
             document.getElementById('inp-hiragana').value = item.Hiragana;
+            
+            // Nếu là 9999 (mặc định) thì để trống ô nhập cho đẹp giao diện form
+            document.getElementById('inp-lesson').value = item.Lesson === 9999 ? '' : item.Lesson;
+            
             document.getElementById('inp-romaji').value = item.Romaji;
             document.getElementById('inp-kanji').value = item.Kanji;
             document.getElementById('inp-meaning').value = item.Meaning;
@@ -346,7 +364,7 @@
             if (vocabData.length === 0) { showToast('Không có dữ liệu!'); return; }
             let txt = `// N3 Vocab - Extra\nwindow._vocabExtra = window._vocabExtra || [];\nwindow._vocabExtra.push(\n`;
             vocabData.forEach(i => {
-                txt += `  // --- Lesson add: ${i.Hiragana} ---\n`;
+                txt += `  // --- Lesson ${i.Lesson}: ${i.Hiragana} ---\n`;
                 txt += `  { "Lesson": ${i.Lesson}, "Hiragana": "${i.Hiragana}", "Romaji": "${i.Romaji}", "Kanji": "${i.Kanji}", "Meaning": "${i.Meaning}", "category": "${i.category}", "Vru": "${i.Vru}", "type": "${i.type}", "note": "${i.note}" },\n`;
             });
             txt += `);`;
