@@ -58,14 +58,13 @@
 
         .vocab-list { display: flex; flex-direction: column; gap: 4px; }
 
-        /* Ép chặt kích thước thẻ - Siêu tiết kiệm dòng */
         .vocab-card {
             background: var(--card-bg);
             border-radius: 8px;
             padding: 6px 10px;
             box-shadow: 0 1px 1px rgba(0,0,0,0.03);
             display: grid;
-            grid-template-columns: 1fr auto; /* Cột trái chứa data, cột phải chứa nút thao tác */
+            grid-template-columns: 1fr auto;
             align-items: center;
             gap: 8px;
         }
@@ -76,7 +75,6 @@
             gap: 2px;
         }
 
-        /* Dòng chính: Chữ Nhật + Romaji */
         .vocab-main-line {
             font-size: 14px;
             font-weight: 700;
@@ -85,7 +83,6 @@
         .vocab-kanji { color: var(--primary-color); margin-left: 4px; font-weight: 600; }
         .vocab-romaji { font-size: 11px; color: var(--text-muted); font-weight: 400; margin-left: 6px; }
 
-        /* Dòng phụ: Nghĩa tiếng Việt nối liền các Tag thông tin */
         .vocab-sub-line {
             font-size: 12px;
             color: #3a3a3c;
@@ -109,7 +106,6 @@
         .tag-note { background: #fff9e6; color: #b27b00; }
         .tag-lesson { background: #eaeaea; color: #333; font-weight: 600; }
 
-        /* Thu gọn nút Sửa/Xóa thành text liền kề bên phải */
         .card-actions {
             display: flex;
             gap: 10px;
@@ -128,24 +124,56 @@
         .link-edit { color: var(--primary-color); }
         .link-delete { color: var(--danger-color); }
 
-        /* Modal Form giữ nguyên tính năng chống zoom iOS */
-        .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.4); z-index: 999; display: none; }
-        .modal {
-            position: fixed; left: 0; right: 0; bottom: 0; background: var(--card-bg);
-            border-top-left-radius: 14px; border-top-right-radius: 14px; max-height: 85vh;
-            overflow-y: auto; z-index: 1000; transform: translateY(100%);
-            transition: transform 0.2s ease-out; padding: 14px;
-            padding-bottom: calc(var(--safe-bottom) + 14px);
+        /* --- STYLE MODAL ĐÃ ĐƯỢC CẬP NHẬT --- */
+        .modal-overlay { 
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0; 
+            background: rgba(0, 0, 0, 0.4); 
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 999; 
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s cubic-bezier(0.25, 1, 0.5, 1);
         }
-        body.modal-open .modal-overlay { display: block; }
-        body.modal-open .modal { transform: translateY(0); }
-        .modal-header { display: flex; justify-content: space-between; margin-bottom: 12px; }
-        .form-group { margin-bottom: 10px; }
-        .form-group label { display: block; font-size: 12px; font-weight: 600; margin-bottom: 3px; }
-        .form-control { width: 100%; padding: 8px 10px; border: 1px solid var(--border-color); background: #f2f2f7; border-radius: 6px; font-size: 16px; outline: none; }
-        .form-control:focus { background: #fff; border-color: var(--primary-color); }
-        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-        .btn-submit { background: var(--primary-color); color: white; border: none; padding: 10px; border-radius: 8px; width: 100%; font-weight: 600; margin-top: 6px; }
+        
+        .modal {
+            position: fixed; left: 0; right: 0; bottom: 0; 
+            background: var(--card-bg);
+            border-top-left-radius: 20px; border-top-right-radius: 20px; 
+            max-height: 85vh;
+            overflow-y: auto; z-index: 1000; 
+            transform: translateY(100%);
+            transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1); 
+            padding: 16px;
+            padding-bottom: calc(var(--safe-bottom) + 16px);
+            box-shadow: 0 -8px 30px rgba(0,0,0,0.15);
+        }
+
+        /* Thanh gạch nhỏ định hình kiểu vuốt (Drag Indicator) */
+        .modal::before {
+            content: "";
+            display: block;
+            width: 36px;
+            height: 5px;
+            background: #e5e5ea;
+            border-radius: 3px;
+            margin: -4px auto 14px auto;
+        }
+
+        /* Trạng thái hiển thị điều khiển bằng Class ở body */
+        body.modal-open .modal-overlay { opacity: 1; pointer-events: auto; }
+        body.vocab-open #vocab-modal { transform: translateY(0); }
+        body.confirm-open #confirm-modal { transform: translateY(0); }
+
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+        .form-group { margin-bottom: 12px; }
+        .form-group label { display: block; font-size: 12px; font-weight: 600; margin-bottom: 4px; color: #555; }
+        .form-control { width: 100%; padding: 10px 12px; border: 1px solid var(--border-color); background: #f2f2f7; border-radius: 8px; font-size: 15px; outline: none; transition: all 0.2s; }
+        .form-control:focus { background: #fff; border-color: var(--primary-color); box-shadow: 0 0 0 3px rgba(0,122,255,0.1); }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        
+        .btn-submit { background: var(--primary-color); color: white; border: none; padding: 12px; border-radius: 10px; width: 100%; font-size: 15px; font-weight: 600; margin-top: 8px; cursor: pointer; transition: opacity 0.1s; }
+        .btn-submit:active { opacity: 0.8; }
 
         /* Toast */
         .toast {
@@ -168,7 +196,7 @@
         <div class="header-actions">
             <button class="btn-icon btn-icon-add" onclick="openModal()">＋</button>
             <button class="btn-icon btn-icon-copy" onclick="copyAllCode()">📋</button>
-            <button class="btn-icon btn-icon-delete" id="btn-delete-all" onclick="deleteAllVocab()" style="display: none;">🗑️</button>
+            <button class="btn-icon btn-icon-delete" id="btn-delete-all" onclick="triggerDeleteAll()" style="display: none;">🗑️</button>
         </div>
     </header>
 
@@ -176,12 +204,14 @@
         <div id="vocab-list-container" class="vocab-list"></div>
     </main>
 
+    <!-- Nền đen mờ dùng chung cho cả 2 modal -->
+    <div class="modal-overlay" onclick="closeAllModals()"></div>
+
     <!-- Form Nhập Liệu -->
-    <div class="modal-overlay" onclick="closeModal()"></div>
     <div class="modal" id="vocab-modal">
         <div class="modal-header">
-            <h3 id="modal-title" style="font-size: 14px;">Thêm từ mới</h3>
-            <span style="color: var(--primary-color); font-size: 13px; font-weight:600;" onclick="closeModal()">Đóng</span>
+            <h3 id="modal-title" style="font-size: 15px; font-weight: 700;">Thêm từ mới</h3>
+            <span style="color: var(--primary-color); font-size: 14px; font-weight: 600; cursor: pointer;" onclick="closeAllModals()">Đóng</span>
         </div>
         <form id="vocab-form" onsubmit="saveVocab(event)">
             <input type="hidden" id="edit-id">
@@ -235,10 +265,23 @@
         </form>
     </div>
 
+    <!-- Modal Xác Nhận Xóa Custom -->
+    <div class="modal" id="confirm-modal">
+        <div class="modal-header" style="margin-bottom: 12px;">
+            <h3 id="confirm-title" style="font-size: 15px; font-weight: 700; color: var(--text-color);">Xác nhận</h3>
+        </div>
+        <p id="confirm-text" style="font-size: 14px; color: #3a3a3c; margin-bottom: 20px; text-align: center;">Bạn chắc chắn muốn thực hiện thao tác này?</p>
+        <div class="form-row">
+            <button type="button" class="btn-submit" id="btn-confirm-action" style="background: var(--danger-color); margin-top: 0;">Xác nhận xóa</button>
+            <button type="button" class="btn-submit" onclick="closeAllModals()" style="background: var(--text-muted); margin-top: 0;">Hủy</button>
+        </div>
+    </div>
+
     <div id="toast" class="toast"></div>
 
     <script>
         let vocabData = JSON.parse(localStorage.getItem('vocab_extra_list')) || [];
+        let pendingAction = null;
 
         function showToast(msg) {
             const t = document.getElementById('toast');
@@ -264,7 +307,6 @@
                 card.className = 'vocab-card';
                 
                 let tagsHtml = '';
-                // Hiển thị nhãn số bài nếu khác 9999 để giao diện gọn gàng hơn
                 if(item.Lesson && item.Lesson !== 9999) tagsHtml += `<span class="mini-tag tag-lesson">L. ${item.Lesson}</span>`;
                 if(item.category) tagsHtml += `<span class="mini-tag">${item.category}</span>`;
                 if(item.Vru) tagsHtml += `<span class="mini-tag tag-vru">Vru: ${item.Vru}</span>`;
@@ -285,7 +327,7 @@
                     </div>
                     <div class="card-actions">
                         <button class="action-link link-edit" onclick="editVocab(${index})">Sửa</button>
-                        <button class="action-link link-delete" onclick="deleteVocab(${index})">Xóa</button>
+                        <button class="action-link link-delete" onclick="triggerDeleteSingle(${index})">Xóa</button>
                     </div>
                 `;
                 container.appendChild(card);
@@ -296,16 +338,53 @@
             document.getElementById('vocab-form').reset();
             document.getElementById('edit-id').value = '';
             document.getElementById('modal-title').innerText = isEdit ? 'Chỉnh sửa' : 'Thêm từ mới';
-            document.body.classList.add('modal-open');
+            
+            document.body.classList.add('modal-open', 'vocab-open');
         }
 
-        function closeModal() { document.body.classList.remove('modal-open'); }
+        function triggerDeleteSingle(index) {
+            const item = vocabData[index];
+            document.getElementById('confirm-title').innerText = "Xóa từ vựng";
+            document.getElementById('confirm-text').innerText = `Xóa từ "${item.Hiragana}" khỏi danh sách?`;
+            
+            pendingAction = () => {
+                vocabData.splice(index, 1);
+                localStorage.setItem('vocab_extra_list', JSON.stringify(vocabData));
+                renderList();
+                showToast('Đã xóa!');
+            };
+            
+            document.body.classList.add('modal-open', 'confirm-open');
+        }
+
+        function triggerDeleteAll() {
+            document.getElementById('confirm-title').innerText = "Xóa toàn bộ";
+            document.getElementById('confirm-text').innerText = "Bạn có chắc muốn xóa sạch danh sách từ vựng bổ sung?";
+            
+            pendingAction = () => {
+                vocabData = [];
+                localStorage.removeItem('vocab_extra_list');
+                renderList();
+                showToast('Đã xóa sạch!');
+            };
+            
+            document.body.classList.add('modal-open', 'confirm-open');
+        }
+
+        function closeAllModals() {
+            document.body.classList.remove('modal-open', 'vocab-open', 'confirm-open');
+            pendingAction = null;
+        }
+
+        document.getElementById('btn-confirm-action').addEventListener('click', () => {
+            if (pendingAction) pendingAction();
+            closeAllModals();
+        });
 
         function saveVocab(e) {
             e.preventDefault();
             const id = document.getElementById('edit-id').value;
             
-            // Xử lý giá trị Lesson nhập vào: rỗng hoặc không hợp lệ thì gán 9999
             const lessonInput = document.getElementById('inp-lesson').value.trim();
             const lessonValue = lessonInput !== '' ? parseInt(lessonInput, 10) : 9999;
 
@@ -325,17 +404,14 @@
             else { vocabData.push(item); showToast('Đã thêm!'); }
 
             localStorage.setItem('vocab_extra_list', JSON.stringify(vocabData));
-            closeModal(); renderList();
+            closeAllModals(); renderList();
         }
 
         function editVocab(index) {
             const item = vocabData[index]; openModal(true);
             document.getElementById('edit-id').value = index;
             document.getElementById('inp-hiragana').value = item.Hiragana;
-            
-            // Nếu là 9999 (mặc định) thì để trống ô nhập cho đẹp giao diện form
             document.getElementById('inp-lesson').value = item.Lesson === 9999 ? '' : item.Lesson;
-            
             document.getElementById('inp-romaji').value = item.Romaji;
             document.getElementById('inp-kanji').value = item.Kanji;
             document.getElementById('inp-meaning').value = item.Meaning;
@@ -343,21 +419,6 @@
             document.getElementById('inp-vru').value = item.Vru;
             document.getElementById('inp-type').value = item.type;
             document.getElementById('inp-note').value = item.note;
-        }
-
-        function deleteVocab(index) {
-            if (confirm(`Xóa từ này?`)) {
-                vocabData.splice(index, 1);
-                localStorage.setItem('vocab_extra_list', JSON.stringify(vocabData));
-                renderList(); showToast('Đã xóa!');
-            }
-        }
-
-        function deleteAllVocab() {
-            if (confirm('Xóa sạch danh sách?')) {
-                vocabData = []; localStorage.removeItem('vocab_extra_list');
-                renderList(); showToast('Đã xóa sạch!');
-            }
         }
 
         function copyAllCode() {
