@@ -3924,7 +3924,7 @@
         if (isOnelesson.checked) {
             lessonTo.value = lessonFrom.value;
             state.filter.vocabLessonTo = lessonFrom.value.trim();
-            renderVocabList();
+            //renderVocabList();
             lessonTo.readOnly = true; // Chuyển sang chế độ chỉ đọc
             lessonTo.classList.add("disabled-gray");
         } else {
