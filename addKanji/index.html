@@ -420,11 +420,12 @@
 
         function copyAllCode() {
             if (kanjiData.length === 0) { showToast('Không có dữ liệu!'); return; }
-            let txt = `window._kanjiExtra = window._kanjiExtra || [];\nwindow._kanjiExtra.push(\n`;
+            // let txt = `window._kanjiExtra = window._kanjiExtra || [];\nwindow._kanjiExtra.push(\n`;
+            let txt = ``;
             kanjiData.forEach(i => {
                 txt += `  { "stt": ${i.stt}, "level": "${i.level}", "kanji": "${i.kanji}", "hanviet": "${i.hanviet}", "on_reading": "${i.on_reading}", "kun_reading": "${i.kun_reading}", "stroke_count": ${i.stroke_count || '""'}, "radicals": "${i.radicals}", "core_meaning": "${i.core_meaning}", "story_image": "${i.story_image}", "logic_development": "${i.logic_development}", "memory_tip": "${i.memory_tip}", "vocabulary": "${i.vocabulary}" },\n`;
             });
-            txt += `);`;
+            // txt += `);`;
             navigator.clipboard.writeText(txt).then(() => showToast('📋 Đã copy code JS!'));
         }
 

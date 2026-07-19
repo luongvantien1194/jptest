@@ -21,6 +21,8 @@
       grammarSearch: ""
     },
     displaySettings: {
+      romaji: true,
+      category: false,
       lession: true,
       hiragana: true,
       kanji: true,
@@ -28,7 +30,8 @@
       meaning: true,
       vru: false,
       type: true,
-      note: false
+      note: false,
+      voice: true,
     },
     testState: {
       isActive: false,
@@ -1966,7 +1969,7 @@
       }
 
       // Romaji hiển thị ngay sau hiragana
-      if (item.romaji) {
+      if (state.displaySettings.romaji && item.romaji) {
         const romajiEl = createElement("div", "vocab-romazi", "(" + item.romaji + ")");
         fields.push(romajiEl);
       }
@@ -2019,7 +2022,7 @@
       });
 
       // Audio button: dùng TTS đọc tiếng Nhật (hiragana)
-      var audioBtn = item.hiragana ? createAudioBtn(item.hiragana) : null;
+      var audioBtn = item.hiragana && state.displaySettings.voice ? createAudioBtn(item.hiragana) : null;
 
       var vocabTopRow = createElement("div", "", "");
       vocabTopRow.style.cssText = "display:flex;align-items:center;gap:4px";
@@ -2031,19 +2034,22 @@
       row.appendChild(vocabTopRow);
 
       const metaRow = createElement("div", "vocab-meta-row", "");
-      const pillLesson = createElement(
-        "span",
-        "pill pill--lesson",
-        "Bài " + (item.lesson != null ? item.lesson : item.Lesson)
-      );
-      metaRow.appendChild(pillLesson);
+
+      if (state.displaySettings.lesson && item.lesson) {
+        const pillLesson = createElement(
+          "span",
+          "pill pill--lesson",
+          "Bài " + (item.lesson != null ? item.lesson : item.Lesson)
+        );
+        metaRow.appendChild(pillLesson);
+      }
 
       if (state.displaySettings.type && item.type) {
         const pillType = createElement("span", "pill pill--type", item.type);
         metaRow.appendChild(pillType);
       }
-
-      if (item.category) {
+``
+      if (state.displaySettings.category && item.category) {
         const pillCat = createElement("span", "pill", getCategoryLabel(item.category));
         metaRow.appendChild(pillCat);
       }
