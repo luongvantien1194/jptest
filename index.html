@@ -9,25 +9,6 @@
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="theme-color" content="#6366f1" />
   <script src="js/kanjiHanViet.js?v=20260717"></script>
-  <script src="data/kanjiData.js?v=20260330"></script>
-  <!-- N3 kanji files: mỗi file push vào window._kanjiExtra với level:"n3", stt đánh từ 1 -->
-  <script src="data/kanjiData_1.js?v=20260330"></script>
-
-  <script>
-    const TOTAL_FILES_KANJI = 100;
-    const folderPathKanji = 'data/kanjiExtra/';
-
-    for (let i = 1; i <= TOTAL_FILES_KANJI; i++) {
-      const script = document.createElement('script');
-      script.src = `${folderPathKanji}${i}.js`;
-
-      // Giữ nguyên thứ tự thực thi từ 1 đến 1000 (Rất quan trọng nếu các file phụ thuộc nhau)
-      script.async = false;
-
-      document.head.appendChild(script);
-    }
-  </script>
-
 
   <script src="data/vocabData.js?v=20260330"></script>
   <!-- N3 vocab files: thêm script tag ở đây theo thứ tự, mỗi file push vào window._vocabExtra -->
@@ -40,6 +21,26 @@
     for (let i = 1; i <= TOTAL_FILES; i++) {
       const script = document.createElement('script');
       script.src = `${folderPath}${i}.js`;
+
+      // Giữ nguyên thứ tự thực thi từ 1 đến 1000 (Rất quan trọng nếu các file phụ thuộc nhau)
+      script.async = false;
+
+      document.head.appendChild(script);
+    }
+  </script>
+
+
+  <script src="data/kanjiData.js?v=20260330"></script>
+  <!-- N3 kanji files: mỗi file push vào window._kanjiExtra với level:"n3", stt đánh từ 1 -->
+  <script src="data/kanjiData_1.js?v=20260330"></script>
+
+  <script>
+    const TOTAL_FILES_KANJI = 100;
+    const folderPathKanji = 'data/kanjiExtra/';
+
+    for (let i = 1; i <= TOTAL_FILES_KANJI; i++) {
+      const script = document.createElement('script');
+      script.src = `${folderPathKanji}${i}.js`;
 
       // Giữ nguyên thứ tự thực thi từ 1 đến 1000 (Rất quan trọng nếu các file phụ thuộc nhau)
       script.async = false;
