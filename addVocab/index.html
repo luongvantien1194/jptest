@@ -423,12 +423,13 @@
 
         function copyAllCode() {
             if (vocabData.length === 0) { showToast('Không có dữ liệu!'); return; }
-            let txt = `// N3 Vocab - Extra\nwindow._vocabExtra = window._vocabExtra || [];\nwindow._vocabExtra.push(\n`;
+            // let txt = `// N3 Vocab - Extra\nwindow._vocabExtra = window._vocabExtra || [];\nwindow._vocabExtra.push(\n`;
+            let txt = ``;
             vocabData.forEach(i => {
                 txt += `  // --- Lesson ${i.Lesson}: ${i.Hiragana} ---\n`;
                 txt += `  { "Lesson": ${i.Lesson}, "Hiragana": "${i.Hiragana}", "Romaji": "${i.Romaji}", "Kanji": "${i.Kanji}", "Meaning": "${i.Meaning}", "category": "${i.category}", "Vru": "${i.Vru}", "type": "${i.type}", "note": "${i.note}" },\n`;
             });
-            txt += `);`;
+            // txt += `);`;
             navigator.clipboard.writeText(txt).then(() => showToast('📋 Đã copy code JS!'));
         }
 
