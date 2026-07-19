@@ -21,6 +21,7 @@
       grammarSearch: ""
     },
     displaySettings: {
+      lession: true,
       hiragana: true,
       kanji: true,
       hanviet: true,
