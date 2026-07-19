@@ -3924,13 +3924,13 @@
         if (isOnelesson.checked) {
             lessonTo.value = lessonFrom.value;
             state.filter.vocabLessonTo = lessonFrom.value.trim();
-            //renderVocabList();
             lessonTo.readOnly = true; // Chuyển sang chế độ chỉ đọc
             lessonTo.classList.add("disabled-gray");
         } else {
             lessonTo.readOnly = false; // Mở lại quyền chỉnh sửa khi bỏ chọn
             lessonTo.classList.remove("disabled-gray");
         }
+        renderVocabList();
     }
 
     // Lắng nghe sự kiện
@@ -5048,6 +5048,7 @@
     renderKanjiDetail();
     renderGrammarList();
     renderGrammarDetail();
+    setupVocabFilters();
 
     if (!window.location.hash) {
       window.location.hash = "#vocab";
