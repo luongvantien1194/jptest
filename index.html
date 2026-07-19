@@ -23,7 +23,7 @@
       script.src = `${folderPath}${i}.js`;
 
       // Giữ nguyên thứ tự thực thi từ 1 đến 1000 (Rất quan trọng nếu các file phụ thuộc nhau)
-      script.async = true;
+      script.async = false;
 
       document.head.appendChild(script);
     }
