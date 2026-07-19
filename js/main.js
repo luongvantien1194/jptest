@@ -3921,12 +3921,14 @@
     const isOnelesson = document.getElementById("vocab-one-lesson");
 
     function syncLessons() {
+        state.filter.vocabLessonFrom = lessonFrom.value.trim();
         if (isOnelesson.checked) {
             lessonTo.value = lessonFrom.value;
             state.filter.vocabLessonTo = lessonFrom.value.trim();
             lessonTo.readOnly = true; // Chuyển sang chế độ chỉ đọc
             lessonTo.classList.add("disabled-gray");
         } else {
+            state.filter.vocabLessonTo = lessonTo.value.trim(); 
             lessonTo.readOnly = false; // Mở lại quyền chỉnh sửa khi bỏ chọn
             lessonTo.classList.remove("disabled-gray");
         }
