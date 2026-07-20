@@ -3920,6 +3920,7 @@
   function setupVocabFilters() {
     const lessonFrom = document.getElementById("vocab-lesson-from");
     const lessonTo = document.getElementById("vocab-lesson-to");
+    const leononNext = document.getElementById("vocab-lesson-next");
     const categorySelect = document.getElementById("vocab-category-filter");
     const notMasteredCb = document.getElementById("vocab-not-mastered-cb");
     const searchInput = document.getElementById("vocab-search-input");
@@ -3941,10 +3942,27 @@
         }
         renderVocabList();
     }
+    
+    function nextLesson() {
+        state.filter.vocabLessonFrom = lessonFrom.value.trim() +1;
+        if (isOnelesson.checked) {
+            lessonTo.value = lessonFrom.value +1;
+            state.filter.vocabLessonTo = lessonFrom.value.trim()+1;
+            lessonTo.readOnly = true; // Chuyển sang chế độ chỉ đọc
+            lessonTo.classList.add("disabled-gray");
+        } else {
+            state.filter.vocabLessonTo = lessonTo.value.trim(); 
+            lessonTo.readOnly = false; // Mở lại quyền chỉnh sửa khi bỏ chọn
+            lessonTo.classList.remove("disabled-gray");
+        }
+        renderVocabList();
+    }
+    
 
     // Lắng nghe sự kiện
     isOnelesson.addEventListener("change", syncLessons);
     lessonFrom.addEventListener("input", syncLessons);
+    lessonNext.addEventListener("click", nextLesson);
 
     const categories = getUniqueSorted(
       vocabData.map(function (v) { return v.category; }).filter(function (c) { return c; })
