@@ -70,32 +70,35 @@
       <!-- Vocab Section -->
       <section class="section section--active" id="section-vocab" aria-labelledby="section-vocab-title">
         <div class="section-inner">
-            <div class="field-group"
-              style="margin-bottom:6px;display:flex;flex-direction:row;align-items:center;gap:1px">
+          <div>
+            <!-- Row 1: Search & Main Actions -->
+            <div class="field-group" style="margin-bottom:6px; display:flex; flex-direction:row; align-items:center; gap:1px;">
               <button type="button" class="filter-icon-btn nav-menu-btn" title="Menu điều hướng">☰</button>
-              <input id="vocab-search-input" type="text" placeholder="Hiragana / Kanji / Romaji / Meaning"
-                class="input-text" />
+              <input id="vocab-search-input" type="text" placeholder="Hiragana / Kanji / Romaji / Meaning" class="input-text" />
               <button type="button" class="star-filter-btn" id="vocab-fav-filter" title="Chỉ hiện yêu thích">☆</button>
               <span class="vocab-count-chip" id="vocab-count-label">0</span>
-              <button type="button" class="filter-icon-btn" id="display-settings-toggle-link"
-                title="Tuỳ chọn cột">⊞</button>
+              <button type="button" class="filter-icon-btn" id="display-settings-toggle-link" title="Tuỳ chọn cột">⊞</button>
             </div>
+
+            <!-- Row 2: Advanced Filters -->
             <div class="filters-row" id="vocab-filters-row">
-              <div class="field-group" style="display:flex; gap:4px; align-items:flex-end">
+              <!-- Sub-group 1: Lesson Filters -->
+              <div class="field-group" style="display:flex; gap:4px; align-items:flex-end;">
                 <div style="flex:0.2; min-width:0;">
                   <input type="checkbox" id="vocab-one-lesson" style="cursor:pointer">
                 </div>
                 <div style="flex:0.4; min-width:0">
                   <div class="field-label">Từ</div>
-                  <input type="number" id="vocab-lesson-from" placeholder="" min="0" class="input-text"
-                    style="width:100%" />
+                  <input type="number" id="vocab-lesson-from" placeholder="" min="0" class="input-text" style="width:100%" />
                 </div>
                 <div style="flex:0.4; min-width:0">
                   <div class="field-label">Đến</div>
-                  <input type="number" id="vocab-lesson-to" placeholder="" min="0" class="input-text"
-                    style="width:100%" />
+                  <input type="number" id="vocab-lesson-to" placeholder="" min="0" class="input-text" style="width:100%" />
                 </div>
-              <div class="field-group" style="display:flex; gap:4px; align-items:flex-end">
+              </div> <!-- ĐÃ SỬA: Đóng sub-group 1 -->
+
+              <!-- Sub-group 2: Category & Master status -->
+              <div class="field-group" style="display:flex; gap:4px; align-items:flex-end;">
                 <div style="flex:0.6">
                   <div class="field-label">Danh mục</div>
                   <select id="vocab-category-filter" style="width:100%">
@@ -105,14 +108,16 @@
                 </div>
                 <div style="flex:0.2">
                   <div class="field-label">Chưa</div>
-                  <div style="display:flex;align-items:center;padding:2px 0">
+                  <div style="display:flex; align-items:center; padding:2px 0">
                     <input type="checkbox" id="vocab-not-mastered-cb" style="cursor:pointer">
                   </div>
                 </div>
-              </div>
-              <button class="filter-icon-btn" type="button" id="reset-vocab-filter-btn" title="Xoá bộ lọc"
-                style="align-self:flex-end">↺</button>
-            </div>
+              </div> <!-- ĐÃ SỬA: Đóng sub-group 2 -->
+
+              <button class="filter-icon-btn" type="button" id="reset-vocab-filter-btn" title="Xoá bộ lọc" style="align-self:flex-end">↺</button>
+            </div> <!-- ĐÃ SỬA: Đóng hoàn toàn .filters-row -->
+
+            <!-- Display Settings Panel -->
             <div class="settings-panel settings-panel--hidden">
               <div class="settings-header" id="display-settings-toggle">
                 <div class="settings-title">
@@ -125,49 +130,21 @@
                 </div>
               </div>
               <div class="settings-body" id="display-settings-body">
-                <label class="checkbox-chip checkbox-chip--active">
-                  <input type="checkbox" data-display-field="lesson" checked />
-                  <span>Lesson</span>
-                </label>
-                <label class="checkbox-chip checkbox-chip--active">
-                  <input type="checkbox" data-display-field="hiragana" checked />
-                  <span>Hiragana</span>
-                </label>
-                <label class="checkbox-chip checkbox-chip--active">
-                  <input type="checkbox" data-display-field="romaji" checked />
-                  <span>Romaji</span>
-                </label>
-                <label class="checkbox-chip checkbox-chip--active">
-                  <input type="checkbox" data-display-field="kanji" checked />
-                  <span>Kanji</span>
-                </label>
-                <label class="checkbox-chip checkbox-chip--active">
-                  <input type="checkbox" data-display-field="hanviet" checked />
-                  <span>Hán Việt</span>
-                </label>
-                <label class="checkbox-chip checkbox-chip--active">
-                  <input type="checkbox" data-display-field="meaning" checked />
-                  <span>Nghĩa</span>
-                </label>
-                <label class="checkbox-chip">
-                  <input type="checkbox" data-display-field="vru" />
-                  <span>Vる</span>
-                </label>
-                <label class="checkbox-chip checkbox-chip--active">
-                  <input type="checkbox" data-display-field="type" />
-                  <span>Nhóm</span>
-                </label>
-                <label class="checkbox-chip">
-                  <input type="checkbox" data-display-field="note" />
-                  <span>Ghi chú</span>
-                </label>
-                <label class="checkbox-chip">
-                  <input type="checkbox" data-display-field="voice" />
-                  <span>🔊</span>
-                </label>
+                <label class="checkbox-chip checkbox-chip--active"><input type="checkbox" data-display-field="lesson" checked /><span>Lesson</span></label>
+                <label class="checkbox-chip checkbox-chip--active"><input type="checkbox" data-display-field="hiragana" checked /><span>Hiragana</span></label>
+                <label class="checkbox-chip checkbox-chip--active"><input type="checkbox" data-display-field="romaji" checked /><span>Romaji</span></label>
+                <label class="checkbox-chip checkbox-chip--active"><input type="checkbox" data-display-field="kanji" checked /><span>Kanji</span></label>
+                <label class="checkbox-chip checkbox-chip--active"><input type="checkbox" data-display-field="hanviet" checked /><span>Hán Việt</span></label>
+                <label class="checkbox-chip checkbox-chip--active"><input type="checkbox" data-display-field="meaning" checked /><span>Nghĩa</span></label>
+                <label class="checkbox-chip"><input type="checkbox" data-display-field="vru" /><span>Vる</span></label>
+                <label class="checkbox-chip checkbox-chip--active"><input type="checkbox" data-display-field="type" /><span>Nhóm</span></label>
+                <label class="checkbox-chip"><input type="checkbox" data-display-field="note" /><span>Ghi chú</span></label>
+                <label class="checkbox-chip"><input type="checkbox" data-display-field="voice" /><span>🔊</span></label>
               </div>
             </div>
-          </div>
+          </div> <!-- Đóng thẻ div bọc cụm filter/settings -->
+
+          <!-- Main Content Grid (List & Detail) -->
           <div class="content-grid">
             <div class="card">
               <div class="card-body scroll-thin" id="vocab-list-container">
@@ -182,8 +159,10 @@
               </div>
             </div>
           </div>
+
+          <!-- Test Section -->
           <div class="card card--vocab-test-hidden">
-            <div style="display:flex;justify-content:flex-end;padding:2px 0 4px">
+            <div style="display:flex; justify-content:flex-end; padding:2px 0 4px">
               <button class="btn-ghost btn-ghost--danger" type="button" id="reset-test-btn">
                 <span>Reset test</span>
               </button>
@@ -194,8 +173,10 @@
               </div>
             </div>
           </div>
-        </div>
-      </section>
+
+        </div> <!-- Đóng .section-inner -->
+      </section> <!-- Đóng #section-vocab -->
+
 
       <!-- Kanji Section -->
       <section class="section" id="section-kanji" aria-labelledby="section-kanji-title">
