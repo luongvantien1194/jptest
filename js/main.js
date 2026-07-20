@@ -133,7 +133,7 @@
 
   function stopVocabTts() {
     state.tts.active = false;
-    try { window.speechSynthesis.cancel(); } catch (e) {}
+    try { window.speechSynthesis.cancel(); } catch (e) { }
     var btn = document.getElementById("vocab-tts-btn");
     if (btn) {
       btn.textContent = state.tts.lastKey ? "Đọc tiếp" : "Đọc danh sách";
@@ -164,10 +164,10 @@
     });
 
     if (navigator.clipboard && navigator.clipboard.writeText) {
-      navigator.clipboard.writeText(mdContent).then(function() {
+      navigator.clipboard.writeText(mdContent).then(function () {
         alert("Đã copy danh sách Markdown vào Clipboard thành công!");
         switchToManualNote(mdContent);
-      }).catch(function(err) {
+      }).catch(function (err) {
         alert("Lỗi khi copy vào Clipboard: " + err);
       });
     } else {
@@ -297,7 +297,7 @@
       }
 
       // Preload voices (một số browser chỉ populate sau lần gọi đầu)
-      try { window.speechSynthesis.getVoices(); } catch (e) {}
+      try { window.speechSynthesis.getVoices(); } catch (e) { }
 
       var u1 = null;
       if (hira) {
@@ -361,19 +361,19 @@
   }
 
   function saveVocabFavorites() {
-    try { localStorage.setItem("jp_vocab_favorites", JSON.stringify(state.vocabFavorites)); } catch (e) {}
+    try { localStorage.setItem("jp_vocab_favorites", JSON.stringify(state.vocabFavorites)); } catch (e) { }
   }
   function saveVocabMastered() {
-    try { localStorage.setItem("jp_vocab_mastered", JSON.stringify(state.vocabMastered)); } catch (e) {}
+    try { localStorage.setItem("jp_vocab_mastered", JSON.stringify(state.vocabMastered)); } catch (e) { }
   }
   function saveDisplaySettings() {
-    try { localStorage.setItem("jp_display_settings", JSON.stringify(state.displaySettings)); } catch (e) {}
+    try { localStorage.setItem("jp_display_settings", JSON.stringify(state.displaySettings)); } catch (e) { }
   }
   function saveKanjiFavorites() {
-    try { localStorage.setItem("jp_kanji_favorites", JSON.stringify(state.kanjiFavorites)); } catch (e) {}
+    try { localStorage.setItem("jp_kanji_favorites", JSON.stringify(state.kanjiFavorites)); } catch (e) { }
   }
   function saveKanjiVocabFavorites() {
-    try { localStorage.setItem("jp_kanji_vocab_favorites", JSON.stringify(state.kanjiVocabFavorites)); } catch (e) {}
+    try { localStorage.setItem("jp_kanji_vocab_favorites", JSON.stringify(state.kanjiVocabFavorites)); } catch (e) { }
   }
 
   // ========================
@@ -601,14 +601,14 @@
     }
 
     // Stop any current speech
-    try { window.speechSynthesis.cancel(); } catch (e) {}
+    try { window.speechSynthesis.cancel(); } catch (e) { }
 
     var prevBtn = document.querySelector(".audio-btn--playing");
     if (prevBtn) prevBtn.classList.remove("audio-btn--playing");
     if (btn) btn.classList.add("audio-btn--playing");
 
     // Preload voices
-    try { window.speechSynthesis.getVoices(); } catch (e) {}
+    try { window.speechSynthesis.getVoices(); } catch (e) { }
 
     var u = new SpeechSynthesisUtterance(t);
     u.lang = "ja-JP";
@@ -640,6 +640,38 @@
     return btn;
   }
 
+  function addVocab(kanji, hiragana, meaning) {
+    let vocabData = JSON.parse(localStorage.getItem('vocab_extra_list')) || [];
+    const item = {
+      "Lesson": 9999,
+      "Hiragana": hiragana,
+      "Romaji": '',
+      "Kanji": kanji,
+      "Meaning": meaning,
+      "category": '',
+      "Vru": '',
+      "type": '',
+      "note": ''
+    };
+
+    vocabData.push(item);
+
+    localStorage.setItem('vocab_extra_list', JSON.stringify(vocabData));
+    alert("Đã thêm từ này vào list từ vựng mới!")
+
+  }
+
+  function createAddVocab(kanji, hiragana, meaning) {
+    var btn = createElement("button", "audio-btn", "+");
+    btn.type = "button";
+    btn.title = "Thêm từ vựng";
+    btn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      addVocab(kanji, hiragana, meaning);
+    });
+    return btn;
+  }
+
   // ========================
   // AUTO-PLAY
   // ========================
@@ -647,7 +679,7 @@
 
   function stopAutoPlay() {
     state.autoPlay.active = false;
-    try { window.speechSynthesis.cancel(); } catch (e) {}
+    try { window.speechSynthesis.cancel(); } catch (e) { }
     // Remove all highlights
     var highlighted = document.querySelectorAll(".vocab-item--highlight");
     highlighted.forEach(function (el) {
@@ -695,9 +727,9 @@
       : "";
     if (hiraAuto) {
       if (audioBtn) audioBtn.classList.add("audio-btn--playing");
-      try { window.speechSynthesis.cancel(); } catch (e) {}
+      try { window.speechSynthesis.cancel(); } catch (e) { }
       // Preload voices
-      try { window.speechSynthesis.getVoices(); } catch (e) {}
+      try { window.speechSynthesis.getVoices(); } catch (e) { }
       var u = new SpeechSynthesisUtterance(String(hiraAuto).replace(/、/g, ","));
       u.lang = "ja-JP";
       u.rate = 1;
@@ -809,32 +841,32 @@
     "みゃ": "mya", "みゅ": "myu", "みょ": "myo",
     "りゃ": "rya", "りゅ": "ryu", "りょ": "ryo",
     "ぎゃ": "gya", "ぎゅ": "gyu", "ぎょ": "gyo",
-    "じゃ": "ja",  "じゅ": "ju",  "じょ": "jo",
+    "じゃ": "ja", "じゅ": "ju", "じょ": "jo",
     "びゃ": "bya", "びゅ": "byu", "びょ": "byo",
     "ぴゃ": "pya", "ぴゅ": "pyu", "ぴょ": "pyo"
   };
 
   const _HIRA_TABLE = {
-    "あ":"a","い":"i","う":"u","え":"e","お":"o",
-    "か":"ka","き":"ki","く":"ku","け":"ke","こ":"ko",
-    "さ":"sa","し":"shi","す":"su","せ":"se","そ":"so",
-    "た":"ta","ち":"chi","つ":"tsu","て":"te","と":"to",
-    "な":"na","に":"ni","ぬ":"nu","ね":"ne","の":"no",
-    "は":"ha","ひ":"hi","ふ":"fu","へ":"he","ほ":"ho",
-    "ま":"ma","み":"mi","む":"mu","め":"me","も":"mo",
-    "や":"ya","ゆ":"yu","よ":"yo",
-    "ら":"ra","り":"ri","る":"ru","れ":"re","ろ":"ro",
-    "わ":"wa","を":"o",
-    "ん":"n",
-    "が":"ga","ぎ":"gi","ぐ":"gu","げ":"ge","ご":"go",
-    "ざ":"za","じ":"ji","ず":"zu","ぜ":"ze","ぞ":"zo",
-    "だ":"da","ぢ":"ji","づ":"zu","で":"de","ど":"do",
-    "ば":"ba","び":"bi","ぶ":"bu","べ":"be","ぼ":"bo",
-    "ぱ":"pa","ぴ":"pi","ぷ":"pu","ぺ":"pe","ぽ":"po",
-    "ぁ":"a","ぃ":"i","ぅ":"u","ぇ":"e","ぉ":"o",
-    "ゃ":"ya","ゅ":"yu","ょ":"yo",
-    "っ":"",   // xử lý riêng (nhân đôi phụ âm)
-    "ー":""    // xử lý riêng (kéo dài âm)
+    "あ": "a", "い": "i", "う": "u", "え": "e", "お": "o",
+    "か": "ka", "き": "ki", "く": "ku", "け": "ke", "こ": "ko",
+    "さ": "sa", "し": "shi", "す": "su", "せ": "se", "そ": "so",
+    "た": "ta", "ち": "chi", "つ": "tsu", "て": "te", "と": "to",
+    "な": "na", "に": "ni", "ぬ": "nu", "ね": "ne", "の": "no",
+    "は": "ha", "ひ": "hi", "ふ": "fu", "へ": "he", "ほ": "ho",
+    "ま": "ma", "み": "mi", "む": "mu", "め": "me", "も": "mo",
+    "や": "ya", "ゆ": "yu", "よ": "yo",
+    "ら": "ra", "り": "ri", "る": "ru", "れ": "re", "ろ": "ro",
+    "わ": "wa", "を": "o",
+    "ん": "n",
+    "が": "ga", "ぎ": "gi", "ぐ": "gu", "げ": "ge", "ご": "go",
+    "ざ": "za", "じ": "ji", "ず": "zu", "ぜ": "ze", "ぞ": "zo",
+    "だ": "da", "ぢ": "ji", "づ": "zu", "で": "de", "ど": "do",
+    "ば": "ba", "び": "bi", "ぶ": "bu", "べ": "be", "ぼ": "bo",
+    "ぱ": "pa", "ぴ": "pi", "ぷ": "pu", "ぺ": "pe", "ぽ": "po",
+    "ぁ": "a", "ぃ": "i", "ぅ": "u", "ぇ": "e", "ぉ": "o",
+    "ゃ": "ya", "ゅ": "yu", "ょ": "yo",
+    "っ": "",   // xử lý riêng (nhân đôi phụ âm)
+    "ー": ""    // xử lý riêng (kéo dài âm)
   };
 
   function _lastVowel(str) {
@@ -1795,7 +1827,7 @@
           }
         }
         if (state.filter.vocabCategory !== "all" &&
-            categoryValue !== state.filter.vocabCategory) {
+          categoryValue !== state.filter.vocabCategory) {
           return false;
         }
 
@@ -1854,10 +1886,10 @@
     const lessonLabel = (state.filter.vocabLessonFrom === "" && state.filter.vocabLessonTo === "")
       ? "Tất cả các bài"
       : (state.filter.vocabLessonTo === "" || state.filter.vocabLessonFrom === state.filter.vocabLessonTo
-          ? "Bài " + (state.filter.vocabLessonFrom || state.filter.vocabLessonTo)
-          : (state.filter.vocabLessonFrom === "" ? "≤ Bài " + state.filter.vocabLessonTo
-              : "Bài " + state.filter.vocabLessonFrom + " → " + state.filter.vocabLessonTo)
-        );
+        ? "Bài " + (state.filter.vocabLessonFrom || state.filter.vocabLessonTo)
+        : (state.filter.vocabLessonFrom === "" ? "≤ Bài " + state.filter.vocabLessonTo
+          : "Bài " + state.filter.vocabLessonFrom + " → " + state.filter.vocabLessonTo)
+      );
     const categoryLabel = state.filter.vocabCategory === "all"
       ? "Tất cả loại từ"
       : state.filter.vocabCategory + (categoriesSet.size === 1 ? "" : " (filtered)");
@@ -1952,7 +1984,7 @@
         // Ưu tiên Romaji, fallback sang Romazi nếu còn dữ liệu cũ
         romaji: raw.romaji != null ? raw.romaji
           : (raw.Romaji != null ? raw.Romaji
-          : (raw.romazi != null ? raw.romazi : raw.Romazi)),
+            : (raw.romazi != null ? raw.romazi : raw.Romazi)),
         kanji: raw.kanji != null ? raw.kanji : raw.Kanji,
         meaning: raw.meaning != null ? raw.meaning : raw.Meaning,
         vru: raw.vru != null ? raw.vru : raw.Vru,
@@ -1973,7 +2005,7 @@
         const romajiEl = createElement("div", "vocab-romazi", "(" + item.romaji + ")");
         fields.push(romajiEl);
       }
-      
+
       if (state.displaySettings.kanji && item.kanji) {
         const outputKanji = boldKanji(item.kanji);
 
@@ -1986,17 +2018,17 @@
           if (index > 0) b.classList.add("vocab-kanji--linked");
 
           b.addEventListener("click", function () {
-              const idx = kanjiData.findIndex(item => item.kanji === this.textContent);
+            const idx = kanjiData.findIndex(item => item.kanji === this.textContent);
 
-              if (idx > 0) {
-                state.selected.kanjiIndex = idx;
-                renderKanjiDetail();
-              } else {
-                openDetailModal("Thông báo", "<p>Không có data của chữ này!</p>");
-              }
+            if (idx > 0) {
+              state.selected.kanjiIndex = idx;
+              renderKanjiDetail();
+            } else {
+              openDetailModal("Thông báo", "<p>Không có data của chữ này!</p>");
+            }
           });
         });
-      
+
         fields.push(kanjiEl);
       }
       if (state.displaySettings.hanviet && item.kanji && window.getHanViet) {
@@ -2008,7 +2040,7 @@
       }
 
       if (state.displaySettings.meaning && item.meaning) {
-        const meanEl = createElement("div", "vocab-meaning", " "+item.meaning);
+        const meanEl = createElement("div", "vocab-meaning", " " + item.meaning);
         fields.push(meanEl);
       }
 
@@ -2048,7 +2080,7 @@
         const pillType = createElement("span", "pill pill--type", item.type);
         metaRow.appendChild(pillType);
       }
-``
+      ``
       if (state.displaySettings.category && item.category) {
         const pillCat = createElement("span", "pill", getCategoryLabel(item.category));
         metaRow.appendChild(pillCat);
@@ -2340,7 +2372,7 @@
       var pool = vocabData.filter(function (raw) {
         if (!raw) {
           return false;
-        } 
+        }
         var idx = vocabData.indexOf(raw);
         // Filter favorites only
         if (isStar) {
@@ -3141,6 +3173,17 @@
         }
 
         sec4.appendChild(row);
+
+        let match = parts[0].match(/^(.+?)\((.+?)\)$/);
+        let kanji = '';
+        let hiragana = '';
+        if (match) {
+            kanji = match[1];
+            hiragana = match[2];
+        }
+
+        row.appendChild(createAddVocab(kanji, hiragana , parts[1]));
+        sec4.appendChild(row);
       });
 
       if (sec4.children.length > 0) {
@@ -3293,7 +3336,7 @@
       }
       var lessonValue = item.lesson != null ? item.lesson : item.Lesson;
       if (state.filter.grammarLesson !== "all" &&
-          String(lessonValue) !== String(state.filter.grammarLesson)) {
+        String(lessonValue) !== String(state.filter.grammarLesson)) {
         return false;
       }
       var searchRaw = String(state.filter.grammarSearch || "").trim();
@@ -3930,43 +3973,43 @@
     const isOnelesson = document.getElementById("vocab-one-lesson");
 
     function syncLessons() {
-        state.filter.vocabLessonFrom = lessonFrom.value.trim();
-        if (isOnelesson.checked) {
-            lessonTo.value = lessonFrom.value;
-            state.filter.vocabLessonTo = lessonFrom.value.trim();
-            lessonTo.readOnly = true; // Chuyển sang chế độ chỉ đọc
-            lessonTo.classList.add("disabled-gray");
-        } else {
-            state.filter.vocabLessonTo = lessonTo.value.trim(); 
-            lessonTo.readOnly = false; // Mở lại quyền chỉnh sửa khi bỏ chọn
-            lessonTo.classList.remove("disabled-gray");
-        }
-        renderVocabList();
+      state.filter.vocabLessonFrom = lessonFrom.value.trim();
+      if (isOnelesson.checked) {
+        lessonTo.value = lessonFrom.value;
+        state.filter.vocabLessonTo = lessonFrom.value.trim();
+        lessonTo.readOnly = true; // Chuyển sang chế độ chỉ đọc
+        lessonTo.classList.add("disabled-gray");
+      } else {
+        state.filter.vocabLessonTo = lessonTo.value.trim();
+        lessonTo.readOnly = false; // Mở lại quyền chỉnh sửa khi bỏ chọn
+        lessonTo.classList.remove("disabled-gray");
+      }
+      renderVocabList();
     }
-    
+
     function nextLesson() {
-      let next = Number(lessonFrom.value.trim()) +1;
-        state.filter.vocabLessonFrom = next;
-        lessonFrom.value = next;
-        if (isOnelesson.checked) {
-            lessonTo.value = next;
-            state.filter.vocabLessonTo = next;
-        } else {
-            state.filter.vocabLessonTo = lessonTo.value.trim(); 
-        }
-        renderVocabList();
+      let next = Number(lessonFrom.value.trim()) + 1;
+      state.filter.vocabLessonFrom = next;
+      lessonFrom.value = next;
+      if (isOnelesson.checked) {
+        lessonTo.value = next;
+        state.filter.vocabLessonTo = next;
+      } else {
+        state.filter.vocabLessonTo = lessonTo.value.trim();
+      }
+      renderVocabList();
     }
     function preLesson() {
-      let next = Number(lessonFrom.value.trim()) -1;
-        state.filter.vocabLessonFrom = next;
-        lessonFrom.value = next;
-        if (isOnelesson.checked) {
-            lessonTo.value = next;
-            state.filter.vocabLessonTo = next;
-        } else {
-            state.filter.vocabLessonTo = lessonTo.value.trim(); 
-        }
-        renderVocabList();
+      let next = Number(lessonFrom.value.trim()) - 1;
+      state.filter.vocabLessonFrom = next;
+      lessonFrom.value = next;
+      if (isOnelesson.checked) {
+        lessonTo.value = next;
+        state.filter.vocabLessonTo = next;
+      } else {
+        state.filter.vocabLessonTo = lessonTo.value.trim();
+      }
+      renderVocabList();
     }
 
     // Lắng nghe sự kiện

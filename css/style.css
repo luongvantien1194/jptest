@@ -3211,7 +3211,7 @@ select:focus {
 .kd-vocab-row {
   display: flex;
   align-items: baseline;
-  gap: 5px;
+  gap: 0px;
   padding: 4px 2px;
   border-bottom: 1px dashed rgba(192, 57, 43, 0.08);
   flex-wrap: wrap;

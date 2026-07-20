@@ -1,8 +1,10 @@
 <!DOCTYPE html>
 <html lang="vi">
+
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
     <title>Quản lý Kanji Extra - Siêu Gọn</title>
     <style>
         :root {
@@ -18,7 +20,12 @@
             --safe-bottom: env(safe-area-inset-bottom, 20px);
         }
 
-        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
 
         body {
             font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
@@ -41,39 +48,97 @@
             z-index: 100;
         }
 
-        header h1 { font-size: 16px; font-weight: 700; }
+        header h1 {
+            font-size: 16px;
+            font-weight: 700;
+        }
 
-        .header-actions { display: flex; gap: 6px; }
+        .header-actions {
+            display: flex;
+            gap: 6px;
+        }
 
         .btn-icon {
-            border: none; width: 32px; height: 32px; border-radius: 50%;
-            font-size: 14px; cursor: pointer; display: flex;
-            align-items: center; justify-content: center;
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
         }
-        .btn-icon-add { background: #ffe3e8; color: var(--primary-color); }
-        .btn-icon-copy { background: #e8f7ed; color: var(--success-color); }
-        .btn-icon-delete { background: #ffebeb; color: var(--danger-color); }
 
-        .container { padding: 6px; }
-        .kanji-list { display: flex; flex-direction: column; gap: 4px; }
+        .btn-icon-add {
+            background: #ffe3e8;
+            color: var(--primary-color);
+        }
+
+        .btn-icon-copy {
+            background: #e8f7ed;
+            color: var(--success-color);
+        }
+
+        .btn-icon-delete {
+            background: #ffebeb;
+            color: var(--danger-color);
+        }
+
+        .container {
+            padding: 6px;
+        }
+
+        .kanji-list {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
 
         .kanji-card {
             background: var(--card-bg);
             border-radius: 8px;
             padding: 8px 10px;
-            box-shadow: 0 1px 1px rgba(0,0,0,0.03);
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.03);
             display: grid;
             grid-template-columns: 1fr auto;
             align-items: center;
             gap: 8px;
         }
 
-        .kanji-info { display: flex; flex-direction: column; gap: 4px; min-width: 0; }
+        .kanji-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            min-width: 0;
+        }
 
-        .kanji-main-line { font-size: 14px; font-weight: 700; display: flex; align-items: center; flex-wrap: wrap; gap: 4px; }
-        .kanji-char { font-size: 18px; color: var(--primary-color); font-weight: 800; }
-        .kanji-hv { color: #000; font-weight: 700; text-transform: uppercase; }
-        .kanji-meaning { font-size: 13px; color: #3a3a3c; font-weight: 500; }
+        .kanji-main-line {
+            font-size: 14px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+
+        .kanji-char {
+            font-size: 18px;
+            color: var(--primary-color);
+            font-weight: 800;
+        }
+
+        .kanji-hv {
+            color: #000;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .kanji-meaning {
+            font-size: 13px;
+            color: #3a3a3c;
+            font-weight: 500;
+        }
 
         .kanji-sub-line {
             display: flex;
@@ -90,9 +155,25 @@
             border-radius: 4px;
             font-weight: 500;
         }
-        .tag-read { background: #e5f6ff; color: #0051a8; }
-        .tag-radical { background: #f0fdf4; color: #15803d; }
-        .tag-tip { background: #fff9e6; color: #b27b00; max-width: 180px; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+        .tag-read {
+            background: #e5f6ff;
+            color: #0051a8;
+        }
+
+        .tag-radical {
+            background: #f0fdf4;
+            color: #15803d;
+        }
+
+        .tag-tip {
+            background: #fff9e6;
+            color: #b27b00;
+            max-width: 180px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
 
         .card-actions {
             display: flex;
@@ -109,65 +190,207 @@
             cursor: pointer;
             padding: 6px 0;
         }
-        .link-edit { color: #007aff; }
-        .link-delete { color: var(--danger-color); }
+
+        .link-edit {
+            color: #007aff;
+        }
+
+        .link-delete {
+            color: var(--danger-color);
+        }
 
         /* Modal Base */
-        .modal-overlay { position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.4); z-index: 999; display: none; }
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 999;
+            display: none;
+        }
+
         .modal {
-            position: fixed; left: 0; right: 0; bottom: 0; background: var(--card-bg);
-            border-top-left-radius: 14px; border-top-right-radius: 14px; max-height: 85vh;
-            overflow-y: auto; z-index: 1000; transform: translateY(100%);
-            transition: transform 0.2s ease-out; padding: 14px;
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--card-bg);
+            border-top-left-radius: 14px;
+            border-top-right-radius: 14px;
+            max-height: 85vh;
+            overflow-y: auto;
+            z-index: 1000;
+            transform: translateY(100%);
+            transition: transform 0.2s ease-out;
+            padding: 14px;
             padding-bottom: calc(var(--safe-bottom) + 14px);
         }
-        body.modal-open .modal-overlay { display: block; }
-        body.modal-open #kanji-modal { transform: translateY(0); }
-        .modal-header { display: flex; justify-content: space-between; margin-bottom: 12px; }
-        
+
+        body.modal-open .modal-overlay {
+            display: block;
+        }
+
+        body.modal-open #kanji-modal {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
         /* Confirm Modal Style */
         #confirm-modal {
-            left: 50%; bottom: auto; top: 50%; transform: translate(-50%, -50%) scale(0.9);
-            width: 280px; border-radius: 14px; padding: 16px; text-align: center;
-            opacity: 0; visibility: hidden; transition: all 0.2s ease;
+            left: 50%;
+            bottom: auto;
+            top: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            width: 280px;
+            border-radius: 14px;
+            padding: 16px;
+            text-align: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.2s ease;
         }
-        body.confirm-open .modal-overlay { display: block; }
-        body.confirm-open #confirm-modal { opacity: 1; visibility: visible; transform: translate(-50%, -50%) scale(1); }
-        .confirm-title { font-size: 15px; font-weight: 700; margin-bottom: 6px; }
-        .confirm-msg { font-size: 13px; color: #3a3a3c; margin-bottom: 16px; }
-        .confirm-buttons { display: flex; gap: 8px; }
-        .btn-confirm { flex: 1; border: none; padding: 8px; border-radius: 6px; font-size: 13px; font-weight: 600; cursor: pointer; }
-        .btn-confirm-cancel { background: #e5e5ea; color: var(--text-color); }
-        .btn-confirm-ok { background: var(--danger-color); color: white; }
 
-        .form-group { margin-bottom: 10px; }
-        .form-group label { display: block; font-size: 12px; font-weight: 600; margin-bottom: 3px; }
-        .form-control { width: 100%; padding: 8px 10px; border: 1px solid var(--border-color); background: #f2f2f7; border-radius: 6px; font-size: 16px; outline: none; }
-        .form-control:focus { background: #fff; border-color: var(--primary-color); }
-        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-        .btn-submit { background: var(--primary-color); color: white; border: none; padding: 10px; border-radius: 8px; width: 100%; font-weight: 600; margin-top: 6px; }
+        body.confirm-open .modal-overlay {
+            display: block;
+        }
+
+        body.confirm-open #confirm-modal {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .confirm-title {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .confirm-msg {
+            font-size: 13px;
+            color: #3a3a3c;
+            margin-bottom: 16px;
+        }
+
+        .confirm-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-confirm {
+            flex: 1;
+            border: none;
+            padding: 8px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .btn-confirm-cancel {
+            background: #e5e5ea;
+            color: var(--text-color);
+        }
+
+        .btn-confirm-ok {
+            background: var(--danger-color);
+            color: white;
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 8px 10px;
+            border: 1px solid var(--border-color);
+            background: #f2f2f7;
+            border-radius: 6px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .form-control:focus {
+            background: #fff;
+            border-color: var(--primary-color);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .btn-submit {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            width: 100%;
+            font-weight: 600;
+            margin-top: 6px;
+        }
 
         .toast {
-            position: fixed; top: 16px; left: 50%; transform: translateX(-50%) translateY(-100px);
-            background: rgba(0,0,0,0.85); color: white; padding: 8px 16px;
-            border-radius: 16px; font-size: 12px; z-index: 9999; transition: transform 0.2s ease;
-            pointer-events: none; text-align: center; width: 60%;
+            position: fixed;
+            top: 16px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-100px);
+            background: rgba(0, 0, 0, 0.85);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 16px;
+            font-size: 12px;
+            z-index: 9999;
+            transition: transform 0.2s ease;
+            pointer-events: none;
+            text-align: center;
+            width: 60%;
         }
-        .toast.show { transform: translateX(-50%) translateY(var(--safe-top)); }
-        .empty-state { text-align: center; padding: 30px; color: var(--text-muted); font-size: 13px; }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(var(--safe-top));
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-muted);
+            font-size: 13px;
+        }
     </style>
 </head>
+
 <body>
 
     <header>
         <div style="display: flex; align-items: center; gap: 8px;">
-            <a href="https://luongvantien1194.github.io/jptest/index.html#kanji" class="btn-icon" style="text-decoration: none; background: #f2f2f7; color: var(--text-color);" title="Về trang chủ">🏠</a>
+            <a href="https://luongvantien1194.github.io/jptest/index.html#kanji" class="btn-icon"
+                style="text-decoration: none; background: #f2f2f7; color: var(--text-color);"
+                title="Về trang chủ">🏠</a>
             <h1>Kanji Extra</h1>
         </div>
         <div class="header-actions">
             <button class="btn-icon btn-icon-add" onclick="openModal()">＋</button>
             <button class="btn-icon btn-icon-copy" onclick="copyAllCode()">📋</button>
-            <button class="btn-icon btn-icon-delete" id="btn-delete-all" onclick="deleteAllKanji()" style="display: none;">🗑️</button>
+            <button class="btn-icon btn-icon-delete" id="btn-delete-all" onclick="deleteAllKanji()"
+                style="display: none;">🗑️</button>
         </div>
     </header>
 
@@ -180,11 +403,12 @@
     <div class="modal" id="kanji-modal">
         <div class="modal-header">
             <h3 id="modal-title" style="font-size: 14px;">Thêm chữ Kanji mới</h3>
-            <span style="color: var(--primary-color); font-size: 13px; font-weight:600; cursor: pointer;" onclick="closeModal()">Đóng</span>
+            <span style="color: var(--primary-color); font-size: 13px; font-weight:600; cursor: pointer;"
+                onclick="closeModal()">Đóng</span>
         </div>
         <form id="kanji-form" onsubmit="saveKanji(event)">
             <input type="hidden" id="edit-id">
-            
+
             <div class="form-row">
                 <div class="form-group">
                     <label>Kanji *</label>
@@ -230,12 +454,14 @@
 
             <div class="form-group">
                 <label>Hình ảnh câu chuyện (Story Image)</label>
-                <input type="text" id="inp-story" class="form-control" placeholder="Lửa thiêu rụi mọi thứ - không còn gì sót lại.">
+                <input type="text" id="inp-story" class="form-control"
+                    placeholder="Lửa thiêu rụi mọi thứ - không còn gì sót lại.">
             </div>
 
             <div class="form-group">
                 <label>Từ vựng liên quan (Dùng dấu | phân cách từ)</label>
-                <input type="text" id="inp-vocab" class="form-control" placeholder="無休(むきゅう):không nghỉ|無料(むりょう):miễn phí|無理(むり):vô lý">
+                <input type="text" id="inp-vocab" class="form-control"
+                    placeholder="無休(むきゅう):không nghỉ|無料(むりょう):miễn phí|無理(むり):vô lý">
             </div>
 
             <button type="submit" class="btn-submit">Lưu lại</button>
@@ -254,6 +480,14 @@
 
     <div id="toast" class="toast"></div>
 
+    <div style="position:fixed;right:-8px;bottom:16px;display:flex;flex-direction:column;gap:3px;z-index:9999">
+        <button class="filter-icon-btn2" id="vocab-lesson-pre" style="width:100%;">⏮️</button>
+        <button class="filter-icon-btn2" id="vocab-lesson-next" style="width:100%">⏭️</button>
+        <button class="filter-icon-btn2" id="start-vocab-test-btn">T</button>
+        <button class="filter-icon-btn2" id="vocab-export-md-btn">MD</button>
+        <a class="filter-icon-btn2" href="addVocab/index.html">+</a>
+    </div>
+
     <script>
         let kanjiData = JSON.parse(localStorage.getItem('kanji_extra_list')) || [];
         let confirmResolve = null;
@@ -269,7 +503,7 @@
             document.getElementById('confirm-title').innerText = title;
             document.getElementById('confirm-msg').innerText = message;
             document.body.classList.add('confirm-open');
-            
+
             return new Promise((resolve) => {
                 confirmResolve = resolve;
             });
@@ -294,7 +528,7 @@
         function renderList() {
             const container = document.getElementById('kanji-list-container');
             const btnDelAll = document.getElementById('btn-delete-all');
-            
+
             if (kanjiData.length === 0) {
                 container.innerHTML = `<div class="empty-state">Chưa có chữ Kanji bổ sung nào.</div>`;
                 btnDelAll.style.display = 'none';
@@ -307,12 +541,12 @@
             kanjiData.forEach((item, index) => {
                 const card = document.createElement('div');
                 card.className = 'kanji-card';
-                
+
                 let tagsHtml = '';
-                if(item.on_reading) tagsHtml += `<span class="mini-tag tag-read">On: ${item.on_reading}</span>`;
-                if(item.kun_reading) tagsHtml += `<span class="mini-tag tag-read">Kun: ${item.kun_reading}</span>`;
-                if(item.radicals) tagsHtml += `<span class="mini-tag tag-radical">${item.radicals}</span>`;
-                if(item.memory_tip) tagsHtml += `<span class="mini-tag tag-tip" title="${item.memory_tip.replace(/"/g, '&quot;')}">💡 ${item.memory_tip}</span>`;
+                if (item.on_reading) tagsHtml += `<span class="mini-tag tag-read">On: ${item.on_reading}</span>`;
+                if (item.kun_reading) tagsHtml += `<span class="mini-tag tag-read">Kun: ${item.kun_reading}</span>`;
+                if (item.radicals) tagsHtml += `<span class="mini-tag tag-radical">${item.radicals}</span>`;
+                if (item.memory_tip) tagsHtml += `<span class="mini-tag tag-tip" title="${item.memory_tip.replace(/"/g, '&quot;')}">💡 ${item.memory_tip}</span>`;
 
                 card.innerHTML = `
                     <div class="kanji-info">
@@ -347,14 +581,14 @@
         function saveKanji(e) {
             e.preventDefault();
             const id = document.getElementById('edit-id').value;
-            
+
             let oldLogic = "";
             if (id !== '' && kanjiData[parseInt(id)]) {
                 oldLogic = kanjiData[parseInt(id)].logic_development || "";
             }
 
             const item = {
-                "stt": id !== '' ? kanjiData[parseInt(id)].stt : (kanjiData.length + 1), 
+                "stt": id !== '' ? kanjiData[parseInt(id)].stt : (kanjiData.length + 1),
                 "level": "n3",
                 "kanji": document.getElementById('inp-kanji').value.trim(),
                 "hanviet": document.getElementById('inp-hanviet').value.trim().toUpperCase(),
@@ -369,12 +603,12 @@
                 "vocabulary": document.getElementById('inp-vocab').value.trim()
             };
 
-            if (id !== '') { 
-                kanjiData[parseInt(id)] = item; 
-                showToast('Đã sửa!'); 
-            } else { 
-                kanjiData.push(item); 
-                showToast('Đã thêm!'); 
+            if (id !== '') {
+                kanjiData[parseInt(id)] = item;
+                showToast('Đã sửa!');
+            } else {
+                kanjiData.push(item);
+                showToast('Đã thêm!');
             }
 
             localStorage.setItem('kanji_extra_list', JSON.stringify(kanjiData));
@@ -432,4 +666,5 @@
         document.addEventListener('DOMContentLoaded', renderList);
     </script>
 </body>
+
 </html>
