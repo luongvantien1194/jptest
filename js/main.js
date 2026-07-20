@@ -3920,7 +3920,7 @@
   function setupVocabFilters() {
     const lessonFrom = document.getElementById("vocab-lesson-from");
     const lessonTo = document.getElementById("vocab-lesson-to");
-    const leononNext = document.getElementById("vocab-lesson-next");
+    const lessonNext = document.getElementById("vocab-lesson-next");
     const categorySelect = document.getElementById("vocab-category-filter");
     const notMasteredCb = document.getElementById("vocab-not-mastered-cb");
     const searchInput = document.getElementById("vocab-search-input");
