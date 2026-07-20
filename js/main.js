@@ -3948,8 +3948,8 @@
         state.filter.vocabLessonFrom = next;
         lessonFrom.value = next;
         if (isOnelesson.checked) {
-            lessonTo.value = lessonFrom.value;
-            state.filter.vocabLessonTo = lessonFrom.value;
+            lessonTo.value = next;
+            state.filter.vocabLessonTo = next;
         } else {
             state.filter.vocabLessonTo = lessonTo.value.trim(); 
         }
