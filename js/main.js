@@ -3920,6 +3920,7 @@
   function setupVocabFilters() {
     const lessonFrom = document.getElementById("vocab-lesson-from");
     const lessonTo = document.getElementById("vocab-lesson-to");
+    const lessonPre = document.getElementById("vocab-lesson-pre");
     const lessonNext = document.getElementById("vocab-lesson-next");
     const categorySelect = document.getElementById("vocab-category-filter");
     const notMasteredCb = document.getElementById("vocab-not-mastered-cb");
@@ -3955,12 +3956,24 @@
         }
         renderVocabList();
     }
-    
+    function preLesson() {
+      let next = Number(lessonFrom.value.trim()) -1;
+        state.filter.vocabLessonFrom = next;
+        lessonFrom.value = next;
+        if (isOnelesson.checked) {
+            lessonTo.value = next;
+            state.filter.vocabLessonTo = next;
+        } else {
+            state.filter.vocabLessonTo = lessonTo.value.trim(); 
+        }
+        renderVocabList();
+    }
 
     // Lắng nghe sự kiện
     isOnelesson.addEventListener("change", syncLessons);
     lessonFrom.addEventListener("input", syncLessons);
     lessonNext.addEventListener("click", nextLesson);
+    lesoonPre.addEventListener("click", preLesson);
 
     const categories = getUniqueSorted(
       vocabData.map(function (v) { return v.category; }).filter(function (c) { return c; })
