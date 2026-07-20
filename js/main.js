@@ -3973,7 +3973,7 @@
     isOnelesson.addEventListener("change", syncLessons);
     lessonFrom.addEventListener("input", syncLessons);
     lessonNext.addEventListener("click", nextLesson);
-    lesoonPre.addEventListener("click", preLesson);
+    lessonPre.addEventListener("click", preLesson);
 
     const categories = getUniqueSorted(
       vocabData.map(function (v) { return v.category; }).filter(function (c) { return c; })
