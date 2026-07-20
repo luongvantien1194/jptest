@@ -3633,6 +3633,8 @@ select:focus {
     opacity: 0.7;                         /* Làm mờ nhẹ toàn bộ ô */
 }
 
+.filter-icon-btn2{     width:36px;     height:36px;     border:0;     border-radius:50%;     background:#2563eb;     color:#fff;     display:flex;     align-items:center;     justify-content:center;     font-size:13px;     font-weight:600;     text-decoration:none;     cursor:pointer;     box-shadow:0 5px 15px #0003; }
+
 /* ===== SECTION IDs ===== */
 #section-vocab,
 #section-kanji,
