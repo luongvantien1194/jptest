@@ -5073,7 +5073,6 @@
     renderKanjiDetail();
     renderGrammarList();
     renderGrammarDetail();
-    setupVocabFilters();
 
     if (!window.location.hash) {
       window.location.hash = "#vocab";
