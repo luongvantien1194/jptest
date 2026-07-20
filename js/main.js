@@ -3945,15 +3945,12 @@
     
     function nextLesson() {
         state.filter.vocabLessonFrom = lessonFrom.value.trim() +1;
+        lessonFrom.value = lessonFrom.value.trim() +1;
         if (isOnelesson.checked) {
-            lessonTo.value = lessonFrom.value +1;
-            state.filter.vocabLessonTo = lessonFrom.value.trim()+1;
-            lessonTo.readOnly = true; // Chuyển sang chế độ chỉ đọc
-            lessonTo.classList.add("disabled-gray");
+            lessonTo.value = lessonFrom.value;
+            state.filter.vocabLessonTo = lessonFrom.value;
         } else {
             state.filter.vocabLessonTo = lessonTo.value.trim(); 
-            lessonTo.readOnly = false; // Mở lại quyền chỉnh sửa khi bỏ chọn
-            lessonTo.classList.remove("disabled-gray");
         }
         renderVocabList();
     }
