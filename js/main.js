@@ -3944,7 +3944,7 @@
     }
     
     function nextLesson() {
-      let neẽt = Number(lessonFrom.value.trim()) +1;
+      let next = Number(lessonFrom.value.trim()) +1;
         state.filter.vocabLessonFrom = next;
         lessonFrom.value = next;
         if (isOnelesson.checked) {
