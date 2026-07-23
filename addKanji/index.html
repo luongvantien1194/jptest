@@ -544,14 +544,6 @@
 
     <div id="toast" class="toast"></div>
 
-    <div style="position:fixed;right:-8px;bottom:16px;display:flex;flex-direction:column;gap:3px;z-index:9999">
-        <button class="filter-icon-btn2" id="vocab-lesson-pre" style="width:100%;">⏮️</button>
-        <button class="filter-icon-btn2" id="vocab-lesson-next" style="width:100%">⏭️</button>
-        <button class="filter-icon-btn2" id="start-vocab-test-btn">T</button>
-        <button class="filter-icon-btn2" id="vocab-export-md-btn">MD</button>
-        <a class="filter-icon-btn2" href="addVocab/index.html">+</a>
-    </div>
-
     <script>
         let kanjiData = JSON.parse(localStorage.getItem('kanji_extra_list')) || [];
         let confirmResolve = null;
