@@ -2024,7 +2024,7 @@
               state.selected.kanjiIndex = idx;
               renderKanjiDetail();
             } else {
-              openDetailModal("Thông báo", "<p>Không có data của chữ này!</p>");
+              openDetailModal("Thông báo", "<p>Không có data của chữ này!</p><a href='/addKanji/index.html?kanji="+item.kanji+"'>Thêm từ kanji</a>");
             }
           });
         });
