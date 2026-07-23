@@ -1,676 +1,676 @@
 <!DOCTYPE html>
 <html lang="vi">
- 
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport"
-        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-    <title>Quản lý Kanji Extra - Siêu Gọn</title>
-    <style>
-        :root {
-            --primary-color: #ff2d55;
-            --danger-color: #ff3b30;
-            --success-color: #34c759;
-            --bg-color: #f2f2f7;
-            --card-bg: #ffffff;
-            --text-color: #1c1c1e;
-            --text-muted: #8e8e93;
-            --border-color: #e5e5ea;
-            --safe-top: env(safe-area-inset-top, 44px);
-            --safe-bottom: env(safe-area-inset-bottom, 20px);
-        }
- 
-        * {
-            box-sizing: border-box;
-            margin: 0;
-            padding: 0;
-            -webkit-tap-highlight-color: transparent;
-        }
- 
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-color);
-            padding-top: var(--safe-top);
-            padding-bottom: calc(var(--safe-bottom) + 10px);
-            line-height: 1.3;
-        }
- 
-        header {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 10px 14px;
-            background: var(--card-bg);
-            border-bottom: 1px solid var(--border-color);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-        }
- 
-        header h1 {
-            font-size: 16px;
-            font-weight: 700;
-        }
- 
-        .header-actions {
-            display: flex;
-            gap: 6px;
-        }
- 
-        .btn-icon {
-            border: none;
-            width: 32px;
-            height: 32px;
-            border-radius: 50%;
-            font-size: 14px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
- 
-        .btn-icon-add {
-            background: #ffe3e8;
-            color: var(--primary-color);
-        }
- 
-        .btn-icon-copy {
-            background: #e8f7ed;
-            color: var(--success-color);
-        }
- 
-        .btn-icon-delete {
-            background: #ffebeb;
-            color: var(--danger-color);
-        }
- 
-        .container {
-            padding: 6px;
-        }
- 
-        .kanji-list {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-        }
- 
-        .kanji-card {
-            background: var(--card-bg);
-            border-radius: 8px;
-            padding: 8px 10px;
-            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.03);
-            display: grid;
-            grid-template-columns: 1fr auto;
-            align-items: center;
-            gap: 8px;
-        }
- 
-        .kanji-info {
-            display: flex;
-            flex-direction: column;
-            gap: 4px;
-            min-width: 0;
-        }
- 
-        .kanji-main-line {
-            font-size: 14px;
-            font-weight: 700;
-            display: flex;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 4px;
-        }
- 
-        .kanji-char {
-            font-size: 18px;
-            color: var(--primary-color);
-            font-weight: 800;
-        }
- 
-        .kanji-hv {
-            color: #000;
-            font-weight: 700;
-            text-transform: uppercase;
-        }
- 
-        .kanji-meaning {
-            font-size: 13px;
-            color: #3a3a3c;
-            font-weight: 500;
-        }
- 
-        .kanji-sub-line {
-            display: flex;
-            flex-wrap: wrap;
-            align-items: center;
-            gap: 4px;
-        }
- 
-        .mini-tag {
-            font-size: 10px;
-            padding: 1px 5px;
-            background: #f2f2f7;
-            color: #555;
-            border-radius: 4px;
-            font-weight: 500;
-        }
- 
-        .tag-read {
-            background: #e5f6ff;
-            color: #0051a8;
-        }
- 
-        .tag-radical {
-            background: #f0fdf4;
-            color: #15803d;
-        }
- 
-        .tag-tip {
-            background: #fff9e6;
-            color: #b27b00;
-            max-width: 180px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
- 
-        .card-actions {
-            display: flex;
-            gap: 10px;
-            border-left: 1px solid var(--border-color);
-            padding-left: 8px;
-        }
- 
-        .action-link {
-            font-size: 12px;
-            font-weight: 600;
-            background: none;
-            border: none;
-            cursor: pointer;
-            padding: 6px 0;
-        }
- 
-        .link-edit {
-            color: #007aff;
-        }
- 
-        .link-delete {
-            color: var(--danger-color);
-        }
- 
-        /* Modal Base */
-        .modal-overlay {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0, 0, 0, 0.4);
-            z-index: 999;
-            display: none;
-        }
- 
-        .modal {
-            position: fixed;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: var(--card-bg);
-            border-top-left-radius: 14px;
-            border-top-right-radius: 14px;
-            max-height: 85vh;
-            overflow-y: auto;
-            z-index: 1000;
-            transform: translateY(100%);
-            transition: transform 0.2s ease-out;
-            padding: 14px;
-            padding-bottom: calc(var(--safe-bottom) + 14px);
-        }
- 
-        body.modal-open .modal-overlay {
-            display: block;
-        }
- 
-        body.modal-open #kanji-modal {
-            transform: translateY(0);
-        }
- 
-        .modal-header {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 12px;
-        }
- 
-        /* Confirm Modal Style */
-        #confirm-modal {
-            left: 50%;
-            bottom: auto;
-            top: 50%;
-            transform: translate(-50%, -50%) scale(0.9);
-            width: 280px;
-            border-radius: 14px;
-            padding: 16px;
-            text-align: center;
-            opacity: 0;
-            visibility: hidden;
-            transition: all 0.2s ease;
-        }
- 
-        body.confirm-open .modal-overlay {
-            display: block;
-        }
- 
-        body.confirm-open #confirm-modal {
-            opacity: 1;
-            visibility: visible;
-            transform: translate(-50%, -50%) scale(1);
-        }
- 
-        .confirm-title {
-            font-size: 15px;
-            font-weight: 700;
-            margin-bottom: 6px;
-        }
- 
-        .confirm-msg {
-            font-size: 13px;
-            color: #3a3a3c;
-            margin-bottom: 16px;
-        }
- 
-        .confirm-buttons {
-            display: flex;
-            gap: 8px;
-        }
- 
-        .btn-confirm {
-            flex: 1;
-            border: none;
-            padding: 8px;
-            border-radius: 6px;
-            font-size: 13px;
-            font-weight: 600;
-            cursor: pointer;
-        }
- 
-        .btn-confirm-cancel {
-            background: #e5e5ea;
-            color: var(--text-color);
-        }
- 
-        .btn-confirm-ok {
-            background: var(--danger-color);
-            color: white;
-        }
- 
-        .form-group {
-            margin-bottom: 10px;
-        }
- 
-        .form-group label {
-            display: block;
-            font-size: 12px;
-            font-weight: 600;
-            margin-bottom: 3px;
-        }
- 
-        .form-control {
-            width: 100%;
-            padding: 8px 10px;
-            border: 1px solid var(--border-color);
-            background: #f2f2f7;
-            border-radius: 6px;
-            font-size: 16px;
-            outline: none;
-        }
- 
-        .form-control:focus {
-            background: #fff;
-            border-color: var(--primary-color);
-        }
- 
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
-        }
- 
-        .btn-submit {
-            background: var(--primary-color);
-            color: white;
-            border: none;
-            padding: 10px;
-            border-radius: 8px;
-            width: 100%;
-            font-weight: 600;
-            margin-top: 6px;
-        }
- 
-        .ai-tools {
-            background: #f7f7fb;
-            border: 1px dashed var(--border-color);
-            border-radius: 8px;
-            padding: 8px;
-            margin-bottom: 10px;
-        }
- 
-        .ai-tools-row {
-            display: flex;
-            gap: 6px;
-        }
- 
-        .btn-ai {
-            flex: 1;
-            border: none;
-            padding: 8px;
-            border-radius: 6px;
-            font-size: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            background: #e8f7ed;
-            color: var(--success-color);
-        }
- 
-        .btn-ai-toggle {
-            background: #e5f6ff;
-            color: #0051a8;
-        }
- 
-        #ai-paste-box {
-            margin-top: 8px;
-        }
- 
-        #ai-paste-box textarea {
-            margin-bottom: 6px;
-            font-family: monospace;
-            font-size: 12px;
-        }
- 
-        .btn-ai-fill {
-            width: 100%;
-            border: none;
-            padding: 8px;
-            border-radius: 6px;
-            font-size: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            background: var(--primary-color);
-            color: white;
-        }
- 
-        .toast {
-            position: fixed;
-            top: 16px;
-            left: 50%;
-            transform: translateX(-50%) translateY(-100px);
-            background: rgba(0, 0, 0, 0.85);
-            color: white;
-            padding: 8px 16px;
-            border-radius: 16px;
-            font-size: 12px;
-            z-index: 9999;
-            transition: transform 0.2s ease;
-            pointer-events: none;
-            text-align: center;
-            width: 60%;
-        }
- 
-        .toast.show {
-            transform: translateX(-50%) translateY(var(--safe-top));
-        }
- 
-        .empty-state {
-            text-align: center;
-            padding: 30px;
-            color: var(--text-muted);
-            font-size: 13px;
-        }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+        content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Quản lý Kanji Extra - Siêu Gọn</title>
+    <style>
+        :root {
+            --primary-color: #ff2d55;
+            --danger-color: #ff3b30;
+            --success-color: #34c759;
+            --bg-color: #f2f2f7;
+            --card-bg: #ffffff;
+            --text-color: #1c1c1e;
+            --text-muted: #8e8e93;
+            --border-color: #e5e5ea;
+            --safe-top: env(safe-area-inset-top, 44px);
+            --safe-bottom: env(safe-area-inset-bottom, 20px);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            padding-top: var(--safe-top);
+            padding-bottom: calc(var(--safe-bottom) + 10px);
+            line-height: 1.3;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 14px;
+            background: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header h1 {
+            font-size: 16px;
+            font-weight: 700;
+        }
+
+        .header-actions {
+            display: flex;
+            gap: 6px;
+        }
+
+        .btn-icon {
+            border: none;
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            font-size: 14px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .btn-icon-add {
+            background: #ffe3e8;
+            color: var(--primary-color);
+        }
+
+        .btn-icon-copy {
+            background: #e8f7ed;
+            color: var(--success-color);
+        }
+
+        .btn-icon-delete {
+            background: #ffebeb;
+            color: var(--danger-color);
+        }
+
+        .container {
+            padding: 6px;
+        }
+
+        .kanji-list {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+        }
+
+        .kanji-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 8px 10px;
+            box-shadow: 0 1px 1px rgba(0, 0, 0, 0.03);
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .kanji-info {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            min-width: 0;
+        }
+
+        .kanji-main-line {
+            font-size: 14px;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 4px;
+        }
+
+        .kanji-char {
+            font-size: 18px;
+            color: var(--primary-color);
+            font-weight: 800;
+        }
+
+        .kanji-hv {
+            color: #000;
+            font-weight: 700;
+            text-transform: uppercase;
+        }
+
+        .kanji-meaning {
+            font-size: 13px;
+            color: #3a3a3c;
+            font-weight: 500;
+        }
+
+        .kanji-sub-line {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .mini-tag {
+            font-size: 10px;
+            padding: 1px 5px;
+            background: #f2f2f7;
+            color: #555;
+            border-radius: 4px;
+            font-weight: 500;
+        }
+
+        .tag-read {
+            background: #e5f6ff;
+            color: #0051a8;
+        }
+
+        .tag-radical {
+            background: #f0fdf4;
+            color: #15803d;
+        }
+
+        .tag-tip {
+            background: #fff9e6;
+            color: #b27b00;
+            max-width: 180px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        .card-actions {
+            display: flex;
+            gap: 10px;
+            border-left: 1px solid var(--border-color);
+            padding-left: 8px;
+        }
+
+        .action-link {
+            font-size: 12px;
+            font-weight: 600;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 6px 0;
+        }
+
+        .link-edit {
+            color: #007aff;
+        }
+
+        .link-delete {
+            color: var(--danger-color);
+        }
+
+        /* Modal Base */
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+            z-index: 999;
+            display: none;
+        }
+
+        .modal {
+            position: fixed;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: var(--card-bg);
+            border-top-left-radius: 14px;
+            border-top-right-radius: 14px;
+            max-height: 85vh;
+            overflow-y: auto;
+            z-index: 1000;
+            transform: translateY(100%);
+            transition: transform 0.2s ease-out;
+            padding: 14px;
+            padding-bottom: calc(var(--safe-bottom) + 14px);
+        }
+
+        body.modal-open .modal-overlay {
+            display: block;
+        }
+
+        body.modal-open #kanji-modal {
+            transform: translateY(0);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 12px;
+        }
+
+        /* Confirm Modal Style */
+        #confirm-modal {
+            left: 50%;
+            bottom: auto;
+            top: 50%;
+            transform: translate(-50%, -50%) scale(0.9);
+            width: 280px;
+            border-radius: 14px;
+            padding: 16px;
+            text-align: center;
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.2s ease;
+        }
+
+        body.confirm-open .modal-overlay {
+            display: block;
+        }
+
+        body.confirm-open #confirm-modal {
+            opacity: 1;
+            visibility: visible;
+            transform: translate(-50%, -50%) scale(1);
+        }
+
+        .confirm-title {
+            font-size: 15px;
+            font-weight: 700;
+            margin-bottom: 6px;
+        }
+
+        .confirm-msg {
+            font-size: 13px;
+            color: #3a3a3c;
+            margin-bottom: 16px;
+        }
+
+        .confirm-buttons {
+            display: flex;
+            gap: 8px;
+        }
+
+        .btn-confirm {
+            flex: 1;
+            border: none;
+            padding: 8px;
+            border-radius: 6px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .btn-confirm-cancel {
+            background: #e5e5ea;
+            color: var(--text-color);
+        }
+
+        .btn-confirm-ok {
+            background: var(--danger-color);
+            color: white;
+        }
+
+        .form-group {
+            margin-bottom: 10px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 12px;
+            font-weight: 600;
+            margin-bottom: 3px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 8px 10px;
+            border: 1px solid var(--border-color);
+            background: #f2f2f7;
+            border-radius: 6px;
+            font-size: 16px;
+            outline: none;
+        }
+
+        .form-control:focus {
+            background: #fff;
+            border-color: var(--primary-color);
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+        }
+
+        .btn-submit {
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            width: 100%;
+            font-weight: 600;
+            margin-top: 6px;
+        }
+
+        .ai-tools {
+            background: #f7f7fb;
+            border: 1px dashed var(--border-color);
+            border-radius: 8px;
+            padding: 8px;
+            margin-bottom: 10px;
+        }
+
+        .ai-tools-row {
+            display: flex;
+            gap: 6px;
+        }
+
+        .btn-ai {
+            flex: 1;
+            border: none;
+            padding: 8px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            background: #e8f7ed;
+            color: var(--success-color);
+        }
+
+        .btn-ai-toggle {
+            background: #e5f6ff;
+            color: #0051a8;
+        }
+
+        #ai-paste-box {
+            margin-top: 8px;
+        }
+
+        #ai-paste-box textarea {
+            margin-bottom: 6px;
+            font-family: monospace;
+            font-size: 12px;
+        }
+
+        .btn-ai-fill {
+            width: 100%;
+            border: none;
+            padding: 8px;
+            border-radius: 6px;
+            font-size: 12px;
+            font-weight: 600;
+            cursor: pointer;
+            background: var(--primary-color);
+            color: white;
+        }
+
+        .toast {
+            position: fixed;
+            top: 16px;
+            left: 50%;
+            transform: translateX(-50%) translateY(-100px);
+            background: rgba(0, 0, 0, 0.85);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 16px;
+            font-size: 12px;
+            z-index: 9999;
+            transition: transform 0.2s ease;
+            pointer-events: none;
+            text-align: center;
+            width: 60%;
+        }
+
+        .toast.show {
+            transform: translateX(-50%) translateY(var(--safe-top));
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 30px;
+            color: var(--text-muted);
+            font-size: 13px;
+        }
+    </style>
 </head>
- 
+
 <body>
- 
-    <header>
-        <div style="display: flex; align-items: center; gap: 8px;">
-            <a href="https://luongvantien1194.github.io/jptest/index.html#kanji" class="btn-icon"
-                style="text-decoration: none; background: #f2f2f7; color: var(--text-color);"
-                title="Về trang chủ">🏠</a>
-            <h1>Kanji Extra</h1>
-        </div>
-        <div class="header-actions">
-            <button class="btn-icon btn-icon-add" onclick="openModal()">＋</button>
-            <button class="btn-icon btn-icon-copy" onclick="copyAllCode()">📋</button>
-            <button class="btn-icon btn-icon-delete" id="btn-delete-all" onclick="deleteAllKanji()"
-                style="display: none;">🗑️</button>
-        </div>
-    </header>
- 
-    <main class="container">
-        <div id="kanji-list-container" class="kanji-list"></div>
-    </main>
- 
-    <!-- Form Nhập Liệu Kanji -->
-    <div class="modal-overlay" onclick="closeAllModals()"></div>
-    <div class="modal" id="kanji-modal">
-        <div class="modal-header">
-            <h3 id="modal-title" style="font-size: 14px;">Thêm chữ Kanji mới</h3>
-            <span style="color: var(--primary-color); font-size: 13px; font-weight:600; cursor: pointer;"
-                onclick="closeModal()">Đóng</span>
-        </div>
-        <form id="kanji-form" onsubmit="saveKanji(event)">
-            <input type="hidden" id="edit-id">
- 
-            <div class="form-row">
-                <div class="form-group">
-                    <label>Kanji *</label>
-                    <input type="text" id="inp-kanji" class="form-control" placeholder="e.g. 無" required>
-                </div>
-                <div class="form-group">
-                    <label>Hán Việt *</label>
-                    <input type="text" id="inp-hanviet" class="form-control" placeholder="e.g. VÔ" required>
-                </div>
-            </div>
- 
-            <div class="ai-tools">
-                <div class="ai-tools-row">
-                    <button type="button" class="btn-ai" onclick="copyPromptForAI()">🤖 Copy Prompt AI</button>
-                    <button type="button" class="btn-ai btn-ai-toggle" onclick="toggleAiPaste()">📥 Dán kết quả AI</button>
-                </div>
-                <div id="ai-paste-box" style="display: none;">
-                    <textarea id="inp-ai-json" class="form-control" rows="5"
-                        placeholder='Dán object JSON mà AI trả về vào đây...'></textarea>
-                    <button type="button" class="btn-ai-fill" onclick="fillFormFromAI()">⚡ Tự động điền Form</button>
-                </div>
-            </div>
- 
-            <div class="form-row">
-                <div class="form-group">
-                    <label>On-reading</label>
-                    <input type="text" id="inp-on" class="form-control" placeholder="ム">
-                </div>
-                <div class="form-group">
-                    <label>Kun-reading</label>
-                    <input type="text" id="inp-kun" class="form-control" placeholder="ない">
-                </div>
-            </div>
- 
-            <div class="form-group">
-                <label>Nghĩa cốt lõi *</label>
-                <input type="text" id="inp-meaning" class="form-control" placeholder="Không có, vô" required>
-            </div>
- 
-            <div class="form-row">
-                <div class="form-group">
-                    <label>Số nét (Stroke)</label>
-                    <input type="number" id="inp-stroke" class="form-control" placeholder="12">
-                </div>
-                <div class="form-group">
-                    <label>Bộ thủ (Radicals)</label>
-                    <input type="text" id="inp-radicals" class="form-control" placeholder="火-hỏa">
-                </div>
-            </div>
- 
-            <div class="form-group">
-                <label>Mẹo nhớ (Memory Tip)</label>
-                <input type="text" id="inp-tip" class="form-control" placeholder="灬 (lửa) thiêu sạch tất cả = vô.">
-            </div>
- 
-            <div class="form-group">
-                <label>Hình ảnh câu chuyện (Story Image)</label>
-                <input type="text" id="inp-story" class="form-control"
-                    placeholder="Lửa thiêu rụi mọi thứ - không còn gì sót lại.">
-            </div>
- 
-            <div class="form-group">
-                <label>Từ vựng liên quan (Dùng dấu | phân cách từ)</label>
-                <input type="text" id="inp-vocab" class="form-control"
-                    placeholder="無休(むきゅう):không nghỉ|無料(むりょう):miễn phí|無理(むり):vô lý">
-            </div>
- 
-            <button type="submit" class="btn-submit">Lưu lại</button>
-        </form>
-    </div>
- 
-    <!-- Custom Confirm Modal -->
-    <div class="modal" id="confirm-modal">
-        <div class="confirm-title" id="confirm-title">Xác nhận</div>
-        <div class="confirm-msg" id="confirm-msg">Bạn có chắc chắn muốn thực hiện?</div>
-        <div class="confirm-buttons">
-            <button class="btn-confirm btn-confirm-cancel" id="btn-confirm-cancel">Hủy</button>
-            <button class="btn-confirm btn-confirm-ok" id="btn-confirm-ok">Xóa</button>
-        </div>
-    </div>
- 
-    <div id="toast" class="toast"></div>
- 
-    <div style="position:fixed;right:-8px;bottom:16px;display:flex;flex-direction:column;gap:3px;z-index:9999">
-        <button class="filter-icon-btn2" id="vocab-lesson-pre" style="width:100%;">⏮️</button>
-        <button class="filter-icon-btn2" id="vocab-lesson-next" style="width:100%">⏭️</button>
-        <button class="filter-icon-btn2" id="start-vocab-test-btn">T</button>
-        <button class="filter-icon-btn2" id="vocab-export-md-btn">MD</button>
-        <a class="filter-icon-btn2" href="addVocab/index.html">+</a>
-    </div>
- 
-    <script>
-        let kanjiData = JSON.parse(localStorage.getItem('kanji_extra_list')) || [];
-        let confirmResolve = null;
- 
-        function showToast(msg) {
-            const t = document.getElementById('toast');
-            t.innerText = msg; t.classList.add('show');
-            setTimeout(() => t.classList.remove('show'), 1500);
-        }
- 
-        // Custom Confirm Function bằng Promise
-        function showConfirm(title, message) {
-            document.getElementById('confirm-title').innerText = title;
-            document.getElementById('confirm-msg').innerText = message;
-            document.body.classList.add('confirm-open');
- 
-            return new Promise((resolve) => {
-                confirmResolve = resolve;
-            });
-        }
- 
-        // Xử lý sự kiện click nút trong confirm modal
-        document.getElementById('btn-confirm-ok').addEventListener('click', () => {
-            document.body.classList.remove('confirm-open');
-            if (confirmResolve) confirmResolve(true);
-        });
- 
-        document.getElementById('btn-confirm-cancel').addEventListener('click', () => {
-            document.body.classList.remove('confirm-open');
-            if (confirmResolve) confirmResolve(false);
-        });
- 
-        function closeAllModals() {
-            document.body.classList.remove('modal-open', 'confirm-open');
-            if (confirmResolve) confirmResolve(false);
-        }
- 
-        function renderList() {
-            const container = document.getElementById('kanji-list-container');
-            const btnDelAll = document.getElementById('btn-delete-all');
- 
-            if (kanjiData.length === 0) {
-                container.innerHTML = `<div class="empty-state">Chưa có chữ Kanji bổ sung nào.</div>`;
-                btnDelAll.style.display = 'none';
-                return;
-            }
- 
-            btnDelAll.style.display = 'inline-flex';
-            container.innerHTML = '';
- 
-            kanjiData.forEach((item, index) => {
-                const card = document.createElement('div');
-                card.className = 'kanji-card';
- 
-                let tagsHtml = '';
-                if (item.on_reading) tagsHtml += `<span class="mini-tag tag-read">On: ${item.on_reading}</span>`;
-                if (item.kun_reading) tagsHtml += `<span class="mini-tag tag-read">Kun: ${item.kun_reading}</span>`;
-                if (item.radicals) tagsHtml += `<span class="mini-tag tag-radical">${item.radicals}</span>`;
-                if (item.memory_tip) tagsHtml += `<span class="mini-tag tag-tip" title="${item.memory_tip.replace(/"/g, '&quot;')}">💡 ${item.memory_tip}</span>`;
- 
-                card.innerHTML = `
-                    <div class="kanji-info">
-                        <div class="kanji-main-line">
-                            <span class="kanji-char">${item.kanji}</span>
-                            <span class="kanji-hv">${item.hanviet}</span>
-                            <span class="kanji-meaning">${item.core_meaning}</span>
-                        </div>
-                        <div class="kanji-sub-line">
-                            <span style="font-size: 10px; padding: 1px 4px; background: #ff9500; color: white; border-radius: 4px; font-weight: bold;">STT: ${item.stt}</span>
-                            ${tagsHtml}
-                        </div>
-                    </div>
-                    <div class="card-actions">
-                        <button class="action-link link-edit" onclick="editKanji(${index})">Sửa</button>
-                        <button class="action-link link-delete" onclick="deleteKanji(${index})">Xóa</button>
-                    </div>
-                `;
-                container.appendChild(card);
-            });
-        }
- 
-        function openModal(isEdit = false) {
-            document.getElementById('kanji-form').reset();
-            document.getElementById('edit-id').value = '';
-            document.getElementById('modal-title').innerText = isEdit ? 'Chỉnh sửa Kanji' : 'Thêm Kanji mới';
-            document.getElementById('inp-ai-json').value = '';
-            document.getElementById('ai-paste-box').style.display = 'none';
-            document.body.classList.add('modal-open');
-        }
- 
-        function closeModal() { document.body.classList.remove('modal-open'); }
- 
-        function toggleAiPaste() {
-            const box = document.getElementById('ai-paste-box');
-            box.style.display = box.style.display === 'none' ? 'block' : 'none';
-        }
- 
-        function copyPromptForAI() {
-            const kanji = document.getElementById('inp-kanji').value.trim();
-            if (!kanji) { showToast('⚠️ Nhập chữ Kanji trước đã!'); return; }
- 
-            const prompt = `Bạn là chuyên gia Hán tự (Kanji) tiếng Nhật. Hãy phân tích chữ Kanji sau: ${kanji}
- 
+
+    <header>
+        <div style="display: flex; align-items: center; gap: 8px;">
+            <a href="https://luongvantien1194.github.io/jptest/index.html#kanji" class="btn-icon"
+                style="text-decoration: none; background: #f2f2f7; color: var(--text-color);"
+                title="Về trang chủ">🏠</a>
+            <h1>Kanji Extra</h1>
+        </div>
+        <div class="header-actions">
+            <button class="btn-icon btn-icon-add" onclick="openModal()">＋</button>
+            <button class="btn-icon btn-icon-copy" onclick="copyAllCode()">📋</button>
+            <button class="btn-icon btn-icon-delete" id="btn-delete-all" onclick="deleteAllKanji()"
+                style="display: none;">🗑️</button>
+        </div>
+    </header>
+
+    <main class="container">
+        <div id="kanji-list-container" class="kanji-list"></div>
+    </main>
+
+    <!-- Form Nhập Liệu Kanji -->
+    <div class="modal-overlay" onclick="closeAllModals()"></div>
+    <div class="modal" id="kanji-modal">
+        <div class="modal-header">
+            <h3 id="modal-title" style="font-size: 14px;">Thêm chữ Kanji mới</h3>
+            <span style="color: var(--primary-color); font-size: 13px; font-weight:600; cursor: pointer;"
+                onclick="closeModal()">Đóng</span>
+        </div>
+        <form id="kanji-form" onsubmit="saveKanji(event)">
+            <input type="hidden" id="edit-id">
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Kanji *</label>
+                    <input type="text" id="inp-kanji" class="form-control" placeholder="e.g. 無" required>
+                </div>
+                <div class="form-group">
+                    <label>Hán Việt *</label>
+                    <input type="text" id="inp-hanviet" class="form-control" placeholder="e.g. VÔ" required>
+                </div>
+            </div>
+
+            <div class="ai-tools">
+                <div class="ai-tools-row">
+                    <button type="button" class="btn-ai" onclick="copyPromptForAI()">🤖 Copy Prompt AI</button>
+                    <button type="button" class="btn-ai btn-ai-toggle" onclick="toggleAiPaste()">📥 Dán kết quả AI</button>
+                </div>
+                <div id="ai-paste-box" style="display: none;">
+                    <textarea id="inp-ai-json" class="form-control" rows="5"
+                        placeholder='Dán object JSON mà AI trả về vào đây...'></textarea>
+                    <button type="button" class="btn-ai-fill" onclick="fillFormFromAI()">⚡ Tự động điền Form</button>
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>On-reading</label>
+                    <input type="text" id="inp-on" class="form-control" placeholder="ム">
+                </div>
+                <div class="form-group">
+                    <label>Kun-reading</label>
+                    <input type="text" id="inp-kun" class="form-control" placeholder="ない">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Nghĩa cốt lõi *</label>
+                <input type="text" id="inp-meaning" class="form-control" placeholder="Không có, vô" required>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Số nét (Stroke)</label>
+                    <input type="number" id="inp-stroke" class="form-control" placeholder="12">
+                </div>
+                <div class="form-group">
+                    <label>Bộ thủ (Radicals)</label>
+                    <input type="text" id="inp-radicals" class="form-control" placeholder="火-hỏa">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>Mẹo nhớ (Memory Tip)</label>
+                <input type="text" id="inp-tip" class="form-control" placeholder="灬 (lửa) thiêu sạch tất cả = vô.">
+            </div>
+
+            <div class="form-group">
+                <label>Hình ảnh câu chuyện (Story Image)</label>
+                <input type="text" id="inp-story" class="form-control"
+                    placeholder="Lửa thiêu rụi mọi thứ - không còn gì sót lại.">
+            </div>
+
+            <div class="form-group">
+                <label>Từ vựng liên quan (Dùng dấu | phân cách từ)</label>
+                <input type="text" id="inp-vocab" class="form-control"
+                    placeholder="無休(むきゅう):không nghỉ|無料(むりょう):miễn phí|無理(むり):vô lý">
+            </div>
+
+            <button type="submit" class="btn-submit">Lưu lại</button>
+        </form>
+    </div>
+
+    <!-- Custom Confirm Modal -->
+    <div class="modal" id="confirm-modal">
+        <div class="confirm-title" id="confirm-title">Xác nhận</div>
+        <div class="confirm-msg" id="confirm-msg">Bạn có chắc chắn muốn thực hiện?</div>
+        <div class="confirm-buttons">
+            <button class="btn-confirm btn-confirm-cancel" id="btn-confirm-cancel">Hủy</button>
+            <button class="btn-confirm btn-confirm-ok" id="btn-confirm-ok">Xóa</button>
+        </div>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <div style="position:fixed;right:-8px;bottom:16px;display:flex;flex-direction:column;gap:3px;z-index:9999">
+        <button class="filter-icon-btn2" id="vocab-lesson-pre" style="width:100%;">⏮️</button>
+        <button class="filter-icon-btn2" id="vocab-lesson-next" style="width:100%">⏭️</button>
+        <button class="filter-icon-btn2" id="start-vocab-test-btn">T</button>
+        <button class="filter-icon-btn2" id="vocab-export-md-btn">MD</button>
+        <a class="filter-icon-btn2" href="addVocab/index.html">+</a>
+    </div>
+
+    <script>
+        let kanjiData = JSON.parse(localStorage.getItem('kanji_extra_list')) || [];
+        let confirmResolve = null;
+
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            t.innerText = msg; t.classList.add('show');
+            setTimeout(() => t.classList.remove('show'), 1500);
+        }
+
+        // Custom Confirm Function bằng Promise
+        function showConfirm(title, message) {
+            document.getElementById('confirm-title').innerText = title;
+            document.getElementById('confirm-msg').innerText = message;
+            document.body.classList.add('confirm-open');
+
+            return new Promise((resolve) => {
+                confirmResolve = resolve;
+            });
+        }
+
+        // Xử lý sự kiện click nút trong confirm modal
+        document.getElementById('btn-confirm-ok').addEventListener('click', () => {
+            document.body.classList.remove('confirm-open');
+            if (confirmResolve) confirmResolve(true);
+        });
+
+        document.getElementById('btn-confirm-cancel').addEventListener('click', () => {
+            document.body.classList.remove('confirm-open');
+            if (confirmResolve) confirmResolve(false);
+        });
+
+        function closeAllModals() {
+            document.body.classList.remove('modal-open', 'confirm-open');
+            if (confirmResolve) confirmResolve(false);
+        }
+
+        function renderList() {
+            const container = document.getElementById('kanji-list-container');
+            const btnDelAll = document.getElementById('btn-delete-all');
+
+            if (kanjiData.length === 0) {
+                container.innerHTML = `<div class="empty-state">Chưa có chữ Kanji bổ sung nào.</div>`;
+                btnDelAll.style.display = 'none';
+                return;
+            }
+
+            btnDelAll.style.display = 'inline-flex';
+            container.innerHTML = '';
+
+            kanjiData.forEach((item, index) => {
+                const card = document.createElement('div');
+                card.className = 'kanji-card';
+
+                let tagsHtml = '';
+                if (item.on_reading) tagsHtml += `<span class="mini-tag tag-read">On: ${item.on_reading}</span>`;
+                if (item.kun_reading) tagsHtml += `<span class="mini-tag tag-read">Kun: ${item.kun_reading}</span>`;
+                if (item.radicals) tagsHtml += `<span class="mini-tag tag-radical">${item.radicals}</span>`;
+                if (item.memory_tip) tagsHtml += `<span class="mini-tag tag-tip" title="${item.memory_tip.replace(/"/g, '&quot;')}">💡 ${item.memory_tip}</span>`;
+
+                card.innerHTML = `
+                    <div class="kanji-info">
+                        <div class="kanji-main-line">
+                            <span class="kanji-char">${item.kanji}</span>
+                            <span class="kanji-hv">${item.hanviet}</span>
+                            <span class="kanji-meaning">${item.core_meaning}</span>
+                        </div>
+                        <div class="kanji-sub-line">
+                            <span style="font-size: 10px; padding: 1px 4px; background: #ff9500; color: white; border-radius: 4px; font-weight: bold;">STT: ${item.stt}</span>
+                            ${tagsHtml}
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="action-link link-edit" onclick="editKanji(${index})">Sửa</button>
+                        <button class="action-link link-delete" onclick="deleteKanji(${index})">Xóa</button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function openModal(isEdit = false) {
+            document.getElementById('kanji-form').reset();
+            document.getElementById('edit-id').value = '';
+            document.getElementById('modal-title').innerText = isEdit ? 'Chỉnh sửa Kanji' : 'Thêm Kanji mới';
+            document.getElementById('inp-ai-json').value = '';
+            document.getElementById('ai-paste-box').style.display = 'none';
+            document.body.classList.add('modal-open');
+        }
+
+        function closeModal() { document.body.classList.remove('modal-open'); }
+
+        function toggleAiPaste() {
+            const box = document.getElementById('ai-paste-box');
+            box.style.display = box.style.display === 'none' ? 'block' : 'none';
+        }
+
+        function copyPromptForAI() {
+            const kanji = document.getElementById('inp-kanji').value.trim();
+            if (!kanji) { showToast('⚠️ Nhập chữ Kanji trước đã!'); return; }
+
+            const prompt = `Bạn là chuyên gia Hán tự (Kanji) tiếng Nhật. Hãy phân tích chữ Kanji sau: ${kanji}
+
 Trả về DUY NHẤT một object JSON, BỌC TRONG MỘT KHỐI CODE BLOCK duy nhất (bắt đầu bằng \`\`\`json và kết thúc bằng \`\`\`) để tôi có thể bấm nút Copy trên khối code cho tiện, không viết thêm bất kỳ chữ nào trước hoặc sau khối code đó. Cấu trúc và định dạng chính xác như ví dụ dưới đây (ví dụ dùng chữ 無):
- 
+
 \`\`\`json
 {
-  "hanviet": "VÔ",
-  "on_reading": "ム",
-  "kun_reading": "ない",
-  "stroke_count": 12,
-  "radicals": "火-hỏa",
-  "core_meaning": "Không có, vô",
-  "memory_tip": "灬 (lửa) thiêu sạch tất cả = vô.",
-  "story_image": "Lửa thiêu rụi mọi thứ - không còn gì sót lại.",
-  "vocabulary": "無休(むきゅう):không nghỉ|無料(むりょう):miễn phí|無理(むり):vô lý"
+  "hanviet": "VÔ",
+  "on_reading": "ム",
+  "kun_reading": "ない",
+  "stroke_count": 12,
+  "radicals": "火-hỏa",
+  "core_meaning": "Không có, vô",
+  "memory_tip": "灬 (lửa) thiêu sạch tất cả = vô.",
+  "story_image": "Lửa thiêu rụi mọi thứ - không còn gì sót lại.",
+  "vocabulary": "無休(むきゅう):không nghỉ|無料(むりょう):miễn phí|無理(むり):vô lý"
 }
 \`\`\`
- 
+
 Yêu cầu bắt buộc:
 - "hanviet": âm Hán Việt, viết HOA.
 - "on_reading": âm On bằng katakana, để "" nếu không có.
@@ -682,145 +682,145 @@ Yêu cầu bắt buộc:
 - "story_image": một hình ảnh/câu chuyện liên tưởng ngắn để nhớ lâu.
 - "vocabulary": 3-5 từ vựng thực tế thường dùng chứa chữ Kanji này, mỗi từ theo định dạng Kanji(furigana):nghĩa_tiếng_việt, các từ phân cách bằng dấu |.
 - Toàn bộ câu trả lời của bạn CHỈ được chứa duy nhất khối code block JSON ở trên, tuyệt đối không thêm lời chào, giải thích, hay bất kỳ văn bản nào khác bên ngoài khối code.`;
- 
-            navigator.clipboard.writeText(prompt).then(() => {
-                showToast('🤖 Đã copy prompt! Dán qua trang AI.');
-                document.getElementById('ai-paste-box').style.display = 'block';
-            });
-        }
- 
-        function fillFormFromAI() {
-            const raw = document.getElementById('inp-ai-json').value.trim();
-            if (!raw) { showToast('⚠️ Chưa dán dữ liệu AI!'); return; }
- 
-            let jsonStr = raw;
-            const fenceMatch = jsonStr.match(/```(?:json)?\s*([\s\S]*?)```/i);
-            if (fenceMatch) jsonStr = fenceMatch[1];
-            const braceMatch = jsonStr.match(/\{[\s\S]*\}/);
-            if (braceMatch) jsonStr = braceMatch[0];
- 
-            let data;
-            try {
-                data = JSON.parse(jsonStr);
-            } catch (err) {
-                showToast('❌ JSON không hợp lệ!');
-                return;
-            }
- 
-            if (data.hanviet !== undefined) document.getElementById('inp-hanviet').value = String(data.hanviet).trim().toUpperCase();
-            if (data.on_reading !== undefined) document.getElementById('inp-on').value = data.on_reading;
-            if (data.kun_reading !== undefined) document.getElementById('inp-kun').value = data.kun_reading;
-            if (data.core_meaning !== undefined) document.getElementById('inp-meaning').value = data.core_meaning;
-            if (data.stroke_count !== undefined && data.stroke_count !== '') {
-                const n = parseInt(data.stroke_count);
-                document.getElementById('inp-stroke').value = isNaN(n) ? '' : n;
-            }
-            if (data.radicals !== undefined) document.getElementById('inp-radicals').value = data.radicals;
-            if (data.memory_tip !== undefined) document.getElementById('inp-tip').value = data.memory_tip;
-            if (data.story_image !== undefined) document.getElementById('inp-story').value = data.story_image;
-            if (data.vocabulary !== undefined) document.getElementById('inp-vocab').value = data.vocabulary;
- 
-            showToast('✅ Đã điền tự động vào form!');
-        }
- 
-        function saveKanji(e) {
-            e.preventDefault();
-            const id = document.getElementById('edit-id').value;
- 
-            let oldLogic = "";
-            if (id !== '' && kanjiData[parseInt(id)]) {
-                oldLogic = kanjiData[parseInt(id)].logic_development || "";
-            }
- 
-            const item = {
-                "stt": id !== '' ? kanjiData[parseInt(id)].stt : (kanjiData.length + 1),
-                "level": "n3",
-                "kanji": document.getElementById('inp-kanji').value.trim(),
-                "hanviet": document.getElementById('inp-hanviet').value.trim().toUpperCase(),
-                "on_reading": document.getElementById('inp-on').value.trim(),
-                "kun_reading": document.getElementById('inp-kun').value.trim(),
-                "stroke_count": document.getElementById('inp-stroke').value ? parseInt(document.getElementById('inp-stroke').value) : "",
-                "radicals": document.getElementById('inp-radicals').value.trim(),
-                "core_meaning": document.getElementById('inp-meaning').value.trim(),
-                "story_image": document.getElementById('inp-story').value.trim(),
-                "logic_development": oldLogic,
-                "memory_tip": document.getElementById('inp-tip').value.trim(),
-                "vocabulary": document.getElementById('inp-vocab').value.trim()
-            };
- 
-            if (id !== '') {
-                kanjiData[parseInt(id)] = item;
-                showToast('Đã sửa!');
-            } else {
-                kanjiData.push(item);
-                showToast('Đã thêm!');
-            }
- 
-            localStorage.setItem('kanji_extra_list', JSON.stringify(kanjiData));
-            closeModal(); renderList();
-        }
- 
-        function editKanji(index) {
-            const item = kanjiData[index]; openModal(true);
-            document.getElementById('edit-id').value = index;
-            document.getElementById('inp-kanji').value = item.kanji;
-            document.getElementById('inp-hanviet').value = item.hanviet;
-            document.getElementById('inp-on').value = item.on_reading;
-            document.getElementById('inp-kun').value = item.kun_reading;
-            document.getElementById('inp-meaning').value = item.core_meaning;
-            document.getElementById('inp-stroke').value = item.stroke_count;
-            document.getElementById('inp-radicals').value = item.radicals;
-            document.getElementById('inp-tip').value = item.memory_tip;
-            document.getElementById('inp-story').value = item.story_image;
-            document.getElementById('inp-vocab').value = item.vocabulary;
-        }
- 
-        // Sử dụng custom confirm cho nút Xóa từng từ
-        async function deleteKanji(index) {
-            const item = kanjiData[index];
-            const confirmed = await showConfirm('Xóa Kanji', `Bạn có chắc muốn xóa chữ [ ${item.kanji} - ${item.hanviet} ] không?`);
-            if (confirmed) {
-                kanjiData.splice(index, 1);
-                // Cập nhật lại STT tuần tự sau khi xóa để dữ liệu đồng bộ
-                kanjiData.forEach((item, idx) => item.stt = idx + 1);
-                localStorage.setItem('kanji_extra_list', JSON.stringify(kanjiData));
-                renderList(); showToast('Đã xóa!');
-            }
-        }
- 
-        // Sử dụng custom confirm cho nút Xóa sạch danh sách
-        async function deleteAllKanji() {
-            const confirmed = await showConfirm('Xóa tất cả', 'Bạn có chắc chắn muốn xóa SẠCH TOÀN BỘ danh sách Kanji extra không? Hành động này không thể hoàn tác.');
-            if (confirmed) {
-                kanjiData = []; localStorage.removeItem('kanji_extra_list');
-                renderList(); showToast('Đã xóa sạch!');
-            }
-        }
- 
-        function copyAllCode() {
-            if (kanjiData.length === 0) { showToast('Không có dữ liệu!'); return; }
-            // let txt = `window._kanjiExtra = window._kanjiExtra || [];\nwindow._kanjiExtra.push(\n`;
-            let txt = ``;
-            kanjiData.forEach(i => {
-                txt += `  { "stt": ${i.stt}, "level": "${i.level}", "kanji": "${i.kanji}", "hanviet": "${i.hanviet}", "on_reading": "${i.on_reading}", "kun_reading": "${i.kun_reading}", "stroke_count": ${i.stroke_count || '""'}, "radicals": "${i.radicals}", "core_meaning": "${i.core_meaning}", "story_image": "${i.story_image}", "logic_development": "${i.logic_development}", "memory_tip": "${i.memory_tip}", "vocabulary": "${i.vocabulary}" },\n`;
-            });
-            // txt += `);`;
-            navigator.clipboard.writeText(txt).then(() => showToast('📋 Đã copy code JS!'));
-        }
- 
-        function openFromQueryString() {
-            const params = new URLSearchParams(window.location.search);
-            const kanji = params.get('kanji');
-            if (!kanji) return;
-            openModal();
-            document.getElementById('inp-kanji').value = kanji.trim();
-        }
- 
-        document.addEventListener('DOMContentLoaded', () => {
-            renderList();
-            openFromQueryString();
-        });
-    </script>
+
+            navigator.clipboard.writeText(prompt).then(() => {
+                showToast('🤖 Đã copy prompt! Dán qua trang AI.');
+                document.getElementById('ai-paste-box').style.display = 'block';
+            });
+        }
+
+        function fillFormFromAI() {
+            const raw = document.getElementById('inp-ai-json').value.trim();
+            if (!raw) { showToast('⚠️ Chưa dán dữ liệu AI!'); return; }
+
+            let jsonStr = raw;
+            const fenceMatch = jsonStr.match(/```(?:json)?\s*([\s\S]*?)```/i);
+            if (fenceMatch) jsonStr = fenceMatch[1];
+            const braceMatch = jsonStr.match(/\{[\s\S]*\}/);
+            if (braceMatch) jsonStr = braceMatch[0];
+
+            let data;
+            try {
+                data = JSON.parse(jsonStr);
+            } catch (err) {
+                showToast('❌ JSON không hợp lệ!');
+                return;
+            }
+
+            if (data.hanviet !== undefined) document.getElementById('inp-hanviet').value = String(data.hanviet).trim().toUpperCase();
+            if (data.on_reading !== undefined) document.getElementById('inp-on').value = data.on_reading;
+            if (data.kun_reading !== undefined) document.getElementById('inp-kun').value = data.kun_reading;
+            if (data.core_meaning !== undefined) document.getElementById('inp-meaning').value = data.core_meaning;
+            if (data.stroke_count !== undefined && data.stroke_count !== '') {
+                const n = parseInt(data.stroke_count);
+                document.getElementById('inp-stroke').value = isNaN(n) ? '' : n;
+            }
+            if (data.radicals !== undefined) document.getElementById('inp-radicals').value = data.radicals;
+            if (data.memory_tip !== undefined) document.getElementById('inp-tip').value = data.memory_tip;
+            if (data.story_image !== undefined) document.getElementById('inp-story').value = data.story_image;
+            if (data.vocabulary !== undefined) document.getElementById('inp-vocab').value = data.vocabulary;
+
+            showToast('✅ Đã điền tự động vào form!');
+        }
+
+        function saveKanji(e) {
+            e.preventDefault();
+            const id = document.getElementById('edit-id').value;
+
+            let oldLogic = "";
+            if (id !== '' && kanjiData[parseInt(id)]) {
+                oldLogic = kanjiData[parseInt(id)].logic_development || "";
+            }
+
+            const item = {
+                "stt": id !== '' ? kanjiData[parseInt(id)].stt : (kanjiData.length + 1),
+                "level": "n3",
+                "kanji": document.getElementById('inp-kanji').value.trim(),
+                "hanviet": document.getElementById('inp-hanviet').value.trim().toUpperCase(),
+                "on_reading": document.getElementById('inp-on').value.trim(),
+                "kun_reading": document.getElementById('inp-kun').value.trim(),
+                "stroke_count": document.getElementById('inp-stroke').value ? parseInt(document.getElementById('inp-stroke').value) : "",
+                "radicals": document.getElementById('inp-radicals').value.trim(),
+                "core_meaning": document.getElementById('inp-meaning').value.trim(),
+                "story_image": document.getElementById('inp-story').value.trim(),
+                "logic_development": oldLogic,
+                "memory_tip": document.getElementById('inp-tip').value.trim(),
+                "vocabulary": document.getElementById('inp-vocab').value.trim()
+            };
+
+            if (id !== '') {
+                kanjiData[parseInt(id)] = item;
+                showToast('Đã sửa!');
+            } else {
+                kanjiData.push(item);
+                showToast('Đã thêm!');
+            }
+
+            localStorage.setItem('kanji_extra_list', JSON.stringify(kanjiData));
+            closeModal(); renderList();
+        }
+
+        function editKanji(index) {
+            const item = kanjiData[index]; openModal(true);
+            document.getElementById('edit-id').value = index;
+            document.getElementById('inp-kanji').value = item.kanji;
+            document.getElementById('inp-hanviet').value = item.hanviet;
+            document.getElementById('inp-on').value = item.on_reading;
+            document.getElementById('inp-kun').value = item.kun_reading;
+            document.getElementById('inp-meaning').value = item.core_meaning;
+            document.getElementById('inp-stroke').value = item.stroke_count;
+            document.getElementById('inp-radicals').value = item.radicals;
+            document.getElementById('inp-tip').value = item.memory_tip;
+            document.getElementById('inp-story').value = item.story_image;
+            document.getElementById('inp-vocab').value = item.vocabulary;
+        }
+
+        // Sử dụng custom confirm cho nút Xóa từng từ
+        async function deleteKanji(index) {
+            const item = kanjiData[index];
+            const confirmed = await showConfirm('Xóa Kanji', `Bạn có chắc muốn xóa chữ [ ${item.kanji} - ${item.hanviet} ] không?`);
+            if (confirmed) {
+                kanjiData.splice(index, 1);
+                // Cập nhật lại STT tuần tự sau khi xóa để dữ liệu đồng bộ
+                kanjiData.forEach((item, idx) => item.stt = idx + 1);
+                localStorage.setItem('kanji_extra_list', JSON.stringify(kanjiData));
+                renderList(); showToast('Đã xóa!');
+            }
+        }
+
+        // Sử dụng custom confirm cho nút Xóa sạch danh sách
+        async function deleteAllKanji() {
+            const confirmed = await showConfirm('Xóa tất cả', 'Bạn có chắc chắn muốn xóa SẠCH TOÀN BỘ danh sách Kanji extra không? Hành động này không thể hoàn tác.');
+            if (confirmed) {
+                kanjiData = []; localStorage.removeItem('kanji_extra_list');
+                renderList(); showToast('Đã xóa sạch!');
+            }
+        }
+
+        function copyAllCode() {
+            if (kanjiData.length === 0) { showToast('Không có dữ liệu!'); return; }
+            // let txt = `window._kanjiExtra = window._kanjiExtra || [];\nwindow._kanjiExtra.push(\n`;
+            let txt = ``;
+            kanjiData.forEach(i => {
+                txt += `  { "stt": ${i.stt}, "level": "${i.level}", "kanji": "${i.kanji}", "hanviet": "${i.hanviet}", "on_reading": "${i.on_reading}", "kun_reading": "${i.kun_reading}", "stroke_count": ${i.stroke_count || '""'}, "radicals": "${i.radicals}", "core_meaning": "${i.core_meaning}", "story_image": "${i.story_image}", "logic_development": "${i.logic_development}", "memory_tip": "${i.memory_tip}", "vocabulary": "${i.vocabulary}" },\n`;
+            });
+            // txt += `);`;
+            navigator.clipboard.writeText(txt).then(() => showToast('📋 Đã copy code JS!'));
+        }
+
+        function openFromQueryString() {
+            const params = new URLSearchParams(window.location.search);
+            const kanji = params.get('kanji');
+            if (!kanji) return;
+            openModal();
+            document.getElementById('inp-kanji').value = kanji.trim();
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            renderList();
+            openFromQueryString();
+        });
+    </script>
 </body>
- 
+
 </html>
