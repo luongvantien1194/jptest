@@ -28,6 +28,17 @@
     // Đẩy toàn bộ dữ liệu từ localStorage vào mảng window._vocabExtra
     window._vocabExtra.push(...localData);
   </script>
+  
+  
+  <script>
+    window._kanjiExtra = window._kanjiExtra || [];
+
+    // Lấy dữ liệu từ localStorage, nếu không có thì mặc định là một mảng rỗng []
+    const localDataKanji = JSON.parse(localStorage.getItem('kanji_extra_list')) || [];
+
+    // Đẩy toàn bộ dữ liệu từ localStorage vào mảng window._vocabExtra
+    window._kanjiExtra.push(...localDataKanji);
+  </script>
 
 
   <!-- <script src="data/vocabData_2.js?v=20260330"></script> -->
