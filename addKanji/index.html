@@ -11,6 +11,7 @@
             --primary-color: #ff2d55;
             --danger-color: #ff3b30;
             --success-color: #34c759;
+            --purple-color: #af52de;
             --bg-color: #f2f2f7;
             --card-bg: #ffffff;
             --text-color: #1c1c1e;
@@ -347,56 +348,41 @@
             margin-top: 6px;
         }
 
-        .ai-tools {
-            background: #f7f7fb;
-            border: 1px dashed var(--border-color);
-            border-radius: 8px;
-            padding: 8px;
-            margin-bottom: 10px;
-        }
-
-        .ai-tools-row {
+        /* Khung AI tự động dán */
+        .ai-input-box {
+            background: #fbf5ff;
+            border: 1px dashed var(--purple-color);
+            border-radius: 10px;
+            padding: 10px;
+            margin-bottom: 12px;
             display: flex;
-            gap: 6px;
+            flex-direction: column;
+            gap: 8px;
         }
 
-        .btn-ai {
-            flex: 1;
-            border: none;
-            padding: 8px;
-            border-radius: 6px;
+        .btn-open-gpt {
+            background: #f3e8ff;
+            color: var(--purple-color);
+            border: 1px solid #d8b4fe;
+            padding: 8px 10px;
+            border-radius: 8px;
             font-size: 12px;
             font-weight: 600;
             cursor: pointer;
-            background: #e8f7ed;
-            color: var(--success-color);
+            text-align: center;
         }
 
-        .btn-ai-toggle {
-            background: #e5f6ff;
-            color: #0051a8;
-        }
-
-        #ai-paste-box {
-            margin-top: 8px;
-        }
-
-        #ai-paste-box textarea {
-            margin-bottom: 6px;
-            font-family: monospace;
-            font-size: 12px;
-        }
-
-        .btn-ai-fill {
-            width: 100%;
-            border: none;
-            padding: 8px;
-            border-radius: 6px;
-            font-size: 12px;
-            font-weight: 600;
-            cursor: pointer;
-            background: var(--primary-color);
+        .btn-auto-paste {
+            background: var(--purple-color);
             color: white;
+            border: none;
+            padding: 10px;
+            border-radius: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+            box-shadow: 0 2px 6px rgba(175, 82, 222, 0.3);
         }
 
         .toast {
@@ -472,17 +458,10 @@
                 </div>
             </div>
 
-            <div class="ai-tools">
-                <div class="ai-tools-row">
-                    <button type="button" class="btn-ai" onclick="copyPromptForAI()">🤖 Copy Prompt AI</button>
-                    <button  class="btn-ai"><a href="https://chatgpt.com" >ChatGPT</a></button>
-                    <button type="button" class="btn-ai btn-ai-toggle" onclick="toggleAiPaste()">📥 Dán kết quả AI</button>
-                </div>
-                <div id="ai-paste-box" style="display: none;">
-                    <textarea id="inp-ai-json" class="form-control" rows="5"
-                        placeholder='Dán object JSON mà AI trả về vào đây...'></textarea>
-                    <button type="button" class="btn-ai-fill" onclick="fillFormFromAI()">⚡ Tự động điền Form</button>
-                </div>
+            <!-- Khung Nút Tự Động Đọc Clipboard & Điền Form Kanji -->
+            <div class="ai-input-box">
+                <button type="button" class="btn-open-gpt" onclick="openChatGPTWithPrompt()">🤖 1. Mở ChatGPT lấy Prompt</button>
+                <button type="button" class="btn-auto-paste" onclick="pasteAndFillDirectly()">📋 2. Dán & Điền tự động từ Clipboard</button>
             </div>
 
             <div class="form-row">
@@ -630,90 +609,99 @@
             document.getElementById('kanji-form').reset();
             document.getElementById('edit-id').value = '';
             document.getElementById('modal-title').innerText = isEdit ? 'Chỉnh sửa Kanji' : 'Thêm Kanji mới';
-            document.getElementById('inp-ai-json').value = '';
-            document.getElementById('ai-paste-box').style.display = 'none';
             document.body.classList.add('modal-open');
         }
 
         function closeModal() { document.body.classList.remove('modal-open'); }
 
-        function toggleAiPaste() {
-            const box = document.getElementById('ai-paste-box');
-            box.style.display = box.style.display === 'none' ? 'block' : 'none';
-        }
-
-        function copyPromptForAI() {
+        // Mở ChatGPT kèm prompt được tạo sẵn
+        function openChatGPTWithPrompt() {
             const kanji = document.getElementById('inp-kanji').value.trim();
-            if (!kanji) { showToast('⚠️ Nhập chữ Kanji trước đã!'); return; }
-
-            const prompt = `Bạn là chuyên gia Hán tự (Kanji) tiếng Nhật. Hãy phân tích chữ Kanji sau: ${kanji}
-
-Trả về DUY NHẤT một object JSON, BỌC TRONG MỘT KHỐI CODE BLOCK duy nhất (bắt đầu bằng \`\`\`json và kết thúc bằng \`\`\`) để tôi có thể bấm nút Copy trên khối code cho tiện, không viết thêm bất kỳ chữ nào trước hoặc sau khối code đó. Cấu trúc và định dạng chính xác như ví dụ dưới đây (ví dụ dùng chữ 無):
-
-\`\`\`json
-{
-  "hanviet": "VÔ",
-  "on_reading": "ム",
-  "kun_reading": "ない",
-  "stroke_count": 12,
-  "radicals": "火-hỏa",
-  "core_meaning": "Không có, vô",
-  "memory_tip": "灬 (lửa) thiêu sạch tất cả = vô.",
-  "story_image": "Lửa thiêu rụi mọi thứ - không còn gì sót lại.",
-  "vocabulary": "無休(むきゅう):không nghỉ|無料(むりょう):miễn phí|無理(むり):vô lý"
-}
-\`\`\`
-
-Yêu cầu bắt buộc:
-- "hanviet": âm Hán Việt, viết HOA.
-- "on_reading": âm On bằng katakana, để "" nếu không có.
-- "kun_reading": âm Kun bằng hiragana, để "" nếu không có.
-- "stroke_count": số nét, kiểu number (không phải chuỗi).
-- "radicals": định dạng "chữ-nghĩa", ví dụ "火-hỏa".
-- "core_meaning": nghĩa cốt lõi ngắn gọn bằng tiếng Việt.
-- "memory_tip": mẹo nhớ ngắn gọn dựa theo chiết tự các bộ phận trong chữ.
-- "story_image": một hình ảnh/câu chuyện liên tưởng ngắn để nhớ lâu.
-- "vocabulary": 3-5 từ vựng thực tế thường dùng chứa chữ Kanji này, mỗi từ theo định dạng Kanji(furigana):nghĩa_tiếng_việt, các từ phân cách bằng dấu |.
-- Toàn bộ câu trả lời của bạn CHỈ được chứa duy nhất khối code block JSON ở trên, tuyệt đối không thêm lời chào, giải thích, hay bất kỳ văn bản nào khác bên ngoài khối code.`;
-
-            navigator.clipboard.writeText(prompt).then(() => {
-                showToast('🤖 Đã copy prompt! Dán qua trang AI.');
-                document.getElementById('ai-paste-box').style.display = 'block';
-            });
-        }
-
-        function fillFormFromAI() {
-            const raw = document.getElementById('inp-ai-json').value.trim();
-            if (!raw) { showToast('⚠️ Chưa dán dữ liệu AI!'); return; }
-
-            let jsonStr = raw;
-            const fenceMatch = jsonStr.match(/```(?:json)?\s*([\s\S]*?)```/i);
-            if (fenceMatch) jsonStr = fenceMatch[1];
-            const braceMatch = jsonStr.match(/\{[\s\S]*\}/);
-            if (braceMatch) jsonStr = braceMatch[0];
-
-            let data;
-            try {
-                data = JSON.parse(jsonStr);
-            } catch (err) {
-                showToast('❌ JSON không hợp lệ!');
+            if (!kanji) {
+                showToast('❌ Hãy nhập chữ Kanji trước!');
                 return;
             }
 
-            if (data.hanviet !== undefined) document.getElementById('inp-hanviet').value = String(data.hanviet).trim().toUpperCase();
-            if (data.on_reading !== undefined) document.getElementById('inp-on').value = data.on_reading;
-            if (data.kun_reading !== undefined) document.getElementById('inp-kun').value = data.kun_reading;
-            if (data.core_meaning !== undefined) document.getElementById('inp-meaning').value = data.core_meaning;
-            if (data.stroke_count !== undefined && data.stroke_count !== '') {
-                const n = parseInt(data.stroke_count);
-                document.getElementById('inp-stroke').value = isNaN(n) ? '' : n;
-            }
-            if (data.radicals !== undefined) document.getElementById('inp-radicals').value = data.radicals;
-            if (data.memory_tip !== undefined) document.getElementById('inp-tip').value = data.memory_tip;
-            if (data.story_image !== undefined) document.getElementById('inp-story').value = data.story_image;
-            if (data.vocabulary !== undefined) document.getElementById('inp-vocab').value = data.vocabulary;
+            const promptText = `Bạn là chuyên gia Hán tự (Kanji) tiếng Nhật. Hãy phân tích chữ Kanji sau: "${kanji}".
+Trả về DUY NHẤT một chuỗi JSON chuẩn hợp lệ (dùng dấu ngoặc kép thẳng ", không giải thích thêm, không dùng markdown codeblock) theo định dạng:
+{"hanviet":"VÔ","on_reading":"ム","kun_reading":"ない","stroke_count":12,"radicals":"火-hỏa","core_meaning":"Không có, vô","memory_tip":"灬 (lửa) thiêu sạch tất cả = vô.","story_image":"Lửa thiêu rụi mọi thứ - không còn gì sót lại.","vocabulary":"無休(むきゅう):không nghỉ|無料(むりょう):miễn phí|無理(むり):vô lý"}`;
 
-            showToast('✅ Đã điền tự động vào form!');
+            const encodedPrompt = encodeURIComponent(promptText);
+            const chatGptUrl = `https://chatgpt.com/?q=${encodedPrompt}`;
+
+            showToast('🚀 Đang mở ChatGPT...');
+            window.open(chatGptUrl, '_blank');
+        }
+
+        // Đọc trực tiếp từ Clipboard và điền tự động vào Form
+        async function pasteAndFillDirectly() {
+            try {
+                if (!navigator.clipboard || !navigator.clipboard.readText) {
+                    showToast('❌ Trình duyệt không hỗ trợ đọc Clipboard tự động!');
+                    return;
+                }
+
+                let raw = await navigator.clipboard.readText();
+                raw = raw ? raw.trim() : '';
+
+                if (!raw) {
+                    showToast('❌ Clipboard đang trống!');
+                    return;
+                }
+
+                // 1. Chuyển đổi ngoặc kép nghiêng thành ngoặc thẳng
+                raw = raw.replace(/[“”]/g, '"').replace(/[‘’]/g, "'");
+
+                // 2. Trích xuất khối JSON
+                const jsonMatch = raw.match(/(\{[\s\S]*\}|\[[\s\S]*\])/);
+                if (jsonMatch) raw = jsonMatch[0];
+
+                // 3. Xóa dấu phẩy thừa trước khi parse
+                raw = raw.replace(/,\s*([\}\]])/g, '$1');
+
+                let parsed = JSON.parse(raw);
+                if (Array.isArray(parsed)) parsed = parsed[0];
+
+                if (!parsed || typeof parsed !== 'object') {
+                    showToast('❌ Dữ liệu Clipboard không phải JSON hợp lệ!');
+                    return;
+                }
+
+                const getValue = (keys) => {
+                    for (let k of keys) {
+                        for (let p in parsed) {
+                            if (p.toLowerCase() === k.toLowerCase() && parsed[p] !== undefined) {
+                                return parsed[p];
+                            }
+                        }
+                    }
+                    return '';
+                };
+
+                // Gán dữ liệu thu được vào Form
+                const hv = getValue(['hanviet', 'hv']);
+                if (hv) document.getElementById('inp-hanviet').value = String(hv).trim().toUpperCase();
+                
+                document.getElementById('inp-on').value = getValue(['on_reading', 'on']);
+                document.getElementById('inp-kun').value = getValue(['kun_reading', 'kun']);
+                document.getElementById('inp-meaning').value = getValue(['core_meaning', 'meaning', 'nghia']);
+                
+                const strokes = getValue(['stroke_count', 'stroke', 'strokes']);
+                if (strokes !== '') {
+                    const n = parseInt(strokes);
+                    document.getElementById('inp-stroke').value = isNaN(n) ? '' : n;
+                }
+
+                document.getElementById('inp-radicals').value = getValue(['radicals', 'radical', 'bo_thu']);
+                document.getElementById('inp-tip').value = getValue(['memory_tip', 'tip', 'meo_nho']);
+                document.getElementById('inp-story').value = getValue(['story_image', 'story', 'cau_truyen']);
+                document.getElementById('inp-vocab').value = getValue(['vocabulary', 'vocab', 'tu_vung']);
+
+                showToast('✨ Đã tự động dán & điền!');
+            } catch (err) {
+                console.error(err);
+                showToast('❌ Hãy cấp quyền truy cập Clipboard cho trang web!');
+            }
         }
 
         function saveKanji(e) {
@@ -792,12 +780,10 @@ Yêu cầu bắt buộc:
 
         function copyAllCode() {
             if (kanjiData.length === 0) { showToast('Không có dữ liệu!'); return; }
-            // let txt = `window._kanjiExtra = window._kanjiExtra || [];\nwindow._kanjiExtra.push(\n`;
             let txt = ``;
             kanjiData.forEach(i => {
                 txt += `  { "stt": ${i.stt}, "level": "${i.level}", "kanji": "${i.kanji}", "hanviet": "${i.hanviet}", "on_reading": "${i.on_reading}", "kun_reading": "${i.kun_reading}", "stroke_count": ${i.stroke_count || '""'}, "radicals": "${i.radicals}", "core_meaning": "${i.core_meaning}", "story_image": "${i.story_image}", "logic_development": "${i.logic_development}", "memory_tip": "${i.memory_tip}", "vocabulary": "${i.vocabulary}" },\n`;
             });
-            // txt += `);`;
             navigator.clipboard.writeText(txt).then(() => showToast('📋 Đã copy code JS!'));
         }
 
