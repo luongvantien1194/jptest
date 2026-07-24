@@ -295,7 +295,7 @@
             <h3 style="font-size: 15px; font-weight: 700; color: var(--purple-color);">✨ Dán kết quả từ ChatGPT</h3>
             <span style="color: var(--primary-color); font-size: 14px; font-weight: 600; cursor: pointer;" onclick="closeAllModals()">Đóng</span>
         </div>
-        <p style="font-size: 12px; color: #666; margin-bottom: 8px;">Dán toàn bộ câu trả lời của ChatGPT vào đây (hệ thống sẽ tự động lọc lấy đoạn JSON):</p>
+        <p style="font-size: 12px; color: #666; margin-bottom: 8px;">Dán kết quả ChatGPT vào đây (hệ thống tự động sửa ngoặc kép và trích xuất JSON):</p>
         <div class="form-group">
             <textarea id="inp-ai-json" class="form-control" rows="6" style="font-family: monospace; font-size: 12px;" placeholder='Dán văn bản hoặc JSON vào đây...'></textarea>
         </div>
@@ -396,7 +396,7 @@
                 return;
             }
 
-            const promptText = `Phân tích từ tiếng Nhật: "${targetWord}" và chỉ trả về DUY NHẤT một chuỗi JSON chuẩn hợp lệ (không kèm theo bất kỳ văn bản, lời giải thích hay ký tự nào khác) theo định dạng exact này: {"Lesson":9999,"Hiragana":"...","Romaji":"...","Kanji":"...","Meaning":"...","category":"...","Vru":"...","type":"...","note":"..."}`;
+            const promptText = `Phân tích từ tiếng Nhật: "${targetWord}" và chỉ trả về DUY NHẤT một chuỗi JSON chuẩn hợp lệ (dùng dấu ngoặc kép thẳng ", không giải thích thêm) theo định dạng: {"Lesson":9999,"Hiragana":"...","Romaji":"...","Kanji":"...","Meaning":"...","category":"...","Vru":"...","type":"...","note":"..."}`;
 
             const encodedPrompt = encodeURIComponent(promptText);
             const chatGptUrl = `https://chatgpt.com/?q=${encodedPrompt}`;
@@ -405,18 +405,21 @@
             window.open(chatGptUrl, '_blank');
         }
 
-        // Tự đống bóc tách & làm sạch JSON bị lỗi định dạng
+        // Tự động bóc tách, sửa ngoặc kép và làm sạch JSON
         function parseAndFillAI() {
             let raw = document.getElementById('inp-ai-json').value.trim();
             if (!raw) { showToast('Vui lòng dán nội dung!'); return; }
 
-            // 1. Tìm khối JSON đầu tiên giữa dấu { và } hoặc [ và ]
+            // 1. Tự động chuyển đổi dấu ngoặc kép cong/nghiêng (“ ”) và phẩy trên thành ngoặc kép thẳng (")
+            raw = raw.replace(/[“”]/g, '"').replace(/[‘’]/g, "'");
+
+            // 2. Tìm khối JSON đầu tiên nằm trong { ... } hoặc [ ... ]
             const jsonMatch = raw.match(/(\{[\s\S]*\}|\[[\s\S]*\])/);
             if (jsonMatch) {
                 raw = jsonMatch[0];
             }
 
-            // 2. Làm sạch các ký tự lạ và sửa lỗi trailing comma (dấu phẩy thừa cuối object)
+            // 3. Xóa dấu phẩy thừa trước dấu đóng ngoặc (ví dụ: ,"note": "..." })
             raw = raw.replace(/,\s*([\}\]])/g, '$1');
 
             try {
@@ -428,7 +431,7 @@
                     return;
                 }
 
-                // Hỗ trợ map dữ liệu bất chấp hoa/thường trong thuộc tính
+                // Hàm hỗ trợ map key không phân biệt hoa/thường
                 const getValue = (keys) => {
                     for (let k of keys) {
                         for (let p in parsed) {
@@ -469,7 +472,7 @@
                 showToast('✨ Đã tự động điền thành công!');
             } catch (err) {
                 console.error(err);
-                showToast('❌ JSON lỗi định dạng, thử copy lại!');
+                showToast('❌ JSON lỗi định dạng!');
             }
         }
 
@@ -568,4 +571,3 @@
     </script>
 </body>
 </html>
-
