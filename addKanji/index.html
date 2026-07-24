@@ -624,7 +624,7 @@
 
             const promptText = `Bạn là chuyên gia Hán tự (Kanji) tiếng Nhật. Hãy phân tích chữ Kanji sau: "${kanji}".
 Trả về DUY NHẤT một chuỗi JSON chuẩn hợp lệ (dùng dấu ngoặc kép thẳng ", không giải thích thêm, không dùng markdown codeblock) theo định dạng:
-{"hanviet":"VÔ","on_reading":"ム","kun_reading":"ない","stroke_count":12,"radicals":"火-hỏa","core_meaning":"Không có, vô","memory_tip":"灬 (lửa) thiêu sạch tất cả = vô.","story_image":"Lửa thiêu rụi mọi thứ - không còn gì sót lại.","vocabulary":"無休(むきゅう):không nghỉ|無料(むりょう):miễn phí|無理(むり):vô lý"}`;
+{"kanji":"${kanji}","hanviet":"VÔ","on_reading":"ム","kun_reading":"ない","stroke_count":12,"radicals":"火-hỏa","core_meaning":"Không có, vô","memory_tip":"灬 (lửa) thiêu sạch tất cả = vô.","story_image":"Lửa thiêu rụi mọi thứ - không còn gì sót lại.","vocabulary":"無休(むきゅう):không nghỉ|無料(むりょう):miễn phí|無理(むり):vô lý"}`;
 
             const encodedPrompt = encodeURIComponent(promptText);
             const chatGptUrl = `https://chatgpt.com/?q=${encodedPrompt}`;
@@ -678,7 +678,10 @@ Trả về DUY NHẤT một chuỗi JSON chuẩn hợp lệ (dùng dấu ngoặc
                     return '';
                 };
 
-                // Gán dữ liệu thu được vào Form
+                // Gán dữ liệu thu được vào Form (bao gồm cả Kanji)
+                const kanjiVal = getValue(['kanji', 'char']);
+                if (kanjiVal) document.getElementById('inp-kanji').value = kanjiVal;
+
                 const hv = getValue(['hanviet', 'hv']);
                 if (hv) document.getElementById('inp-hanviet').value = String(hv).trim().toUpperCase();
                 
