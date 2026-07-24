@@ -174,43 +174,29 @@
         .btn-submit { background: var(--primary-color); color: white; border: none; padding: 12px; border-radius: 10px; width: 100%; font-size: 15px; font-weight: 600; margin-top: 8px; cursor: pointer; transition: opacity 0.1s; }
         .btn-submit:active { opacity: 0.8; }
         
-        /* AI Box trực tiếp trong Form */
+        /* Khung AI tự động dán */
         .ai-input-box {
             background: #fbf5ff;
             border: 1px dashed var(--purple-color);
             border-radius: 10px;
             padding: 10px;
             margin-bottom: 12px;
-        }
-
-        .ai-input-header {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
-            margin-bottom: 6px;
+            flex-direction: column;
+            gap: 8px;
         }
 
         .btn-open-gpt {
             background: #f3e8ff; color: var(--purple-color); border: 1px solid #d8b4fe;
-            padding: 6px 10px; border-radius: 6px; font-size: 11px;
-            font-weight: 600; cursor: pointer; width: 100%; margin-bottom: 8px;
+            padding: 8px 10px; border-radius: 8px; font-size: 12px;
+            font-weight: 600; cursor: pointer; text-align: center;
         }
 
-        .ai-json-wrapper {
-            display: flex;
-            gap: 6px;
-        }
-
-        .btn-parse-json {
-            background: var(--purple-color);
-            color: white;
-            border: none;
-            padding: 0 10px;
-            border-radius: 8px;
-            font-size: 11px;
-            font-weight: 600;
-            cursor: pointer;
-            white-space: nowrap;
+        .btn-auto-paste {
+            background: var(--purple-color); color: white; border: none;
+            padding: 10px; border-radius: 8px; font-size: 13px;
+            font-weight: 600; cursor: pointer; text-align: center;
+            box-shadow: 0 2px 6px rgba(175, 82, 222, 0.3);
         }
 
         /* Toast */
@@ -266,13 +252,10 @@
                 </div>
             </div>
 
-            <!-- Khung Nhập JSON AI Trực Tiếp Tại Form -->
+            <!-- Khung Nút Tự Động Đọc Clipboard & Điền Form -->
             <div class="ai-input-box">
                 <button type="button" class="btn-open-gpt" onclick="openChatGPTWithPrompt()">🤖 1. Mở ChatGPT lấy Prompt</button>
-                <div class="ai-json-wrapper">
-                    <input type="text" id="inp-ai-json" class="form-control" style="background: #fff; font-size: 12px;" placeholder="2. Dán kết quả JSON vào đây...">
-                    <button type="button" class="btn-parse-json" onclick="parseAndFillAI()">⚡ Nhập nhanh</button>
-                </div>
+                <button type="button" class="btn-auto-paste" onclick="pasteAndFillDirectly()">📋 2. Dán & Điền tự động từ Clipboard</button>
             </div>
 
             <div class="form-row">
@@ -411,27 +394,37 @@
             window.open(chatGptUrl, '_blank');
         }
 
-        // Đọc & Tự xử lý JSON trực tiếp tại Form
-        function parseAndFillAI() {
-            let raw = document.getElementById('inp-ai-json').value.trim();
-            if (!raw) { showToast('Vui lòng dán JSON!'); return; }
-
-            // 1. Tự chuyển ngoặc kép cong “ ” thành ngoặc thẳng "
-            raw = raw.replace(/[“”]/g, '"').replace(/[‘’]/g, "'");
-
-            // 2. Lấy đoạn JSON giữa { } hoặc [ ]
-            const jsonMatch = raw.match(/(\{[\s\S]*\}|\[[\s\S]*\])/);
-            if (jsonMatch) raw = jsonMatch[0];
-
-            // 3. Xóa dấu phẩy thừa
-            raw = raw.replace(/,\s*([\}\]])/g, '$1');
-
+        // Đọc thẳng Clipboard từ máy và tự động xử lý điền vào Form
+        async function pasteAndFillDirectly() {
             try {
+                if (!navigator.clipboard || !navigator.clipboard.readText) {
+                    showToast('❌ Trình duyệt không hỗ trợ đọc Clipboard tự động!');
+                    return;
+                }
+
+                let raw = await navigator.clipboard.readText();
+                raw = raw ? raw.trim() : '';
+
+                if (!raw) {
+                    showToast('❌ Clipboard đang trống!');
+                    return;
+                }
+
+                // 1. Tự chuyển ngoặc kép nghiêng “ ” thành ngoặc thẳng "
+                raw = raw.replace(/[“”]/g, '"').replace(/[‘’]/g, "'");
+
+                // 2. Trích xuất khối JSON
+                const jsonMatch = raw.match(/(\{[\s\S]*\}|\[[\s\S]*\])/);
+                if (jsonMatch) raw = jsonMatch[0];
+
+                // 3. Xóa dấu phẩy thừa
+                raw = raw.replace(/,\s*([\}\]])/g, '$1');
+
                 let parsed = JSON.parse(raw);
                 if (Array.isArray(parsed)) parsed = parsed[0]; 
 
                 if (!parsed || typeof parsed !== 'object') {
-                    showToast('Lỗi: Dữ liệu không hợp lệ!');
+                    showToast('❌ Dữ liệu Clipboard không phải JSON hợp lệ!');
                     return;
                 }
 
@@ -451,11 +444,11 @@
                 const meaning = getValue(['Meaning', 'meaning', 'nghia']);
 
                 if (!hira && !kanji && !meaning) {
-                    showToast('❌ Thiếu Hiragana/Kanji/Meaning!');
+                    showToast('❌ JSON thiếu thông tin quan trọng!');
                     return;
                 }
 
-                // Điền thẳng vào các input trong form
+                // Điền dữ liệu vào Form
                 document.getElementById('inp-hiragana').value = hira;
                 document.getElementById('inp-kanji').value = kanji;
                 
@@ -469,12 +462,10 @@
                 document.getElementById('inp-type').value = getValue(['type']);
                 document.getElementById('inp-note').value = getValue(['note']);
 
-                // Xóa trống ô dán JSON sau khi xử lý thành công
-                document.getElementById('inp-ai-json').value = '';
-                showToast('✨ Đã tự động điền!');
+                showToast('✨ Đã tự động dán & điền!');
             } catch (err) {
                 console.error(err);
-                showToast('❌ JSON lỗi định dạng!');
+                showToast('❌ Hãy cấp quyền truy cập Clipboard cho trang web!');
             }
         }
 
