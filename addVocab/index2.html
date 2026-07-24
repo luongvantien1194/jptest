@@ -1,0 +1,529 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+    <title>Quản lý Từ Vựng Extra - Siêu Gọn</title>
+    <style>
+        :root {
+            --primary-color: #007aff;
+            --danger-color: #ff3b30;
+            --success-color: #34c759;
+            --purple-color: #af52de;
+            --bg-color: #f2f2f7;
+            --card-bg: #ffffff;
+            --text-color: #1c1c1e;
+            --text-muted: #8e8e93;
+            --border-color: #e5e5ea;
+            --safe-top: env(safe-area-inset-top, 44px);
+            --safe-bottom: env(safe-area-inset-bottom, 20px);
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; -webkit-tap-highlight-color: transparent; }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            padding-top: var(--safe-top);
+            padding-bottom: calc(var(--safe-bottom) + 10px);
+            line-height: 1.2;
+        }
+
+        header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 14px;
+            background: var(--card-bg);
+            border-bottom: 1px solid var(--border-color);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        header h1 { font-size: 16px; font-weight: 700; }
+
+        .header-actions { display: flex; gap: 6px; }
+
+        .btn-icon {
+            border: none; width: 32px; height: 32px; border-radius: 50%;
+            font-size: 14px; cursor: pointer; display: flex;
+            align-items: center; justify-content: center;
+        }
+        .btn-icon-add { background: #e1f0ff; color: var(--primary-color); }
+        .btn-icon-ai { background: #f3e8ff; color: var(--purple-color); }
+        .btn-icon-copy { background: #e8f7ed; color: var(--success-color); }
+        .btn-icon-delete { background: #ffebeb; color: var(--danger-color); }
+
+        .container { padding: 6px; }
+
+        .vocab-list { display: flex; flex-direction: column; gap: 4px; }
+
+        .vocab-card {
+            background: var(--card-bg);
+            border-radius: 8px;
+            padding: 6px 10px;
+            box-shadow: 0 1px 1px rgba(0,0,0,0.03);
+            display: grid;
+            grid-template-columns: 1fr auto;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .vocab-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .vocab-main-line {
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        .vocab-kanji { color: var(--primary-color); margin-left: 4px; font-weight: 600; }
+        .vocab-romaji { font-size: 11px; color: var(--text-muted); font-weight: 400; margin-left: 6px; }
+
+        .vocab-sub-line {
+            font-size: 12px;
+            color: #3a3a3c;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .mini-tag {
+            font-size: 10px;
+            padding: 0px 4px;
+            background: #f2f2f7;
+            color: #555;
+            border-radius: 4px;
+            font-weight: 500;
+            display: inline-block;
+        }
+        
+        .tag-vru { background: #e5f6ff; color: #0051a8; }
+        .tag-note { background: #fff9e6; color: #b27b00; }
+        .tag-lesson { background: #eaeaea; color: #333; font-weight: 600; }
+
+        .card-actions {
+            display: flex;
+            gap: 10px;
+            border-left: 1px solid var(--border-color);
+            padding-left: 8px;
+        }
+
+        .action-link {
+            font-size: 11px;
+            font-weight: 600;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 4px 0;
+        }
+        .link-edit { color: var(--primary-color); }
+        .link-delete { color: var(--danger-color); }
+
+        /* Modal Styles */
+        .modal-overlay { 
+            position: fixed; top: 0; left: 0; right: 0; bottom: 0; 
+            background: rgba(0, 0, 0, 0.4); 
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 999; 
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.25s cubic-bezier(0.25, 1, 0.5, 1);
+        }
+        
+        .modal {
+            position: fixed; left: 0; right: 0; bottom: 0; 
+            background: var(--card-bg);
+            border-top-left-radius: 20px; border-top-right-radius: 20px; 
+            max-height: 85vh;
+            overflow-y: auto; z-index: 1000; 
+            transform: translateY(100%);
+            transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1); 
+            padding: 16px;
+            padding-bottom: calc(var(--safe-bottom) + 16px);
+            box-shadow: 0 -8px 30px rgba(0,0,0,0.15);
+        }
+
+        .modal::before {
+            content: "";
+            display: block;
+            width: 36px;
+            height: 5px;
+            background: #e5e5ea;
+            border-radius: 3px;
+            margin: -4px auto 14px auto;
+        }
+
+        body.modal-open .modal-overlay { opacity: 1; pointer-events: auto; }
+        body.vocab-open #vocab-modal { transform: translateY(0); }
+        body.confirm-open #confirm-modal { transform: translateY(0); }
+        body.ai-open #ai-modal { transform: translateY(0); }
+
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
+        .form-group { margin-bottom: 12px; }
+        .form-group label { display: block; font-size: 12px; font-weight: 600; margin-bottom: 4px; color: #555; }
+        .form-control { width: 100%; padding: 10px 12px; border: 1px solid var(--border-color); background: #f2f2f7; border-radius: 8px; font-size: 15px; outline: none; transition: all 0.2s; }
+        .form-control:focus { background: #fff; border-color: var(--primary-color); box-shadow: 0 0 0 3px rgba(0,122,255,0.1); }
+        .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+        
+        .btn-submit { background: var(--primary-color); color: white; border: none; padding: 12px; border-radius: 10px; width: 100%; font-size: 15px; font-weight: 600; margin-top: 8px; cursor: pointer; transition: opacity 0.1s; }
+        .btn-submit:active { opacity: 0.8; }
+        
+        .btn-ai-fill {
+            background: #f3e8ff; color: var(--purple-color); border: 1px solid #d8b4fe;
+            padding: 8px 12px; border-radius: 8px; width: 100%; font-size: 13px;
+            font-weight: 600; cursor: pointer; margin-bottom: 12px;
+            display: flex; align-items: center; justify-content: center; gap: 6px;
+        }
+
+        /* Toast */
+        .toast {
+            position: fixed; top: 16px; left: 50%; transform: translateX(-50%) translateY(-100px);
+            background: rgba(0,0,0,0.85); color: white; padding: 8px 16px;
+            border-radius: 16px; font-size: 12px; z-index: 9999; transition: transform 0.2s ease;
+            pointer-events: none; text-align: center; width: 60%;
+        }
+        .toast.show { transform: translateX(-50%) translateY(var(--safe-top)); }
+        .empty-state { text-align: center; padding: 30px; color: var(--text-muted); font-size: 13px; }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div style="display: flex; align-items: center; gap: 8px;">
+            <a href="https://luongvantien1194.github.io/jptest/index.html" class="btn-icon" style="text-decoration: none; background: #f2f2f7; color: var(--text-color);" title="Về trang chủ">🏠</a>
+            <h1>Từ vựng Extra</h1>
+        </div>
+        <div class="header-actions">
+            <button class="btn-icon btn-icon-ai" onclick="copyAIPrompt()" title="Copy Prompt AI">🤖</button>
+            <button class="btn-icon btn-icon-add" onclick="openModal()">＋</button>
+            <button class="btn-icon btn-icon-copy" onclick="copyAllCode()" title="Copy code JS">📋</button>
+            <button class="btn-icon btn-icon-delete" id="btn-delete-all" onclick="triggerDeleteAll()" style="display: none;">🗑️</button>
+        </div>
+    </header>
+
+    <main class="container">
+        <div id="vocab-list-container" class="vocab-list"></div>
+    </main>
+
+    <!-- Nền đen mờ dùng chung -->
+    <div class="modal-overlay" onclick="closeAllModals()"></div>
+
+    <!-- Form Nhập Liệu -->
+    <div class="modal" id="vocab-modal">
+        <div class="modal-header">
+            <h3 id="modal-title" style="font-size: 15px; font-weight: 700;">Thêm từ mới</h3>
+            <span style="color: var(--primary-color); font-size: 14px; font-weight: 600; cursor: pointer;" onclick="closeAllModals()">Đóng</span>
+        </div>
+
+        <button type="button" class="btn-ai-fill" onclick="openAIModal()">✨ Nhập nhanh bằng AI (JSON)</button>
+
+        <form id="vocab-form" onsubmit="saveVocab(event)">
+            <input type="hidden" id="edit-id">
+            
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Hiragana *</label>
+                    <input type="text" id="inp-hiragana" class="form-control" required lang="ja">
+                </div>
+                <div class="form-group">
+                    <label>Bài học (Lesson)</label>
+                    <input type="number" id="inp-lesson" class="form-control" placeholder="Mặc định 9999" min="1">
+                </div>
+            </div>
+
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Kanji</label>
+                    <input type="text" id="inp-kanji" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Romaji</label>
+                    <input type="text" id="inp-romaji" class="form-control">
+                </div>
+            </div>
+            <div class="form-group">
+                <label>Ý nghĩa *</label>
+                <input type="text" id="inp-meaning" class="form-control" lang="vi" required>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Từ loại (Category)</label>
+                    <input type="text" id="inp-category" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Thể từ điển (Vru)</label>
+                    <input type="text" id="inp-vru" class="form-control">
+                </div>
+            </div>
+            <div class="form-row">
+                <div class="form-group">
+                    <label>Type</label>
+                    <input type="text" id="inp-type" class="form-control">
+                </div>
+                <div class="form-group">
+                    <label>Ghi chú (Note)</label>
+                    <input type="text" id="inp-note" class="form-control">
+                </div>
+            </div>
+            <button type="submit" class="btn-submit">Lưu lại</button>
+        </form>
+    </div>
+
+    <!-- Modal Nhập Nhanh Từ AI -->
+    <div class="modal" id="ai-modal">
+        <div class="modal-header">
+            <h3 style="font-size: 15px; font-weight: 700; color: var(--purple-color);">✨ Nhập từ dữ liệu AI</h3>
+            <span style="color: var(--primary-color); font-size: 14px; font-weight: 600; cursor: pointer;" onclick="closeAllModals()">Đóng</span>
+        </div>
+        <p style="font-size: 12px; color: #666; margin-bottom: 8px;">Dán kết quả JSON do AI tạo ra vào ô dưới đây:</p>
+        <div class="form-group">
+            <textarea id="inp-ai-json" class="form-control" rows="6" style="font-family: monospace; font-size: 12px;" placeholder='{"Lesson": 9999, "Hiragana": "たべる", "Romaji": "taberu", "Kanji": "食べる", "Meaning": "ăn", "category": "Động từ", "Vru": "食べる", "type": "Nhóm 2", "note": ""} '></textarea>
+        </div>
+        <button type="button" class="btn-submit" style="background: var(--purple-color);" onclick="parseAndFillAI()">Tự động điền dữ liệu</button>
+    </div>
+
+    <!-- Modal Xác Nhận Xóa Custom -->
+    <div class="modal" id="confirm-modal">
+        <div class="modal-header" style="margin-bottom: 12px;">
+            <h3 id="confirm-title" style="font-size: 15px; font-weight: 700; color: var(--text-color);">Xác nhận</h3>
+        </div>
+        <p id="confirm-text" style="font-size: 14px; color: #3a3a3c; margin-bottom: 20px; text-align: center;">Bạn chắc chắn muốn thực hiện thao tác này?</p>
+        <div class="form-row">
+            <button type="button" class="btn-submit" id="btn-confirm-action" style="background: var(--danger-color); margin-top: 0;">Xác nhận xóa</button>
+            <button type="button" class="btn-submit" onclick="closeAllModals()" style="background: var(--text-muted); margin-top: 0;">Hủy</button>
+        </div>
+    </div>
+
+    <div id="toast" class="toast"></div>
+
+    <script>
+        let vocabData = JSON.parse(localStorage.getItem('vocab_extra_list')) || [];
+        let pendingAction = null;
+
+        function showToast(msg) {
+            const t = document.getElementById('toast');
+            t.innerText = msg; t.classList.add('show');
+            setTimeout(() => t.classList.remove('show'), 1500);
+        }
+
+        function renderList() {
+            const container = document.getElementById('vocab-list-container');
+            const btnDelAll = document.getElementById('btn-delete-all');
+            
+            if (vocabData.length === 0) {
+                container.innerHTML = `<div class="empty-state">Chưa có từ vựng bổ sung nào.</div>`;
+                btnDelAll.style.display = 'none';
+                return;
+            }
+
+            btnDelAll.style.display = 'inline-flex';
+            container.innerHTML = '';
+
+            vocabData.forEach((item, index) => {
+                const card = document.createElement('div');
+                card.className = 'vocab-card';
+                
+                let tagsHtml = '';
+                if(item.Lesson && item.Lesson !== 9999) tagsHtml += `<span class="mini-tag tag-lesson">L. ${item.Lesson}</span>`;
+                if(item.category) tagsHtml += `<span class="mini-tag">${item.category}</span>`;
+                if(item.Vru) tagsHtml += `<span class="mini-tag tag-vru">Vru: ${item.Vru}</span>`;
+                if(item.type) tagsHtml += `<span class="mini-tag">${item.type}</span>`;
+                if(item.note) tagsHtml += `<span class="mini-tag tag-note">📌 ${item.note}</span>`;
+
+                card.innerHTML = `
+                    <div class="vocab-info">
+                        <div class="vocab-main-line">
+                            <span>${item.Hiragana}</span>
+                            ${item.Kanji ? `<span class="vocab-kanji">(${item.Kanji})</span>` : ''}
+                            ${item.Romaji ? `<span class="vocab-romaji">${item.Romaji}</span>` : ''}
+                        </div>
+                        <div class="vocab-sub-line">
+                            <span style="font-weight:500; color:#000;">${item.Meaning}</span>
+                            ${tagsHtml}
+                        </div>
+                    </div>
+                    <div class="card-actions">
+                        <button class="action-link link-edit" onclick="editVocab(${index})">Sửa</button>
+                        <button class="action-link link-delete" onclick="triggerDeleteSingle(${index})">Xóa</button>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
+
+        function openModal(isEdit = false) {
+            if (!isEdit) {
+                document.getElementById('vocab-form').reset();
+                document.getElementById('edit-id').value = '';
+                document.getElementById('modal-title').innerText = 'Thêm từ mới';
+            }
+            document.body.classList.add('modal-open', 'vocab-open');
+        }
+
+        function openAIModal() {
+            document.getElementById('inp-ai-json').value = '';
+            document.body.classList.remove('vocab-open');
+            document.body.classList.add('modal-open', 'ai-open');
+        }
+
+        function copyAIPrompt() {
+            const promptText = `Hãy phân tích các từ tiếng Nhật sau và trả về DUY NHẤT một mảng JSON các đối tượng (không kèm bất kỳ văn bản giải thích nào khác) chuẩn theo định dạng cấu trúc sau:
+
+[
+  {
+    "Lesson": 9999,
+    "Hiragana": "hiragana ở đây",
+    "Romaji": "romaji ở đây",
+    "Kanji": "kanji ở đây (nếu không có thì để rỗng \"\")",
+    "Meaning": "nghĩa tiếng Việt",
+    "category": "loại từ (vd: Động từ, Danh từ, Tính từ)",
+    "Vru": "thể từ điển nếu là động từ (hoặc để rỗng \"\")",
+    "type": "nhóm động từ/loại tính từ (vd: Nhóm 1, Tính từ -i... hoặc để rỗng \"\")",
+    "note": "ghi chú thêm (hoặc để rỗng \"\")"
+  }
+]
+
+Danh sách từ cần phân tích:
+[ĐIỀN TỪ CỦA BẠN VÀO ĐÂY]`;
+
+            navigator.clipboard.writeText(promptText).then(() => {
+                showToast('🤖 Đã copy Prompt AI vào bộ nhớ!');
+            });
+        }
+
+        function parseAndFillAI() {
+            const raw = document.getElementById('inp-ai-json').value.trim();
+            if (!raw) { showToast('Vui lòng dán JSON!'); return; }
+
+            try {
+                let parsed = JSON.parse(raw);
+                if (Array.isArray(parsed)) parsed = parsed[0]; // Lấy phần tử đầu tiên nếu dán cả mảng
+
+                if (!parsed || !parsed.Hiragana) {
+                    showToast('Lỗi: Cấu trúc JSON không hợp lệ!');
+                    return;
+                }
+
+                openModal(true); // Mở form nhập liệu
+                document.getElementById('modal-title').innerText = 'Thêm từ mới (AI)';
+                
+                document.getElementById('inp-hiragana').value = parsed.Hiragana || '';
+                document.getElementById('inp-lesson').value = (parsed.Lesson && parsed.Lesson !== 9999) ? parsed.Lesson : '';
+                document.getElementById('inp-romaji').value = parsed.Romaji || '';
+                document.getElementById('inp-kanji').value = parsed.Kanji || '';
+                document.getElementById('inp-meaning').value = parsed.Meaning || '';
+                document.getElementById('inp-category').value = parsed.category || '';
+                document.getElementById('inp-vru').value = parsed.Vru || '';
+                document.getElementById('inp-type').value = parsed.type || '';
+                document.getElementById('inp-note').value = parsed.note || '';
+
+                document.body.classList.remove('ai-open');
+                showToast('✨ Đã điền thông tin AI thành công!');
+            } catch (err) {
+                showToast('❌ JSON không đúng định dạng!');
+            }
+        }
+
+        function triggerDeleteSingle(index) {
+            const item = vocabData[index];
+            document.getElementById('confirm-title').innerText = "Xóa từ vựng";
+            document.getElementById('confirm-text').innerText = `Xóa từ "${item.Hiragana}" khỏi danh sách?`;
+            
+            pendingAction = () => {
+                vocabData.splice(index, 1);
+                localStorage.setItem('vocab_extra_list', JSON.stringify(vocabData));
+                renderList();
+                showToast('Đã xóa!');
+            };
+            
+            document.body.classList.add('modal-open', 'confirm-open');
+        }
+
+        function triggerDeleteAll() {
+            document.getElementById('confirm-title').innerText = "Xóa toàn bộ";
+            document.getElementById('confirm-text').innerText = "Bạn có chắc muốn xóa sạch danh sách từ vựng bổ sung?";
+            
+            pendingAction = () => {
+                vocabData = [];
+                localStorage.removeItem('vocab_extra_list');
+                renderList();
+                showToast('Đã xóa sạch!');
+            };
+            
+            document.body.classList.add('modal-open', 'confirm-open');
+        }
+
+        function closeAllModals() {
+            document.body.classList.remove('modal-open', 'vocab-open', 'confirm-open', 'ai-open');
+            pendingAction = null;
+        }
+
+        document.getElementById('btn-confirm-action').addEventListener('click', () => {
+            if (pendingAction) pendingAction();
+            closeAllModals();
+        });
+
+        function saveVocab(e) {
+            e.preventDefault();
+            const id = document.getElementById('edit-id').value;
+            
+            const lessonInput = document.getElementById('inp-lesson').value.trim();
+            const lessonValue = lessonInput !== '' ? parseInt(lessonInput, 10) : 9999;
+
+            const item = {
+                "Lesson": isNaN(lessonValue) ? 9999 : lessonValue,
+                "Hiragana": document.getElementById('inp-hiragana').value.trim(),
+                "Romaji": document.getElementById('inp-romaji').value.trim(),
+                "Kanji": document.getElementById('inp-kanji').value.trim(),
+                "Meaning": document.getElementById('inp-meaning').value.trim(),
+                "category": document.getElementById('inp-category').value.trim(),
+                "Vru": document.getElementById('inp-vru').value.trim(),
+                "type": document.getElementById('inp-type').value.trim(),
+                "note": document.getElementById('inp-note').value.trim()
+            };
+
+            if (id !== '') { vocabData[parseInt(id)] = item; showToast('Đã sửa!'); } 
+            else { vocabData.push(item); showToast('Đã thêm!'); }
+
+            localStorage.setItem('vocab_extra_list', JSON.stringify(vocabData));
+            closeAllModals(); renderList();
+        }
+
+        function editVocab(index) {
+            const item = vocabData[index]; 
+            openModal(true);
+            document.getElementById('edit-id').value = index;
+            document.getElementById('modal-title').innerText = 'Chỉnh sửa';
+            document.getElementById('inp-hiragana').value = item.Hiragana;
+            document.getElementById('inp-lesson').value = item.Lesson === 9999 ? '' : item.Lesson;
+            document.getElementById('inp-romaji').value = item.Romaji;
+            document.getElementById('inp-kanji').value = item.Kanji;
+            document.getElementById('inp-meaning').value = item.Meaning;
+            document.getElementById('inp-category').value = item.category;
+            document.getElementById('inp-vru').value = item.Vru;
+            document.getElementById('inp-type').value = item.type;
+            document.getElementById('inp-note').value = item.note;
+        }
+
+        function copyAllCode() {
+            if (vocabData.length === 0) { showToast('Không có dữ liệu!'); return; }
+            let txt = ``;
+            vocabData.forEach(i => {
+                txt += `  // --- Lesson ${i.Lesson}: ${i.Hiragana} ---\n`;
+                txt += `  { "Lesson": ${i.Lesson}, "Hiragana": "${i.Hiragana}", "Romaji": "${i.Romaji}", "Kanji": "${i.Kanji}", "Meaning": "${i.Meaning}", "category": "${i.category}", "Vru": "${i.Vru}", "type": "${i.type}", "note": "${i.note}" },\n`;
+            });
+            navigator.clipboard.writeText(txt).then(() => showToast('📋 Đã copy code JS!'));
+        }
+
+        document.addEventListener('DOMContentLoaded', renderList);
+    </script>
+</body>
+</html>
