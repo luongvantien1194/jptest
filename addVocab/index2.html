@@ -1,9 +1,3 @@
-Lỗi này thường do ChatGPT trả về văn bản kèm theo (ví dụ: "Đây là dữ liệu JSON của bạn:") hoặc format JSON không khớp tên các thuộc tính mà form yêu cầu.
-Dưới đây là mã HTML đã được nâng cấp hàm xử lý parseAndFillAI() để tự động dọn dẹp và sửa các lỗi định dạng JSON phổ biến từ ChatGPT:
-Các cải tiến đã bổ sung:
- * Trích xuất thông minh: Tự động tìm đoạn JSON { ... } nằm giữa văn bản giải thích của ChatGPT (dù ChatGPT có viết dài dòng thế nào).
- * Sửa lỗi cú pháp nhẹ: Tự động sửa dấu phẩy thừa (,} hoặc , ]) - lỗi phổ biến nhất khiến JSON bị hỏng.
- * Chuẩn hóa chữ hoa/thường: Tự động map các field như hiragana → Hiragana, kanji → Kanji, meaning → Meaning để không bị bỏ trống dữ liệu khi dán.
 <!DOCTYPE html>
 <html lang="vi">
 <head>
