@@ -141,7 +141,7 @@
             position: fixed; left: 0; right: 0; bottom: 0; 
             background: var(--card-bg);
             border-top-left-radius: 20px; border-top-right-radius: 20px; 
-            max-height: 85vh;
+            max-height: 90vh;
             overflow-y: auto; z-index: 1000; 
             transform: translateY(100%);
             transition: transform 0.3s cubic-bezier(0.25, 1, 0.5, 1); 
@@ -163,32 +163,54 @@
         body.modal-open .modal-overlay { opacity: 1; pointer-events: auto; }
         body.vocab-open #vocab-modal { transform: translateY(0); }
         body.confirm-open #confirm-modal { transform: translateY(0); }
-        body.ai-open #ai-modal { transform: translateY(0); }
 
-        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
-        .form-group { margin-bottom: 12px; }
+        .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+        .form-group { margin-bottom: 10px; }
         .form-group label { display: block; font-size: 12px; font-weight: 600; margin-bottom: 4px; color: #555; }
-        .form-control { width: 100%; padding: 10px 12px; border: 1px solid var(--border-color); background: #f2f2f7; border-radius: 8px; font-size: 15px; outline: none; transition: all 0.2s; }
+        .form-control { width: 100%; padding: 10px 12px; border: 1px solid var(--border-color); background: #f2f2f7; border-radius: 8px; font-size: 14px; outline: none; transition: all 0.2s; }
         .form-control:focus { background: #fff; border-color: var(--primary-color); box-shadow: 0 0 0 3px rgba(0,122,255,0.1); }
         .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
         
         .btn-submit { background: var(--primary-color); color: white; border: none; padding: 12px; border-radius: 10px; width: 100%; font-size: 15px; font-weight: 600; margin-top: 8px; cursor: pointer; transition: opacity 0.1s; }
         .btn-submit:active { opacity: 0.8; }
         
-        .ai-action-bar {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 8px;
-            margin-top: 4px;
+        /* AI Box trực tiếp trong Form */
+        .ai-input-box {
+            background: #fbf5ff;
+            border: 1px dashed var(--purple-color);
+            border-radius: 10px;
+            padding: 10px;
             margin-bottom: 12px;
-            grid-column: span 2;
         }
 
-        .btn-ai-action {
+        .ai-input-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 6px;
+        }
+
+        .btn-open-gpt {
             background: #f3e8ff; color: var(--purple-color); border: 1px solid #d8b4fe;
-            padding: 8px 6px; border-radius: 8px; font-size: 11px;
-            font-weight: 600; cursor: pointer;
-            display: flex; align-items: center; justify-content: center; gap: 4px;
+            padding: 6px 10px; border-radius: 6px; font-size: 11px;
+            font-weight: 600; cursor: pointer; width: 100%; margin-bottom: 8px;
+        }
+
+        .ai-json-wrapper {
+            display: flex;
+            gap: 6px;
+        }
+
+        .btn-parse-json {
+            background: var(--purple-color);
+            color: white;
+            border: none;
+            padding: 0 10px;
+            border-radius: 8px;
+            font-size: 11px;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
         }
 
         /* Toast */
@@ -223,7 +245,7 @@
     <!-- Nền đen mờ dùng chung -->
     <div class="modal-overlay" onclick="closeAllModals()"></div>
 
-    <!-- Form Nhập Liệu -->
+    <!-- Form Nhập Liệu Chính -->
     <div class="modal" id="vocab-modal">
         <div class="modal-header">
             <h3 id="modal-title" style="font-size: 15px; font-weight: 700;">Thêm từ mới</h3>
@@ -242,11 +264,14 @@
                     <label>Kanji</label>
                     <input type="text" id="inp-kanji" class="form-control" placeholder="Hoặc Kanji...">
                 </div>
+            </div>
 
-                <!-- 2 Nút AI nằm ngay dưới Hiragana & Kanji -->
-                <div class="ai-action-bar">
-                    <button type="button" class="btn-ai-action" onclick="openChatGPTWithPrompt()">🤖 Prompt & Mở ChatGPT</button>
-                    <button type="button" class="btn-ai-action" onclick="openAIModal()">✨ Dán kết quả AI</button>
+            <!-- Khung Nhập JSON AI Trực Tiếp Tại Form -->
+            <div class="ai-input-box">
+                <button type="button" class="btn-open-gpt" onclick="openChatGPTWithPrompt()">🤖 1. Mở ChatGPT lấy Prompt</button>
+                <div class="ai-json-wrapper">
+                    <input type="text" id="inp-ai-json" class="form-control" style="background: #fff; font-size: 12px;" placeholder="2. Dán kết quả JSON vào đây...">
+                    <button type="button" class="btn-parse-json" onclick="parseAndFillAI()">⚡ Nhập nhanh</button>
                 </div>
             </div>
 
@@ -287,19 +312,6 @@
             </div>
             <button type="submit" class="btn-submit">Lưu lại</button>
         </form>
-    </div>
-
-    <!-- Modal Dán Kết Quả AI -->
-    <div class="modal" id="ai-modal">
-        <div class="modal-header">
-            <h3 style="font-size: 15px; font-weight: 700; color: var(--purple-color);">✨ Dán kết quả từ ChatGPT</h3>
-            <span style="color: var(--primary-color); font-size: 14px; font-weight: 600; cursor: pointer;" onclick="closeAllModals()">Đóng</span>
-        </div>
-        <p style="font-size: 12px; color: #666; margin-bottom: 8px;">Dán kết quả ChatGPT vào đây (hệ thống tự động sửa ngoặc kép và trích xuất JSON):</p>
-        <div class="form-group">
-            <textarea id="inp-ai-json" class="form-control" rows="6" style="font-family: monospace; font-size: 12px;" placeholder='Dán văn bản hoặc JSON vào đây...'></textarea>
-        </div>
-        <button type="button" class="btn-submit" style="background: var(--purple-color);" onclick="parseAndFillAI()">Tự động điền dữ liệu</button>
     </div>
 
     <!-- Modal Xác Nhận Xóa Custom -->
@@ -380,12 +392,6 @@
             document.body.classList.add('modal-open', 'vocab-open');
         }
 
-        function openAIModal() {
-            document.getElementById('inp-ai-json').value = '';
-            document.body.classList.remove('vocab-open');
-            document.body.classList.add('modal-open', 'ai-open');
-        }
-
         function openChatGPTWithPrompt() {
             const hira = document.getElementById('inp-hiragana').value.trim();
             const kanji = document.getElementById('inp-kanji').value.trim();
@@ -405,21 +411,19 @@
             window.open(chatGptUrl, '_blank');
         }
 
-        // Tự động bóc tách, sửa ngoặc kép và làm sạch JSON
+        // Đọc & Tự xử lý JSON trực tiếp tại Form
         function parseAndFillAI() {
             let raw = document.getElementById('inp-ai-json').value.trim();
-            if (!raw) { showToast('Vui lòng dán nội dung!'); return; }
+            if (!raw) { showToast('Vui lòng dán JSON!'); return; }
 
-            // 1. Tự động chuyển đổi dấu ngoặc kép cong/nghiêng (“ ”) và phẩy trên thành ngoặc kép thẳng (")
+            // 1. Tự chuyển ngoặc kép cong “ ” thành ngoặc thẳng "
             raw = raw.replace(/[“”]/g, '"').replace(/[‘’]/g, "'");
 
-            // 2. Tìm khối JSON đầu tiên nằm trong { ... } hoặc [ ... ]
+            // 2. Lấy đoạn JSON giữa { } hoặc [ ]
             const jsonMatch = raw.match(/(\{[\s\S]*\}|\[[\s\S]*\])/);
-            if (jsonMatch) {
-                raw = jsonMatch[0];
-            }
+            if (jsonMatch) raw = jsonMatch[0];
 
-            // 3. Xóa dấu phẩy thừa trước dấu đóng ngoặc (ví dụ: ,"note": "..." })
+            // 3. Xóa dấu phẩy thừa
             raw = raw.replace(/,\s*([\}\]])/g, '$1');
 
             try {
@@ -427,11 +431,10 @@
                 if (Array.isArray(parsed)) parsed = parsed[0]; 
 
                 if (!parsed || typeof parsed !== 'object') {
-                    showToast('Lỗi: Không tìm thấy dữ liệu hợp lệ!');
+                    showToast('Lỗi: Dữ liệu không hợp lệ!');
                     return;
                 }
 
-                // Hàm hỗ trợ map key không phân biệt hoa/thường
                 const getValue = (keys) => {
                     for (let k of keys) {
                         for (let p in parsed) {
@@ -448,13 +451,11 @@
                 const meaning = getValue(['Meaning', 'meaning', 'nghia']);
 
                 if (!hira && !kanji && !meaning) {
-                    showToast('❌ JSON thiếu Hiragana/Kanji/Meaning!');
+                    showToast('❌ Thiếu Hiragana/Kanji/Meaning!');
                     return;
                 }
 
-                openModal(true); 
-                document.getElementById('modal-title').innerText = 'Thêm từ mới (AI)';
-                
+                // Điền thẳng vào các input trong form
                 document.getElementById('inp-hiragana').value = hira;
                 document.getElementById('inp-kanji').value = kanji;
                 
@@ -468,8 +469,9 @@
                 document.getElementById('inp-type').value = getValue(['type']);
                 document.getElementById('inp-note').value = getValue(['note']);
 
-                document.body.classList.remove('ai-open');
-                showToast('✨ Đã tự động điền thành công!');
+                // Xóa trống ô dán JSON sau khi xử lý thành công
+                document.getElementById('inp-ai-json').value = '';
+                showToast('✨ Đã tự động điền!');
             } catch (err) {
                 console.error(err);
                 showToast('❌ JSON lỗi định dạng!');
@@ -506,7 +508,7 @@
         }
 
         function closeAllModals() {
-            document.body.classList.remove('modal-open', 'vocab-open', 'confirm-open', 'ai-open');
+            document.body.classList.remove('modal-open', 'vocab-open', 'confirm-open');
             pendingAction = null;
         }
 
