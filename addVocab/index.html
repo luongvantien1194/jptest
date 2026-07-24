@@ -9,6 +9,7 @@
             --primary-color: #007aff;
             --danger-color: #ff3b30;
             --success-color: #34c759;
+            --purple-color: #af52de;
             --bg-color: #f2f2f7;
             --card-bg: #ffffff;
             --text-color: #1c1c1e;
@@ -124,7 +125,7 @@
         .link-edit { color: var(--primary-color); }
         .link-delete { color: var(--danger-color); }
 
-        /* --- STYLE MODAL ĐÃ ĐƯỢC CẬP NHẬT --- */
+        /* Modal Styles */
         .modal-overlay { 
             position: fixed; top: 0; left: 0; right: 0; bottom: 0; 
             background: rgba(0, 0, 0, 0.4); 
@@ -149,7 +150,6 @@
             box-shadow: 0 -8px 30px rgba(0,0,0,0.15);
         }
 
-        /* Thanh gạch nhỏ định hình kiểu vuốt (Drag Indicator) */
         .modal::before {
             content: "";
             display: block;
@@ -160,10 +160,10 @@
             margin: -4px auto 14px auto;
         }
 
-        /* Trạng thái hiển thị điều khiển bằng Class ở body */
         body.modal-open .modal-overlay { opacity: 1; pointer-events: auto; }
         body.vocab-open #vocab-modal { transform: translateY(0); }
         body.confirm-open #confirm-modal { transform: translateY(0); }
+        body.ai-open #ai-modal { transform: translateY(0); }
 
         .modal-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 16px; }
         .form-group { margin-bottom: 12px; }
@@ -174,6 +174,22 @@
         
         .btn-submit { background: var(--primary-color); color: white; border: none; padding: 12px; border-radius: 10px; width: 100%; font-size: 15px; font-weight: 600; margin-top: 8px; cursor: pointer; transition: opacity 0.1s; }
         .btn-submit:active { opacity: 0.8; }
+        
+        .ai-action-bar {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 8px;
+            margin-top: 4px;
+            margin-bottom: 12px;
+            grid-column: span 2;
+        }
+
+        .btn-ai-action {
+            background: #f3e8ff; color: var(--purple-color); border: 1px solid #d8b4fe;
+            padding: 8px 6px; border-radius: 8px; font-size: 11px;
+            font-weight: 600; cursor: pointer;
+            display: flex; align-items: center; justify-content: center; gap: 4px;
+        }
 
         /* Toast */
         .toast {
@@ -195,7 +211,7 @@
         </div>
         <div class="header-actions">
             <button class="btn-icon btn-icon-add" onclick="openModal()">＋</button>
-            <button class="btn-icon btn-icon-copy" onclick="copyAllCode()">📋</button>
+            <button class="btn-icon btn-icon-copy" onclick="copyAllCode()" title="Copy code JS">📋</button>
             <button class="btn-icon btn-icon-delete" id="btn-delete-all" onclick="triggerDeleteAll()" style="display: none;">🗑️</button>
         </div>
     </header>
@@ -204,7 +220,7 @@
         <div id="vocab-list-container" class="vocab-list"></div>
     </main>
 
-    <!-- Nền đen mờ dùng chung cho cả 2 modal -->
+    <!-- Nền đen mờ dùng chung -->
     <div class="modal-overlay" onclick="closeAllModals()"></div>
 
     <!-- Form Nhập Liệu -->
@@ -213,30 +229,38 @@
             <h3 id="modal-title" style="font-size: 15px; font-weight: 700;">Thêm từ mới</h3>
             <span style="color: var(--primary-color); font-size: 14px; font-weight: 600; cursor: pointer;" onclick="closeAllModals()">Đóng</span>
         </div>
+
         <form id="vocab-form" onsubmit="saveVocab(event)">
             <input type="hidden" id="edit-id">
             
             <div class="form-row">
                 <div class="form-group">
                     <label>Hiragana *</label>
-                    <input type="text" id="inp-hiragana" class="form-control" required lang="ja">
+                    <input type="text" id="inp-hiragana" class="form-control" required lang="ja" placeholder="Nhập Hiragana...">
                 </div>
                 <div class="form-group">
-                    <label>Bài học (Lesson)</label>
-                    <input type="number" id="inp-lesson" class="form-control" placeholder="Mặc định 9999" min="1">
+                    <label>Kanji</label>
+                    <input type="text" id="inp-kanji" class="form-control" placeholder="Hoặc Kanji...">
+                </div>
+
+                <!-- 2 Nút AI nằm ngay dưới Hiragana & Kanji -->
+                <div class="ai-action-bar">
+                    <button type="button" class="btn-ai-action" onclick="openChatGPTWithPrompt()">🤖 Prompt & Mở ChatGPT</button>
+                    <button type="button" class="btn-ai-action" onclick="openAIModal()">✨ Dán kết quả AI</button>
                 </div>
             </div>
 
             <div class="form-row">
                 <div class="form-group">
-                    <label>Kanji</label>
-                    <input type="text" id="inp-kanji" class="form-control">
+                    <label>Bài học (Lesson)</label>
+                    <input type="number" id="inp-lesson" class="form-control" placeholder="Mặc định 9999" min="1">
                 </div>
                 <div class="form-group">
                     <label>Romaji</label>
                     <input type="text" id="inp-romaji" class="form-control">
                 </div>
             </div>
+            
             <div class="form-group">
                 <label>Ý nghĩa *</label>
                 <input type="text" id="inp-meaning" class="form-control" lang="vi" required>
@@ -263,6 +287,19 @@
             </div>
             <button type="submit" class="btn-submit">Lưu lại</button>
         </form>
+    </div>
+
+    <!-- Modal Dán Kết Quả AI -->
+    <div class="modal" id="ai-modal">
+        <div class="modal-header">
+            <h3 style="font-size: 15px; font-weight: 700; color: var(--purple-color);">✨ Dán kết quả từ ChatGPT</h3>
+            <span style="color: var(--primary-color); font-size: 14px; font-weight: 600; cursor: pointer;" onclick="closeAllModals()">Đóng</span>
+        </div>
+        <p style="font-size: 12px; color: #666; margin-bottom: 8px;">Dán kết quả ChatGPT vào đây (hệ thống tự động sửa ngoặc kép và trích xuất JSON):</p>
+        <div class="form-group">
+            <textarea id="inp-ai-json" class="form-control" rows="6" style="font-family: monospace; font-size: 12px;" placeholder='Dán văn bản hoặc JSON vào đây...'></textarea>
+        </div>
+        <button type="button" class="btn-submit" style="background: var(--purple-color);" onclick="parseAndFillAI()">Tự động điền dữ liệu</button>
     </div>
 
     <!-- Modal Xác Nhận Xóa Custom -->
@@ -335,11 +372,108 @@
         }
 
         function openModal(isEdit = false) {
-            document.getElementById('vocab-form').reset();
-            document.getElementById('edit-id').value = '';
-            document.getElementById('modal-title').innerText = isEdit ? 'Chỉnh sửa' : 'Thêm từ mới';
-            
+            if (!isEdit) {
+                document.getElementById('vocab-form').reset();
+                document.getElementById('edit-id').value = '';
+                document.getElementById('modal-title').innerText = 'Thêm từ mới';
+            }
             document.body.classList.add('modal-open', 'vocab-open');
+        }
+
+        function openAIModal() {
+            document.getElementById('inp-ai-json').value = '';
+            document.body.classList.remove('vocab-open');
+            document.body.classList.add('modal-open', 'ai-open');
+        }
+
+        function openChatGPTWithPrompt() {
+            const hira = document.getElementById('inp-hiragana').value.trim();
+            const kanji = document.getElementById('inp-kanji').value.trim();
+            const targetWord = hira || kanji;
+
+            if (!targetWord) {
+                showToast('❌ Nhập Hiragana hoặc Kanji trước!');
+                return;
+            }
+
+            const promptText = `Phân tích từ tiếng Nhật: "${targetWord}" và chỉ trả về DUY NHẤT một chuỗi JSON chuẩn hợp lệ (dùng dấu ngoặc kép thẳng ", không giải thích thêm) theo định dạng: {"Lesson":9999,"Hiragana":"...","Romaji":"...","Kanji":"...","Meaning":"...","category":"...","Vru":"...","type":"...","note":"..."}`;
+
+            const encodedPrompt = encodeURIComponent(promptText);
+            const chatGptUrl = `https://chatgpt.com/?q=${encodedPrompt}`;
+
+            showToast('🚀 Đang mở ChatGPT...');
+            window.open(chatGptUrl, '_blank');
+        }
+
+        // Tự động bóc tách, sửa ngoặc kép và làm sạch JSON
+        function parseAndFillAI() {
+            let raw = document.getElementById('inp-ai-json').value.trim();
+            if (!raw) { showToast('Vui lòng dán nội dung!'); return; }
+
+            // 1. Tự động chuyển đổi dấu ngoặc kép cong/nghiêng (“ ”) và phẩy trên thành ngoặc kép thẳng (")
+            raw = raw.replace(/[“”]/g, '"').replace(/[‘’]/g, "'");
+
+            // 2. Tìm khối JSON đầu tiên nằm trong { ... } hoặc [ ... ]
+            const jsonMatch = raw.match(/(\{[\s\S]*\}|\[[\s\S]*\])/);
+            if (jsonMatch) {
+                raw = jsonMatch[0];
+            }
+
+            // 3. Xóa dấu phẩy thừa trước dấu đóng ngoặc (ví dụ: ,"note": "..." })
+            raw = raw.replace(/,\s*([\}\]])/g, '$1');
+
+            try {
+                let parsed = JSON.parse(raw);
+                if (Array.isArray(parsed)) parsed = parsed[0]; 
+
+                if (!parsed || typeof parsed !== 'object') {
+                    showToast('Lỗi: Không tìm thấy dữ liệu hợp lệ!');
+                    return;
+                }
+
+                // Hàm hỗ trợ map key không phân biệt hoa/thường
+                const getValue = (keys) => {
+                    for (let k of keys) {
+                        for (let p in parsed) {
+                            if (p.toLowerCase() === k.toLowerCase() && parsed[p] !== undefined) {
+                                return parsed[p];
+                            }
+                        }
+                    }
+                    return '';
+                };
+
+                const hira = getValue(['Hiragana', 'hira']);
+                const kanji = getValue(['Kanji', 'kan']);
+                const meaning = getValue(['Meaning', 'meaning', 'nghia']);
+
+                if (!hira && !kanji && !meaning) {
+                    showToast('❌ JSON thiếu Hiragana/Kanji/Meaning!');
+                    return;
+                }
+
+                openModal(true); 
+                document.getElementById('modal-title').innerText = 'Thêm từ mới (AI)';
+                
+                document.getElementById('inp-hiragana').value = hira;
+                document.getElementById('inp-kanji').value = kanji;
+                
+                const lessonVal = getValue(['Lesson', 'lesson']);
+                document.getElementById('inp-lesson').value = (lessonVal && lessonVal !== 9999) ? lessonVal : '';
+                
+                document.getElementById('inp-romaji').value = getValue(['Romaji', 'romaji']);
+                document.getElementById('inp-meaning').value = meaning;
+                document.getElementById('inp-category').value = getValue(['category', 'cat']);
+                document.getElementById('inp-vru').value = getValue(['Vru', 'vru']);
+                document.getElementById('inp-type').value = getValue(['type']);
+                document.getElementById('inp-note').value = getValue(['note']);
+
+                document.body.classList.remove('ai-open');
+                showToast('✨ Đã tự động điền thành công!');
+            } catch (err) {
+                console.error(err);
+                showToast('❌ JSON lỗi định dạng!');
+            }
         }
 
         function triggerDeleteSingle(index) {
@@ -372,7 +506,7 @@
         }
 
         function closeAllModals() {
-            document.body.classList.remove('modal-open', 'vocab-open', 'confirm-open');
+            document.body.classList.remove('modal-open', 'vocab-open', 'confirm-open', 'ai-open');
             pendingAction = null;
         }
 
@@ -408,8 +542,10 @@
         }
 
         function editVocab(index) {
-            const item = vocabData[index]; openModal(true);
+            const item = vocabData[index]; 
+            openModal(true);
             document.getElementById('edit-id').value = index;
+            document.getElementById('modal-title').innerText = 'Chỉnh sửa';
             document.getElementById('inp-hiragana').value = item.Hiragana;
             document.getElementById('inp-lesson').value = item.Lesson === 9999 ? '' : item.Lesson;
             document.getElementById('inp-romaji').value = item.Romaji;
@@ -423,13 +559,11 @@
 
         function copyAllCode() {
             if (vocabData.length === 0) { showToast('Không có dữ liệu!'); return; }
-            // let txt = `// N3 Vocab - Extra\nwindow._vocabExtra = window._vocabExtra || [];\nwindow._vocabExtra.push(\n`;
             let txt = ``;
             vocabData.forEach(i => {
                 txt += `  // --- Lesson ${i.Lesson}: ${i.Hiragana} ---\n`;
                 txt += `  { "Lesson": ${i.Lesson}, "Hiragana": "${i.Hiragana}", "Romaji": "${i.Romaji}", "Kanji": "${i.Kanji}", "Meaning": "${i.Meaning}", "category": "${i.category}", "Vru": "${i.Vru}", "type": "${i.type}", "note": "${i.note}" },\n`;
             });
-            // txt += `);`;
             navigator.clipboard.writeText(txt).then(() => showToast('📋 Đã copy code JS!'));
         }
 
