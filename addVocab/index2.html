@@ -179,12 +179,14 @@
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 8px;
-            margin-bottom: 14px;
+            margin-top: 4px;
+            margin-bottom: 12px;
+            grid-column: span 2;
         }
 
         .btn-ai-action {
             background: #f3e8ff; color: var(--purple-color); border: 1px solid #d8b4fe;
-            padding: 9px 8px; border-radius: 8px; font-size: 12px;
+            padding: 8px 6px; border-radius: 8px; font-size: 11px;
             font-weight: 600; cursor: pointer;
             display: flex; align-items: center; justify-content: center; gap: 4px;
         }
@@ -228,23 +230,23 @@
             <span style="color: var(--primary-color); font-size: 14px; font-weight: 600; cursor: pointer;" onclick="closeAllModals()">Đóng</span>
         </div>
 
-        <!-- Thanh công cụ AI hỗ trợ -->
-        <div class="ai-action-bar">
-            <button type="button" class="btn-ai-action" onclick="copyAIPromptAndOpenChatGPT()">🤖 Prompt & Mở ChatGPT</button>
-            <button type="button" class="btn-ai-action" onclick="openAIModal()">✨ Dán kết quả AI</button>
-        </div>
-
         <form id="vocab-form" onsubmit="saveVocab(event)">
             <input type="hidden" id="edit-id">
             
             <div class="form-row">
                 <div class="form-group">
                     <label>Hiragana *</label>
-                    <input type="text" id="inp-hiragana" class="form-control" required lang="ja" placeholder="Nhập từ cần tra...">
+                    <input type="text" id="inp-hiragana" class="form-control" required lang="ja" placeholder="Nhập Hiragana...">
                 </div>
                 <div class="form-group">
                     <label>Kanji</label>
-                    <input type="text" id="inp-kanji" class="form-control" placeholder="Hoặc nhập Kanji...">
+                    <input type="text" id="inp-kanji" class="form-control" placeholder="Hoặc Kanji...">
+                </div>
+
+                <!-- 2 Nút AI nằm ngay dưới Hiragana & Kanji -->
+                <div class="ai-action-bar">
+                    <button type="button" class="btn-ai-action" onclick="openChatGPTWithPrompt()">🤖 Prompt & Mở ChatGPT</button>
+                    <button type="button" class="btn-ai-action" onclick="openAIModal()">✨ Dán kết quả AI</button>
                 </div>
             </div>
 
@@ -384,48 +386,32 @@
             document.body.classList.add('modal-open', 'ai-open');
         }
 
-        // Tự lấy từ ô Hiragana hoặc Kanji, copy prompt và mở ChatGPT
-        function copyAIPromptAndOpenChatGPT() {
+        // Tự đính kèm prompt trực tiếp vào URL ChatGPT để chạy tự động
+        function openChatGPTWithPrompt() {
             const hira = document.getElementById('inp-hiragana').value.trim();
             const kanji = document.getElementById('inp-kanji').value.trim();
-            
             const targetWord = hira || kanji;
 
             if (!targetWord) {
-                showToast('❌ Hãy nhập từ vào Hiragana hoặc Kanji trước!');
+                showToast('❌ Nhập Hiragana hoặc Kanji trước!');
                 return;
             }
 
-            const promptText = `Hãy phân tích từ tiếng Nhật sau: "${targetWord}" và trả về DUY NHẤT một chuỗi JSON (không kèm lời giải thích nào khác) theo định dạng mẫu này:
+            const promptText = `Phân tích từ tiếng Nhật: "${targetWord}" và trả về DUY NHẤT chuỗi JSON (không thêm văn bản khác) theo định dạng: {"Lesson":9999,"Hiragana":"...","Romaji":"...","Kanji":"...","Meaning":"...","category":"...","Vru":"...","type":"...","note":"..."}`;
 
-{
-  "Lesson": 9999,
-  "Hiragana": "chỉ nhập hiragana/katakana",
-  "Romaji": "romaji tương ứng",
-  "Kanji": "kanji tương ứng (nếu không có thì để rỗng \"\")",
-  "Meaning": "nghĩa tiếng Việt ngắn gọn",
-  "category": "loại từ (Động từ, Danh từ, Tính từ...)",
-  "Vru": "thể từ điển nếu là động từ (hoặc để rỗng \"\")",
-  "type": "nhóm động từ/tính từ (vd: Nhóm 1, Tính từ -i... hoặc để rỗng \"\")",
-  "note": "ghi chú ví dụ/cách dùng ngắn (hoặc để rỗng \"\")"
-}`;
+            const encodedPrompt = encodeURIComponent(promptText);
+            const chatGptUrl = `https://chatgpt.com/?q=${encodedPrompt}`;
 
-            navigator.clipboard.writeText(promptText).then(() => {
-                showToast('📋 Đã copy prompt! Đang chuyển sang ChatGPT...');
-                setTimeout(() => {
-                    window.open('https://chatgpt.com/', '_blank');
-                }, 800);
-            }).catch(() => {
-                showToast('❌ Lỗi bộ nhớ tạm, vui lòng thử lại!');
-            });
+            showToast('🚀 Đang mở ChatGPT...');
+            window.open(chatGptUrl, '_blank');
         }
 
-        // Tự điền dữ liệu sau khi dán kết quả AI
+        // Tự điền dữ liệu từ JSON dán vào
         function parseAndFillAI() {
             let raw = document.getElementById('inp-ai-json').value.trim();
             if (!raw) { showToast('Vui lòng dán JSON!'); return; }
 
-            // Lọc bỏ markdown codeblock ```json nếu ChatGPT trả về
+            // Loại bỏ các khối mã ```json nếu có
             raw = raw.replace(/```json/g, '').replace(/```/g, '').trim();
 
             try {
@@ -433,7 +419,7 @@
                 if (Array.isArray(parsed)) parsed = parsed[0]; 
 
                 if (!parsed || (!parsed.Hiragana && !parsed.Kanji)) {
-                    showToast('Lỗi: Cấu trúc JSON không đúng!');
+                    showToast('Lỗi: Dữ liệu JSON không đúng!');
                     return;
                 }
 
@@ -451,7 +437,7 @@
                 document.getElementById('inp-note').value = parsed.note || '';
 
                 document.body.classList.remove('ai-open');
-                showToast('✨ Đã tự động điền dữ liệu!');
+                showToast('✨ Đã tự động điền thành công!');
             } catch (err) {
                 showToast('❌ JSON không hợp lệ!');
             }
