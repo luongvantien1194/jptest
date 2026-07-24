@@ -1,3 +1,9 @@
+Lỗi này thường do ChatGPT trả về văn bản kèm theo (ví dụ: "Đây là dữ liệu JSON của bạn:") hoặc format JSON không khớp tên các thuộc tính mà form yêu cầu.
+Dưới đây là mã HTML đã được nâng cấp hàm xử lý parseAndFillAI() để tự động dọn dẹp và sửa các lỗi định dạng JSON phổ biến từ ChatGPT:
+Các cải tiến đã bổ sung:
+ * Trích xuất thông minh: Tự động tìm đoạn JSON { ... } nằm giữa văn bản giải thích của ChatGPT (dù ChatGPT có viết dài dòng thế nào).
+ * Sửa lỗi cú pháp nhẹ: Tự động sửa dấu phẩy thừa (,} hoặc , ]) - lỗi phổ biến nhất khiến JSON bị hỏng.
+ * Chuẩn hóa chữ hoa/thường: Tự động map các field như hiragana → Hiragana, kanji → Kanji, meaning → Meaning để không bị bỏ trống dữ liệu khi dán.
 <!DOCTYPE html>
 <html lang="vi">
 <head>
@@ -295,9 +301,9 @@
             <h3 style="font-size: 15px; font-weight: 700; color: var(--purple-color);">✨ Dán kết quả từ ChatGPT</h3>
             <span style="color: var(--primary-color); font-size: 14px; font-weight: 600; cursor: pointer;" onclick="closeAllModals()">Đóng</span>
         </div>
-        <p style="font-size: 12px; color: #666; margin-bottom: 8px;">Dán đoạn mã JSON mà ChatGPT vừa tạo vào đây:</p>
+        <p style="font-size: 12px; color: #666; margin-bottom: 8px;">Dán toàn bộ câu trả lời của ChatGPT vào đây (hệ thống sẽ tự động lọc lấy đoạn JSON):</p>
         <div class="form-group">
-            <textarea id="inp-ai-json" class="form-control" rows="6" style="font-family: monospace; font-size: 12px;" placeholder='Dán dữ liệu JSON vào đây...'></textarea>
+            <textarea id="inp-ai-json" class="form-control" rows="6" style="font-family: monospace; font-size: 12px;" placeholder='Dán văn bản hoặc JSON vào đây...'></textarea>
         </div>
         <button type="button" class="btn-submit" style="background: var(--purple-color);" onclick="parseAndFillAI()">Tự động điền dữ liệu</button>
     </div>
@@ -386,7 +392,6 @@
             document.body.classList.add('modal-open', 'ai-open');
         }
 
-        // Tự đính kèm prompt trực tiếp vào URL ChatGPT để chạy tự động
         function openChatGPTWithPrompt() {
             const hira = document.getElementById('inp-hiragana').value.trim();
             const kanji = document.getElementById('inp-kanji').value.trim();
@@ -397,7 +402,7 @@
                 return;
             }
 
-            const promptText = `Phân tích từ tiếng Nhật: "${targetWord}" và trả về DUY NHẤT chuỗi JSON (không thêm văn bản khác) theo định dạng: {"Lesson":9999,"Hiragana":"...","Romaji":"...","Kanji":"...","Meaning":"...","category":"...","Vru":"...","type":"...","note":"..."}`;
+            const promptText = `Phân tích từ tiếng Nhật: "${targetWord}" và chỉ trả về DUY NHẤT một chuỗi JSON chuẩn hợp lệ (không kèm theo bất kỳ văn bản, lời giải thích hay ký tự nào khác) theo định dạng exact này: {"Lesson":9999,"Hiragana":"...","Romaji":"...","Kanji":"...","Meaning":"...","category":"...","Vru":"...","type":"...","note":"..."}`;
 
             const encodedPrompt = encodeURIComponent(promptText);
             const chatGptUrl = `https://chatgpt.com/?q=${encodedPrompt}`;
@@ -406,40 +411,71 @@
             window.open(chatGptUrl, '_blank');
         }
 
-        // Tự điền dữ liệu từ JSON dán vào
+        // Tự đống bóc tách & làm sạch JSON bị lỗi định dạng
         function parseAndFillAI() {
             let raw = document.getElementById('inp-ai-json').value.trim();
-            if (!raw) { showToast('Vui lòng dán JSON!'); return; }
+            if (!raw) { showToast('Vui lòng dán nội dung!'); return; }
 
-            // Loại bỏ các khối mã ```json nếu có
-            raw = raw.replace(/```json/g, '').replace(/```/g, '').trim();
+            // 1. Tìm khối JSON đầu tiên giữa dấu { và } hoặc [ và ]
+            const jsonMatch = raw.match(/(\{[\s\S]*\}|\[[\s\S]*\])/);
+            if (jsonMatch) {
+                raw = jsonMatch[0];
+            }
+
+            // 2. Làm sạch các ký tự lạ và sửa lỗi trailing comma (dấu phẩy thừa cuối object)
+            raw = raw.replace(/,\s*([\}\]])/g, '$1');
 
             try {
                 let parsed = JSON.parse(raw);
                 if (Array.isArray(parsed)) parsed = parsed[0]; 
 
-                if (!parsed || (!parsed.Hiragana && !parsed.Kanji)) {
-                    showToast('Lỗi: Dữ liệu JSON không đúng!');
+                if (!parsed || typeof parsed !== 'object') {
+                    showToast('Lỗi: Không tìm thấy dữ liệu hợp lệ!');
+                    return;
+                }
+
+                // Hỗ trợ map dữ liệu bất chấp hoa/thường trong thuộc tính
+                const getValue = (keys) => {
+                    for (let k of keys) {
+                        for (let p in parsed) {
+                            if (p.toLowerCase() === k.toLowerCase() && parsed[p] !== undefined) {
+                                return parsed[p];
+                            }
+                        }
+                    }
+                    return '';
+                };
+
+                const hira = getValue(['Hiragana', 'hira']);
+                const kanji = getValue(['Kanji', 'kan']);
+                const meaning = getValue(['Meaning', 'meaning', 'nghia']);
+
+                if (!hira && !kanji && !meaning) {
+                    showToast('❌ JSON thiếu Hiragana/Kanji/Meaning!');
                     return;
                 }
 
                 openModal(true); 
                 document.getElementById('modal-title').innerText = 'Thêm từ mới (AI)';
                 
-                document.getElementById('inp-hiragana').value = parsed.Hiragana || '';
-                document.getElementById('inp-kanji').value = parsed.Kanji || '';
-                document.getElementById('inp-lesson').value = (parsed.Lesson && parsed.Lesson !== 9999) ? parsed.Lesson : '';
-                document.getElementById('inp-romaji').value = parsed.Romaji || '';
-                document.getElementById('inp-meaning').value = parsed.Meaning || '';
-                document.getElementById('inp-category').value = parsed.category || '';
-                document.getElementById('inp-vru').value = parsed.Vru || '';
-                document.getElementById('inp-type').value = parsed.type || '';
-                document.getElementById('inp-note').value = parsed.note || '';
+                document.getElementById('inp-hiragana').value = hira;
+                document.getElementById('inp-kanji').value = kanji;
+                
+                const lessonVal = getValue(['Lesson', 'lesson']);
+                document.getElementById('inp-lesson').value = (lessonVal && lessonVal !== 9999) ? lessonVal : '';
+                
+                document.getElementById('inp-romaji').value = getValue(['Romaji', 'romaji']);
+                document.getElementById('inp-meaning').value = meaning;
+                document.getElementById('inp-category').value = getValue(['category', 'cat']);
+                document.getElementById('inp-vru').value = getValue(['Vru', 'vru']);
+                document.getElementById('inp-type').value = getValue(['type']);
+                document.getElementById('inp-note').value = getValue(['note']);
 
                 document.body.classList.remove('ai-open');
                 showToast('✨ Đã tự động điền thành công!');
             } catch (err) {
-                showToast('❌ JSON không hợp lệ!');
+                console.error(err);
+                showToast('❌ JSON lỗi định dạng, thử copy lại!');
             }
         }
 
@@ -538,3 +574,4 @@
     </script>
 </body>
 </html>
+
