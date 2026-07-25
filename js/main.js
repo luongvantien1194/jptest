@@ -2019,12 +2019,11 @@
 
           b.addEventListener("click", function () {
             const idx = kanjiData.findIndex(item => item.kanji === this.textContent);
-
             if (idx > 0) {
               state.selected.kanjiIndex = idx;
               renderKanjiDetail();
             } else {
-              openDetailModal("Thông báo", "<p>Không có data của chữ này!</p><a href='/jptest/addKanji/index.html?kanji="+decodeURIComponent(item.kanji)+"'>Thêm từ kanji</a>");
+              openDetailModal("Thông báo", "<p>Không có data của chữ này!</p><a href='/jptest/addKanji/index.html?kanji="+decodeURIComponent(this.textContent)+"'>Thêm từ kanji</a>");
             }
           });
         });
