@@ -3967,7 +3967,14 @@
     const categorySelect = document.getElementById("vocab-category-filter");
     const notMasteredCb = document.getElementById("vocab-not-mastered-cb");
     const searchInput = document.getElementById("vocab-search-input");
+    const addKanji = document.getElementById("add-kanji");
 
+    const params = new URLSearchParams(window.location.search);
+    const search = params.get("search");
+    if (search) {
+      searchInput.value = search;
+      state.filter.vocabSearch = search;
+    }
 
     const isOnelesson = document.getElementById("vocab-one-lesson");
 
@@ -4016,6 +4023,16 @@
     lessonFrom.addEventListener("input", syncLessons);
     lessonNext.addEventListener("click", nextLesson);
     lessonPre.addEventListener("click", preLesson);
+
+    function redirectKanji() {
+      const kanji = searchInput.value.trim();
+      if (!kanji) return;
+      window.location.href = `index.html?kanji=${encodeURIComponent(kanji)}#kanji`;
+    }
+
+    addKanji.addEventListener("click", redirectKanji);
+
+    
 
     const categories = getUniqueSorted(
       vocabData.map(function (v) { return v.category; }).filter(function (c) { return c; })
@@ -4922,9 +4939,19 @@
     });
 
     var kanjiSearchInput = document.getElementById("kanji-search-input");
+
+    const params = new URLSearchParams(window.location.search);
+    const kanjiOfUrl = params.get("kanji");
+    if (kanjiOfUrl) {
+        kanjiSearchInput.value = kanjiOfUrl;
+        state.filter.kanjiSearch = kanjiOfUrl;
+        state.filter.kanjiLevel = "all";
+        renderKanjiList();
+    }
     if (kanjiSearchInput) {
       kanjiSearchInput.addEventListener("input", function () {
         state.filter.kanjiSearch = kanjiSearchInput.value;
+        state.filter.kanjiLevel = "all";
         renderKanjiList();
       });
     }
@@ -4999,6 +5026,14 @@
           kanjiSttJumpClear.value = "";
         }
         renderKanjiList();
+      });
+    }
+
+    var addKanji2 = document.getElementById("add-kanji-2");
+    if (addKanji2) {
+      addKanji2.addEventListener("click", function () {
+          const kanji = kanjiSearchInput.value.trim();
+          window.location.href = `addKanji/index.html?kanji=${encodeURIComponent(kanji)}`;
       });
     }
 

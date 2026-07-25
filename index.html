@@ -47,7 +47,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=20260823">
+  <link rel="stylesheet" href="css/style.css?v=20260824">
 </head>
 
 <body>
@@ -88,8 +88,7 @@
               <button type="button" class="filter-icon-btn nav-menu-btn" title="Menu điều hướng">☰</button>
               <input id="vocab-search-input" type="text" placeholder="Hiragana / Kanji / Romaji / Meaning"
                 class="input-text" />
-              <button type="button" class="star-filter-btn" id="vocab-fav-filter" title="Chỉ hiện yêu thích">☆</button>
-              <span class="vocab-count-chip" id="vocab-count-label">0</span>
+              <a class="icon-search" href="searchKanji/index.html">🔍</a>
               <button type="button" class="filter-icon-btn" id="display-settings-toggle-link"
                 title="Tuỳ chọn cột">⊞</button>
             </div>
@@ -121,6 +120,12 @@
                     <option value="all">Tất cả</option>
                     <!-- populated by JS -->
                   </select>
+                </div>  
+                <div style="flex:0.2">
+                  <div class="field-label"></div>
+                  <div style="display:flex; align-items:center; padding:2px 0">
+                    <button type="button" class="star-filter-btn" id="vocab-fav-filter" title="Chỉ hiện yêu thích">☆</button>
+                  </div>
                 </div>
                 <div style="flex:0.2">
                   <div class="field-label">Chưa</div>
@@ -205,7 +210,10 @@
           <button class="filter-icon-btn2" id="vocab-lesson-next" style="width:100%">⏭️</button>
           <button class="filter-icon-btn2" id="start-vocab-test-btn">T</button>
           <button class="filter-icon-btn2" id="vocab-export-md-btn">MD</button>
-          <a class="filter-icon-btn2" href="addVocab/index.html">+</a>
+          <a class="filter-icon-btn2" href="addVocab/index.html">+あ</a>
+          <button class="filter-icon-btn2" id="add-kanji">漢</button>
+          <span class="vocab-count-chip" id="vocab-count-label">0</span>
+
         </div>
       </section> <!-- Đóng #section-vocab -->
 
@@ -219,7 +227,7 @@
             <button type="button" class="star-filter-btn" id="kanji-fav-filter" title="Chỉ hiện yêu thích">☆</button>
             <button class="filter-icon-btn" type="button" id="start-kanji-test-btn" title="Test Kanji">T</button>
             <button class="filter-icon-btn" type="button" id="reset-kanji-filter-btn" title="Reset filter">↺</button>
-            <a class="filter-icon-btn" type="button" style="text-decoration: none;" href="addKanji/index.html">+</a>
+            <button class="filter-icon-btn" type="button" id="add-kanji-2" title="Reset filter">+</button>
           </div>
           <div class="filters-toggle-row">
             <div class="kanji-count-jump-wrap">
@@ -401,7 +409,7 @@
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
   <script src="data/configDoc.js?v=20260540"></script>
-  <script src="js/main.js?v=202607229"></script>
+  <script src="js/main.js?v=202607230"></script>
 </body>
 
 </html>

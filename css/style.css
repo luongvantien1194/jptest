@@ -408,8 +408,10 @@ body {
 }
 
 .vocab-count-chip {
+  overflow: hidden;
+  width: 30px;
   font-size: 11px;
-  padding: 2px 7px;
+  padding: 2px 2px;
   border-radius: var(--radius-full);
   background: rgba(192, 57, 43, 0.07);
   border: 1px solid var(--border);
@@ -3648,6 +3650,11 @@ select:focus {
     text-decoration:none !important;
     cursor:pointer !important;
     box-shadow:0 5px 15px #0003 !important;
+}
+
+.icon-search {
+  padding: 6px;
+  text-decoration: none;
 }
 
 /* ===== SECTION IDs ===== */
