@@ -3970,6 +3970,7 @@
     const addKanji = document.getElementById("add-kanji");
 
     var savedFT = localStorage.getItem("jp_fillter");
+    lessonFrom.value = "1";
     if (savedFT) {
       state.filter = JSON.parse(savedFT);
       lessonFrom.value = state.filter.vocabLessonFrom;
@@ -4056,8 +4057,6 @@
       opt.value = cat;
       categorySelect.appendChild(opt);
     });
-
-    lessonFrom.value = "1";
 
     lessonFrom.addEventListener("input", function () {
       state.filter.vocabLessonFrom = lessonFrom.value.trim();
