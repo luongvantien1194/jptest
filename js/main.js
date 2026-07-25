@@ -3972,8 +3972,8 @@
     var savedFT = localStorage.getItem("jp_fillter");
     if (savedFT) {
       state.filter = JSON.parse(savedFT);
-      lesonFrom.value = state.filter.vocabLessonFrom;
-       lessonTo.value = state.filter.vocabLessonTo;
+      lessonFrom.value = state.filter.vocabLessonFrom;
+      lessonTo.value = state.filter.vocabLessonTo;
     }
 
     function saveFillter() {
