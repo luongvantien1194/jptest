@@ -3983,6 +3983,18 @@
 
     const params = new URLSearchParams(window.location.search);
     const search = params.get("search");
+    params.delete("search");
+
+const newUrl =
+
+  window.location.pathname +
+
+  (params.toString() ? "?" + params.toString() : "") +
+
+  window.location.hash;
+
+history.replaceState({}, "", newUrl);
+
     if (search) {
       searchInput.value = search;
       state.filter.vocabSearch = search;
