@@ -3969,6 +3969,17 @@
     const searchInput = document.getElementById("vocab-search-input");
     const addKanji = document.getElementById("add-kanji");
 
+    var savedFT = localStorage.getItem("jp_fillter");
+    if (savedFT) {
+      state.filter = JSON.parse(savedFT);
+      lesonFrom.value = state.filter.vocabLessonFrom;
+       lessonTo.value = state.filter.vocabLessonTo;
+    }
+
+    function saveFillter() {
+        try { localStorage.setItem("jp_fillter", JSON.stringify(state.filter)); } catch (e) { }
+    }
+
     const params = new URLSearchParams(window.location.search);
     const search = params.get("search");
     if (search) {
@@ -3991,6 +4002,7 @@
         lessonTo.classList.remove("disabled-gray");
       }
       renderVocabList();
+      saveFillter();
     }
 
     function nextLesson() {
@@ -4004,6 +4016,7 @@
         state.filter.vocabLessonTo = lessonTo.value.trim();
       }
       renderVocabList();
+      saveFillter();
     }
     function preLesson() {
       let next = Number(lessonFrom.value.trim()) - 1;
@@ -4016,6 +4029,7 @@
         state.filter.vocabLessonTo = lessonTo.value.trim();
       }
       renderVocabList();
+      saveFillter();
     }
 
     // Lắng nghe sự kiện
