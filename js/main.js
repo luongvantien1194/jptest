@@ -9,6 +9,7 @@
   const state = {
     currentTab: "vocab",
     filter: {
+      isOnelesson: false,
       vocabLessonFrom: "1",
       vocabLessonTo: "",
       vocabCategory: "all",
@@ -3960,6 +3961,7 @@
   }
 
   function setupVocabFilters() {
+    const isOnelesson = document.getElementById("vocab-one-lesson");
     const lessonFrom = document.getElementById("vocab-lesson-from");
     const lessonTo = document.getElementById("vocab-lesson-to");
     const lessonPre = document.getElementById("vocab-lesson-pre");
@@ -3973,6 +3975,7 @@
     lessonFrom.value = "1";
     if (savedFT) {
       state.filter = JSON.parse(savedFT);
+      isOnelesson.checked = state.filter.isOnelesson;
       lessonFrom.value = state.filter.vocabLessonFrom;
       lessonTo.value = state.filter.vocabLessonTo;
     }
@@ -4000,16 +4003,16 @@ history.replaceState({}, "", newUrl);
       state.filter.vocabSearch = search;
     }
 
-    const isOnelesson = document.getElementById("vocab-one-lesson");
-
     function syncLessons() {
       state.filter.vocabLessonFrom = lessonFrom.value.trim();
       if (isOnelesson.checked) {
+        state.isOnelesson = true;
         lessonTo.value = lessonFrom.value;
         state.filter.vocabLessonTo = lessonFrom.value.trim();
         lessonTo.readOnly = true; // Chuyển sang chế độ chỉ đọc
         lessonTo.classList.add("disabled-gray");
       } else {
+        state.isOnelesson = false;
         state.filter.vocabLessonTo = lessonTo.value.trim();
         lessonTo.readOnly = false; // Mở lại quyền chỉnh sửa khi bỏ chọn
         lessonTo.classList.remove("disabled-gray");
