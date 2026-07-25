@@ -105,6 +105,42 @@ window._vocabExtra.push(
   { "Lesson": 9999, "Hiragana": "はらはら", "Romaji": "", "Kanji": "", "Meaning": "Lo sốt vó, đứng ngồi không yên", "category": "", "Vru": "", "type": "", "note": "" },
   // --- Lesson 9999: わくわく ---
   { "Lesson": 9999, "Hiragana": "わくわく", "Romaji": "", "Kanji": "", "Meaning": "Háo hức", "category": "", "Vru": "", "type": "", "note": "" },
+     // --- Lesson 9999: おうだん ---
+  { "Lesson": 9999, "Hiragana": "おうだん", "Romaji": "", "Kanji": "横断", "Meaning": "băng ngang", "category": "", "Vru": "", "type": "", "note": "" },
+  // --- Lesson 9999: よこ ---
+  { "Lesson": 9999, "Hiragana": "よこ", "Romaji": "", "Kanji": "横", "Meaning": "bên cạnh", "category": "", "Vru": "", "type": "", "note": "" },
+  // --- Lesson 9999: すうしき ---
+  { "Lesson": 9999, "Hiragana": "すうしき", "Romaji": "", "Kanji": "数式", "Meaning": "công thức số", "category": "", "Vru": "", "type": "", "note": "" },
+  // --- Lesson 9999: ほうしき ---
+  { "Lesson": 9999, "Hiragana": "ほうしき", "Romaji": "", "Kanji": "方式", "Meaning": "phương thức", "category": "", "Vru": "", "type": "", "note": "" },
+  // --- Lesson 9999: そうしん ---
+  { "Lesson": 9999, "Hiragana": "そうしん", "Romaji": "", "Kanji": "送信", "Meaning": "gửi tin", "category": "", "Vru": "", "type": "", "note": "" },
+  // --- Lesson 9999: じしん ---
+  { "Lesson": 9999, "Hiragana": "じしん", "Romaji": "", "Kanji": "自信", "Meaning": "tự tin", "category": "", "Vru": "", "type": "", "note": "" },
+  // --- Lesson 9999: しんじる ---
+  { "Lesson": 9999, "Hiragana": "しんじる", "Romaji": "", "Kanji": "信じる", "Meaning": "tin vào", "category": "", "Vru": "", "type": "", "note": "" },
+  // --- Lesson 9999: しんよう ---
+  { "Lesson": 9999, "Hiragana": "しんよう", "Romaji": "", "Kanji": "信用", "Meaning": "tín dụng", "category": "", "Vru": "", "type": "", "note": "" },
+  // --- Lesson 9999: むだん ---
+  { "Lesson": 9999, "Hiragana": "むだん", "Romaji": "", "Kanji": "無断", "Meaning": "không được phép", "category": "", "Vru": "", "type": "", "note": "" },
+  // --- Lesson 9999: そん ---
+  { "Lesson": 9999, "Hiragana": "そん", "Romaji": "son", "Kanji": "損", "Meaning": "thiệt hại, tổn thất, bị lỗ", "category": "Kanji", "Vru": "損する（そんする）", "type": "Danh từ, Suru động từ", "note": "Âm On: ソン; thường dùng trong 損する (bị thiệt, bị lỗ), 損失 (tổn thất), 損害 (thiệt hại)." },
+  // --- Lesson 9999: ばすてい ---
+  { "Lesson": 9999, "Hiragana": "ばすてい", "Romaji": "basutei", "Kanji": "バス停", "Meaning": "trạm xe buýt", "category": "Giao thông", "Vru": "バスてい", "type": "word", "note": "Thường được viết bằng kanji là バス停; cách viết バスてい là pha giữa katakana và hiragana." },
+  // --- Lesson 9999: すご ---
+  { "Lesson": 9999, "Hiragana": "すご", "Romaji": "sugo", "Kanji": "", "Meaning": "Tuyệt quá; ghê thật; rất (dạng nói rút gọn của すごい, dùng trong khẩu ngữ để bộc lộ sự ngạc nhiên hoặc thán phục)", "category": "Cảm thán", "Vru": "すご！", "type": "interjection", "note": "Là dạng rút gọn, không trang trọng của すごい; thường dùng trong hội thoại thân mật." },
+  // --- Lesson 9999: ばかり ---
+  { "Lesson": 9999, "Hiragana": "ばかり", "Romaji": "bakari", "Kanji": "", "Meaning": "chỉ, toàn, vừa mới, khoảng", "category": "Ngữ pháp", "Vru": "Chỉ; toàn; vừa mới; khoảng", "type": "grammar", "note": "Diễn tả số lượng hoặc phạm vi giới hạn, hành động vừa mới xảy ra, hoặc ước lượng khoảng." },
+  // --- Lesson 9999: ばんごう ---
+  { "Lesson": 9999, "Hiragana": "ばんごう", "Romaji": "", "Kanji": "番号", "Meaning": "số", "category": "", "Vru": "", "type": "", "note": "" },
+  // --- Lesson 9999: かくにん ---
+  { "Lesson": 9999, "Hiragana": "かくにん", "Romaji": "", "Kanji": "確認", "Meaning": "xác nhận", "category": "", "Vru": "", "type": "", "note": "" },
+  // --- Lesson 9999: たしか ---
+  { "Lesson": 9999, "Hiragana": "たしか", "Romaji": "", "Kanji": "確か", "Meaning": "chắc chắn", "category": "", "Vru": "", "type": "", "note": "" },
+  // --- Lesson 9999: せいかく ---
+  { "Lesson": 9999, "Hiragana": "せいかく", "Romaji": "", "Kanji": "正確", "Meaning": "chính xác", "category": "", "Vru": "", "type": "", "note": "" },
+  // --- Lesson 9999: みとめる ---
+  { "Lesson": 9999, "Hiragana": "みとめる", "Romaji": "", "Kanji": "認める", "Meaning": "thừa nhận", "category": "", "Vru": "", "type": "", "note": "" },
 
   
   
