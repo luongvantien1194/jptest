@@ -3975,6 +3975,9 @@
     lessonFrom.value = "1";
     if (savedFT) {
       state.filter = JSON.parse(savedFT);
+      if (state.filter.isOnelesson) {
+        lessonTo.readOnly = true
+      }
       isOnelesson.checked = state.filter.isOnelesson;
       lessonFrom.value = state.filter.vocabLessonFrom;
       lessonTo.value = state.filter.vocabLessonTo;
