@@ -3989,13 +3989,9 @@
     params.delete("search");
 
 const newUrl =
-
   window.location.pathname +
-
   (params.toString() ? "?" + params.toString() : "") +
-
   window.location.hash;
-
 history.replaceState({}, "", newUrl);
 
     if (search) {
@@ -4006,13 +4002,13 @@ history.replaceState({}, "", newUrl);
     function syncLessons() {
       state.filter.vocabLessonFrom = lessonFrom.value.trim();
       if (isOnelesson.checked) {
-        state.isOnelesson = true;
+        state.filter.isOnelesson = true;
         lessonTo.value = lessonFrom.value;
         state.filter.vocabLessonTo = lessonFrom.value.trim();
         lessonTo.readOnly = true; // Chuyển sang chế độ chỉ đọc
         lessonTo.classList.add("disabled-gray");
       } else {
-        state.isOnelesson = false;
+        state.filter.isOnelesson = false;
         state.filter.vocabLessonTo = lessonTo.value.trim();
         lessonTo.readOnly = false; // Mở lại quyền chỉnh sửa khi bỏ chọn
         lessonTo.classList.remove("disabled-gray");
