@@ -3976,11 +3976,12 @@
     if (savedFT) {
       state.filter = JSON.parse(savedFT);
       if (state.filter.isOnelesson) {
-        lessonTo.readOnly = true
+        lessonTo.readOnly = true;
       }
       isOnelesson.checked = state.filter.isOnelesson;
       lessonFrom.value = state.filter.vocabLessonFrom;
       lessonTo.value = state.filter.vocabLessonTo;
+      notMasteredCb.checked = state.filter.vocabMastered === "not";
     }
 
     function saveFillter() {
@@ -4092,6 +4093,7 @@ history.replaceState({}, "", newUrl);
       notMasteredCb.addEventListener("change", function () {
         state.filter.vocabMastered = notMasteredCb.checked ? "not" : "all";
         renderVocabList();
+        saveFillter();
       });
     }
 
@@ -4973,6 +4975,9 @@ history.replaceState({}, "", newUrl);
         kanjiSearchInput.value = kanjiOfUrl;
         state.filter.kanjiSearch = kanjiOfUrl;
         state.filter.kanjiLevel = "all";
+        document.querySelector('#kanji-level-chips .chip--active')?.classList.remove('chip--active');
+
+      document.querySelector('#kanji-level-chips .chip[data-level="all"]').classList.add('chip--active');
         renderKanjiList();
     }
     if (kanjiSearchInput) {
