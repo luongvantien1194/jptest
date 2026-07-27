@@ -385,7 +385,7 @@
                 return;
             }
 
-            const promptText = `Phân tích từ tiếng Nhật: "${targetWord}" và chỉ trả về DUY NHẤT một chuỗi JSON chuẩn hợp lệ (dùng dấu ngoặc kép thẳng ", không giải thích thêm) theo định dạng: {"Lesson":9999,"Hiragana":"...","Romaji":"...","Kanji":"...","Meaning":"...","category":"...","Vru":"...","type":"...","note":"..."}. Lưu ý: Nếu từ này không có Kanji thì để Kanji là chuỗi rỗng "". nếu input là chữ katakana thì trong item Hiragana là katakana luôn. Nếu input tôi đưa thì sửa lại vào kết quả luôn.`;
+            const promptText = `Phân tích từ tiếng Nhật: "${targetWord}" và chỉ trả về DUY NHẤT một chuỗi JSON chuẩn hợp lệ (dùng dấu ngoặc kép thẳng ", không giải thích thêm) theo định dạng: {"Lesson":9999,"Hiragana":"...","Romaji":"...","Kanji":"...","Meaning":"...","category":"...","Vru":"...","type":"...","note":"..."}. Lưu ý: Nếu từ này không có Kanji thì để Kanji là chuỗi rỗng "". nếu input là chữ katakana thì trong item Hiragana là katakana luôn. Nếu input tôi đưa sai thì sửa lại vào kết quả luôn.`;
 
             const encodedPrompt = encodeURIComponent(promptText);
             const chatGptUrl = `https://chatgpt.com/?q=${encodedPrompt}`;
