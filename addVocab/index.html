@@ -385,7 +385,24 @@
                 return;
             }
 
-            const promptText = `Phân tích từ tiếng Nhật: "${targetWord}" và chỉ trả về DUY NHẤT một chuỗi JSON chuẩn hợp lệ (dùng dấu ngoặc kép thẳng ", không giải thích thêm) theo định dạng: {"Lesson":9999,"Hiragana":"...","Romaji":"...","Kanji":"...","Meaning":"...","category":"...","Vru":"...","type":"...","note":"..."}. Lưu ý: Nếu từ này không có Kanji thì để Kanji là chuỗi rỗng "". nếu input là chữ katakana thì trong item Hiragana là katakana luôn.`;
+const promptText = `Phân tích từ tiếng Nhật: "${targetWord}".
+ 
+Input có thể là Hiragana, Katakana hoặc Kanji.
+ 
+Chỉ trả về DUY NHẤT một chuỗi JSON chuẩn hợp lệ (không markdown, không giải thích, chỉ dùng dấu ngoặc kép thẳng ") theo đúng định dạng sau:
+ 
+{"Lesson":9999,"Hiragana":"...","Romaji":"...","Kanji":"...","Meaning":"...","category":"...","Vru":"...","type":"...","note":"..."}
+ 
+Quy tắc:
+- Nếu input là Kanji, xác định cách đọc chuẩn và điền trường "Hiragana" bằng Hiragana.
+- Nếu input là Katakana, trường "Hiragana" phải giữ nguyên Katakana (không chuyển sang Hiragana).
+- Nếu input là Hiragana, trường "Hiragana" giữ nguyên Hiragana.
+- Trường "Hiragana" chỉ được chứa Hiragana hoặc Katakana, tuyệt đối không chứa Kanji hoặc Romaji.
+- Trường "Kanji" phải là dạng Kanji chuẩn của từ nếu có; nếu từ không có Kanji thì để "".
+- Nếu input bị viết sai, gõ nhầm hoặc sai chính tả nhưng có thể suy ra từ người dùng muốn nhập, hãy tự động sửa thành từ tiếng Nhật chuẩn và trả về kết quả đúng.
+- "Romaji" sử dụng chuẩn Hepburn.
+- Chỉ trả về đúng một đối tượng JSON hợp lệ, không thêm bất kỳ ký tự hay nội dung nào khác.`;
+
 
             const encodedPrompt = encodeURIComponent(promptText);
             const chatGptUrl = `https://chatgpt.com/?q=${encodedPrompt}`;
