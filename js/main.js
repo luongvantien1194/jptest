@@ -3094,20 +3094,6 @@
 
     if (item.vocabulary && String(item.vocabulary).trim() && String(item.vocabulary).toLowerCase() !== "không có") {
       var sec4 = createElement("div", "kd-section kd-section--purple", "");
-      var sec4TitleRow = createElement("div", "kd-section-title-row", "");
-      sec4TitleRow.appendChild(createElement("div", "kd-section-title", "Từ vựng ứng dụng"));
-      if (!readOnly) {
-        var sec4StarToggle = createElement("button", "star-filter-btn" + (state.ui.kanjiVocabFavOnly ? " star-filter-btn--active" : ""), state.ui.kanjiVocabFavOnly ? "⭐" : "☆");
-        sec4StarToggle.type = "button";
-        sec4StarToggle.title = state.ui.kanjiVocabFavOnly ? "Đang lọc: chỉ hiện từ đã gắn sao" : "Chỉ hiện từ đã gắn sao";
-        sec4StarToggle.addEventListener("click", function (e) {
-          e.stopPropagation();
-          state.ui.kanjiVocabFavOnly = !state.ui.kanjiVocabFavOnly;
-          renderKanjiDetail();
-        });
-        sec4TitleRow.appendChild(sec4StarToggle);
-      }
-      sec4.appendChild(sec4TitleRow);
 
       item.vocabulary.split("|").forEach(function (v) {
         var trimmed = String(v).trim();
