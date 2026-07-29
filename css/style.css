@@ -3308,7 +3308,7 @@ select:focus {
 .detail-modal__body .kd-vocab-chip-meaning { font-size: 11px; }
 
 /* Mobile 1-column kanji detail */
-@media (max-width: 420px) {
+@media (max-width: 380px) {
   .kd-detail-content { grid-template-columns: 1fr; }
   .kd-detail-content > .kd-section--blue,
   .kd-detail-content > .kd-section--amber { grid-column: 1; }
