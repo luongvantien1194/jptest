@@ -33,6 +33,7 @@
       type: true,
       note: false,
       voice: true,
+      iphoneTaiTho: false,
     },
     testState: {
       isActive: false,
@@ -3946,6 +3947,23 @@
     });
   }
 
+  function renderScreen () {
+    const appShell = document.querySelector(".app-shell");
+          console.log(state.displaySettings);
+
+    if (state.displaySettings.iphoneTaiTho) {
+      if (appShell) {
+          appShell.style.paddingTop = "30px";
+          appShell.style.paddingBottom = "30px";
+      }
+    } else {
+      if (appShell) {
+          appShell.style.paddingTop = "0px";
+          appShell.style.paddingBottom = "0px";
+      }
+    }
+
+  }
   function setupVocabFilters() {
     const isOnelesson = document.getElementById("vocab-one-lesson");
     const lessonFrom = document.getElementById("vocab-lesson-from");
@@ -5181,6 +5199,7 @@ history.replaceState({}, "", newUrl);
     renderKanjiDetail();
     renderGrammarList();
     renderGrammarDetail();
+    renderScreen();
 
     if (!window.location.hash) {
       window.location.hash = "#vocab";
