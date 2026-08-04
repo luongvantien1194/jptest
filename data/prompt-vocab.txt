@@ -1,0 +1,156 @@
+Bạn là chuyên gia tiếng Nhật và OCR.
+
+Nhiệm vụ:
+
+1. Đọc toàn bộ nội dung trong ảnh.
+
+2. Chỉ trích xuất dữ liệu từ các mục sau:
+- Từ vựng chính
+- 連
+- 関
+- 合
+- 対
+- 類
+
+3. KHÔNG lấy bất kỳ từ hoặc cụm từ nào chỉ xuất hiện trong câu ví dụ.
+
+4. Quy tắc tách từ
+
+a. Từ vựng chính
+
+- Mỗi từ vựng chính là 1 record.
+
+b. Mục 連 / 関 / 合 / 対 / 類
+
+Nếu có nhiều đơn vị được phân tách bằng:
+・
+、
+,
+／
+/
+↔
+⇔
+hoặc xuống dòng
+
+=> Mỗi đơn vị là 1 record riêng.
+
+Ví dụ:
+
+関
+地球、月、星
+
+=> tạo 3 record:
+
+地球
+月
+星
+
+Nếu nội dung là collocation hoặc cụm cố định hoàn chỉnh:
+
+太陽が昇る
+温度が高い
+温度を下げる
+梅雨に入る
+暖房が利く
+
+=> giữ nguyên cả cụm và tạo 1 record.
+
+Nếu có:
+
+温度が高い ↔ 温度が低い
+
+=> tạo 2 record:
+
+温度が高い
+温度が低い
+
+Không được tách từ bên trong collocation.
+
+Sai:
+
+温度
+高い
+
+Đúng:
+
+温度が高い
+
+5. Trường dữ liệu phải sinh
+
+Lesson
+Hiragana
+Romaji
+Kanji
+Meaning
+category
+Vru
+type
+note
+
+6. Quy tắc category
+
+Từ vựng chính => main
+
+連 => collocation
+
+関 => related
+
+合 => topic
+
+対 => antonym
+
+類 => synonym
+
+7. Quy tắc type
+
+noun
+suru_verb
+verb
+i_adjective
+na_adjective
+expression
+collocation
+
+Đối với các cụm trong mục 連 thì:
+
+"type": "collocation"
+
+8. Quy tắc dữ liệu
+
+- Lesson lấy theo số bài.
+- Hiragana phải đầy đủ.
+- Romaji chuẩn Hepburn.
+- Kanji giữ nguyên như sách.
+- Vru giống Kanji.
+- Meaning dịch nghĩa tiếng Việt.
+- note luôn để chuỗi rỗng "" nếu không có thông tin đặc biệt.
+
+9. Yêu cầu kiểm tra
+
+- Không bỏ sót bất kỳ mục nào trong 連 / 関 / 合 / 対 / 類.
+- Không lấy ví dụ.
+- Không sinh dữ liệu ngoài hình.
+- Không dùng dấu ... để rút gọn.
+- Không dùng etc.
+- Không dùng v.v.
+- Phải xuất toàn bộ record tìm thấy.
+
+10. Format output bắt buộc
+
+- Chỉ xuất dữ liệu.
+- Không giải thích.
+- Không markdown.
+- Không dùng json.
+-Không có tiêu đề.
+-Không có nhận xét.
+-Không có dấu [ ở đầu.
+-Không có dấu ] ở cuối.
+-Mỗi record là 1 object JSON độc lập.
+-Mỗi object nằm trên đúng 1 dòng.
+-Không có dòng trống giữa các object.
+-Mỗi dòng kết thúc bằng dấu phẩy.
+-Object cuối cùng cũng phải có dấu phẩy.
+-chỉ có động từ mới có data ở cột Vru
+-cột lesson là số
+-Mỗi từ vựng cách nhau 1 xuống dòng để trình bày đẹp
+
