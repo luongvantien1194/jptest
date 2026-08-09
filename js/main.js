@@ -4110,6 +4110,7 @@ history.replaceState({}, "", newUrl);
 
     const resetBtn = document.getElementById("reset-vocab-filter-btn");
     resetBtn.addEventListener("click", function () {
+      state.filter.isOnelesson = false;
       state.filter.vocabLessonFrom = "1";
       state.filter.vocabLessonTo = "";
       state.filter.vocabCategory = "all";
@@ -4936,6 +4937,16 @@ history.replaceState({}, "", newUrl);
   }
 
   function setupKanjiFilters() {
+    const params2 = new URLSearchParams(window.location.search);
+    const searchKanji = params2.get("kanji");
+    params2.delete("kanji");
+
+    const newUrl =
+      window.location.pathname +
+      (params2.toString() ? "?" + params2.toString() : "") +
+      window.location.hash;
+    history.replaceState({}, "", newUrl);
+
     const radicalSelect = document.getElementById("kanji-radical-filter");
     const radicals = kanjiData
       .map(function (k) { return k.radicals; })
