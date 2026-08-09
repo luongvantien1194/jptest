@@ -4983,12 +4983,10 @@ history.replaceState({}, "", newUrl);
     var kanjiSearchInput = document.getElementById("kanji-search-input");
     kanjiSearchInput.value = searchKanji;
     state.filter.kanjiSearch = searchKanji;
-
-    const params = new URLSearchParams(window.location.search);
-    const kanjiOfUrl = params.get("kanji");
-    if (kanjiOfUrl) {
-        kanjiSearchInput.value = kanjiOfUrl;
-        state.filter.kanjiSearch = kanjiOfUrl;
+    state.filter.kanjiLevel = "n3";
+    if (searchKanji) {
+        kanjiSearchInput.value = searchKanji;
+        state.filter.kanjiSearch = searchKanji;
         state.filter.kanjiLevel = "all";
         document.querySelector('#kanji-level-chips .chip--active')?.classList.remove('chip--active');
 
