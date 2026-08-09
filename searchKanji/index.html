@@ -397,14 +397,20 @@
                 
                 btn.onclick = () => {
                     triggerHaptic();
-                    
-                    // Mã hóa ký tự Kanji trước khi đưa lên URL
+
+                    const params = new URLSearchParams(window.location.search);
+                        // Mã hóa ký tự Kanji trước khi đưa lên URL
                     const encodedKanji = encodeURIComponent(kanji);
-                    
-                    // Chuyển hướng về đường dẫn yêu cầu
-                    window.location.href = `../index.html?search=${encodedKanji}#vocab`;
+                    if (params.get("type") === "vocabTab") {
+
+                        window.location.href = `../index.html?search=${encodedKanji}#vocab`;
+                    } else {
+                       window.location.href = `../index.html?kanji=${encodedKanji}#kanji`;
+                    }
                 };
                 
+            
+
                 resultsDiv.appendChild(btn);
             });
         }

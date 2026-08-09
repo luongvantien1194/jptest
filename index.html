@@ -89,7 +89,7 @@
               <button type="button" class="filter-icon-btn nav-menu-btn" title="Menu điều hướng">☰</button>
               <input id="vocab-search-input" type="text" placeholder="Hiragana / Kanji / Romaji / Meaning"
                 class="input-text" />
-              <a class="icon-search" href="searchKanji/index.html">🔍</a>
+              <a class="icon-search" href="searchKanji/index.html?type=vocabTab">🔍</a>
               <button type="button" class="filter-icon-btn" id="display-settings-toggle-link"
                 title="Tuỳ chọn cột">⊞</button>
             </div>
@@ -225,8 +225,8 @@
           <div class="field-group" style="margin-bottom:6px;display:flex;flex-direction:row;align-items:center;gap:6px">
             <button type="button" class="filter-icon-btn nav-menu-btn" title="Menu điều hướng">☰</button>
             <input id="kanji-search-input" type="text" placeholder="Kanji / Hán Việt" class="input-text" />
+            <a class="icon-search" href="searchKanji/index.html?type=kanjiTab">🔍</a>
             <button type="button" class="star-filter-btn" id="kanji-fav-filter" title="Chỉ hiện yêu thích">☆</button>
-            <button class="filter-icon-btn" type="button" id="start-kanji-test-btn" title="Test Kanji">T</button>
             <button class="filter-icon-btn" type="button" id="reset-kanji-filter-btn" title="Reset filter">↺</button>
             <button class="filter-icon-btn" type="button" id="add-kanji-2" title="Reset filter">+</button>
           </div>
@@ -270,8 +270,9 @@
             </div>
           </div>
         </div>
-        <div style="position:fixed;right:-8px;bottom:16px;display:flex;flex-direction:column;gap:3px;z-index:9999">
-          <a class="filter-icon-btn2" href="addVocab/index.html">+</a>
+        <div style="position:fixed;right:-8px;bottom:16px;display:flex;flex-direction:column;gap:3px;z-index:9999">.
+          <button class="filter-icon-btn2" type="button" id="start-kanji-test-btn" title="Test Kanji">T</button>
+          <a class="filter-icon-btn2" href="addVocab/index.html">+あ</a>
         </div>
       </section>
 
