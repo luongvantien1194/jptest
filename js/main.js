@@ -2828,7 +2828,6 @@
     const container = document.getElementById("kanji-list-container");
     const countLabel = document.getElementById("kanji-count-label");
     container.innerHTML = "";
-
     const filtered = applyKanjiFilter();
     countLabel.textContent = filtered.length + " chữ";
 
@@ -3949,7 +3948,6 @@
 
   function renderScreen () {
     const appShell = document.querySelector(".app-shell");
-          console.log(state.displaySettings);
 
     if (state.displaySettings.iphoneTaiTho) {
       if (appShell) {
@@ -4937,16 +4935,6 @@ history.replaceState({}, "", newUrl);
   }
 
   function setupKanjiFilters() {
-    const params2 = new URLSearchParams(window.location.search);
-    const searchKanji = params2.get("kanji");
-    params2.delete("kanji");
-
-    const newUrl =
-      window.location.pathname +
-      (params2.toString() ? "?" + params2.toString() : "") +
-      window.location.hash;
-    history.replaceState({}, "", newUrl);
-
     const radicalSelect = document.getElementById("kanji-radical-filter");
     const radicals = kanjiData
       .map(function (k) { return k.radicals; })
@@ -4982,7 +4970,19 @@ history.replaceState({}, "", newUrl);
       renderKanjiList();
     });
 
+    const params2 = new URLSearchParams(window.location.search);
+    const searchKanji = params2.get("kanji");
+    params2.delete("kanji");
+
+    const newUrl =
+      window.location.pathname +
+      (params2.toString() ? "?" + params2.toString() : "") +
+      window.location.hash;
+    history.replaceState({}, "", newUrl);
+
     var kanjiSearchInput = document.getElementById("kanji-search-input");
+    kanjiSearchInput.value = searchKanji;
+    state.filter.kanjiSearch = searchKanji;
 
     const params = new URLSearchParams(window.location.search);
     const kanjiOfUrl = params.get("kanji");
