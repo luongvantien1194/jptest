@@ -1,6 +1,12 @@
 window.DOC_CONFIG = {
-  defaultKey: "dongtu",
+  defaultKey: "kinhngu",
   docs: [
+    {
+      key: "kinhngu",
+      file: "kinhngu",
+      type: "md",
+      label: "Kính ngữ/ Khiêm nhường ngữ"
+    },
     {
       key: "tudongnghia",
       file: "tudongnghia",
