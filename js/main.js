@@ -3033,47 +3033,6 @@
     sec1.appendChild(sec1Grid);
     targetEl.appendChild(sec1);
 
-    function addStoryRow(sec, icon, label, value) {
-      if (!value) return;
-      var row = createElement("div", "kd-story-row", "");
-      row.appendChild(createElement("span", "kd-story-icon", icon));
-      var rowBody = createElement("div", "kd-story-body", "");
-      rowBody.appendChild(createElement("div", "kd-story-label", label));
-      var rowValue = createElement("div", "kd-story-value", "");
-      if (label === "Cấu tạo") {
-        if (readOnly) {
-          rowValue.textContent = value;
-        } else {
-          rowValue.innerHTML = linkifyKanjiText(value, item.kanji);
-          rowValue.addEventListener("click", function (e) {
-            var target = e.target;
-            if (target && target.classList.contains("kd-inline-kanji-link")) {
-              var idxAttr = target.getAttribute("data-kanji-index");
-              var idx = parseInt(idxAttr, 10);
-              if (!isNaN(idx) && idx >= 0 && idx < kanjiData.length) {
-                if (state.selected.kanjiIndex != null) {
-                  state.kanjiHistory.push(state.selected.kanjiIndex);
-                }
-                state.selected.kanjiIndex = idx;
-                renderKanjiDetail();
-              }
-            }
-          });
-        }
-      } else {
-        rowValue.textContent = value;
-      }
-      rowBody.appendChild(rowValue);
-      row.appendChild(rowBody);
-      sec.appendChild(row);
-    }
-
-    var sec2 = createElement("div", "kd-section kd-section--amber", "");
-    sec2.appendChild(createElement("div", "kd-section-title", "Ký ức & Hình ảnh"));
-    addStoryRow(sec2, "🖼️", "Tượng hình", item.story_image);
-    addStoryRow(sec2, "🔗", "Cấu tạo", item.logic_development);
-    targetEl.appendChild(sec2);
-
     if (item.adjectives && String(item.adjectives).trim() && String(item.adjectives).toLowerCase() !== "không có") {
       var sec3 = createElement("div", "kd-section kd-section--green", "");
       var adjWrap = createElement("div", "kd-vocab-pills", "");
@@ -3094,6 +3053,8 @@
 
     if (item.vocabulary && String(item.vocabulary).trim() && String(item.vocabulary).toLowerCase() !== "không có") {
       var sec4 = createElement("div", "kd-section kd-section--purple", "");
+      sec4.appendChild(createElement("div", "kd-section-title", "📚 Từ vựng ứng dụng"));
+      var vocabList = createElement("div", "kd-vocab-list", "");
 
       item.vocabulary.split("|").forEach(function (v) {
         var trimmed = String(v).trim();
@@ -3106,17 +3067,30 @@
           return;
         }
 
+        var wordMatch = String(parts[0] || "").match(/^(.+?)\((.+?)\)$/);
+        var wordOnly = (wordMatch ? wordMatch[1] : (parts[0] || "")).trim();
+        var wordReading = wordMatch ? wordMatch[2] : "";
+        var wordMeaning = parts[1] || "";
+        var wordHanViet = window.getHanViet ? window.getHanViet(wordOnly) : "";
+
         var row = createElement("div", "kd-vocab-row", "");
+        var rowMain = createElement("div", "kd-vocab-main", "");
+        var rowHeadline = createElement("div", "kd-vocab-headline", "");
         var wordEl = createElement("span", "kd-vocab-word", "");
-        var wordText = parts[0] || "";
         if (readOnly) {
-          wordEl.textContent = wordText;
+          wordEl.textContent = wordOnly;
         } else {
-          wordEl.innerHTML = linkifyKanjiText(wordText, item.kanji);
+          wordEl.innerHTML = linkifyKanjiText(wordOnly, item.kanji);
         }
-        row.appendChild(wordEl);
-        row.appendChild(createElement("span", "kd-vocab-read", parts[1] ? "(" + parts[1] + ")" : ""));
-        row.appendChild(createElement("span", "kd-vocab-mean", parts[2] || ""));
+        rowHeadline.appendChild(wordEl);
+        rowHeadline.appendChild(createElement("span", "kd-vocab-read", wordReading ? "(" + wordReading + ")" : ""));
+        if (wordHanViet) {
+          rowHeadline.appendChild(createElement("span", "kd-vocab-hanviet", wordHanViet));
+        }
+        rowMain.appendChild(rowHeadline);
+        rowMain.appendChild(createElement("div", "kd-vocab-mean", wordMeaning));
+        row.appendChild(rowMain);
+        var rowActions = createElement("div", "kd-vocab-actions", "");
 
         if (!readOnly) {
           var rowStarBtn = createElement("button", "star-btn kd-vocab-star" + (isFav ? " star-btn--active" : ""), isFav ? "⭐" : "☆");
@@ -3133,7 +3107,7 @@
             renderKanjiDetail();
             refreshStarsTabIfActive();
           });
-          row.appendChild(rowStarBtn);
+          rowActions.appendChild(rowStarBtn);
           wordEl.addEventListener("click", function (e) {
             var target = e.target;
             if (target && target.classList.contains("kd-inline-kanji-link")) {
@@ -3153,26 +3127,17 @@
           });
         }
 
-        var kanjiWordOnly = String(parts[0] || "").split("(")[0].trim();
-        if (kanjiWordOnly) {
-          row.appendChild(createAudioBtn(kanjiWordOnly));
+        if (wordOnly) {
+          rowActions.appendChild(createAudioBtn(wordOnly));
         }
+        rowActions.appendChild(createAddVocab(wordOnly, wordReading, wordMeaning));
+        row.appendChild(rowActions);
 
-        sec4.appendChild(row);
-
-        let match = parts[0].match(/^(.+?)\((.+?)\)$/);
-        let kanji = '';
-        let hiragana = '';
-        if (match) {
-            kanji = match[1];
-            hiragana = match[2];
-        }
-
-        row.appendChild(createAddVocab(kanji, hiragana , parts[1]));
-        sec4.appendChild(row);
+        vocabList.appendChild(row);
       });
 
-      if (sec4.children.length > 0) {
+      if (vocabList.children.length > 0) {
+        sec4.appendChild(vocabList);
         targetEl.appendChild(sec4);
       }
     }
