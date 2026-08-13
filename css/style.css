@@ -833,8 +833,8 @@ select:focus {
   color: #d1d5db;
   transition: color var(--transition-fast), transform var(--transition-fast);
   flex-shrink: 0;
-  min-width: 32px;
-  min-height: 32px;
+  max-width: 20px;
+  max-height: 20px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
@@ -1054,8 +1054,8 @@ select:focus {
   opacity: 0.65;
   transition: opacity var(--transition-fast), transform var(--transition-fast);
   flex-shrink: 0;
-  min-width: 32px;
-  min-height: 32px;
+  max-width: 20px;
+  max-height: 20px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
