@@ -3204,25 +3204,48 @@ select:focus {
   color: var(--text-muted);
 }
 
-.kd-vocab-row {
+.kd-vocab-list {
   display: flex;
-  align-items: baseline;
-  gap: 0px;
-  padding: 4px 2px;
-  border-bottom: 1px dashed rgba(192, 57, 43, 0.08);
-  flex-wrap: wrap;
+  flex-direction: column;
+  gap: 5px;
 }
 
-.kd-vocab-row:last-child {
-  border-bottom: none;
+.kd-vocab-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 7px 9px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.6);
+  border: 1px solid rgba(107, 33, 168, 0.10);
+  transition: background var(--transition-fast), border-color var(--transition-fast);
+}
+
+.kd-vocab-row:hover {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: rgba(107, 33, 168, 0.22);
+}
+
+.kd-vocab-main {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.kd-vocab-headline {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 6px;
 }
 
 .kd-vocab-word {
   font-family: var(--font-jp);
-  font-size: 15px;
+  font-size: 18px;
   font-weight: 700;
-  color: var(--success);
-  flex: 1 1 auto;
+  color: #6b21a8;
   min-width: 0;
   overflow-wrap: anywhere;
   word-break: break-word;
@@ -3230,19 +3253,41 @@ select:focus {
 
 .kd-vocab-read {
   font-family: var(--font-jp);
-  font-size: 12px;
+  font-size: 14px;
   color: var(--text-muted);
   flex-shrink: 0;
 }
 
-.kd-vocab-mean {
+.kd-vocab-hanviet {
   font-size: 12px;
-  color: var(--text);
-  flex: 1;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: #6b21a8;
+  background: rgba(107, 33, 168, 0.08);
+  border-radius: var(--radius-full);
+  padding: 2px 8px;
+  flex-shrink: 0;
 }
 
-.kd-vocab-row .kd-vocab-star {
+.kd-vocab-mean {
+  font-size: 14.5px;
+  color: var(--text);
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.kd-vocab-actions {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  flex-shrink: 0;
   margin-left: auto;
+}
+
+.kd-vocab-actions .star-btn,
+.kd-vocab-actions .audio-btn {
+  margin: 0;
 }
 
 /* Kanji detail 2-column grid */
@@ -3294,10 +3339,12 @@ select:focus {
 .detail-modal__body .kd-story-row { padding: 3px 0; }
 .detail-modal__body .kd-story-label { font-size: 9px; }
 .detail-modal__body .kd-story-value { font-size: 13px; }
-.detail-modal__body .kd-vocab-row { padding: 3px 0; }
-.detail-modal__body .kd-vocab-word { font-size: 16px; }
-.detail-modal__body .kd-vocab-read { font-size: 12px; }
-.detail-modal__body .kd-vocab-mean { font-size: 13px; }
+.detail-modal__body .kd-vocab-list { gap: 5px; }
+.detail-modal__body .kd-vocab-row { padding: 7px 9px; gap: 6px; }
+.detail-modal__body .kd-vocab-word { font-size: 17px; }
+.detail-modal__body .kd-vocab-read { font-size: 13px; }
+.detail-modal__body .kd-vocab-hanviet { font-size: 11px; }
+.detail-modal__body .kd-vocab-mean { font-size: 14px; }
 .detail-modal__body .kd-vocab-chip-word { font-size: 13px; }
 .detail-modal__body .kd-vocab-chip-meaning { font-size: 11px; }
 
