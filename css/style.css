@@ -3294,7 +3294,7 @@ select:focus {
 .kd-detail-content {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 5px;
+  gap: 1px;
 }
 
 .kd-detail-content > .kd-hero { grid-column: 1 / -1; }
@@ -3327,7 +3327,7 @@ select:focus {
 .detail-modal__body .kd-section {
   grid-column: 1 / -1;
   margin-bottom: 6px;
-  padding: 8px 10px;
+  padding: 2px 10px;
   margin-bottom: 3px;
 }
 
