@@ -1832,8 +1832,8 @@ select:focus {
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   box-shadow: var(--shadow-modal);
-  padding: 12px 12px 10px;
-  gap: 8px;
+  padding: 6px 12px 10px;
+  gap: 3px;
 }
 
 .detail-modal__dialog .detail-modal__body {
@@ -3305,7 +3305,7 @@ select:focus {
 .kd-detail-content > .kd-section--writing { grid-column: 1 / -1; }
 
 .detail-modal__body .kd-hero {
-  padding: 10px 10px 8px;
+  padding: 1px 10px;
   margin-bottom: 2px;
 }
 
