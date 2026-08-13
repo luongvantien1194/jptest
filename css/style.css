@@ -3340,7 +3340,7 @@ select:focus {
 .detail-modal__body .kd-vocab-row { padding: 2px 9px; gap: 6px; }
 .detail-modal__body .kd-vocab-word { font-size: 21px; }
 .detail-modal__body .kd-vocab-read { font-size: 20px; }
-.detail-modal__body .kd-vocab-hanviet { font-size: 18px; }
+.detail-modal__body .kd-vocab-hanviet { font-size: 15px; }
 .detail-modal__body .kd-vocab-mean { font-size: 18px; }
 .detail-modal__body .kd-vocab-chip-word { font-size: 13px; }
 .detail-modal__body .kd-vocab-chip-meaning { font-size: 11px; }
