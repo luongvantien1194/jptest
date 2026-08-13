@@ -828,7 +828,6 @@ select:focus {
   border: none;
   background: none;
   cursor: pointer;
-  font-size: 20px;
   padding: 4px;
   line-height: 1;
   color: #d1d5db;
@@ -1049,7 +1048,6 @@ select:focus {
   border: none;
   background: none;
   cursor: pointer;
-  font-size: 18px;
   padding: 4px;
   line-height: 1;
   color: var(--primary);
@@ -3278,9 +3276,8 @@ select:focus {
 }
 
 .kd-vocab-actions {
-  display: flex;
+  display: grid;
   align-items: center;
-  gap: 2px;
   flex-shrink: 0;
   margin-left: auto;
 }
