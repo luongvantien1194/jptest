@@ -2780,7 +2780,7 @@ select:focus {
 
 .kd-hero-body {
   display: grid;
-  grid-template-columns: 25% 40% 35%;
+  grid-template-columns: 41% 40% 14%;
   align-items: center;
   width: 100%;
   min-width: 0;
@@ -2835,7 +2835,7 @@ select:focus {
   align-items: center;
   align-content: flex-start;
   justify-content: center;
-  gap: 6px;
+  gap: 2px;
   width: auto;
   max-width: 100%;
   min-width: 0;
