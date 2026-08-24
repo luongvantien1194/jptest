@@ -1,4 +1,3 @@
-md
 # Cheat Sheet N4-N3: Bị động・Sai khiến・Sai khiến bị động・Cho tôi làm・Được phép làm
 
 ## Câu thần chú
