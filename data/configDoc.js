@@ -1,6 +1,12 @@
 window.DOC_CONFIG = {
-  defaultKey: "kinhngu",
+  defaultKey: "chiadongtu",
   docs: [
+    {
+      key: "chiadongtu",
+      file: "chiadongtu",
+      type: "md",
+      label: "Chia động từ"
+    },
     {
       key: "kinhngu",
       file: "kinhngu",
