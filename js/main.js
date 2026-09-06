@@ -3503,12 +3503,6 @@
     const structure = createElement("div", "grammar-structure", item.structure);
     root.appendChild(structure);
 
-    const lessonInfo = createElement(
-      "div",
-      "detail-sub grammar-lesson-chip",
-      "Lesson " + (item.lesson != null ? item.lesson : item.Lesson)
-    );
-    root.appendChild(lessonInfo);
 
     // Meaning section
     if (item.content) {
@@ -3559,8 +3553,28 @@
       const exampleBody = createElement("div", "grammar-section__body", "");
       const exampleLines = splitGrammarExampleLines(item.example);
       exampleLines.forEach(function (line) {
-        const p = createElement("div", "detail-value grammar-section__line grammar-section__line--example", line);
+        const p = createElement(
+            "div",
+            "detail-value grammar-section__line grammar-section__line--example",
+            ""
+        );
+
+        const match = line.match(/^(.*?)\s*\[([^\]]*)\]\s*\(([^()]*)\)\s*$/);
+
+        if (match) {
+            const [, japanese, reading, meaning] = match;
+
+            p.innerHTML = `
+                <div>${japanese.trim()}</div>
+                <div>${reading.trim()}</div>
+                <div>${meaning.trim()}</div>
+            `;
+        } else {
+            p.textContent = line;
+        }
+
         exampleBody.appendChild(p);
+
       });
       exampleSection.appendChild(exampleBody);
 
@@ -5154,6 +5168,11 @@ history.replaceState({}, "", newUrl);
     // Merge N3 kanji từ các file kanjiData_1.js, kanjiData_2.js (nếu có)
     if (window._kanjiExtra && window._kanjiExtra.length) {
       kanjiData.push.apply(kanjiData, window._kanjiExtra);
+    }
+
+        // Merge N3 kanji từ các file kanjiData_1.js, kanjiData_2.js (nếu có)
+    if (window._grammarData && window._grammarData.length) {
+      kanjiData.push.apply(grammarData, window._grammarData);
     }
 
     setupTabs();
