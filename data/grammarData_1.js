@@ -3,6 +3,7 @@ window._grammarData.push(
   {
     "STT": 1,
     "Lesson": 1,
+    "Type": "n3",
     "Structure": "N1 は　N2　です",
     "Meaning": "N1 là N2",
     "Explanation": "Dùng để giới thiệu tên, danh tính hoặc nghề nghiệp. です biểu thị sự lịch sự.",

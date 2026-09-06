@@ -16,6 +16,7 @@
       kanjiRadical: [],
       kanjiLevel: "n3",
       grammarLesson: "all",
+      checkboxGrammarN3: false,
       vocabSearch: "",
       vocabMastered: "all",
       kanjiSearch: "",
@@ -3290,6 +3291,11 @@
         String(lessonValue) !== String(state.filter.grammarLesson)) {
         return false;
       }
+      if (state.filter.checkboxGrammarN3 === true) {
+        if (item.Type != 'n3') {
+          return false;
+        }
+      }
       var searchRaw = String(state.filter.grammarSearch || "").trim();
       if (searchRaw) {
         var search = normalizeText(searchRaw);
@@ -5080,6 +5086,7 @@ history.replaceState({}, "", newUrl);
 
   function setupGrammarFilters() {
     const lessonSelect = document.getElementById("grammar-lesson-filter");
+    const checkboxGrammarN3 = document.getElementById("checkbox-grammar-n3");
     const searchInput = document.getElementById("grammar-search-input");
     const lessons = getUniqueSorted(
       grammarData.map(function (g) {
@@ -5095,6 +5102,11 @@ history.replaceState({}, "", newUrl);
     lessonSelect.addEventListener("change", function () {
       state.filter.grammarLesson = lessonSelect.value;
       renderGrammarList();
+    });
+
+    checkboxGrammarN3.addEventListener("change", function () {
+        state.filter.checkboxGrammarN3 = checkboxGrammarN3.checked === true;
+        renderGrammarList();
     });
 
     if (searchInput) {
@@ -5170,9 +5182,8 @@ history.replaceState({}, "", newUrl);
       kanjiData.push.apply(kanjiData, window._kanjiExtra);
     }
 
-        // Merge N3 kanji từ các file kanjiData_1.js, kanjiData_2.js (nếu có)
     if (window._grammarData && window._grammarData.length) {
-      kanjiData.push.apply(grammarData, window._grammarData);
+      grammarData.push.apply(grammarData, window._grammarData);
     }
 
     setupTabs();
