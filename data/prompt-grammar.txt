@@ -51,6 +51,7 @@ Không tự thêm kiến thức không cần thiết hoặc thông tin không đ
 Có thể diễn đạt lại cho rõ ràng hơn nhưng không làm thay đổi ý nghĩa.
 7. Example
 Ưu tiên lấy ví dụ trực tiếp từ giáo trình.
+Nếu trong ảnh không có ví dụ thì hãy tự cho ví dụ vè ngữ pháp, dùng từ vụnge trong phạm vi n5 4 3
 Giữ nguyên câu tiếng Nhật.
 Nếu có furigana trong ảnh, giữ furigana.
 Sau câu tiếng Nhật, thêm romaji trong [ ].
