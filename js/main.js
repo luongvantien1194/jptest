@@ -1944,9 +1944,11 @@
     listContainer.innerHTML = "";
 
     if (filtered.length === 0) {
+      //window.location.href = `index.html?tab=kanji&kanji=${encodeURIComponent(kanji)}`;
       const empty = createElement("div", "detail-empty", "Không có từ vựng phù hợp với bộ lọc hiện tại.");
       listContainer.appendChild(empty);
       return;
+      
     }
 
     const listWrapper = createElement("div", "vocab-list", "");
