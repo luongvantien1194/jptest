@@ -194,7 +194,7 @@
     state.note.manualContent = content;
     state.note.currentDocKey = "__manual__";
     populateNoteSelect();
-    window.location.hash = "#note";
+    navigateToTab("note");
   }
 
   function findBestVoiceByLang(langPrefix) {
@@ -995,13 +995,41 @@
     return window.innerWidth <= 720;
   }
 
-  /** Deep link chi tiết Kanji: #kanji/日 hoặc #stars/日 (encodeURIComponent cho ký tự đặc biệt). */
-  function replaceLocationHash(hash) {
+  /** Điều hướng tab dùng query string: ?tab=kanji&k=日 hoặc ?tab=stars&k=日 (deep link chi tiết Kanji). */
+  function getLocationParams() {
+    return new URLSearchParams(window.location.search);
+  }
+
+  function buildLocationUrl(setParams, deleteKeys) {
+    var params = getLocationParams();
+    if (deleteKeys) {
+      deleteKeys.forEach(function (k) {
+        params.delete(k);
+      });
+    }
+    if (setParams) {
+      Object.keys(setParams).forEach(function (k) {
+        var v = setParams[k];
+        if (v === null || v === undefined) {
+          params.delete(k);
+        } else {
+          params.set(k, v);
+        }
+      });
+    }
+    var qs = params.toString();
+    return window.location.pathname + (qs ? "?" + qs : "") + window.location.hash;
+  }
+
+  function pushLocationQuery(setParams, deleteKeys) {
+    var url = buildLocationUrl(setParams, deleteKeys);
+    window.history.pushState(null, "", url);
+  }
+
+  function replaceLocationQuery(setParams, deleteKeys) {
+    var url = buildLocationUrl(setParams, deleteKeys);
     if (window.history && window.history.replaceState) {
-      var path = window.location.pathname + window.location.search;
-      window.history.replaceState(null, "", path + hash);
-    } else {
-      window.location.hash = hash;
+      window.history.replaceState(null, "", url);
     }
   }
 
@@ -1017,21 +1045,12 @@
     return -1;
   }
 
-  function parseKanjiDetailHash(rawHash) {
-    var h = rawHash || "";
-    if (h.indexOf("#kanji/") === 0) {
-      try {
-        return { tab: "kanji", slug: decodeURIComponent(h.slice("#kanji/".length)) };
-      } catch (e) {
-        return { tab: "kanji", slug: h.slice("#kanji/".length) };
-      }
-    }
-    if (h.indexOf("#stars/") === 0) {
-      try {
-        return { tab: "stars", slug: decodeURIComponent(h.slice("#stars/".length)) };
-      } catch (e) {
-        return { tab: "stars", slug: h.slice("#stars/".length) };
-      }
+  function parseKanjiDetailFromQuery() {
+    var params = getLocationParams();
+    var tab = params.get("tab");
+    var slug = params.get("k");
+    if ((tab === "kanji" || tab === "stars") && slug) {
+      return { tab: tab, slug: slug };
     }
     return { tab: null, slug: null };
   }
@@ -1083,15 +1102,9 @@
     }
   }
 
-  function hashAllowsKanjiResume(savedTab) {
-    var h = window.location.hash || "";
-    if (savedTab === "kanji") {
-      return h === "#kanji" || h.indexOf("#kanji/") === 0;
-    }
-    if (savedTab === "stars") {
-      return h === "#stars" || h.indexOf("#stars/") === 0;
-    }
-    return false;
+  function queryAllowsKanjiResume(savedTab) {
+    var tab = getLocationParams().get("tab");
+    return tab === savedTab;
   }
 
   /**
@@ -1106,8 +1119,7 @@
       return;
     }
 
-    var h = window.location.hash || "";
-    var dh = parseKanjiDetailHash(h);
+    var dh = parseKanjiDetailFromQuery();
     if (dh.tab && dh.slug && (dh.tab === "kanji" || dh.tab === "stars")) {
       var idx = findKanjiIndexByChar(dh.slug);
       if (idx >= 0) {
@@ -1128,7 +1140,7 @@
     if (!hint) {
       return;
     }
-    if (!hashAllowsKanjiResume(hint.t)) {
+    if (!queryAllowsKanjiResume(hint.t)) {
       return;
     }
     var idx2 = findKanjiIndexByChar(hint.k);
@@ -1145,12 +1157,11 @@
       renderStarsTab();
     }
     renderKanjiList();
-    var enc = encodeURIComponent(hint.k);
-    replaceLocationHash("#" + hint.t + "/" + enc);
+    replaceLocationQuery({ tab: hint.t, k: hint.k });
     renderKanjiDetail();
   }
 
-  function syncKanjiDetailHash() {
+  function syncKanjiDetailQuery() {
     if (state.currentTab !== "kanji" && state.currentTab !== "stars") {
       return;
     }
@@ -1161,20 +1172,21 @@
     if (!raw || !raw.kanji) {
       return;
     }
-    var enc = encodeURIComponent(raw.kanji);
-    var target = state.currentTab === "stars" ? "#stars/" + enc : "#kanji/" + enc;
-    if (window.location.hash !== target) {
-      replaceLocationHash(target);
+    var params = getLocationParams();
+    if (params.get("tab") !== state.currentTab || params.get("k") !== raw.kanji) {
+      replaceLocationQuery({ tab: state.currentTab, k: raw.kanji });
     }
     saveKanjiDetailResumeHint();
   }
 
   function clearKanjiDetailSlugFromLocation() {
-    var h = window.location.hash || "";
-    if (h.indexOf("#kanji/") === 0) {
-      window.location.hash = "#kanji";
-    } else if (h.indexOf("#stars/") === 0) {
-      window.location.hash = "#stars";
+    var params = getLocationParams();
+    if (!params.has("k")) {
+      return;
+    }
+    var tab = params.get("tab");
+    if (tab === "kanji" || tab === "stars") {
+      replaceLocationQuery({ tab: tab }, ["k"]);
     }
   }
 
@@ -1221,9 +1233,9 @@
     state.ui.kanjiDetailReturnTab = null;
     if (ret === "stars") {
       state.currentTab = "stars";
-      var hsh = window.location.hash || "";
-      if (hsh !== "#stars") {
-        window.location.hash = "#stars";
+      var params = getLocationParams();
+      if (params.get("tab") !== "stars" || params.has("k")) {
+        replaceLocationQuery({ tab: "stars" }, ["k"]);
       }
       renderTabs();
       renderStarsTab();
@@ -3216,7 +3228,7 @@
       contentDiv.appendChild(container.firstChild);
     }
     openDetailModal("", contentDiv, buildKanjiDetailNavRow());
-    syncKanjiDetailHash();
+    syncKanjiDetailQuery();
   }
 
   function renderKanjiTestAnswerReveal(kanjiIndexReveal, reveal) {
@@ -3857,22 +3869,13 @@
   // LOGIC / EVENT HANDLERS
   // ========================
 
-  function handleHashChange() {
-    const rawHash = window.location.hash || "#vocab";
-    var detail = parseKanjiDetailHash(rawHash);
-    var hash = rawHash;
-    if (detail.tab && detail.slug) {
-      hash = "#" + detail.tab;
-    }
-    var tabName = "vocab";
-    if (hash === "#kanji") {
-      tabName = "kanji";
-    } else if (hash === "#grammar") {
-      tabName = "grammar";
-    } else if (hash === "#stars") {
-      tabName = "stars";
-    } else if (hash === "#note") {
-      tabName = "note";
+  function handleLocationChange() {
+    var params = getLocationParams();
+    var rawTab = params.get("tab") || "vocab";
+    var detail = parseKanjiDetailFromQuery();
+    var tabName;
+    if (rawTab === "kanji" || rawTab === "grammar" || rawTab === "stars" || rawTab === "note") {
+      tabName = rawTab;
     } else {
       tabName = "vocab";
     }
@@ -3892,11 +3895,23 @@
         renderKanjiList();
         renderKanjiDetail();
       } else {
-        window.location.hash = "#" + tabName;
+        replaceLocationQuery({ tab: tabName }, ["k"]);
       }
     } else if (tabName === "kanji" || tabName === "stars") {
       renderKanjiList();
     }
+  }
+
+  /** Chuyển tab bằng query string (?tab=xxx) thay vì #xxx, cập nhật history để back/forward hoạt động. */
+  function navigateToTab(tabName) {
+    var params = getLocationParams();
+    if (params.get("tab") === tabName && !params.has("k")) {
+      state.currentTab = tabName;
+      renderTabs();
+      return;
+    }
+    pushLocationQuery({ tab: tabName }, ["k"]);
+    handleLocationChange();
   }
 
   function setupTabs() {
@@ -3907,17 +3922,11 @@
         if (!tabName) {
           return;
         }
-        const targetHash = "#" + tabName;
-        if (window.location.hash !== targetHash) {
-          window.location.hash = targetHash;
-        } else {
-          state.currentTab = tabName;
-          renderTabs();
-        }
+        navigateToTab(tabName);
       });
     });
 
-    window.addEventListener("hashchange", handleHashChange);
+    window.addEventListener("popstate", handleLocationChange);
   }
 
   function setupKanjiDetailResumeListeners() {
@@ -5205,11 +5214,10 @@ history.replaceState({}, "", newUrl);
     renderGrammarDetail();
     renderScreen();
 
-    if (!window.location.hash) {
-      window.location.hash = "#vocab";
-    } else {
-      handleHashChange();
+    if (!getLocationParams().get("tab")) {
+      replaceLocationQuery({ tab: "vocab" });
     }
+    handleLocationChange();
     tryRestoreKanjiDetailAfterResume();
   });
 })();
