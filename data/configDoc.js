@@ -1,11 +1,17 @@
 window.DOC_CONFIG = {
-  defaultKey: "chiadongtu",
+  defaultKey: "noitat",
   docs: [
     {
       key: "chiadongtu",
       file: "chiadongtu",
       type: "md",
       label: "Chia động từ"
+    },
+    {
+      key: "noitat",
+      file: "noitat",
+      type: "md",
+      label: "Những cụm nói tắt thường gặp ở JLPT N3"
     },
     {
       key: "kinhngu",
