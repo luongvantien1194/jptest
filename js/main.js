@@ -4053,7 +4053,7 @@ history.replaceState({}, "", newUrl);
     function redirectKanji() {
       const kanji = searchInput.value.trim();
       if (!kanji) return;
-      window.location.href = `index.html?kanji=${encodeURIComponent(kanji)}#kanji`;
+      window.location.href = `index.html?tab=kanji&kanji=${encodeURIComponent(kanji)}`;
     }
 
     addKanji.addEventListener("click", redirectKanji);
