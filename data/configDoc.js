@@ -1,6 +1,12 @@
 window.DOC_CONFIG = {
-  defaultKey: "noitat",
+  defaultKey: "grammar_clusters",
   docs: [
+    {
+      key: "grammar_clusters",
+      file: "grammar_clusters",
+      type: "md",
+      label: "Tổng hợp ngữ pháp"
+    },
     {
       key: "chiadongtu",
       file: "chiadongtu",
