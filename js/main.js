@@ -3688,36 +3688,22 @@
     noteSearchApplyFixedState(!!state.note.searchFocused || hasTerm);
   }
 
-  // .section / .app-shell có backdrop-filter, mà theo spec thì backdrop-filter/filter/transform
-  // trên tổ tiên sẽ tạo containing block riêng cho con position:fixed — khiến "fixed" bị nhốt lại
-  // bên trong section đó (cuộn trang là trôi theo luôn) thay vì thực sự ghim theo viewport.
-  // => Khi ghim, dời hẳn .note-search-box ra làm con trực tiếp của <body> (giống cách
-  // #detail-modal / #nav-menu-popup đã làm), khi bỏ ghim thì trả lại đúng chỗ cũ (cạnh anchor).
+  // .section / .app-shell có backdrop-filter, mà theo spec thì backdrop-filter khác none trên
+  // tổ tiên sẽ tạo containing block riêng cho con position:fixed — khiến "fixed" bị nhốt lại bên
+  // trong tổ tiên đó (cuộn trang là trôi theo luôn) thay vì thực sự ghim theo viewport.
+  // Cách né: KHÔNG dời DOM (dời node đang được focus dễ gây mất focus/không gõ được — đã gặp lỗi
+  // này), mà tạm tắt backdrop-filter của các tổ tiên đó (qua class) trong lúc đang ghim, để
+  // .note-search-box--fixed (vẫn nằm nguyên vị trí cũ trong DOM) escape thẳng ra viewport thật.
   function noteSearchApplyFixedState(shouldFix) {
     var box = document.querySelector(".note-search-box");
-    var anchor = document.getElementById("note-search-box-anchor");
-    if (!box || !anchor) {
+    if (!box) {
       return;
     }
-    var isFixed = box.classList.contains("note-search-box--fixed");
-    var input = document.getElementById("note-search-input");
-    var wasActive = !!input && document.activeElement === input;
-    if (shouldFix && !isFixed) {
-      document.body.appendChild(box);
-      box.classList.add("note-search-box--fixed");
-      // Dời phần tử đang được focus sang cha khác có thể khiến trình duyệt tự blur nó
-      // (một số engine coi re-parent như remove+insert) — focus lại ngay trong cùng tick
-      // để không bị mất focus / gõ được chữ.
-      if (wasActive && input) {
-        input.focus();
-      }
-    } else if (!shouldFix && isFixed) {
-      anchor.parentNode.insertBefore(box, anchor.nextSibling);
-      if (wasActive && input) {
-        input.focus();
-      }
-      box.classList.remove("note-search-box--fixed");
-    }
+    box.classList.toggle("note-search-box--fixed", shouldFix);
+    var shell = document.querySelector(".app-shell");
+    var section = document.getElementById("section-note");
+    if (shell) shell.classList.toggle("note-search-portal-open", shouldFix);
+    if (section) section.classList.toggle("note-search-portal-open", shouldFix);
   }
 
   function noteSearchHighlightCurrent() {
