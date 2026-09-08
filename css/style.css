@@ -503,10 +503,10 @@ body {
 }
 
 .input-kanji-stt-jump {
-  width: 52px;
-  max-width: 64px;
+  width: 64px;
+  max-width: 76px;
   padding: 4px 8px;
-  font-size: 12px;
+  font-size: 16px;
   line-height: 1.2;
   border-radius: var(--radius-sm);
   border: 1px solid var(--border);
@@ -516,7 +516,7 @@ body {
 
 .input-kanji-stt-jump::placeholder {
   color: #9ca3af;
-  font-size: 10px;
+  font-size: 12px;
 }
 
 .input-kanji-stt-jump:focus {
@@ -1680,7 +1680,7 @@ select:focus {
 }
 
 .note-doc-select select {
-  font-size: 12px;
+  font-size: 16px;
   padding: 5px 10px;
   border-radius: var(--radius-full);
   border: 1px solid var(--border);
@@ -1701,7 +1701,7 @@ select:focus {
 .note-search-input {
   flex: 1 1 auto;
   min-width: 0;
-  font-size: 12px;
+  font-size: 16px;
   padding: 5px 10px;
   border-radius: var(--radius-full);
   border: 1px solid var(--border);
@@ -1736,11 +1736,14 @@ select:focus {
 }
 
 /* Khi đang tìm kiếm và có kết quả: ghim ô search + nút điều hướng nổi trên nội dung
-   để vẫn thao tác được dù đã cuộn trang xuống xem kết quả highlight. */
+   để vẫn thao tác được dù đã cuộn trang xuống xem kết quả highlight.
+   Neo theo mép dưới bên phải của màn hình (app này không có thanh tab
+   trên/dưới cố định — .app-header luôn display:none — nên không cần chừa
+   chỗ tránh thanh nav như trước, tránh bị trôi nổi cách xa nội dung). */
 .note-search-box--fixed {
   position: fixed;
-  top: calc(10px + env(safe-area-inset-top));
   right: 10px;
+  bottom: calc(10px + env(safe-area-inset-bottom));
   z-index: 40;
   background: rgba(253, 248, 240, 0.97);
   backdrop-filter: blur(10px) saturate(160%);
@@ -1749,14 +1752,7 @@ select:focus {
   border-radius: var(--radius-full);
   padding: 5px 8px;
   box-shadow: var(--shadow-hover);
-  max-width: min(280px, calc(100vw - 20px));
-}
-
-@media (max-width: 768px) {
-  .note-search-box--fixed {
-    top: auto;
-    bottom: calc(56px + env(safe-area-inset-bottom));
-  }
+  max-width: min(320px, calc(100vw - 20px));
 }
 
 .note-search-hit {
