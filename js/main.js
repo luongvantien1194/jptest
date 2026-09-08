@@ -3669,6 +3669,7 @@
   }
 
   function noteSearchUpdateUI() {
+    var box = document.querySelector(".note-search-box");
     var countEl = document.getElementById("note-search-count");
     var prevBtn = document.getElementById("note-search-prev");
     var nextBtn = document.getElementById("note-search-next");
@@ -3680,6 +3681,10 @@
     }
     if (prevBtn) prevBtn.hidden = !hasTerm;
     if (nextBtn) nextBtn.hidden = !hasTerm;
+    // Có kết quả tìm kiếm: ghim ô search + nút điều hướng nổi trên nội dung
+    if (box) {
+      box.classList.toggle("note-search-box--fixed", total > 0);
+    }
   }
 
   function noteSearchHighlightCurrent() {
@@ -3790,6 +3795,67 @@
       input.value = "";
     }
     noteSearchUpdateUI();
+    noteScrollToHash();
+  }
+
+  // Nội dung note (markdown) được tải bất đồng bộ (fetch) và chèn vào DOM
+  // SAU khi trang đã load xong, nên nếu URL đã có sẵn #id thì trình duyệt sẽ
+  // cố cuộn tới lúc phần tử đó chưa tồn tại và không tự thử lại. Gọi hàm này
+  // mỗi khi nội dung note vừa render xong để tự cuộn tới đúng #id (nếu có).
+  function noteScrollToHash() {
+    var hash = window.location.hash;
+    if (!hash || hash.length < 2) {
+      return;
+    }
+    var id = "";
+    try {
+      id = decodeURIComponent(hash.slice(1));
+    } catch (e) {
+      id = hash.slice(1);
+    }
+    if (!id) {
+      return;
+    }
+    requestAnimationFrame(function () {
+      var el = document.getElementById(id);
+      if (el && el.scrollIntoView) {
+        el.scrollIntoView({ block: "start", behavior: "smooth" });
+      }
+    });
+  }
+
+  function setupNoteAnchors() {
+    var container = document.getElementById("note-content-container");
+    if (!container) {
+      return;
+    }
+    container.addEventListener("click", function (e) {
+      var link = e.target.closest('a[href^="#"]');
+      if (!link || !container.contains(link)) {
+        return;
+      }
+      var href = link.getAttribute("href") || "";
+      if (href.length < 2) {
+        return;
+      }
+      var id = "";
+      try {
+        id = decodeURIComponent(href.slice(1));
+      } catch (err) {
+        id = href.slice(1);
+      }
+      var target = document.getElementById(id);
+      if (!target) {
+        return;
+      }
+      e.preventDefault();
+      target.scrollIntoView({ block: "start", behavior: "smooth" });
+      if (history.pushState) {
+        history.pushState(null, "", href);
+      } else {
+        window.location.hash = href;
+      }
+    });
   }
 
   function setupNoteSearch() {
@@ -5372,6 +5438,7 @@ history.replaceState({}, "", newUrl);
     setupFilterToggles();
     setupNoteSelect();
     setupNoteSearch();
+    setupNoteAnchors();
     setupDetailModal();
 
     renderDisplaySettingsUI();
