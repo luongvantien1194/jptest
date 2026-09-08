@@ -1,50 +1,46 @@
 # Tổng hợp ngữ pháp tiếng Nhật theo cụm chủ đề
-
-Tài liệu này gom nhóm 352 mẫu ngữ pháp (242 mẫu N5–N4 trong `app_files/grammarData_TvkS.js` + 110 mẫu N3 trong `data/grammarData_1.js`) thành các cụm theo chức năng ngữ pháp, giúp học và ôn tập theo hệ thống thay vì rời rạc theo từng bài.
-
 <a id="bang-tong-hop"></a>
-
 ## Bảng tổng hợp các cụm
 
-| STT | Cụm ngữ pháp | Số mẫu | Cấp độ |
+| . | Cụm ngữ pháp | Số mẫu | LV |
 |---|---|---|---|
-| 1 | [Câu cơ bản với です/だ (khẳng định, phủ định, câu hỏi)](#co-ban) | 12 | N5–N4 |
-| 2 | [Từ chỉ định & từ để hỏi cơ bản (これ/この/ここ/こ~, どこ/どの/どんな, いつ/なに/だれ)](#chi-dinh) | 12 | N5–N4 |
-| 3 | [Trợ từ chỉ thời gian, địa điểm, phương tiện, đối tượng (に/で/へ/と/から/まで/を/が/は/も)](#tro-tu) | 29 | N5–N4 |
-| 4 | [Tính từ (i-adj / na-adj) và cách chia, nối câu](#tinh-tu) | 11 | N5–N4 |
-| 5 | [So sánh hơn – nhất](#so-sanh) | 5 | N5–N4, N3 |
-| 6 | [Mức độ, phạm vi, giới hạn, nhấn mạnh (ほど/くらい/だけ/しか/さえ/こそ/も)](#muc-do) | 23 | N5–N4, N3 |
-| 7 | [Rủ rê, đề nghị, nhờ vả lịch sự](#de-nghi) | 8 | N5–N4 |
-| 8 | [Thể て và các cách dùng](#te) | 17 | N5–N4, N3 |
-| 9 | [Thể ない và các cách dùng](#nai) | 5 | N5–N4 |
-| 10 | [Thể từ điển (thể ngắn khẳng định)](#jisho) | 1 | N5–N4 |
-| 11 | [Thể ます cơ bản](#masu) | 3 | N5–N4 |
-| 12 | [Thể た và kinh nghiệm](#ta) | 2 | N5–N4 |
-| 13 | [Danh từ hóa mệnh đề (の/こと/さ/み)](#danh-tu-hoa) | 8 | N5–N4, N3 |
-| 14 | [Câu điều kiện (と/ば/たら/なら)](#dieu-kien) | 12 | N5–N4, N3 |
-| 15 | [Nguyên nhân – lý do](#ly-do) | 13 | N5–N4, N3 |
-| 16 | [Mục đích (ために/ように)](#muc-dich) | 8 | N5–N4, N3 |
-| 17 | [Nhượng bộ – đối lập (が/けど/のに/ても/くせに/わりに)](#nhuong-bo) | 11 | N5–N4, N3 |
-| 18 | [Cho – nhận (あげる/もらう/くれる)](#cho-nhan) | 11 | N5–N4, N3 |
-| 19 | [Khả năng](#kha-nang) | 6 | N5–N4, N3 |
-| 20 | [Suy đoán, ước đoán, nghe nói, khẳng định gián tiếp](#suy-doan) | 19 | N5–N4, N3 |
-| 21 | [Bị động – Sai khiến – Kính ngữ – Khiêm nhường](#bi-dong) | 17 | N5–N4, N3 |
-| 22 | [Liệt kê, đồng thời, bổ sung](#liet-ke) | 9 | N5–N4, N3 |
-| 23 | [Trích dẫn, tường thuật, gọi tên](#trich-dan) | 10 | N5–N4, N3 |
-| 24 | [Thời điểm, trình tự thời gian](#thoi-gian) | 17 | N5–N4, N3 |
+| 1 | [Câu cơ bản với です/だ (khẳng định, phủ định, câu hỏi)](#co-ban) | 12 | 54 |
+| 2 | [Từ chỉ định & từ để hỏi cơ bản (これ/この/ここ/こ~, どこ/どの/どんな, いつ/なに/だれ)](#chi-dinh) | 12 | 54 |
+| 3 | [Trợ từ chỉ thời gian, địa điểm, phương tiện, đối tượng (に/で/へ/と/から/まで/を/が/は/も)](#tro-tu) | 29 | 54 |
+| 4 | [Tính từ (i-adj / na-adj) và cách chia, nối câu](#tinh-tu) | 11 | 54 |
+| 5 | [So sánh hơn – nhất](#so-sanh) | 5 | 543 |
+| 6 | [Mức độ, phạm vi, giới hạn, nhấn mạnh (ほど/くらい/だけ/しか/さえ/こそ/も)](#muc-do) | 23 | 543 |
+| 7 | [Rủ rê, đề nghị, nhờ vả lịch sự](#de-nghi) | 8 | 54 |
+| 8 | [Thể て và các cách dùng](#te) | 17 | 543 |
+| 9 | [Thể ない và các cách dùng](#nai) | 5 | 54 |
+| 10 | [Thể từ điển (thể ngắn khẳng định)](#jisho) | 1 | 54 |
+| 11 | [Thể ます cơ bản](#masu) | 3 | 54 |
+| 12 | [Thể た và kinh nghiệm](#ta) | 2 | 54 |
+| 13 | [Danh từ hóa mệnh đề (の/こと/さ/み)](#danh-tu-hoa) | 8 | 543 |
+| 14 | [Câu điều kiện (と/ば/たら/なら)](#dieu-kien) | 12 | 543 |
+| 15 | [Nguyên nhân – lý do](#ly-do) | 13 | 543 |
+| 16 | [Mục đích (ために/ように)](#muc-dich) | 8 | 543 |
+| 17 | [Nhượng bộ – đối lập (が/けど/のに/ても/くせに/わりに)](#nhuong-bo) | 11 | 543 |
+| 18 | [Cho – nhận (あげる/もらう/くれる)](#cho-nhan) | 11 | 543 |
+| 19 | [Khả năng](#kha-nang) | 6 | 543 |
+| 20 | [Suy đoán, ước đoán, nghe nói, khẳng định gián tiếp](#suy-doan) | 19 | 543 |
+| 21 | [Bị động – Sai khiến – Kính ngữ – Khiêm nhường](#bi-dong) | 17 | 543 |
+| 22 | [Liệt kê, đồng thời, bổ sung](#liet-ke) | 9 | 543 |
+| 23 | [Trích dẫn, tường thuật, gọi tên](#trich-dan) | 10 | 543 |
+| 24 | [Thời điểm, trình tự thời gian](#thoi-gian) | 17 | 543 |
 | 25 | [Biến đổi tương quan giữa hai sự việc](#bien-doi) | 5 | N3 |
-| 26 | [Mệnh đề định ngữ (bổ nghĩa cho danh từ)](#dinh-ngu) | 4 | N5–N4 |
-| 27 | [Mệnh lệnh – cấm đoán](#menh-lenh) | 3 | N5–N4, N3 |
-| 28 | [Nghi vấn bất định, câu hỏi lồng trong câu](#nghi-van-bat-dinh) | 6 | N5–N4 |
+| 26 | [Mệnh đề định ngữ (bổ nghĩa cho danh từ)](#dinh-ngu) | 4 | 54 |
+| 27 | [Mệnh lệnh – cấm đoán](#menh-lenh) | 3 | 543 |
+| 28 | [Nghi vấn bất định, câu hỏi lồng trong câu](#nghi-van-bat-dinh) | 6 | 54 |
 | 29 | [Giới từ / cấu trúc trang trọng chỉ đối tượng, phạm vi, phương diện](#gioi-tu-trang-trong) | 18 | N3 |
 | 30 | [Xu hướng, trạng thái, mức độ nhẹ](#xu-huong) | 7 | N3 |
-| 31 | [ところ – thời điểm trong tiến trình hành động](#tokoro) | 7 | N5–N4, N3 |
+| 31 | [ところ – thời điểm trong tiến trình hành động](#tokoro) | 7 | 543 |
 | 32 | [Nghĩa vụ – bắt buộc – không cần thiết](#bat-buoc) | 5 | N3 |
-| 33 | [Quyết định, coi như, lựa chọn](#quyet-dinh) | 2 | N5–N4, N3 |
-| 34 | [Ý định, mong muốn, dự định, quyết tâm](#mong-muon) | 6 | N5–N4, N3 |
-| 35 | [Biểu hiện phản hồi & đưa đẩy trong hội thoại](#hoi-thoai) | 10 | N5–N4, N3 |
-| 36 | [Thể lịch sự & thể thông thường](#the-van) | 3 | N5–N4 |
-| 37 | [Khuyên nhủ, đề xuất](#khuyen-nghi) | 1 | N5–N4 |
+| 33 | [Quyết định, coi như, lựa chọn](#quyet-dinh) | 2 | 543 |
+| 34 | [Ý định, mong muốn, dự định, quyết tâm](#mong-muon) | 6 | 543 |
+| 35 | [Biểu hiện phản hồi & đưa đẩy trong hội thoại](#hoi-thoai) | 10 | 543 |
+| 36 | [Thể lịch sự & thể thông thường](#the-van) | 3 | 54 |
+| 37 | [Khuyên nhủ, đề xuất](#khuyen-nghi) | 1 | 54 |
 | 38 | [Cấu trúc / lưu ý ngữ pháp khác](#khac) | 3 | N3 |
 | 39 | [Thói quen, quy định, trạng thái đã thay đổi thành như vậy](#thoi-quen) | 3 | N3 |
 
