@@ -3685,8 +3685,38 @@
     if (nextBtn) nextBtn.hidden = !hasTerm;
     if (clearBtn) clearBtn.hidden = !hasTerm;
     // Đang focus vào ô search, HOẶC ô search đang có giá trị (kể cả khi đã rời focus): ghim nổi
-    if (box) {
-      box.classList.toggle("note-search-box--fixed", !!state.note.searchFocused || hasTerm);
+    noteSearchApplyFixedState(!!state.note.searchFocused || hasTerm);
+  }
+
+  // .section / .app-shell có backdrop-filter, mà theo spec thì backdrop-filter/filter/transform
+  // trên tổ tiên sẽ tạo containing block riêng cho con position:fixed — khiến "fixed" bị nhốt lại
+  // bên trong section đó (cuộn trang là trôi theo luôn) thay vì thực sự ghim theo viewport.
+  // => Khi ghim, dời hẳn .note-search-box ra làm con trực tiếp của <body> (giống cách
+  // #detail-modal / #nav-menu-popup đã làm), khi bỏ ghim thì trả lại đúng chỗ cũ (cạnh anchor).
+  function noteSearchApplyFixedState(shouldFix) {
+    var box = document.querySelector(".note-search-box");
+    var anchor = document.getElementById("note-search-box-anchor");
+    if (!box || !anchor) {
+      return;
+    }
+    var isFixed = box.classList.contains("note-search-box--fixed");
+    var input = document.getElementById("note-search-input");
+    var wasActive = !!input && document.activeElement === input;
+    if (shouldFix && !isFixed) {
+      document.body.appendChild(box);
+      box.classList.add("note-search-box--fixed");
+      // Dời phần tử đang được focus sang cha khác có thể khiến trình duyệt tự blur nó
+      // (một số engine coi re-parent như remove+insert) — focus lại ngay trong cùng tick
+      // để không bị mất focus / gõ được chữ.
+      if (wasActive && input) {
+        input.focus();
+      }
+    } else if (!shouldFix && isFixed) {
+      anchor.parentNode.insertBefore(box, anchor.nextSibling);
+      if (wasActive && input) {
+        input.focus();
+      }
+      box.classList.remove("note-search-box--fixed");
     }
   }
 
@@ -3878,8 +3908,14 @@
       noteSearchUpdateUI();
     });
     input.addEventListener("blur", function () {
-      state.note.searchFocused = false;
-      noteSearchUpdateUI();
+      // Trì hoãn 1 tick: nếu blur này chỉ là hệ quả của việc bấm nút × (mousedown
+      // làm input mất focus trước khi click chạy input.focus() lại) thì tới lúc này
+      // input đã được focus lại — kiểm tra activeElement thật thay vì tin ngay là đã blur,
+      // tránh việc bị coi là "mất focus" nhầm rồi ẩn/thu gọn quá sớm.
+      setTimeout(function () {
+        state.note.searchFocused = document.activeElement === input;
+        noteSearchUpdateUI();
+      }, 0);
     });
     input.addEventListener("keydown", function (e) {
       if (e.key === "Enter") {
