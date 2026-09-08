@@ -84,7 +84,8 @@
       originalHtml: null,
       searchTerm: "",
       matches: [],
-      matchIndex: -1
+      matchIndex: -1,
+      searchFocused: false
     },
     selected: {
       vocabIndex: null,
@@ -3673,6 +3674,7 @@
     var countEl = document.getElementById("note-search-count");
     var prevBtn = document.getElementById("note-search-prev");
     var nextBtn = document.getElementById("note-search-next");
+    var clearBtn = document.getElementById("note-search-clear");
     var total = state.note.matches.length;
     var hasTerm = !!(state.note.searchTerm && state.note.searchTerm.trim());
     if (countEl) {
@@ -3681,9 +3683,10 @@
     }
     if (prevBtn) prevBtn.hidden = !hasTerm;
     if (nextBtn) nextBtn.hidden = !hasTerm;
-    // Có kết quả tìm kiếm: ghim ô search + nút điều hướng nổi trên nội dung
+    if (clearBtn) clearBtn.hidden = !hasTerm;
+    // Đang focus vào ô search, HOẶC ô search đang có giá trị (kể cả khi đã rời focus): ghim nổi
     if (box) {
-      box.classList.toggle("note-search-box--fixed", total > 0);
+      box.classList.toggle("note-search-box--fixed", !!state.note.searchFocused || hasTerm);
     }
   }
 
@@ -3862,12 +3865,21 @@
     var input = document.getElementById("note-search-input");
     var prevBtn = document.getElementById("note-search-prev");
     var nextBtn = document.getElementById("note-search-next");
+    var clearBtn = document.getElementById("note-search-clear");
     if (!input) {
       return;
     }
 
     input.addEventListener("input", function () {
       noteSearchRun(input.value);
+    });
+    input.addEventListener("focus", function () {
+      state.note.searchFocused = true;
+      noteSearchUpdateUI();
+    });
+    input.addEventListener("blur", function () {
+      state.note.searchFocused = false;
+      noteSearchUpdateUI();
     });
     input.addEventListener("keydown", function (e) {
       if (e.key === "Enter") {
@@ -3883,6 +3895,13 @@
     }
     if (nextBtn) {
       nextBtn.addEventListener("click", function () { noteSearchGoTo(1); });
+    }
+    if (clearBtn) {
+      clearBtn.addEventListener("click", function () {
+        input.value = "";
+        noteSearchRun("");
+        input.focus();
+      });
     }
   }
 
