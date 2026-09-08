@@ -1735,15 +1735,17 @@ select:focus {
   flex-shrink: 0;
 }
 
-/* Khi đang tìm kiếm và có kết quả: ghim ô search + nút điều hướng nổi trên nội dung
-   để vẫn thao tác được dù đã cuộn trang xuống xem kết quả highlight.
-   Neo theo mép dưới bên phải của màn hình (app này không có thanh tab
-   trên/dưới cố định — .app-header luôn display:none — nên không cần chừa
-   chỗ tránh thanh nav như trước, tránh bị trôi nổi cách xa nội dung). */
+.note-search-clear {
+  font-size: 16px;
+}
+
+/* Khi focus vào ô search HOẶC đang có kết quả: ghim ô search + nút điều hướng
+   nổi ở góc trên-phải màn hình (mọi kích thước màn hình), để vẫn thao tác được
+   dù đã cuộn trang xuống xem kết quả highlight. */
 .note-search-box--fixed {
   position: fixed;
+  top: calc(10px + env(safe-area-inset-top));
   right: 10px;
-  bottom: calc(10px + env(safe-area-inset-bottom));
   z-index: 40;
   background: rgba(253, 248, 240, 0.97);
   backdrop-filter: blur(10px) saturate(160%);
