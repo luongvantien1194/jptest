@@ -1757,6 +1757,16 @@ select:focus {
   max-width: min(320px, calc(100vw - 20px));
 }
 
+/* .app-shell và .section dùng backdrop-filter, mà backdrop-filter khác none trên tổ tiên sẽ
+   tạo containing block riêng cho con position:fixed (theo spec), khiến .note-search-box--fixed
+   bị "nhốt" định vị theo tổ tiên đó thay vì theo viewport thật. Tắt tạm backdrop-filter của các
+   tổ tiên này trong lúc đang ghim để nó thoát ra ghim đúng theo viewport. */
+.app-shell.note-search-portal-open,
+.section.note-search-portal-open {
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
 .note-search-hit {
   background: rgba(250, 204, 21, 0.55);
   color: inherit;
