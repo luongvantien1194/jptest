@@ -80,7 +80,11 @@
           ? window.DOC_CONFIG.defaultKey
           : null,
       fontSize: 14,
-      manualContent: null
+      manualContent: null,
+      originalHtml: null,
+      searchTerm: "",
+      matches: [],
+      matchIndex: -1
     },
     selected: {
       vocabIndex: null,
@@ -3524,21 +3528,14 @@
     root.appendChild(structure);
 
 
-    // Meaning section
+    // Meaning section (inline "Ý nghĩa: xxxxx" — không tách header riêng)
     if (item.content) {
-      const meaningSection = createElement("div", "grammar-section grammar-section--meaning", "");
-      const meaningHeader = createElement("div", "grammar-section__header", "");
-      const meaningLabel = createElement("div", "grammar-section__title", "Ý nghĩa");
-      meaningHeader.appendChild(meaningLabel);
-      meaningSection.appendChild(meaningHeader);
-
-      const meaningBody = createElement("div", "grammar-section__body", "");
-      const contentLines = String(item.content).split("\n");
-      contentLines.forEach(function (line) {
-        const p = createElement("div", "detail-value grammar-section__line", line);
-        meaningBody.appendChild(p);
-      });
-      meaningSection.appendChild(meaningBody);
+      const meaningSection = createElement("div", "grammar-section grammar-section--meaning grammar-section--inline", "");
+      const meaningLine = createElement("div", "detail-value grammar-section__line grammar-section__line--inline", "");
+      const meaningLabel = createElement("span", "grammar-section__title grammar-section__title--inline", "Ý nghĩa: ");
+      meaningLine.appendChild(meaningLabel);
+      meaningLine.appendChild(document.createTextNode(String(item.content).split("\n").join(" ")));
+      meaningSection.appendChild(meaningLine);
 
       root.appendChild(meaningSection);
     }
@@ -3552,7 +3549,7 @@
       explainSection.appendChild(explainHeader);
 
       const explainBody = createElement("div", "grammar-section__body", "");
-      const explainLines = String(item.explain).split("\n");
+      const explainLines = splitGrammarExampleLines(item.explain);
       explainLines.forEach(function (line) {
         const p = createElement("div", "detail-value grammar-section__line", line);
         explainBody.appendChild(p);
@@ -3666,6 +3663,163 @@
     }
   }
 
+  // ----- Note: tìm kiếm text trong nội dung -----
+  function escapeRegExpNote(s) {
+    return String(s).replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  }
+
+  function noteSearchUpdateUI() {
+    var countEl = document.getElementById("note-search-count");
+    var prevBtn = document.getElementById("note-search-prev");
+    var nextBtn = document.getElementById("note-search-next");
+    var total = state.note.matches.length;
+    var hasTerm = !!(state.note.searchTerm && state.note.searchTerm.trim());
+    if (countEl) {
+      countEl.hidden = !hasTerm;
+      countEl.textContent = total ? (state.note.matchIndex + 1) + "/" + total : "0/0";
+    }
+    if (prevBtn) prevBtn.hidden = !hasTerm;
+    if (nextBtn) nextBtn.hidden = !hasTerm;
+  }
+
+  function noteSearchHighlightCurrent() {
+    var matches = state.note.matches;
+    for (var i = 0; i < matches.length; i++) {
+      matches[i].classList.toggle("note-search-hit--current", i === state.note.matchIndex);
+    }
+    var current = matches[state.note.matchIndex];
+    if (current && current.scrollIntoView) {
+      current.scrollIntoView({ block: "center", behavior: "smooth" });
+    }
+  }
+
+  function noteSearchRun(term) {
+    var container = document.getElementById("note-content-container");
+    if (!container) {
+      return;
+    }
+
+    // Khôi phục nội dung gốc (bỏ highlight cũ) trước khi tìm lại
+    if (state.note.originalHtml != null) {
+      container.innerHTML = state.note.originalHtml;
+    } else {
+      state.note.originalHtml = container.innerHTML;
+    }
+
+    state.note.matches = [];
+    state.note.matchIndex = -1;
+    state.note.searchTerm = term;
+
+    var trimmed = String(term || "").trim();
+    if (!trimmed) {
+      noteSearchUpdateUI();
+      return;
+    }
+
+    var re;
+    try {
+      re = new RegExp(escapeRegExpNote(trimmed), "gi");
+    } catch (e) {
+      noteSearchUpdateUI();
+      return;
+    }
+
+    var walker = document.createTreeWalker(container, NodeFilter.SHOW_TEXT, null);
+    var textNodes = [];
+    var node;
+    while ((node = walker.nextNode())) {
+      if (node.nodeValue && node.nodeValue.length) {
+        textNodes.push(node);
+      }
+    }
+
+    textNodes.forEach(function (textNode) {
+      var text = textNode.nodeValue;
+      re.lastIndex = 0;
+      var match;
+      var lastIndex = 0;
+      var frag = null;
+      while ((match = re.exec(text))) {
+        if (!frag) frag = document.createDocumentFragment();
+        if (match.index > lastIndex) {
+          frag.appendChild(document.createTextNode(text.slice(lastIndex, match.index)));
+        }
+        var mark = document.createElement("mark");
+        mark.className = "note-search-hit";
+        mark.textContent = match[0];
+        frag.appendChild(mark);
+        state.note.matches.push(mark);
+        lastIndex = match.index + match[0].length;
+        if (match[0].length === 0) {
+          re.lastIndex += 1;
+        }
+      }
+      if (frag) {
+        if (lastIndex < text.length) {
+          frag.appendChild(document.createTextNode(text.slice(lastIndex)));
+        }
+        textNode.parentNode.replaceChild(frag, textNode);
+      }
+    });
+
+    if (state.note.matches.length) {
+      state.note.matchIndex = 0;
+    }
+    noteSearchUpdateUI();
+    noteSearchHighlightCurrent();
+  }
+
+  function noteSearchGoTo(delta) {
+    var total = state.note.matches.length;
+    if (!total) {
+      return;
+    }
+    state.note.matchIndex = (state.note.matchIndex + delta + total) % total;
+    noteSearchUpdateUI();
+    noteSearchHighlightCurrent();
+  }
+
+  function noteSearchReset() {
+    var container = document.getElementById("note-content-container");
+    state.note.originalHtml = container ? container.innerHTML : null;
+    state.note.searchTerm = "";
+    state.note.matches = [];
+    state.note.matchIndex = -1;
+    var input = document.getElementById("note-search-input");
+    if (input) {
+      input.value = "";
+    }
+    noteSearchUpdateUI();
+  }
+
+  function setupNoteSearch() {
+    var input = document.getElementById("note-search-input");
+    var prevBtn = document.getElementById("note-search-prev");
+    var nextBtn = document.getElementById("note-search-next");
+    if (!input) {
+      return;
+    }
+
+    input.addEventListener("input", function () {
+      noteSearchRun(input.value);
+    });
+    input.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") {
+        e.preventDefault();
+        noteSearchGoTo(e.shiftKey ? -1 : 1);
+      } else if (e.key === "Escape") {
+        input.value = "";
+        noteSearchRun("");
+      }
+    });
+    if (prevBtn) {
+      prevBtn.addEventListener("click", function () { noteSearchGoTo(-1); });
+    }
+    if (nextBtn) {
+      nextBtn.addEventListener("click", function () { noteSearchGoTo(1); });
+    }
+  }
+
   function renderNoteContent() {
     const container = document.getElementById("note-content-container");
     if (!container) {
@@ -3685,10 +3839,12 @@
         container.innerHTML = "";
         container.appendChild(pre);
       }
+      noteSearchReset();
       return;
     }
 
     container.innerHTML = "<span class=\"detail-empty\">Đang tải...</span>";
+    noteSearchReset();
 
     const docs = (window.DOC_CONFIG && window.DOC_CONFIG.docs) || [];
     const key = state.note.currentDocKey;
@@ -3697,6 +3853,7 @@
 
     if (!target) {
       container.innerHTML = "<span class=\"detail-empty\">Không tìm thấy tài liệu.</span>";
+      noteSearchReset();
       return;
     }
 
@@ -3738,6 +3895,7 @@
       img.style.display = "block";
       container.innerHTML = "";
       container.appendChild(img);
+      noteSearchReset();
       return;
     }
 
@@ -3763,6 +3921,7 @@
       wrap.appendChild(iframe);
       container.innerHTML = "";
       container.appendChild(wrap);
+      noteSearchReset();
       return;
     }
 
@@ -3788,6 +3947,7 @@
         hint.className = "detail-empty";
         hint.textContent = "Chưa load được thư viện đọc Excel (XLSX).";
         content.appendChild(hint);
+        noteSearchReset();
         return;
       }
 
@@ -3803,6 +3963,7 @@
           const firstSheetName = wb.SheetNames && wb.SheetNames[0];
           if (!firstSheetName) {
             content.innerHTML = "<span class=\"detail-empty\">File Excel không có sheet.</span>";
+            noteSearchReset();
             return;
           }
 
@@ -3828,6 +3989,7 @@
             cells[i].style.padding = "6px 8px";
             cells[i].style.verticalAlign = "top";
           }
+          noteSearchReset();
         })
         .catch(function (err) {
           const msg = err && err.message ? err.message : "unknown";
@@ -3837,6 +3999,7 @@
             " (" +
             msg +
             ").</span>";
+          noteSearchReset();
         });
 
       return;
@@ -3861,9 +4024,11 @@
           container.innerHTML = "";
           container.appendChild(pre);
         }
+        noteSearchReset();
       })
       .catch(function () {
         container.innerHTML = "<span class=\"detail-empty\">Không tải được file: " + filePath + ".</span>";
+        noteSearchReset();
       });
   }
 
@@ -5206,6 +5371,7 @@ history.replaceState({}, "", newUrl);
     setupGrammarFilters();
     setupFilterToggles();
     setupNoteSelect();
+    setupNoteSearch();
     setupDetailModal();
 
     renderDisplaySettingsUI();
