@@ -44,13 +44,13 @@
 
   <!-- <script src="data/vocabData_2.js?v=20260330"></script> -->
   <script src="data/grammarData.js?v=20260530"></script>
-  <script src="data/grammarData_1.js?v=1"></script>
+  <script src="data/grammarData_1.js?v=21"></script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=6">
+  <link rel="stylesheet" href="css/style.css?v=61">
 </head>
 
 <body>
@@ -335,7 +335,7 @@
         <div class="section-inner">
           <div class="section-header">
             <button type="button" class="filter-icon-btn nav-menu-btn" title="Menu điều hướng">☰</button>
-            <div style="display:flex; align-items:center; gap:8px; flex:1; min-width:0;">
+            <div style="display:flex; align-items:center; gap:8px; flex:1; min-width:0; flex-wrap:wrap;">
               <div class="note-doc-select">
                 <select id="note-doc-select">
                   <option value="tudongnghia">Từ đồng nghĩa</option>
@@ -369,6 +369,12 @@
                   <option value="kanji12">Kanji 12</option>
                   <option value="kanji13">Kanji 13</option>
                 </select>
+              </div>
+              <div class="note-search-box">
+                <input type="text" id="note-search-input" class="note-search-input" placeholder="Tìm trong nội dung...">
+                <span class="note-search-count" id="note-search-count" hidden>0/0</span>
+                <button type="button" class="btn-ghost note-search-nav" id="note-search-prev" title="Kết quả trước" hidden>▲</button>
+                <button type="button" class="btn-ghost note-search-nav" id="note-search-next" title="Kết quả sau" hidden>▼</button>
               </div>
               <div class="btn-row" style="margin-top:0">
                 <button type="button" class="btn-ghost" id="note-font-dec" title="Giảm cỡ chữ"
@@ -415,8 +421,8 @@
   <!-- soundOverlay removed (no mp3 audio) -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
-  <script src="data/configDoc.js?v=23"></script>
-  <script src="js/main.js?v=3"></script>
+  <script src="data/configDoc.js?v=24"></script>
+  <script src="js/main.js?v=4"></script>
 </body>
 
 </html>
