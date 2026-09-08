@@ -1695,6 +1695,7 @@ select:focus {
   gap: 4px;
   flex: 1 1 140px;
   min-width: 120px;
+  transition: box-shadow var(--transition-fast), background var(--transition-fast);
 }
 
 .note-search-input {
@@ -1715,10 +1716,47 @@ select:focus {
   flex-shrink: 0;
 }
 
-.note-search-nav {
-  padding: 2px 8px;
-  min-width: 26px;
+/* Nút icon nhỏ gọn dùng chung: mũi tên điều hướng kết quả tìm kiếm + tăng/giảm cỡ chữ.
+   Ghi đè min-height: 44px của .btn-ghost (gây méo thành hình bầu dục) bằng cách
+   tăng độ đặc trưng (kết hợp 2 class) thay vì !important. */
+.btn-ghost.note-icon-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+  padding: 0;
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  min-height: 28px;
+  border-radius: 50%;
+  font-size: 12px;
+  line-height: 1;
   flex-shrink: 0;
+}
+
+/* Khi đang tìm kiếm và có kết quả: ghim ô search + nút điều hướng nổi trên nội dung
+   để vẫn thao tác được dù đã cuộn trang xuống xem kết quả highlight. */
+.note-search-box--fixed {
+  position: fixed;
+  top: calc(10px + env(safe-area-inset-top));
+  right: 10px;
+  z-index: 40;
+  background: rgba(253, 248, 240, 0.97);
+  backdrop-filter: blur(10px) saturate(160%);
+  -webkit-backdrop-filter: blur(10px) saturate(160%);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-full);
+  padding: 5px 8px;
+  box-shadow: var(--shadow-hover);
+  max-width: min(280px, calc(100vw - 20px));
+}
+
+@media (max-width: 768px) {
+  .note-search-box--fixed {
+    top: auto;
+    bottom: calc(56px + env(safe-area-inset-bottom));
+  }
 }
 
 .note-search-hit {
