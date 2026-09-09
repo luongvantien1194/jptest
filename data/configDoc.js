@@ -1,6 +1,12 @@
 window.DOC_CONFIG = {
-  defaultKey: "grammar_clusters",
+  defaultKey: "gramn3",
   docs: [
+    {
+      key: "gramn3",
+      file: "gramn3",
+      type: "md",
+      label: "Tổng hợp ngữ pháp N3"
+    },
     {
       key: "grammar_clusters",
       file: "grammar_clusters",
