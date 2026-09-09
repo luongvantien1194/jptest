@@ -110,6 +110,7 @@
     },
     vocabFavorites: {},
     vocabMastered: {},
+    vocabHidden: {},
     kanjiFavorites: {},
     kanjiVocabFavorites: {},
     vocabFavOnly: false,
@@ -358,6 +359,8 @@
     if (savedVF) state.vocabFavorites = JSON.parse(savedVF);
     var savedVM = localStorage.getItem("jp_vocab_mastered");
     if (savedVM) state.vocabMastered = JSON.parse(savedVM);
+    var savedVH = localStorage.getItem("jp_vocab_hidden_words");
+    if (savedVH) state.vocabHidden = JSON.parse(savedVH);
     var savedKF = localStorage.getItem("jp_kanji_favorites");
     if (savedKF) state.kanjiFavorites = JSON.parse(savedKF);
     var savedKVF = localStorage.getItem("jp_kanji_vocab_favorites");
@@ -374,6 +377,9 @@
   function saveVocabMastered() {
     try { localStorage.setItem("jp_vocab_mastered", JSON.stringify(state.vocabMastered)); } catch (e) { }
   }
+  function saveVocabHidden() {
+    try { localStorage.setItem("jp_vocab_hidden_words", JSON.stringify(state.vocabHidden)); } catch (e) { }
+  }
   function saveDisplaySettings() {
     try { localStorage.setItem("jp_display_settings", JSON.stringify(state.displaySettings)); } catch (e) { }
   }
@@ -387,6 +393,57 @@
   // ========================
   // HELPER FUNCTIONS
   // ========================
+
+  function getVocabHiragana(item) {
+    if (!item) return "";
+    if (Object.prototype.hasOwnProperty.call(item, "hiragana")) return String(item.hiragana || "").trim();
+    if (Object.prototype.hasOwnProperty.call(item, "Hiragana")) return String(item.Hiragana || "").trim();
+    return "";
+  }
+  function getVocabKanji(item) {
+    if (!item) return "";
+    if (Object.prototype.hasOwnProperty.call(item, "kanji")) return String(item.kanji || "").trim();
+    if (Object.prototype.hasOwnProperty.call(item, "Kanji")) return String(item.Kanji || "").trim();
+    return "";
+  }
+  function getVocabMeaning(item) {
+    if (!item) return "";
+    if (Object.prototype.hasOwnProperty.call(item, "meaning")) return String(item.meaning || "").trim();
+    if (Object.prototype.hasOwnProperty.call(item, "Meaning")) return String(item.Meaning || "").trim();
+    return "";
+  }
+  function getVocabLessonValue(item) {
+    if (!item) return "";
+    return item.lesson != null ? item.lesson : item.Lesson;
+  }
+  /** Khoá định danh 1 từ vựng theo nội dung (không theo index) để đánh dấu ẩn ổn định qua các lần sửa data. */
+  function getVocabDupKey(item) {
+    return getVocabHiragana(item) + "␟" + getVocabKanji(item) + "␟" + getVocabMeaning(item);
+  }
+  function isVocabHidden(item) {
+    return !!state.vocabHidden[getVocabDupKey(item)];
+  }
+  /** Gom nhóm các từ có cùng Hiragana (bị trùng) để hiển thị ở tab "Từ trùng". */
+  function getVocabDupGroups() {
+    var map = {};
+    var order = [];
+    vocabData.forEach(function (item) {
+      var hira = getVocabHiragana(item);
+      if (!hira) return;
+      if (!map[hira]) {
+        map[hira] = [];
+        order.push(hira);
+      }
+      map[hira].push(item);
+    });
+    var groups = [];
+    order.forEach(function (hira) {
+      if (map[hira].length > 1) {
+        groups.push({ hiragana: hira, items: map[hira] });
+      }
+    });
+    return groups;
+  }
 
   function normalizeText(str) {
     return String(str || "")
@@ -1759,7 +1816,8 @@
       { id: "section-kanji", tab: "kanji" },
       { id: "section-grammar", tab: "grammar" },
       { id: "section-stars", tab: "stars" },
-      { id: "section-note", tab: "note" }
+      { id: "section-note", tab: "note" },
+      { id: "section-dup", tab: "dup" }
     ];
 
     sections.forEach(function (entry) {
@@ -1789,6 +1847,10 @@
         hira = String(item.hiragana || item.Hiragana || "").trim();
       }
       if (!hira) {
+        return false;
+      }
+
+      if (isVocabHidden(item)) {
         return false;
       }
 
@@ -2394,6 +2456,9 @@
         if (!raw) {
           return false;
         }
+        if (isVocabHidden(raw)) {
+          return false;
+        }
         var idx = vocabData.indexOf(raw);
         // Filter favorites only
         if (isStar) {
@@ -2515,6 +2580,9 @@
     const lessonMax = testState.lessonMax != null ? testState.lessonMax : 50;
     const answerPool = vocabData.filter(function (v) {
       if (!v) {
+        return false;
+      }
+      if (isVocabHidden(v)) {
         return false;
       }
       if (testState.isStar) {
@@ -3407,6 +3475,111 @@
     container.appendChild(list);
   }
 
+  // ----- Tab "Từ trùng" -----
+  var dupTabCache = []; // [{ hiragana, entries: [{ key, checkbox }] }]
+
+  function renderDupTab() {
+    var container = document.getElementById("dup-list-container");
+    var summaryEl = document.getElementById("dup-summary");
+    var selectAllCb = document.getElementById("dup-select-all-cb");
+    if (!container) {
+      return;
+    }
+
+    var groups = getVocabDupGroups();
+    container.innerHTML = "";
+    dupTabCache = [];
+    if (selectAllCb) {
+      selectAllCb.checked = false;
+    }
+
+    var totalWords = 0;
+    groups.forEach(function (g) { totalWords += g.items.length; });
+    var hiddenCount = Object.keys(state.vocabHidden).filter(function (k) {
+      return !!state.vocabHidden[k];
+    }).length;
+    if (summaryEl) {
+      summaryEl.textContent = groups.length + " nhóm từ trùng cách viết (" + totalWords + " từ) · Đang ẩn " + hiddenCount + " từ";
+    }
+
+    if (groups.length === 0) {
+      container.appendChild(createElement("div", "detail-empty", "Không tìm thấy từ vựng nào bị trùng cách viết (Hiragana)."));
+      return;
+    }
+
+    groups.forEach(function (group) {
+      var groupEl = createElement("div", "dup-group", "");
+      groupEl.appendChild(createElement("div", "dup-group-head", group.hiragana + " (" + group.items.length + ")"));
+
+      var groupEntries = [];
+      group.items.forEach(function (raw) {
+        var key = getVocabDupKey(raw);
+        var kanji = getVocabKanji(raw);
+        var meaning = getVocabMeaning(raw);
+        var lesson = getVocabLessonValue(raw);
+
+        var rowEl = createElement("label", "dup-row", "");
+        var cb = document.createElement("input");
+        cb.type = "checkbox";
+        cb.className = "dup-row-cb";
+        cb.checked = !!state.vocabHidden[key];
+        rowEl.appendChild(cb);
+        rowEl.appendChild(createElement(
+          "span",
+          "dup-row-text",
+          (kanji ? kanji + " · " : "") + (meaning || "(không có nghĩa)") + "  ·  Bài " + (lesson != null && lesson !== "" ? lesson : "?")
+        ));
+        groupEl.appendChild(rowEl);
+
+        groupEntries.push({ key: key, checkbox: cb });
+      });
+
+      dupTabCache.push({ hiragana: group.hiragana, entries: groupEntries });
+      container.appendChild(groupEl);
+    });
+  }
+
+  function setupDupTab() {
+    var selectAllCb = document.getElementById("dup-select-all-cb");
+    var saveBtn = document.getElementById("dup-save-btn");
+
+    if (selectAllCb) {
+      selectAllCb.addEventListener("change", function () {
+        if (selectAllCb.checked) {
+          dupTabCache.forEach(function (group) {
+            group.entries.forEach(function (entry, i) {
+              entry.checkbox.checked = (i < group.entries.length - 1);
+            });
+          });
+        } else {
+          dupTabCache.forEach(function (group) {
+            group.entries.forEach(function (entry) {
+              entry.checkbox.checked = false;
+            });
+          });
+        }
+      });
+    }
+
+    if (saveBtn) {
+      saveBtn.addEventListener("click", function () {
+        dupTabCache.forEach(function (group) {
+          group.entries.forEach(function (entry) {
+            if (entry.checkbox.checked) {
+              state.vocabHidden[entry.key] = true;
+            } else {
+              delete state.vocabHidden[entry.key];
+            }
+          });
+        });
+        saveVocabHidden();
+        renderDupTab();
+        renderVocabList();
+        alert("Đã lưu. Các từ đã ẩn sẽ không xuất hiện trong danh sách học/ôn tập nữa.");
+      });
+    }
+  }
+
   function renderStarsTab() {
     var kvBox = document.getElementById("stars-kanji-vocab-list");
     if (!kvBox) {
@@ -4148,7 +4321,7 @@
     var rawTab = params.get("tab") || "vocab";
     var detail = parseKanjiDetailFromQuery();
     var tabName;
-    if (rawTab === "kanji" || rawTab === "grammar" || rawTab === "stars" || rawTab === "note") {
+    if (rawTab === "kanji" || rawTab === "grammar" || rawTab === "stars" || rawTab === "note" || rawTab === "dup") {
       tabName = rawTab;
     } else {
       tabName = "vocab";
@@ -4159,6 +4332,8 @@
       renderNoteContent();
     } else if (tabName === "stars") {
       renderStarsTab();
+    } else if (tabName === "dup") {
+      renderDupTab();
     }
 
     if (detail.tab && detail.slug && (tabName === "kanji" || tabName === "stars")) {
@@ -5481,6 +5656,7 @@ history.replaceState({}, "", newUrl);
     setupNoteSearch();
     setupNoteAnchors();
     setupDetailModal();
+    setupDupTab();
 
     renderDisplaySettingsUI();
     renderVocabList();
