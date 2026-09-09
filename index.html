@@ -9,16 +9,17 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="theme-color" content="#6366f1" />
-  <script src="js/kanjiHanViet.js?v=1004"></script>
+  <script src="js/kanjiHanViet.js?v=1006"></script>
 
-  <script src="data/vocabData.js?v=1004"></script>
-  <script src="data/vocabData_1.js?v=1004"></script>
-  <script src="data/vocabExtra/extra.js?v=1004"></script>
+  <script src="data/vocabData.js?v=1006"></script>
+  <script src="data/vocabData_1.js?v=1006"></script>
+  <script src="data/dup.js?v=1006"></script>
+  <script src="data/vocabExtra/extra.js?v=1006"></script>
 
 
-  <script src="data/kanjiData.js?v=1004"></script>
-  <script src="data/kanjiData_1.js?v=1004"></script>
-  <script src="data/kanjiExtra/extra.js?v=1004"></script>
+  <script src="data/kanjiData.js?v=1006"></script>
+  <script src="data/kanjiData_1.js?v=1006"></script>
+  <script src="data/kanjiExtra/extra.js?v=1006"></script>
 
   <script>
     window._vocabExtra = window._vocabExtra || [];
@@ -42,14 +43,14 @@
   </script>
 
 
-  <script src="data/grammarData.js?v=1004"></script>
-  <script src="data/grammarData_1.js?v=1004"></script>
+  <script src="data/grammarData.js?v=1006"></script>
+  <script src="data/grammarData_1.js?v=1006"></script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=1004">
+  <link rel="stylesheet" href="css/style.css?v=1006">
 </head>
 
 <body>
@@ -408,6 +409,8 @@
               </label>
               <span class="detail-empty" id="dup-summary" style="margin:0;"></span>
               <div class="btn-row" style="margin-top:0; margin-left:auto;">
+                <button type="button" class="btn-ghost btn-ghost--danger" id="dup-clear-local-btn" title="Xoá tuỳ chỉnh ẩn/hiện từ trùng đã lưu trên máy này (localStorage), quay về đúng như file data/dup.js">Xoá local</button>
+                <button type="button" class="btn-ghost" id="dup-export-btn" title="Copy nội dung file data/dup.js để dán vào git">Copy dup.js</button>
                 <button type="button" class="btn" id="dup-save-btn">Lưu</button>
               </div>
             </div>
@@ -415,6 +418,9 @@
           <div class="card">
             <div class="card-body scroll-thin" id="dup-list-container"></div>
           </div>
+        </div>
+        <div style="position:fixed;right:-5px;bottom:16px;display:flex;flex-direction:column;gap:3px;z-index:9999">
+          <button class="filter-icon-btn2" id="dup-scroll-bottom-btn" title="Cuộn xuống cuối danh sách">⬇️</button>
         </div>
       </section>
 
@@ -446,8 +452,8 @@
   <!-- soundOverlay removed (no mp3 audio) -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
-  <script src="data/configDoc.js?v=1004"></script>
-  <script src="js/main.js?v=1004"></script>
+  <script src="data/configDoc.js?v=1006"></script>
+  <script src="js/main.js?v=1006"></script>
 </body>
 
 </html>
