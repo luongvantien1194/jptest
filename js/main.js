@@ -110,7 +110,10 @@
     },
     vocabFavorites: {},
     vocabMastered: {},
+    /** Override cục bộ (localStorage) so với nền tảng data/dup.js: true = ẩn thêm, false = bỏ ẩn dù dup.js có ẩn, không có key = theo dup.js */
     vocabHidden: {},
+    /** Nền tảng đọc từ data/dup.js lúc khởi động, không lưu localStorage */
+    vocabHiddenBaseline: {},
     kanjiFavorites: {},
     kanjiVocabFavorites: {},
     vocabFavOnly: false,
@@ -420,10 +423,85 @@
   function getVocabDupKey(item) {
     return getVocabHiragana(item) + "␟" + getVocabKanji(item) + "␟" + getVocabMeaning(item);
   }
-  function isVocabHidden(item) {
-    return !!state.vocabHidden[getVocabDupKey(item)];
+  function parseVocabDupKey(key) {
+    var parts = String(key || "").split("␟");
+    return { Hiragana: parts[0] || "", Kanji: parts[1] || "", Meaning: parts[2] || "" };
   }
-  /** Gom nhóm các từ có cùng Hiragana (bị trùng) để hiển thị ở tab "Từ trùng". */
+  /** true = ẩn, false = luôn hiện. Ưu tiên override cục bộ (localStorage), nếu không có thì lấy theo nền tảng data/dup.js. */
+  function isKeyHidden(key) {
+    if (Object.prototype.hasOwnProperty.call(state.vocabHidden, key)) {
+      return !!state.vocabHidden[key];
+    }
+    return !!state.vocabHiddenBaseline[key];
+  }
+  /** Với các bản trùng nhau 100% (Hiragana+Kanji+Meaning giống hệt), lưu vị trí bản CUỐI CÙNG của mỗi khoá — mọi bản đứng trước sẽ tự động bị ẩn, không cần chọn thủ công. */
+  var autoDedupLastIndexByKey = {};
+  function buildAutoDedupIndex() {
+    autoDedupLastIndexByKey = {};
+    vocabData.forEach(function (item, idx) {
+      autoDedupLastIndexByKey[getVocabDupKey(item)] = idx;
+    });
+  }
+  function isAutoDedupHidden(item) {
+    var key = getVocabDupKey(item);
+    var lastIdx = autoDedupLastIndexByKey[key];
+    if (lastIdx == null) {
+      return false;
+    }
+    return vocabData.indexOf(item) !== lastIdx;
+  }
+  function isVocabHidden(item) {
+    if (isAutoDedupHidden(item)) {
+      return true;
+    }
+    return isKeyHidden(getVocabDupKey(item));
+  }
+  /** Copy text vào clipboard, có fallback cho môi trường file:// / không có Clipboard API. */
+  function copyTextToClipboard(text, callback) {
+    function fallbackCopy() {
+      try {
+        var ta = document.createElement("textarea");
+        ta.value = text;
+        ta.style.position = "fixed";
+        ta.style.top = "-9999px";
+        ta.style.left = "-9999px";
+        document.body.appendChild(ta);
+        ta.focus();
+        ta.select();
+        var ok = document.execCommand("copy");
+        document.body.removeChild(ta);
+        callback(!!ok);
+      } catch (e) {
+        callback(false);
+      }
+    }
+
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+      navigator.clipboard.writeText(text).then(function () {
+        callback(true);
+      }).catch(fallbackCopy);
+    } else {
+      fallbackCopy();
+    }
+  }
+
+  function loadVocabHiddenBaseline() {
+    state.vocabHiddenBaseline = {};
+    if (window._vocabDupHidden && window._vocabDupHidden.length) {
+      window._vocabDupHidden.forEach(function (entry) {
+        var key = getVocabDupKey(entry);
+        if (key !== "␟␟") {
+          state.vocabHiddenBaseline[key] = true;
+        }
+      });
+    }
+  }
+  /**
+   * Gom nhóm các từ có cùng Hiragana (bị trùng) để hiển thị ở tab "Từ trùng".
+   * Các bản trùng nhau 100% đã được tự động ẩn (giữ bản cuối) nên KHÔNG cần liệt kê ra đây —
+   * chỉ hiển thị nhóm nào sau khi gộp các bản giống hệt vẫn còn từ 2 nội dung khác nhau trở lên
+   * (cần người dùng tự quyết định giữ từ nào).
+   */
   function getVocabDupGroups() {
     var map = {};
     var order = [];
@@ -438,8 +516,12 @@
     });
     var groups = [];
     order.forEach(function (hira) {
-      if (map[hira].length > 1) {
-        groups.push({ hiragana: hira, items: map[hira] });
+      var items = map[hira];
+      if (items.length <= 1) return;
+      var distinctKeys = {};
+      items.forEach(function (it) { distinctKeys[getVocabDupKey(it)] = true; });
+      if (Object.keys(distinctKeys).length > 1) {
+        groups.push({ hiragana: hira, items: items });
       }
     });
     return groups;
@@ -3478,6 +3560,39 @@
   // ----- Tab "Từ trùng" -----
   var dupTabCache = []; // [{ hiragana, entries: [{ key, checkbox }] }]
 
+  /** Sinh nội dung file data/dup.js mới từ trạng thái ẩn hiện tại (nền tảng dup.js + override cục bộ). */
+  function buildDupFileContent() {
+    var allKeys = {};
+    Object.keys(state.vocabHiddenBaseline).forEach(function (k) { allKeys[k] = true; });
+    Object.keys(state.vocabHidden).forEach(function (k) { allKeys[k] = true; });
+
+    var finalEntries = Object.keys(allKeys)
+      .filter(function (k) { return isKeyHidden(k); })
+      .map(function (k) { return parseVocabDupKey(k); })
+      .sort(function (a, b) {
+        if (a.Hiragana !== b.Hiragana) return a.Hiragana.localeCompare(b.Hiragana);
+        if (a.Kanji !== b.Kanji) return a.Kanji.localeCompare(b.Kanji);
+        return a.Meaning.localeCompare(b.Meaning);
+      });
+
+    var lines = finalEntries.map(function (e) {
+      return "  " + JSON.stringify(e) + ",";
+    });
+
+    return [
+      "// Danh sách từ vựng bị ẩn do trùng (baseline dùng chung cho mọi máy, được commit vào git).",
+      "// KHÔNG sửa tay từng dòng ở đây — hãy vào tab \"Từ trùng\" trong app, tick/bỏ tick các từ cần ẩn,",
+      "// bấm nút \"Copy dup.js\", rồi dán đè toàn bộ nội dung file này và commit lại.",
+      "//",
+      "// localStorage trên từng máy chỉ lưu phần CHÊNH LỆCH so với file này (thêm ẩn hoặc bỏ ẩn),",
+      "// nên khi export lại, mọi thay đổi cục bộ sẽ được gộp vào đây làm nền tảng chung.",
+      "window._vocabDupHidden = [",
+      lines.join("\n"),
+      "];",
+      ""
+    ].join("\n");
+  }
+
   function renderDupTab() {
     var container = document.getElementById("dup-list-container");
     var summaryEl = document.getElementById("dup-summary");
@@ -3495,11 +3610,14 @@
 
     var totalWords = 0;
     groups.forEach(function (g) { totalWords += g.items.length; });
-    var hiddenCount = Object.keys(state.vocabHidden).filter(function (k) {
-      return !!state.vocabHidden[k];
+    var allHiddenKeys = {};
+    Object.keys(state.vocabHiddenBaseline).forEach(function (k) { allHiddenKeys[k] = true; });
+    Object.keys(state.vocabHidden).forEach(function (k) { allHiddenKeys[k] = true; });
+    var hiddenCount = Object.keys(allHiddenKeys).filter(function (k) {
+      return isKeyHidden(k);
     }).length;
     if (summaryEl) {
-      summaryEl.textContent = groups.length + " nhóm từ trùng cách viết (" + totalWords + " từ) · Đang ẩn " + hiddenCount + " từ";
+      summaryEl.textContent = groups.length + " nhóm từ trùng cách viết (" + totalWords + " từ) · Đang ẩn " + hiddenCount + " từ (dup.js + cục bộ)";
     }
 
     if (groups.length === 0) {
@@ -3511,9 +3629,24 @@
       var groupEl = createElement("div", "dup-group", "");
       groupEl.appendChild(createElement("div", "dup-group-head", group.hiragana + " (" + group.items.length + ")"));
 
-      var groupEntries = [];
+      // Gộp các bản giống hệt nhau (cùng Hiragana+Kanji+Meaning) thành 1 dòng duy nhất:
+      // việc ẩn/hiện áp dụng theo NỘI DUNG từ, nên các bản giống hệt luôn ẩn/hiện cùng nhau —
+      // gộp lại để tránh hiểu nhầm là có thể ẩn riêng từng bản.
+      var byKey = {};
+      var keyOrder = [];
       group.items.forEach(function (raw) {
         var key = getVocabDupKey(raw);
+        if (!byKey[key]) {
+          byKey[key] = { raw: raw, count: 0 };
+          keyOrder.push(key);
+        }
+        byKey[key].count += 1;
+      });
+
+      var groupEntries = [];
+      keyOrder.forEach(function (key) {
+        var info = byKey[key];
+        var raw = info.raw;
         var kanji = getVocabKanji(raw);
         var meaning = getVocabMeaning(raw);
         var lesson = getVocabLessonValue(raw);
@@ -3522,12 +3655,15 @@
         var cb = document.createElement("input");
         cb.type = "checkbox";
         cb.className = "dup-row-cb";
-        cb.checked = !!state.vocabHidden[key];
+        cb.checked = isKeyHidden(key);
         rowEl.appendChild(cb);
+        var fromBaseline = !!state.vocabHiddenBaseline[key];
         rowEl.appendChild(createElement(
           "span",
           "dup-row-text",
-          (kanji ? kanji + " · " : "") + (meaning || "(không có nghĩa)") + "  ·  Bài " + (lesson != null && lesson !== "" ? lesson : "?")
+          (kanji ? kanji + " · " : "") + (meaning || "(không có nghĩa)") + "  ·  Bài " + (lesson != null && lesson !== "" ? lesson : "?") +
+          (info.count > 1 ? "  ·  ×" + info.count + " bản giống hệt" : "") +
+          (fromBaseline ? "  ·  [dup.js]" : "")
         ));
         groupEl.appendChild(rowEl);
 
@@ -3542,6 +3678,33 @@
   function setupDupTab() {
     var selectAllCb = document.getElementById("dup-select-all-cb");
     var saveBtn = document.getElementById("dup-save-btn");
+    var scrollBottomBtn = document.getElementById("dup-scroll-bottom-btn");
+
+    if (scrollBottomBtn) {
+      scrollBottomBtn.addEventListener("click", function () {
+        var container = document.getElementById("dup-list-container");
+        if (container) {
+          container.scrollTo({ top: container.scrollHeight, behavior: "smooth" });
+        }
+      });
+    }
+
+    var clearLocalBtn = document.getElementById("dup-clear-local-btn");
+    if (clearLocalBtn) {
+      clearLocalBtn.addEventListener("click", function () {
+        var ok = window.confirm(
+          "Xoá toàn bộ tuỳ chỉnh ẩn/hiện từ trùng đã lưu trên máy này (localStorage)?\n" +
+          "Danh sách sẽ quay về đúng như nền tảng data/dup.js. Hành động này không xoá file data/dup.js."
+        );
+        if (!ok) {
+          return;
+        }
+        state.vocabHidden = {};
+        saveVocabHidden();
+        renderDupTab();
+        renderVocabList();
+      });
+    }
 
     if (selectAllCb) {
       selectAllCb.addEventListener("change", function () {
@@ -3565,10 +3728,13 @@
       saveBtn.addEventListener("click", function () {
         dupTabCache.forEach(function (group) {
           group.entries.forEach(function (entry) {
-            if (entry.checkbox.checked) {
-              state.vocabHidden[entry.key] = true;
-            } else {
+            var checked = entry.checkbox.checked;
+            var inBaseline = !!state.vocabHiddenBaseline[entry.key];
+            // Chỉ lưu vào localStorage phần CHÊNH LỆCH so với data/dup.js
+            if (checked === inBaseline) {
               delete state.vocabHidden[entry.key];
+            } else {
+              state.vocabHidden[entry.key] = checked;
             }
           });
         });
@@ -3576,6 +3742,20 @@
         renderDupTab();
         renderVocabList();
         alert("Đã lưu. Các từ đã ẩn sẽ không xuất hiện trong danh sách học/ôn tập nữa.");
+      });
+    }
+
+    var exportBtn = document.getElementById("dup-export-btn");
+    if (exportBtn) {
+      exportBtn.addEventListener("click", function () {
+        var content = buildDupFileContent();
+        copyTextToClipboard(content, function (ok) {
+          if (ok) {
+            alert("Đã copy nội dung data/dup.js vào clipboard. Dán đè vào file data/dup.js rồi commit.");
+          } else {
+            window.prompt("Không copy tự động được, hãy tự chọn & copy nội dung bên dưới:", content);
+          }
+        });
       });
     }
   }
@@ -5635,6 +5815,10 @@ history.replaceState({}, "", newUrl);
     if (window._vocabExtra && window._vocabExtra.length) {
       vocabData.push.apply(vocabData, window._vocabExtra);
     }
+    // Tự động ẩn các bản trùng nhau 100% (giữ lại bản cuối cùng)
+    buildAutoDedupIndex();
+    // Nền tảng từ vựng bị ẩn do trùng (data/dup.js), localStorage sẽ override lên trên
+    loadVocabHiddenBaseline();
     // Merge N3 kanji từ các file kanjiData_1.js, kanjiData_2.js (nếu có)
     if (window._kanjiExtra && window._kanjiExtra.length) {
       kanjiData.push.apply(kanjiData, window._kanjiExtra);
