@@ -184,8 +184,6 @@ window._vocabDupHidden = [
   {"Hiragana":"とります","Kanji":"取ります","Meaning":"thêm (tuổi)"},
   {"Hiragana":"とります","Kanji":"取ります","Meaning":"xin [nghỉ]"},
   {"Hiragana":"とります","Kanji":"撮ります","Meaning":"chụp [ảnh]"},
-  {"Hiragana":"なおす","Kanji":"直す","Meaning":"sửa chữa, chỉnh lại"},
-  {"Hiragana":"なおる","Kanji":"直る","Meaning":"được sửa, cải tiến"},
   {"Hiragana":"なか","Kanji":"中","Meaning":"trong, giữa"},
   {"Hiragana":"なかま","Kanji":"仲間","Meaning":"bạn bè, đồng nghiệp"},
   {"Hiragana":"なくなります","Kanji":"","Meaning":"mất, chết"},
