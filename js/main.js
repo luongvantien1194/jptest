@@ -1925,7 +1925,8 @@
       { id: "section-grammar", tab: "grammar" },
       { id: "section-stars", tab: "stars" },
       { id: "section-note", tab: "note" },
-      { id: "section-dup", tab: "dup" }
+      { id: "section-dup", tab: "dup" },
+      { id: "section-vocab-edit", tab: "vocab-edit" }
     ];
 
     sections.forEach(function (entry) {
@@ -4527,7 +4528,7 @@
     var rawTab = params.get("tab") || "vocab";
     var detail = parseKanjiDetailFromQuery();
     var tabName;
-    if (rawTab === "kanji" || rawTab === "grammar" || rawTab === "stars" || rawTab === "note" || rawTab === "dup") {
+    if (rawTab === "kanji" || rawTab === "grammar" || rawTab === "stars" || rawTab === "note" || rawTab === "dup" || rawTab === "vocab-edit") {
       tabName = rawTab;
     } else {
       tabName = "vocab";
