@@ -18,7 +18,7 @@
 
 
   <script src="data/kanjiData.js?v=1008"></script>
-  <script src="data/kanjiData_1.js?v=10088"></script>
+  <script src="data/kanjiData_1.js?v=1008"></script>
   <script src="data/kanjiExtra/extra.js?v=1008"></script>
 
   <script>
@@ -50,7 +50,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=10088">
+  <link rel="stylesheet" href="css/style.css?v=1008">
 </head>
 
 <body>
@@ -79,6 +79,10 @@
         </button>
         <button class="tab" data-tab="dup" type="button">
           <span class="tab-label-main">Từ trùng</span>
+          <span class="tab-indicator"></span>
+        </button>
+        <button class="tab" data-tab="vocab-edit" type="button">
+          <span class="tab-label-main">✏️ Sửa từ vựng</span>
           <span class="tab-indicator"></span>
         </button>
       </nav>
@@ -422,6 +426,58 @@
         </div>
       </section>
 
+      <!-- Vocab Edit Section (data/vocabData_1.js) -->
+      <section class="section" id="section-vocab-edit" aria-labelledby="section-vocab-edit-title">
+        <div class="section-inner vocab-edit-tab-stack">
+          <div class="section-header">
+            <button type="button" class="filter-icon-btn nav-menu-btn" title="Menu điều hướng">☰</button>
+            <div style="display:flex; align-items:center; gap:10px; flex:1; min-width:0; flex-wrap:wrap;">
+              <span id="section-vocab-edit-title" style="font-weight:600;">Sửa từ vựng (vocabData_1.js)</span>
+              <span class="detail-empty" id="vocab-edit-summary" style="margin:0;"></span>
+              <div class="btn-row" style="margin-top:0; margin-left:auto; flex-wrap:wrap;">
+                <button type="button" class="btn-ghost" id="vocab-edit-add-row-btn" title="Thêm một từ mới vào cuối bảng">+ Thêm từ</button>
+                <button type="button" class="btn-ghost" id="vocab-edit-export-toggle-btn" title="Xuất ra file CSV để sửa bằng Excel">Export CSV</button>
+                <button type="button" class="btn-ghost" id="vocab-edit-import-toggle-btn" title="Nhập lại từ file CSV">Import CSV</button>
+                <button type="button" class="btn-ghost" id="vocab-edit-copy-js-btn" title="Copy toàn bộ nội dung vocabData_1.js để dán đè vào file rồi tự deploy">Copy JS</button>
+                <button type="button" class="btn-ghost btn-ghost--danger" id="vocab-edit-reload-btn" title="Bỏ hết chỉnh sửa, tải lại đúng như file vocabData_1.js gốc">Tải lại gốc</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Export CSV panel -->
+          <div class="vocab-edit-io-panel" id="vocab-edit-export-panel" hidden>
+            <div class="vocab-edit-io-row">
+              <div class="field-label">Từ thứ</div>
+              <input type="number" id="vocab-edit-export-from" class="input-text" style="width:80px;" min="1" value="1">
+              <div class="field-label">đến thứ</div>
+              <input type="number" id="vocab-edit-export-to" class="input-text" style="width:80px;" min="1">
+            </div>
+            <div class="vocab-edit-io-row vocab-edit-col-checks" id="vocab-edit-export-cols"></div>
+            <div class="btn-row" style="margin-top:6px;">
+              <button type="button" class="btn" id="vocab-edit-export-run-btn">Xuất CSV</button>
+              <button type="button" class="btn-ghost" id="vocab-edit-export-close-btn">Đóng</button>
+            </div>
+          </div>
+
+          <!-- Import CSV panel -->
+          <div class="vocab-edit-io-panel" id="vocab-edit-import-panel" hidden>
+            <div class="vocab-edit-io-row">
+              <input type="file" id="vocab-edit-import-file" accept=".csv,text/csv">
+            </div>
+            <div class="detail-empty" style="margin:4px 0;">Cột "stt" trong file CSV dùng để khớp với dòng hiện có (theo đúng số thứ tự lúc export); dòng có stt trống hoặc không khớp sẽ được thêm mới vào cuối bảng.</div>
+            <div class="vocab-edit-io-row vocab-edit-col-checks" id="vocab-edit-import-cols"></div>
+            <div class="btn-row" style="margin-top:6px;">
+              <button type="button" class="btn" id="vocab-edit-import-run-btn">Nhập CSV</button>
+              <button type="button" class="btn-ghost" id="vocab-edit-import-close-btn">Đóng</button>
+            </div>
+          </div>
+
+          <div class="card">
+            <div class="card-body scroll-thin" id="vocab-edit-table-wrap"></div>
+          </div>
+        </div>
+      </section>
+
     </main>
   </div>
   <!-- Detail modal for small screens -->
@@ -446,12 +502,14 @@
     <button class="nav-menu-item" data-tab="grammar">Ngữ pháp</button>
     <button class="nav-menu-item" data-tab="note">Ghi chú</button>
     <button class="nav-menu-item" data-tab="dup">Từ trùng</button>
+    <button class="nav-menu-item" data-tab="vocab-edit">✏️ Sửa từ vựng</button>
   </div>
   <!-- soundOverlay removed (no mp3 audio) -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
   <script src="data/configDoc.js?v=1008"></script>
-  <script src="js/main.js?v=10088"></script>
+  <script src="js/main.js?v=1008"></script>
+  <script src="js/vocabEditor.js?v=1008"></script>
 </body>
 
 </html>
