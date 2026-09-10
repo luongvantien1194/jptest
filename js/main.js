@@ -588,9 +588,33 @@
     return normalizeText(raw.slice(dashIdx + 1).trim());
   }
 
+  function syncRadicalMatrixActiveState() {
+    var matrixEl = document.getElementById("kanji-radical-matrix");
+    if (!matrixEl) return;
+    var selected = Array.isArray(state.filter.kanjiRadical) ? state.filter.kanjiRadical : [];
+    Array.prototype.forEach.call(matrixEl.querySelectorAll("[data-radical]"), function (tile) {
+      var isActive = selected.indexOf(tile.getAttribute("data-radical")) !== -1;
+      tile.classList.toggle("radical-tile--active", isActive);
+      tile.setAttribute("aria-selected", isActive ? "true" : "false");
+    });
+  }
+
+  function setKanjiLevelFilterToAll() {
+    state.filter.kanjiLevel = "all";
+    var levelChipsContainer = document.getElementById("kanji-level-chips");
+    if (levelChipsContainer) {
+      Array.prototype.forEach.call(
+        levelChipsContainer.querySelectorAll("[data-level]"),
+        function (b) { b.classList.remove("chip--active"); }
+      );
+      var allChip = levelChipsContainer.querySelector('[data-level="all"]');
+      if (allChip) allChip.classList.add("chip--active");
+    }
+  }
+
   function selectKanjiRadicalsByVietnamese(vietnameseLabel) {
-    var radicalSelect = document.getElementById("kanji-radical-filter");
-    if (!radicalSelect) {
+    var matrixEl = document.getElementById("kanji-radical-matrix");
+    if (!matrixEl) {
       return;
     }
     var targetLabel = normalizeText(vietnameseLabel || "");
@@ -599,16 +623,18 @@
     }
 
     var selectedValues = [];
-    Array.prototype.forEach.call(radicalSelect.options, function (opt) {
-      var optLabel = getRadicalVietnameseLabel(opt.value);
-      var isMatch = optLabel && optLabel === targetLabel;
-      opt.selected = !!isMatch;
-      if (isMatch) {
-        selectedValues.push(opt.value);
+    Array.prototype.forEach.call(matrixEl.querySelectorAll("[data-radical]"), function (tile) {
+      var radicalValue = tile.getAttribute("data-radical");
+      var optLabel = getRadicalVietnameseLabel(radicalValue);
+      if (optLabel && optLabel === targetLabel) {
+        selectedValues.push(radicalValue);
       }
     });
 
     state.filter.kanjiRadical = selectedValues;
+    syncRadicalMatrixActiveState();
+    // Bộ thủ có thể thuộc kanji ở bất kỳ cấp độ nào — bỏ giới hạn theo N3/N4-5.
+    setKanjiLevelFilterToAll();
     renderKanjiList();
     closeDetailModal();
   }
@@ -5558,40 +5584,69 @@ history.replaceState({}, "", newUrl);
   }
 
   function setupKanjiFilters() {
-    const radicalSelect = document.getElementById("kanji-radical-filter");
-    const radicals = kanjiData
-      .map(function (k) { return k.radicals; })
-      .filter(function (b) { return b; })
-      .reduce(function (all, rads) {
-        return all.concat(String(rads).split("|"));
-      }, [])
-      .map(function (rad) { return rad.trim(); })
-      .filter(function (rad) { return rad; })
-      .filter(function (rad, idx, arr) { return arr.indexOf(rad) === idx; })
-      .sort(function (a, b) {
-        return getRadicalVietnameseLabel(a).localeCompare(
-          getRadicalVietnameseLabel(b),
-          "vi",
-          { sensitivity: "base" }
-        );
+    const radicalMatrix = document.getElementById("kanji-radical-matrix");
+
+    // Đếm số Kanji (ở MỌI cấp độ) sở hữu từng bộ thủ, để xếp bộ thủ nhiều chữ nhất lên trước.
+    const radicalCounts = new Map();
+    kanjiData.forEach(function (k) {
+      String(k.radicals || "")
+        .split("|")
+        .map(function (rad) { return rad.trim(); })
+        .filter(function (rad) { return rad; })
+        .filter(function (rad, idx, arr) { return arr.indexOf(rad) === idx; }) // 1 kanji chỉ đếm 1 lần / bộ thủ
+        .forEach(function (rad) {
+          radicalCounts.set(rad, (radicalCounts.get(rad) || 0) + 1);
+        });
+    });
+
+    const radicals = Array.from(radicalCounts.keys()).sort(function (a, b) {
+      const countDiff = radicalCounts.get(b) - radicalCounts.get(a);
+      if (countDiff !== 0) return countDiff;
+      return getRadicalVietnameseLabel(a).localeCompare(
+        getRadicalVietnameseLabel(b),
+        "vi",
+        { sensitivity: "base" }
+      );
+    });
+
+    if (radicalMatrix) {
+      radicalMatrix.innerHTML = "";
+      radicals.forEach(function (radical) {
+        const dashIdx = radical.indexOf("-");
+        const radicalChar = dashIdx === -1 ? radical : radical.slice(0, dashIdx);
+        const tile = createElement("div", "radical-tile", "");
+        tile.setAttribute("data-radical", radical);
+        tile.setAttribute("role", "option");
+        tile.setAttribute("aria-selected", "false");
+        tile.title = radical + " (" + radicalCounts.get(radical) + " chữ)";
+
+        const charEl = createElement("div", "radical-tile-char", radicalChar);
+        const labelEl = createElement("div", "radical-tile-label", getRadicalVietnameseLabel(radical));
+        const countEl = createElement("div", "radical-tile-count", String(radicalCounts.get(radical)));
+        tile.appendChild(charEl);
+        tile.appendChild(labelEl);
+        tile.appendChild(countEl);
+        radicalMatrix.appendChild(tile);
       });
 
-    if (radicalSelect) {
-      radicalSelect.innerHTML = "";
+      radicalMatrix.addEventListener("click", function (e) {
+        const tile = e.target.closest("[data-radical]");
+        if (!tile) return;
+        const radical = tile.getAttribute("data-radical");
+        const current = Array.isArray(state.filter.kanjiRadical) ? state.filter.kanjiRadical.slice() : [];
+        const idx = current.indexOf(radical);
+        if (idx === -1) {
+          current.push(radical);
+        } else {
+          current.splice(idx, 1);
+        }
+        state.filter.kanjiRadical = current;
+        syncRadicalMatrixActiveState();
+        // Bộ thủ được chọn có thể chỉ xuất hiện ở N4-N5 hoặc chỉ ở N3 — luôn hiện tất cả cấp độ khi lọc theo bộ thủ.
+        setKanjiLevelFilterToAll();
+        renderKanjiList();
+      });
     }
-    radicals.forEach(function (radical) {
-      const opt = createElement("option", "", radical);
-      opt.value = radical;
-      radicalSelect.appendChild(opt);
-    });
-
-    radicalSelect.addEventListener("change", function () {
-      state.filter.kanjiRadical = Array.prototype.map.call(
-        radicalSelect.selectedOptions,
-        function (opt) { return opt.value; }
-      );
-      renderKanjiList();
-    });
 
     const params2 = new URLSearchParams(window.location.search);
     const searchKanji = params2.get("kanji");
@@ -5676,11 +5731,7 @@ history.replaceState({}, "", newUrl);
           var n3Chip = levelChipsContainer.querySelector('[data-level="n3"]');
           if (n3Chip) n3Chip.classList.add("chip--active");
         }
-        if (radicalSelect) {
-          Array.prototype.forEach.call(radicalSelect.options, function (opt) {
-            opt.selected = false;
-          });
-        }
+        syncRadicalMatrixActiveState();
         if (kanjiSearchInput) {
           kanjiSearchInput.value = "";
         }
