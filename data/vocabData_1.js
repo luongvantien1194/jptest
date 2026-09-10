@@ -1,6 +1,8 @@
-// N3 Vocab - Lesson 1-71
 window._vocabExtra = window._vocabExtra || [];
-window._vocabExtra.push(
+// Bản riêng dùng cho tab "Sửa từ vựng" — đi theo cùng cơ chế load <script> chung của app
+// (không fetch file riêng), nên luôn đúng theo data hiện tại của file này.
+window._vocabExtra1ToEdit = window._vocabExtra1ToEdit || [];
+window._vocabExtra1ToEdit.push(
   // --- Lesson 1: だんせい ---
   { "Lesson": 1, "Hiragana": "だんせい", "Romaji": "dansei", "Kanji": "男性", "Meaning": "Nam giới, đàn ông, giới tính nam", "category": "noun", "Vru": "", "type": "", "note": "" },
   { "Lesson": 1, "Hiragana": "だんじょ", "Romaji": "danjo", "Kanji": "男女", "Meaning": "Nam nữ", "category": "noun", "Vru": "", "type": "related", "note": "" },
@@ -1105,3 +1107,5 @@ window._vocabExtra.push(
 
 
 );
+
+window._vocabExtra.push.apply(window._vocabExtra, window._vocabExtra1ToEdit);
