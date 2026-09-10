@@ -3965,3 +3965,102 @@ select:focus {
 #section-stars {
   /* Individual section ID targets — extend as needed */
 }
+
+/* Vocab edit tab (vocabData_1_TvkS.js editor) */
+.vocab-edit-tab-stack {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-height: 0;
+  flex: 1 1 auto;
+}
+
+.vocab-edit-tab-stack > .card {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.vocab-edit-tab-stack .card-body {
+  flex: 1 1 auto;
+  min-height: 0;
+  max-height: none;
+  overflow: auto;
+}
+
+.vocab-edit-io-panel {
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md, 10px);
+  background: rgba(255, 255, 255, 0.6);
+  padding: 10px;
+}
+
+.vocab-edit-io-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.vocab-edit-col-checks {
+  margin-top: 6px;
+}
+
+.vocab-edit-table {
+  border-collapse: collapse;
+  width: 100%;
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.vocab-edit-table th,
+.vocab-edit-table td {
+  border: 1px solid var(--border);
+  padding: 4px 6px;
+  text-align: left;
+}
+
+.vocab-edit-table thead th {
+  position: sticky;
+  top: 0;
+  background: var(--surface, #fffefa);
+  z-index: 1;
+}
+
+.vocab-edit-th-stt,
+.vocab-edit-stt {
+  text-align: center;
+  color: var(--text-muted, #888);
+}
+
+.vocab-edit-input {
+  width: 140px;
+  border: 1px solid transparent;
+  background: transparent;
+  padding: 3px 4px;
+  border-radius: 4px;
+  font: inherit;
+}
+
+.vocab-edit-input:hover,
+.vocab-edit-input:focus {
+  border-color: var(--border);
+  background: rgba(255, 255, 255, 0.9);
+}
+
+.vocab-edit-input--narrow {
+  width: 56px;
+}
+
+.vocab-edit-del-btn {
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 2px 6px;
+}
+
+.vocab-edit-del-btn:hover {
+  opacity: 0.7;
+}
