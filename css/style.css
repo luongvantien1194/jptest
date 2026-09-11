@@ -959,6 +959,12 @@ select:focus {
   border-color: rgba(192, 57, 43, 0.35);
 }
 
+.filter-icon-btn--active {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
 /* Nav menu popup */
 .nav-menu-popup {
   position: fixed;
@@ -1438,6 +1444,125 @@ select:focus {
   flex-wrap: wrap;
   gap: 3px;
   margin-top: 2px;
+}
+
+/* ===== VOCAB FLASHCARD ===== */
+.vocab-flashcard-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 12px 4px 32px;
+  gap: 14px;
+}
+
+.vocab-flashcard-counter {
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-muted);
+  letter-spacing: 0.03em;
+}
+
+.vocab-flashcard-stage {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.vocab-flashcard {
+  width: 100%;
+  min-height: 200px;
+  perspective: 1200px;
+  cursor: pointer;
+  position: relative;
+}
+
+.vocab-flashcard-face {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 24px 18px;
+  border-radius: var(--radius-lg, 16px);
+  border: 1px solid var(--border);
+  background: var(--bg-card);
+  box-shadow: var(--shadow-hover);
+  backface-visibility: hidden;
+  transition: transform 0.5s;
+  transform-style: preserve-3d;
+  text-align: center;
+}
+
+.vocab-flashcard-face--front {
+  transform: rotateY(0deg);
+}
+
+.vocab-flashcard-face--back {
+  transform: rotateY(180deg);
+}
+
+.vocab-flashcard--flipped .vocab-flashcard-face--front {
+  transform: rotateY(-180deg);
+}
+
+.vocab-flashcard--flipped .vocab-flashcard-face--back {
+  transform: rotateY(0deg);
+}
+
+.vocab-flashcard .vocab-hira {
+  font-size: 30px;
+}
+
+.vocab-flashcard .vocab-kanji {
+  font-size: 20px;
+}
+
+.vocab-flashcard .vocab-meaning {
+  font-size: 20px;
+  padding-left: 0;
+}
+
+.vocab-flashcard-hint {
+  margin-top: 10px;
+  font-size: 11px;
+  color: var(--text-muted);
+  opacity: 0.7;
+}
+
+.vocab-flashcard-star,
+.vocab-flashcard-mastered,
+.vocab-flashcard-audio {
+  position: absolute;
+  z-index: 2;
+}
+
+.vocab-flashcard-star {
+  top: 6px;
+  right: 6px;
+}
+
+.vocab-flashcard-mastered {
+  top: 6px;
+  left: 6px;
+}
+
+.vocab-flashcard-audio {
+  bottom: 6px;
+  right: 6px;
+}
+
+.vocab-flashcard-nav {
+  margin-top: 0;
+}
+
+.vocab-flashcard-nav .detail-nav-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
 }
 
 /* ===== DETAIL NAV ROW ===== */
@@ -4063,4 +4188,164 @@ select:focus {
 
 .vocab-edit-del-btn:hover {
   opacity: 0.7;
+}
+
+/* ===== SCROLL TO TOP (FAB trong khung có scroll riêng, vd. bảng Sửa từ vựng) ===== */
+.scroll-top-btn {
+  position: absolute;
+  right: 14px;
+  bottom: 14px;
+  z-index: 5;
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 1px solid var(--border);
+  background: var(--primary);
+  color: #fff;
+  font-size: 16px;
+  line-height: 1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-hover);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(6px);
+  transition: opacity var(--transition-fast), transform var(--transition-fast), visibility var(--transition-fast);
+}
+
+.scroll-top-btn--visible {
+  opacity: 0.92;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.scroll-top-btn:hover {
+  opacity: 1;
+}
+
+/* ===== VOCAB EDIT — MOBILE (bảng chuyển thành danh sách thẻ, mỗi dòng 1 khối) ===== */
+@media (max-width: 640px) {
+  .vocab-edit-title-file {
+    display: none;
+  }
+
+  .vocab-edit-tab-stack .section-header {
+    flex-wrap: wrap;
+    row-gap: 4px;
+  }
+
+  .vocab-edit-tab-stack .section-header > div {
+    gap: 4px !important;
+  }
+
+  #vocab-edit-summary {
+    flex-basis: 100%;
+    order: 3;
+    font-size: 11px;
+  }
+
+  .vocab-edit-tab-stack .btn-row {
+    order: 4;
+    width: 100%;
+    margin-left: 0 !important;
+    flex-wrap: nowrap !important;
+    flex-shrink: 1;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    padding-bottom: 2px;
+  }
+
+  .vocab-edit-tab-stack .btn-row .btn-ghost {
+    flex: 0 0 auto;
+    padding: 5px 10px;
+    font-size: 11px;
+    min-height: 30px;
+    white-space: nowrap;
+  }
+
+  .vocab-edit-io-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  #vocab-edit-search-row {
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+
+  #vocab-edit-search-row #vocab-edit-search-input {
+    flex: 1 1 100%;
+  }
+
+  #vocab-edit-search-row .field-label {
+    flex: 0 0 auto;
+    align-self: center;
+  }
+
+  #vocab-edit-search-row input[type="number"] {
+    flex: 1 1 60px;
+    min-width: 0;
+  }
+
+  .vocab-edit-table {
+    white-space: normal;
+  }
+
+  .vocab-edit-table thead {
+    display: none;
+  }
+
+  .vocab-edit-table,
+  .vocab-edit-table tbody,
+  .vocab-edit-table tr {
+    display: block;
+    width: 100%;
+  }
+
+  .vocab-edit-table tr {
+    margin-bottom: 10px;
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md, 10px);
+    background: var(--bg-card);
+    padding: 6px 8px;
+  }
+
+  .vocab-edit-table td {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    border: none;
+    border-bottom: 1px solid var(--border);
+    padding: 6px 2px;
+  }
+
+  .vocab-edit-table td:last-child {
+    border-bottom: none;
+  }
+
+  .vocab-edit-table td::before {
+    content: attr(data-label);
+    flex: 0 0 84px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--text-muted, #888);
+  }
+
+  .vocab-edit-th-stt,
+  .vocab-edit-stt {
+    text-align: left;
+  }
+
+  .vocab-edit-input,
+  .vocab-edit-input--narrow {
+    width: 100%;
+    flex: 1 1 auto;
+  }
+
+  .vocab-edit-del-btn {
+    margin-left: auto;
+  }
 }
