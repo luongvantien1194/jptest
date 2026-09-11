@@ -2,6 +2,12 @@ window.DOC_CONFIG = {
   defaultKey: "gramn3",
   docs: [
     {
+      key: "tutha",
+      file: "tutha",
+      type: "md",
+      label: "Phân biệt tự động từ (TĐ T - 自動詞) và tha động từ (TĐ T - 他動詞)"
+    },
+    {
       key: "gramn3",
       file: "gramn3",
       type: "md",
