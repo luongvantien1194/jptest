@@ -104,6 +104,11 @@
         lineWidth: 13
       },
       vocabListKey: "",
+      vocabViewMode: "list",
+      vocabFlashcardIndex: 0,
+      vocabFlashcardVocabIndex: null,
+      vocabFlashcardFlipped: false,
+      vocabFlashcardRestored: false,
       kanjiVocabFavOnly: false,
       /** Khi mở chi tiết Kanji từ tab ⭐(kanji), đóng modal thì quay lại tab này */
       kanjiDetailReturnTab: null
@@ -370,6 +375,15 @@
     if (savedKVF) state.kanjiVocabFavorites = JSON.parse(savedKVF);
     var savedDS = localStorage.getItem("jp_display_settings");
     if (savedDS) Object.assign(state.displaySettings, JSON.parse(savedDS));
+    var savedVVS = localStorage.getItem("jp_vocab_view_state");
+    if (savedVVS) {
+      var parsedVVS = JSON.parse(savedVVS);
+      if (parsedVVS && (parsedVVS.mode === "list" || parsedVVS.mode === "flashcard")) {
+        state.ui.vocabViewMode = parsedVVS.mode;
+      }
+      state.ui.vocabFlashcardVocabIndex = typeof parsedVVS.vocabIndex === "number" ? parsedVVS.vocabIndex : null;
+      state.ui.vocabFlashcardFlipped = !!parsedVVS.flipped;
+    }
   } catch (e) {
     // ignore parse errors
   }
@@ -385,6 +399,15 @@
   }
   function saveDisplaySettings() {
     try { localStorage.setItem("jp_display_settings", JSON.stringify(state.displaySettings)); } catch (e) { }
+  }
+  function saveVocabViewState(vocabIndex) {
+    try {
+      localStorage.setItem("jp_vocab_view_state", JSON.stringify({
+        mode: state.ui.vocabViewMode,
+        vocabIndex: typeof vocabIndex === "number" ? vocabIndex : null,
+        flipped: !!state.ui.vocabFlashcardFlipped
+      }));
+    } catch (e) { }
   }
   function saveKanjiFavorites() {
     try { localStorage.setItem("jp_kanji_favorites", JSON.stringify(state.kanjiFavorites)); } catch (e) { }
@@ -2119,6 +2142,11 @@
 
     listContainer.innerHTML = "";
 
+    if (state.ui.vocabViewMode === "flashcard") {
+      renderVocabFlashcard(filtered, listContainer);
+      return;
+    }
+
     if (filtered.length === 0) {
       //window.location.href = `index.html?tab=kanji&kanji=${encodeURIComponent(kanji)}`;
       const empty = createElement("div", "detail-empty", "Không có từ vựng phù hợp với bộ lọc hiện tại.");
@@ -2295,6 +2323,191 @@
     });
 
     listContainer.appendChild(listWrapper);
+  }
+
+  function renderVocabFlashcard(filtered, listContainer) {
+    if (filtered.length === 0) {
+      const empty = createElement("div", "detail-empty", "Không có từ vựng phù hợp với bộ lọc hiện tại.");
+      listContainer.appendChild(empty);
+      return;
+    }
+
+    // Lần đầu vào flashcard sau khi tải trang: khôi phục đúng thẻ đã xem lần cuối
+    if (!state.ui.vocabFlashcardRestored) {
+      state.ui.vocabFlashcardRestored = true;
+      if (typeof state.ui.vocabFlashcardVocabIndex === "number") {
+        var restoredPos = filtered.findIndex(function (raw) {
+          return vocabData.indexOf(raw) === state.ui.vocabFlashcardVocabIndex;
+        });
+        state.ui.vocabFlashcardIndex = restoredPos >= 0 ? restoredPos : 0;
+      }
+    }
+
+    if (state.ui.vocabFlashcardIndex >= filtered.length) {
+      state.ui.vocabFlashcardIndex = filtered.length - 1;
+    }
+    if (state.ui.vocabFlashcardIndex < 0) {
+      state.ui.vocabFlashcardIndex = 0;
+    }
+
+    const pos = state.ui.vocabFlashcardIndex;
+    const raw = filtered[pos];
+    const vocabIndex = vocabData.indexOf(raw);
+    state.ui.vocabFlashcardVocabIndex = vocabIndex;
+
+    const item = {
+      lesson: raw.lesson != null ? raw.lesson : raw.Lesson,
+      hiragana: raw.hiragana != null ? raw.hiragana : raw.Hiragana,
+      romaji: raw.romaji != null ? raw.romaji
+        : (raw.Romaji != null ? raw.Romaji
+          : (raw.romazi != null ? raw.romazi : raw.Romazi)),
+      kanji: raw.kanji != null ? raw.kanji : raw.Kanji,
+      meaning: raw.meaning != null ? raw.meaning : raw.Meaning,
+      vru: raw.vru != null ? raw.vru : raw.Vru,
+      type: raw.type != null ? raw.type : raw.Type,
+      note: raw.note != null ? raw.note : raw.Note,
+      category: raw.category != null ? raw.category : raw.Category
+    };
+
+    const wrap = createElement("div", "vocab-flashcard-wrap", "");
+
+    const counter = createElement("div", "vocab-flashcard-counter", (pos + 1) + " / " + filtered.length);
+    wrap.appendChild(counter);
+
+    const stage = createElement("div", "vocab-flashcard-stage", "");
+
+    const card = createElement("div", "vocab-flashcard" + (state.ui.vocabFlashcardFlipped ? " vocab-flashcard--flipped" : ""), "");
+
+    // Mặt trước: hiragana / kanji / romaji
+    const front = createElement("div", "vocab-flashcard-face vocab-flashcard-face--front", "");
+    if (state.displaySettings.hiragana && item.hiragana) {
+      front.appendChild(createElement("div", "vocab-hira", item.hiragana));
+    }
+    if (state.displaySettings.kanji && item.kanji) {
+      const kanjiEl = createElement("div", "vocab-kanji");
+      kanjiEl.innerHTML = "(" + boldKanji(item.kanji) + ")";
+      front.appendChild(kanjiEl);
+    }
+    if (state.displaySettings.romaji && item.romaji) {
+      front.appendChild(createElement("div", "vocab-romazi", "(" + item.romaji + ")"));
+    }
+    front.appendChild(createElement("div", "vocab-flashcard-hint", "Chạm để xem nghĩa"));
+
+    // Mặt sau: nghĩa + các trường phụ
+    const back = createElement("div", "vocab-flashcard-face vocab-flashcard-face--back", "");
+    if (state.displaySettings.meaning && item.meaning) {
+      back.appendChild(createElement("div", "vocab-meaning", item.meaning));
+    }
+    if (state.displaySettings.hanviet && item.kanji && window.getHanViet) {
+      const hv = window.getHanViet(item.kanji);
+      if (hv) back.appendChild(createElement("div", "vocab-hanviet", "[" + hv + "]"));
+    }
+    const backMeta = createElement("div", "vocab-meta-row", "");
+    if (state.displaySettings.lesson && item.lesson) {
+      backMeta.appendChild(createElement("span", "pill pill--lesson", "Bài " + item.lesson));
+    }
+    if (state.displaySettings.type && item.type) {
+      backMeta.appendChild(createElement("span", "pill pill--type", item.type));
+    }
+    if (state.displaySettings.category && item.category) {
+      backMeta.appendChild(createElement("span", "pill", getCategoryLabel(item.category)));
+    }
+    if (state.displaySettings.vru && item.vru) {
+      backMeta.appendChild(createElement("span", "pill pill--soft-accent", "Vる: " + item.vru));
+    }
+    if (state.displaySettings.note && item.note) {
+      backMeta.appendChild(createElement("span", "pill", "Note: " + item.note));
+    }
+    if (backMeta.childNodes.length > 0) back.appendChild(backMeta);
+
+    card.appendChild(front);
+    card.appendChild(back);
+    card.addEventListener("click", function (e) {
+      if (e.target.closest(".star-btn, .mastered-btn, .audio-btn")) return;
+      state.ui.vocabFlashcardFlipped = !state.ui.vocabFlashcardFlipped;
+      saveVocabViewState(vocabIndex);
+      renderVocabList();
+    });
+
+    stage.appendChild(card);
+
+    // Star / mastered / audio nổi trên thẻ
+    var isFav = !!state.vocabFavorites[vocabIndex];
+    var starBtn = createElement("button", "star-btn vocab-flashcard-star" + (isFav ? " star-btn--active" : ""), isFav ? "★" : "☆");
+    starBtn.type = "button";
+    starBtn.title = "Yêu thích";
+    starBtn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      if (state.vocabFavorites[vocabIndex]) {
+        delete state.vocabFavorites[vocabIndex];
+      } else {
+        state.vocabFavorites[vocabIndex] = true;
+      }
+      saveVocabFavorites();
+      renderVocabList();
+      refreshStarsTabIfActive();
+    });
+    stage.appendChild(starBtn);
+
+    var isMastered = !!state.vocabMastered[vocabIndex];
+    var masteredBtn = createElement("button", "mastered-btn vocab-flashcard-mastered" + (isMastered ? " mastered-btn--active" : ""), isMastered ? "✓" : "○");
+    masteredBtn.type = "button";
+    masteredBtn.title = isMastered ? "Đã thuộc — bấm để bỏ đánh dấu" : "Đánh dấu đã thuộc";
+    masteredBtn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      if (state.vocabMastered[vocabIndex]) {
+        delete state.vocabMastered[vocabIndex];
+      } else {
+        state.vocabMastered[vocabIndex] = true;
+      }
+      saveVocabMastered();
+      renderVocabList();
+    });
+    stage.appendChild(masteredBtn);
+
+    if (item.hiragana && state.displaySettings.voice) {
+      var audioBtn = createAudioBtn(item.hiragana);
+      audioBtn.classList.add("vocab-flashcard-audio");
+      stage.appendChild(audioBtn);
+    }
+
+    wrap.appendChild(stage);
+
+    const navRow = createElement("div", "detail-nav-row vocab-flashcard-nav", "");
+    const prevBtn = createElement("button", "detail-nav-btn", "‹");
+    prevBtn.type = "button";
+    prevBtn.title = "Từ trước";
+    prevBtn.disabled = pos <= 0;
+    prevBtn.addEventListener("click", function () {
+      if (state.ui.vocabFlashcardIndex > 0) {
+        state.ui.vocabFlashcardIndex -= 1;
+        state.ui.vocabFlashcardFlipped = false;
+        var newRaw = filtered[state.ui.vocabFlashcardIndex];
+        saveVocabViewState(vocabData.indexOf(newRaw));
+        renderVocabList();
+      }
+    });
+
+    const nextBtn = createElement("button", "detail-nav-btn", "›");
+    nextBtn.type = "button";
+    nextBtn.title = "Từ tiếp theo";
+    nextBtn.disabled = pos >= filtered.length - 1;
+    nextBtn.addEventListener("click", function () {
+      if (state.ui.vocabFlashcardIndex < filtered.length - 1) {
+        state.ui.vocabFlashcardIndex += 1;
+        state.ui.vocabFlashcardFlipped = false;
+        var newRaw = filtered[state.ui.vocabFlashcardIndex];
+        saveVocabViewState(vocabData.indexOf(newRaw));
+        renderVocabList();
+      }
+    });
+
+    navRow.appendChild(prevBtn);
+    navRow.appendChild(nextBtn);
+    wrap.appendChild(navRow);
+
+    listContainer.appendChild(wrap);
+    saveVocabViewState(vocabIndex);
   }
 
   // renderVocabDetail removed — detail popup no longer used
@@ -4811,6 +5024,27 @@ history.replaceState({}, "", newUrl);
     });
   }
 
+  function setupVocabViewModeToggle() {
+    const btn = document.getElementById("vocab-view-mode-toggle");
+    if (!btn) return;
+
+    function syncBtn() {
+      var isFlashcard = state.ui.vocabViewMode === "flashcard";
+      btn.textContent = isFlashcard ? "🗇" : "🗂";
+      btn.title = isFlashcard ? "Chuyển sang chế độ danh sách" : "Chuyển sang chế độ Flashcard";
+      btn.classList.toggle("filter-icon-btn--active", isFlashcard);
+    }
+    syncBtn();
+
+    btn.addEventListener("click", function () {
+      state.ui.vocabViewMode = state.ui.vocabViewMode === "flashcard" ? "list" : "flashcard";
+      state.ui.vocabFlashcardFlipped = false;
+      syncBtn();
+      saveVocabViewState(state.ui.vocabFlashcardVocabIndex);
+      renderVocabList();
+    });
+  }
+
   function setupFilterToggles() {
     function attachFilterToggle(toggleId, rowId) {
       const toggle = document.getElementById(toggleId);
@@ -5884,6 +6118,7 @@ history.replaceState({}, "", newUrl);
     setupKanjiDetailResumeListeners();
     setupVocabFilters();
     setupDisplaySettings();
+    setupVocabViewModeToggle();
     setupTestSection();
     setupKanjiFilters();
     setupGrammarFilters();
