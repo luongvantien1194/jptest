@@ -2242,22 +2242,7 @@
 
         const kanjiEl = createElement("div", "vocab-kanji");
         kanjiEl.innerHTML = "(" + outputKanji + ") ";
-
-        // Thêm event cho các thẻ <b> bên trong
-        kanjiEl.querySelectorAll("b").forEach(b => {
-          const index = kanjiData.findIndex(k => k.kanji === b.textContent);
-          if (index > 0) b.classList.add("vocab-kanji--linked");
-
-          b.addEventListener("click", function () {
-            const idx = kanjiData.findIndex(item => item.kanji === this.textContent);
-            if (idx > 0) {
-              state.selected.kanjiIndex = idx;
-              renderKanjiDetail();
-            } else {
-              openDetailModal("Thông báo", "<p>Không có data của chữ này!</p><a href='/jptest/addKanji/index.html?kanji="+decodeURIComponent(this.textContent)+"'>Thêm từ kanji</a>");
-            }
-          });
-        });
+        wireVocabKanjiLinks(kanjiEl);
 
         fields.push(kanjiEl);
       }
@@ -2479,6 +2464,7 @@
     if (state.displaySettings.kanji && item.kanji) {
       const kanjiEl = createElement("div", "vocab-kanji");
       kanjiEl.innerHTML = "(" + boldKanji(item.kanji) + ")";
+      wireVocabKanjiLinks(kanjiEl);
       front.appendChild(kanjiEl);
     }
     if (state.displaySettings.romaji && item.romaji) {
@@ -6189,6 +6175,26 @@ history.replaceState({}, "", newUrl);
 
   function boldKanji(text) {
     return text.replace(/\p{Script=Han}/gu, match => `<b>${match}</b>`);
+  }
+
+  /** Gắn sự kiện click cho từng chữ Hán bôi đậm trong kanjiEl (.vocab-kanji): mở chi tiết Kanji nếu có data, không thì gợi ý thêm mới */
+  function wireVocabKanjiLinks(kanjiEl) {
+    kanjiEl.querySelectorAll("b").forEach(function (b) {
+      const index = kanjiData.findIndex(function (k) { return k.kanji === b.textContent; });
+      if (index > 0) b.classList.add("vocab-kanji--linked");
+
+      b.addEventListener("click", function (e) {
+        e.stopPropagation();
+        const clickedText = this.textContent;
+        const idx = kanjiData.findIndex(function (item) { return item.kanji === clickedText; });
+        if (idx > 0) {
+          state.selected.kanjiIndex = idx;
+          renderKanjiDetail();
+        } else {
+          openDetailModal("Thông báo", "<p>Không có data của chữ này!</p><a href='/jptest/addKanji/index.html?kanji=" + decodeURIComponent(this.textContent) + "'>Thêm từ kanji</a>");
+        }
+      });
+    });
   }
 
   // ========================
