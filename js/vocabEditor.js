@@ -20,6 +20,7 @@
   var BASELINE_KEY = "jp_vocab_editor_baseline";
 
   var editorData = [];
+  var editFilter = { search: "", lessonFrom: "", lessonTo: "" };
 
   function createEl(tag, className, text) {
     var el = document.createElement(tag);
@@ -115,9 +116,46 @@
     setTimeout(function () { URL.revokeObjectURL(url); }, 1000);
   }
 
-  function renderSummary() {
+  function normalizeSearchText(text) {
+    return String(text || "")
+      .toLowerCase()
+      .normalize("NFD")
+      .replace(/[\u0300-\u036f]/g, "");
+  }
+
+  function applyEditFilter() {
+    var search = normalizeSearchText(editFilter.search.trim());
+    var from = editFilter.lessonFrom !== "" ? Number(editFilter.lessonFrom) : -Infinity;
+    var to = editFilter.lessonTo !== "" ? Number(editFilter.lessonTo) : Infinity;
+    var hasLessonFilter = editFilter.lessonFrom !== "" || editFilter.lessonTo !== "";
+
+    return editorData.filter(function (row) {
+      if (hasLessonFilter) {
+        var lesson = Number(row.Lesson);
+        if (isNaN(lesson) || lesson < from || lesson > to) {
+          return false;
+        }
+      }
+      if (search) {
+        var haystack = normalizeSearchText(
+          [row.Hiragana, row.Kanji, row.Romaji, row.Meaning].join(" ")
+        );
+        if (haystack.indexOf(search) === -1) {
+          return false;
+        }
+      }
+      return true;
+    });
+  }
+
+  function renderSummary(filteredCount) {
     var el = document.getElementById("vocab-edit-summary");
-    if (el) {
+    if (!el) {
+      return;
+    }
+    if (typeof filteredCount === "number" && filteredCount !== editorData.length) {
+      el.textContent = filteredCount + " / " + editorData.length + " từ";
+    } else {
       el.textContent = editorData.length + " từ";
     }
   }
@@ -149,13 +187,24 @@
     thead.appendChild(headRow);
     table.appendChild(thead);
 
+    var filtered = applyEditFilter();
+    renderSummary(filtered.length);
+
+    if (filtered.length === 0) {
+      wrap.appendChild(createEl("div", "detail-empty", "Không tìm thấy từ nào phù hợp với bộ lọc."));
+      return;
+    }
+
     var tbody = createEl("tbody");
-    editorData.forEach(function (row, idx) {
+    filtered.forEach(function (row) {
       var tr = createEl("tr");
-      tr.appendChild(createEl("td", "vocab-edit-stt", String(idx + 1)));
+      var sttTd = createEl("td", "vocab-edit-stt", String(editorData.indexOf(row) + 1));
+      sttTd.setAttribute("data-label", "STT");
+      tr.appendChild(sttTd);
 
       FIELDS.forEach(function (f) {
         var td = createEl("td");
+        td.setAttribute("data-label", FIELD_LABELS[f]);
         var input = document.createElement("input");
         input.type = "text";
         input.className = "vocab-edit-input" + (f === "Lesson" ? " vocab-edit-input--narrow" : "");
@@ -169,6 +218,7 @@
       });
 
       var delTd = createEl("td");
+      delTd.setAttribute("data-label", "");
       var delBtn = createEl("button", "vocab-edit-del-btn", "🗑");
       delBtn.type = "button";
       delBtn.title = "Xoá từ này";
@@ -183,7 +233,6 @@
         editorData.splice(i, 1);
         saveEditorData();
         renderTable();
-        renderSummary();
       });
       delTd.appendChild(delBtn);
       tr.appendChild(delTd);
@@ -194,11 +243,23 @@
     wrap.appendChild(table);
   }
 
+  function clearEditFilter() {
+    editFilter.search = "";
+    editFilter.lessonFrom = "";
+    editFilter.lessonTo = "";
+    var searchEl = document.getElementById("vocab-edit-search-input");
+    var fromEl = document.getElementById("vocab-edit-search-lesson-from");
+    var toEl = document.getElementById("vocab-edit-search-lesson-to");
+    if (searchEl) searchEl.value = "";
+    if (fromEl) fromEl.value = "";
+    if (toEl) toEl.value = "";
+  }
+
   function addNewRow() {
+    clearEditFilter();
     editorData.push(normalizeRow(null));
     saveEditorData();
     renderTable();
-    renderSummary();
     var wrap = document.getElementById("vocab-edit-table-wrap");
     if (wrap) {
       wrap.scrollTop = wrap.scrollHeight;
@@ -215,7 +276,6 @@
       localStorage.setItem(BASELINE_KEY, JSON.stringify(cloneSource()));
     } catch (e) { }
     renderTable();
-    renderSummary();
   }
 
   function buildVocabJsContent() {
@@ -369,7 +429,6 @@
         });
         saveEditorData();
         renderTable();
-        renderSummary();
         toggleImportPanel(false);
         alert("Đã nhập CSV: cập nhật " + updatedCount + " từ, thêm mới " + addedCount + " từ.");
       } catch (err) {
@@ -457,6 +516,55 @@
     if (importRunBtn) {
       importRunBtn.addEventListener("click", runImportCsv);
     }
+
+    setupScrollTopButton();
+    setupSearchFilter();
+  }
+
+  function setupSearchFilter() {
+    var searchEl = document.getElementById("vocab-edit-search-input");
+    var fromEl = document.getElementById("vocab-edit-search-lesson-from");
+    var toEl = document.getElementById("vocab-edit-search-lesson-to");
+    var resetBtn = document.getElementById("vocab-edit-search-reset-btn");
+
+    if (searchEl) {
+      searchEl.addEventListener("input", function () {
+        editFilter.search = searchEl.value;
+        renderTable();
+      });
+    }
+    if (fromEl) {
+      fromEl.addEventListener("input", function () {
+        editFilter.lessonFrom = fromEl.value.trim();
+        renderTable();
+      });
+    }
+    if (toEl) {
+      toEl.addEventListener("input", function () {
+        editFilter.lessonTo = toEl.value.trim();
+        renderTable();
+      });
+    }
+    if (resetBtn) {
+      resetBtn.addEventListener("click", function () {
+        clearEditFilter();
+        renderTable();
+      });
+    }
+  }
+
+  function setupScrollTopButton() {
+    var wrap = document.getElementById("vocab-edit-table-wrap");
+    var btn = document.getElementById("vocab-edit-scroll-top-btn");
+    if (!wrap || !btn) {
+      return;
+    }
+    wrap.addEventListener("scroll", function () {
+      btn.classList.toggle("scroll-top-btn--visible", wrap.scrollTop > 200);
+    });
+    btn.addEventListener("click", function () {
+      wrap.scrollTo({ top: 0, behavior: "smooth" });
+    });
   }
 
   document.addEventListener("DOMContentLoaded", function () {
@@ -472,6 +580,5 @@
 
     loadEditorData();
     renderTable();
-    renderSummary();
   });
 })();
