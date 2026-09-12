@@ -2571,7 +2571,8 @@
     const nextBtn = createElement("button", "detail-nav-btn", "›");
     nextBtn.type = "button";
     nextBtn.title = "Từ tiếp theo (hoặc bấm phím Space)";
-    nextBtn.disabled = pos >= filtered.length - 1;
+    //nextBtn.disabled = pos >= filtered.length - 1;
+nextBtn.disabled = pos <= 0;
     nextBtn.addEventListener("click", function () {
       advanceVocabFlashcard(1);
     });
