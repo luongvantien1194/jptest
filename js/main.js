@@ -2358,7 +2358,8 @@
     if (filtered.length === 0) return;
     var newIndex = state.ui.vocabFlashcardIndex + delta;
     if (newIndex < 0) newIndex = 0;
-    if (newIndex > filtered.length - 1) newIndex = filtered.length - 1;
+    //if (newIndex > filtered.length - 1) newIndex = filtered.length - 1;
+if (newIndex > filtered.length - 1) newIndex = 1;
     if (newIndex === state.ui.vocabFlashcardIndex) return;
     state.ui.vocabFlashcardIndex = newIndex;
     state.ui.vocabFlashcardFlipped = false;
