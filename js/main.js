@@ -2573,7 +2573,7 @@ if (newIndex > filtered.length - 1) newIndex = 1;
     nextBtn.type = "button";
     nextBtn.title = "Từ tiếp theo (hoặc bấm phím Space)";
     //nextBtn.disabled = pos >= filtered.length - 1;
-nextBtn.disabled = pos <= 0;
+    nextBtn.disabled = filtered.length == 0;
     nextBtn.addEventListener("click", function () {
       advanceVocabFlashcard(1);
     });
