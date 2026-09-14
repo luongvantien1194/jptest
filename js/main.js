@@ -2357,7 +2357,7 @@
       }
 
       if (state.displaySettings.vru && item.vru) {
-        const p = createElement("span", "pill pill--soft-accent", "Vる: " + item.vru);
+        const p = createElement("span", "pill pill--soft-accent", item.vru);
         metaRow.appendChild(p);
       }
       if (state.displaySettings.note && item.note) {
@@ -2603,7 +2603,7 @@
       backMeta.appendChild(createElement("span", "pill", getCategoryLabel(item.category)));
     }
     if (state.displaySettings.vru && item.vru) {
-      backMeta.appendChild(createElement("span", "pill pill--soft-accent", "Vる: " + item.vru));
+      backMeta.appendChild(createElement("span", "pill pill--soft-accent", item.vru));
     }
     if (state.displaySettings.note && item.note) {
       backMeta.appendChild(createElement("span", "pill", "Note: " + item.note));
