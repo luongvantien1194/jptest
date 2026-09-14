@@ -2199,6 +2199,12 @@
     renderVocabFilterSummary(filtered);
     updateVocabCategoryOptions(filtered);
 
+    var fixedActions = document.getElementById("vocab-fixed-actions");
+    if (fixedActions) {
+      var hideFixedActions = state.ui.vocabViewMode === "flashcard" && !!state.ui.vocabFlashcardFullscreen;
+      fixedActions.style.display = hideFixedActions ? "none" : "";
+    }
+
     listContainer.innerHTML = "";
 
     if (state.ui.vocabViewMode === "flashcard") {
