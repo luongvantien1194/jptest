@@ -111,8 +111,12 @@
       vocabFlashcardRestored: false,
       /** "2" = thẻ 2 mặt (bấm để lật xem nghĩa), "1" = thẻ 1 mặt (hiện đủ cả 2 phía, không cần lật) */
       vocabFlashcardMode: "2",
-      /** Bật thì cứ 1 phút tự chuyển sang thẻ tiếp theo (quay vòng về đầu khi hết danh sách) */
+      /** Bật thì cứ N giây tự chuyển sang thẻ tiếp theo (quay vòng về đầu khi hết danh sách) */
       vocabFlashcardAutoNext: false,
+      /** Số giây giữa mỗi lần auto-next (xem VOCAB_AUTO_NEXT_DEFAULT_SECONDS) */
+      vocabFlashcardAutoNextSeconds: 60,
+      /** Chế độ trình chiếu toàn màn hình — không khôi phục lại sau khi tải lại trang */
+      vocabFlashcardFullscreen: false,
       kanjiVocabFavOnly: false,
       /** Khi mở chi tiết Kanji từ tab ⭐(kanji), đóng modal thì quay lại tab này */
       kanjiDetailReturnTab: null
@@ -391,6 +395,9 @@
         state.ui.vocabFlashcardMode = parsedVVS.cardMode;
       }
       state.ui.vocabFlashcardAutoNext = !!parsedVVS.autoNext;
+      if (typeof parsedVVS.autoNextSeconds === "number" && parsedVVS.autoNextSeconds >= 3) {
+        state.ui.vocabFlashcardAutoNextSeconds = parsedVVS.autoNextSeconds;
+      }
     }
   } catch (e) {
     // ignore parse errors
@@ -415,7 +422,8 @@
         vocabIndex: typeof vocabIndex === "number" ? vocabIndex : null,
         flipped: !!state.ui.vocabFlashcardFlipped,
         cardMode: state.ui.vocabFlashcardMode,
-        autoNext: !!state.ui.vocabFlashcardAutoNext
+        autoNext: !!state.ui.vocabFlashcardAutoNext,
+        autoNextSeconds: state.ui.vocabFlashcardAutoNextSeconds
       }));
     } catch (e) { }
   }
@@ -2128,6 +2136,46 @@
     el.textContent = lessonLabel + " · " + categoryLabel + " · " + masteredLabel;
   }
 
+  function updateVocabCategoryOptions(filteredList) {
+    const categorySelect = document.getElementById("vocab-category-filter");
+    if (!categorySelect) return;
+
+    const search = String(state.filter.vocabSearch || "").trim();
+    // Khi có search, filteredList đã bỏ qua lesson/category (xem applyVocabFilters)
+    // nên chính là tập kết quả search — dùng nó để suy ra danh mục còn phù hợp.
+    // Khi không search, dùng toàn bộ từ vựng hợp lệ (không lọc theo category đang chọn,
+    // để tránh tự khoá người dùng vào 1 category duy nhất).
+    const pool = search
+      ? filteredList
+      : vocabData.filter(function (item) {
+        if (!item) return false;
+        const hira = String(item.hiragana || item.Hiragana || "").trim();
+        return !!hira && !isVocabHidden(item);
+      });
+
+    const categories = getUniqueSorted(
+      pool.map(function (v) { return v.category != null ? v.category : v.Category; })
+        .filter(function (c) { return c; })
+    );
+
+    let currentValue = state.filter.vocabCategory || "all";
+    categorySelect.innerHTML = "";
+    const allOpt = createElement("option", "", "Tất cả");
+    allOpt.value = "all";
+    categorySelect.appendChild(allOpt);
+    categories.forEach(function (cat) {
+      const opt = createElement("option", "", getCategoryLabel(cat));
+      opt.value = cat;
+      categorySelect.appendChild(opt);
+    });
+
+    if (currentValue !== "all" && categories.indexOf(currentValue) === -1) {
+      state.filter.vocabCategory = "all";
+      currentValue = "all";
+    }
+    categorySelect.value = currentValue;
+  }
+
   function renderVocabList() {
     // Stop auto-play when list re-renders
     if (state.autoPlay.active) {
@@ -2149,6 +2197,7 @@
     }
     countLabel.textContent = filtered.length + " từ";
     renderVocabFilterSummary(filtered);
+    updateVocabCategoryOptions(filtered);
 
     listContainer.innerHTML = "";
 
@@ -2320,7 +2369,9 @@
     listContainer.appendChild(listWrapper);
   }
 
-  var VOCAB_AUTO_NEXT_DELAY_MS = 60000;
+  var VOCAB_AUTO_NEXT_DEFAULT_SECONDS = 60;
+  var VOCAB_AUTO_NEXT_MIN_SECONDS = 3;
+  var VOCAB_AUTO_NEXT_MAX_SECONDS = 600;
   var vocabAutoNextTimer = null;
 
   function clearVocabAutoNextTimer() {
@@ -2330,11 +2381,20 @@
     }
   }
 
-  /** (Re)khởi động đếm ngược 1 phút cho auto-next — gọi lại mỗi khi có điều hướng thủ công để tính lại từ đầu */
+  function getVocabAutoNextDelayMs() {
+    var secs = state.ui.vocabFlashcardAutoNextSeconds;
+    if (typeof secs !== "number" || !isFinite(secs) || secs < VOCAB_AUTO_NEXT_MIN_SECONDS) {
+      secs = VOCAB_AUTO_NEXT_DEFAULT_SECONDS;
+    }
+    if (secs > VOCAB_AUTO_NEXT_MAX_SECONDS) secs = VOCAB_AUTO_NEXT_MAX_SECONDS;
+    return secs * 1000;
+  }
+
+  /** (Re)khởi động đếm ngược cho auto-next — gọi lại mỗi khi có điều hướng thủ công để tính lại từ đầu */
   function scheduleVocabAutoNextTimer() {
     clearVocabAutoNextTimer();
     if (!state.ui.vocabFlashcardAutoNext || state.ui.vocabViewMode !== "flashcard") return;
-    vocabAutoNextTimer = setTimeout(vocabAutoNextTick, VOCAB_AUTO_NEXT_DELAY_MS);
+    vocabAutoNextTimer = setTimeout(vocabAutoNextTick, getVocabAutoNextDelayMs());
   }
 
   function vocabAutoNextTick() {
@@ -2356,10 +2416,8 @@
     if (state.ui.vocabViewMode !== "flashcard") return;
     var filtered = applyVocabFilters();
     if (filtered.length === 0) return;
-    var newIndex = state.ui.vocabFlashcardIndex + delta;
-    if (newIndex < 0) newIndex = 0;
-    //if (newIndex > filtered.length - 1) newIndex = filtered.length - 1;
-if (newIndex > filtered.length - 1) newIndex = 0;
+    // Quay vòng: ở từ cuối bấm next thì về từ đầu, ở từ đầu bấm prev thì về từ cuối
+    var newIndex = (state.ui.vocabFlashcardIndex + delta + filtered.length) % filtered.length;
     if (newIndex === state.ui.vocabFlashcardIndex) return;
     state.ui.vocabFlashcardIndex = newIndex;
     state.ui.vocabFlashcardFlipped = false;
@@ -2413,7 +2471,7 @@ if (newIndex > filtered.length - 1) newIndex = 0;
       category: raw.category != null ? raw.category : raw.Category
     };
 
-    const wrap = createElement("div", "vocab-flashcard-wrap", "");
+    const wrap = createElement("div", "vocab-flashcard-wrap" + (state.ui.vocabFlashcardFullscreen ? " vocab-flashcard-wrap--fullscreen" : ""), "");
 
     const topRow = createElement("div", "vocab-flashcard-top-row", "");
     const counter = createElement("div", "vocab-flashcard-counter", (pos + 1) + " / " + filtered.length);
@@ -2437,18 +2495,59 @@ if (newIndex > filtered.length - 1) newIndex = 0;
     topRow.appendChild(modeToggle);
 
     var isAutoNext = !!state.ui.vocabFlashcardAutoNext;
+    var autoNextSecondsValue = (typeof state.ui.vocabFlashcardAutoNextSeconds === "number" && state.ui.vocabFlashcardAutoNextSeconds >= VOCAB_AUTO_NEXT_MIN_SECONDS)
+      ? state.ui.vocabFlashcardAutoNextSeconds
+      : VOCAB_AUTO_NEXT_DEFAULT_SECONDS;
+
+    var autoNextGroup = createElement("div", "vocab-flashcard-autonext-group", "");
+
     var autoNextBtn = createElement("button", "vocab-flashcard-autonext-btn" + (isAutoNext ? " vocab-flashcard-autonext-btn--active" : ""), "⏱ Auto");
     autoNextBtn.type = "button";
     autoNextBtn.title = isAutoNext
-      ? "Đang tự động chuyển thẻ mỗi 1 phút — bấm để tắt"
-      : "Bật để tự động chuyển sang thẻ tiếp theo mỗi 1 phút (quay lại thẻ đầu khi hết danh sách)";
+      ? "Đang tự động chuyển thẻ mỗi " + autoNextSecondsValue + " giây — bấm để tắt"
+      : "Bật để tự động chuyển sang thẻ tiếp theo mỗi " + autoNextSecondsValue + " giây (quay lại thẻ đầu khi hết danh sách)";
     autoNextBtn.addEventListener("click", function () {
       state.ui.vocabFlashcardAutoNext = !state.ui.vocabFlashcardAutoNext;
       saveVocabViewState(vocabIndex);
       scheduleVocabAutoNextTimer();
       renderVocabList();
     });
-    topRow.appendChild(autoNextBtn);
+    autoNextGroup.appendChild(autoNextBtn);
+
+    var autoNextSecondsInput = createElement("input", "vocab-flashcard-autonext-seconds", "");
+    autoNextSecondsInput.type = "number";
+    autoNextSecondsInput.min = String(VOCAB_AUTO_NEXT_MIN_SECONDS);
+    autoNextSecondsInput.max = String(VOCAB_AUTO_NEXT_MAX_SECONDS);
+    autoNextSecondsInput.step = "1";
+    autoNextSecondsInput.value = String(autoNextSecondsValue);
+    autoNextSecondsInput.title = "Số giây tự động chuyển thẻ tiếp theo";
+    autoNextSecondsInput.addEventListener("click", function (e) {
+      e.stopPropagation();
+    });
+    autoNextSecondsInput.addEventListener("change", function () {
+      var val = parseInt(autoNextSecondsInput.value, 10);
+      if (!isFinite(val) || val < VOCAB_AUTO_NEXT_MIN_SECONDS) val = VOCAB_AUTO_NEXT_MIN_SECONDS;
+      if (val > VOCAB_AUTO_NEXT_MAX_SECONDS) val = VOCAB_AUTO_NEXT_MAX_SECONDS;
+      autoNextSecondsInput.value = String(val);
+      state.ui.vocabFlashcardAutoNextSeconds = val;
+      saveVocabViewState(vocabIndex);
+      scheduleVocabAutoNextTimer();
+      renderVocabList();
+    });
+    autoNextGroup.appendChild(autoNextSecondsInput);
+    autoNextGroup.appendChild(createElement("span", "vocab-flashcard-autonext-unit", "giây"));
+
+    topRow.appendChild(autoNextGroup);
+
+    var isFullscreen = !!state.ui.vocabFlashcardFullscreen;
+    var fullscreenBtn = createElement("button", "vocab-flashcard-fullscreen-btn" + (isFullscreen ? " vocab-flashcard-fullscreen-btn--active" : ""), isFullscreen ? "✕" : "⛶");
+    fullscreenBtn.type = "button";
+    fullscreenBtn.title = isFullscreen ? "Thoát chế độ trình chiếu toàn màn hình" : "Xem toàn màn hình (chế độ trình chiếu)";
+    fullscreenBtn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      toggleVocabFlashcardFullscreen();
+    });
+    topRow.appendChild(fullscreenBtn);
     wrap.appendChild(topRow);
 
     const stage = createElement("div", "vocab-flashcard-stage", "");
@@ -2563,17 +2662,16 @@ if (newIndex > filtered.length - 1) newIndex = 0;
     const navRow = createElement("div", "detail-nav-row vocab-flashcard-nav", "");
     const prevBtn = createElement("button", "detail-nav-btn", "‹");
     prevBtn.type = "button";
-    prevBtn.title = "Từ trước";
-    prevBtn.disabled = pos <= 0;
+    prevBtn.title = pos <= 0 ? "Từ trước (quay về từ cuối cùng)" : "Từ trước";
+    prevBtn.disabled = filtered.length <= 1;
     prevBtn.addEventListener("click", function () {
       advanceVocabFlashcard(-1);
     });
 
     const nextBtn = createElement("button", "detail-nav-btn", "›");
     nextBtn.type = "button";
-    nextBtn.title = "Từ tiếp theo (hoặc bấm phím Space)";
-    //nextBtn.disabled = pos >= filtered.length - 1;
-    nextBtn.disabled = filtered.length == 0;
+    nextBtn.title = pos >= filtered.length - 1 ? "Từ tiếp theo (quay về từ đầu tiên, hoặc bấm phím Space)" : "Từ tiếp theo (hoặc bấm phím Space)";
+    nextBtn.disabled = filtered.length <= 1;
     nextBtn.addEventListener("click", function () {
       advanceVocabFlashcard(1);
     });
@@ -5003,17 +5101,6 @@ history.replaceState({}, "", newUrl);
 
     addKanji.addEventListener("click", redirectKanji);
 
-    
-
-    const categories = getUniqueSorted(
-      vocabData.map(function (v) { return v.category; }).filter(function (c) { return c; })
-    );
-    categories.forEach(function (cat) {
-      const opt = createElement("option", "", getCategoryLabel(cat));
-      opt.value = cat;
-      categorySelect.appendChild(opt);
-    });
-
     lessonFrom.addEventListener("input", function () {
       state.filter.vocabLessonFrom = lessonFrom.value.trim();
       renderVocabList();
@@ -5116,6 +5203,9 @@ history.replaceState({}, "", newUrl);
     btn.addEventListener("click", function () {
       state.ui.vocabViewMode = state.ui.vocabViewMode === "flashcard" ? "list" : "flashcard";
       state.ui.vocabFlashcardFlipped = false;
+      if (state.ui.vocabViewMode !== "flashcard") {
+        exitVocabFlashcardFullscreen();
+      }
       syncBtn();
       saveVocabViewState(state.ui.vocabFlashcardVocabIndex);
       renderVocabList();
@@ -5129,6 +5219,43 @@ history.replaceState({}, "", newUrl);
       if (tag === "INPUT" || tag === "TEXTAREA" || tag === "SELECT" || (e.target && e.target.isContentEditable)) return;
       e.preventDefault();
       advanceVocabFlashcard(1);
+    });
+  }
+
+  /** Thoát chế độ trình chiếu toàn màn hình flashcard (nếu đang bật) */
+  function exitVocabFlashcardFullscreen() {
+    if (!state.ui.vocabFlashcardFullscreen) return;
+    state.ui.vocabFlashcardFullscreen = false;
+    if (document.fullscreenElement) {
+      try { document.exitFullscreen(); } catch (e) { }
+    }
+  }
+
+  function toggleVocabFlashcardFullscreen() {
+    state.ui.vocabFlashcardFullscreen = !state.ui.vocabFlashcardFullscreen;
+    if (state.ui.vocabFlashcardFullscreen) {
+      var el = document.documentElement;
+      if (el && el.requestFullscreen) {
+        el.requestFullscreen().catch(function () { });
+      }
+    } else if (document.fullscreenElement) {
+      try { document.exitFullscreen(); } catch (e) { }
+    }
+    renderVocabList();
+  }
+
+  /** Đồng bộ state khi người dùng thoát fullscreen bằng Esc/F11 (không qua nút toggle) */
+  function setupVocabFlashcardFullscreen() {
+    document.addEventListener("keydown", function (e) {
+      if (e.key !== "Escape" || !state.ui.vocabFlashcardFullscreen) return;
+      exitVocabFlashcardFullscreen();
+      renderVocabList();
+    });
+    document.addEventListener("fullscreenchange", function () {
+      if (!document.fullscreenElement && state.ui.vocabFlashcardFullscreen) {
+        state.ui.vocabFlashcardFullscreen = false;
+        renderVocabList();
+      }
     });
   }
 
@@ -6226,6 +6353,7 @@ history.replaceState({}, "", newUrl);
     setupVocabFilters();
     setupDisplaySettings();
     setupVocabViewModeToggle();
+    setupVocabFlashcardFullscreen();
     setupTestSection();
     setupKanjiFilters();
     setupGrammarFilters();
