@@ -297,6 +297,34 @@
             display: flex;
             gap: 10px;
         }
+
+        .sent-image-section {
+            width: 100%;
+            max-width: 360px;
+            margin-top: 20px;
+            display: none;
+        }
+
+        .sent-image-section.active {
+            display: block;
+        }
+
+        .sent-image-section h2 {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-secondary);
+            margin-bottom: 10px;
+            padding-left: 4px;
+        }
+
+        .sent-image-section img {
+            display: block;
+            width: 100%;
+            border-radius: var(--radius-medium);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow);
+        }
     </style>
 </head>
 <body>
@@ -323,6 +351,11 @@
         <div id="results">
             <div class="empty-state">Chưa có nét vẽ nào</div>
         </div>
+    </div>
+
+    <div class="sent-image-section" id="sentImageSection">
+        <h2>Ảnh đã gửi đi nhận dạng</h2>
+        <img id="sentImagePreview" alt="Ảnh đã gửi để OCR">
     </div>
 
     <div class="crop-overlay" id="cropOverlay">
@@ -454,11 +487,31 @@
         canvas.addEventListener('touchmove', draw, { passive: false });
         canvas.addEventListener('touchend', stopDrawing);
 
+        const RESULTS_STORAGE_KEY = 'searchKanji_lastResults';
+
+        function saveResultsToStorage(candidates) {
+            try {
+                localStorage.setItem(RESULTS_STORAGE_KEY, JSON.stringify(candidates));
+            } catch (e) {
+                console.error('Không lưu được kết quả:', e);
+            }
+        }
+
+        function loadResultsFromStorage() {
+            try {
+                const raw = localStorage.getItem(RESULTS_STORAGE_KEY);
+                return raw ? JSON.parse(raw) : null;
+            } catch (e) {
+                return null;
+            }
+        }
+
         function clearCanvas() {
             triggerHaptic();
             ctx.clearRect(0, 0, canvas.width, canvas.height);
             strokes = [];
             resultsDiv.innerHTML = '<div class="empty-state">Chưa có nét vẽ nào</div>';
+            localStorage.removeItem(RESULTS_STORAGE_KEY);
         }
 
         async function recognizeKanji() {
@@ -498,11 +551,13 @@
         function displayResults(candidates) {
             resultsDiv.innerHTML = '';
             const topCandidates = candidates.slice(0, 10);
-            
+
             if (topCandidates.length === 0) {
                 resultsDiv.innerHTML = '<div class="empty-state">Không tìm thấy kết quả</div>';
                 return;
             }
+
+            saveResultsToStorage(topCandidates);
 
             topCandidates.forEach(kanji => {
                 const btn = document.createElement('button');
@@ -530,8 +585,6 @@
         }
 
         // ===== Nhận dạng Kanji từ ảnh chụp camera (OCR) =====
-        const MAX_OCR_DIM = 700; // giới hạn kích thước ảnh đưa vào OCR để xử lý nhanh
-
         let ocrWorker = null;
         let cropObjectUrl = null;
 
@@ -541,6 +594,8 @@
         const cropBox = document.getElementById('cropBox');
         const cropCancelBtn = document.getElementById('cropCancelBtn');
         const cropConfirmBtn = document.getElementById('cropConfirmBtn');
+        const sentImageSection = document.getElementById('sentImageSection');
+        const sentImagePreview = document.getElementById('sentImagePreview');
 
         async function getOcrWorker() {
             if (!ocrWorker) {
@@ -680,13 +735,15 @@
             const sWidth = rect.width * scaleX;
             const sHeight = rect.height * scaleY;
 
-            // Thu nhỏ ảnh cắt về kích thước tối đa để OCR chạy nhanh
-            const scaleDown = Math.min(1, MAX_OCR_DIM / Math.max(sWidth, sHeight));
+            // Giữ nguyên độ phân giải gốc của vùng đã chọn, chỉ cắt chứ không thu nhỏ
             const outCanvas = document.createElement('canvas');
-            outCanvas.width = Math.round(sWidth * scaleDown);
-            outCanvas.height = Math.round(sHeight * scaleDown);
+            outCanvas.width = Math.round(sWidth);
+            outCanvas.height = Math.round(sHeight);
             const outCtx = outCanvas.getContext('2d');
             outCtx.drawImage(cropImage, sx, sy, sWidth, sHeight, 0, 0, outCanvas.width, outCanvas.height);
+
+            sentImagePreview.src = outCanvas.toDataURL('image/jpeg', 0.95);
+            sentImageSection.classList.add('active');
 
             closeCropOverlay();
             await runOcr(outCanvas);
@@ -718,6 +775,12 @@
 
         // Khởi tạo Canvas ban đầu
         resizeCanvas();
+
+        // Khôi phục kết quả tìm kiếm gần nhất (nếu có) khi quay lại màn hình này
+        const savedResults = loadResultsFromStorage();
+        if (savedResults && savedResults.length > 0) {
+            displayResults(savedResults);
+        }
     </script>
 </body>
 </html>
