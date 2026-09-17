@@ -223,6 +223,80 @@
             color: var(--text-secondary);
             font-size: 14px;
         }
+
+        /* ===== Crop overlay ===== */
+        .crop-overlay {
+            display: none;
+            position: fixed;
+            inset: 0;
+            z-index: 1000;
+            background: rgba(0, 0, 0, 0.92);
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: calc(env(safe-area-inset-top) + 16px) 16px calc(env(safe-area-inset-bottom) + 16px) 16px;
+            gap: 16px;
+        }
+
+        .crop-overlay.active {
+            display: flex;
+        }
+
+        .crop-stage {
+            position: relative;
+            display: inline-block;
+            max-width: 100%;
+            max-height: 75vh;
+            touch-action: none;
+        }
+
+        #cropImage {
+            display: block;
+            max-width: 100%;
+            max-height: 75vh;
+            width: auto;
+            height: auto;
+            user-select: none;
+            -webkit-user-drag: none;
+            pointer-events: none;
+        }
+
+        .crop-box {
+            position: absolute;
+            border: 2px solid #FFFFFF;
+            box-shadow: 0 0 0 2000px rgba(0, 0, 0, 0.55);
+            touch-action: none;
+            cursor: move;
+        }
+
+        .crop-handle {
+            position: absolute;
+            width: 22px;
+            height: 22px;
+            background: #FFFFFF;
+            border-radius: 50%;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+            touch-action: none;
+            transform: translate(-50%, -50%);
+        }
+
+        .handle-tl { top: 0; left: 0; cursor: nwse-resize; }
+        .handle-tr { top: 0; left: 100%; cursor: nesw-resize; }
+        .handle-bl { top: 100%; left: 0; cursor: nesw-resize; }
+        .handle-br { top: 100%; left: 100%; cursor: nwse-resize; }
+
+        .crop-hint {
+            color: rgba(255,255,255,0.7);
+            font-size: 13px;
+            text-align: center;
+        }
+
+        .crop-actions {
+            width: 100%;
+            max-width: 360px;
+            display: flex;
+            gap: 10px;
+        }
     </style>
 </head>
 <body>
@@ -248,6 +322,23 @@
         <h2>Gợi ý kết quả</h2>
         <div id="results">
             <div class="empty-state">Chưa có nét vẽ nào</div>
+        </div>
+    </div>
+
+    <div class="crop-overlay" id="cropOverlay">
+        <div class="crop-stage" id="cropStage">
+            <img id="cropImage" src="" alt="Ảnh chụp">
+            <div class="crop-box" id="cropBox">
+                <div class="crop-handle handle-tl" data-handle="tl"></div>
+                <div class="crop-handle handle-tr" data-handle="tr"></div>
+                <div class="crop-handle handle-bl" data-handle="bl"></div>
+                <div class="crop-handle handle-br" data-handle="br"></div>
+            </div>
+        </div>
+        <p class="crop-hint">Kéo khung để chọn đúng vùng chữ Kanji</p>
+        <div class="crop-actions">
+            <button class="btn btn-clear" id="cropCancelBtn">Hủy</button>
+            <button class="btn btn-camera" id="cropConfirmBtn">Dùng vùng này</button>
         </div>
     </div>
 
@@ -439,7 +530,17 @@
         }
 
         // ===== Nhận dạng Kanji từ ảnh chụp camera (OCR) =====
+        const MAX_OCR_DIM = 700; // giới hạn kích thước ảnh đưa vào OCR để xử lý nhanh
+
         let ocrWorker = null;
+        let cropObjectUrl = null;
+
+        const cropOverlay = document.getElementById('cropOverlay');
+        const cropStage = document.getElementById('cropStage');
+        const cropImage = document.getElementById('cropImage');
+        const cropBox = document.getElementById('cropBox');
+        const cropCancelBtn = document.getElementById('cropCancelBtn');
+        const cropConfirmBtn = document.getElementById('cropConfirmBtn');
 
         async function getOcrWorker() {
             if (!ocrWorker) {
@@ -450,18 +551,154 @@
 
         cameraInput.addEventListener('change', handleCameraCapture);
 
-        async function handleCameraCapture(event) {
+        function handleCameraCapture(event) {
             const file = event.target.files[0];
             event.target.value = ''; // cho phép chọn lại cùng 1 ảnh lần sau
             if (!file) return;
 
+            if (cropObjectUrl) URL.revokeObjectURL(cropObjectUrl);
+            cropObjectUrl = URL.createObjectURL(file);
+            cropImage.src = cropObjectUrl;
+            cropImage.onload = () => {
+                initCropBox();
+                cropOverlay.classList.add('active');
+            };
+        }
+
+        function initCropBox() {
+            // Khung cắt mặc định: 80% ở giữa ảnh hiển thị
+            const w = cropImage.clientWidth;
+            const h = cropImage.clientHeight;
+            const boxW = w * 0.8;
+            const boxH = h * 0.8;
+            setCropBoxRect((w - boxW) / 2, (h - boxH) / 2, boxW, boxH);
+        }
+
+        function setCropBoxRect(left, top, width, height) {
+            const stageW = cropImage.clientWidth;
+            const stageH = cropImage.clientHeight;
+            const MIN_SIZE = 40;
+
+            width = Math.max(MIN_SIZE, Math.min(width, stageW));
+            height = Math.max(MIN_SIZE, Math.min(height, stageH));
+            left = Math.max(0, Math.min(left, stageW - width));
+            top = Math.max(0, Math.min(top, stageH - height));
+
+            cropBox.style.left = left + 'px';
+            cropBox.style.top = top + 'px';
+            cropBox.style.width = width + 'px';
+            cropBox.style.height = height + 'px';
+        }
+
+        function getCropBoxRect() {
+            return {
+                left: parseFloat(cropBox.style.left) || 0,
+                top: parseFloat(cropBox.style.top) || 0,
+                width: parseFloat(cropBox.style.width) || 0,
+                height: parseFloat(cropBox.style.height) || 0
+            };
+        }
+
+        // Kéo để di chuyển khung cắt
+        let dragMode = null; // 'move' | 'tl' | 'tr' | 'bl' | 'br'
+        let dragStart = null;
+
+        function onCropPointerDown(e, mode) {
+            e.preventDefault();
+            dragMode = mode;
+            const point = e.touches ? e.touches[0] : e;
+            dragStart = {
+                x: point.clientX,
+                y: point.clientY,
+                rect: getCropBoxRect()
+            };
+        }
+
+        function onCropPointerMove(e) {
+            if (!dragMode) return;
+            if (e.cancelable) e.preventDefault();
+
+            const point = e.touches ? e.touches[0] : e;
+            const dx = point.clientX - dragStart.x;
+            const dy = point.clientY - dragStart.y;
+            const r = dragStart.rect;
+
+            if (dragMode === 'move') {
+                setCropBoxRect(r.left + dx, r.top + dy, r.width, r.height);
+            } else if (dragMode === 'br') {
+                setCropBoxRect(r.left, r.top, r.width + dx, r.height + dy);
+            } else if (dragMode === 'tr') {
+                setCropBoxRect(r.left, r.top + dy, r.width + dx, r.height - dy);
+            } else if (dragMode === 'bl') {
+                setCropBoxRect(r.left + dx, r.top, r.width - dx, r.height + dy);
+            } else if (dragMode === 'tl') {
+                setCropBoxRect(r.left + dx, r.top + dy, r.width - dx, r.height - dy);
+            }
+        }
+
+        function onCropPointerUp() {
+            dragMode = null;
+            dragStart = null;
+        }
+
+        cropBox.addEventListener('mousedown', (e) => onCropPointerDown(e, 'move'));
+        cropBox.addEventListener('touchstart', (e) => onCropPointerDown(e, 'move'), { passive: false });
+
+        cropBox.querySelectorAll('.crop-handle').forEach(handle => {
+            const mode = handle.dataset.handle;
+            handle.addEventListener('mousedown', (e) => { e.stopPropagation(); onCropPointerDown(e, mode); });
+            handle.addEventListener('touchstart', (e) => { e.stopPropagation(); onCropPointerDown(e, mode); }, { passive: false });
+        });
+
+        window.addEventListener('mousemove', onCropPointerMove);
+        window.addEventListener('touchmove', onCropPointerMove, { passive: false });
+        window.addEventListener('mouseup', onCropPointerUp);
+        window.addEventListener('touchend', onCropPointerUp);
+
+        function closeCropOverlay() {
+            cropOverlay.classList.remove('active');
+            if (cropObjectUrl) {
+                URL.revokeObjectURL(cropObjectUrl);
+                cropObjectUrl = null;
+            }
+            cropImage.src = '';
+        }
+
+        cropCancelBtn.addEventListener('click', () => {
             triggerHaptic();
+            closeCropOverlay();
+        });
+
+        cropConfirmBtn.addEventListener('click', async () => {
+            triggerHaptic();
+            const rect = getCropBoxRect();
+            const scaleX = cropImage.naturalWidth / cropImage.clientWidth;
+            const scaleY = cropImage.naturalHeight / cropImage.clientHeight;
+
+            const sx = rect.left * scaleX;
+            const sy = rect.top * scaleY;
+            const sWidth = rect.width * scaleX;
+            const sHeight = rect.height * scaleY;
+
+            // Thu nhỏ ảnh cắt về kích thước tối đa để OCR chạy nhanh
+            const scaleDown = Math.min(1, MAX_OCR_DIM / Math.max(sWidth, sHeight));
+            const outCanvas = document.createElement('canvas');
+            outCanvas.width = Math.round(sWidth * scaleDown);
+            outCanvas.height = Math.round(sHeight * scaleDown);
+            const outCtx = outCanvas.getContext('2d');
+            outCtx.drawImage(cropImage, sx, sy, sWidth, sHeight, 0, 0, outCanvas.width, outCanvas.height);
+
+            closeCropOverlay();
+            await runOcr(outCanvas);
+        });
+
+        async function runOcr(source) {
             cameraBtn.disabled = true;
             resultsDiv.innerHTML = '<div class="empty-state">Đang nhận dạng ảnh...</div>';
 
             try {
                 const worker = await getOcrWorker();
-                const { data } = await worker.recognize(file);
+                const { data } = await worker.recognize(source);
                 const text = data.text || '';
                 const kanjiChars = [...new Set(text.match(/[一-龯]/g) || [])];
 
