@@ -560,8 +560,8 @@
             cropObjectUrl = URL.createObjectURL(file);
             cropImage.src = cropObjectUrl;
             cropImage.onload = () => {
-                initCropBox();
                 cropOverlay.classList.add('active');
+                initCropBox();
             };
         }
 
