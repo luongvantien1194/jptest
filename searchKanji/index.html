@@ -46,25 +46,25 @@
             display: flex;
             flex-direction: column;
             align-items: center;
-            padding: calc(env(safe-area-inset-top) + 20px) 16px calc(env(safe-area-inset-bottom) + 20px) 16px;
+            padding: calc(env(safe-area-inset-top) + 12px) 16px calc(env(safe-area-inset-bottom) + 12px) 16px;
             overflow-x: hidden;
         }
 
         .header {
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 10px;
         }
 
         .header h1 {
-            font-size: 22px;
+            font-size: 19px;
             font-weight: 700;
             letter-spacing: -0.5px;
         }
 
         .header p {
-            font-size: 14px;
+            font-size: 13px;
             color: var(--text-secondary);
-            margin-top: 4px;
+            margin-top: 2px;
         }
 
         .main-card {
@@ -74,19 +74,19 @@
             backdrop-filter: blur(20px);
             -webkit-backdrop-filter: blur(20px);
             border-radius: var(--radius-large);
-            padding: 20px;
+            padding: 14px;
             box-shadow: var(--shadow);
             border: 1px solid var(--border-color);
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 16px;
+            gap: 10px;
         }
 
         .canvas-container {
             position: relative;
             width: 100%;
-            aspect-ratio: 1 / 1;
+            aspect-ratio: 1 / 0.8;
             background-color: #FFFFFF;
             border-radius: var(--radius-medium);
             overflow: hidden;
@@ -132,8 +132,8 @@
 
         .btn {
             flex: 1;
-            padding: 14px;
-            font-size: 15px;
+            padding: 11px;
+            font-size: 14px;
             font-weight: 600;
             border-radius: var(--radius-small);
             border: none;
@@ -173,27 +173,27 @@
         .results-section {
             width: 100%;
             max-width: 360px;
-            margin-top: 20px;
+            margin-top: 12px;
         }
 
         .results-section h2 {
-            font-size: 13px;
+            font-size: 12px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             color: var(--text-secondary);
-            margin-bottom: 10px;
+            margin-bottom: 6px;
             padding-left: 4px;
         }
 
         #results {
             display: grid;
             grid-template-columns: repeat(5, 1fr);
-            gap: 10px;
+            gap: 8px;
         }
 
         .kanji-btn {
             aspect-ratio: 1 / 1;
-            font-size: 26px;
+            font-size: 22px;
             font-weight: 500;
             color: var(--text-color);
             background: var(--card-bg);
@@ -298,10 +298,114 @@
             gap: 10px;
         }
 
+        .composed-section {
+            width: 100%;
+            max-width: 360px;
+            margin-top: 10px;
+        }
+
+        .composed-section h2 {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-secondary);
+            margin-bottom: 4px;
+            padding-left: 4px;
+        }
+
+        .composed-bar {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-medium);
+            padding: 6px;
+            box-shadow: var(--shadow);
+        }
+
+        .composed-chips {
+            flex: 1;
+            min-width: 0;
+            min-height: 32px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            overflow-x: auto;
+        }
+
+        .composed-empty {
+            color: var(--text-secondary);
+            font-size: 12px;
+            white-space: nowrap;
+        }
+
+        .composed-chip {
+            flex-shrink: 0;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            background: rgba(0, 122, 255, 0.1);
+            color: var(--primary-color);
+            border: none;
+            border-radius: 10px;
+            padding: 4px 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            white-space: nowrap;
+        }
+
+        .composed-chip-remove {
+            font-size: 12px;
+            color: var(--text-secondary);
+        }
+
+        .composed-chip:active {
+            background: rgba(0, 122, 255, 0.2);
+        }
+
+        .composed-icon-btn {
+            flex-shrink: 0;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            border: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+        }
+
+        .composed-clear-btn {
+            background-color: rgba(255, 59, 48, 0.1);
+            color: var(--danger-color);
+        }
+
+        .composed-clear-btn:active {
+            background-color: rgba(255, 59, 48, 0.2);
+        }
+
+        .composed-go-btn {
+            background-color: var(--primary-color);
+            color: #FFFFFF;
+        }
+
+        .composed-go-btn:active {
+            transform: scale(0.94);
+        }
+
+        .composed-go-btn:disabled {
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
         .sent-image-section {
             width: 100%;
             max-width: 360px;
-            margin-top: 20px;
+            margin-top: 12px;
             display: none;
         }
 
@@ -310,11 +414,11 @@
         }
 
         .sent-image-section h2 {
-            font-size: 13px;
+            font-size: 12px;
             text-transform: uppercase;
             letter-spacing: 0.5px;
             color: var(--text-secondary);
-            margin-bottom: 10px;
+            margin-bottom: 6px;
             padding-left: 4px;
         }
 
@@ -353,6 +457,21 @@
         </div>
     </div>
 
+    <div class="composed-section">
+        <h2>Cụm từ đã chọn</h2>
+        <div class="composed-bar">
+            <div class="composed-chips" id="composedChips">
+                <div class="composed-empty">Chạm vào kết quả bên trên để ghép chữ</div>
+            </div>
+            <button class="composed-icon-btn composed-clear-btn" id="composedClearBtn" title="Xóa cụm từ">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+            </button>
+            <button class="composed-icon-btn composed-go-btn" id="composedGoBtn" title="Tra cứu cụm từ này" disabled>
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
+            </button>
+        </div>
+    </div>
+
     <div class="sent-image-section" id="sentImageSection">
         <h2>Ảnh đã gửi đi nhận dạng</h2>
         <img id="sentImagePreview" alt="Ảnh đã gửi để OCR">
@@ -383,6 +502,63 @@
         const resultsDiv = document.getElementById('results');
         const cameraInput = document.getElementById('cameraInput');
         const cameraBtn = document.getElementById('cameraBtn');
+        const composedChips = document.getElementById('composedChips');
+        const composedClearBtn = document.getElementById('composedClearBtn');
+        const composedGoBtn = document.getElementById('composedGoBtn');
+
+        // ===== Ghép cụm từ từ các kanji đã chọn trong kết quả =====
+        let composedKanji = [];
+
+        function renderComposed() {
+            composedChips.innerHTML = '';
+
+            if (composedKanji.length === 0) {
+                composedChips.innerHTML = '<div class="composed-empty">Chạm vào kết quả bên trên để ghép chữ</div>';
+                composedGoBtn.disabled = true;
+                return;
+            }
+
+            composedGoBtn.disabled = false;
+
+            composedKanji.forEach((kanji, idx) => {
+                const chip = document.createElement('button');
+                chip.type = 'button';
+                chip.className = 'composed-chip';
+                chip.innerHTML = `<span>${kanji}</span><span class="composed-chip-remove">×</span>`;
+                chip.onclick = () => {
+                    triggerHaptic();
+                    composedKanji.splice(idx, 1);
+                    renderComposed();
+                };
+                composedChips.appendChild(chip);
+            });
+        }
+
+        function addToComposed(kanji) {
+            composedKanji.push(kanji);
+            renderComposed();
+        }
+
+        composedClearBtn.addEventListener('click', () => {
+            triggerHaptic();
+            composedKanji = [];
+            renderComposed();
+        });
+
+        composedGoBtn.addEventListener('click', () => {
+            if (composedKanji.length === 0) return;
+            triggerHaptic();
+
+            const combined = composedKanji.join('');
+            const encoded = encodeURIComponent(combined);
+            const params = new URLSearchParams(window.location.search);
+
+            if (params.get('type') === 'vocabTab') {
+                window.location.href = `../index.html?search=${encoded}`;
+            } else {
+                window.location.href = `../index.html?tab=kanji&kanji=${encoded}`;
+            }
+        });
 
         let isDrawing = false;
         let strokes = [];
@@ -566,19 +742,8 @@
                 
                 btn.onclick = () => {
                     triggerHaptic();
-
-                    const params = new URLSearchParams(window.location.search);
-                        // Mã hóa ký tự Kanji trước khi đưa lên URL
-                    const encodedKanji = encodeURIComponent(kanji);
-                    if (params.get("type") === "vocabTab") {
-
-                        window.location.href = `../index.html?search=${encodedKanji}#vocab`;
-                    } else {
-                       window.location.href = `../index.html?tab=kanji&kanji=${encodedKanji}`;
-                    }
+                    addToComposed(kanji);
                 };
-                
-            
 
                 resultsDiv.appendChild(btn);
             });
