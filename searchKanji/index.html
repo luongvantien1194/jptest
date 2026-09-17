@@ -155,6 +155,21 @@
             transform: scale(0.98);
         }
 
+        .btn-camera {
+            background-color: rgba(0, 122, 255, 0.1);
+            color: var(--primary-color);
+        }
+
+        .btn-camera:active {
+            background-color: rgba(0, 122, 255, 0.2);
+            transform: scale(0.98);
+        }
+
+        .btn-camera:disabled {
+            opacity: 0.5;
+            pointer-events: none;
+        }
+
         .results-section {
             width: 100%;
             max-width: 360px;
@@ -221,6 +236,11 @@
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
                 Xóa bảng
             </button>
+            <button class="btn btn-camera" id="cameraBtn" onclick="document.getElementById('cameraInput').click()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
+                Chụp ảnh
+            </button>
+            <input type="file" id="cameraInput" accept="image/*" capture="environment" style="display:none">
         </div>
     </div>
 
@@ -231,11 +251,14 @@
         </div>
     </div>
 
+    <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
     <script>
         const canvas = document.getElementById('canvas');
         const container = document.getElementById('canvasContainer');
         const ctx = canvas.getContext('2d');
         const resultsDiv = document.getElementById('results');
+        const cameraInput = document.getElementById('cameraInput');
+        const cameraBtn = document.getElementById('cameraBtn');
 
         let isDrawing = false;
         let strokes = [];
@@ -413,6 +436,47 @@
 
                 resultsDiv.appendChild(btn);
             });
+        }
+
+        // ===== Nhận dạng Kanji từ ảnh chụp camera (OCR) =====
+        let ocrWorker = null;
+
+        async function getOcrWorker() {
+            if (!ocrWorker) {
+                ocrWorker = await Tesseract.createWorker('jpn');
+            }
+            return ocrWorker;
+        }
+
+        cameraInput.addEventListener('change', handleCameraCapture);
+
+        async function handleCameraCapture(event) {
+            const file = event.target.files[0];
+            event.target.value = ''; // cho phép chọn lại cùng 1 ảnh lần sau
+            if (!file) return;
+
+            triggerHaptic();
+            cameraBtn.disabled = true;
+            resultsDiv.innerHTML = '<div class="empty-state">Đang nhận dạng ảnh...</div>';
+
+            try {
+                const worker = await getOcrWorker();
+                const { data } = await worker.recognize(file);
+                const text = data.text || '';
+                const kanjiChars = [...new Set(text.match(/[一-龯]/g) || [])];
+
+                if (kanjiChars.length === 0) {
+                    resultsDiv.innerHTML = '<div class="empty-state">Không nhận dạng được chữ Kanji nào trong ảnh</div>';
+                    return;
+                }
+
+                displayResults(kanjiChars.slice(0, 15));
+            } catch (error) {
+                console.error('Lỗi OCR:', error);
+                resultsDiv.innerHTML = '<div class="empty-state">Lỗi khi nhận dạng ảnh, thử lại nhé</div>';
+            } finally {
+                cameraBtn.disabled = false;
+            }
         }
 
         // Khởi tạo Canvas ban đầu
