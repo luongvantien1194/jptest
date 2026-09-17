@@ -2058,27 +2058,28 @@
             return false;
           }
         }
-        if (state.filter.vocabCategory !== "all" &&
-          categoryValue !== state.filter.vocabCategory) {
+      }
+
+      if (state.filter.vocabCategory !== "all" &&
+        categoryValue !== state.filter.vocabCategory) {
+        return false;
+      }
+
+      var vIdx = vocabData.indexOf(item);
+
+      // Filter favorites only
+      if (state.vocabFavOnly) {
+        if (!state.vocabFavorites[vIdx]) {
           return false;
         }
+      }
 
-        var vIdx = vocabData.indexOf(item);
-
-        // Filter favorites only
-        if (state.vocabFavOnly) {
-          if (!state.vocabFavorites[vIdx]) {
-            return false;
-          }
-        }
-
-        var mastered = !!state.vocabMastered[vIdx];
-        if (state.filter.vocabMastered === "mastered" && !mastered) {
-          return false;
-        }
-        if (state.filter.vocabMastered === "not" && mastered) {
-          return false;
-        }
+      var mastered = !!state.vocabMastered[vIdx];
+      if (state.filter.vocabMastered === "mastered" && !mastered) {
+        return false;
+      }
+      if (state.filter.vocabMastered === "not" && mastered) {
+        return false;
       }
 
       return true;
@@ -5022,6 +5023,7 @@
       state.filter = JSON.parse(savedFT);
       if (state.filter.isOnelesson) {
         lessonTo.readOnly = true;
+        lessonTo.classList.add("disabled-gray");
       }
       isOnelesson.checked = state.filter.isOnelesson;
       lessonFrom.value = state.filter.vocabLessonFrom;
@@ -5107,14 +5109,18 @@ history.replaceState({}, "", newUrl);
 
     addKanji.addEventListener("click", redirectKanji);
 
-    lessonFrom.addEventListener("input", function () {
-      state.filter.vocabLessonFrom = lessonFrom.value.trim();
-      renderVocabList();
-    });
+    const addVocabBtn = document.getElementById("add-vocab-btn");
+    if (addVocabBtn) {
+      addVocabBtn.addEventListener("click", function () {
+        const word = searchInput.value.trim();
+        window.location.href = `addVocab/index.html${word ? "?word=" + encodeURIComponent(word) : ""}`;
+      });
+    }
 
     lessonTo.addEventListener("input", function () {
       state.filter.vocabLessonTo = lessonTo.value.trim();
       renderVocabList();
+      saveFillter();
     });
 
     categorySelect.addEventListener("change", function () {
@@ -6208,6 +6214,14 @@ history.replaceState({}, "", newUrl);
       addKanji2.addEventListener("click", function () {
           const kanji = kanjiSearchInput.value.trim();
           window.location.href = `addKanji/index.html?kanji=${encodeURIComponent(kanji)}`;
+      });
+    }
+
+    var addVocabBtnKanji = document.getElementById("add-vocab-btn-kanji");
+    if (addVocabBtnKanji) {
+      addVocabBtnKanji.addEventListener("click", function () {
+        const word = kanjiSearchInput.value.trim();
+        window.location.href = `addVocab/index.html${word ? "?word=" + encodeURIComponent(word) : ""}`;
       });
     }
 
