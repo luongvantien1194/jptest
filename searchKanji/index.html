@@ -170,6 +170,32 @@
             pointer-events: none;
         }
 
+        .btn-toggle-draw {
+            background-color: rgba(142, 142, 147, 0.12);
+            color: var(--text-color);
+        }
+
+        .btn-toggle-draw:active {
+            background-color: rgba(142, 142, 147, 0.22);
+            transform: scale(0.98);
+        }
+
+        .btn-toggle-draw.active {
+            background-color: rgba(0, 122, 255, 0.1);
+            color: var(--primary-color);
+        }
+
+        .canvas-wrap {
+            display: none;
+            flex-direction: column;
+            gap: 10px;
+            width: 100%;
+        }
+
+        .canvas-wrap.active {
+            display: flex;
+        }
+
         .results-section {
             width: 100%;
             max-width: 360px;
@@ -192,9 +218,8 @@
         }
 
         .kanji-btn {
-            aspect-ratio: 1 / 1;
-            font-size: 22px;
-            font-weight: 500;
+            min-height: 56px;
+            padding: 6px 2px;
             color: var(--text-color);
             background: var(--card-bg);
             backdrop-filter: blur(20px);
@@ -203,17 +228,37 @@
             border-radius: var(--radius-small);
             cursor: pointer;
             display: flex;
+            flex-direction: column;
             align-items: center;
             justify-content: center;
+            gap: 2px;
             box-shadow: 0 2px 8px rgba(0,0,0,0.04);
             transition: all 0.15s ease;
+        }
+
+        .kanji-btn .kanji-char {
+            font-size: 22px;
+            font-weight: 500;
+            line-height: 1;
+        }
+
+        .kanji-btn .kanji-reading {
+            font-size: 9px;
+            font-weight: 400;
+            line-height: 1.1;
+            color: var(--text-secondary);
+            text-align: center;
         }
 
         .kanji-btn:active {
             transform: scale(0.92);
             background: var(--primary-color);
-            color: #FFFFFF;
             border-color: var(--primary-color);
+        }
+
+        .kanji-btn:active .kanji-char,
+        .kanji-btn:active .kanji-reading {
+            color: #FFFFFF;
         }
 
         .empty-state {
@@ -388,6 +433,20 @@
             background-color: rgba(255, 59, 48, 0.2);
         }
 
+        .composed-gpt-btn {
+            background-color: rgba(52, 199, 89, 0.12);
+            font-size: 16px;
+        }
+
+        .composed-gpt-btn:active {
+            background-color: rgba(52, 199, 89, 0.22);
+        }
+
+        .composed-gpt-btn:disabled {
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
         .composed-go-btn {
             background-color: var(--primary-color);
             color: #FFFFFF;
@@ -400,6 +459,16 @@
         .composed-go-btn:disabled {
             opacity: 0.4;
             pointer-events: none;
+        }
+
+        .composed-preview {
+            margin-top: 8px;
+            padding: 0 4px;
+            font-size: 20px;
+            font-weight: 600;
+            color: var(--text-color);
+            word-break: break-all;
+            min-height: 24px;
         }
 
         .sent-image-section {
@@ -429,24 +498,79 @@
             border: 1px solid var(--border-color);
             box-shadow: var(--shadow);
         }
+
+        .settings-section {
+            width: 100%;
+            max-width: 360px;
+            margin-top: 20px;
+        }
+
+        .settings-section h2 {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: var(--text-secondary);
+            margin-bottom: 6px;
+            padding-left: 4px;
+        }
+
+        .settings-row {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            background: var(--card-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--border-color);
+            border-radius: var(--radius-medium);
+            padding: 12px 14px;
+            box-shadow: var(--shadow);
+        }
+
+        .settings-row label {
+            font-size: 14px;
+            color: var(--text-color);
+        }
+
+        .settings-row input[type="number"] {
+            width: 64px;
+            text-align: center;
+            font-size: 15px;
+            font-weight: 600;
+            color: var(--text-color);
+            background: var(--bg-color);
+            border: 1px solid var(--border-color);
+            border-radius: 10px;
+            padding: 8px 4px;
+        }
     </style>
 </head>
 <body>
     <div class="main-card">
-        <div class="canvas-container" id="canvasContainer">
-            <canvas id="canvas"></canvas>
-        </div>
-
         <div class="controls">
-            <button class="btn btn-clear" onclick="clearCanvas()">
-                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
-                Xóa bảng
+            <button class="btn btn-toggle-draw" id="toggleDrawBtn" onclick="toggleDrawBoard()">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20h9"></path><path d="M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4Z"></path></svg>
+                <span id="toggleDrawBtnLabel">Hiện bảng vẽ</span>
             </button>
             <button class="btn btn-camera" id="cameraBtn" onclick="document.getElementById('cameraInput').click()">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"></path><circle cx="12" cy="13" r="4"></circle></svg>
                 Chụp ảnh
             </button>
             <input type="file" id="cameraInput" accept="image/*" capture="environment" style="display:none">
+        </div>
+
+        <div class="canvas-wrap" id="canvasWrap">
+            <div class="canvas-container" id="canvasContainer">
+                <canvas id="canvas"></canvas>
+            </div>
+
+            <div class="controls">
+                <button class="btn btn-clear" onclick="clearCanvas()">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
+                    Xóa bảng
+                </button>
+            </div>
         </div>
     </div>
 
@@ -466,15 +590,25 @@
             <button class="composed-icon-btn composed-clear-btn" id="composedClearBtn" title="Xóa cụm từ">
                 <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path></svg>
             </button>
+            <button class="composed-icon-btn composed-gpt-btn" id="composedGptBtn" title="Nhờ ChatGPT phân tích cụm từ này" disabled>🤖</button>
             <button class="composed-icon-btn composed-go-btn" id="composedGoBtn" title="Tra cứu cụm từ này" disabled>
                 <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg>
             </button>
         </div>
+        <div class="composed-preview" id="composedPreview"></div>
     </div>
 
     <div class="sent-image-section" id="sentImageSection">
         <h2>Ảnh đã gửi đi nhận dạng</h2>
         <img id="sentImagePreview" alt="Ảnh đã gửi để OCR">
+    </div>
+
+    <div class="settings-section">
+        <h2>Cài đặt</h2>
+        <div class="settings-row">
+            <label for="resultLimitInput">Số lượng kết quả hiển thị tối đa</label>
+            <input type="number" id="resultLimitInput" inputmode="numeric" min="5" max="50" step="1">
+        </div>
     </div>
 
     <div class="crop-overlay" id="cropOverlay">
@@ -494,8 +628,29 @@
         </div>
     </div>
 
+    <script src="../app_files/kanjiData_TvkS.js"></script>
+    <script src="../app_files/kanjiData_1_TvkS.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
     <script>
+        // ===== Dữ liệu âm đọc Kanji (Hán Việt / On / Kun) để hiển thị kèm kết quả =====
+        if (window._kanjiExtra && window._kanjiExtra.length) {
+            kanjiData.push.apply(kanjiData, window._kanjiExtra);
+        }
+        const kanjiReadingMap = new Map();
+        kanjiData.forEach(item => {
+            if (item.kanji && !kanjiReadingMap.has(item.kanji)) {
+                kanjiReadingMap.set(item.kanji, item);
+            }
+        });
+
+        function getKanjiReading(kanji) {
+            const item = kanjiReadingMap.get(kanji);
+            if (!item) return '';
+            const kun = String(item.kun_reading || '').split('|')[0].trim();
+            const on = String(item.on_reading || '').split('|')[0].trim();
+            return [kun, on].filter(Boolean).join(' ・ ');
+        }
+
         const canvas = document.getElementById('canvas');
         const container = document.getElementById('canvasContainer');
         const ctx = canvas.getContext('2d');
@@ -505,6 +660,27 @@
         const composedChips = document.getElementById('composedChips');
         const composedClearBtn = document.getElementById('composedClearBtn');
         const composedGoBtn = document.getElementById('composedGoBtn');
+        const composedGptBtn = document.getElementById('composedGptBtn');
+        const composedPreview = document.getElementById('composedPreview');
+        const canvasWrap = document.getElementById('canvasWrap');
+        const toggleDrawBtn = document.getElementById('toggleDrawBtn');
+        const toggleDrawBtnLabel = document.getElementById('toggleDrawBtnLabel');
+
+        // ===== Ẩn/hiện bảng vẽ tay (mặc định ẩn) =====
+        let drawBoardVisible = false;
+
+        function toggleDrawBoard() {
+            triggerHaptic();
+            drawBoardVisible = !drawBoardVisible;
+            canvasWrap.classList.toggle('active', drawBoardVisible);
+            toggleDrawBtn.classList.toggle('active', drawBoardVisible);
+            toggleDrawBtnLabel.textContent = drawBoardVisible ? 'Ẩn bảng vẽ' : 'Hiện bảng vẽ';
+
+            if (drawBoardVisible) {
+                // canvas-wrap vừa chuyển từ display:none nên phải đo lại kích thước sau khi có layout
+                requestAnimationFrame(resizeCanvas);
+            }
+        }
 
         // ===== Ghép cụm từ từ các kanji đã chọn trong kết quả =====
         let composedKanji = [];
@@ -515,10 +691,14 @@
             if (composedKanji.length === 0) {
                 composedChips.innerHTML = '<div class="composed-empty">Chạm vào kết quả bên trên để ghép chữ</div>';
                 composedGoBtn.disabled = true;
+                composedGptBtn.disabled = true;
+                composedPreview.textContent = '';
                 return;
             }
 
             composedGoBtn.disabled = false;
+            composedGptBtn.disabled = false;
+            composedPreview.textContent = composedKanji.join('');
 
             composedKanji.forEach((kanji, idx) => {
                 const chip = document.createElement('button');
@@ -532,6 +712,9 @@
                 };
                 composedChips.appendChild(chip);
             });
+
+            // Tự cuộn sát phải để luôn thấy từ vừa thêm/cuối cùng khi danh sách bị tràn
+            composedChips.scrollLeft = composedChips.scrollWidth;
         }
 
         function addToComposed(kanji) {
@@ -554,10 +737,32 @@
             const params = new URLSearchParams(window.location.search);
 
             if (params.get('type') === 'vocabTab') {
-                window.location.href = `../index.html?search=${encoded}`;
+                window.location.href = `../index.html?search=${encoded}#vocab`;
             } else {
                 window.location.href = `../index.html?tab=kanji&kanji=${encoded}`;
             }
+        });
+
+        composedGptBtn.addEventListener('click', () => {
+            if (composedKanji.length === 0) return;
+            triggerHaptic();
+
+            const combined = composedKanji.join('');
+            const promptText = `Cho cụm từ tiếng Nhật sau (ghép từ các chữ Kanji theo đúng thứ tự): "${combined}".
+
+Bước 1: Cho biết cách đọc (Hiragana) và dịch nghĩa của CẢ CỤM TỪ này trước tiên (nếu nó tạo thành một từ/cụm từ có nghĩa trong tiếng Nhật).
+
+Bước 2: Sau đó phân tích riêng từng chữ Kanji có trong cụm, liệt kê:
+- Âm Hán Việt
+- Nghĩa
+- Âm On (Onyomi, viết bằng Katakana)
+- Âm Kun (Kunyomi, viết bằng Hiragana)
+- Một từ vựng ví dụ có chứa chữ đó kèm cách đọc và nghĩa
+
+Chỉ trả lời bằng tiếng Việt, trình bày rõ ràng theo từng bước/mục, không thêm lời dẫn thừa.`;
+
+            const encodedPrompt = encodeURIComponent(promptText);
+            window.open(`https://chatgpt.com/?q=${encodedPrompt}`, '_blank');
         });
 
         let isDrawing = false;
@@ -664,6 +869,32 @@
         canvas.addEventListener('touchend', stopDrawing);
 
         const RESULTS_STORAGE_KEY = 'searchKanji_lastResults';
+        const RESULT_LIMIT_KEY = 'searchKanji_resultLimit';
+        const RESULT_LIMIT_MIN = 5;
+        const RESULT_LIMIT_MAX = 50;
+        const RESULT_LIMIT_DEFAULT = 20;
+
+        function loadResultLimit() {
+            const raw = parseInt(localStorage.getItem(RESULT_LIMIT_KEY), 10);
+            if (isNaN(raw)) return RESULT_LIMIT_DEFAULT;
+            return Math.max(RESULT_LIMIT_MIN, Math.min(RESULT_LIMIT_MAX, raw));
+        }
+
+        let resultLimit = loadResultLimit();
+
+        const resultLimitInput = document.getElementById('resultLimitInput');
+        resultLimitInput.min = RESULT_LIMIT_MIN;
+        resultLimitInput.max = RESULT_LIMIT_MAX;
+        resultLimitInput.value = resultLimit;
+
+        resultLimitInput.addEventListener('change', () => {
+            let val = parseInt(resultLimitInput.value, 10);
+            if (isNaN(val)) val = RESULT_LIMIT_DEFAULT;
+            val = Math.max(RESULT_LIMIT_MIN, Math.min(RESULT_LIMIT_MAX, val));
+            resultLimit = val;
+            resultLimitInput.value = val;
+            localStorage.setItem(RESULT_LIMIT_KEY, String(val));
+        });
 
         function saveResultsToStorage(candidates) {
             try {
@@ -717,7 +948,9 @@
 
                 if (data[0] === 'SUCCESS') {
                     const candidates = data[1][0][1];
-                    displayResults(candidates);
+                    // Chỉ giữ lại candidate là chữ Kanji, loại bỏ hiragana/katakana lẫn vào
+                    const kanjiOnly = candidates.filter(c => /^[一-龯]+$/.test(c));
+                    displayResults(kanjiOnly);
                 }
             } catch (error) {
                 console.error("Lỗi nhận dạng:", error);
@@ -726,7 +959,7 @@
 
         function displayResults(candidates) {
             resultsDiv.innerHTML = '';
-            const topCandidates = candidates.slice(0, 10);
+            const topCandidates = candidates.slice(0, resultLimit);
 
             if (topCandidates.length === 0) {
                 resultsDiv.innerHTML = '<div class="empty-state">Không tìm thấy kết quả</div>';
@@ -738,8 +971,11 @@
             topCandidates.forEach(kanji => {
                 const btn = document.createElement('button');
                 btn.className = 'kanji-btn';
-                btn.innerText = kanji;
-                
+
+                const reading = getKanjiReading(kanji);
+                btn.innerHTML = `<span class="kanji-char">${kanji}</span>` +
+                    (reading ? `<span class="kanji-reading">${reading}</span>` : '');
+
                 btn.onclick = () => {
                     triggerHaptic();
                     addToComposed(kanji);
@@ -889,29 +1125,41 @@
             closeCropOverlay();
         });
 
+        // Trần an toàn cho kích thước canvas: ảnh chụp từ điện thoại có thể lên tới hàng chục triệu pixel,
+        // vượt giới hạn canvas của một số trình duyệt mobile (đặc biệt Safari/iOS) khiến toDataURL() trả về
+        // ảnh rỗng/hỏng mà không báo lỗi. Vẫn giữ chất lượng cao hơn hẳn bản trước (700px) nhưng tránh vượt trần.
+        const MAX_CROP_DIM = 2400;
+
         cropConfirmBtn.addEventListener('click', async () => {
             triggerHaptic();
-            const rect = getCropBoxRect();
-            const scaleX = cropImage.naturalWidth / cropImage.clientWidth;
-            const scaleY = cropImage.naturalHeight / cropImage.clientHeight;
 
-            const sx = rect.left * scaleX;
-            const sy = rect.top * scaleY;
-            const sWidth = rect.width * scaleX;
-            const sHeight = rect.height * scaleY;
+            try {
+                const rect = getCropBoxRect();
+                const scaleX = cropImage.naturalWidth / cropImage.clientWidth;
+                const scaleY = cropImage.naturalHeight / cropImage.clientHeight;
 
-            // Giữ nguyên độ phân giải gốc của vùng đã chọn, chỉ cắt chứ không thu nhỏ
-            const outCanvas = document.createElement('canvas');
-            outCanvas.width = Math.round(sWidth);
-            outCanvas.height = Math.round(sHeight);
-            const outCtx = outCanvas.getContext('2d');
-            outCtx.drawImage(cropImage, sx, sy, sWidth, sHeight, 0, 0, outCanvas.width, outCanvas.height);
+                const sx = rect.left * scaleX;
+                const sy = rect.top * scaleY;
+                const sWidth = rect.width * scaleX;
+                const sHeight = rect.height * scaleY;
 
-            sentImagePreview.src = outCanvas.toDataURL('image/jpeg', 0.95);
-            sentImageSection.classList.add('active');
+                const scaleDown = Math.min(1, MAX_CROP_DIM / Math.max(sWidth, sHeight));
+                const outCanvas = document.createElement('canvas');
+                outCanvas.width = Math.max(1, Math.round(sWidth * scaleDown));
+                outCanvas.height = Math.max(1, Math.round(sHeight * scaleDown));
+                const outCtx = outCanvas.getContext('2d');
+                outCtx.drawImage(cropImage, sx, sy, sWidth, sHeight, 0, 0, outCanvas.width, outCanvas.height);
 
-            closeCropOverlay();
-            await runOcr(outCanvas);
+                sentImagePreview.src = outCanvas.toDataURL('image/jpeg', 0.95);
+                sentImageSection.classList.add('active');
+
+                closeCropOverlay();
+                await runOcr(outCanvas);
+            } catch (error) {
+                console.error('Lỗi khi cắt ảnh:', error);
+                closeCropOverlay();
+                resultsDiv.innerHTML = '<div class="empty-state">Không xử lý được ảnh này, thử lại nhé</div>';
+            }
         });
 
         async function runOcr(source) {
@@ -922,14 +1170,15 @@
                 const worker = await getOcrWorker();
                 const { data } = await worker.recognize(source);
                 const text = data.text || '';
-                const kanjiChars = [...new Set(text.match(/[一-龯]/g) || [])];
+                // Giữ nguyên cả cụm Kanji/Hiragana/Katakana liền nhau (không tách rời hira/kata ra khỏi kanji)
+                const words = [...new Set(text.match(/[一-龯ぁ-んァ-ヶー]+/g) || [])];
 
-                if (kanjiChars.length === 0) {
-                    resultsDiv.innerHTML = '<div class="empty-state">Không nhận dạng được chữ Kanji nào trong ảnh</div>';
+                if (words.length === 0) {
+                    resultsDiv.innerHTML = '<div class="empty-state">Không nhận dạng được chữ nào trong ảnh</div>';
                     return;
                 }
 
-                displayResults(kanjiChars.slice(0, 15));
+                displayResults(words);
             } catch (error) {
                 console.error('Lỗi OCR:', error);
                 resultsDiv.innerHTML = '<div class="empty-state">Lỗi khi nhận dạng ảnh, thử lại nhé</div>';
