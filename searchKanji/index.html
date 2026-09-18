@@ -633,15 +633,25 @@
     <script src="https://cdn.jsdelivr.net/npm/tesseract.js@5/dist/tesseract.min.js"></script>
     <script>
         // ===== Dữ liệu âm đọc Kanji (Hán Việt / On / Kun) để hiển thị kèm kết quả =====
-        if (window._kanjiExtra && window._kanjiExtra.length) {
-            kanjiData.push.apply(kanjiData, window._kanjiExtra);
-        }
+        // Bọc try/catch: nếu app_files/kanjiData_*.js không tải được (lỗi mạng, sai đường dẫn trên môi trường release...)
+        // thì chỉ mất phần hiển thị âm đọc, không được để crash toàn bộ script phía sau (canvas, camera, cài đặt...).
         const kanjiReadingMap = new Map();
-        kanjiData.forEach(item => {
-            if (item.kanji && !kanjiReadingMap.has(item.kanji)) {
-                kanjiReadingMap.set(item.kanji, item);
+        try {
+            if (typeof kanjiData !== 'undefined' && Array.isArray(kanjiData)) {
+                if (window._kanjiExtra && window._kanjiExtra.length) {
+                    kanjiData.push.apply(kanjiData, window._kanjiExtra);
+                }
+                kanjiData.forEach(item => {
+                    if (item.kanji && !kanjiReadingMap.has(item.kanji)) {
+                        kanjiReadingMap.set(item.kanji, item);
+                    }
+                });
+            } else {
+                console.error('Không tìm thấy dữ liệu kanjiData (kiểm tra lại app_files/kanjiData_TvkS.js)');
             }
-        });
+        } catch (e) {
+            console.error('Lỗi khi nạp dữ liệu âm đọc Kanji:', e);
+        }
 
         function getKanjiReading(kanji) {
             const item = kanjiReadingMap.get(kanji);
