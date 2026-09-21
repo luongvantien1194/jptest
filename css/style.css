@@ -2924,6 +2924,15 @@ select:focus {
   gap: 6px 8px;
 }
 
+/* Test từ vựng / Test Kanji config forms: tăng cỡ chữ cho dễ đọc */
+.test-config-form .field-label,
+.test-config-form .kt-section-label,
+.test-config-form .kt-mode-label,
+.test-config-form .input-text,
+.test-config-form select {
+  font-size: 16px;
+}
+
 @media (max-width: 400px) {
   .test-config-fields {
     grid-template-columns: 1fr;
@@ -3311,6 +3320,23 @@ select:focus {
   width: fit-content;
   margin: 0 auto 4px;
   text-align: center;
+}
+
+.kd-index-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin: 0 auto 4px;
+}
+
+.kd-hero-main .kd-index-row .kd-index {
+  margin: 0;
+}
+
+.kd-index--level {
+  background: rgba(37, 99, 235, 0.12);
+  color: var(--primary-dark, var(--text-muted));
 }
 
 .kd-hero-body {
