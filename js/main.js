@@ -75,6 +75,35 @@
       /** Sau mỗi câu: hiện chi tiết Kanji, bấm Tiếp tục để sang câu tiếp (mặc định tắt) */
       showAnswerKanjiDetailAfterEach: false
     },
+    mappingTestState: {
+      isActive: false,
+      isFinished: false,
+      source: "vocab", // "vocab" | "kanji"
+      pool: [],
+      usedCount: 0,
+      pairsPerRound: 9,
+      timeLimit: 30,
+      timeRemaining: 30,
+      lives: 3,
+      wrongCount: 0,
+      correctCount: 0,
+      roundTiles: [],
+      selectedTileId: null,
+      locked: false,
+      endReason: "", // "done" | "timeout" | "lives"
+      // vocab config
+      questionField: "hiragana",
+      answerField: "meaning",
+      selectedCategory: "all",
+      lessonMin: 1,
+      lessonMax: 50,
+      isStar: false,
+      // kanji config
+      level: "all",
+      fromStt: 1,
+      toStt: null,
+      modes: [4]
+    },
     kanjiViewMode: "grid",
     note: {
       currentDocKey:
@@ -1387,6 +1416,15 @@
     closeBtn: null
   };
 
+  var mappingTestTimerId = null;
+
+  function clearMappingTestTimer() {
+    if (mappingTestTimerId) {
+      clearInterval(mappingTestTimerId);
+      mappingTestTimerId = null;
+    }
+  }
+
   function openDetailModal(title, htmlContentOrNode, headerNavNode) {
     if (!detailModalState.el) {
       return;
@@ -1415,8 +1453,11 @@
     }
     detailModalState.el.classList.remove("detail-modal--open");
     detailModalState.el.classList.remove("detail-modal--practice");
+    detailModalState.el.classList.remove("detail-modal--mapping");
     detailModalState.el.setAttribute("aria-hidden", "true");
     state.ui.detailModal.isOpen = false;
+    clearMappingTestTimer();
+    state.mappingTestState.isActive = false;
     clearKanjiDetailResumeHint();
     var ret = state.ui.kanjiDetailReturnTab;
     state.ui.kanjiDetailReturnTab = null;
@@ -5520,6 +5561,18 @@ history.replaceState({}, "", newUrl);
     });
   }
 
+  var KANJI_TEST_MODE_DEFS = [
+    { id: 4, label: "Kanji → Hán Việt" },
+    { id: 3, label: "Hán Việt → Kanji" },
+    { id: 1, label: "Kanji → Âm On" },
+    { id: 2, label: "Kanji → Âm Kun" },
+    { id: 5, label: "Từ vựng → Nghĩa" },
+    { id: 6, label: "Nghĩa → Kanji" },
+    { id: 7, label: "Nghĩa → Hiragana" },
+    { id: 8, label: "Hiragana → Kanji" },
+    { id: 9, label: "Hiragana → Nghĩa" }
+  ];
+
   function kanjiModeAvailable(raw, mode) {
     if (mode === 1) return !!(raw.kanji && raw.on_reading);
     if (mode === 2) return !!(raw.kanji && raw.kun_reading);
@@ -5864,17 +5917,7 @@ history.replaceState({}, "", newUrl);
     const modeGrid = createElement("div", "kt-mode-grid", "");
 
     var savedModes = ts.modes || [4];
-    var modeDefs = [
-      { id: 4, label: "Kanji → Hán Việt" },
-      { id: 3, label: "Hán Việt → Kanji" },
-      { id: 1, label: "Kanji → Âm On" },
-      { id: 2, label: "Kanji → Âm Kun" },
-      { id: 5, label: "Từ vựng → Nghĩa" },
-      { id: 6, label: "Nghĩa → Kanji" },
-      { id: 7, label: "Nghĩa → Hiragana" },
-      { id: 8, label: "Hiragana → Kanji" },
-      { id: 9, label: "Hiragana → Nghĩa" }
-    ];
+    var modeDefs = KANJI_TEST_MODE_DEFS;
     var modeCheckboxes = [];
     modeDefs.forEach(function (def) {
       const lbl = createElement("label", "kt-mode-label", "");
@@ -6316,6 +6359,641 @@ history.replaceState({}, "", newUrl);
     }
   }
 
+  // ----- Test mapping (vocab + kanji) -----
+  var MAPPING_DIFFICULTY_PRESETS = [
+    { key: "easy", label: "Dễ", seconds: 40 },
+    { key: "medium", label: "Vừa", seconds: 30 },
+    { key: "hard", label: "Khó", seconds: 20 }
+  ];
+
+  function buildVocabMappingPool(config) {
+    var pool = vocabData.filter(function (raw) {
+      if (!raw) return false;
+      if (isVocabHidden(raw)) return false;
+      var idx = vocabData.indexOf(raw);
+      if (config.isStar && !state.vocabFavorites[idx]) return false;
+      var lesson = raw.lesson != null ? raw.lesson : raw.Lesson;
+      var lessonNum = typeof lesson === "number" ? lesson : parseInt(lesson, 10);
+      if (isNaN(lessonNum) || lessonNum < config.lessonMin || lessonNum > config.lessonMax) return false;
+      var hira = raw.hiragana != null ? raw.hiragana : raw.Hiragana;
+      if (!String(hira || "").trim()) return false;
+      if (config.selectedCategory !== "all" && String(raw.category) !== String(config.selectedCategory)) return false;
+      return true;
+    });
+    var items = pool.map(function (raw, i) {
+      var normalized = {
+        hiragana: raw.hiragana != null ? raw.hiragana : raw.Hiragana,
+        kanji: raw.kanji != null ? raw.kanji : raw.Kanji,
+        meaning: raw.meaning != null ? raw.meaning : raw.Meaning
+      };
+      var q = String(normalized[config.questionField] || "").trim();
+      var a = String(normalized[config.answerField] || "").trim();
+      if (!q || !a) return null;
+      return { pairId: "v" + i, question: q, answer: a };
+    }).filter(Boolean);
+    return shuffleArray(items);
+  }
+
+  function mappingPairForKanjiMode(raw, mode, ve) {
+    if (mode === 1) return { q: raw.kanji, a: raw.on_reading.split("|")[0].trim() };
+    if (mode === 2) return { q: raw.kanji, a: raw.kun_reading.split("|")[0].trim() };
+    if (mode === 3) return { q: raw.hanviet, a: raw.kanji };
+    if (mode === 4) return { q: raw.kanji, a: raw.hanviet };
+    if (mode === 5) return { q: ve.word, a: ve.meaning };
+    if (mode === 6) return { q: ve.meaning, a: ve.word };
+    if (mode === 7) return { q: ve.meaning, a: ve.reading };
+    if (mode === 8) return { q: ve.reading, a: ve.word };
+    if (mode === 9) return { q: ve.reading, a: ve.meaning };
+    return null;
+  }
+
+  function buildKanjiMappingPool(config) {
+    var maxStt = getKanjiSttMax(config.level);
+    var toStt = (config.toStt != null) ? config.toStt : maxStt;
+    var selectedModes = (config.modes && config.modes.length > 0) ? config.modes : [4];
+    var pool = [];
+    kanjiData.forEach(function (raw, i) {
+      if (!raw) return;
+      if (config.level !== "all" && (raw.level || "n45") !== config.level) return;
+      var stt = raw.stt != null ? raw.stt : (i + 1);
+      if (stt < config.fromStt || stt > toStt) return;
+      if (config.isStar && !state.kanjiFavorites[i]) return;
+      selectedModes.forEach(function (mode) {
+        if (!kanjiModeAvailable(raw, mode)) return;
+        if (mode >= 5 && mode <= 9) {
+          parseKanjiVocab(raw.vocabulary).forEach(function (ve, vi) {
+            var pair = mappingPairForKanjiMode(raw, mode, ve);
+            var q = String((pair && pair.q) || "").trim();
+            var a = String((pair && pair.a) || "").trim();
+            if (!q || !a) return;
+            pool.push({ pairId: "k" + i + "-m" + mode + "-" + vi, question: q, answer: a });
+          });
+        } else {
+          var pair = mappingPairForKanjiMode(raw, mode, null);
+          var q = String((pair && pair.q) || "").trim();
+          var a = String((pair && pair.a) || "").trim();
+          if (!q || !a) return;
+          pool.push({ pairId: "k" + i + "-m" + mode, question: q, answer: a });
+        }
+      });
+    });
+    return shuffleArray(pool);
+  }
+
+  function startMappingTest(source) {
+    var ts = state.mappingTestState;
+    ts.isActive = false;
+    ts.isFinished = false;
+    ts.source = source;
+    ts.pool = [];
+    ts.usedCount = 0;
+    ts.wrongCount = 0;
+    ts.correctCount = 0;
+    ts.roundTiles = [];
+    ts.selectedTileId = null;
+    ts.locked = false;
+    ts.endReason = "";
+    ts.lives = 3;
+    if (source === "kanji") {
+      ts.level = state.filter.kanjiLevel || "all";
+      ts.fromStt = 1;
+      ts.toStt = null;
+    } else {
+      ts.lessonMin = 1;
+      ts.lessonMax = 50;
+      ts.selectedCategory = "all";
+    }
+    renderMappingTestInitialMessage();
+  }
+
+  function renderMappingTestInitialMessage() {
+    clearMappingTestTimer();
+    if (detailModalState.el) {
+      detailModalState.el.classList.remove("detail-modal--mapping");
+    }
+    var ts = state.mappingTestState;
+    var isKanji = ts.source === "kanji";
+    var wrapper = createElement("div", "test-result test-config-form", "");
+
+    var configFields = [];
+
+    if (isKanji) {
+      var maxStt = getKanjiSttMax(ts.level || "all");
+      var levelSection = createElement("div", "kt-section", "");
+      levelSection.appendChild(createElement("div", "kt-section-label", "Cấp độ"));
+      var levelField = createElement("div", "field-group", "");
+      var levelSelect = document.createElement("select");
+      levelSelect.className = "input-text";
+      [
+        { value: "all", label: "Tất cả" },
+        { value: "n45", label: "N4-N5" },
+        { value: "n3", label: "N3" }
+      ].forEach(function (opt) {
+        var optEl = document.createElement("option");
+        optEl.value = opt.value;
+        optEl.textContent = opt.label;
+        levelSelect.appendChild(optEl);
+      });
+      levelSelect.value = ts.level || "all";
+      levelField.appendChild(levelSelect);
+      levelSection.appendChild(levelField);
+      wrapper.appendChild(levelSection);
+
+      var rangeSection = createElement("div", "kt-section", "");
+      var rangeRow = createElement("div", "kt-range-row", "");
+      var fromField = createElement("div", "field-group", "");
+      fromField.appendChild(createElement("div", "field-label", "Từ STT"));
+      var fromInput = createElement("input", "input-text", "");
+      fromInput.type = "number"; fromInput.min = 1; fromInput.max = maxStt;
+      fromInput.value = String(ts.fromStt != null ? ts.fromStt : 1);
+      fromField.appendChild(fromInput);
+
+      var toField = createElement("div", "field-group", "");
+      toField.appendChild(createElement("div", "field-label", "Đến STT"));
+      var toInput = createElement("input", "input-text", "");
+      toInput.type = "number"; toInput.min = 1; toInput.max = maxStt;
+      toInput.value = String(ts.toStt != null ? ts.toStt : maxStt);
+      toField.appendChild(toInput);
+
+      levelSelect.addEventListener("change", function () {
+        var newMax = getKanjiSttMax(levelSelect.value);
+        fromInput.max = newMax;
+        toInput.max = newMax;
+        if (parseInt(toInput.value, 10) > newMax || !toInput.value) {
+          toInput.value = String(newMax);
+        }
+      });
+
+      rangeRow.appendChild(fromField);
+      rangeRow.appendChild(toField);
+      rangeSection.appendChild(rangeRow);
+      wrapper.appendChild(rangeSection);
+
+      var starSection = createElement("div", "kt-section", "");
+      var starField = createElement("div", "field-group", "");
+      var starLabel = createElement("div", "field-label", "Chỉ dùng chữ có ★");
+      var starInput = createElement("input", "", "");
+      starInput.type = "checkbox";
+      starInput.style = "text-align: left";
+      starInput.checked = ts.isStar || false;
+      starField.appendChild(starLabel);
+      starField.appendChild(starInput);
+      starSection.appendChild(starField);
+      wrapper.appendChild(starSection);
+
+      var modeSection = createElement("div", "kt-section", "");
+      modeSection.appendChild(createElement("div", "kt-section-label", "Dạng câu hỏi"));
+      var modeGrid = createElement("div", "kt-mode-grid", "");
+      var savedModes = ts.modes || [4];
+      var modeCheckboxes = [];
+      KANJI_TEST_MODE_DEFS.forEach(function (def) {
+        var lbl = createElement("label", "kt-mode-label", "");
+        var cb = document.createElement("input");
+        cb.type = "checkbox";
+        cb.value = String(def.id);
+        cb.checked = savedModes.indexOf(def.id) !== -1;
+        cb.className = "kt-mode-cb";
+        lbl.appendChild(cb);
+        lbl.appendChild(document.createTextNode(" " + def.label));
+        modeCheckboxes.push(cb);
+        modeGrid.appendChild(lbl);
+      });
+      modeSection.appendChild(modeGrid);
+      wrapper.appendChild(modeSection);
+
+      configFields.push({ levelSelect: levelSelect, fromInput: fromInput, toInput: toInput, starInput: starInput, modeCheckboxes: modeCheckboxes });
+    } else {
+      var configGrid = createElement("div", "test-config-fields", "");
+
+      var lessonMinField = createElement("div", "field-group", "");
+      lessonMinField.appendChild(createElement("div", "field-label", "Từ bài"));
+      var lessonMinInput = createElement("input", "input-text", "");
+      lessonMinInput.type = "number"; lessonMinInput.min = 1; lessonMinInput.max = 999;
+      lessonMinInput.value = String(ts.lessonMin != null ? ts.lessonMin : 1);
+      lessonMinField.appendChild(lessonMinInput);
+      configGrid.appendChild(lessonMinField);
+
+      var lessonMaxField = createElement("div", "field-group", "");
+      lessonMaxField.appendChild(createElement("div", "field-label", "Đến bài"));
+      var lessonMaxInput = createElement("input", "input-text", "");
+      lessonMaxInput.type = "number"; lessonMaxInput.min = 1; lessonMaxInput.max = 999;
+      lessonMaxInput.value = String(ts.lessonMax != null ? ts.lessonMax : 50);
+      lessonMaxField.appendChild(lessonMaxInput);
+      configGrid.appendChild(lessonMaxField);
+
+      var catField = createElement("div", "field-group", "");
+      catField.style.gridColumn = "1 / -1";
+      catField.appendChild(createElement("div", "field-label", "Category"));
+      var catSelect = document.createElement("select");
+      var optAll = document.createElement("option");
+      optAll.value = "all"; optAll.textContent = "Tất cả";
+      catSelect.appendChild(optAll);
+      var categories = getUniqueSorted(
+        vocabData.map(function (v) { return v.category; }).filter(function (c) { return c; })
+      );
+      categories.forEach(function (cat) {
+        var o = document.createElement("option");
+        o.value = cat;
+        o.textContent = getCategoryLabel(cat);
+        catSelect.appendChild(o);
+      });
+      catSelect.value = ts.selectedCategory || "all";
+      catField.appendChild(catSelect);
+      configGrid.appendChild(catField);
+
+      var fieldOptions = [
+        { value: "hiragana", label: "Hiragana" },
+        { value: "kanji", label: "Kanji" },
+        { value: "meaning", label: "Nghĩa tiếng Việt" }
+      ];
+
+      var qFieldGroup = createElement("div", "field-group", "");
+      qFieldGroup.appendChild(createElement("div", "field-label", "Cột 1"));
+      var qFieldSelect = document.createElement("select");
+      fieldOptions.forEach(function (fo) {
+        var o = document.createElement("option");
+        o.value = fo.value; o.textContent = fo.label;
+        if (fo.value === (ts.questionField || "hiragana")) o.selected = true;
+        qFieldSelect.appendChild(o);
+      });
+      qFieldGroup.appendChild(qFieldSelect);
+      configGrid.appendChild(qFieldGroup);
+
+      var aFieldGroup = createElement("div", "field-group", "");
+      aFieldGroup.appendChild(createElement("div", "field-label", "Cột 2"));
+      var aFieldSelect = document.createElement("select");
+      fieldOptions.forEach(function (fo) {
+        var o = document.createElement("option");
+        o.value = fo.value; o.textContent = fo.label;
+        if (fo.value === (ts.answerField || "meaning")) o.selected = true;
+        aFieldSelect.appendChild(o);
+      });
+      aFieldGroup.appendChild(aFieldSelect);
+      configGrid.appendChild(aFieldGroup);
+
+      var starFieldV = createElement("div", "field-group", "");
+      starFieldV.style.gridColumn = "1 / -1";
+      var starLabelV = createElement("div", "field-label", "Chỉ dùng từ có ★");
+      var starInputV = createElement("input", "", "");
+      starInputV.type = "checkbox";
+      starInputV.style = "text-align: left";
+      starInputV.checked = ts.isStar || false;
+      starFieldV.appendChild(starLabelV);
+      starFieldV.appendChild(starInputV);
+      configGrid.appendChild(starFieldV);
+
+      wrapper.appendChild(configGrid);
+
+      configFields.push({ lessonMinInput: lessonMinInput, lessonMaxInput: lessonMaxInput, catSelect: catSelect, qFieldSelect: qFieldSelect, aFieldSelect: aFieldSelect, starInput: starInputV });
+    }
+
+    // --- Mức độ khó / giới hạn thời gian ---
+    var diffSection = createElement("div", "kt-section", "");
+    diffSection.appendChild(createElement("div", "kt-section-label", "Mức độ (giới hạn thời gian 1 lượt mapping)"));
+    var diffRow = createElement("div", "kt-mode-grid", "");
+    var diffRadios = [];
+    var currentPresetKey = null;
+    MAPPING_DIFFICULTY_PRESETS.forEach(function (preset) {
+      if (ts.timeLimit === preset.seconds) currentPresetKey = preset.key;
+    });
+    MAPPING_DIFFICULTY_PRESETS.forEach(function (preset) {
+      var lbl = createElement("label", "kt-mode-label", "");
+      var radio = document.createElement("input");
+      radio.type = "radio";
+      radio.name = "mapping-difficulty";
+      radio.value = String(preset.seconds);
+      radio.checked = currentPresetKey ? preset.key === currentPresetKey : preset.key === "medium";
+      lbl.appendChild(radio);
+      lbl.appendChild(document.createTextNode(" " + preset.label + " (" + preset.seconds + "s)"));
+      diffRadios.push(radio);
+      diffRow.appendChild(lbl);
+    });
+    diffSection.appendChild(diffRow);
+
+    var customField = createElement("div", "field-group", "");
+    customField.appendChild(createElement("div", "field-label", "Hoặc tự nhập số giây (10-180)"));
+    var customInput = createElement("input", "input-text", "");
+    customInput.type = "number"; customInput.min = 10; customInput.max = 180;
+    customInput.placeholder = "Ví dụ: 25";
+    if (!currentPresetKey) {
+      customInput.value = String(ts.timeLimit || 30);
+    }
+    customField.appendChild(customInput);
+    diffSection.appendChild(customField);
+    wrapper.appendChild(diffSection);
+
+    var btnRow = createElement("div", "btn-row", "");
+    var startBtn = createElement("button", "btn", "Bắt đầu mapping");
+    startBtn.type = "button";
+    startBtn.addEventListener("click", function () {
+      var timeLimit = parseInt(customInput.value, 10);
+      if (isNaN(timeLimit) || !customInput.value) {
+        var checkedRadio = diffRadios.filter(function (r) { return r.checked; })[0];
+        timeLimit = checkedRadio ? parseInt(checkedRadio.value, 10) : 30;
+      }
+      if (isNaN(timeLimit) || timeLimit < 10) timeLimit = 10;
+      if (timeLimit > 180) timeLimit = 180;
+
+      var pool;
+      if (isKanji) {
+        var cf = configFields[0];
+        var maxSttVal = getKanjiSttMax(cf.levelSelect.value);
+        var fromVal = parseInt(cf.fromInput.value, 10);
+        var toVal = parseInt(cf.toInput.value, 10);
+        if (isNaN(fromVal) || fromVal < 1) fromVal = 1;
+        if (isNaN(toVal) || toVal < fromVal) toVal = fromVal;
+        if (fromVal > maxSttVal) fromVal = maxSttVal;
+        if (toVal > maxSttVal) toVal = maxSttVal;
+        var selectedModes = cf.modeCheckboxes
+          .filter(function (cb) { return cb.checked; })
+          .map(function (cb) { return parseInt(cb.value, 10); });
+        if (selectedModes.length === 0) selectedModes = [4];
+        ts.level = cf.levelSelect.value || "all";
+        ts.fromStt = fromVal;
+        ts.toStt = toVal;
+        ts.isStar = cf.starInput.checked || false;
+        ts.modes = selectedModes;
+        pool = buildKanjiMappingPool(ts);
+      } else {
+        var cfv = configFields[0];
+        var lessonMinVal = parseInt(cfv.lessonMinInput.value, 10);
+        var lessonMaxVal = parseInt(cfv.lessonMaxInput.value, 10);
+        if (isNaN(lessonMinVal) || lessonMinVal < 1) lessonMinVal = 1;
+        if (isNaN(lessonMaxVal) || lessonMaxVal < 1) lessonMaxVal = 50;
+        if (lessonMaxVal < lessonMinVal) {
+          var tmp = lessonMinVal; lessonMinVal = lessonMaxVal; lessonMaxVal = tmp;
+        }
+        var questionField = cfv.qFieldSelect.value || "hiragana";
+        var answerField = cfv.aFieldSelect.value || "meaning";
+        if (questionField === answerField) {
+          alert("Cột 1 và Cột 2 không được trùng trường hiển thị.");
+          return;
+        }
+        ts.lessonMin = lessonMinVal;
+        ts.lessonMax = lessonMaxVal;
+        ts.selectedCategory = cfv.catSelect.value || "all";
+        ts.questionField = questionField;
+        ts.answerField = answerField;
+        ts.isStar = cfv.starInput.checked || false;
+        pool = buildVocabMappingPool(ts);
+      }
+
+      if (pool.length < 2) {
+        alert("Không đủ dữ liệu phù hợp để tạo mapping (cần ít nhất 2 cặp). Hãy mở rộng phạm vi lọc.");
+        return;
+      }
+
+      ts.timeLimit = timeLimit;
+      ts.pool = pool;
+      ts.usedCount = 0;
+      ts.wrongCount = 0;
+      ts.correctCount = 0;
+      ts.isActive = true;
+      ts.isFinished = false;
+      ts.endReason = "";
+      startMappingRound();
+    });
+
+    var cancelBtn = createElement("button", "btn-ghost", "Đóng");
+    cancelBtn.type = "button";
+    cancelBtn.addEventListener("click", function () { closeDetailModal(); });
+
+    btnRow.appendChild(startBtn);
+    btnRow.appendChild(cancelBtn);
+    wrapper.appendChild(btnRow);
+
+    if (detailModalState.bodyEl) {
+      openDetailModal("Test mapping", "");
+      detailModalState.bodyEl.innerHTML = "";
+      detailModalState.bodyEl.appendChild(wrapper);
+    }
+  }
+
+  function startMappingRound() {
+    var ts = state.mappingTestState;
+    var remaining = ts.pool.length - ts.usedCount;
+    if (remaining <= 0) {
+      ts.isFinished = true;
+      ts.endReason = "done";
+      renderMappingTestResult();
+      return;
+    }
+    var batchSize = Math.min(ts.pairsPerRound, remaining);
+    var batch = ts.pool.slice(ts.usedCount, ts.usedCount + batchSize);
+    ts.usedCount += batchSize;
+
+    var tiles = [];
+    batch.forEach(function (pair, i) {
+      tiles.push({ id: pair.pairId + "-q", pairId: pair.pairId, text: pair.question, matched: false });
+      tiles.push({ id: pair.pairId + "-a", pairId: pair.pairId, text: pair.answer, matched: false });
+    });
+    ts.roundTiles = shuffleArray(tiles);
+    ts.selectedTileId = null;
+    ts.locked = false;
+    ts.timeRemaining = ts.timeLimit;
+    renderMappingTestGame();
+
+    clearMappingTestTimer();
+    mappingTestTimerId = setInterval(function () {
+      ts.timeRemaining -= 1;
+      var timerEl = document.getElementById("mapping-timer-value");
+      if (timerEl) {
+        timerEl.textContent = String(Math.max(0, ts.timeRemaining));
+      }
+      if (ts.timeRemaining <= 0) {
+        clearMappingTestTimer();
+        ts.isFinished = true;
+        ts.endReason = "timeout";
+        renderMappingTestResult();
+      }
+    }, 1000);
+  }
+
+  function renderMappingTestGame() {
+    var ts = state.mappingTestState;
+    if (detailModalState.el) {
+      detailModalState.el.classList.add("detail-modal--mapping");
+    }
+
+    var wrapper = createElement("div", "mapping-game", "");
+
+    var header = createElement("div", "mapping-header", "");
+
+    var livesWrap = createElement("div", "mapping-lives", "");
+    for (var i = 0; i < 3; i += 1) {
+      var heart = createElement("span", "mapping-heart" + (i < ts.lives ? "" : " mapping-heart--lost"), "♥");
+      livesWrap.appendChild(heart);
+    }
+    header.appendChild(livesWrap);
+
+    var progressText = ts.usedCount + "/" + ts.pool.length + " cặp — Đúng: " + ts.correctCount;
+    header.appendChild(createElement("div", "mapping-progress-text", progressText));
+
+    var timerWrap = createElement("div", "mapping-timer", "");
+    timerWrap.appendChild(document.createTextNode("⏱ "));
+    var timerValue = createElement("span", "", String(ts.timeRemaining));
+    timerValue.id = "mapping-timer-value";
+    timerWrap.appendChild(timerValue);
+    timerWrap.appendChild(document.createTextNode("s"));
+    header.appendChild(timerWrap);
+
+    wrapper.appendChild(header);
+
+    var grid = createElement("div", "mapping-grid", "");
+    ts.roundTiles.forEach(function (tile) {
+      var tileBtn = createElement("button", "mapping-tile", tile.text);
+      tileBtn.type = "button";
+      tileBtn.dataset.tileId = tile.id;
+      if (tile.matched) {
+        tileBtn.classList.add("mapping-tile--matched");
+        tileBtn.disabled = true;
+      }
+      if (tile.id === ts.selectedTileId) {
+        tileBtn.classList.add("mapping-tile--selected");
+      }
+      if (tile.wrongFlash) {
+        tileBtn.classList.add("mapping-tile--wrong-flash");
+      }
+      tileBtn.addEventListener("click", function () {
+        handleMappingTileClick(tile.id);
+      });
+      grid.appendChild(tileBtn);
+    });
+    wrapper.appendChild(grid);
+
+    var btnRow = createElement("div", "btn-row", "");
+    var quitBtn = createElement("button", "btn-ghost btn-ghost--danger", "Kết thúc");
+    quitBtn.type = "button";
+    quitBtn.addEventListener("click", function () {
+      clearMappingTestTimer();
+      ts.isFinished = true;
+      ts.endReason = "quit";
+      renderMappingTestResult();
+    });
+    btnRow.appendChild(quitBtn);
+    wrapper.appendChild(btnRow);
+
+    if (detailModalState.bodyEl) {
+      openDetailModal("Test mapping", "");
+      detailModalState.bodyEl.innerHTML = "";
+      detailModalState.bodyEl.appendChild(wrapper);
+    }
+  }
+
+  function handleMappingTileClick(tileId) {
+    var ts = state.mappingTestState;
+    if (!ts.isActive || ts.isFinished || ts.locked) return;
+    var tile = ts.roundTiles.filter(function (t) { return t.id === tileId; })[0];
+    if (!tile || tile.matched) return;
+
+    if (!ts.selectedTileId) {
+      ts.selectedTileId = tileId;
+      renderMappingTestGame();
+      return;
+    }
+
+    if (ts.selectedTileId === tileId) {
+      ts.selectedTileId = null;
+      renderMappingTestGame();
+      return;
+    }
+
+    var firstTile = ts.roundTiles.filter(function (t) { return t.id === ts.selectedTileId; })[0];
+    ts.selectedTileId = null;
+
+    if (firstTile && firstTile.pairId === tile.pairId) {
+      firstTile.matched = true;
+      tile.matched = true;
+      ts.correctCount += 1;
+      var remainingInRound = ts.roundTiles.filter(function (t) { return !t.matched; }).length;
+      if (remainingInRound === 0) {
+        clearMappingTestTimer();
+        startMappingRound();
+        return;
+      }
+      renderMappingTestGame();
+    } else {
+      ts.wrongCount += 1;
+      firstTile.wrongFlash = true;
+      tile.wrongFlash = true;
+      ts.locked = true;
+      renderMappingTestGame();
+      setTimeout(function () {
+        firstTile.wrongFlash = false;
+        tile.wrongFlash = false;
+        ts.locked = false;
+        ts.lives -= 1;
+        if (ts.lives <= 0) {
+          clearMappingTestTimer();
+          ts.isFinished = true;
+          ts.endReason = "lives";
+          renderMappingTestResult();
+          return;
+        }
+        renderMappingTestGame();
+      }, 400);
+    }
+  }
+
+  function renderMappingTestResult() {
+    clearMappingTestTimer();
+    var ts = state.mappingTestState;
+    if (detailModalState.el) {
+      detailModalState.el.classList.remove("detail-modal--mapping");
+    }
+
+    var wrapper = createElement("div", "test-result", "");
+    var scoreMain = createElement("div", "score-main", "Ghép đúng: " + ts.correctCount + " cặp");
+    wrapper.appendChild(scoreMain);
+
+    var reasonText = "";
+    if (ts.endReason === "done") {
+      reasonText = "Bạn đã hoàn thành hết " + ts.pool.length + " cặp!";
+    } else if (ts.endReason === "timeout") {
+      reasonText = "Hết giờ cho lượt mapping này.";
+    } else if (ts.endReason === "lives") {
+      reasonText = "Đã sai 3 lần, kết thúc bài test.";
+    } else {
+      reasonText = "Bạn đã dừng bài test.";
+    }
+    var scoreDetail = createElement("div", "score-detail", reasonText + " Số lần sai: " + ts.wrongCount + ".");
+    wrapper.appendChild(scoreDetail);
+
+    var btnRow = createElement("div", "btn-row", "");
+    var retryBtn = createElement("button", "btn", "Làm lại");
+    retryBtn.type = "button";
+    retryBtn.addEventListener("click", function () {
+      startMappingTest(ts.source);
+    });
+    var closeBtn = createElement("button", "btn-ghost", "Đóng");
+    closeBtn.type = "button";
+    closeBtn.addEventListener("click", function () { closeDetailModal(); });
+    btnRow.appendChild(retryBtn);
+    btnRow.appendChild(closeBtn);
+    wrapper.appendChild(btnRow);
+
+    if (detailModalState.bodyEl) {
+      openDetailModal("Kết quả mapping", "");
+      detailModalState.bodyEl.innerHTML = "";
+      detailModalState.bodyEl.appendChild(wrapper);
+    }
+  }
+
+  function setupMappingTestSection() {
+    var startVocabMappingBtn = document.getElementById("start-vocab-mapping-btn");
+    if (startVocabMappingBtn) {
+      startVocabMappingBtn.addEventListener("click", function () {
+        startMappingTest("vocab");
+      });
+    }
+    var startKanjiMappingBtn = document.getElementById("start-kanji-mapping-btn");
+    if (startKanjiMappingBtn) {
+      startKanjiMappingBtn.addEventListener("click", function () {
+        startMappingTest("kanji");
+      });
+    }
+  }
+
   function setupGrammarFilters() {
     const lessonSelect = document.getElementById("grammar-lesson-filter");
     const checkboxGrammarN3 = document.getElementById("checkbox-grammar-n3");
@@ -6450,6 +7128,7 @@ history.replaceState({}, "", newUrl);
     setupVocabFlashcardFullscreen();
     setupTestSection();
     setupKanjiFilters();
+    setupMappingTestSection();
     setupGrammarFilters();
     setupFilterToggles();
     setupNoteSelect();
