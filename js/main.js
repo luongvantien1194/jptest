@@ -2741,14 +2741,6 @@
     }
 
     const wrapper = createElement("div", "test-result test-config-form", "");
-    const title = createElement("div", "score-main", "Cấu hình bài test");
-    const desc = createElement(
-      "div",
-      "score-detail",
-      "Chọn khoảng bài (từ bài ... đến bài ...). Chọn category (mặc định tất cả)."
-    );
-    wrapper.appendChild(title);
-    wrapper.appendChild(desc);
 
     // Grid container to keep settings compact
     const configGrid = createElement("div", "test-config-fields", "");
@@ -2796,6 +2788,7 @@
       opt.value = cat;
       select.appendChild(opt);
     });
+    select.value = state.testState.selectedCategory || "all";
 
     field.appendChild(label);
     field.appendChild(select);
@@ -5372,6 +5365,14 @@ history.replaceState({}, "", newUrl);
     }
   }
 
+  function applyVocabScreenDefaultsToTestState() {
+    var screenFrom = parseInt(state.filter.vocabLessonFrom, 10);
+    var screenTo = parseInt(state.filter.vocabLessonTo, 10);
+    state.testState.lessonMin = isNaN(screenFrom) ? 1 : screenFrom;
+    state.testState.lessonMax = isNaN(screenTo) ? 50 : screenTo;
+    state.testState.selectedCategory = state.filter.vocabCategory || "all";
+  }
+
   function startVocabTest() {
     state.testState.isActive = false;
     state.testState.isFinished = false;
@@ -5379,8 +5380,7 @@ history.replaceState({}, "", newUrl);
     state.testState.currentIndex = 0;
     state.testState.correctCount = 0;
     state.testState.answers = [];
-    state.testState.selectedCategory = "all";
-    state.testState.lessonMax = 50;
+    applyVocabScreenDefaultsToTestState();
     state.testState.questionCount = 20;
     state.testState.optionCount = 6;
     state.testState.questionField = "hiragana";
@@ -5395,8 +5395,7 @@ history.replaceState({}, "", newUrl);
     state.testState.currentIndex = 0;
     state.testState.correctCount = 0;
     state.testState.answers = [];
-    state.testState.selectedCategory = "all";
-    state.testState.lessonMax = 50;
+    applyVocabScreenDefaultsToTestState();
     state.testState.questionCount = 20;
     state.testState.optionCount = 6;
     state.testState.questionField = "hiragana";
@@ -5757,7 +5756,6 @@ history.replaceState({}, "", newUrl);
     var maxStt = getKanjiSttMax(currentLevel);
 
     const wrapper = createElement("div", "test-result test-config-form", "");
-    wrapper.appendChild(createElement("div", "score-main", "Cấu hình Test Kanji"));
 
     // --- Level ---
     const levelSection = createElement("div", "kt-section", "");
@@ -5782,7 +5780,6 @@ history.replaceState({}, "", newUrl);
 
     // --- Range (theo STT trong data, không phải số thứ tự đếm tự động) ---
     const rangeSection = createElement("div", "kt-section", "");
-    rangeSection.appendChild(createElement("div", "kt-section-label", "Phạm vi kanji (theo STT trong data)"));
     const rangeRow = createElement("div", "kt-range-row", "");
 
     const fromField = createElement("div", "field-group", "");
@@ -6311,6 +6308,9 @@ history.replaceState({}, "", newUrl);
         state.kanjiTestState.currentIndex = 0;
         state.kanjiTestState.correctCount = 0;
         state.kanjiTestState.answers = [];
+        state.kanjiTestState.level = state.filter.kanjiLevel || "all";
+        state.kanjiTestState.fromStt = 1;
+        state.kanjiTestState.toStt = null;
         renderKanjiTestInitialMessage();
       });
     }
