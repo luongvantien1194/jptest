@@ -51,6 +51,7 @@
       answerField: "meaning",
       isStar: false,
       isNotMastered: false,
+      readAfterAnswer: true,
     },
     tts: {
       active: false,
@@ -66,8 +67,9 @@
       answers: [],
       questionCount: 20,
       optionCount: 6,
-      fromIdx: 0,
-      toIdx: null,
+      level: "all",
+      fromStt: 1,
+      toStt: null,
       modes: [4],
       isStar: false,
       /** Sau mỗi câu: hiện chi tiết Kanji, bấm Tiếp tục để sang câu tiếp (mặc định tắt) */
@@ -1158,40 +1160,16 @@
     return romaji.toLowerCase().replace(/[^a-z]/g, "");
   }
 
+  // Category giờ lưu id số theo master dùng chung ở data/master.js (window.VOCAB_CATEGORY_MASTER).
   function getCategoryLabel(rawCategory) {
-    if (!rawCategory) {
+    if (!rawCategory && rawCategory !== 0) {
       return "";
     }
-    var cat = String(rawCategory).toLowerCase();
-    if (cat === "verb") {
-      return "Động từ";
-    }
-    if (cat === "noun") {
-      return "Danh từ";
-    }
-    if (cat === "adjective") {
-      return "Tính từ";
-    }
-    if (cat === "adjective i" || cat === "tính từ i") {
-      return "Tính từ i";
-    }
-    if (cat === "adjective na" || cat === "tính từ na") {
-      return "Tính từ na";
-    }
-    if (cat === "adverb") {
-      return "Trạng từ";
-    }
-    if (cat === "conjunction" || cat === "conjunctions") {
-      return "Liên từ";
-    }
-    if (cat === "question") {
-      return "Từ để hỏi";
-    }
-    if (cat === "country") {
-      return "Quốc gia";
-    }
-    if (cat === "place") {
-      return "Địa điểm";
+    if (window.getVocabCategoryLabel) {
+      var label = window.getVocabCategoryLabel(rawCategory);
+      if (label) {
+        return label;
+      }
     }
     return String(rawCategory);
   }
@@ -1981,7 +1959,8 @@
   }
 
   // ----- Vocab -----
-  function applyVocabFilters() {
+  function applyVocabFilters(opts) {
+    var ignoreCategory = !!(opts && opts.ignoreCategory);
     var filtered = vocabData.filter(function (item) {
       if (!item) {
         return false;
@@ -2060,8 +2039,8 @@
         }
       }
 
-      if (state.filter.vocabCategory !== "all" &&
-        categoryValue !== state.filter.vocabCategory) {
+      if (!ignoreCategory && state.filter.vocabCategory !== "all" &&
+        String(categoryValue) !== String(state.filter.vocabCategory)) {
         return false;
       }
 
@@ -2125,7 +2104,9 @@
       );
     const categoryLabel = state.filter.vocabCategory === "all"
       ? "Tất cả loại từ"
-      : state.filter.vocabCategory + (categoriesSet.size === 1 ? "" : " (filtered)");
+      : state.filter.vocabCategory === ""
+        ? "Chưa có danh mục"
+        : getCategoryLabel(state.filter.vocabCategory) + (categoriesSet.size === 1 ? "" : " (filtered)");
 
     var masteredLabel = "Tất cả (đã/chưa thuộc)";
     if (state.filter.vocabMastered === "mastered") {
@@ -2137,44 +2118,49 @@
     el.textContent = lessonLabel + " · " + categoryLabel + " · " + masteredLabel;
   }
 
-  function updateVocabCategoryOptions(filteredList) {
+  function updateVocabCategoryOptions() {
     const categorySelect = document.getElementById("vocab-category-filter");
     if (!categorySelect) return;
 
-    const search = String(state.filter.vocabSearch || "").trim();
-    // Khi có search, filteredList đã bỏ qua lesson/category (xem applyVocabFilters)
-    // nên chính là tập kết quả search — dùng nó để suy ra danh mục còn phù hợp.
-    // Khi không search, dùng toàn bộ từ vựng hợp lệ (không lọc theo category đang chọn,
-    // để tránh tự khoá người dùng vào 1 category duy nhất).
-    const pool = search
-      ? filteredList
-      : vocabData.filter(function (item) {
-        if (!item) return false;
-        const hira = String(item.hiragana || item.Hiragana || "").trim();
-        return !!hira && !isVocabHidden(item);
-      });
+    // Pool để suy ra danh mục còn phù hợp: áp dụng đúng các bộ lọc đang có (bài Từ/Đến,
+    // search, chỉ ★, chưa thuộc...) NHƯNG bỏ qua category đang chọn, để tránh tự khoá
+    // người dùng vào 1 category duy nhất.
+    const pool = applyVocabFilters({ ignoreCategory: true });
 
-    const categories = getUniqueSorted(
-      pool.map(function (v) { return v.category != null ? v.category : v.Category; })
-        .filter(function (c) { return c; })
-    );
+    const poolCategoryValues = pool.map(function (v) { return v.category != null ? v.category : v.Category; });
+    const categories = getUniqueSorted(poolCategoryValues.filter(function (c) { return c; }));
+    // "" (rỗng) nghĩa là từ chưa được thiết lập danh mục — vẫn cho lọc riêng được, tách khỏi "all".
+    const hasEmptyCategory = poolCategoryValues.some(function (c) { return c === "" || c == null; });
 
-    let currentValue = state.filter.vocabCategory || "all";
+    // state.filter.vocabCategory có thể là "" (lọc từ chưa có danh mục) -> không được dùng "||"
+    // ở đây vì "" bị coi là falsy, sẽ sai lệch về "all".
+    let currentValue = state.filter.vocabCategory != null ? state.filter.vocabCategory : "all";
     categorySelect.innerHTML = "";
     const allOpt = createElement("option", "", "Tất cả");
     allOpt.value = "all";
     categorySelect.appendChild(allOpt);
     categories.forEach(function (cat) {
       const opt = createElement("option", "", getCategoryLabel(cat));
-      opt.value = cat;
+      opt.value = String(cat);
       categorySelect.appendChild(opt);
     });
+    if (hasEmptyCategory) {
+      const emptyOpt = createElement("option", "", "(Chưa có danh mục)");
+      emptyOpt.value = "";
+      categorySelect.appendChild(emptyOpt);
+    }
 
-    if (currentValue !== "all" && categories.indexOf(currentValue) === -1) {
+    // category trong data là số, còn currentValue đọc từ <select>.value luôn là chuỗi
+    // -> phải so sánh dạng chuỗi, nếu không sẽ luôn coi như "không tìm thấy" và bị reset về "all".
+    const categoryValues = categories.map(String);
+    if (hasEmptyCategory) {
+      categoryValues.push("");
+    }
+    if (currentValue !== "all" && categoryValues.indexOf(String(currentValue)) === -1) {
       state.filter.vocabCategory = "all";
       currentValue = "all";
     }
-    categorySelect.value = currentValue;
+    categorySelect.value = String(currentValue);
   }
 
   function renderVocabList() {
@@ -2198,7 +2184,7 @@
     }
     countLabel.textContent = filtered.length + " từ";
     renderVocabFilterSummary(filtered);
-    updateVocabCategoryOptions(filtered);
+    updateVocabCategoryOptions();
 
     var fixedActions = document.getElementById("vocab-fixed-actions");
     if (fixedActions) {
@@ -2754,7 +2740,7 @@
       container.innerHTML = "";
     }
 
-    const wrapper = createElement("div", "test-result", "");
+    const wrapper = createElement("div", "test-result test-config-form", "");
     const title = createElement("div", "score-main", "Cấu hình bài test");
     const desc = createElement(
       "div",
@@ -2903,6 +2889,18 @@
     sNotMasteredField.appendChild(sNotMasteredInput);
     configGrid.appendChild(sNotMasteredField);
 
+    // Setting: đọc từ vựng bằng TTS sau khi chọn đáp án
+    const readAfterAnswerField = createElement("div", "field-group", "");
+    const readAfterAnswerLabel = createElement("div", "field-label", "Đọc từ vựng sau khi chọn đáp án");
+    const readAfterAnswerInput = createElement("input", "", "");
+    readAfterAnswerInput.checked = state.testState.readAfterAnswer !== false;
+    readAfterAnswerInput.type = 'checkbox';
+    readAfterAnswerInput.style = 'text-align: left';
+    readAfterAnswerInput.id = "vocab-test-read-after-answer";
+    readAfterAnswerField.appendChild(readAfterAnswerLabel);
+    readAfterAnswerField.appendChild(readAfterAnswerInput);
+    configGrid.appendChild(readAfterAnswerField);
+
     wrapper.appendChild(configGrid);
 
     const btnRow = createElement("div", "btn-row", "");
@@ -2954,6 +2952,7 @@
       }
       var isStar = sStarInput.checked || false;
       var isNotMastered = sNotMasteredInput.checked || false;
+      var readAfterAnswer = readAfterAnswerInput.checked || false;
 
       var pool = vocabData.filter(function (raw) {
         if (!raw) {
@@ -2986,7 +2985,7 @@
         if (selectedCat === "all") {
           return true;
         }
-        return raw.category === selectedCat;
+        return String(raw.category) === String(selectedCat);
       });
 
       const questions = buildTestQuestions(pool, questionCount);
@@ -3010,6 +3009,7 @@
       state.testState.answerField = answerField;
       state.testState.isStar = isStar;
       state.testState.isNotMastered = isNotMastered;
+      state.testState.readAfterAnswer = readAfterAnswer;
       renderTestQuestion();
     });
 
@@ -3105,7 +3105,7 @@
       if (selectedCategory === "all") {
         return true;
       }
-      return v.category === selectedCategory;
+      return String(v.category) === String(selectedCategory);
     });
 
     // Lấy danh sách đáp án từ answerField
@@ -3566,13 +3566,20 @@
       heroActions.appendChild(pipLink);
       heroActions.appendChild(openWriteBtn);
     }
-    var indexLabel = createElement("div", "kd-index", String(globalIndex + 1));
+    var kanjiStt = raw.stt != null ? raw.stt : (globalIndex + 1);
+    var indexLabel = createElement("div", "kd-index", "" + kanjiStt);
+    var indexRow = createElement("div", "kd-index-row", "");
+    indexRow.appendChild(indexLabel);
+    if (raw.level) {
+      var levelLabel = createElement("div", "kd-index kd-index--level", String(raw.level).toUpperCase());
+      indexRow.appendChild(levelLabel);
+    }
     var kanjiEl = createElement("div", "kd-char", item.kanji);
     var meaningBadge = createElement("div", "kd-meaning-badge", item.core_meaning || "");
     var hanvietEl = createElement("div", "kd-hanviet", item.hanviet || "");
     var heroMain = createElement("div", "kd-hero-main", "");
     var heroMeta = createElement("div", "kd-hero-meta", "");
-    heroMain.appendChild(indexLabel);
+    heroMain.appendChild(indexRow);
     heroMain.appendChild(kanjiEl);
     if (item.core_meaning) heroMeta.appendChild(meaningBadge);
     if (item.hanviet) heroMeta.appendChild(hanvietEl);
@@ -5446,8 +5453,8 @@ history.replaceState({}, "", newUrl);
       isCorrect: isCorrect
     });
 
-    // Sau khi chọn đáp án thì đọc lại từ vựng (hiragana) bằng TTS
-    if (ttsText) {
+    // Sau khi chọn đáp án thì đọc lại từ vựng (hiragana) bằng TTS (nếu bật trong config)
+    if (ttsText && testState.readAfterAnswer !== false) {
       speakJapanese(ttsText, null);
     }
 
@@ -5564,18 +5571,32 @@ history.replaceState({}, "", newUrl);
     return [];
   }
 
+  function getKanjiSttMax(level) {
+    var max = 0;
+    kanjiData.forEach(function (item, i) {
+      if (!item) return;
+      if (level && level !== "all" && (item.level || "n45") !== level) return;
+      var stt = item.stt != null ? item.stt : (i + 1);
+      if (stt > max) max = stt;
+    });
+    return max || 1;
+  }
+
   function buildKanjiTestQuestions(config) {
-    var fromIdx = (config.fromIdx != null) ? config.fromIdx : 0;
-    var toIdx = (config.toIdx != null) ? Math.min(config.toIdx, kanjiData.length - 1) : kanjiData.length - 1;
+    var level = config.level || "all";
+    var fromStt = (config.fromStt != null) ? config.fromStt : 1;
+    var toStt = (config.toStt != null) ? config.toStt : Infinity;
     var selectedModes = (config.modes && config.modes.length > 0) ? config.modes : [4];
     var count = config.questionCount || 20;
     var isStar = !!config.isStar;
 
     var candidates = [];
-    for (var i = fromIdx; i <= toIdx; i++) {
-      if (isStar && !state.kanjiFavorites[i]) continue;
-      var raw = kanjiData[i];
-      if (!raw) continue;
+    kanjiData.forEach(function (raw, i) {
+      if (!raw) return;
+      if (level !== "all" && (raw.level || "n45") !== level) return;
+      var stt = raw.stt != null ? raw.stt : (i + 1);
+      if (stt < fromStt || stt > toStt) return;
+      if (isStar && !state.kanjiFavorites[i]) return;
       selectedModes.forEach(function (mode) {
         if (!kanjiModeAvailable(raw, mode)) return;
         if (mode >= 5 && mode <= 9) {
@@ -5586,8 +5607,23 @@ history.replaceState({}, "", newUrl);
           candidates.push({ kanjiIdx: i, mode: mode, vocabEntry: null });
         }
       });
-    }
+    });
     return shuffleArray(candidates).slice(0, count);
+  }
+
+  function buildVocabKanjiHanVietHint(word, raw) {
+    if (!word) return "";
+    var parts = [];
+    for (var ch of word) {
+      var code = ch.codePointAt(0);
+      var isCjk = (code >= 0x4E00 && code <= 0x9FFF) || (code >= 0x3400 && code <= 0x4DBF);
+      if (!isCjk) continue;
+      var hv = (ch === raw.kanji && raw.hanviet)
+        ? raw.hanviet
+        : ((window.KANJI_HAN_VIET && window.KANJI_HAN_VIET[ch]) || "");
+      parts.push(hv ? (ch + " " + hv) : ch);
+    }
+    return parts.join(" | ");
   }
 
   function renderKanjiTestQuestion() {
@@ -5635,7 +5671,7 @@ history.replaceState({}, "", newUrl);
       pool = buildKanjiPool(4);
     } else if (mode === 5) {
       questionText = ve.word;
-      questionHint = ve.reading + "　[" + raw.kanji + " " + raw.hanviet + "]";
+      questionHint = ve.reading + "　[" + buildVocabKanjiHanVietHint(ve.word, raw) + "]";
       questionSub = "Nghĩa tiếng Việt của từ này là gì?";
       correct = ve.meaning;
       pool = buildKanjiPool(5);
@@ -5717,29 +5753,63 @@ history.replaceState({}, "", newUrl);
 
   function renderKanjiTestInitialMessage() {
     const ts = state.kanjiTestState;
-    const total = kanjiData.length;
+    var currentLevel = ts.level || "all";
+    var maxStt = getKanjiSttMax(currentLevel);
 
-    const wrapper = createElement("div", "test-result", "");
+    const wrapper = createElement("div", "test-result test-config-form", "");
     wrapper.appendChild(createElement("div", "score-main", "Cấu hình Test Kanji"));
 
-    // --- Range ---
+    // --- Level ---
+    const levelSection = createElement("div", "kt-section", "");
+    levelSection.appendChild(createElement("div", "kt-section-label", "Cấp độ"));
+    const levelField = createElement("div", "field-group", "");
+    const levelSelect = document.createElement("select");
+    levelSelect.className = "input-text";
+    [
+      { value: "all", label: "Tất cả" },
+      { value: "n45", label: "N4-N5" },
+      { value: "n3", label: "N3" }
+    ].forEach(function (opt) {
+      var optEl = document.createElement("option");
+      optEl.value = opt.value;
+      optEl.textContent = opt.label;
+      levelSelect.appendChild(optEl);
+    });
+    levelSelect.value = currentLevel;
+    levelField.appendChild(levelSelect);
+    levelSection.appendChild(levelField);
+    wrapper.appendChild(levelSection);
+
+    // --- Range (theo STT trong data, không phải số thứ tự đếm tự động) ---
     const rangeSection = createElement("div", "kt-section", "");
-    rangeSection.appendChild(createElement("div", "kt-section-label", "Phạm vi kanji"));
+    rangeSection.appendChild(createElement("div", "kt-section-label", "Phạm vi kanji (theo STT trong data)"));
     const rangeRow = createElement("div", "kt-range-row", "");
 
     const fromField = createElement("div", "field-group", "");
-    fromField.appendChild(createElement("div", "field-label", "Từ số"));
+    fromField.appendChild(createElement("div", "field-label", "Từ STT"));
     const fromInput = createElement("input", "input-text", "");
-    fromInput.type = "number"; fromInput.min = 1; fromInput.max = total;
-    fromInput.value = String((ts.fromIdx != null ? ts.fromIdx : 0) + 1);
+    fromInput.type = "number"; fromInput.min = 1; fromInput.max = maxStt;
+    fromInput.value = String(ts.fromStt != null ? ts.fromStt : 1);
     fromField.appendChild(fromInput);
 
     const toField = createElement("div", "field-group", "");
-    toField.appendChild(createElement("div", "field-label", "Đến số"));
+    toField.appendChild(createElement("div", "field-label", "Đến STT"));
     const toInput = createElement("input", "input-text", "");
-    toInput.type = "number"; toInput.min = 1; toInput.max = total;
-    toInput.value = String((ts.toIdx != null ? ts.toIdx : total - 1) + 1);
+    toInput.type = "number"; toInput.min = 1; toInput.max = maxStt;
+    toInput.value = String(ts.toStt != null ? ts.toStt : maxStt);
     toField.appendChild(toInput);
+
+    levelSelect.addEventListener("change", function () {
+      var newMax = getKanjiSttMax(levelSelect.value);
+      fromInput.max = newMax;
+      toInput.max = newMax;
+      if (parseInt(toInput.value, 10) > newMax || !toInput.value) {
+        toInput.value = String(newMax);
+      }
+      if (parseInt(fromInput.value, 10) > newMax || !fromInput.value) {
+        fromInput.value = "1";
+      }
+    });
 
     rangeRow.appendChild(fromField);
     rangeRow.appendChild(toField);
@@ -5829,12 +5899,14 @@ history.replaceState({}, "", newUrl);
     const startBtn = createElement("button", "btn", "Bắt đầu test");
     startBtn.type = "button";
     startBtn.addEventListener("click", function () {
+      var levelVal = levelSelect.value || "all";
+      var currentMaxStt = getKanjiSttMax(levelVal);
       var fromVal = parseInt(fromInput.value, 10);
       var toVal = parseInt(toInput.value, 10);
       if (isNaN(fromVal) || fromVal < 1) fromVal = 1;
       if (isNaN(toVal) || toVal < fromVal) toVal = fromVal;
-      if (fromVal > total) fromVal = total;
-      if (toVal > total) toVal = total;
+      if (fromVal > currentMaxStt) fromVal = currentMaxStt;
+      if (toVal > currentMaxStt) toVal = currentMaxStt;
 
       var qCount = parseInt(qCountInput.value, 10);
       if (isNaN(qCount) || qCount < 5) qCount = 5;
@@ -5851,8 +5923,9 @@ history.replaceState({}, "", newUrl);
 
       var isStarVal = isStarInput.checked || false;
       ts.showAnswerKanjiDetailAfterEach = !!revealDetailInput.checked;
-      ts.fromIdx = fromVal - 1;
-      ts.toIdx = toVal - 1;
+      ts.level = levelVal;
+      ts.fromStt = fromVal;
+      ts.toStt = toVal;
       ts.questionCount = qCount;
       ts.optionCount = optCount;
       ts.modes = selectedModes;
@@ -5863,8 +5936,9 @@ history.replaceState({}, "", newUrl);
       ts.correctCount = 0;
       ts.answers = [];
       ts.questions = buildKanjiTestQuestions({
-        fromIdx: ts.fromIdx,
-        toIdx: ts.toIdx,
+        level: ts.level,
+        fromStt: ts.fromStt,
+        toStt: ts.toStt,
         modes: selectedModes,
         questionCount: qCount,
         isStar: isStarVal
