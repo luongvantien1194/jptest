@@ -164,9 +164,29 @@
     if (field === "Lesson") {
       var num = parseInt(rawVal, 10);
       row[field] = isNaN(num) ? String(rawVal || "").trim() : num;
+    } else if (field === "category") {
+      row[field] = window.resolveVocabCategoryId ? window.resolveVocabCategoryId(rawVal) : "";
     } else {
       row[field] = rawVal != null ? String(rawVal) : "";
     }
+  }
+
+  function buildCategorySelect(currentVal) {
+    var select = document.createElement("select");
+    select.className = "vocab-edit-input";
+    var emptyOpt = document.createElement("option");
+    emptyOpt.value = "";
+    emptyOpt.textContent = "(chưa xác định)";
+    select.appendChild(emptyOpt);
+    var master = window.VOCAB_CATEGORY_MASTER || [];
+    master.forEach(function (cat) {
+      var opt = document.createElement("option");
+      opt.value = String(cat.id);
+      opt.textContent = cat.label;
+      select.appendChild(opt);
+    });
+    select.value = currentVal != null && currentVal !== "" ? String(currentVal) : "";
+    return select;
   }
 
   function renderTable() {
@@ -205,10 +225,15 @@
       FIELDS.forEach(function (f) {
         var td = createEl("td");
         td.setAttribute("data-label", FIELD_LABELS[f]);
-        var input = document.createElement("input");
-        input.type = "text";
-        input.className = "vocab-edit-input" + (f === "Lesson" ? " vocab-edit-input--narrow" : "");
-        input.value = row[f] != null ? row[f] : "";
+        var input;
+        if (f === "category") {
+          input = buildCategorySelect(row[f]);
+        } else {
+          input = document.createElement("input");
+          input.type = "text";
+          input.className = "vocab-edit-input" + (f === "Lesson" ? " vocab-edit-input--narrow" : "");
+          input.value = row[f] != null ? row[f] : "";
+        }
         input.addEventListener("change", function () {
           setFieldValue(row, f, input.value);
           saveEditorData();
