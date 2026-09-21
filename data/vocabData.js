@@ -5,7 +5,7 @@ const vocabData = [
     "Romaji": "watashi",
     "Kanji": "私",
     "Meaning": "Tôi",
-    "category": "pronoun",
+    "category": 9,
     "Vru": "",
     "type": "",
     "note": ""
@@ -16,7 +16,7 @@ const vocabData = [
     "Romaji": "watashitachi",
     "Kanji": "私たち",
     "Meaning": "Chúng tôi",
-    "category": "pronoun",
+    "category": 9,
     "Vru": "",
     "type": "",
     "note": ""
@@ -27,7 +27,7 @@ const vocabData = [
     "Romaji": "anata",
     "Kanji": "",
     "Meaning": "Anh/chị, ông/bà, bạn (ngôi thứ 2 số ít)",
-    "category": "pronoun",
+    "category": 9,
     "Vru": "",
     "type": "",
     "note": ""
@@ -38,7 +38,7 @@ const vocabData = [
     "Romaji": "ano hito",
     "Kanji": "あの人",
     "Meaning": "Người kia",
-    "category": "pronoun",
+    "category": 9,
     "Vru": "",
     "type": "",
     "note": ""
@@ -49,7 +49,7 @@ const vocabData = [
     "Romaji": "ano kata",
     "Kanji": "あの方",
     "Meaning": "Vị này (lịch sự tương đương với あのひと)",
-    "category": "pronoun",
+    "category": 9,
     "Vru": "",
     "type": "",
     "note": ""
@@ -60,7 +60,7 @@ const vocabData = [
     "Romaji": "minasan",
     "Kanji": "",
     "Meaning": "Các bạn, các anh, các chị, mọi người",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -71,7 +71,7 @@ const vocabData = [
     "Romaji": "～san",
     "Kanji": "",
     "Meaning": "Anh ～, Chị ～, Ông ～, Bà ～",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -82,7 +82,7 @@ const vocabData = [
     "Romaji": "～chan",
     "Kanji": "",
     "Meaning": "Bé (dùng cho nữ) hoặc gọi thân mật cho trẻ con",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -93,7 +93,7 @@ const vocabData = [
     "Romaji": "～kun",
     "Kanji": "",
     "Meaning": "Bé (dùng cho nam) hoặc gọi thân mật",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -104,7 +104,7 @@ const vocabData = [
     "Romaji": "～jin",
     "Kanji": "～人",
     "Meaning": "Người nước ～",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -115,7 +115,7 @@ const vocabData = [
     "Romaji": "sensei",
     "Kanji": "先生",
     "Meaning": "Giáo viên",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -126,7 +126,7 @@ const vocabData = [
     "Romaji": "kyoushi",
     "Kanji": "教師",
     "Meaning": "Giáo viên (dùng để nói đến nghề nghiệp)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -137,7 +137,7 @@ const vocabData = [
     "Romaji": "gakusei",
     "Kanji": "学生",
     "Meaning": "học sinh, sinh viên",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -148,7 +148,7 @@ const vocabData = [
     "Romaji": "kaishain",
     "Kanji": "会社員",
     "Meaning": "nhân viên công ty",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -159,7 +159,7 @@ const vocabData = [
     "Romaji": "～shain",
     "Kanji": "社員",
     "Meaning": "nhân viên công ty ～",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -170,7 +170,7 @@ const vocabData = [
     "Romaji": "ginkouin",
     "Kanji": "銀行員",
     "Meaning": "nhân viên ngân hàng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -181,7 +181,7 @@ const vocabData = [
     "Romaji": "isha",
     "Kanji": "医者",
     "Meaning": "bác sĩ",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -192,7 +192,7 @@ const vocabData = [
     "Romaji": "kenkyuusha",
     "Kanji": "研究者",
     "Meaning": "nhà nghiên cứu",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -203,7 +203,7 @@ const vocabData = [
     "Romaji": "enjinia",
     "Kanji": "",
     "Meaning": "kỹ sư",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -214,7 +214,7 @@ const vocabData = [
     "Romaji": "daigaku",
     "Kanji": "大学",
     "Meaning": "trường đại học",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -225,7 +225,7 @@ const vocabData = [
     "Romaji": "byouin",
     "Kanji": "病院",
     "Meaning": "bệnh viện",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -236,7 +236,7 @@ const vocabData = [
     "Romaji": "denki",
     "Kanji": "電気",
     "Meaning": "Điện, đèn điện",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -247,7 +247,7 @@ const vocabData = [
     "Romaji": "dare (donata)",
     "Kanji": "誰",
     "Meaning": "ai (ngài nào, vị nào)",
-    "category": "pronoun",
+    "category": 9,
     "Vru": "",
     "type": "",
     "note": ""
@@ -258,7 +258,7 @@ const vocabData = [
     "Romaji": "―sai",
     "Kanji": "～歳",
     "Meaning": "tuổi",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -269,7 +269,7 @@ const vocabData = [
     "Romaji": "nansai",
     "Kanji": "何歳",
     "Meaning": "mấy tuổi",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -280,7 +280,7 @@ const vocabData = [
     "Romaji": "hai",
     "Kanji": "",
     "Meaning": "vâng",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -291,7 +291,7 @@ const vocabData = [
     "Romaji": "iie",
     "Kanji": "",
     "Meaning": "không",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -302,7 +302,7 @@ const vocabData = [
     "Romaji": "shitsurei desu ga",
     "Kanji": "失礼ですが",
     "Meaning": "Xin lỗi (khi muốn nhờ ai việc gì đó)",
-    "category": "conjunction",
+    "category": 8,
     "Vru": "",
     "type": "",
     "note": ""
@@ -313,7 +313,7 @@ const vocabData = [
     "Romaji": "onamae wa?",
     "Kanji": "お名前は",
     "Meaning": "Bạn tên gì?",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -324,7 +324,7 @@ const vocabData = [
     "Romaji": "hajimemashite",
     "Kanji": "初めて",
     "Meaning": "chào lần đầu gặp nhau",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -335,7 +335,7 @@ const vocabData = [
     "Romaji": "douzo yoroshiku [onegaishimasu]",
     "Kanji": "どうぞよろしく「お願いします」",
     "Meaning": "rất hân hạnh được làm quen",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -346,7 +346,7 @@ const vocabData = [
     "Romaji": "kochira wa ~san desu",
     "Kanji": "",
     "Meaning": "đây là ngài",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -357,7 +357,7 @@ const vocabData = [
     "Romaji": "～kara kimashita",
     "Kanji": "～から来ました",
     "Meaning": "đến từ ～",
-    "category": "verb",
+    "category": 2,
     "Vru": "くる",
     "type": "Nhóm III",
     "note": "Tự động từ"
@@ -368,7 +368,7 @@ const vocabData = [
     "Romaji": "amerika",
     "Kanji": "",
     "Meaning": "Mỹ",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -379,7 +379,7 @@ const vocabData = [
     "Romaji": "igirisu",
     "Kanji": "",
     "Meaning": "Anh",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -390,7 +390,7 @@ const vocabData = [
     "Romaji": "indo",
     "Kanji": "",
     "Meaning": "Ấn Độ",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -401,7 +401,7 @@ const vocabData = [
     "Romaji": "indoneshia",
     "Kanji": "",
     "Meaning": "Indonesia",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -412,7 +412,7 @@ const vocabData = [
     "Romaji": "kankoku",
     "Kanji": "韓国",
     "Meaning": "Hàn quốc",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -423,7 +423,7 @@ const vocabData = [
     "Romaji": "tai",
     "Kanji": "",
     "Meaning": "Thái Lan",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -434,7 +434,7 @@ const vocabData = [
     "Romaji": "chuugoku",
     "Kanji": "中国",
     "Meaning": "Trung Quốc",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -445,7 +445,7 @@ const vocabData = [
     "Romaji": "doitsu",
     "Kanji": "",
     "Meaning": "Đức",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -456,7 +456,7 @@ const vocabData = [
     "Romaji": "nihon",
     "Kanji": "日本",
     "Meaning": "Nhật",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -467,7 +467,7 @@ const vocabData = [
     "Romaji": "furansu",
     "Kanji": "",
     "Meaning": "Pháp",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -478,7 +478,7 @@ const vocabData = [
     "Romaji": "burajiru",
     "Kanji": "",
     "Meaning": "Brazil",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -489,7 +489,7 @@ const vocabData = [
     "Romaji": "sakura daigaku",
     "Kanji": "さくら大学",
     "Meaning": "Trường ĐH Sakura (Hoa Anh Đào)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -500,7 +500,7 @@ const vocabData = [
     "Romaji": "kore",
     "Kanji": "",
     "Meaning": "Cái này, đây (vật ở gần người nói)",
-    "category": "pronoun",
+    "category": 9,
     "Vru": "",
     "type": "",
     "note": ""
@@ -511,7 +511,7 @@ const vocabData = [
     "Romaji": "sore",
     "Kanji": "",
     "Meaning": "Cái đó, đó (vật ở gần người nghe)",
-    "category": "pronoun",
+    "category": 9,
     "Vru": "",
     "type": "",
     "note": ""
@@ -522,7 +522,7 @@ const vocabData = [
     "Romaji": "are",
     "Kanji": "",
     "Meaning": "Cái kia, kia (vật ở xa cả người nói và người nghe)",
-    "category": "pronoun",
+    "category": 9,
     "Vru": "",
     "type": "",
     "note": ""
@@ -533,7 +533,7 @@ const vocabData = [
     "Romaji": "kono~",
     "Kanji": "",
     "Meaning": "~ này",
-    "category": "pronoun",
+    "category": 9,
     "Vru": "",
     "type": "",
     "note": ""
@@ -544,7 +544,7 @@ const vocabData = [
     "Romaji": "sono~",
     "Kanji": "",
     "Meaning": "~ đó",
-    "category": "pronoun",
+    "category": 9,
     "Vru": "",
     "type": "",
     "note": ""
@@ -555,7 +555,7 @@ const vocabData = [
     "Romaji": "ano~",
     "Kanji": "",
     "Meaning": "~ kia",
-    "category": "pronoun",
+    "category": 9,
     "Vru": "",
     "type": "",
     "note": ""
@@ -566,7 +566,7 @@ const vocabData = [
     "Romaji": "hon",
     "Kanji": "本",
     "Meaning": "Sách",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -577,7 +577,7 @@ const vocabData = [
     "Romaji": "jisho",
     "Kanji": "辞書",
     "Meaning": "Từ điển",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -588,7 +588,7 @@ const vocabData = [
     "Romaji": "zasshi",
     "Kanji": "雑誌",
     "Meaning": "Tạp chí",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -599,7 +599,7 @@ const vocabData = [
     "Romaji": "shinbun",
     "Kanji": "新聞",
     "Meaning": "Báo",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -610,7 +610,7 @@ const vocabData = [
     "Romaji": "no-to",
     "Kanji": "",
     "Meaning": "Vở",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -621,7 +621,7 @@ const vocabData = [
     "Romaji": "techou",
     "Kanji": "手帳",
     "Meaning": "Sổ tay",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -632,7 +632,7 @@ const vocabData = [
     "Romaji": "meishi",
     "Kanji": "名詞",
     "Meaning": "Danh thiếp",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -643,7 +643,7 @@ const vocabData = [
     "Romaji": "ka-do",
     "Kanji": "",
     "Meaning": "Thẻ, cạc",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -654,7 +654,7 @@ const vocabData = [
     "Romaji": "terehon ka-do",
     "Kanji": "",
     "Meaning": "Thẻ điện thoại",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -665,7 +665,7 @@ const vocabData = [
     "Romaji": "enpitsu",
     "Kanji": "鉛筆",
     "Meaning": "Bút chì",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -676,7 +676,7 @@ const vocabData = [
     "Romaji": "bo-rupen",
     "Kanji": "",
     "Meaning": "Bút bi",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -687,7 +687,7 @@ const vocabData = [
     "Romaji": "sha-pupenshiru",
     "Kanji": "",
     "Meaning": "Bút chì kim, bút chì bấm",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -698,7 +698,7 @@ const vocabData = [
     "Romaji": "kagi",
     "Kanji": "",
     "Meaning": "Chìa khóa",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -709,7 +709,7 @@ const vocabData = [
     "Romaji": "tokei",
     "Kanji": "時計",
     "Meaning": "Đồng hồ",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -720,7 +720,7 @@ const vocabData = [
     "Romaji": "kasa",
     "Kanji": "傘",
     "Meaning": "ô, dù",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -731,7 +731,7 @@ const vocabData = [
     "Romaji": "kaban",
     "Kanji": "",
     "Meaning": "Cặp sách, túi sách",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -742,7 +742,7 @@ const vocabData = [
     "Romaji": "kasetto te-pu",
     "Kanji": "",
     "Meaning": "Băng [cát-xét]",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -753,7 +753,7 @@ const vocabData = [
     "Romaji": "te-pu reko-da-",
     "Kanji": "",
     "Meaning": "Máy ghi âm",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -764,7 +764,7 @@ const vocabData = [
     "Romaji": "terebi",
     "Kanji": "",
     "Meaning": "Tivi",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -775,7 +775,7 @@ const vocabData = [
     "Romaji": "rajio",
     "Kanji": "",
     "Meaning": "Radio",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -786,7 +786,7 @@ const vocabData = [
     "Romaji": "kamera",
     "Kanji": "",
     "Meaning": "Máy ảnh",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -797,7 +797,7 @@ const vocabData = [
     "Romaji": "konpyu-ta",
     "Kanji": "",
     "Meaning": "Máy vi tính",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -808,7 +808,7 @@ const vocabData = [
     "Romaji": "jidousha",
     "Kanji": "自動車",
     "Meaning": "Ô tô, xe hơi",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -819,7 +819,7 @@ const vocabData = [
     "Romaji": "tsukue",
     "Kanji": "机",
     "Meaning": "Cái bàn",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -830,7 +830,7 @@ const vocabData = [
     "Romaji": "isu",
     "Kanji": "",
     "Meaning": "Ghế",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -841,7 +841,7 @@ const vocabData = [
     "Romaji": "chokore-to",
     "Kanji": "",
     "Meaning": "Chocolate",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -852,7 +852,7 @@ const vocabData = [
     "Romaji": "ko-hi-",
     "Kanji": "",
     "Meaning": "Cà phê",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -863,7 +863,7 @@ const vocabData = [
     "Romaji": "eigo",
     "Kanji": "英語",
     "Meaning": "Tiếng Anh",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -874,7 +874,7 @@ const vocabData = [
     "Romaji": "nihongo",
     "Kanji": "日本語",
     "Meaning": "Tiếng Nhật",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -885,7 +885,7 @@ const vocabData = [
     "Romaji": "～go",
     "Kanji": "～語",
     "Meaning": "Tiếng~",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -896,7 +896,7 @@ const vocabData = [
     "Romaji": "nan",
     "Kanji": "何",
     "Meaning": "Cái gì",
-    "category": "pronoun",
+    "category": 9,
     "Vru": "",
     "type": "",
     "note": ""
@@ -907,7 +907,7 @@ const vocabData = [
     "Romaji": "sou",
     "Kanji": "",
     "Meaning": "Đúng vậy",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -918,7 +918,7 @@ const vocabData = [
     "Romaji": "chigaimasu",
     "Kanji": "違います",
     "Meaning": "Nhầm rồi",
-    "category": "verb",
+    "category": 2,
     "Vru": "ちがう",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -929,7 +929,7 @@ const vocabData = [
     "Romaji": "sou desu ka",
     "Kanji": "",
     "Meaning": "Thế à?",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -940,7 +940,7 @@ const vocabData = [
     "Romaji": "anou",
     "Kanji": "",
     "Meaning": "À…(được sử dụng để thể hiện sự do dự)",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -951,7 +951,7 @@ const vocabData = [
     "Romaji": "hon no kimochi desu",
     "Kanji": "ほんの気持ちです",
     "Meaning": "Đây là chút quà nhỏ của tôi",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -962,7 +962,7 @@ const vocabData = [
     "Romaji": "douzo",
     "Kanji": "",
     "Meaning": "Xin mời",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -973,7 +973,7 @@ const vocabData = [
     "Romaji": "doumo",
     "Kanji": "",
     "Meaning": "Cảm ơn",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -984,7 +984,7 @@ const vocabData = [
     "Romaji": "arigatou gozaimasu",
     "Kanji": "",
     "Meaning": "Cảm ơn nhiều",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -995,7 +995,7 @@ const vocabData = [
     "Romaji": "korekara osewa ni narimasu",
     "Kanji": "これから お世話になります",
     "Meaning": "Từ này mong được anh/chị giúp đỡ",
-    "category": "verb",
+    "category": 2,
     "Vru": "おせわになる",
     "type": "Nhóm I",
     "note": ""
@@ -1006,7 +1006,7 @@ const vocabData = [
     "Romaji": "kochirakoso yoroshiku",
     "Kanji": "",
     "Meaning": "Chính tôi mới mong được anh/chị giúp đỡ",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1017,7 +1017,7 @@ const vocabData = [
     "Romaji": "koko",
     "Kanji": "",
     "Meaning": "chỗ này, đây",
-    "category": "pronoun",
+    "category": 9,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1028,7 +1028,7 @@ const vocabData = [
     "Romaji": "soko",
     "Kanji": "",
     "Meaning": "chỗ đó, đó",
-    "category": "pronoun",
+    "category": 9,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1039,7 +1039,7 @@ const vocabData = [
     "Romaji": "asoko",
     "Kanji": "",
     "Meaning": "chỗ kia, kia",
-    "category": "pronoun",
+    "category": 9,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1050,7 +1050,7 @@ const vocabData = [
     "Romaji": "doko",
     "Kanji": "",
     "Meaning": "chỗ nào, đâu",
-    "category": "pronoun",
+    "category": 9,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1061,7 +1061,7 @@ const vocabData = [
     "Romaji": "kochira",
     "Kanji": "",
     "Meaning": "phía này, đằng này, chỗ này, đây",
-    "category": "pronoun",
+    "category": 9,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1072,7 +1072,7 @@ const vocabData = [
     "Romaji": "sochira",
     "Kanji": "",
     "Meaning": "phía đó, đằng đó, chỗ đó, đó",
-    "category": "pronoun",
+    "category": 9,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1083,7 +1083,7 @@ const vocabData = [
     "Romaji": "achira",
     "Kanji": "",
     "Meaning": "phía kia, đằng kia, chỗ kia, kia",
-    "category": "pronoun",
+    "category": 9,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1094,7 +1094,7 @@ const vocabData = [
     "Romaji": "dochira",
     "Kanji": "",
     "Meaning": "phía nào, đằng nào, chỗ nào, đâu",
-    "category": "pronoun",
+    "category": 9,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1105,7 +1105,7 @@ const vocabData = [
     "Romaji": "kyoushitsu",
     "Kanji": "教室",
     "Meaning": "lớp học, phòng học",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1116,7 +1116,7 @@ const vocabData = [
     "Romaji": "shokudou",
     "Kanji": "食堂",
     "Meaning": "nhà ăn",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1127,7 +1127,7 @@ const vocabData = [
     "Romaji": "jimusho",
     "Kanji": "事務所",
     "Meaning": "văn phòng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1138,7 +1138,7 @@ const vocabData = [
     "Romaji": "kaigishitsu",
     "Kanji": "会議室",
     "Meaning": "phòng họp",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1149,7 +1149,7 @@ const vocabData = [
     "Romaji": "uketsuke",
     "Kanji": "受付",
     "Meaning": "bộ phận tiếp tân, phòng thường trực, lễ tân",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1160,7 +1160,7 @@ const vocabData = [
     "Romaji": "robi-",
     "Kanji": "",
     "Meaning": "hành lang, đại sảnh",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1171,7 +1171,7 @@ const vocabData = [
     "Romaji": "heya",
     "Kanji": "部屋",
     "Meaning": "căn phòng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1182,7 +1182,7 @@ const vocabData = [
     "Romaji": "toire (otearai)",
     "Kanji": "トイレ（お手洗い）",
     "Meaning": "nhà vệ sinh, phòng vệ sinh, toa-lét",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1193,7 +1193,7 @@ const vocabData = [
     "Romaji": "kaidan",
     "Kanji": "階段",
     "Meaning": "cầu thang",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1204,7 +1204,7 @@ const vocabData = [
     "Romaji": "erebe-ta-",
     "Kanji": "",
     "Meaning": "thang máy",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1215,7 +1215,7 @@ const vocabData = [
     "Romaji": "esukare-ta-",
     "Kanji": "",
     "Meaning": "thang cuốn",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1226,7 +1226,7 @@ const vocabData = [
     "Romaji": "kuni",
     "Kanji": "国",
     "Meaning": "đất nước",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1237,7 +1237,7 @@ const vocabData = [
     "Romaji": "kaisha",
     "Kanji": "会社",
     "Meaning": "công ty",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1248,7 +1248,7 @@ const vocabData = [
     "Romaji": "uchi",
     "Kanji": "",
     "Meaning": "nhà",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1259,7 +1259,7 @@ const vocabData = [
     "Romaji": "denwa",
     "Kanji": "電話",
     "Meaning": "máy điện thoại, điện thoại",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1270,7 +1270,7 @@ const vocabData = [
     "Romaji": "kutsu",
     "Kanji": "靴",
     "Meaning": "giày",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1281,7 +1281,7 @@ const vocabData = [
     "Romaji": "nekutai",
     "Kanji": "",
     "Meaning": "cà vạt",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1292,7 +1292,7 @@ const vocabData = [
     "Romaji": "wain",
     "Kanji": "",
     "Meaning": "rượu vang",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1303,7 +1303,7 @@ const vocabData = [
     "Romaji": "tabako",
     "Kanji": "",
     "Meaning": "thuốc lá",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1314,7 +1314,7 @@ const vocabData = [
     "Romaji": "uriba",
     "Kanji": "売り場",
     "Meaning": "quầy bán (trong một cửa hàng bách hóa)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1325,7 +1325,7 @@ const vocabData = [
     "Romaji": "chika",
     "Kanji": "地下",
     "Meaning": "tầng hầm, dưới mặt đất",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1336,7 +1336,7 @@ const vocabData = [
     "Romaji": "―kai (－gai)",
     "Kanji": "－階",
     "Meaning": "tầng thứ –",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1347,7 +1347,7 @@ const vocabData = [
     "Romaji": "nangai",
     "Kanji": "何階",
     "Meaning": "tầng mấy",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1358,7 +1358,7 @@ const vocabData = [
     "Romaji": "―en",
     "Kanji": "―円",
     "Meaning": "yên",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1369,7 +1369,7 @@ const vocabData = [
     "Romaji": "ikura",
     "Kanji": "",
     "Meaning": "bao nhiêu tiền",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1380,7 +1380,7 @@ const vocabData = [
     "Romaji": "hyaku",
     "Kanji": "百",
     "Meaning": "trăm",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1391,7 +1391,7 @@ const vocabData = [
     "Romaji": "sen",
     "Kanji": "千",
     "Meaning": "nghìn",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1402,7 +1402,7 @@ const vocabData = [
     "Romaji": "man",
     "Kanji": "万",
     "Meaning": "mười nghìn, vạn",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1413,7 +1413,7 @@ const vocabData = [
     "Romaji": "sumimasen",
     "Kanji": "",
     "Meaning": "Xin lỗi",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1424,7 +1424,7 @@ const vocabData = [
     "Romaji": "~de gozaimasu",
     "Kanji": "",
     "Meaning": "cách nói lịch sự của 「です」",
-    "category": "verb",
+    "category": 2,
     "Vru": "でございます",
     "type": "Nhóm III",
     "note": ""
@@ -1435,7 +1435,7 @@ const vocabData = [
     "Romaji": "misete kudasai",
     "Kanji": "見せてください",
     "Meaning": "cho tôi xem [~]",
-    "category": "verb",
+    "category": 2,
     "Vru": "みせる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -1446,7 +1446,7 @@ const vocabData = [
     "Romaji": "ja",
     "Kanji": "",
     "Meaning": "Thế thì, vậy thì",
-    "category": "conjunction",
+    "category": 8,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1457,7 +1457,7 @@ const vocabData = [
     "Romaji": "kudasai",
     "Kanji": "",
     "Meaning": "cho tôi [~]",
-    "category": "verb",
+    "category": 2,
     "Vru": "くださる",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -1468,7 +1468,7 @@ const vocabData = [
     "Romaji": "shin oosaka",
     "Kanji": "新大阪",
     "Meaning": "tên một nhà ga ở Osaka",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1479,7 +1479,7 @@ const vocabData = [
     "Romaji": "itaria",
     "Kanji": "",
     "Meaning": "Ý",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1490,7 +1490,7 @@ const vocabData = [
     "Romaji": "suisu",
     "Kanji": "",
     "Meaning": "Thụy Sĩ",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1501,7 +1501,7 @@ const vocabData = [
     "Romaji": "MT / yo-nen / akikkusu",
     "Kanji": "",
     "Meaning": "tên các công ty giả tưởng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1512,7 +1512,7 @@ const vocabData = [
     "Romaji": "okimasu",
     "Kanji": "",
     "Meaning": "thức dậy",
-    "category": "verb",
+    "category": 2,
     "Vru": "おきる",
     "type": "Nhóm II",
     "note": "Tự động từ"
@@ -1523,7 +1523,7 @@ const vocabData = [
     "Romaji": "nemasu",
     "Kanji": "寝ます",
     "Meaning": "ngủ",
-    "category": "verb",
+    "category": 2,
     "Vru": "ねる",
     "type": "Nhóm II",
     "note": "Tự động từ"
@@ -1534,7 +1534,7 @@ const vocabData = [
     "Romaji": "hatarakimasu",
     "Kanji": "働きます",
     "Meaning": "làm việc",
-    "category": "verb",
+    "category": 2,
     "Vru": "はたらく",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -1545,7 +1545,7 @@ const vocabData = [
     "Romaji": "yasumimasu",
     "Kanji": "休みます",
     "Meaning": "nghỉ ngơi",
-    "category": "verb",
+    "category": 2,
     "Vru": "やすむ",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -1556,7 +1556,7 @@ const vocabData = [
     "Romaji": "benkyoushimasu",
     "Kanji": "勉強します",
     "Meaning": "học tập",
-    "category": "verb",
+    "category": 2,
     "Vru": "べんきょうする",
     "type": "Nhóm III",
     "note": "Tha động từ"
@@ -1567,7 +1567,7 @@ const vocabData = [
     "Romaji": "owarimasu",
     "Kanji": "終わります",
     "Meaning": "kết thúc",
-    "category": "verb",
+    "category": 2,
     "Vru": "おわる",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -1578,7 +1578,7 @@ const vocabData = [
     "Romaji": "depa-to",
     "Kanji": "",
     "Meaning": "cửa hàng bách hóa",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1589,7 +1589,7 @@ const vocabData = [
     "Romaji": "ginkou",
     "Kanji": "銀行",
     "Meaning": "ngân hàng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1600,7 +1600,7 @@ const vocabData = [
     "Romaji": "yuubinkyoku",
     "Kanji": "郵便局",
     "Meaning": "bưu điện",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1611,7 +1611,7 @@ const vocabData = [
     "Romaji": "toshokan",
     "Kanji": "図書館",
     "Meaning": "thư viện",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1622,7 +1622,7 @@ const vocabData = [
     "Romaji": "bijutsukan",
     "Kanji": "美術館",
     "Meaning": "viện bảo tàng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1633,7 +1633,7 @@ const vocabData = [
     "Romaji": "denwa bangou",
     "Kanji": "電話番号",
     "Meaning": "số điện thoại",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1644,7 +1644,7 @@ const vocabData = [
     "Romaji": "nanban",
     "Kanji": "何番",
     "Meaning": "số mấy",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1655,7 +1655,7 @@ const vocabData = [
     "Romaji": "ima",
     "Kanji": "今",
     "Meaning": "bây giờ",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1666,7 +1666,7 @@ const vocabData = [
     "Romaji": "～ji",
     "Kanji": "～時",
     "Meaning": "~giờ",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1677,7 +1677,7 @@ const vocabData = [
     "Romaji": "～fun / ～pun",
     "Kanji": "～分",
     "Meaning": "～phút",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1688,7 +1688,7 @@ const vocabData = [
     "Romaji": "han",
     "Kanji": "半",
     "Meaning": "phân nửa",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1699,7 +1699,7 @@ const vocabData = [
     "Romaji": "nanji",
     "Kanji": "何時",
     "Meaning": "mấy giờ",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1710,7 +1710,7 @@ const vocabData = [
     "Romaji": "nanpun",
     "Kanji": "何分",
     "Meaning": "mấy phút",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1721,7 +1721,7 @@ const vocabData = [
     "Romaji": "gozen",
     "Kanji": "午前",
     "Meaning": "sáng (AM: trước 12 giờ)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1732,7 +1732,7 @@ const vocabData = [
     "Romaji": "gogo",
     "Kanji": "午後",
     "Meaning": "chiều (PM: sau 12 giờ)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1743,7 +1743,7 @@ const vocabData = [
     "Romaji": "asa",
     "Kanji": "朝",
     "Meaning": "sáng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1754,7 +1754,7 @@ const vocabData = [
     "Romaji": "hiru",
     "Kanji": "昼",
     "Meaning": "trưa",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1765,7 +1765,7 @@ const vocabData = [
     "Romaji": "ban",
     "Kanji": "晩",
     "Meaning": "tối",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1776,7 +1776,7 @@ const vocabData = [
     "Romaji": "yoru",
     "Kanji": "夜",
     "Meaning": "tối",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1787,7 +1787,7 @@ const vocabData = [
     "Romaji": "ototoi",
     "Kanji": "",
     "Meaning": "ngày hôm kia",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1798,7 +1798,7 @@ const vocabData = [
     "Romaji": "kinou",
     "Kanji": "",
     "Meaning": "ngày hôm qua",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1809,7 +1809,7 @@ const vocabData = [
     "Romaji": "kyou",
     "Kanji": "今日",
     "Meaning": "hôm nay",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1820,7 +1820,7 @@ const vocabData = [
     "Romaji": "ashita",
     "Kanji": "明日",
     "Meaning": "ngày mai",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1831,7 +1831,7 @@ const vocabData = [
     "Romaji": "asatte",
     "Kanji": "",
     "Meaning": "ngày mốt",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1842,7 +1842,7 @@ const vocabData = [
     "Romaji": "kesa",
     "Kanji": "今朝",
     "Meaning": "sáng nay",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1853,7 +1853,7 @@ const vocabData = [
     "Romaji": "konban",
     "Kanji": "",
     "Meaning": "tối nay",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1864,7 +1864,7 @@ const vocabData = [
     "Romaji": "yuube",
     "Kanji": "",
     "Meaning": "tối hôm qua",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1875,7 +1875,7 @@ const vocabData = [
     "Romaji": "yasumi",
     "Kanji": "休み",
     "Meaning": "nghỉ ngơi (danh từ)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1886,7 +1886,7 @@ const vocabData = [
     "Romaji": "hiruyasumi",
     "Kanji": "昼休み",
     "Meaning": "nghỉ trưa",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1897,7 +1897,7 @@ const vocabData = [
     "Romaji": "maiasa",
     "Kanji": "毎朝",
     "Meaning": "mỗi sáng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1908,7 +1908,7 @@ const vocabData = [
     "Romaji": "maiban",
     "Kanji": "毎晩",
     "Meaning": "mỗi tối",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1919,7 +1919,7 @@ const vocabData = [
     "Romaji": "mainichi",
     "Kanji": "毎日",
     "Meaning": "mỗi ngày",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1930,7 +1930,7 @@ const vocabData = [
     "Romaji": "pekin",
     "Kanji": "",
     "Meaning": "Bắc Kinh",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1941,7 +1941,7 @@ const vocabData = [
     "Romaji": "bankoku",
     "Kanji": "",
     "Meaning": "Bangkok",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1952,7 +1952,7 @@ const vocabData = [
     "Romaji": "rondon",
     "Kanji": "",
     "Meaning": "Luân Đôn",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1963,7 +1963,7 @@ const vocabData = [
     "Romaji": "rosanzerusu",
     "Kanji": "",
     "Meaning": "Los Angeles",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1974,7 +1974,7 @@ const vocabData = [
     "Romaji": "taihen desu ne",
     "Kanji": "大変ですね",
     "Meaning": "vất vả nhỉ",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1985,7 +1985,7 @@ const vocabData = [
     "Romaji": "bangou annai",
     "Kanji": "",
     "Meaning": "dịch vụ 116 (hỏi số điện thoại)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -1996,7 +1996,7 @@ const vocabData = [
     "Romaji": "otoiawase",
     "Kanji": "",
     "Meaning": "(số điện thoại) bạn muốn biết / hỏi là",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2007,7 +2007,7 @@ const vocabData = [
     "Romaji": "～bansen",
     "Kanji": "～番線",
     "Meaning": "sân ga số –",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2018,7 +2018,7 @@ const vocabData = [
     "Romaji": "ikimasu",
     "Kanji": "行きます",
     "Meaning": "đi",
-    "category": "verb",
+    "category": 2,
     "Vru": "いく",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -2029,7 +2029,7 @@ const vocabData = [
     "Romaji": "kimasu",
     "Kanji": "来ます",
     "Meaning": "đến",
-    "category": "verb",
+    "category": 2,
     "Vru": "くる",
     "type": "Nhóm III",
     "note": "Tự động từ"
@@ -2040,7 +2040,7 @@ const vocabData = [
     "Romaji": "kaerimasu",
     "Kanji": "帰ります",
     "Meaning": "về",
-    "category": "verb",
+    "category": 2,
     "Vru": "かえる",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -2051,7 +2051,7 @@ const vocabData = [
     "Romaji": "gakkou",
     "Kanji": "学校",
     "Meaning": "trường học",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2062,7 +2062,7 @@ const vocabData = [
     "Romaji": "su-pa-",
     "Kanji": "",
     "Meaning": "siêu thị",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2073,7 +2073,7 @@ const vocabData = [
     "Romaji": "eki",
     "Kanji": "駅",
     "Meaning": "ga, nhà ga",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2084,7 +2084,7 @@ const vocabData = [
     "Romaji": "hikouki",
     "Kanji": "飛行機",
     "Meaning": "máy bay",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2095,7 +2095,7 @@ const vocabData = [
     "Romaji": "fune",
     "Kanji": "船",
     "Meaning": "thuyền, tàu thủy",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2106,7 +2106,7 @@ const vocabData = [
     "Romaji": "densha",
     "Kanji": "電車",
     "Meaning": "tàu điện",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2117,7 +2117,7 @@ const vocabData = [
     "Romaji": "chikatetsu",
     "Kanji": "地下鉄",
     "Meaning": "tàu điện ngầm",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2128,7 +2128,7 @@ const vocabData = [
     "Romaji": "shinkansen",
     "Kanji": "新幹線",
     "Meaning": "tàu Shinkansen (tàu điện siêu tốc của Nhật)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2139,7 +2139,7 @@ const vocabData = [
     "Romaji": "basu",
     "Kanji": "",
     "Meaning": "xe Buýt",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2150,7 +2150,7 @@ const vocabData = [
     "Romaji": "takushi-",
     "Kanji": "",
     "Meaning": "tắc-xi",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2161,7 +2161,7 @@ const vocabData = [
     "Romaji": "jitensha",
     "Kanji": "自転車",
     "Meaning": "xe đạp",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2172,7 +2172,7 @@ const vocabData = [
     "Romaji": "aruite",
     "Kanji": "歩いて",
     "Meaning": "đi bộ",
-    "category": "verb",
+    "category": 2,
     "Vru": "あるく",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -2183,7 +2183,7 @@ const vocabData = [
     "Romaji": "hito",
     "Kanji": "人",
     "Meaning": "người",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2194,7 +2194,7 @@ const vocabData = [
     "Romaji": "tomodachi",
     "Kanji": "友達",
     "Meaning": "bạn, bạn bè",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2205,7 +2205,7 @@ const vocabData = [
     "Romaji": "kare",
     "Kanji": "彼",
     "Meaning": "anh ấy, bạn trai",
-    "category": "pronoun",
+    "category": 9,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2216,7 +2216,7 @@ const vocabData = [
     "Romaji": "kanojo",
     "Kanji": "彼女",
     "Meaning": "chị ấy, bạn gái",
-    "category": "pronoun",
+    "category": 9,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2227,7 +2227,7 @@ const vocabData = [
     "Romaji": "kazoku",
     "Kanji": "家族",
     "Meaning": "gia đình",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2238,7 +2238,7 @@ const vocabData = [
     "Romaji": "senshuu",
     "Kanji": "先週",
     "Meaning": "tuần trước",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2249,7 +2249,7 @@ const vocabData = [
     "Romaji": "konshuu",
     "Kanji": "今週",
     "Meaning": "tuần này",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2260,7 +2260,7 @@ const vocabData = [
     "Romaji": "raishuu",
     "Kanji": "来週",
     "Meaning": "tuần sau",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2271,7 +2271,7 @@ const vocabData = [
     "Romaji": "sengetsu",
     "Kanji": "先月",
     "Meaning": "tháng trước",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2282,7 +2282,7 @@ const vocabData = [
     "Romaji": "kongetsu",
     "Kanji": "今月",
     "Meaning": "tháng này",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2293,7 +2293,7 @@ const vocabData = [
     "Romaji": "raigetsu",
     "Kanji": "来月",
     "Meaning": "tháng sau",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2304,7 +2304,7 @@ const vocabData = [
     "Romaji": "kyonen",
     "Kanji": "去年",
     "Meaning": "năm ngoái",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2315,7 +2315,7 @@ const vocabData = [
     "Romaji": "kotoshi",
     "Kanji": "",
     "Meaning": "năm nay",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2326,7 +2326,7 @@ const vocabData = [
     "Romaji": "rainen",
     "Kanji": "来年",
     "Meaning": "năm sau",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2337,7 +2337,7 @@ const vocabData = [
     "Romaji": "～gatsu",
     "Kanji": "～月",
     "Meaning": "tháng –",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2348,7 +2348,7 @@ const vocabData = [
     "Romaji": "nangatsu",
     "Kanji": "何月",
     "Meaning": "tháng mấy",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2359,7 +2359,7 @@ const vocabData = [
     "Romaji": "tsuitachi",
     "Kanji": "１日",
     "Meaning": "ngày mồng 1",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2370,7 +2370,7 @@ const vocabData = [
     "Romaji": "futsuka",
     "Kanji": "２日",
     "Meaning": "ngày mồng 2, 2 ngày",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2381,7 +2381,7 @@ const vocabData = [
     "Romaji": "mikka",
     "Kanji": "３日",
     "Meaning": "ngày mồng 3, 3 ngày",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2392,7 +2392,7 @@ const vocabData = [
     "Romaji": "yokka",
     "Kanji": "４日",
     "Meaning": "ngày mồng 4, 4 ngày",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2403,7 +2403,7 @@ const vocabData = [
     "Romaji": "itsuka",
     "Kanji": "５日",
     "Meaning": "ngày mồng 5, 5 ngày",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2414,7 +2414,7 @@ const vocabData = [
     "Romaji": "muika",
     "Kanji": "６日",
     "Meaning": "ngày mồng 6, 6 ngày",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2425,7 +2425,7 @@ const vocabData = [
     "Romaji": "nanoka",
     "Kanji": "７日",
     "Meaning": "ngày mồng 7, 7 ngày",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2436,7 +2436,7 @@ const vocabData = [
     "Romaji": "youka",
     "Kanji": "８日",
     "Meaning": "ngày mồng 8, 8 ngày",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2447,7 +2447,7 @@ const vocabData = [
     "Romaji": "kokonoka",
     "Kanji": "９日",
     "Meaning": "ngày mồng 9, 9 ngày",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2458,7 +2458,7 @@ const vocabData = [
     "Romaji": "tooka",
     "Kanji": "１０日",
     "Meaning": "ngày mồng 10, 10 ngày",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2469,7 +2469,7 @@ const vocabData = [
     "Romaji": "juuyokka",
     "Kanji": "１４日",
     "Meaning": "ngày 14, 14 ngày",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2480,7 +2480,7 @@ const vocabData = [
     "Romaji": "hatsuka",
     "Kanji": "２０日",
     "Meaning": "ngày 20, 20 ngày",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2491,7 +2491,7 @@ const vocabData = [
     "Romaji": "nijuuyokka",
     "Kanji": "２４日",
     "Meaning": "ngày 24, 24 ngày",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2502,7 +2502,7 @@ const vocabData = [
     "Romaji": "～nichi",
     "Kanji": "～日",
     "Meaning": "ngày -, – ngày",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2513,7 +2513,7 @@ const vocabData = [
     "Romaji": "nannichi",
     "Kanji": "何日",
     "Meaning": "ngày mấy, ngày bao nhiêu, mấy ngày, bao nhiêu ngày",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2524,7 +2524,7 @@ const vocabData = [
     "Romaji": "itsu",
     "Kanji": "",
     "Meaning": "bao giờ, khi nào",
-    "category": "pronoun",
+    "category": 9,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2535,7 +2535,7 @@ const vocabData = [
     "Romaji": "tanjoubi",
     "Kanji": "誕生日",
     "Meaning": "sinh nhật",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2546,7 +2546,7 @@ const vocabData = [
     "Romaji": "futsuu",
     "Kanji": "普通",
     "Meaning": "tàu thường (dừng cả ở các ga lẻ)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2557,7 +2557,7 @@ const vocabData = [
     "Romaji": "kyuukou",
     "Kanji": "急行",
     "Meaning": "tàu tốc hành",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2568,7 +2568,7 @@ const vocabData = [
     "Romaji": "tokkyuu",
     "Kanji": "特急",
     "Meaning": "tàu tốc hành đặc biệt",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2579,7 +2579,7 @@ const vocabData = [
     "Romaji": "tsugi no",
     "Kanji": "次の",
     "Meaning": "tiếp theo",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2590,7 +2590,7 @@ const vocabData = [
     "Romaji": "dou itashimashite",
     "Kanji": "",
     "Meaning": "Không có chi",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2601,7 +2601,7 @@ const vocabData = [
     "Romaji": "tabemasu",
     "Kanji": "食べます",
     "Meaning": "ăn",
-    "category": "verb",
+    "category": 2,
     "Vru": "たべる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -2612,7 +2612,7 @@ const vocabData = [
     "Romaji": "nomimasu",
     "Kanji": "飲みます",
     "Meaning": "uống",
-    "category": "verb",
+    "category": 2,
     "Vru": "のむ",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -2623,7 +2623,7 @@ const vocabData = [
     "Romaji": "suimasu",
     "Kanji": "吸います",
     "Meaning": "hút [thuốc lá]",
-    "category": "verb",
+    "category": 2,
     "Vru": "すう",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -2634,7 +2634,7 @@ const vocabData = [
     "Romaji": "mimasu",
     "Kanji": "見ます",
     "Meaning": "xem, nhìn, trông",
-    "category": "verb",
+    "category": 2,
     "Vru": "みる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -2645,7 +2645,7 @@ const vocabData = [
     "Romaji": "kikimasu",
     "Kanji": "聞きます",
     "Meaning": "nghe",
-    "category": "verb",
+    "category": 2,
     "Vru": "きく",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -2656,7 +2656,7 @@ const vocabData = [
     "Romaji": "yomimasu",
     "Kanji": "読みます",
     "Meaning": "đọc",
-    "category": "verb",
+    "category": 2,
     "Vru": "よむ",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -2667,7 +2667,7 @@ const vocabData = [
     "Romaji": "kakimasu",
     "Kanji": "書きます",
     "Meaning": "viết, vẽ",
-    "category": "verb",
+    "category": 2,
     "Vru": "かく",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -2678,7 +2678,7 @@ const vocabData = [
     "Romaji": "kaimasu",
     "Kanji": "買います",
     "Meaning": "mua",
-    "category": "verb",
+    "category": 2,
     "Vru": "かう",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -2689,7 +2689,7 @@ const vocabData = [
     "Romaji": "torimasu",
     "Kanji": "撮ります",
     "Meaning": "chụp [ảnh]",
-    "category": "verb",
+    "category": 2,
     "Vru": "とる",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -2700,7 +2700,7 @@ const vocabData = [
     "Romaji": "shimasu",
     "Kanji": "",
     "Meaning": "làm",
-    "category": "verb",
+    "category": 2,
     "Vru": "する",
     "type": "Nhóm III",
     "note": "Tha động từ"
@@ -2711,7 +2711,7 @@ const vocabData = [
     "Romaji": "aimasu",
     "Kanji": "会います",
     "Meaning": "gặp [bạn]",
-    "category": "verb",
+    "category": 2,
     "Vru": "あう",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -2722,7 +2722,7 @@ const vocabData = [
     "Romaji": "gohan",
     "Kanji": "",
     "Meaning": "cơm, bữa ăn",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2733,7 +2733,7 @@ const vocabData = [
     "Romaji": "asagohan",
     "Kanji": "朝ごはん",
     "Meaning": "cơm sáng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2744,7 +2744,7 @@ const vocabData = [
     "Romaji": "hirugohan",
     "Kanji": "昼ごはん",
     "Meaning": "cơm trưa",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2755,7 +2755,7 @@ const vocabData = [
     "Romaji": "bangohan",
     "Kanji": "晩ごはん",
     "Meaning": "cơm tối",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2766,7 +2766,7 @@ const vocabData = [
     "Romaji": "pan",
     "Kanji": "",
     "Meaning": "bánh mì",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2777,7 +2777,7 @@ const vocabData = [
     "Romaji": "tamago",
     "Kanji": "卵",
     "Meaning": "trứng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2788,7 +2788,7 @@ const vocabData = [
     "Romaji": "niku",
     "Kanji": "肉",
     "Meaning": "thịt",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2799,7 +2799,7 @@ const vocabData = [
     "Romaji": "sakana",
     "Kanji": "魚",
     "Meaning": "cá",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2810,7 +2810,7 @@ const vocabData = [
     "Romaji": "yasai",
     "Kanji": "野菜",
     "Meaning": "rau",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2821,7 +2821,7 @@ const vocabData = [
     "Romaji": "kudamono",
     "Kanji": "果物",
     "Meaning": "hoa quả, trái cây",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2832,7 +2832,7 @@ const vocabData = [
     "Romaji": "mizu",
     "Kanji": "水",
     "Meaning": "nước",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2843,7 +2843,7 @@ const vocabData = [
     "Romaji": "ocha",
     "Kanji": "お茶",
     "Meaning": "trà (nói chung)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2854,7 +2854,7 @@ const vocabData = [
     "Romaji": "koucha",
     "Kanji": "紅茶",
     "Meaning": "trà đen",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2865,7 +2865,7 @@ const vocabData = [
     "Romaji": "gyuunyuu (miruku)",
     "Kanji": "牛乳",
     "Meaning": "sữa bò",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2876,7 +2876,7 @@ const vocabData = [
     "Romaji": "ju-su",
     "Kanji": "",
     "Meaning": "nước hoa quả",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2887,7 +2887,7 @@ const vocabData = [
     "Romaji": "bi-ru",
     "Kanji": "",
     "Meaning": "bia",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2898,7 +2898,7 @@ const vocabData = [
     "Romaji": "osake",
     "Kanji": "お酒",
     "Meaning": "rượu, rượu sake",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2909,7 +2909,7 @@ const vocabData = [
     "Romaji": "bideo",
     "Kanji": "",
     "Meaning": "video, băng video, đầu video",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2920,7 +2920,7 @@ const vocabData = [
     "Romaji": "eiga",
     "Kanji": "映画",
     "Meaning": "phim, điện ảnh",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2931,7 +2931,7 @@ const vocabData = [
     "Romaji": "shi-di-",
     "Kanji": "",
     "Meaning": "đĩa CD",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2942,7 +2942,7 @@ const vocabData = [
     "Romaji": "tegami",
     "Kanji": "手紙",
     "Meaning": "thư",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2953,7 +2953,7 @@ const vocabData = [
     "Romaji": "repo-to",
     "Kanji": "",
     "Meaning": "báo cáo",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2964,7 +2964,7 @@ const vocabData = [
     "Romaji": "shashin",
     "Kanji": "写真",
     "Meaning": "ảnh",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2975,7 +2975,7 @@ const vocabData = [
     "Romaji": "mise",
     "Kanji": "店",
     "Meaning": "cửa hàng, tiệm",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2986,7 +2986,7 @@ const vocabData = [
     "Romaji": "resutoran",
     "Kanji": "",
     "Meaning": "nhà hàng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -2997,7 +2997,7 @@ const vocabData = [
     "Romaji": "niwa",
     "Kanji": "庭",
     "Meaning": "vườn",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -3008,7 +3008,7 @@ const vocabData = [
     "Romaji": "shukudai",
     "Kanji": "宿題",
     "Meaning": "bài tập về nhà",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -3019,7 +3019,7 @@ const vocabData = [
     "Romaji": "tenisu",
     "Kanji": "",
     "Meaning": "quần vợt",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -3030,7 +3030,7 @@ const vocabData = [
     "Romaji": "sakka-",
     "Kanji": "",
     "Meaning": "bóng đá",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -3041,7 +3041,7 @@ const vocabData = [
     "Romaji": "ohanami",
     "Kanji": "お花見",
     "Meaning": "việc ngắm hoa anh đào",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -3052,7 +3052,7 @@ const vocabData = [
     "Romaji": "nani",
     "Kanji": "何",
     "Meaning": "cái gì, gì",
-    "category": "pronoun",
+    "category": 9,
     "Vru": "",
     "type": "",
     "note": ""
@@ -3063,7 +3063,7 @@ const vocabData = [
     "Romaji": "isshoni",
     "Kanji": "",
     "Meaning": "cùng, cùng nhau",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -3074,7 +3074,7 @@ const vocabData = [
     "Romaji": "chotto",
     "Kanji": "",
     "Meaning": "một chút",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -3085,7 +3085,7 @@ const vocabData = [
     "Romaji": "itsumo",
     "Kanji": "",
     "Meaning": "luôn luôn, lúc nào cũng",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -3096,7 +3096,7 @@ const vocabData = [
     "Romaji": "tokidoki",
     "Kanji": "時々",
     "Meaning": "thỉnh thoảng",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -3107,7 +3107,7 @@ const vocabData = [
     "Romaji": "sorekara",
     "Kanji": "",
     "Meaning": "sau đó, tiếp theo",
-    "category": "conjunction",
+    "category": 8,
     "Vru": "",
     "type": "",
     "note": ""
@@ -3118,7 +3118,7 @@ const vocabData = [
     "Romaji": "ee",
     "Kanji": "",
     "Meaning": "vâng, được",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -3129,7 +3129,7 @@ const vocabData = [
     "Romaji": "ii desu ne",
     "Kanji": "",
     "Meaning": "Được đấy nhỉ. / hay quá.",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -3140,7 +3140,7 @@ const vocabData = [
     "Romaji": "wakari mashita",
     "Kanji": "",
     "Meaning": "Tôi hiểu rồi / vâng ạ.",
-    "category": "verb",
+    "category": 2,
     "Vru": "わかる",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -3151,7 +3151,7 @@ const vocabData = [
     "Romaji": "nan desu ka",
     "Kanji": "何ですか",
     "Meaning": "Có gì đấy ạ? / cái gì vậy?",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -3162,7 +3162,7 @@ const vocabData = [
     "Romaji": "ja, mata [ashita]",
     "Kanji": "",
     "Meaning": "Hẹn gặp lại [ngày mai].",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -3173,7 +3173,7 @@ const vocabData = [
     "Romaji": "mekishiko",
     "Kanji": "",
     "Meaning": "Mexico",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -3184,7 +3184,7 @@ const vocabData = [
     "Romaji": "kiru",
     "Kanji": "切る",
     "Meaning": "cắt",
-    "category": "verb",
+    "category": 2,
     "Vru": "きる",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -3195,7 +3195,7 @@ const vocabData = [
     "Romaji": "okuru",
     "Kanji": "送る",
     "Meaning": "gửi",
-    "category": "verb",
+    "category": 2,
     "Vru": "おくる",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -3206,7 +3206,7 @@ const vocabData = [
     "Romaji": "ageru",
     "Kanji": "",
     "Meaning": "tặng",
-    "category": "verb",
+    "category": 2,
     "Vru": "あげる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -3217,7 +3217,7 @@ const vocabData = [
     "Romaji": "morau",
     "Kanji": "",
     "Meaning": "nhận",
-    "category": "verb",
+    "category": 2,
     "Vru": "もらう",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -3228,7 +3228,7 @@ const vocabData = [
     "Romaji": "kasu",
     "Kanji": "貸す",
     "Meaning": "cho mượn",
-    "category": "verb",
+    "category": 2,
     "Vru": "かす",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -3239,7 +3239,7 @@ const vocabData = [
     "Romaji": "kariru",
     "Kanji": "借りる",
     "Meaning": "mượn",
-    "category": "verb",
+    "category": 2,
     "Vru": "かりる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -3250,7 +3250,7 @@ const vocabData = [
     "Romaji": "kakeru",
     "Kanji": "",
     "Meaning": "mang (đeo kính, gọi điện thoại)",
-    "category": "verb",
+    "category": 2,
     "Vru": "かける",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -3261,7 +3261,7 @@ const vocabData = [
     "Romaji": "te",
     "Kanji": "手",
     "Meaning": "tay",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -3272,7 +3272,7 @@ const vocabData = [
     "Romaji": "hashi",
     "Kanji": "",
     "Meaning": "cầu (hoặc đũa)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -3283,7 +3283,7 @@ const vocabData = [
     "Romaji": "supu-n",
     "Kanji": "",
     "Meaning": "muỗng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -3294,7 +3294,7 @@ const vocabData = [
     "Romaji": "naifu",
     "Kanji": "",
     "Meaning": "con dao",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -3305,7 +3305,7 @@ const vocabData = [
     "Romaji": "fo-ku",
     "Kanji": "",
     "Meaning": "nĩa",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -3316,7 +3316,7 @@ const vocabData = [
     "Romaji": "hasami",
     "Kanji": "",
     "Meaning": "cái kéo",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -3327,7 +3327,7 @@ const vocabData = [
     "Romaji": "fakusu",
     "Kanji": "",
     "Meaning": "máy fax",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -3338,7 +3338,7 @@ const vocabData = [
     "Romaji": "wa-puro",
     "Kanji": "",
     "Meaning": "máy đánh chữ",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -3349,7 +3349,7 @@ const vocabData = [
     "Romaji": "pasokon",
     "Kanji": "",
     "Meaning": "máy tính",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -3360,7 +3360,7 @@ const vocabData = [
     "Romaji": "panchi",
     "Kanji": "",
     "Meaning": "cái đục lỗ",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -3371,7 +3371,7 @@ const vocabData = [
     "Romaji": "hocchikisu",
     "Kanji": "",
     "Meaning": "cái dập ghim",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -3382,7 +3382,7 @@ const vocabData = [
     "Romaji": "serote-pu",
     "Kanji": "",
     "Meaning": "băng dính",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -3393,7 +3393,7 @@ const vocabData = [
     "Romaji": "keshigomu",
     "Kanji": "",
     "Meaning": "cục tẩy",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -3404,7 +3404,7 @@ const vocabData = [
     "Romaji": "kami",
     "Kanji": "",
     "Meaning": "tóc (hoặc giấy)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -3415,7 +3415,7 @@ const vocabData = [
     "Romaji": "hana",
     "Kanji": "花",
     "Meaning": "hoa",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -3426,7 +3426,7 @@ const vocabData = [
     "Romaji": "shatsu",
     "Kanji": "",
     "Meaning": "áo sơ mi",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -3437,7 +3437,7 @@ const vocabData = [
     "Romaji": "purezento",
     "Kanji": "",
     "Meaning": "quà tặng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -3448,7 +3448,7 @@ const vocabData = [
     "Romaji": "nimotsu",
     "Kanji": "荷物",
     "Meaning": "hàng hóa",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -3459,7 +3459,7 @@ const vocabData = [
     "Romaji": "okane",
     "Kanji": "お金",
     "Meaning": "tiền",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -3470,7 +3470,7 @@ const vocabData = [
     "Romaji": "kippu",
     "Kanji": "",
     "Meaning": "vé (tàu, xe)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -3481,7 +3481,7 @@ const vocabData = [
     "Romaji": "kurisumasu",
     "Kanji": "",
     "Meaning": "Lễ Giáng sinh",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -3492,7 +3492,7 @@ const vocabData = [
     "Romaji": "chichi",
     "Kanji": "父",
     "Meaning": "cha mình",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -3503,7 +3503,7 @@ const vocabData = [
     "Romaji": "haha",
     "Kanji": "母",
     "Meaning": "mẹ mình",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -3514,7 +3514,7 @@ const vocabData = [
     "Romaji": "korekara",
     "Kanji": "",
     "Meaning": "từ bây giờ",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -3525,7 +3525,7 @@ const vocabData = [
     "Romaji": "otousan",
     "Kanji": "お父さん",
     "Meaning": "cha (người khác)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -3536,7 +3536,7 @@ const vocabData = [
     "Romaji": "okaasan",
     "Kanji": "お母さん",
     "Meaning": "mẹ (người khác)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -3547,7 +3547,7 @@ const vocabData = [
     "Romaji": "mou",
     "Kanji": "",
     "Meaning": "đã rồi",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -3558,7 +3558,7 @@ const vocabData = [
     "Romaji": "mada",
     "Kanji": "",
     "Meaning": "vẫn còn, vẫn chưa",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -3569,7 +3569,7 @@ const vocabData = [
     "Romaji": "gomennasai",
     "Kanji": "",
     "Meaning": "xin lỗi",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -3580,7 +3580,7 @@ const vocabData = [
     "Romaji": "irasshai",
     "Kanji": "",
     "Meaning": "xin mời (chào đón khách)",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -3591,7 +3591,7 @@ const vocabData = [
     "Romaji": "ittekimasu",
     "Kanji": "",
     "Meaning": "tôi đi đây",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -3602,7 +3602,7 @@ const vocabData = [
     "Romaji": "shitsureishimasu",
     "Kanji": "",
     "Meaning": "xin thất lễ",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -3613,7 +3613,7 @@ const vocabData = [
     "Romaji": "ryokou",
     "Kanji": "旅行",
     "Meaning": "du lịch",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -3624,7 +3624,7 @@ const vocabData = [
     "Romaji": "omiyage",
     "Kanji": "お土産",
     "Meaning": "quà lưu niệm",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -3635,7 +3635,7 @@ const vocabData = [
     "Romaji": "yo-roppa",
     "Kanji": "",
     "Meaning": "Châu Âu",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -3646,7 +3646,7 @@ const vocabData = [
     "Romaji": "minikui",
     "Kanji": "",
     "Meaning": "Xấu",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -3657,7 +3657,7 @@ const vocabData = [
     "Romaji": "hansamu(na)",
     "Kanji": "",
     "Meaning": "đẹp trai",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi な"
@@ -3668,7 +3668,7 @@ const vocabData = [
     "Romaji": "kirei(na)",
     "Kanji": "",
     "Meaning": "cảnh đẹp, đẹp (gái), sạch",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi な"
@@ -3679,7 +3679,7 @@ const vocabData = [
     "Romaji": "shizuka(na)",
     "Kanji": "静か(な)",
     "Meaning": "yên tĩnh",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi な"
@@ -3690,7 +3690,7 @@ const vocabData = [
     "Romaji": "nigiyaka(na)",
     "Kanji": "賑やか(na)",
     "Meaning": "nhộn nhịp",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi な"
@@ -3701,7 +3701,7 @@ const vocabData = [
     "Romaji": "yuumei(na)",
     "Kanji": "有名(na)",
     "Meaning": "nổi tiếng",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi な"
@@ -3712,7 +3712,7 @@ const vocabData = [
     "Romaji": "shinsetsu(na)",
     "Kanji": "親切(na)",
     "Meaning": "tử tế",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi な"
@@ -3723,7 +3723,7 @@ const vocabData = [
     "Romaji": "genki(na)",
     "Kanji": "元気(na)",
     "Meaning": "khỏe",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi な"
@@ -3734,7 +3734,7 @@ const vocabData = [
     "Romaji": "hima(na)",
     "Kanji": "暇(na)",
     "Meaning": "rảnh rỗi",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi な"
@@ -3745,7 +3745,7 @@ const vocabData = [
     "Romaji": "isogashii",
     "Kanji": "忙しい",
     "Meaning": "bận rộn",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -3756,7 +3756,7 @@ const vocabData = [
     "Romaji": "benri(na)",
     "Kanji": "便利(na)",
     "Meaning": "tiện lợi",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi な"
@@ -3767,7 +3767,7 @@ const vocabData = [
     "Romaji": "suteki(na)",
     "Kanji": "",
     "Meaning": "tuyệt vời",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi な"
@@ -3778,7 +3778,7 @@ const vocabData = [
     "Romaji": "ookii",
     "Kanji": "大きい",
     "Meaning": "to, lớn",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -3789,7 +3789,7 @@ const vocabData = [
     "Romaji": "chiisai",
     "Kanji": "小さい",
     "Meaning": "nhỏ, bé",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -3800,7 +3800,7 @@ const vocabData = [
     "Romaji": "atarashii",
     "Kanji": "新しい",
     "Meaning": "mới",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -3811,7 +3811,7 @@ const vocabData = [
     "Romaji": "furui",
     "Kanji": "古い",
     "Meaning": "cũ",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -3822,7 +3822,7 @@ const vocabData = [
     "Romaji": "ii",
     "Kanji": "",
     "Meaning": "tốt",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -3833,7 +3833,7 @@ const vocabData = [
     "Romaji": "warui",
     "Kanji": "悪い",
     "Meaning": "xấu",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -3844,7 +3844,7 @@ const vocabData = [
     "Romaji": "atsui",
     "Kanji": "熱い",
     "Meaning": "nóng (nhiệt độ vật)",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -3855,7 +3855,7 @@ const vocabData = [
     "Romaji": "tsumetai",
     "Kanji": "冷たい",
     "Meaning": "lạnh (nhiệt độ vật)",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -3866,7 +3866,7 @@ const vocabData = [
     "Romaji": "atsui",
     "Kanji": "暑い",
     "Meaning": "(trời) nóng (thời tiết)",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -3877,7 +3877,7 @@ const vocabData = [
     "Romaji": "samui",
     "Kanji": "寒い",
     "Meaning": "(trời) lạnh (thời tiết)",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -3888,7 +3888,7 @@ const vocabData = [
     "Romaji": "muzukashii",
     "Kanji": "難しい",
     "Meaning": "khó",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -3899,7 +3899,7 @@ const vocabData = [
     "Romaji": "yasashii",
     "Kanji": "優しい",
     "Meaning": "dễ (câu hỏi, bài tập)",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -3910,7 +3910,7 @@ const vocabData = [
     "Romaji": "kibishii",
     "Kanji": "",
     "Meaning": "nghiêm khắc",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -3921,7 +3921,7 @@ const vocabData = [
     "Romaji": "yasashii",
     "Kanji": "",
     "Meaning": "dịu dàng, hiền từ",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -3932,7 +3932,7 @@ const vocabData = [
     "Romaji": "takai",
     "Kanji": "高い",
     "Meaning": "đắt, cao",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -3943,7 +3943,7 @@ const vocabData = [
     "Romaji": "yasui",
     "Kanji": "安い",
     "Meaning": "rẻ",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -3954,7 +3954,7 @@ const vocabData = [
     "Romaji": "hikui",
     "Kanji": "低い",
     "Meaning": "thấp",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -3965,7 +3965,7 @@ const vocabData = [
     "Romaji": "omishiroi",
     "Kanji": "",
     "Meaning": "thú vị",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -3976,7 +3976,7 @@ const vocabData = [
     "Romaji": "oishii",
     "Kanji": "",
     "Meaning": "ngon",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -3987,7 +3987,7 @@ const vocabData = [
     "Romaji": "tanoshii",
     "Kanji": "楽しい",
     "Meaning": "vui vẻ",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -3998,7 +3998,7 @@ const vocabData = [
     "Romaji": "shiroi",
     "Kanji": "白い",
     "Meaning": "trắng",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -4009,7 +4009,7 @@ const vocabData = [
     "Romaji": "kuroi",
     "Kanji": "黒い",
     "Meaning": "đen",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -4020,7 +4020,7 @@ const vocabData = [
     "Romaji": "akai",
     "Kanji": "赤い",
     "Meaning": "đỏ",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -4031,7 +4031,7 @@ const vocabData = [
     "Romaji": "aoi",
     "Kanji": "青い",
     "Meaning": "xanh",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -4042,7 +4042,7 @@ const vocabData = [
     "Romaji": "sakura",
     "Kanji": "桜",
     "Meaning": "hoa anh đào",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4053,7 +4053,7 @@ const vocabData = [
     "Romaji": "yama",
     "Kanji": "山",
     "Meaning": "núi",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4064,7 +4064,7 @@ const vocabData = [
     "Romaji": "machi",
     "Kanji": "町",
     "Meaning": "thành phố",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4075,7 +4075,7 @@ const vocabData = [
     "Romaji": "tabemono",
     "Kanji": "食べ物",
     "Meaning": "thức ăn",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4086,7 +4086,7 @@ const vocabData = [
     "Romaji": "tokoro",
     "Kanji": "所",
     "Meaning": "chỗ",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4097,7 +4097,7 @@ const vocabData = [
     "Romaji": "ryou",
     "Kanji": "",
     "Meaning": "ký túc xá",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4108,7 +4108,7 @@ const vocabData = [
     "Romaji": "benkyou",
     "Kanji": "勉強",
     "Meaning": "học tập (danh từ)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4119,7 +4119,7 @@ const vocabData = [
     "Romaji": "seikatsu",
     "Kanji": "生活",
     "Meaning": "cuộc sống",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4130,7 +4130,7 @@ const vocabData = [
     "Romaji": "oshigoto",
     "Kanji": "お仕事",
     "Meaning": "công việc",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4141,7 +4141,7 @@ const vocabData = [
     "Romaji": "dou",
     "Kanji": "",
     "Meaning": "như thế nào",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4152,7 +4152,7 @@ const vocabData = [
     "Romaji": "donna",
     "Kanji": "",
     "Meaning": "nào",
-    "category": "pronoun",
+    "category": 9,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4163,7 +4163,7 @@ const vocabData = [
     "Romaji": "dore",
     "Kanji": "",
     "Meaning": "cái nào",
-    "category": "pronoun",
+    "category": 9,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4174,7 +4174,7 @@ const vocabData = [
     "Romaji": "wakarimasu",
     "Kanji": "分かります",
     "Meaning": "hiểu, nắm được",
-    "category": "verb",
+    "category": 2,
     "Vru": "わかる",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -4185,7 +4185,7 @@ const vocabData = [
     "Romaji": "arimasu",
     "Kanji": "",
     "Meaning": "có (sở hữu)",
-    "category": "verb",
+    "category": 2,
     "Vru": "ある",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -4196,7 +4196,7 @@ const vocabData = [
     "Romaji": "suki[na]",
     "Kanji": "好き[な]",
     "Meaning": "thích",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi な"
@@ -4207,7 +4207,7 @@ const vocabData = [
     "Romaji": "kirai[na]",
     "Kanji": "嫌い[na]",
     "Meaning": "ghét, không thích",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi な"
@@ -4218,7 +4218,7 @@ const vocabData = [
     "Romaji": "jouzu[na]",
     "Kanji": "上手[na]",
     "Meaning": "giỏi, khéo",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi な"
@@ -4229,7 +4229,7 @@ const vocabData = [
     "Romaji": "heta[na]",
     "Kanji": "下手[na]",
     "Meaning": "kém",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi な"
@@ -4240,7 +4240,7 @@ const vocabData = [
     "Romaji": "ryouri",
     "Kanji": "料理",
     "Meaning": "món ăn, việc nấu ăn",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4251,7 +4251,7 @@ const vocabData = [
     "Romaji": "nomimono",
     "Kanji": "飲み物",
     "Meaning": "đồ uống",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4262,7 +4262,7 @@ const vocabData = [
     "Romaji": "supo-tsu",
     "Kanji": "",
     "Meaning": "thể thao",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4273,7 +4273,7 @@ const vocabData = [
     "Romaji": "yakyuu",
     "Kanji": "野球",
     "Meaning": "bóng chày",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4284,7 +4284,7 @@ const vocabData = [
     "Romaji": "dansu",
     "Kanji": "",
     "Meaning": "nhảy, khiêu vũ",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4295,7 +4295,7 @@ const vocabData = [
     "Romaji": "ongaku",
     "Kanji": "音楽",
     "Meaning": "âm nhạc",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4306,7 +4306,7 @@ const vocabData = [
     "Romaji": "uta",
     "Kanji": "歌",
     "Meaning": "bài hát",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4317,7 +4317,7 @@ const vocabData = [
     "Romaji": "kurashikku",
     "Kanji": "",
     "Meaning": "nhạc cổ điển",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4328,7 +4328,7 @@ const vocabData = [
     "Romaji": "jazu",
     "Kanji": "",
     "Meaning": "nhạc jazz",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4339,7 +4339,7 @@ const vocabData = [
     "Romaji": "konsa-to",
     "Kanji": "",
     "Meaning": "buổi hòa nhạc",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4350,7 +4350,7 @@ const vocabData = [
     "Romaji": "karaoke",
     "Kanji": "",
     "Meaning": "karaoke",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4361,7 +4361,7 @@ const vocabData = [
     "Romaji": "kabuki",
     "Kanji": "歌舞伎",
     "Meaning": "Kabuki (ca kịch truyền thống)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4372,7 +4372,7 @@ const vocabData = [
     "Romaji": "e",
     "Kanji": "絵",
     "Meaning": "Tranh, hội họa",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4383,7 +4383,7 @@ const vocabData = [
     "Romaji": "ji",
     "Kanji": "字",
     "Meaning": "chữ",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4394,7 +4394,7 @@ const vocabData = [
     "Romaji": "kanji",
     "Kanji": "漢字",
     "Meaning": "chữ hán",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4405,7 +4405,7 @@ const vocabData = [
     "Romaji": "hiragana",
     "Kanji": "",
     "Meaning": "chữ Hiragana",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4416,7 +4416,7 @@ const vocabData = [
     "Romaji": "katakana",
     "Kanji": "",
     "Meaning": "Chữ Katakana",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4427,7 +4427,7 @@ const vocabData = [
     "Romaji": "ro-maji",
     "Kanji": "ローマ字",
     "Meaning": "chữ La Mã",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4438,7 +4438,7 @@ const vocabData = [
     "Romaji": "komakai okane",
     "Kanji": "細かいお金",
     "Meaning": "tiền lẻ",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4449,7 +4449,7 @@ const vocabData = [
     "Romaji": "chiketto",
     "Kanji": "",
     "Meaning": "vé (xem hòa nhạc, xem phim)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4460,7 +4460,7 @@ const vocabData = [
     "Romaji": "jikan",
     "Kanji": "時間",
     "Meaning": "thời gian",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4471,7 +4471,7 @@ const vocabData = [
     "Romaji": "youji",
     "Kanji": "用事",
     "Meaning": "việc bận, công chuyện",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4482,7 +4482,7 @@ const vocabData = [
     "Romaji": "yakusoku",
     "Kanji": "約束",
     "Meaning": "cuộc hẹn, lời hứa",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4493,7 +4493,7 @@ const vocabData = [
     "Romaji": "goshujin",
     "Kanji": "ご主人",
     "Meaning": "chồng (người khác)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4504,7 +4504,7 @@ const vocabData = [
     "Romaji": "otto / shujin",
     "Kanji": "夫 / 主人",
     "Meaning": "chồng (mình)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4515,7 +4515,7 @@ const vocabData = [
     "Romaji": "okusan",
     "Kanji": "奥さん",
     "Meaning": "vợ (người khác)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4526,7 +4526,7 @@ const vocabData = [
     "Romaji": "tsuma / kanai",
     "Kanji": "妻 / 家内",
     "Meaning": "vợ (mình)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4537,7 +4537,7 @@ const vocabData = [
     "Romaji": "kodomo",
     "Kanji": "子ども",
     "Meaning": "con cái",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4548,7 +4548,7 @@ const vocabData = [
     "Romaji": "yoku",
     "Kanji": "",
     "Meaning": "tốt, rõ (chỉ mức độ)",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4559,7 +4559,7 @@ const vocabData = [
     "Romaji": "daitai",
     "Kanji": "",
     "Meaning": "đại khái, đại thể",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4570,7 +4570,7 @@ const vocabData = [
     "Romaji": "takusan",
     "Kanji": "",
     "Meaning": "nhiều",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4581,7 +4581,7 @@ const vocabData = [
     "Romaji": "sukoshi",
     "Kanji": "少し",
     "Meaning": "ít, một ít",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4592,7 +4592,7 @@ const vocabData = [
     "Romaji": "zenzen",
     "Kanji": "全然",
     "Meaning": "hoàn toàn ~ không",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4603,7 +4603,7 @@ const vocabData = [
     "Romaji": "hayaku",
     "Kanji": "早く,速く",
     "Meaning": "sớm, nhanh",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4614,7 +4614,7 @@ const vocabData = [
     "Romaji": "～kara",
     "Kanji": "",
     "Meaning": "vì ~",
-    "category": "conjunction",
+    "category": 8,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4625,7 +4625,7 @@ const vocabData = [
     "Romaji": "doushite",
     "Kanji": "",
     "Meaning": "tại sao",
-    "category": "pronoun",
+    "category": 9,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4636,7 +4636,7 @@ const vocabData = [
     "Romaji": "zannen desu [ne]",
     "Kanji": "残念です[ね]",
     "Meaning": "Thật đáng tiếc nhỉ / buồn nhỉ",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4647,7 +4647,7 @@ const vocabData = [
     "Romaji": "sumimasen",
     "Kanji": "",
     "Meaning": "Xin lỗi",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4658,7 +4658,7 @@ const vocabData = [
     "Romaji": "moshimoshi",
     "Kanji": "",
     "Meaning": "a-lô",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4669,7 +4669,7 @@ const vocabData = [
     "Romaji": "aa",
     "Kanji": "",
     "Meaning": "a (khi nhận ra người trên điện thoại)",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4680,7 +4680,7 @@ const vocabData = [
     "Romaji": "isshoni ikaga desu ka",
     "Kanji": "",
     "Meaning": "Anh/chị cùng làm với chúng tôi được không?",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4691,7 +4691,7 @@ const vocabData = [
     "Romaji": "chotto....",
     "Kanji": "",
     "Meaning": "[~ thì] có lẽ không được rồi",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4702,7 +4702,7 @@ const vocabData = [
     "Romaji": "dame desu ka",
     "Kanji": "",
     "Meaning": "Không được à?",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4713,7 +4713,7 @@ const vocabData = [
     "Romaji": "mata kondo onegaishimasu",
     "Kanji": "",
     "Meaning": "hẹn lần sau",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4724,7 +4724,7 @@ const vocabData = [
     "Romaji": "imasu",
     "Kanji": "",
     "Meaning": "có, ở (tồn tại, dùng cho người và động vật)",
-    "category": "verb",
+    "category": 2,
     "Vru": "いる",
     "type": "Nhóm II",
     "note": "Tự động từ"
@@ -4735,7 +4735,7 @@ const vocabData = [
     "Romaji": "arimasu",
     "Kanji": "",
     "Meaning": "có (tồn tại, dùng cho đồ vật)",
-    "category": "verb",
+    "category": 2,
     "Vru": "ある",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -4746,7 +4746,7 @@ const vocabData = [
     "Romaji": "iroiro[na]",
     "Kanji": "",
     "Meaning": "nhiều, đa dạng",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi な"
@@ -4757,7 +4757,7 @@ const vocabData = [
     "Romaji": "otoko no hito",
     "Kanji": "男の人",
     "Meaning": "người đàn ông",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4768,7 +4768,7 @@ const vocabData = [
     "Romaji": "onna no hito",
     "Kanji": "女の人",
     "Meaning": "người đàn bà",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4779,7 +4779,7 @@ const vocabData = [
     "Romaji": "otoko no ko",
     "Kanji": "男の子",
     "Meaning": "cậu con trai",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4790,7 +4790,7 @@ const vocabData = [
     "Romaji": "onna no ko",
     "Kanji": "女の子",
     "Meaning": "cô con gái",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4801,7 +4801,7 @@ const vocabData = [
     "Romaji": "inu",
     "Kanji": "犬",
     "Meaning": "chó",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4812,7 +4812,7 @@ const vocabData = [
     "Romaji": "neko",
     "Kanji": "猫",
     "Meaning": "mèo",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4823,7 +4823,7 @@ const vocabData = [
     "Romaji": "ki",
     "Kanji": "木",
     "Meaning": "cây, gỗ",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4834,7 +4834,7 @@ const vocabData = [
     "Romaji": "mono",
     "Kanji": "物",
     "Meaning": "vật, đồ vật",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4845,7 +4845,7 @@ const vocabData = [
     "Romaji": "firumu",
     "Kanji": "",
     "Meaning": "phim",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4856,7 +4856,7 @@ const vocabData = [
     "Romaji": "denchi",
     "Kanji": "電池",
     "Meaning": "Pin",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4867,7 +4867,7 @@ const vocabData = [
     "Romaji": "hako",
     "Kanji": "箱",
     "Meaning": "hộp",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4878,7 +4878,7 @@ const vocabData = [
     "Romaji": "suicchi",
     "Kanji": "",
     "Meaning": "công tắc",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4889,7 +4889,7 @@ const vocabData = [
     "Romaji": "reizouko",
     "Kanji": "冷蔵庫",
     "Meaning": "tủ lạnh",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4900,7 +4900,7 @@ const vocabData = [
     "Romaji": "te-buru",
     "Kanji": "",
     "Meaning": "bàn",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4911,7 +4911,7 @@ const vocabData = [
     "Romaji": "beddo",
     "Kanji": "",
     "Meaning": "giường",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4922,7 +4922,7 @@ const vocabData = [
     "Romaji": "tana",
     "Kanji": "棚",
     "Meaning": "giá sách",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4933,7 +4933,7 @@ const vocabData = [
     "Romaji": "doa",
     "Kanji": "",
     "Meaning": "cửa",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4944,7 +4944,7 @@ const vocabData = [
     "Romaji": "mado",
     "Kanji": "窓",
     "Meaning": "cửa sổ",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4955,7 +4955,7 @@ const vocabData = [
     "Romaji": "posuto",
     "Kanji": "",
     "Meaning": "hộp thư, hòm thư",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4966,7 +4966,7 @@ const vocabData = [
     "Romaji": "biru",
     "Kanji": "",
     "Meaning": "toà nhà",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4977,7 +4977,7 @@ const vocabData = [
     "Romaji": "kouen",
     "Kanji": "公園",
     "Meaning": "công viên",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4988,7 +4988,7 @@ const vocabData = [
     "Romaji": "kissaten",
     "Kanji": "喫茶店",
     "Meaning": "quán giải khát, quán cà-phê",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -4999,7 +4999,7 @@ const vocabData = [
     "Romaji": "honya",
     "Kanji": "本屋",
     "Meaning": "hiệu sách",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5010,7 +5010,7 @@ const vocabData = [
     "Romaji": "～ya",
     "Kanji": "～屋",
     "Meaning": "hiệu ～, cửa hàng ～",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5021,7 +5021,7 @@ const vocabData = [
     "Romaji": "noriba",
     "Kanji": "乗り場",
     "Meaning": "bến xe, điểm lên xuống xe",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5032,7 +5032,7 @@ const vocabData = [
     "Romaji": "ken",
     "Kanji": "県",
     "Meaning": "tỉnh",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5043,7 +5043,7 @@ const vocabData = [
     "Romaji": "ue",
     "Kanji": "上",
     "Meaning": "trên",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5054,7 +5054,7 @@ const vocabData = [
     "Romaji": "shita",
     "Kanji": "下",
     "Meaning": "dưới",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5065,7 +5065,7 @@ const vocabData = [
     "Romaji": "mae",
     "Kanji": "前",
     "Meaning": "trước",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5076,7 +5076,7 @@ const vocabData = [
     "Romaji": "ushiro",
     "Kanji": "後ろ",
     "Meaning": "sau",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5087,7 +5087,7 @@ const vocabData = [
     "Romaji": "migi",
     "Kanji": "右",
     "Meaning": "phải",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5098,7 +5098,7 @@ const vocabData = [
     "Romaji": "hidari",
     "Kanji": "左",
     "Meaning": "trái",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5109,7 +5109,7 @@ const vocabData = [
     "Romaji": "naka",
     "Kanji": "中",
     "Meaning": "trong, giữa",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5120,7 +5120,7 @@ const vocabData = [
     "Romaji": "soto",
     "Kanji": "外",
     "Meaning": "ngoài",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5131,7 +5131,7 @@ const vocabData = [
     "Romaji": "tonari",
     "Kanji": "隣",
     "Meaning": "bên cạnh",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5142,7 +5142,7 @@ const vocabData = [
     "Romaji": "chikaku",
     "Kanji": "近く",
     "Meaning": "gần",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5153,7 +5153,7 @@ const vocabData = [
     "Romaji": "aida",
     "Kanji": "間",
     "Meaning": "giữa",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5164,7 +5164,7 @@ const vocabData = [
     "Romaji": "～ya～[nado]",
     "Kanji": "",
     "Meaning": "~ và ~, [v.v.]",
-    "category": "conjunction",
+    "category": 8,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5175,7 +5175,7 @@ const vocabData = [
     "Romaji": "ichiban～",
     "Kanji": "",
     "Meaning": "～ nhất",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5186,7 +5186,7 @@ const vocabData = [
     "Romaji": "―danme",
     "Kanji": "―段目",
     "Meaning": "giá thứ -, tầng thứ –",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5197,7 +5197,7 @@ const vocabData = [
     "Romaji": "sumimasen",
     "Kanji": "",
     "Meaning": "Xin lỗi",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5208,7 +5208,7 @@ const vocabData = [
     "Romaji": "chiri so-su",
     "Kanji": "",
     "Meaning": "tương ớt (chili sauce)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5219,7 +5219,7 @@ const vocabData = [
     "Romaji": "imasu",
     "Kanji": "",
     "Meaning": "có (động vật)",
-    "category": "verb",
+    "category": 2,
     "Vru": "いる",
     "type": "Nhóm II",
     "note": "Tự động từ"
@@ -5230,7 +5230,7 @@ const vocabData = [
     "Romaji": "kakarimasu",
     "Kanji": "",
     "Meaning": "mất, tốn",
-    "category": "verb",
+    "category": 2,
     "Vru": "かかる",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -5241,7 +5241,7 @@ const vocabData = [
     "Romaji": "yasumimasu",
     "Kanji": "休みます",
     "Meaning": "nghỉ ngơi",
-    "category": "verb",
+    "category": 2,
     "Vru": "やすむ",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -5252,7 +5252,7 @@ const vocabData = [
     "Romaji": "hitotsu",
     "Kanji": "",
     "Meaning": "1 cái (đồ vật)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5263,7 +5263,7 @@ const vocabData = [
     "Romaji": "futatsu",
     "Kanji": "",
     "Meaning": "2 cái",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5274,7 +5274,7 @@ const vocabData = [
     "Romaji": "mittsu",
     "Kanji": "",
     "Meaning": "3 cái",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5285,7 +5285,7 @@ const vocabData = [
     "Romaji": "yottsu",
     "Kanji": "",
     "Meaning": "4 cái",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5296,7 +5296,7 @@ const vocabData = [
     "Romaji": "itsutsu",
     "Kanji": "",
     "Meaning": "5 cái",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5307,7 +5307,7 @@ const vocabData = [
     "Romaji": "muttsu",
     "Kanji": "",
     "Meaning": "6 cái",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5318,7 +5318,7 @@ const vocabData = [
     "Romaji": "nanatsu",
     "Kanji": "",
     "Meaning": "7 cái",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5329,7 +5329,7 @@ const vocabData = [
     "Romaji": "yattsu",
     "Kanji": "",
     "Meaning": "8 cái",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5340,7 +5340,7 @@ const vocabData = [
     "Romaji": "kokonotsu",
     "Kanji": "",
     "Meaning": "9 cái",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5351,7 +5351,7 @@ const vocabData = [
     "Romaji": "too",
     "Kanji": "",
     "Meaning": "10 cái",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5362,7 +5362,7 @@ const vocabData = [
     "Romaji": "ikutsu",
     "Kanji": "",
     "Meaning": "bao nhiêu cái",
-    "category": "pronoun",
+    "category": 9,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5373,7 +5373,7 @@ const vocabData = [
     "Romaji": "hitori",
     "Kanji": "一人",
     "Meaning": "1 người",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5384,7 +5384,7 @@ const vocabData = [
     "Romaji": "futari",
     "Kanji": "二人",
     "Meaning": "2 người",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5395,7 +5395,7 @@ const vocabData = [
     "Romaji": "～nin",
     "Kanji": "～人",
     "Meaning": "～người",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5406,7 +5406,7 @@ const vocabData = [
     "Romaji": "～dai",
     "Kanji": "",
     "Meaning": "～cái, chiếc (máy móc)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5417,7 +5417,7 @@ const vocabData = [
     "Romaji": "～mai",
     "Kanji": "",
     "Meaning": "～tờ, (vật mỏng)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5428,7 +5428,7 @@ const vocabData = [
     "Romaji": "～kai",
     "Kanji": "",
     "Meaning": "～lần, tầng lầu",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5439,7 +5439,7 @@ const vocabData = [
     "Romaji": "ringo",
     "Kanji": "",
     "Meaning": "quả táo",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5450,7 +5450,7 @@ const vocabData = [
     "Romaji": "mikan",
     "Kanji": "",
     "Meaning": "quýt",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5461,7 +5461,7 @@ const vocabData = [
     "Romaji": "sandoicchi",
     "Kanji": "",
     "Meaning": "sandwich",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5472,7 +5472,7 @@ const vocabData = [
     "Romaji": "kare-(raisu)",
     "Kanji": "",
     "Meaning": "(cơm) cà ri",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5483,7 +5483,7 @@ const vocabData = [
     "Romaji": "aisukuri-mu",
     "Kanji": "",
     "Meaning": "kem",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5494,7 +5494,7 @@ const vocabData = [
     "Romaji": "kitte",
     "Kanji": "切手",
     "Meaning": "tem",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5505,7 +5505,7 @@ const vocabData = [
     "Romaji": "hagaki",
     "Kanji": "葉書",
     "Meaning": "bưu thiếp",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5516,7 +5516,7 @@ const vocabData = [
     "Romaji": "fuutou",
     "Kanji": "封筒",
     "Meaning": "phong bì",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5527,7 +5527,7 @@ const vocabData = [
     "Romaji": "sokutatsu",
     "Kanji": "速達",
     "Meaning": "chuyển phát nhanh",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5538,7 +5538,7 @@ const vocabData = [
     "Romaji": "kakitome",
     "Kanji": "書留",
     "Meaning": "gửi bảo đảm",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5549,7 +5549,7 @@ const vocabData = [
     "Romaji": "kantan",
     "Kanji": "簡単「な」",
     "Meaning": "Đơn giản, dễ",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi な"
@@ -5560,7 +5560,7 @@ const vocabData = [
     "Romaji": "chikai",
     "Kanji": "近い",
     "Meaning": "gần",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -5571,7 +5571,7 @@ const vocabData = [
     "Romaji": "tooi",
     "Kanji": "遠い",
     "Meaning": "xa",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -5582,7 +5582,7 @@ const vocabData = [
     "Romaji": "hayai",
     "Kanji": "速い,早い",
     "Meaning": "nhanh, sớm",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -5593,7 +5593,7 @@ const vocabData = [
     "Romaji": "osoi",
     "Kanji": "遅い",
     "Meaning": "chậm, muộn",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -5604,7 +5604,7 @@ const vocabData = [
     "Romaji": "ooi",
     "Kanji": "多い",
     "Meaning": "nhiều [người]",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -5615,7 +5615,7 @@ const vocabData = [
     "Romaji": "sukunai",
     "Kanji": "少ない",
     "Meaning": "ít [người]",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -5626,7 +5626,7 @@ const vocabData = [
     "Romaji": "atatakai",
     "Kanji": "温かい,暖かい",
     "Meaning": "ấm",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -5637,7 +5637,7 @@ const vocabData = [
     "Romaji": "suzushii",
     "Kanji": "涼しい",
     "Meaning": "mát",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -5648,7 +5648,7 @@ const vocabData = [
     "Romaji": "amai",
     "Kanji": "甘い",
     "Meaning": "ngọt",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -5659,7 +5659,7 @@ const vocabData = [
     "Romaji": "karai",
     "Kanji": "辛い",
     "Meaning": "cay",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -5670,7 +5670,7 @@ const vocabData = [
     "Romaji": "omoi",
     "Kanji": "重い",
     "Meaning": "nặng",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -5681,7 +5681,7 @@ const vocabData = [
     "Romaji": "karui",
     "Kanji": "軽い",
     "Meaning": "nhẹ",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -5692,7 +5692,7 @@ const vocabData = [
     "Romaji": "ii",
     "Kanji": "",
     "Meaning": "thích, chọn, dùng [cafe]",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -5703,7 +5703,7 @@ const vocabData = [
     "Romaji": "kisetsu",
     "Kanji": "季節",
     "Meaning": "mùa",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5714,7 +5714,7 @@ const vocabData = [
     "Romaji": "haru",
     "Kanji": "春",
     "Meaning": "mùa xuân",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5725,7 +5725,7 @@ const vocabData = [
     "Romaji": "natsu",
     "Kanji": "夏",
     "Meaning": "mùa hè",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5736,7 +5736,7 @@ const vocabData = [
     "Romaji": "aki",
     "Kanji": "秋",
     "Meaning": "mùa thu",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5747,7 +5747,7 @@ const vocabData = [
     "Romaji": "fuyu",
     "Kanji": "冬",
     "Meaning": "mùa đông",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5758,7 +5758,7 @@ const vocabData = [
     "Romaji": "tenki",
     "Kanji": "天気",
     "Meaning": "thời tiết",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5769,7 +5769,7 @@ const vocabData = [
     "Romaji": "ame",
     "Kanji": "雨",
     "Meaning": "mưa",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5780,7 +5780,7 @@ const vocabData = [
     "Romaji": "yuki",
     "Kanji": "雪",
     "Meaning": "tuyết",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5791,7 +5791,7 @@ const vocabData = [
     "Romaji": "kumori",
     "Kanji": "曇り",
     "Meaning": "có mây",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5802,7 +5802,7 @@ const vocabData = [
     "Romaji": "hoteru",
     "Kanji": "",
     "Meaning": "khách sạn",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5813,7 +5813,7 @@ const vocabData = [
     "Romaji": "kuukou",
     "Kanji": "空港",
     "Meaning": "sân bay",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5824,7 +5824,7 @@ const vocabData = [
     "Romaji": "umi",
     "Kanji": "海",
     "Meaning": "biển, đại dương",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5835,7 +5835,7 @@ const vocabData = [
     "Romaji": "sekai",
     "Kanji": "世界",
     "Meaning": "thế giới",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5846,7 +5846,7 @@ const vocabData = [
     "Romaji": "pa-ti-",
     "Kanji": "",
     "Meaning": "tiệc",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5857,7 +5857,7 @@ const vocabData = [
     "Romaji": "omatsuri",
     "Kanji": "お祭り",
     "Meaning": "lễ hội",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5868,7 +5868,7 @@ const vocabData = [
     "Romaji": "shiken",
     "Kanji": "試験",
     "Meaning": "kỳ thi, bài thi",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5879,7 +5879,7 @@ const vocabData = [
     "Romaji": "sukiyaki",
     "Kanji": "すき焼き",
     "Meaning": "Sukiyaki (món thịt bò nấu rau)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5890,7 +5890,7 @@ const vocabData = [
     "Romaji": "sashimi",
     "Kanji": "刺身",
     "Meaning": "Sashimi (món gỏi cá sống)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5901,7 +5901,7 @@ const vocabData = [
     "Romaji": "osushi",
     "Kanji": "",
     "Meaning": "Sushi",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5912,7 +5912,7 @@ const vocabData = [
     "Romaji": "tenpura",
     "Kanji": "",
     "Meaning": "Tempura (món hải sản và rau chiên tẩm bột)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5923,7 +5923,7 @@ const vocabData = [
     "Romaji": "ikebana",
     "Kanji": "生け花",
     "Meaning": "Nghệ thuật cắm hoa",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5934,7 +5934,7 @@ const vocabData = [
     "Romaji": "momiji",
     "Kanji": "紅葉",
     "Meaning": "lá đỏ",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5945,7 +5945,7 @@ const vocabData = [
     "Romaji": "dochira",
     "Kanji": "",
     "Meaning": "cái nào",
-    "category": "pronoun",
+    "category": 9,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5956,7 +5956,7 @@ const vocabData = [
     "Romaji": "hajimete",
     "Kanji": "初めて",
     "Meaning": "lần đầu tiên",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5967,7 +5967,7 @@ const vocabData = [
     "Romaji": "dochira mo",
     "Kanji": "",
     "Meaning": "cả hai",
-    "category": "pronoun",
+    "category": 9,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5978,7 +5978,7 @@ const vocabData = [
     "Romaji": "zutto",
     "Kanji": "",
     "Meaning": "(hơn) hẳn",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -5989,7 +5989,7 @@ const vocabData = [
     "Romaji": "tadaima",
     "Kanji": "",
     "Meaning": "Tôi đã về đây",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -6000,7 +6000,7 @@ const vocabData = [
     "Romaji": "okaerinasai",
     "Kanji": "",
     "Meaning": "Anh/Chị đã về đấy à",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -6011,7 +6011,7 @@ const vocabData = [
     "Romaji": "sugoi desu ne",
     "Kanji": "",
     "Meaning": "Ghê quá nhỉ. / hay quá nhỉ.",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -6022,7 +6022,7 @@ const vocabData = [
     "Romaji": "demo",
     "Kanji": "",
     "Meaning": "Nhưng",
-    "category": "conjunction",
+    "category": 8,
     "Vru": "",
     "type": "",
     "note": ""
@@ -6033,7 +6033,7 @@ const vocabData = [
     "Romaji": "tsukaremashita",
     "Kanji": "疲れました",
     "Meaning": "Tôi mệt rồi",
-    "category": "verb",
+    "category": 2,
     "Vru": "つかれる",
     "type": "Nhóm II",
     "note": "Tự động từ"
@@ -6044,7 +6044,7 @@ const vocabData = [
     "Romaji": "honkon",
     "Kanji": "",
     "Meaning": "Hồng Kông",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -6055,7 +6055,7 @@ const vocabData = [
     "Romaji": "shingapo-ru",
     "Kanji": "",
     "Meaning": "Singapore",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -6066,7 +6066,7 @@ const vocabData = [
     "Romaji": "asobimasu",
     "Kanji": "遊びます",
     "Meaning": "chơi",
-    "category": "verb",
+    "category": 2,
     "Vru": "あそぶ",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -6077,7 +6077,7 @@ const vocabData = [
     "Romaji": "oyogimasu",
     "Kanji": "泳ぎます",
     "Meaning": "bơi",
-    "category": "verb",
+    "category": 2,
     "Vru": "およぐ",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -6088,7 +6088,7 @@ const vocabData = [
     "Romaji": "mukaemasu",
     "Kanji": "迎えます",
     "Meaning": "đón",
-    "category": "verb",
+    "category": 2,
     "Vru": "むかえる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -6099,7 +6099,7 @@ const vocabData = [
     "Romaji": "tsukaremasu",
     "Kanji": "疲れます",
     "Meaning": "mệt",
-    "category": "verb",
+    "category": 2,
     "Vru": "つかれる",
     "type": "Nhóm II",
     "note": "Tự động từ"
@@ -6110,7 +6110,7 @@ const vocabData = [
     "Romaji": "dashimasu",
     "Kanji": "出します",
     "Meaning": "gửi [thư]",
-    "category": "verb",
+    "category": 2,
     "Vru": "だす",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -6121,7 +6121,7 @@ const vocabData = [
     "Romaji": "hairimasu",
     "Kanji": "入ります",
     "Meaning": "vào [quán giải khát]",
-    "category": "verb",
+    "category": 2,
     "Vru": "はいる",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -6132,7 +6132,7 @@ const vocabData = [
     "Romaji": "demasu",
     "Kanji": "出ます",
     "Meaning": "ra, ra khỏi [quán giải khát]",
-    "category": "verb",
+    "category": 2,
     "Vru": "でる",
     "type": "Nhóm II",
     "note": "Tự động từ"
@@ -6143,7 +6143,7 @@ const vocabData = [
     "Romaji": "kekkon shimasu",
     "Kanji": "結婚します",
     "Meaning": "kết hôn, lập gia đình, cưới",
-    "category": "verb",
+    "category": 2,
     "Vru": "けっこんする",
     "type": "Nhóm III",
     "note": "Tự động từ"
@@ -6154,7 +6154,7 @@ const vocabData = [
     "Romaji": "kaimono shimasu",
     "Kanji": "買い物します",
     "Meaning": "mua hàng",
-    "category": "verb",
+    "category": 2,
     "Vru": "かいものする",
     "type": "Nhóm III",
     "note": "Tha động từ"
@@ -6165,7 +6165,7 @@ const vocabData = [
     "Romaji": "shokuji shimasu",
     "Kanji": "食事します",
     "Meaning": "ăn cơm",
-    "category": "verb",
+    "category": 2,
     "Vru": "しょくじする",
     "type": "Nhóm III",
     "note": "Tha động từ"
@@ -6176,7 +6176,7 @@ const vocabData = [
     "Romaji": "sanpo shimasu",
     "Kanji": "散歩します",
     "Meaning": "đi dạo [ở công viên]",
-    "category": "verb",
+    "category": 2,
     "Vru": "さんぽする",
     "type": "Nhóm III",
     "note": "Tự động từ"
@@ -6187,7 +6187,7 @@ const vocabData = [
     "Romaji": "taihen",
     "Kanji": "大変「な」",
     "Meaning": "vất vả, khó khăn, khổ",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi な"
@@ -6198,7 +6198,7 @@ const vocabData = [
     "Romaji": "hoshii",
     "Kanji": "欲しい",
     "Meaning": "muốn có",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -6209,7 +6209,7 @@ const vocabData = [
     "Romaji": "sabishii",
     "Kanji": "寂しい",
     "Meaning": "buồn, cô đơn",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -6220,7 +6220,7 @@ const vocabData = [
     "Romaji": "hiroi",
     "Kanji": "広い",
     "Meaning": "rộng",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -6231,7 +6231,7 @@ const vocabData = [
     "Romaji": "semai",
     "Kanji": "狭い",
     "Meaning": "chật, hẹp",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -6242,7 +6242,7 @@ const vocabData = [
     "Romaji": "shiyakusho",
     "Kanji": "市役所",
     "Meaning": "văn phòng hành chính quận, thành phố",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -6253,7 +6253,7 @@ const vocabData = [
     "Romaji": "pu-ru",
     "Kanji": "",
     "Meaning": "bể bơi",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -6264,7 +6264,7 @@ const vocabData = [
     "Romaji": "kawa",
     "Kanji": "川",
     "Meaning": "sông",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -6275,7 +6275,7 @@ const vocabData = [
     "Romaji": "keizai",
     "Kanji": "経済",
     "Meaning": "kinh tế",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -6286,7 +6286,7 @@ const vocabData = [
     "Romaji": "bijutsu",
     "Kanji": "美術",
     "Meaning": "mỹ thuật",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -6297,7 +6297,7 @@ const vocabData = [
     "Romaji": "tsuri",
     "Kanji": "釣り",
     "Meaning": "việc câu cá",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -6308,7 +6308,7 @@ const vocabData = [
     "Romaji": "suki-",
     "Kanji": "",
     "Meaning": "việc trượt tuyết",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -6319,7 +6319,7 @@ const vocabData = [
     "Romaji": "kaigi",
     "Kanji": "会議",
     "Meaning": "họp, cuộc họp",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -6330,7 +6330,7 @@ const vocabData = [
     "Romaji": "touroku",
     "Kanji": "登録",
     "Meaning": "việc đăng ký",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -6341,7 +6341,7 @@ const vocabData = [
     "Romaji": "shuumatsu",
     "Kanji": "週末",
     "Meaning": "cuối tuần",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -6352,7 +6352,7 @@ const vocabData = [
     "Romaji": "～goro",
     "Kanji": "",
     "Meaning": "Khoảng ～ (dùng cho thời gian)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -6363,7 +6363,7 @@ const vocabData = [
     "Romaji": "nanika",
     "Kanji": "何か",
     "Meaning": "cái gì đó",
-    "category": "pronoun",
+    "category": 9,
     "Vru": "",
     "type": "",
     "note": ""
@@ -6374,7 +6374,7 @@ const vocabData = [
     "Romaji": "dokoka",
     "Kanji": "",
     "Meaning": "đâu đó, chỗ nào đó",
-    "category": "pronoun",
+    "category": 9,
     "Vru": "",
     "type": "",
     "note": ""
@@ -6385,7 +6385,7 @@ const vocabData = [
     "Romaji": "onaka ga sukimashita",
     "Kanji": "",
     "Meaning": "(tôi) đói rồi.",
-    "category": "verb",
+    "category": 2,
     "Vru": "すく",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -6396,7 +6396,7 @@ const vocabData = [
     "Romaji": "onaka ga ippai desu",
     "Kanji": "",
     "Meaning": "(tôi) no rồi.",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi な"
@@ -6407,7 +6407,7 @@ const vocabData = [
     "Romaji": "nodo ga kawakimashita",
     "Kanji": "",
     "Meaning": "(tôi) khát.",
-    "category": "verb",
+    "category": 2,
     "Vru": "かわく",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -6418,7 +6418,7 @@ const vocabData = [
     "Romaji": "sou desu ne",
     "Kanji": "",
     "Meaning": "Đúng thế.",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -6429,7 +6429,7 @@ const vocabData = [
     "Romaji": "roshia",
     "Kanji": "",
     "Meaning": "Nga",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -6440,7 +6440,7 @@ const vocabData = [
     "Romaji": "sou shimashou",
     "Kanji": "",
     "Meaning": "Nhất trí. / Chúng ta thống nhất như thế.",
-    "category": "verb",
+    "category": 2,
     "Vru": "する",
     "type": "Nhóm III",
     "note": "Tha động từ"
@@ -6451,7 +6451,7 @@ const vocabData = [
     "Romaji": "teishoku",
     "Kanji": "",
     "Meaning": "Cơm suất, cơm phần",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -6462,7 +6462,7 @@ const vocabData = [
     "Romaji": "gochuumon wa",
     "Kanji": "ご注文は",
     "Meaning": "Mời anh/chị gọi món",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -6473,7 +6473,7 @@ const vocabData = [
     "Romaji": "gyuudon",
     "Kanji": "牛どん",
     "Meaning": "món cơm thịt bò",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -6484,7 +6484,7 @@ const vocabData = [
     "Romaji": "shoushou omachi kudasai",
     "Kanji": "少々お待ちください",
     "Meaning": "xin vui lòng đợi một chút",
-    "category": "verb",
+    "category": 2,
     "Vru": "まつ",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -6495,7 +6495,7 @@ const vocabData = [
     "Romaji": "betsubetsu ni",
     "Kanji": "別々に",
     "Meaning": "để riêng ra",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -6506,7 +6506,7 @@ const vocabData = [
     "Romaji": "tsukemasu",
     "Kanji": "",
     "Meaning": "bật (điện, máy điều hòa)",
-    "category": "verb",
+    "category": 2,
     "Vru": "つける",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -6517,7 +6517,7 @@ const vocabData = [
     "Romaji": "keshimasu",
     "Kanji": "消します",
     "Meaning": "tắt (điện, máy điều hòa)",
-    "category": "verb",
+    "category": 2,
     "Vru": "けす",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -6528,7 +6528,7 @@ const vocabData = [
     "Romaji": "akemasu",
     "Kanji": "開けます",
     "Meaning": "mở (cửa, cửa sổ)",
-    "category": "verb",
+    "category": 2,
     "Vru": "あける",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -6539,7 +6539,7 @@ const vocabData = [
     "Romaji": "shimemasu",
     "Kanji": "閉めます",
     "Meaning": "đóng (cửa, cửa sổ)",
-    "category": "verb",
+    "category": 2,
     "Vru": "しめる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -6550,7 +6550,7 @@ const vocabData = [
     "Romaji": "isogimasu",
     "Kanji": "急ぎます",
     "Meaning": "vội, gấp",
-    "category": "verb",
+    "category": 2,
     "Vru": "いそぐ",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -6561,7 +6561,7 @@ const vocabData = [
     "Romaji": "machimasu",
     "Kanji": "待ちます",
     "Meaning": "đợi, chờ",
-    "category": "verb",
+    "category": 2,
     "Vru": "まつ",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -6572,7 +6572,7 @@ const vocabData = [
     "Romaji": "tomemasu",
     "Kanji": "止めます",
     "Meaning": "dừng (băng, ôtô), đỗ (ôtô)",
-    "category": "verb",
+    "category": 2,
     "Vru": "とめる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -6583,7 +6583,7 @@ const vocabData = [
     "Romaji": "magarimasu",
     "Kanji": "曲がります",
     "Meaning": "rẽ, quẹo [phải]",
-    "category": "verb",
+    "category": 2,
     "Vru": "まがる",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -6594,7 +6594,7 @@ const vocabData = [
     "Romaji": "mochimasu",
     "Kanji": "持ちます",
     "Meaning": "mang, cầm",
-    "category": "verb",
+    "category": 2,
     "Vru": "もつ",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -6605,7 +6605,7 @@ const vocabData = [
     "Romaji": "torimasu",
     "Kanji": "取ります",
     "Meaning": "lấy (muối)",
-    "category": "verb",
+    "category": 2,
     "Vru": "とる",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -6616,7 +6616,7 @@ const vocabData = [
     "Romaji": "tetsudaimasu",
     "Kanji": "手伝います",
     "Meaning": "giúp (làm việc)",
-    "category": "verb",
+    "category": 2,
     "Vru": "てつだう",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -6627,7 +6627,7 @@ const vocabData = [
     "Romaji": "yobimasu",
     "Kanji": "呼びます",
     "Meaning": "gọi (taxi, tên)",
-    "category": "verb",
+    "category": 2,
     "Vru": "よぶ",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -6638,7 +6638,7 @@ const vocabData = [
     "Romaji": "hanashimasu",
     "Kanji": "話します",
     "Meaning": "nói, nói chuyện",
-    "category": "verb",
+    "category": 2,
     "Vru": "はなす",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -6649,7 +6649,7 @@ const vocabData = [
     "Romaji": "misemasu",
     "Kanji": "見せます",
     "Meaning": "cho xem, trình",
-    "category": "verb",
+    "category": 2,
     "Vru": "みせる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -6660,7 +6660,7 @@ const vocabData = [
     "Romaji": "oshiemasu",
     "Kanji": "教えます",
     "Meaning": "nói, cho biết",
-    "category": "verb",
+    "category": 2,
     "Vru": "おしえる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -6671,7 +6671,7 @@ const vocabData = [
     "Romaji": "hajimemasu",
     "Kanji": "始めます",
     "Meaning": "bắt đầu",
-    "category": "verb",
+    "category": 2,
     "Vru": "はじめる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -6682,7 +6682,7 @@ const vocabData = [
     "Romaji": "furimasu",
     "Kanji": "降ります",
     "Meaning": "rơi [mưa, tuyết~]",
-    "category": "verb",
+    "category": 2,
     "Vru": "ふる",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -6693,7 +6693,7 @@ const vocabData = [
     "Romaji": "kopi- shimasu",
     "Kanji": "",
     "Meaning": "copy",
-    "category": "verb",
+    "category": 2,
     "Vru": "コピーする",
     "type": "Nhóm III",
     "note": "Tha động từ"
@@ -6704,7 +6704,7 @@ const vocabData = [
     "Romaji": "eakon",
     "Kanji": "",
     "Meaning": "máy điều hòa",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -6715,7 +6715,7 @@ const vocabData = [
     "Romaji": "pasupo-to",
     "Kanji": "",
     "Meaning": "hộ chiếu",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -6726,7 +6726,7 @@ const vocabData = [
     "Romaji": "namae",
     "Kanji": "名前",
     "Meaning": "tên",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -6737,7 +6737,7 @@ const vocabData = [
     "Romaji": "juusho",
     "Kanji": "住所",
     "Meaning": "địa chỉ",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -6748,7 +6748,7 @@ const vocabData = [
     "Romaji": "chizu",
     "Kanji": "地図",
     "Meaning": "bản đồ",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -6759,7 +6759,7 @@ const vocabData = [
     "Romaji": "shio",
     "Kanji": "塩",
     "Meaning": "muối",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -6770,7 +6770,7 @@ const vocabData = [
     "Romaji": "satou",
     "Kanji": "砂糖",
     "Meaning": "đường",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -6781,7 +6781,7 @@ const vocabData = [
     "Romaji": "yomikata",
     "Kanji": "読み方",
     "Meaning": "cách đọc",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -6792,7 +6792,7 @@ const vocabData = [
     "Romaji": "～kata",
     "Kanji": "～方",
     "Meaning": "cách ~",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -6803,7 +6803,7 @@ const vocabData = [
     "Romaji": "yukkuri",
     "Kanji": "",
     "Meaning": "chậm, thong thả, thoải mái",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -6814,7 +6814,7 @@ const vocabData = [
     "Romaji": "sugu",
     "Kanji": "",
     "Meaning": "ngay, lập tức",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -6825,7 +6825,7 @@ const vocabData = [
     "Romaji": "mata",
     "Kanji": "",
     "Meaning": "lại (~đến)",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -6836,7 +6836,7 @@ const vocabData = [
     "Romaji": "ato de",
     "Kanji": "",
     "Meaning": "sau",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -6847,7 +6847,7 @@ const vocabData = [
     "Romaji": "mou sukoshi",
     "Kanji": "もう 少し",
     "Meaning": "thêm một chút nữa thôi",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -6858,7 +6858,7 @@ const vocabData = [
     "Romaji": "mou～",
     "Kanji": "",
     "Meaning": "thêm~",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -6869,7 +6869,7 @@ const vocabData = [
     "Romaji": "ii desu yo",
     "Kanji": "",
     "Meaning": "Được chứ. / được ạ.",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -6880,7 +6880,7 @@ const vocabData = [
     "Romaji": "saa",
     "Kanji": "",
     "Meaning": "thôi / nào",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -6891,7 +6891,7 @@ const vocabData = [
     "Romaji": "are?",
     "Kanji": "",
     "Meaning": "Ô! (bất ngờ)",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -6902,7 +6902,7 @@ const vocabData = [
     "Romaji": "massugu",
     "Kanji": "",
     "Meaning": "thẳng",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -6913,7 +6913,7 @@ const vocabData = [
     "Romaji": "otsuri",
     "Kanji": "お釣り",
     "Meaning": "tiền lẻ",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -6924,7 +6924,7 @@ const vocabData = [
     "Romaji": "kore de onegaishimasu",
     "Kanji": "これでお願いします",
     "Meaning": "gửi anh tiền này",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -6935,7 +6935,7 @@ const vocabData = [
     "Romaji": "tachimasu",
     "Kanji": "立ちます",
     "Meaning": "đứng",
-    "category": "verb",
+    "category": 2,
     "Vru": "たつ",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -6946,7 +6946,7 @@ const vocabData = [
     "Romaji": "suwarimasu",
     "Kanji": "座ります",
     "Meaning": "ngồi",
-    "category": "verb",
+    "category": 2,
     "Vru": "すわる",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -6957,7 +6957,7 @@ const vocabData = [
     "Romaji": "tsukaimasu",
     "Kanji": "使います",
     "Meaning": "dùng, sử dụng",
-    "category": "verb",
+    "category": 2,
     "Vru": "つかう",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -6968,7 +6968,7 @@ const vocabData = [
     "Romaji": "okimasu",
     "Kanji": "置きます",
     "Meaning": "đặt, để",
-    "category": "verb",
+    "category": 2,
     "Vru": "おく",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -6979,7 +6979,7 @@ const vocabData = [
     "Romaji": "tsukurimasu",
     "Kanji": "作ります,造ります",
     "Meaning": "làm, chế tạo, sản xuất",
-    "category": "verb",
+    "category": 2,
     "Vru": "つくる",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -6990,7 +6990,7 @@ const vocabData = [
     "Romaji": "urimasu",
     "Kanji": "売ります",
     "Meaning": "bán",
-    "category": "verb",
+    "category": 2,
     "Vru": "うる",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -7001,7 +7001,7 @@ const vocabData = [
     "Romaji": "shirimasu",
     "Kanji": "知ります",
     "Meaning": "biết",
-    "category": "verb",
+    "category": 2,
     "Vru": "しる",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -7012,7 +7012,7 @@ const vocabData = [
     "Romaji": "sumimasu",
     "Kanji": "住みます",
     "Meaning": "sống, ở",
-    "category": "verb",
+    "category": 2,
     "Vru": "すむ",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -7023,7 +7023,7 @@ const vocabData = [
     "Romaji": "kenkyuushimasu",
     "Kanji": "研究します",
     "Meaning": "nghiên cứu",
-    "category": "verb",
+    "category": 2,
     "Vru": "けんきゅうする",
     "type": "Nhóm III",
     "note": "Tha động từ"
@@ -7034,7 +7034,7 @@ const vocabData = [
     "Romaji": "shitte imasu",
     "Kanji": "知っています",
     "Meaning": "biết",
-    "category": "verb",
+    "category": 2,
     "Vru": "しる",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -7045,7 +7045,7 @@ const vocabData = [
     "Romaji": "sunde imasu",
     "Kanji": "住んでいます",
     "Meaning": "sống [ở Osaka]",
-    "category": "verb",
+    "category": 2,
     "Vru": "すむ",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -7056,7 +7056,7 @@ const vocabData = [
     "Romaji": "shiryou",
     "Kanji": "資料",
     "Meaning": "tài liệu, tư liệu",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -7067,7 +7067,7 @@ const vocabData = [
     "Romaji": "katarogu",
     "Kanji": "",
     "Meaning": "ca-ta-lô",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -7078,7 +7078,7 @@ const vocabData = [
     "Romaji": "jikokuhyou",
     "Kanji": "時刻表",
     "Meaning": "bảng giờ tàu chạy",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -7089,7 +7089,7 @@ const vocabData = [
     "Romaji": "fuku",
     "Kanji": "服",
     "Meaning": "quần áo",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -7100,7 +7100,7 @@ const vocabData = [
     "Romaji": "seihin",
     "Kanji": "製品",
     "Meaning": "sản phẩm",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -7111,7 +7111,7 @@ const vocabData = [
     "Romaji": "sofuto",
     "Kanji": "",
     "Meaning": "phần mềm",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -7122,7 +7122,7 @@ const vocabData = [
     "Romaji": "senmon",
     "Kanji": "専門",
     "Meaning": "chuyên môn",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -7133,7 +7133,7 @@ const vocabData = [
     "Romaji": "haisha",
     "Kanji": "歯医者",
     "Meaning": "nha sĩ",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -7144,7 +7144,7 @@ const vocabData = [
     "Romaji": "tokoya",
     "Kanji": "床屋",
     "Meaning": "hiệu cắt tóc",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -7155,7 +7155,7 @@ const vocabData = [
     "Romaji": "pureigaido",
     "Kanji": "",
     "Meaning": "quầy bán vé (trong nhà hát)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -7166,7 +7166,7 @@ const vocabData = [
     "Romaji": "dokushin",
     "Kanji": "独身",
     "Meaning": "độc thân",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -7177,7 +7177,7 @@ const vocabData = [
     "Romaji": "tokuni",
     "Kanji": "特に",
     "Meaning": "đặc biệt",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -7188,7 +7188,7 @@ const vocabData = [
     "Romaji": "omoidashimasu",
     "Kanji": "思い出します",
     "Meaning": "nhớ lại, hồi tưởng",
-    "category": "verb",
+    "category": 2,
     "Vru": "おもいだす",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -7199,7 +7199,7 @@ const vocabData = [
     "Romaji": "gokazoku",
     "Kanji": "ご家族",
     "Meaning": "gia đình (dùng cho người khác)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -7210,7 +7210,7 @@ const vocabData = [
     "Romaji": "irasshaimasu",
     "Kanji": "",
     "Meaning": "thể kính trọng của 「います」",
-    "category": "verb",
+    "category": 2,
     "Vru": "いらっしゃる",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -7221,7 +7221,7 @@ const vocabData = [
     "Romaji": "koukou",
     "Kanji": "高校",
     "Meaning": "trường trung học phổ thông",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -7232,7 +7232,7 @@ const vocabData = [
     "Romaji": "norimasu",
     "Kanji": "乗ります",
     "Meaning": "đi, lên [tàu]",
-    "category": "verb",
+    "category": 2,
     "Vru": "のる",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -7243,7 +7243,7 @@ const vocabData = [
     "Romaji": "orimasu",
     "Kanji": "降ります",
     "Meaning": "xuống [tàu]",
-    "category": "verb",
+    "category": 2,
     "Vru": "おりる",
     "type": "Nhóm II",
     "note": "Tự động từ"
@@ -7254,7 +7254,7 @@ const vocabData = [
     "Romaji": "norikaemasu",
     "Kanji": "乗り換えます",
     "Meaning": "chuyển, đổi (tàu)",
-    "category": "verb",
+    "category": 2,
     "Vru": "のりかえる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -7265,7 +7265,7 @@ const vocabData = [
     "Romaji": "abimasu",
     "Kanji": "浴びます",
     "Meaning": "tắm [vòi hoa sen]",
-    "category": "verb",
+    "category": 2,
     "Vru": "あびる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -7276,7 +7276,7 @@ const vocabData = [
     "Romaji": "iremasu",
     "Kanji": "入れます",
     "Meaning": "cho vào, bỏ vào",
-    "category": "verb",
+    "category": 2,
     "Vru": "いれる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -7287,7 +7287,7 @@ const vocabData = [
     "Romaji": "dashimasu",
     "Kanji": "出します",
     "Meaning": "lấy ra, rút (tiền)",
-    "category": "verb",
+    "category": 2,
     "Vru": "だす",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -7298,7 +7298,7 @@ const vocabData = [
     "Romaji": "hairimasu",
     "Kanji": "入ります",
     "Meaning": "vào, nhập học [đại học]",
-    "category": "verb",
+    "category": 2,
     "Vru": "はいる",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -7309,7 +7309,7 @@ const vocabData = [
     "Romaji": "demasu",
     "Kanji": "出ます",
     "Meaning": "ra, tốt nghiệp [đại học]",
-    "category": "verb",
+    "category": 2,
     "Vru": "でる",
     "type": "Nhóm II",
     "note": "Tự động từ"
@@ -7320,7 +7320,7 @@ const vocabData = [
     "Romaji": "yamemasu",
     "Kanji": "やめます",
     "Meaning": "bỏ, thôi [việc công ty]",
-    "category": "verb",
+    "category": 2,
     "Vru": "やめる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -7331,7 +7331,7 @@ const vocabData = [
     "Romaji": "oshimasu",
     "Kanji": "押します",
     "Meaning": "bấm, ấn (nút)",
-    "category": "verb",
+    "category": 2,
     "Vru": "おす",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -7342,7 +7342,7 @@ const vocabData = [
     "Romaji": "wakai",
     "Kanji": "若い",
     "Meaning": "trẻ",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -7353,7 +7353,7 @@ const vocabData = [
     "Romaji": "nagai",
     "Kanji": "長い",
     "Meaning": "dài",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -7364,7 +7364,7 @@ const vocabData = [
     "Romaji": "mijikai",
     "Kanji": "短い",
     "Meaning": "ngắn",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -7375,7 +7375,7 @@ const vocabData = [
     "Romaji": "akarui",
     "Kanji": "明るい",
     "Meaning": "sáng",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -7386,7 +7386,7 @@ const vocabData = [
     "Romaji": "kurai",
     "Kanji": "暗い",
     "Meaning": "tối",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -7397,7 +7397,7 @@ const vocabData = [
     "Romaji": "se ga takai",
     "Kanji": "背が 高い",
     "Meaning": "cao (dùng cho người)",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -7408,7 +7408,7 @@ const vocabData = [
     "Romaji": "atama ga ii",
     "Kanji": "頭が いい",
     "Meaning": "thông minh",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -7419,7 +7419,7 @@ const vocabData = [
     "Romaji": "karada",
     "Kanji": "体",
     "Meaning": "người, cơ thể",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -7430,7 +7430,7 @@ const vocabData = [
     "Romaji": "atama",
     "Kanji": "頭",
     "Meaning": "đầu",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -7441,7 +7441,7 @@ const vocabData = [
     "Romaji": "kami",
     "Kanji": "髪",
     "Meaning": "tóc",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -7452,7 +7452,7 @@ const vocabData = [
     "Romaji": "namae",
     "Kanji": "名前",
     "Meaning": "tên",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -7463,7 +7463,7 @@ const vocabData = [
     "Romaji": "kao",
     "Kanji": "顔",
     "Meaning": "mặt",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -7474,7 +7474,7 @@ const vocabData = [
     "Romaji": "me",
     "Kanji": "目",
     "Meaning": "mắt",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -7485,7 +7485,7 @@ const vocabData = [
     "Romaji": "mimi",
     "Kanji": "耳",
     "Meaning": "tai",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -7496,7 +7496,7 @@ const vocabData = [
     "Romaji": "ha",
     "Kanji": "歯",
     "Meaning": "răng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -7507,7 +7507,7 @@ const vocabData = [
     "Romaji": "onaka",
     "Kanji": "",
     "Meaning": "bụng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -7518,7 +7518,7 @@ const vocabData = [
     "Romaji": "ashi",
     "Kanji": "足",
     "Meaning": "chân",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -7529,7 +7529,7 @@ const vocabData = [
     "Romaji": "sa-bisu",
     "Kanji": "",
     "Meaning": "dịch vụ",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -7540,7 +7540,7 @@ const vocabData = [
     "Romaji": "jogingu",
     "Kanji": "",
     "Meaning": "việc chạy bộ",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -7551,7 +7551,7 @@ const vocabData = [
     "Romaji": "shawa-",
     "Kanji": "",
     "Meaning": "vòi hoa sen",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -7562,7 +7562,7 @@ const vocabData = [
     "Romaji": "midori",
     "Kanji": "緑",
     "Meaning": "màu xanh lá cây",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -7573,7 +7573,7 @@ const vocabData = [
     "Romaji": "otera",
     "Kanji": "お寺",
     "Meaning": "chùa",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -7584,7 +7584,7 @@ const vocabData = [
     "Romaji": "jinja",
     "Kanji": "神社",
     "Meaning": "đền thờ đạo thần",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -7595,7 +7595,7 @@ const vocabData = [
     "Romaji": "ryuugakusei",
     "Kanji": "",
     "Meaning": "lưu học sinh, du học sinh",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -7606,7 +7606,7 @@ const vocabData = [
     "Romaji": "ichiban",
     "Kanji": "一番",
     "Meaning": "số―",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -7617,7 +7617,7 @@ const vocabData = [
     "Romaji": "douyatte",
     "Kanji": "",
     "Meaning": "làm thế nào~",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -7628,7 +7628,7 @@ const vocabData = [
     "Romaji": "dono～",
     "Kanji": "",
     "Meaning": "cái nào~ (từ ba thứ trở lên)",
-    "category": "pronoun",
+    "category": 9,
     "Vru": "",
     "type": "",
     "note": ""
@@ -7639,7 +7639,7 @@ const vocabData = [
     "Romaji": "mada mada desu",
     "Kanji": "",
     "Meaning": "tôi còn kém lắm",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -7650,7 +7650,7 @@ const vocabData = [
     "Romaji": "mazu",
     "Kanji": "",
     "Meaning": "trước hết, đầu tiên",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -7661,7 +7661,7 @@ const vocabData = [
     "Romaji": "kyasshuka-do",
     "Kanji": "",
     "Meaning": "thẻ ngân hàng, thẻ ATM",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -7672,7 +7672,7 @@ const vocabData = [
     "Romaji": "anshou bangou",
     "Kanji": "暗証番号",
     "Meaning": "mã số bí mật (mật khẩu)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -7683,7 +7683,7 @@ const vocabData = [
     "Romaji": "tsugi ni",
     "Kanji": "次に",
     "Meaning": "tiếp theo",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -7694,7 +7694,7 @@ const vocabData = [
     "Romaji": "kakunin",
     "Kanji": "確認",
     "Meaning": "sự xác nhận, sự kiểm tra",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -7705,7 +7705,7 @@ const vocabData = [
     "Romaji": "kingaku",
     "Kanji": "金額",
     "Meaning": "số tiền, khoản tiền",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -7716,7 +7716,7 @@ const vocabData = [
     "Romaji": "botan",
     "Kanji": "",
     "Meaning": "nút",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -7727,7 +7727,7 @@ const vocabData = [
     "Romaji": "ajia",
     "Kanji": "",
     "Meaning": "châu Á",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -7738,7 +7738,7 @@ const vocabData = [
     "Romaji": "betonamu",
     "Kanji": "",
     "Meaning": "Việt Nam",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -7749,7 +7749,7 @@ const vocabData = [
     "Romaji": "oboemasu",
     "Kanji": "覚えます",
     "Meaning": "nhớ",
-    "category": "verb",
+    "category": 2,
     "Vru": "おぼえる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -7760,7 +7760,7 @@ const vocabData = [
     "Romaji": "wasuremasu",
     "Kanji": "忘れます",
     "Meaning": "quên",
-    "category": "verb",
+    "category": 2,
     "Vru": "わすれる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -7771,7 +7771,7 @@ const vocabData = [
     "Romaji": "nakushimasu",
     "Kanji": "",
     "Meaning": "mất, đánh mất",
-    "category": "verb",
+    "category": 2,
     "Vru": "なくす",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -7782,7 +7782,7 @@ const vocabData = [
     "Romaji": "dashimasu",
     "Kanji": "出します",
     "Meaning": "nộp (báo cáo)",
-    "category": "verb",
+    "category": 2,
     "Vru": "だす",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -7793,7 +7793,7 @@ const vocabData = [
     "Romaji": "haraimasu",
     "Kanji": "払います",
     "Meaning": "trả tiền",
-    "category": "verb",
+    "category": 2,
     "Vru": "はらう",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -7804,7 +7804,7 @@ const vocabData = [
     "Romaji": "kaeshimasu",
     "Kanji": "返します",
     "Meaning": "trả lại",
-    "category": "verb",
+    "category": 2,
     "Vru": "かえす",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -7815,7 +7815,7 @@ const vocabData = [
     "Romaji": "dekakemasu",
     "Kanji": "出かけます",
     "Meaning": "ra ngoài",
-    "category": "verb",
+    "category": 2,
     "Vru": "でかける",
     "type": "Nhóm II",
     "note": "Tự động từ"
@@ -7826,7 +7826,7 @@ const vocabData = [
     "Romaji": "nugimasu",
     "Kanji": "脱ぎます",
     "Meaning": "cởi (quần áo, giầy)",
-    "category": "verb",
+    "category": 2,
     "Vru": "ぬぐ",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -7837,7 +7837,7 @@ const vocabData = [
     "Romaji": "motte ikimasu",
     "Kanji": "持って行きます",
     "Meaning": "mang đi",
-    "category": "verb",
+    "category": 2,
     "Vru": "もっていく",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -7848,7 +7848,7 @@ const vocabData = [
     "Romaji": "motte kimasu",
     "Kanji": "持って来ます",
     "Meaning": "mang đến",
-    "category": "verb",
+    "category": 2,
     "Vru": "もってくる",
     "type": "Nhóm III",
     "note": "Tha động từ"
@@ -7859,7 +7859,7 @@ const vocabData = [
     "Romaji": "shinpai shimasu",
     "Kanji": "心配します",
     "Meaning": "lo lắng",
-    "category": "verb",
+    "category": 2,
     "Vru": "しんぱいする",
     "type": "Nhóm III",
     "note": "Tự động từ"
@@ -7870,7 +7870,7 @@ const vocabData = [
     "Romaji": "zangyou shimasu",
     "Kanji": "残業します",
     "Meaning": "làm thêm giờ",
-    "category": "verb",
+    "category": 2,
     "Vru": "ざんぎょうする",
     "type": "Nhóm III",
     "note": "Tự động từ"
@@ -7881,7 +7881,7 @@ const vocabData = [
     "Romaji": "shucchou shimasu",
     "Kanji": "出張します",
     "Meaning": "đi công tác",
-    "category": "verb",
+    "category": 2,
     "Vru": "しゅっちょうする",
     "type": "Nhóm III",
     "note": "Tự động từ"
@@ -7892,7 +7892,7 @@ const vocabData = [
     "Romaji": "nomimasu",
     "Kanji": "飲みます",
     "Meaning": "uống (thuốc)",
-    "category": "verb",
+    "category": 2,
     "Vru": "のむ",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -7903,7 +7903,7 @@ const vocabData = [
     "Romaji": "hairimasu",
     "Kanji": "入ります",
     "Meaning": "tắm bồn",
-    "category": "verb",
+    "category": 2,
     "Vru": "はいる",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -7914,7 +7914,7 @@ const vocabData = [
     "Romaji": "taisetsu[na]",
     "Kanji": "大切[な]",
     "Meaning": "quan trọng",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi な"
@@ -7925,7 +7925,7 @@ const vocabData = [
     "Romaji": "daijoubu[na]",
     "Kanji": "大丈夫[な]",
     "Meaning": "không sao, không có vấn đề gì",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi な"
@@ -7936,7 +7936,7 @@ const vocabData = [
     "Romaji": "abunai",
     "Kanji": "危ない",
     "Meaning": "nguy hiểm",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -7947,7 +7947,7 @@ const vocabData = [
     "Romaji": "mondai",
     "Kanji": "問題",
     "Meaning": "vấn đề",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -7958,7 +7958,7 @@ const vocabData = [
     "Romaji": "kotae",
     "Kanji": "答え",
     "Meaning": "câu trả lời",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -7969,7 +7969,7 @@ const vocabData = [
     "Romaji": "kinen",
     "Kanji": "禁煙",
     "Meaning": "cấm hút thuốc",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -7980,7 +7980,7 @@ const vocabData = [
     "Romaji": "hokenshou",
     "Kanji": "健康保険証",
     "Meaning": "thẻ bảo hiểm (y tế)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -7991,7 +7991,7 @@ const vocabData = [
     "Romaji": "kaze",
     "Kanji": "風",
     "Meaning": "cảm, cúm",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8002,7 +8002,7 @@ const vocabData = [
     "Romaji": "netsu",
     "Kanji": "熱",
     "Meaning": "sốt",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8013,7 +8013,7 @@ const vocabData = [
     "Romaji": "byouki",
     "Kanji": "病気",
     "Meaning": "ốm, bệnh",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8024,7 +8024,7 @@ const vocabData = [
     "Romaji": "kusuri",
     "Kanji": "薬",
     "Meaning": "thuốc",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8035,7 +8035,7 @@ const vocabData = [
     "Romaji": "ofuro",
     "Kanji": "",
     "Meaning": "bồn tắm",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8046,7 +8046,7 @@ const vocabData = [
     "Romaji": "uwagi",
     "Kanji": "上着",
     "Meaning": "áo khoác",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8057,7 +8057,7 @@ const vocabData = [
     "Romaji": "shitagi",
     "Kanji": "下着",
     "Meaning": "quần áo lót",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8068,7 +8068,7 @@ const vocabData = [
     "Romaji": "sensei",
     "Kanji": "先生",
     "Meaning": "bác sĩ",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8079,7 +8079,7 @@ const vocabData = [
     "Romaji": "ni, sannichi",
     "Kanji": "２,３日",
     "Meaning": "vài ngày",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8090,7 +8090,7 @@ const vocabData = [
     "Romaji": "ni, san～",
     "Kanji": "２,３～",
     "Meaning": "vài –",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8101,7 +8101,7 @@ const vocabData = [
     "Romaji": "madeni",
     "Kanji": "",
     "Meaning": "trước ~ (chỉ thời gian)",
-    "category": "particle",
+    "category": 3,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8112,7 +8112,7 @@ const vocabData = [
     "Romaji": "desukara",
     "Kanji": "",
     "Meaning": "vì thế, vì vậy, do đó",
-    "category": "conjunction",
+    "category": 8,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8123,7 +8123,7 @@ const vocabData = [
     "Romaji": "dou shimashita ka",
     "Kanji": "",
     "Meaning": "Có vấn đề gì? / Anh Chị bị làm sao?",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8134,7 +8134,7 @@ const vocabData = [
     "Romaji": "itai desu",
     "Kanji": "",
     "Meaning": "Tôi bị đau ～",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -8145,7 +8145,7 @@ const vocabData = [
     "Romaji": "nodo",
     "Kanji": "",
     "Meaning": "họng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8156,7 +8156,7 @@ const vocabData = [
     "Romaji": "odaiji ni",
     "Kanji": "",
     "Meaning": "Anh chị nhớ giữ gìn sức khỏe",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8167,7 +8167,7 @@ const vocabData = [
     "Romaji": "dekimasu",
     "Kanji": "",
     "Meaning": "có thể",
-    "category": "verb",
+    "category": 2,
     "Vru": "できる",
     "type": "Nhóm II",
     "note": "Tự động từ"
@@ -8178,7 +8178,7 @@ const vocabData = [
     "Romaji": "araimasu",
     "Kanji": "洗います",
     "Meaning": "rửa",
-    "category": "verb",
+    "category": 2,
     "Vru": "あらう",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -8189,7 +8189,7 @@ const vocabData = [
     "Romaji": "hikimasu",
     "Kanji": "弾きます",
     "Meaning": "chơi (nhạc cụ)",
-    "category": "verb",
+    "category": 2,
     "Vru": "ひく",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -8200,7 +8200,7 @@ const vocabData = [
     "Romaji": "utaimasu",
     "Kanji": "歌います",
     "Meaning": "hát",
-    "category": "verb",
+    "category": 2,
     "Vru": "うたう",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -8211,7 +8211,7 @@ const vocabData = [
     "Romaji": "atsumemasu",
     "Kanji": "集めます",
     "Meaning": "sưu tập",
-    "category": "verb",
+    "category": 2,
     "Vru": "あつめる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -8222,7 +8222,7 @@ const vocabData = [
     "Romaji": "sutemasu",
     "Kanji": "捨てます",
     "Meaning": "vứt",
-    "category": "verb",
+    "category": 2,
     "Vru": "すてる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -8233,7 +8233,7 @@ const vocabData = [
     "Romaji": "kaemasu",
     "Kanji": "",
     "Meaning": "đổi",
-    "category": "verb",
+    "category": 2,
     "Vru": "かえる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -8244,7 +8244,7 @@ const vocabData = [
     "Romaji": "unten shimasu",
     "Kanji": "運転します",
     "Meaning": "lái xe",
-    "category": "verb",
+    "category": 2,
     "Vru": "うんてんする",
     "type": "Nhóm III",
     "note": "Tha động từ"
@@ -8255,7 +8255,7 @@ const vocabData = [
     "Romaji": "yoyaku shimasu",
     "Kanji": "予約します",
     "Meaning": "đặt chỗ trước",
-    "category": "verb",
+    "category": 2,
     "Vru": "よやくする",
     "type": "Nhóm III",
     "note": "Tha động từ"
@@ -8266,7 +8266,7 @@ const vocabData = [
     "Romaji": "kengaku shimasu",
     "Kanji": "見学します",
     "Meaning": "tham quan mục đích học tập",
-    "category": "verb",
+    "category": 2,
     "Vru": "けんがくする",
     "type": "Nhóm III",
     "note": "Tha động từ"
@@ -8277,7 +8277,7 @@ const vocabData = [
     "Romaji": "kokusai～",
     "Kanji": "国際",
     "Meaning": "quốc tế",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8288,7 +8288,7 @@ const vocabData = [
     "Romaji": "genkin",
     "Kanji": "現金",
     "Meaning": "tiền mặt",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8299,7 +8299,7 @@ const vocabData = [
     "Romaji": "shumi",
     "Kanji": "趣味",
     "Meaning": "sở thích",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8310,7 +8310,7 @@ const vocabData = [
     "Romaji": "nikki",
     "Kanji": "日記",
     "Meaning": "nhật kí",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8321,7 +8321,7 @@ const vocabData = [
     "Romaji": "inori",
     "Kanji": "祈り",
     "Meaning": "cầu nguyện",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8332,7 +8332,7 @@ const vocabData = [
     "Romaji": "kachou",
     "Kanji": "課長",
     "Meaning": "tổ trưởng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8343,7 +8343,7 @@ const vocabData = [
     "Romaji": "buchou",
     "Kanji": "部長",
     "Meaning": "trưởng phòng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8354,7 +8354,7 @@ const vocabData = [
     "Romaji": "shachou",
     "Kanji": "社長",
     "Meaning": "giám đốc",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8365,7 +8365,7 @@ const vocabData = [
     "Romaji": "doubutsu",
     "Kanji": "動物",
     "Meaning": "động vật",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8376,7 +8376,7 @@ const vocabData = [
     "Romaji": "uma",
     "Kanji": "馬",
     "Meaning": "ngựa",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8387,7 +8387,7 @@ const vocabData = [
     "Romaji": "hee",
     "Kanji": "",
     "Meaning": "thế à",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8398,7 +8398,7 @@ const vocabData = [
     "Romaji": "piano",
     "Kanji": "",
     "Meaning": "đàn piano",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8409,7 +8409,7 @@ const vocabData = [
     "Romaji": "―me-toru",
     "Kanji": "",
     "Meaning": "mét",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8420,7 +8420,7 @@ const vocabData = [
     "Romaji": "sore wa omoshiroi desu ne",
     "Kanji": "",
     "Meaning": "Hay nhỉ",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8431,7 +8431,7 @@ const vocabData = [
     "Romaji": "bokujou",
     "Kanji": "牧場",
     "Meaning": "trang trại",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8442,7 +8442,7 @@ const vocabData = [
     "Romaji": "hontou desu ka",
     "Kanji": "本当ですか",
     "Meaning": "thật không?",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8453,7 +8453,7 @@ const vocabData = [
     "Romaji": "zehi",
     "Kanji": "",
     "Meaning": "nhất định",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8464,7 +8464,7 @@ const vocabData = [
     "Romaji": "noborimasu",
     "Kanji": "登ります",
     "Meaning": "leo (núi)",
-    "category": "verb",
+    "category": 2,
     "Vru": "のぼる",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -8475,7 +8475,7 @@ const vocabData = [
     "Romaji": "renshuu shimasu",
     "Kanji": "練習します",
     "Meaning": "luyện tập, thực hành",
-    "category": "verb",
+    "category": 2,
     "Vru": "れんしゅうする",
     "type": "Nhóm III",
     "note": "Tha động từ"
@@ -8486,7 +8486,7 @@ const vocabData = [
     "Romaji": "souji shimasu",
     "Kanji": "掃除します",
     "Meaning": "dọn dẹp",
-    "category": "verb",
+    "category": 2,
     "Vru": "そうじする",
     "type": "Nhóm III",
     "note": "Tha động từ"
@@ -8497,7 +8497,7 @@ const vocabData = [
     "Romaji": "sentaku shimasu",
     "Kanji": "洗濯します",
     "Meaning": "giặt giũ",
-    "category": "verb",
+    "category": 2,
     "Vru": "せんたくする",
     "type": "Nhóm III",
     "note": "Tha động từ"
@@ -8508,7 +8508,7 @@ const vocabData = [
     "Romaji": "narimasu",
     "Kanji": "",
     "Meaning": "trở nên, trở thành",
-    "category": "verb",
+    "category": 2,
     "Vru": "なる",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -8519,7 +8519,7 @@ const vocabData = [
     "Romaji": "tomarimasu",
     "Kanji": "泊まります",
     "Meaning": "trọ",
-    "category": "verb",
+    "category": 2,
     "Vru": "とまる",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -8530,7 +8530,7 @@ const vocabData = [
     "Romaji": "nemui",
     "Kanji": "眠い",
     "Meaning": "buồn ngủ",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -8541,7 +8541,7 @@ const vocabData = [
     "Romaji": "tsuyoi",
     "Kanji": "強い",
     "Meaning": "mạnh",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -8552,7 +8552,7 @@ const vocabData = [
     "Romaji": "yowai",
     "Kanji": "弱い",
     "Meaning": "yếu",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -8563,7 +8563,7 @@ const vocabData = [
     "Romaji": "choushi",
     "Kanji": "調子",
     "Meaning": "tình trạng, trạng thái",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8574,7 +8574,7 @@ const vocabData = [
     "Romaji": "choushi ga warui",
     "Kanji": "調子が悪い",
     "Meaning": "tình trạng xấu",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -8585,7 +8585,7 @@ const vocabData = [
     "Romaji": "choushi ga ii",
     "Kanji": "調子がいい",
     "Meaning": "tình trạng tốt",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -8596,7 +8596,7 @@ const vocabData = [
     "Romaji": "ocha",
     "Kanji": "お茶",
     "Meaning": "trà đạo",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8607,7 +8607,7 @@ const vocabData = [
     "Romaji": "sumou",
     "Kanji": "相撲",
     "Meaning": "vật sumo",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8618,7 +8618,7 @@ const vocabData = [
     "Romaji": "pachinko",
     "Kanji": "",
     "Meaning": "trò chơi pachinko",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8629,7 +8629,7 @@ const vocabData = [
     "Romaji": "gorufu",
     "Kanji": "",
     "Meaning": "gôn",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8640,7 +8640,7 @@ const vocabData = [
     "Romaji": "hi",
     "Kanji": "日",
     "Meaning": "ngày",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8651,7 +8651,7 @@ const vocabData = [
     "Romaji": "mousugu",
     "Kanji": "",
     "Meaning": "sắp sửa",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8662,7 +8662,7 @@ const vocabData = [
     "Romaji": "dandan",
     "Kanji": "",
     "Meaning": "dần dần",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8673,7 +8673,7 @@ const vocabData = [
     "Romaji": "ichido",
     "Kanji": "一度",
     "Meaning": "một lần",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8684,7 +8684,7 @@ const vocabData = [
     "Romaji": "ichidomo",
     "Kanji": "一度も",
     "Meaning": "chưa lần nào",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8695,7 +8695,7 @@ const vocabData = [
     "Romaji": "okagesama de",
     "Kanji": "",
     "Meaning": "Cám ơn (nhờ ơn anh/chị)",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8706,7 +8706,7 @@ const vocabData = [
     "Romaji": "kanpai",
     "Kanji": "乾杯",
     "Meaning": "nâng cốc",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8717,7 +8717,7 @@ const vocabData = [
     "Romaji": "jitsu wa",
     "Kanji": "実は",
     "Meaning": "sự tình là",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8728,7 +8728,7 @@ const vocabData = [
     "Romaji": "daietto",
     "Kanji": "",
     "Meaning": "ăn kiêng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8739,7 +8739,7 @@ const vocabData = [
     "Romaji": "nankai mo",
     "Kanji": "何回も",
     "Meaning": "nhiều lần",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8750,7 +8750,7 @@ const vocabData = [
     "Romaji": "shikashi",
     "Kanji": "",
     "Meaning": "tuy nhiên",
-    "category": "conjunction",
+    "category": 8,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8761,7 +8761,7 @@ const vocabData = [
     "Romaji": "muri",
     "Kanji": "無理「な」",
     "Meaning": "quá sức",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi な"
@@ -8772,7 +8772,7 @@ const vocabData = [
     "Romaji": "karada ni ii",
     "Kanji": "体にいい",
     "Meaning": "tốt cho sức khỏe",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -8783,7 +8783,7 @@ const vocabData = [
     "Romaji": "ke-ki",
     "Kanji": "",
     "Meaning": "bánh ga-tô",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8794,7 +8794,7 @@ const vocabData = [
     "Romaji": "irimasu",
     "Kanji": "要ります",
     "Meaning": "cần (visa)",
-    "category": "verb",
+    "category": 2,
     "Vru": "いる",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -8805,7 +8805,7 @@ const vocabData = [
     "Romaji": "shirabemasu",
     "Kanji": "調べます",
     "Meaning": "tìm hiểu, điều tra",
-    "category": "verb",
+    "category": 2,
     "Vru": "しらべる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -8816,7 +8816,7 @@ const vocabData = [
     "Romaji": "naoshimasu",
     "Kanji": "直します",
     "Meaning": "sửa, chữa",
-    "category": "verb",
+    "category": 2,
     "Vru": "なおす",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -8827,7 +8827,7 @@ const vocabData = [
     "Romaji": "shuuri shimasu",
     "Kanji": "修理します",
     "Meaning": "sửa chữa, tu sửa",
-    "category": "verb",
+    "category": 2,
     "Vru": "しゅうりする",
     "type": "Nhóm III",
     "note": "Tha động từ"
@@ -8838,7 +8838,7 @@ const vocabData = [
     "Romaji": "denwa shimasu",
     "Kanji": "電話します",
     "Meaning": "gọi điện thoại",
-    "category": "verb",
+    "category": 2,
     "Vru": "でんわする",
     "type": "Nhóm III",
     "note": "Tự động từ"
@@ -8849,7 +8849,7 @@ const vocabData = [
     "Romaji": "boku",
     "Kanji": "僕",
     "Meaning": "tớ (cách xưng hô thân mật của nam)",
-    "category": "pronoun",
+    "category": 9,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8860,7 +8860,7 @@ const vocabData = [
     "Romaji": "kimi",
     "Kanji": "君",
     "Meaning": "cậu, bạn (cách gọi thân mật)",
-    "category": "pronoun",
+    "category": 9,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8871,7 +8871,7 @@ const vocabData = [
     "Romaji": "～kun",
     "Kanji": "～君",
     "Meaning": "(hậu tố sau tên con trai)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8882,7 +8882,7 @@ const vocabData = [
     "Romaji": "un",
     "Kanji": "",
     "Meaning": "có (thân mật của 「はい」)",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8893,7 +8893,7 @@ const vocabData = [
     "Romaji": "uun",
     "Kanji": "",
     "Meaning": "không (thân mật của 「いいえ」)",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8904,7 +8904,7 @@ const vocabData = [
     "Romaji": "sarari-man",
     "Kanji": "",
     "Meaning": "người làm công ăn lương",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8915,7 +8915,7 @@ const vocabData = [
     "Romaji": "kotoba",
     "Kanji": "言葉",
     "Meaning": "từ, tiếng, ngôn ngữ",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8926,7 +8926,7 @@ const vocabData = [
     "Romaji": "bukka",
     "Kanji": "物価",
     "Meaning": "giá cả, vật giá",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8937,7 +8937,7 @@ const vocabData = [
     "Romaji": "kimono",
     "Kanji": "着物",
     "Meaning": "kimono",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8948,7 +8948,7 @@ const vocabData = [
     "Romaji": "biza",
     "Kanji": "",
     "Meaning": "visa",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8959,7 +8959,7 @@ const vocabData = [
     "Romaji": "hajime",
     "Kanji": "始め",
     "Meaning": "bắt đầu (danh từ)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8970,7 +8970,7 @@ const vocabData = [
     "Romaji": "owari",
     "Kanji": "終わり",
     "Meaning": "kết thúc (danh từ)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8981,7 +8981,7 @@ const vocabData = [
     "Romaji": "kocchi",
     "Kanji": "",
     "Meaning": "phía này (thân mật của ここ/こちら)",
-    "category": "pronoun",
+    "category": 9,
     "Vru": "",
     "type": "",
     "note": ""
@@ -8992,7 +8992,7 @@ const vocabData = [
     "Romaji": "socchi",
     "Kanji": "",
     "Meaning": "phía đó (thân mật của そこ/そちら)",
-    "category": "pronoun",
+    "category": 9,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9003,7 +9003,7 @@ const vocabData = [
     "Romaji": "acchi",
     "Kanji": "",
     "Meaning": "phía kia (thân mật của あそこ/あちら)",
-    "category": "pronoun",
+    "category": 9,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9014,7 +9014,7 @@ const vocabData = [
     "Romaji": "docchi",
     "Kanji": "",
     "Meaning": "cái nào, phía nào (thân mật của どこ/どちら)",
-    "category": "pronoun",
+    "category": 9,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9025,7 +9025,7 @@ const vocabData = [
     "Romaji": "kono aida",
     "Kanji": "この間",
     "Meaning": "hôm nọ, vừa rồi",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9036,7 +9036,7 @@ const vocabData = [
     "Romaji": "minna de",
     "Kanji": "",
     "Meaning": "mọi người cùng nhau",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9047,7 +9047,7 @@ const vocabData = [
     "Romaji": "～kedo",
     "Kanji": "",
     "Meaning": "nhưng (thân mật của 「が」)",
-    "category": "conjunction",
+    "category": 8,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9058,7 +9058,7 @@ const vocabData = [
     "Romaji": "kuni he kaeru no",
     "Kanji": "国へ帰るの",
     "Meaning": "Anh/chị có về nước không? (thân mật)",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9069,7 +9069,7 @@ const vocabData = [
     "Romaji": "dou suru no",
     "Kanji": "",
     "Meaning": "Anh/chị tính sao?",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9080,7 +9080,7 @@ const vocabData = [
     "Romaji": "dou shiyou kana",
     "Kanji": "",
     "Meaning": "Tính sao đây / Để tôi xem",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9091,7 +9091,7 @@ const vocabData = [
     "Romaji": "yokattara",
     "Kanji": "良かったら",
     "Meaning": "nếu anh/chị thích thì / nếu được thì",
-    "category": "conjunction",
+    "category": 8,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9102,7 +9102,7 @@ const vocabData = [
     "Romaji": "iroiro",
     "Kanji": "色々",
     "Meaning": "nhiều thứ, đa dạng",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9113,7 +9113,7 @@ const vocabData = [
     "Romaji": "omoimasu",
     "Kanji": "思います",
     "Meaning": "nghĩ",
-    "category": "verb",
+    "category": 2,
     "Vru": "おもう",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -9124,7 +9124,7 @@ const vocabData = [
     "Romaji": "iimasu",
     "Kanji": "言います",
     "Meaning": "nói",
-    "category": "verb",
+    "category": 2,
     "Vru": "いう",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -9135,7 +9135,7 @@ const vocabData = [
     "Romaji": "tarimasu",
     "Kanji": "足ります",
     "Meaning": "đủ",
-    "category": "verb",
+    "category": 2,
     "Vru": "たりる",
     "type": "Nhóm II",
     "note": "Tự động từ"
@@ -9146,7 +9146,7 @@ const vocabData = [
     "Romaji": "kachimasu",
     "Kanji": "勝ちます",
     "Meaning": "thắng",
-    "category": "verb",
+    "category": 2,
     "Vru": "かつ",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -9157,7 +9157,7 @@ const vocabData = [
     "Romaji": "makemasu",
     "Kanji": "負けます",
     "Meaning": "thua",
-    "category": "verb",
+    "category": 2,
     "Vru": "まける",
     "type": "Nhóm II",
     "note": "Tự động từ"
@@ -9168,7 +9168,7 @@ const vocabData = [
     "Romaji": "arimasu",
     "Kanji": "",
     "Meaning": "được tổ chức",
-    "category": "verb",
+    "category": 2,
     "Vru": "ある",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -9179,7 +9179,7 @@ const vocabData = [
     "Romaji": "yaku ni tachimasu",
     "Kanji": "役に立ちます",
     "Meaning": "giúp ích",
-    "category": "verb",
+    "category": 2,
     "Vru": "たつ",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -9190,7 +9190,7 @@ const vocabData = [
     "Romaji": "muda",
     "Kanji": "",
     "Meaning": "vô ích",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi な"
@@ -9201,7 +9201,7 @@ const vocabData = [
     "Romaji": "fuben",
     "Kanji": "不便",
     "Meaning": "bất tiện",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi な"
@@ -9212,7 +9212,7 @@ const vocabData = [
     "Romaji": "onaji",
     "Kanji": "同じ",
     "Meaning": "giống",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi な\" (nhưng bổ nghĩa danh từ không dùng な)"
@@ -9223,7 +9223,7 @@ const vocabData = [
     "Romaji": "sugoi",
     "Kanji": "",
     "Meaning": "giỏi, ghê gớm, tuyệt vời",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -9234,7 +9234,7 @@ const vocabData = [
     "Romaji": "shushou",
     "Kanji": "首相",
     "Meaning": "thủ tướng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9245,7 +9245,7 @@ const vocabData = [
     "Romaji": "daitouryou",
     "Kanji": "大統領",
     "Meaning": "tổng thống",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9256,7 +9256,7 @@ const vocabData = [
     "Romaji": "seiji",
     "Kanji": "政治",
     "Meaning": "chính trị",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9267,7 +9267,7 @@ const vocabData = [
     "Romaji": "nyu-su",
     "Kanji": "",
     "Meaning": "tin tức",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9278,7 +9278,7 @@ const vocabData = [
     "Romaji": "supi-chi",
     "Kanji": "",
     "Meaning": "bài phát biểu",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9289,7 +9289,7 @@ const vocabData = [
     "Romaji": "shiai",
     "Kanji": "試合",
     "Meaning": "trận đấu",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9300,7 +9300,7 @@ const vocabData = [
     "Romaji": "arubaito",
     "Kanji": "",
     "Meaning": "việc làm thêm",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9311,7 +9311,7 @@ const vocabData = [
     "Romaji": "iken",
     "Kanji": "意見",
     "Meaning": "ý kiến",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9322,7 +9322,7 @@ const vocabData = [
     "Romaji": "hanashi",
     "Kanji": "話",
     "Meaning": "câu chuyện",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9333,7 +9333,7 @@ const vocabData = [
     "Romaji": "yu-moa",
     "Kanji": "",
     "Meaning": "hài hước",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9344,7 +9344,7 @@ const vocabData = [
     "Romaji": "dezain",
     "Kanji": "",
     "Meaning": "thiết kế",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9355,7 +9355,7 @@ const vocabData = [
     "Romaji": "koutsuu",
     "Kanji": "交通",
     "Meaning": "giao thông",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9366,7 +9366,7 @@ const vocabData = [
     "Romaji": "rasshu",
     "Kanji": "",
     "Meaning": "giờ cao điểm",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9377,7 +9377,7 @@ const vocabData = [
     "Romaji": "saikin",
     "Kanji": "最近",
     "Meaning": "gần đây",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9388,7 +9388,7 @@ const vocabData = [
     "Romaji": "tabun",
     "Kanji": "",
     "Meaning": "chắc là, có thể",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9399,7 +9399,7 @@ const vocabData = [
     "Romaji": "kitto",
     "Kanji": "",
     "Meaning": "chắc chắn, nhất định",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9410,7 +9410,7 @@ const vocabData = [
     "Romaji": "hontou ni",
     "Kanji": "本当に",
     "Meaning": "thật sự",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9421,7 +9421,7 @@ const vocabData = [
     "Romaji": "sonna ni",
     "Kanji": "",
     "Meaning": "(không) ~ lắm",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9432,7 +9432,7 @@ const vocabData = [
     "Romaji": "～ ni tsuite",
     "Kanji": "",
     "Meaning": "về ~ (đề tài)",
-    "category": "particle",
+    "category": 3,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9443,7 +9443,7 @@ const vocabData = [
     "Romaji": "shikata ga arimasen",
     "Kanji": "",
     "Meaning": "không còn cách nào khác",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9454,7 +9454,7 @@ const vocabData = [
     "Romaji": "shibaraku desu ne",
     "Kanji": "",
     "Meaning": "Lâu rồi không gặp nhỉ",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9465,7 +9465,7 @@ const vocabData = [
     "Romaji": "～ demo nomimasen ka",
     "Kanji": "",
     "Meaning": "Anh/chị uống (cái gì đó) nhé",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9476,7 +9476,7 @@ const vocabData = [
     "Romaji": "minaito…",
     "Kanji": "",
     "Meaning": "Phải xem…",
-    "category": "verb",
+    "category": 2,
     "Vru": "みる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -9487,7 +9487,7 @@ const vocabData = [
     "Romaji": "mochiron",
     "Kanji": "",
     "Meaning": "tất nhiên",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9498,7 +9498,7 @@ const vocabData = [
     "Romaji": "kangaru-",
     "Kanji": "",
     "Meaning": "Kanguru",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9509,7 +9509,7 @@ const vocabData = [
     "Romaji": "kimasu",
     "Kanji": "着ます",
     "Meaning": "mặc (áo sơ mi,..)",
-    "category": "verb",
+    "category": 2,
     "Vru": "きる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -9520,7 +9520,7 @@ const vocabData = [
     "Romaji": "hakimasu",
     "Kanji": "",
     "Meaning": "mang (giày,…)",
-    "category": "verb",
+    "category": 2,
     "Vru": "はく",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -9531,7 +9531,7 @@ const vocabData = [
     "Romaji": "kaburimasu",
     "Kanji": "",
     "Meaning": "đội (nón,…)",
-    "category": "verb",
+    "category": 2,
     "Vru": "かぶる",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -9542,7 +9542,7 @@ const vocabData = [
     "Romaji": "kakemasu",
     "Kanji": "",
     "Meaning": "đeo (kính,…)",
-    "category": "verb",
+    "category": 2,
     "Vru": "かける",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -9553,7 +9553,7 @@ const vocabData = [
     "Romaji": "umaremasu",
     "Kanji": "生まれます",
     "Meaning": "sinh ra",
-    "category": "verb",
+    "category": 2,
     "Vru": "うまれる",
     "type": "Nhóm II",
     "note": "Tự động từ"
@@ -9564,7 +9564,7 @@ const vocabData = [
     "Romaji": "ko-to",
     "Kanji": "",
     "Meaning": "áo khoác",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9575,7 +9575,7 @@ const vocabData = [
     "Romaji": "su-tsu",
     "Kanji": "",
     "Meaning": "com-lê",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9586,7 +9586,7 @@ const vocabData = [
     "Romaji": "se-ta-",
     "Kanji": "",
     "Meaning": "áo len",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9597,7 +9597,7 @@ const vocabData = [
     "Romaji": "boushi",
     "Kanji": "帽子",
     "Meaning": "nón, mũ",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9608,7 +9608,7 @@ const vocabData = [
     "Romaji": "megane",
     "Kanji": "眼鏡",
     "Meaning": "kính",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9619,7 +9619,7 @@ const vocabData = [
     "Romaji": "yoku",
     "Kanji": "",
     "Meaning": "thường",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9630,7 +9630,7 @@ const vocabData = [
     "Romaji": "omedetou gozaimasu",
     "Kanji": "",
     "Meaning": "Chúc mừng",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9641,7 +9641,7 @@ const vocabData = [
     "Romaji": "kochira",
     "Kanji": "",
     "Meaning": "cái này (lịch sự của これ)",
-    "category": "pronoun",
+    "category": 9,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9652,7 +9652,7 @@ const vocabData = [
     "Romaji": "yachin",
     "Kanji": "家賃",
     "Meaning": "tiền nhà",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9663,7 +9663,7 @@ const vocabData = [
     "Romaji": "u-n",
     "Kanji": "",
     "Meaning": "để tôi xem / ừ / thế nào nhỉ",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9674,7 +9674,7 @@ const vocabData = [
     "Romaji": "dainingu kicchin",
     "Kanji": "",
     "Meaning": "bếp kèm phòng ăn",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9685,7 +9685,7 @@ const vocabData = [
     "Romaji": "washitsu",
     "Kanji": "和室",
     "Meaning": "phòng kiểu Nhật",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9696,7 +9696,7 @@ const vocabData = [
     "Romaji": "oshiire",
     "Kanji": "押し入れ",
     "Meaning": "chỗ để chăn gối (phòng kiểu Nhật)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9707,7 +9707,7 @@ const vocabData = [
     "Romaji": "futon",
     "Kanji": "布団",
     "Meaning": "chăn, đệm",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9718,7 +9718,7 @@ const vocabData = [
     "Romaji": "apa-to",
     "Kanji": "",
     "Meaning": "nhà chung cư",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9729,7 +9729,7 @@ const vocabData = [
     "Romaji": "pari",
     "Kanji": "",
     "Meaning": "Pa-ri",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9740,7 +9740,7 @@ const vocabData = [
     "Romaji": "banri no choujou",
     "Kanji": "万里の長城",
     "Meaning": "Vạn lý trường thành",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9751,7 +9751,7 @@ const vocabData = [
     "Romaji": "yoka kaihatsu senta-",
     "Kanji": "",
     "Meaning": "Trung tâm phát triển hoạt động giải trí",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9762,7 +9762,7 @@ const vocabData = [
     "Romaji": "reja- hakusho",
     "Kanji": "",
     "Meaning": "sách trắng về giải trí",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9773,7 +9773,7 @@ const vocabData = [
     "Romaji": "kikimasu",
     "Kanji": "聞きます",
     "Meaning": "hỏi [giáo viên]",
-    "category": "verb",
+    "category": 2,
     "Vru": "きく",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -9784,7 +9784,7 @@ const vocabData = [
     "Romaji": "michi",
     "Kanji": "道",
     "Meaning": "đường",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9795,7 +9795,7 @@ const vocabData = [
     "Romaji": "kousaten",
     "Kanji": "交差点",
     "Meaning": "ngã tư",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9806,7 +9806,7 @@ const vocabData = [
     "Romaji": "shingou",
     "Kanji": "信号",
     "Meaning": "đèn tín hiệu",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9817,7 +9817,7 @@ const vocabData = [
     "Romaji": "hikkoshi shimasu",
     "Kanji": "引越しします",
     "Meaning": "chuyển nhà",
-    "category": "verb",
+    "category": 2,
     "Vru": "ひっこしする",
     "type": "Nhóm III",
     "note": "Tự động từ"
@@ -9828,7 +9828,7 @@ const vocabData = [
     "Romaji": "mawashimasu",
     "Kanji": "回します",
     "Meaning": "vặn (nút)",
-    "category": "verb",
+    "category": 2,
     "Vru": "まわす",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -9839,7 +9839,7 @@ const vocabData = [
     "Romaji": "hikimasu",
     "Kanji": "引きます",
     "Meaning": "kéo",
-    "category": "verb",
+    "category": 2,
     "Vru": "ひく",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -9850,7 +9850,7 @@ const vocabData = [
     "Romaji": "kaemasu",
     "Kanji": "変えます",
     "Meaning": "đổi, thay đổi",
-    "category": "verb",
+    "category": 2,
     "Vru": "かえる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -9861,7 +9861,7 @@ const vocabData = [
     "Romaji": "sawarimasu",
     "Kanji": "触ります",
     "Meaning": "sờ, chạm vào",
-    "category": "verb",
+    "category": 2,
     "Vru": "さわる",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -9872,7 +9872,7 @@ const vocabData = [
     "Romaji": "demasu",
     "Kanji": "出ます",
     "Meaning": "ra, đi ra",
-    "category": "verb",
+    "category": 2,
     "Vru": "でる",
     "type": "Nhóm II",
     "note": "Tự động từ"
@@ -9883,7 +9883,7 @@ const vocabData = [
     "Romaji": "ugokimasu",
     "Kanji": "動きます",
     "Meaning": "chuyển động, chạy (máy móc)",
-    "category": "verb",
+    "category": 2,
     "Vru": "うごく",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -9894,7 +9894,7 @@ const vocabData = [
     "Romaji": "arukimasu",
     "Kanji": "歩きます",
     "Meaning": "đi bộ (trên đường)",
-    "category": "verb",
+    "category": 2,
     "Vru": "あるく",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -9905,7 +9905,7 @@ const vocabData = [
     "Romaji": "watarimasu",
     "Kanji": "渡ります",
     "Meaning": "qua, đi qua (cầu)",
-    "category": "verb",
+    "category": 2,
     "Vru": "わたる",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -9916,7 +9916,7 @@ const vocabData = [
     "Romaji": "ki wo tsukemasu",
     "Kanji": "気を付けます",
     "Meaning": "chú ý, cẩn thận",
-    "category": "verb",
+    "category": 2,
     "Vru": "つける",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -9927,7 +9927,7 @@ const vocabData = [
     "Romaji": "denkiya",
     "Kanji": "電気屋",
     "Meaning": "cửa hàng đồ điện",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9938,7 +9938,7 @@ const vocabData = [
     "Romaji": "koshou",
     "Kanji": "故障",
     "Meaning": "hỏng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9949,7 +9949,7 @@ const vocabData = [
     "Romaji": "～ya",
     "Kanji": "～屋",
     "Meaning": "cửa hàng ~",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9960,7 +9960,7 @@ const vocabData = [
     "Romaji": "saizu",
     "Kanji": "",
     "Meaning": "cỡ, kích thước",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9971,7 +9971,7 @@ const vocabData = [
     "Romaji": "oto",
     "Kanji": "音",
     "Meaning": "âm thanh",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9982,7 +9982,7 @@ const vocabData = [
     "Romaji": "kikai",
     "Kanji": "機械",
     "Meaning": "máy móc",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -9993,7 +9993,7 @@ const vocabData = [
     "Romaji": "tsumami",
     "Kanji": "",
     "Meaning": "núm vặn",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -10004,7 +10004,7 @@ const vocabData = [
     "Romaji": "kado",
     "Kanji": "角",
     "Meaning": "góc",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -10015,7 +10015,7 @@ const vocabData = [
     "Romaji": "hashi",
     "Kanji": "橋",
     "Meaning": "cầu",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -10026,7 +10026,7 @@ const vocabData = [
     "Romaji": "chuushajou",
     "Kanji": "駐車場",
     "Meaning": "bãi đỗ xe",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -10037,7 +10037,7 @@ const vocabData = [
     "Romaji": "oshougatsu",
     "Kanji": "お正月",
     "Meaning": "tết dương lịch",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -10048,7 +10048,7 @@ const vocabData = [
     "Romaji": "gochisousama deshita",
     "Kanji": "",
     "Meaning": "cảm ơn đã đãi tôi bữa cơm",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -10059,7 +10059,7 @@ const vocabData = [
     "Romaji": "～me",
     "Kanji": "～目",
     "Meaning": "thứ ～, số ～ (thứ tự)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -10070,7 +10070,7 @@ const vocabData = [
     "Romaji": "tatemono",
     "Kanji": "建物",
     "Meaning": "tòa nhà",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -10081,7 +10081,7 @@ const vocabData = [
     "Romaji": "gaikokujin tourokushou",
     "Kanji": "外国人登録証",
     "Meaning": "thẻ đăng kí người nước ngoài",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -10092,7 +10092,7 @@ const vocabData = [
     "Romaji": "kuremasu",
     "Kanji": "",
     "Meaning": "cho, tặng (tôi)",
-    "category": "verb",
+    "category": 2,
     "Vru": "くれる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -10103,7 +10103,7 @@ const vocabData = [
     "Romaji": "tsurete ikimasu",
     "Kanji": "連れて行きます",
     "Meaning": "dẫn đi",
-    "category": "verb",
+    "category": 2,
     "Vru": "つれていく",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -10114,7 +10114,7 @@ const vocabData = [
     "Romaji": "tsurete kimasu",
     "Kanji": "連れて来ます",
     "Meaning": "dẫn đến",
-    "category": "verb",
+    "category": 2,
     "Vru": "つれてくる",
     "type": "Nhóm III",
     "note": "Tha động từ"
@@ -10125,7 +10125,7 @@ const vocabData = [
     "Romaji": "okurimasu",
     "Kanji": "送る",
     "Meaning": "đưa đi, tiễn [người]",
-    "category": "verb",
+    "category": 2,
     "Vru": "おくる",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -10136,7 +10136,7 @@ const vocabData = [
     "Romaji": "shoukai shimasu",
     "Kanji": "紹介します",
     "Meaning": "giới thiệu",
-    "category": "verb",
+    "category": 2,
     "Vru": "しょうかいする",
     "type": "Nhóm III",
     "note": "Tha động từ"
@@ -10147,7 +10147,7 @@ const vocabData = [
     "Romaji": "annai shimasu",
     "Kanji": "案内します",
     "Meaning": "hướng dẫn, chỉ đường",
-    "category": "verb",
+    "category": 2,
     "Vru": "あんないする",
     "type": "Nhóm III",
     "note": "Tha động từ"
@@ -10158,7 +10158,7 @@ const vocabData = [
     "Romaji": "setsumei shimasu",
     "Kanji": "説明します",
     "Meaning": "giải thích, trình bày",
-    "category": "verb",
+    "category": 2,
     "Vru": "せつめいする",
     "type": "Nhóm III",
     "note": "Tha động từ"
@@ -10169,7 +10169,7 @@ const vocabData = [
     "Romaji": "iremasu",
     "Kanji": "",
     "Meaning": "pha [cà phê]",
-    "category": "verb",
+    "category": 2,
     "Vru": "いれる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -10180,7 +10180,7 @@ const vocabData = [
     "Romaji": "ojiisan / ojiichan",
     "Kanji": "",
     "Meaning": "ông nội, ông ngoại, ông",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -10191,7 +10191,7 @@ const vocabData = [
     "Romaji": "obaasan / obaachan",
     "Kanji": "",
     "Meaning": "bà nội, bà ngoại, bà",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -10202,7 +10202,7 @@ const vocabData = [
     "Romaji": "junbi",
     "Kanji": "準備",
     "Meaning": "chuẩn bị",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -10213,7 +10213,7 @@ const vocabData = [
     "Romaji": "imi",
     "Kanji": "意味",
     "Meaning": "ý nghĩa",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -10224,7 +10224,7 @@ const vocabData = [
     "Romaji": "okashi",
     "Kanji": "お菓子",
     "Meaning": "bánh kẹo",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -10235,7 +10235,7 @@ const vocabData = [
     "Romaji": "zenbu",
     "Kanji": "全部",
     "Meaning": "toàn bộ, tất cả",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -10246,7 +10246,7 @@ const vocabData = [
     "Romaji": "kangaemasu",
     "Kanji": "考えます",
     "Meaning": "nghĩ, suy nghĩ",
-    "category": "verb",
+    "category": 2,
     "Vru": "かんがえる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -10257,7 +10257,7 @@ const vocabData = [
     "Romaji": "tsukimasu",
     "Kanji": "着きます",
     "Meaning": "đến (ga)",
-    "category": "verb",
+    "category": 2,
     "Vru": "つく",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -10268,7 +10268,7 @@ const vocabData = [
     "Romaji": "ryuugaku shimasu",
     "Kanji": "留学します",
     "Meaning": "du học",
-    "category": "verb",
+    "category": 2,
     "Vru": "りゅうがくする",
     "type": "Nhóm III",
     "note": "Tự động từ"
@@ -10279,7 +10279,7 @@ const vocabData = [
     "Romaji": "torimasu",
     "Kanji": "取ります",
     "Meaning": "thêm (tuổi)",
-    "category": "verb",
+    "category": 2,
     "Vru": "とる",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -10290,7 +10290,7 @@ const vocabData = [
     "Romaji": "inaka",
     "Kanji": "田舎",
     "Meaning": "quê, nông thôn",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -10301,7 +10301,7 @@ const vocabData = [
     "Romaji": "taishikan",
     "Kanji": "大使館",
     "Meaning": "đại sứ quán",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -10312,7 +10312,7 @@ const vocabData = [
     "Romaji": "guru-pu",
     "Kanji": "",
     "Meaning": "nhóm, bạn bè",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -10323,7 +10323,7 @@ const vocabData = [
     "Romaji": "chansu",
     "Kanji": "",
     "Meaning": "cơ hội",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -10334,7 +10334,7 @@ const vocabData = [
     "Romaji": "oku",
     "Kanji": "億",
     "Meaning": "một trăm triệu",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -10345,7 +10345,7 @@ const vocabData = [
     "Romaji": "moshi",
     "Kanji": "",
     "Meaning": "nếu",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -10356,7 +10356,7 @@ const vocabData = [
     "Romaji": "ikura",
     "Kanji": "",
     "Meaning": "cho dù, thế nào",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -10367,7 +10367,7 @@ const vocabData = [
     "Romaji": "tenkin",
     "Kanji": "転勤",
     "Meaning": "chuyển công tác",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -10378,7 +10378,7 @@ const vocabData = [
     "Romaji": "koto",
     "Kanji": "",
     "Meaning": "việc",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -10389,7 +10389,7 @@ const vocabData = [
     "Romaji": "ippai nomimashou",
     "Kanji": "一杯飲みましょう",
     "Meaning": "chúng ta cùng uống nhé",
-    "category": "verb",
+    "category": 2,
     "Vru": "のむ",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -10400,7 +10400,7 @@ const vocabData = [
     "Romaji": "douzo ogenki de",
     "Kanji": "どうぞ元気で",
     "Meaning": "chúc anh chị mạnh khỏe",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -10411,7 +10411,7 @@ const vocabData = [
     "Romaji": "osewa ni narimashita",
     "Kanji": "お世話になりました",
     "Meaning": "Anh/chị đã giúp tôi nhiều",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -10422,7 +10422,7 @@ const vocabData = [
     "Romaji": "ganbarimasu",
     "Kanji": "頑張ります",
     "Meaning": "cố gắng",
-    "category": "verb",
+    "category": 2,
     "Vru": "がんばる",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -10433,7 +10433,7 @@ const vocabData = [
     "Romaji": "mimasu",
     "Kanji": "見る",
     "Meaning": "xem, nhìn",
-    "category": "verb",
+    "category": 2,
     "Vru": "みる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -10444,7 +10444,7 @@ const vocabData = [
     "Romaji": "mimasu",
     "Kanji": "診る",
     "Meaning": "chẩn đoán, khám bệnh",
-    "category": "verb",
+    "category": 2,
     "Vru": "みる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -10455,7 +10455,7 @@ const vocabData = [
     "Romaji": "sagashimasu",
     "Kanji": "捜す",
     "Meaning": "tìm đồ vật bị mất",
-    "category": "verb",
+    "category": 2,
     "Vru": "さがす",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -10466,7 +10466,7 @@ const vocabData = [
     "Romaji": "sagashimasu",
     "Kanji": "探す",
     "Meaning": "tìm, tìm kiếm (công việc, người)",
-    "category": "verb",
+    "category": 2,
     "Vru": "さがす",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -10477,7 +10477,7 @@ const vocabData = [
     "Romaji": "okuremasu",
     "Kanji": "遅れる",
     "Meaning": "trễ giờ [thời gian]",
-    "category": "verb",
+    "category": 2,
     "Vru": "おくれる",
     "type": "Nhóm II",
     "note": "Tự động từ"
@@ -10488,7 +10488,7 @@ const vocabData = [
     "Romaji": "maniauimasu",
     "Kanji": "間に合います",
     "Meaning": "kịp giờ [cuộc họp]",
-    "category": "verb",
+    "category": 2,
     "Vru": "まにあう",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -10499,7 +10499,7 @@ const vocabData = [
     "Romaji": "yarimasu",
     "Kanji": "",
     "Meaning": "làm [bài tập]",
-    "category": "verb",
+    "category": 2,
     "Vru": "やる",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -10510,7 +10510,7 @@ const vocabData = [
     "Romaji": "hiroimasu",
     "Kanji": "拾います",
     "Meaning": "nhặt [rác]",
-    "category": "verb",
+    "category": 2,
     "Vru": "ひろう",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -10521,7 +10521,7 @@ const vocabData = [
     "Romaji": "renraku shimasu",
     "Kanji": "連絡します",
     "Meaning": "liên lạc [với trường]",
-    "category": "verb",
+    "category": 2,
     "Vru": "れんらくする",
     "type": "Nhóm III",
     "note": "Tự động từ"
@@ -10532,7 +10532,7 @@ const vocabData = [
     "Romaji": "kibun ga ii",
     "Kanji": "気分がいい",
     "Meaning": "thể trạng tốt, thoải mái",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -10543,7 +10543,7 @@ const vocabData = [
     "Romaji": "kibun ga warui",
     "Kanji": "気分が悪い",
     "Meaning": "thể trạng xấu, khó chịu",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -10554,7 +10554,7 @@ const vocabData = [
     "Romaji": "undoukai",
     "Kanji": "運動会",
     "Meaning": "hội thi thể thao",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -10565,7 +10565,7 @@ const vocabData = [
     "Romaji": "bon-odori",
     "Kanji": "盆踊り",
     "Meaning": "múa Obon",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -10576,7 +10576,7 @@ const vocabData = [
     "Romaji": "furi- ma-ketto",
     "Kanji": "",
     "Meaning": "chợ đồ cũ, chợ trời",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -10587,7 +10587,7 @@ const vocabData = [
     "Romaji": "basho",
     "Kanji": "場所",
     "Meaning": "nơi chốn, địa điểm",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -10598,7 +10598,7 @@ const vocabData = [
     "Romaji": "borantia",
     "Kanji": "",
     "Meaning": "tình nguyện viên, việc từ thiện",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -10609,7 +10609,7 @@ const vocabData = [
     "Romaji": "saifu",
     "Kanji": "財布",
     "Meaning": "ví, bóp tiền",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -10620,7 +10620,7 @@ const vocabData = [
     "Romaji": "gomi",
     "Kanji": "",
     "Meaning": "rác",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -10631,7 +10631,7 @@ const vocabData = [
     "Romaji": "kokkaigijidou",
     "Kanji": "国会議事堂",
     "Meaning": "tòa nhà quốc hội",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -10642,7 +10642,7 @@ const vocabData = [
     "Romaji": "heijitsu",
     "Kanji": "平日",
     "Meaning": "ngày thường",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -10653,7 +10653,7 @@ const vocabData = [
     "Romaji": "oosakaben",
     "Kanji": "大阪弁",
     "Meaning": "tiếng Osaka",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -10664,7 +10664,7 @@ const vocabData = [
     "Romaji": "kondo",
     "Kanji": "今度",
     "Meaning": "lần tới",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -10675,7 +10675,7 @@ const vocabData = [
     "Romaji": "zuibun",
     "Kanji": "",
     "Meaning": "khá, tương đối",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -10686,7 +10686,7 @@ const vocabData = [
     "Romaji": "chokusetsu",
     "Kanji": "直接",
     "Meaning": "trực tiếp",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -10697,7 +10697,7 @@ const vocabData = [
     "Romaji": "itsu demo",
     "Kanji": "",
     "Meaning": "lúc nào cũng",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -10708,7 +10708,7 @@ const vocabData = [
     "Romaji": "doko demo",
     "Kanji": "",
     "Meaning": "ở đâu cũng được",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -10719,7 +10719,7 @@ const vocabData = [
     "Romaji": "dare demo",
     "Kanji": "",
     "Meaning": "ai cũng vậy",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -10730,7 +10730,7 @@ const vocabData = [
     "Romaji": "nan demo",
     "Kanji": "",
     "Meaning": "cái gì cũng được",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -10741,7 +10741,7 @@ const vocabData = [
     "Romaji": "konna",
     "Kanji": "",
     "Meaning": "như thế này",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": "Bổ nghĩa danh từ"
@@ -10752,7 +10752,7 @@ const vocabData = [
     "Romaji": "sonna",
     "Kanji": "",
     "Meaning": "như thế đó",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": "Bổ nghĩa danh từ"
@@ -10763,7 +10763,7 @@ const vocabData = [
     "Romaji": "anna",
     "Kanji": "",
     "Meaning": "như thế kia",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": "Bổ nghĩa danh từ"
@@ -10774,7 +10774,7 @@ const vocabData = [
     "Romaji": "katadukimasu",
     "Kanji": "片付く",
     "Meaning": "sắp xếp, dọn dẹp xong",
-    "category": "verb",
+    "category": 2,
     "Vru": "かたづく",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -10785,7 +10785,7 @@ const vocabData = [
     "Romaji": "dashimasu",
     "Kanji": "出す",
     "Meaning": "đổ, để (rác)",
-    "category": "verb",
+    "category": 2,
     "Vru": "だす",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -10796,7 +10796,7 @@ const vocabData = [
     "Romaji": "moeru gomi",
     "Kanji": "燃えるごみ",
     "Meaning": "rác cháy được",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -10807,7 +10807,7 @@ const vocabData = [
     "Romaji": "okiba",
     "Kanji": "置き場",
     "Meaning": "chỗ để, chỗ đặt",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -10818,7 +10818,7 @@ const vocabData = [
     "Romaji": "yoko",
     "Kanji": "横",
     "Meaning": "bên cạnh, chiều ngang",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -10829,7 +10829,7 @@ const vocabData = [
     "Romaji": "bin",
     "Kanji": "瓶",
     "Meaning": "cái chai",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -10840,7 +10840,7 @@ const vocabData = [
     "Romaji": "kan",
     "Kanji": "缶",
     "Meaning": "cái lon",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -10851,7 +10851,7 @@ const vocabData = [
     "Romaji": "gasu",
     "Kanji": "",
     "Meaning": "ga, khí đốt",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -10862,7 +10862,7 @@ const vocabData = [
     "Romaji": "gasu gaisha",
     "Kanji": "ガス会社",
     "Meaning": "công ty ga",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -10873,7 +10873,7 @@ const vocabData = [
     "Romaji": "uchuu",
     "Kanji": "宇宙",
     "Meaning": "vũ trụ",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -10884,7 +10884,7 @@ const vocabData = [
     "Romaji": "sama",
     "Kanji": "様",
     "Meaning": "ngài, vị",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": "Hậu tố lịch sự"
@@ -10895,7 +10895,7 @@ const vocabData = [
     "Romaji": "uchuusen",
     "Kanji": "宇宙船",
     "Meaning": "tàu vũ trụ",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -10906,7 +10906,7 @@ const vocabData = [
     "Romaji": "kowai",
     "Kanji": "怖い",
     "Meaning": "sợ, đáng sợ",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -10917,7 +10917,7 @@ const vocabData = [
     "Romaji": "chigaimasu",
     "Kanji": "違う",
     "Meaning": "khác, không phải",
-    "category": "verb",
+    "category": 2,
     "Vru": "ちがう",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -10928,7 +10928,7 @@ const vocabData = [
     "Romaji": "uchuuhikoushi",
     "Kanji": "宇宙飛行士",
     "Meaning": "nhà du hành vũ trụ",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -10939,7 +10939,7 @@ const vocabData = [
     "Romaji": "kaimasu",
     "Kanji": "飼います",
     "Meaning": "nuôi, chăn nuôi",
-    "category": "verb",
+    "category": 2,
     "Vru": "かう",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -10950,7 +10950,7 @@ const vocabData = [
     "Romaji": "tatemasu",
     "Kanji": "建てます",
     "Meaning": "xây dựng",
-    "category": "verb",
+    "category": 2,
     "Vru": "たてる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -10961,7 +10961,7 @@ const vocabData = [
     "Romaji": "hashirimasu",
     "Kanji": "走ります",
     "Meaning": "chạy [trên đường]",
-    "category": "verb",
+    "category": 2,
     "Vru": "はしる",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -10972,7 +10972,7 @@ const vocabData = [
     "Romaji": "torimasu",
     "Kanji": "取ります",
     "Meaning": "xin [nghỉ]",
-    "category": "verb",
+    "category": 2,
     "Vru": "とる",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -10983,7 +10983,7 @@ const vocabData = [
     "Romaji": "miemasu",
     "Kanji": "見えます",
     "Meaning": "có thể nhìn thấy",
-    "category": "verb",
+    "category": 2,
     "Vru": "みえる",
     "type": "Nhóm II",
     "note": "Tự động từ"
@@ -10994,7 +10994,7 @@ const vocabData = [
     "Romaji": "kikoemasu",
     "Kanji": "聞こえます",
     "Meaning": "có thể nghe thấy",
-    "category": "verb",
+    "category": 2,
     "Vru": "きこえる",
     "type": "Nhóm II",
     "note": "Tự động từ"
@@ -11005,7 +11005,7 @@ const vocabData = [
     "Romaji": "dekimasu",
     "Kanji": "",
     "Meaning": "được hoàn thành, được làm xong",
-    "category": "verb",
+    "category": 2,
     "Vru": "できる",
     "type": "Nhóm II",
     "note": "Tự động từ"
@@ -11016,7 +11016,7 @@ const vocabData = [
     "Romaji": "hirakimasu",
     "Kanji": "開きます",
     "Meaning": "mở, tổ chức [lớp học]",
-    "category": "verb",
+    "category": 2,
     "Vru": "ひらく",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -11027,7 +11027,7 @@ const vocabData = [
     "Romaji": "petto",
     "Kanji": "",
     "Meaning": "thú cưng, động vật nuôi",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11038,7 +11038,7 @@ const vocabData = [
     "Romaji": "tori",
     "Kanji": "鳥",
     "Meaning": "chim",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11049,7 +11049,7 @@ const vocabData = [
     "Romaji": "koe",
     "Kanji": "声",
     "Meaning": "tiếng, giọng nói (người/động vật)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11060,7 +11060,7 @@ const vocabData = [
     "Romaji": "nami",
     "Kanji": "波",
     "Meaning": "sóng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11071,7 +11071,7 @@ const vocabData = [
     "Romaji": "hanabi",
     "Kanji": "花火",
     "Meaning": "pháo hoa",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11082,7 +11082,7 @@ const vocabData = [
     "Romaji": "keshiki",
     "Kanji": "景色",
     "Meaning": "phong cảnh",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11093,7 +11093,7 @@ const vocabData = [
     "Romaji": "hiruma",
     "Kanji": "昼間",
     "Meaning": "ban ngày",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11104,7 +11104,7 @@ const vocabData = [
     "Romaji": "mukashi",
     "Kanji": "昔",
     "Meaning": "ngày xưa",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11115,7 +11115,7 @@ const vocabData = [
     "Romaji": "dougu",
     "Kanji": "道具",
     "Meaning": "dụng cụ",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11126,7 +11126,7 @@ const vocabData = [
     "Romaji": "jidouhanbaiki",
     "Kanji": "自動販売機",
     "Meaning": "máy bán hàng tự động",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11137,7 +11137,7 @@ const vocabData = [
     "Romaji": "tsuushinhanbai",
     "Kanji": "通信販売",
     "Meaning": "thương mại viễn thông (mua sắm qua mạng)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11148,7 +11148,7 @@ const vocabData = [
     "Romaji": "kuri-ningu",
     "Kanji": "",
     "Meaning": "giặt ủi",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11159,7 +11159,7 @@ const vocabData = [
     "Romaji": "manshon",
     "Kanji": "",
     "Meaning": "chung cư (cao cấp hơn apato)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11170,7 +11170,7 @@ const vocabData = [
     "Romaji": "daidokoro",
     "Kanji": "台所",
     "Meaning": "nhà bếp",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11181,7 +11181,7 @@ const vocabData = [
     "Romaji": "～go",
     "Kanji": "～後",
     "Meaning": "sau ～ (về thời gian)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11192,7 +11192,7 @@ const vocabData = [
     "Romaji": "～shika",
     "Kanji": "",
     "Meaning": "chỉ (đi với phủ định)",
-    "category": "particle",
+    "category": 3,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11203,7 +11203,7 @@ const vocabData = [
     "Romaji": "～kyoushitsu",
     "Kanji": "～教室",
     "Meaning": "lớp học ～",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11214,7 +11214,7 @@ const vocabData = [
     "Romaji": "pa-ti-ru-mu",
     "Kanji": "",
     "Meaning": "phòng tiệc",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11225,7 +11225,7 @@ const vocabData = [
     "Romaji": "kansai kuukou",
     "Kanji": "関西空港",
     "Meaning": "sân bay Kansai",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11236,7 +11236,7 @@ const vocabData = [
     "Romaji": "akihabara",
     "Kanji": "秋葉原",
     "Meaning": "Akihabara",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11247,7 +11247,7 @@ const vocabData = [
     "Romaji": "izu",
     "Kanji": "伊豆",
     "Meaning": "Izu (tên địa danh)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11258,7 +11258,7 @@ const vocabData = [
     "Romaji": "nichiyoubi daiku",
     "Kanji": "日曜日大工",
     "Meaning": "thợ mộc chủ nhật",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11269,7 +11269,7 @@ const vocabData = [
     "Romaji": "hondana",
     "Kanji": "本棚",
     "Meaning": "kệ sách, giá sách",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11280,7 +11280,7 @@ const vocabData = [
     "Romaji": "itsuka",
     "Kanji": "",
     "Meaning": "một ngày nào đó",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11291,7 +11291,7 @@ const vocabData = [
     "Romaji": "yume",
     "Kanji": "夢",
     "Meaning": "mơ, ước mơ",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11302,7 +11302,7 @@ const vocabData = [
     "Romaji": "ie",
     "Kanji": "家",
     "Meaning": "nhà",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11313,7 +11313,7 @@ const vocabData = [
     "Romaji": "subarashii",
     "Kanji": "素晴らしい",
     "Meaning": "tuyệt vời",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -11324,7 +11324,7 @@ const vocabData = [
     "Romaji": "kodomotachi",
     "Kanji": "子どもたち",
     "Meaning": "bọn trẻ",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11335,7 +11335,7 @@ const vocabData = [
     "Romaji": "daisuki",
     "Kanji": "大好き",
     "Meaning": "rất thích",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi な"
@@ -11346,7 +11346,7 @@ const vocabData = [
     "Romaji": "manga",
     "Kanji": "漫画",
     "Meaning": "truyện tranh",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11357,7 +11357,7 @@ const vocabData = [
     "Romaji": "shujinkou",
     "Kanji": "主人公",
     "Meaning": "nhân vật chính",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11368,7 +11368,7 @@ const vocabData = [
     "Romaji": "katachi",
     "Kanji": "形",
     "Meaning": "hình dạng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11379,7 +11379,7 @@ const vocabData = [
     "Romaji": "robotto",
     "Kanji": "",
     "Meaning": "người máy",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11390,7 +11390,7 @@ const vocabData = [
     "Romaji": "fushigina",
     "Kanji": "不思議な",
     "Meaning": "kì lạ, thần bí",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi な"
@@ -11401,7 +11401,7 @@ const vocabData = [
     "Romaji": "poketto",
     "Kanji": "",
     "Meaning": "túi (quần áo)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11412,7 +11412,7 @@ const vocabData = [
     "Romaji": "tatoeba",
     "Kanji": "例えば",
     "Meaning": "ví dụ",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11423,7 +11423,7 @@ const vocabData = [
     "Romaji": "tsukemasu",
     "Kanji": "付けます",
     "Meaning": "lắp ghép, đính kèm",
-    "category": "verb",
+    "category": 2,
     "Vru": "つける",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -11434,7 +11434,7 @@ const vocabData = [
     "Romaji": "jiyuu ni",
     "Kanji": "自由に",
     "Meaning": "tự do",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11445,7 +11445,7 @@ const vocabData = [
     "Romaji": "sora",
     "Kanji": "空",
     "Meaning": "bầu trời",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11456,7 +11456,7 @@ const vocabData = [
     "Romaji": "tobimasu",
     "Kanji": "飛びます",
     "Meaning": "bay",
-    "category": "verb",
+    "category": 2,
     "Vru": "とぶ",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -11467,7 +11467,7 @@ const vocabData = [
     "Romaji": "jibun",
     "Kanji": "自分",
     "Meaning": "tự mình",
-    "category": "pronoun",
+    "category": 9,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11478,7 +11478,7 @@ const vocabData = [
     "Romaji": "shourai",
     "Kanji": "将来",
     "Meaning": "tương lai",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11489,7 +11489,7 @@ const vocabData = [
     "Romaji": "doraemon",
     "Kanji": "",
     "Meaning": "Đô-rê-mon",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11500,7 +11500,7 @@ const vocabData = [
     "Romaji": "uremasu",
     "Kanji": "売れます",
     "Meaning": "bán chạy",
-    "category": "verb",
+    "category": 2,
     "Vru": "うる",
     "type": "Nhóm II",
     "note": "Tự động từ"
@@ -11511,7 +11511,7 @@ const vocabData = [
     "Romaji": "odorimasu",
     "Kanji": "踊ります",
     "Meaning": "nhảy, múa",
-    "category": "verb",
+    "category": 2,
     "Vru": "おどる",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -11522,7 +11522,7 @@ const vocabData = [
     "Romaji": "kamimasu",
     "Kanji": "",
     "Meaning": "nhai, cắn",
-    "category": "verb",
+    "category": 2,
     "Vru": "かむ",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -11533,7 +11533,7 @@ const vocabData = [
     "Romaji": "erabimasu",
     "Kanji": "選びます",
     "Meaning": "lựa, lựa chọn",
-    "category": "verb",
+    "category": 2,
     "Vru": "えらぶ",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -11544,7 +11544,7 @@ const vocabData = [
     "Romaji": "kayouimasu",
     "Kanji": "通います",
     "Meaning": "đi đi về về [trường học, công ty]",
-    "category": "verb",
+    "category": 2,
     "Vru": "かよう",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -11555,7 +11555,7 @@ const vocabData = [
     "Romaji": "memo shimasu",
     "Kanji": "",
     "Meaning": "ghi chép lại, ghi chú",
-    "category": "verb",
+    "category": 2,
     "Vru": "メモする",
     "type": "Nhóm III",
     "note": "Tha động từ"
@@ -11566,7 +11566,7 @@ const vocabData = [
     "Romaji": "majime",
     "Kanji": "真面目",
     "Meaning": "nghiêm túc, đàng hoàng",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi な"
@@ -11577,7 +11577,7 @@ const vocabData = [
     "Romaji": "nesshin",
     "Kanji": "熱心",
     "Meaning": "nhiệt tình",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi な"
@@ -11588,7 +11588,7 @@ const vocabData = [
     "Romaji": "erai",
     "Kanji": "偉い",
     "Meaning": "vĩ đại, đáng kính",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -11599,7 +11599,7 @@ const vocabData = [
     "Romaji": "choudo ii",
     "Kanji": "丁度いい",
     "Meaning": "vừa đúng, vừa vặn",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -11610,7 +11610,7 @@ const vocabData = [
     "Romaji": "yasashii",
     "Kanji": "優しい",
     "Meaning": "hiền lành, dịu dàng",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -11621,7 +11621,7 @@ const vocabData = [
     "Romaji": "shuukan",
     "Kanji": "習慣",
     "Meaning": "tập quán, thói quen",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11632,7 +11632,7 @@ const vocabData = [
     "Romaji": "keiken",
     "Kanji": "経験",
     "Meaning": "kinh nghiệm",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11643,7 +11643,7 @@ const vocabData = [
     "Romaji": "chikara",
     "Kanji": "力",
     "Meaning": "sức mạnh, lực",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11654,7 +11654,7 @@ const vocabData = [
     "Romaji": "ninki",
     "Kanji": "人気",
     "Meaning": "được hâm mộ, phổ biến",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11665,7 +11665,7 @@ const vocabData = [
     "Romaji": "katachi",
     "Kanji": "形",
     "Meaning": "hình dáng, kiểu dáng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11676,7 +11676,7 @@ const vocabData = [
     "Romaji": "iro",
     "Kanji": "色",
     "Meaning": "màu sắc",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11687,7 +11687,7 @@ const vocabData = [
     "Romaji": "aji",
     "Kanji": "味",
     "Meaning": "vị (nếm)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11698,7 +11698,7 @@ const vocabData = [
     "Romaji": "gamu",
     "Kanji": "",
     "Meaning": "kẹo cao su",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11709,7 +11709,7 @@ const vocabData = [
     "Romaji": "shinamono",
     "Kanji": "品物",
     "Meaning": "hàng hóa, mặt hàng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11720,7 +11720,7 @@ const vocabData = [
     "Romaji": "nedan",
     "Kanji": "値段",
     "Meaning": "giá cả",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11731,7 +11731,7 @@ const vocabData = [
     "Romaji": "kyuuryou",
     "Kanji": "給料",
     "Meaning": "lương",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11742,7 +11742,7 @@ const vocabData = [
     "Romaji": "bo-nasu",
     "Kanji": "",
     "Meaning": "thưởng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11753,7 +11753,7 @@ const vocabData = [
     "Romaji": "bangumi",
     "Kanji": "番組",
     "Meaning": "chương trình (truyền hình, phát thanh)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11764,7 +11764,7 @@ const vocabData = [
     "Romaji": "dorama",
     "Kanji": "",
     "Meaning": "phim truyền hình",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11775,7 +11775,7 @@ const vocabData = [
     "Romaji": "shousetsu",
     "Kanji": "小説",
     "Meaning": "tiểu thuyết",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11786,7 +11786,7 @@ const vocabData = [
     "Romaji": "shousetsuka",
     "Kanji": "小説家",
     "Meaning": "tiểu thuyết gia",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11797,7 +11797,7 @@ const vocabData = [
     "Romaji": "kashu",
     "Kanji": "歌手",
     "Meaning": "ca sĩ",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11808,7 +11808,7 @@ const vocabData = [
     "Romaji": "kannrinin",
     "Kanji": "管理人",
     "Meaning": "người quản lý",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11819,7 +11819,7 @@ const vocabData = [
     "Romaji": "musuko",
     "Kanji": "息子",
     "Meaning": "con trai (của mình)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11830,7 +11830,7 @@ const vocabData = [
     "Romaji": "musuko-san",
     "Kanji": "息子さん",
     "Meaning": "con trai (của người khác)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11841,7 +11841,7 @@ const vocabData = [
     "Romaji": "musume",
     "Kanji": "娘",
     "Meaning": "con gái (của mình)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11852,7 +11852,7 @@ const vocabData = [
     "Romaji": "musume-san",
     "Kanji": "娘さん",
     "Meaning": "con gái (của người khác)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11863,7 +11863,7 @@ const vocabData = [
     "Romaji": "jibun",
     "Kanji": "自分",
     "Meaning": "bản thân, tự mình",
-    "category": "pronoun",
+    "category": 9,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11874,7 +11874,7 @@ const vocabData = [
     "Romaji": "shourai",
     "Kanji": "将来",
     "Meaning": "tương lai",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11885,7 +11885,7 @@ const vocabData = [
     "Romaji": "shibaraku",
     "Kanji": "",
     "Meaning": "một khoảng thời gian ngắn, một lúc",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11896,7 +11896,7 @@ const vocabData = [
     "Romaji": "taitei",
     "Kanji": "",
     "Meaning": "thường, thông thường",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11907,7 +11907,7 @@ const vocabData = [
     "Romaji": "sore ni",
     "Kanji": "",
     "Meaning": "hơn nữa, ngoài ra",
-    "category": "conjunction",
+    "category": 8,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11918,7 +11918,7 @@ const vocabData = [
     "Romaji": "sore de",
     "Kanji": "",
     "Meaning": "do đó, vì thế",
-    "category": "conjunction",
+    "category": 8,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11929,7 +11929,7 @@ const vocabData = [
     "Romaji": "onegai ga aru n desu ga",
     "Kanji": "お願いがあるんですが",
     "Meaning": "tôi có chút việc muốn nhờ",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11940,7 +11940,7 @@ const vocabData = [
     "Romaji": "ho-musutei",
     "Kanji": "",
     "Meaning": "homestay",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11951,7 +11951,7 @@ const vocabData = [
     "Romaji": "kaiwa",
     "Kanji": "会話",
     "Meaning": "hội thoại",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11962,7 +11962,7 @@ const vocabData = [
     "Romaji": "oshaberi shimasu",
     "Kanji": "",
     "Meaning": "trò chuyện, tán gẫu",
-    "category": "verb",
+    "category": 2,
     "Vru": "おしゃべりする",
     "type": "Nhóm III",
     "note": "Tự động từ"
@@ -11973,7 +11973,7 @@ const vocabData = [
     "Romaji": "oshirase",
     "Kanji": "お知らせ",
     "Meaning": "thông báo",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11984,7 +11984,7 @@ const vocabData = [
     "Romaji": "hinichi",
     "Kanji": "日にち",
     "Meaning": "ngày (đã ấn định)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -11995,7 +11995,7 @@ const vocabData = [
     "Romaji": "do",
     "Kanji": "土",
     "Meaning": "thứ Bảy (viết tắt)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -12006,7 +12006,7 @@ const vocabData = [
     "Romaji": "taiikukan",
     "Kanji": "体育館",
     "Meaning": "phòng thể dục",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -12017,7 +12017,7 @@ const vocabData = [
     "Romaji": "muryou",
     "Kanji": "無料",
     "Meaning": "miễn phí",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -12028,7 +12028,7 @@ const vocabData = [
     "Romaji": "akimasu",
     "Kanji": "開きます",
     "Meaning": "mở (cửa)",
-    "category": "verb",
+    "category": 2,
     "Vru": "あく",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -12039,7 +12039,7 @@ const vocabData = [
     "Romaji": "shimarimasu",
     "Kanji": "閉まります",
     "Meaning": "đóng (cửa)",
-    "category": "verb",
+    "category": 2,
     "Vru": "しまる",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -12050,7 +12050,7 @@ const vocabData = [
     "Romaji": "tsukimasu",
     "Kanji": "",
     "Meaning": "sáng (đèn)",
-    "category": "verb",
+    "category": 2,
     "Vru": "つく",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -12061,7 +12061,7 @@ const vocabData = [
     "Romaji": "kiemasu",
     "Kanji": "消えます",
     "Meaning": "tắt (đèn)",
-    "category": "verb",
+    "category": 2,
     "Vru": "きえる",
     "type": "Nhóm II",
     "note": "Tự động từ"
@@ -12072,7 +12072,7 @@ const vocabData = [
     "Romaji": "komimasu",
     "Kanji": "込みます",
     "Meaning": "đông (đường)",
-    "category": "verb",
+    "category": 2,
     "Vru": "こむ",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -12083,7 +12083,7 @@ const vocabData = [
     "Romaji": "sukimasu",
     "Kanji": "",
     "Meaning": "vắng (đường)",
-    "category": "verb",
+    "category": 2,
     "Vru": "すく",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -12094,7 +12094,7 @@ const vocabData = [
     "Romaji": "kowaremasu",
     "Kanji": "壊れます",
     "Meaning": "hỏng (ghế)",
-    "category": "verb",
+    "category": 2,
     "Vru": "こわれる",
     "type": "Nhóm II",
     "note": "Tự động từ"
@@ -12105,7 +12105,7 @@ const vocabData = [
     "Romaji": "waremasu",
     "Kanji": "割れます",
     "Meaning": "vỡ (cốc)",
-    "category": "verb",
+    "category": 2,
     "Vru": "われる",
     "type": "Nhóm II",
     "note": "Tự động từ"
@@ -12116,7 +12116,7 @@ const vocabData = [
     "Romaji": "oremasu",
     "Kanji": "折れます",
     "Meaning": "gãy (cây)",
-    "category": "verb",
+    "category": 2,
     "Vru": "おれる",
     "type": "Nhóm II",
     "note": "Tự động từ"
@@ -12127,7 +12127,7 @@ const vocabData = [
     "Romaji": "yaburemasu",
     "Kanji": "破れます",
     "Meaning": "rách (giấy)",
-    "category": "verb",
+    "category": 2,
     "Vru": "やぶれる",
     "type": "Nhóm II",
     "note": "Tự động từ"
@@ -12138,7 +12138,7 @@ const vocabData = [
     "Romaji": "yogoremasu",
     "Kanji": "汚れます",
     "Meaning": "dơ, bẩn (tay)",
-    "category": "verb",
+    "category": 2,
     "Vru": "よごれる",
     "type": "Nhóm II",
     "note": "Tự động từ"
@@ -12149,7 +12149,7 @@ const vocabData = [
     "Romaji": "tsukimasu",
     "Kanji": "付きます",
     "Meaning": "đính, có kèm theo [túi]",
-    "category": "verb",
+    "category": 2,
     "Vru": "つく",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -12160,7 +12160,7 @@ const vocabData = [
     "Romaji": "hazuremasu",
     "Kanji": "外れます",
     "Meaning": "tuột, bung, rời ra [nút]",
-    "category": "verb",
+    "category": 2,
     "Vru": "はずれる",
     "type": "Nhóm II",
     "note": "Tự động từ"
@@ -12171,7 +12171,7 @@ const vocabData = [
     "Romaji": "tomarimasu",
     "Kanji": "止まります",
     "Meaning": "dừng (xe)",
-    "category": "verb",
+    "category": 2,
     "Vru": "とまる",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -12182,7 +12182,7 @@ const vocabData = [
     "Romaji": "machigaemasu",
     "Kanji": "",
     "Meaning": "nhầm lẫn, sai",
-    "category": "verb",
+    "category": 2,
     "Vru": "まちがえる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -12193,7 +12193,7 @@ const vocabData = [
     "Romaji": "otoshimasu",
     "Kanji": "落とします",
     "Meaning": "làm rơi, làm rớt",
-    "category": "verb",
+    "category": 2,
     "Vru": "おとす",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -12204,7 +12204,7 @@ const vocabData = [
     "Romaji": "kakarimasu",
     "Kanji": "掛かります",
     "Meaning": "khóa (cửa)",
-    "category": "verb",
+    "category": 2,
     "Vru": "かかる",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -12215,7 +12215,7 @@ const vocabData = [
     "Romaji": "fukimasu",
     "Kanji": "",
     "Meaning": "lau (cửa)",
-    "category": "verb",
+    "category": 2,
     "Vru": "ふく",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -12226,7 +12226,7 @@ const vocabData = [
     "Romaji": "torikaemasu",
     "Kanji": "",
     "Meaning": "thay (pin)",
-    "category": "verb",
+    "category": 2,
     "Vru": "とりかえる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -12237,7 +12237,7 @@ const vocabData = [
     "Romaji": "katadukemasu",
     "Kanji": "片付けます",
     "Meaning": "dọn dẹp",
-    "category": "verb",
+    "category": 2,
     "Vru": "かたづける",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -12248,7 +12248,7 @@ const vocabData = [
     "Romaji": "sara",
     "Kanji": "皿",
     "Meaning": "đĩa, dĩa",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -12259,7 +12259,7 @@ const vocabData = [
     "Romaji": "chawan",
     "Kanji": "茶碗",
     "Meaning": "bát, chén",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -12270,7 +12270,7 @@ const vocabData = [
     "Romaji": "koppu",
     "Kanji": "",
     "Meaning": "cái cốc",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -12281,7 +12281,7 @@ const vocabData = [
     "Romaji": "garasu",
     "Kanji": "",
     "Meaning": "kính, thủy tinh",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -12292,7 +12292,7 @@ const vocabData = [
     "Romaji": "fukuro",
     "Kanji": "袋",
     "Meaning": "cái túi",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -12303,7 +12303,7 @@ const vocabData = [
     "Romaji": "shorui",
     "Kanji": "書類",
     "Meaning": "giấy tờ, tài liệu",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -12314,7 +12314,7 @@ const vocabData = [
     "Romaji": "eda",
     "Kanji": "枝",
     "Meaning": "cành cây",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -12325,7 +12325,7 @@ const vocabData = [
     "Romaji": "ekiin",
     "Kanji": "駅員",
     "Meaning": "nhân viên nhà ga",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -12336,7 +12336,7 @@ const vocabData = [
     "Romaji": "kouban",
     "Kanji": "交番",
     "Meaning": "đồn cảnh sát",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -12347,7 +12347,7 @@ const vocabData = [
     "Romaji": "supi-chi",
     "Kanji": "",
     "Meaning": "bài diễn văn",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -12358,7 +12358,7 @@ const vocabData = [
     "Romaji": "henji",
     "Kanji": "返事",
     "Meaning": "trả lời",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -12369,7 +12369,7 @@ const vocabData = [
     "Romaji": "osaki ni douzo",
     "Kanji": "お先にどうぞ",
     "Meaning": "Mời anh/chị cứ đi trước",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -12380,7 +12380,7 @@ const vocabData = [
     "Romaji": "genji monogatari",
     "Kanji": "源氏物語",
     "Meaning": "Truyện Genji",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -12391,7 +12391,7 @@ const vocabData = [
     "Romaji": "ima no densha",
     "Kanji": "今の電車",
     "Meaning": "Chuyến tàu vừa rồi",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -12402,7 +12402,7 @@ const vocabData = [
     "Romaji": "wasuremono",
     "Kanji": "忘れ物",
     "Meaning": "đồ bỏ quên",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -12413,7 +12413,7 @@ const vocabData = [
     "Romaji": "kono kurai",
     "Kanji": "",
     "Meaning": "cỡ tầm này",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -12424,7 +12424,7 @@ const vocabData = [
     "Romaji": "gawa",
     "Kanji": "側",
     "Meaning": "phía... (bên)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -12435,7 +12435,7 @@ const vocabData = [
     "Romaji": "poketto",
     "Kanji": "",
     "Meaning": "túi (quần áo)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -12446,7 +12446,7 @@ const vocabData = [
     "Romaji": "hen",
     "Kanji": "辺",
     "Meaning": "vùng..., chỗ... (quanh đây)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -12457,7 +12457,7 @@ const vocabData = [
     "Romaji": "oboete imasen",
     "Kanji": "覚えていません",
     "Meaning": "tôi không nhớ",
-    "category": "verb",
+    "category": 2,
     "Vru": "おぼえる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -12468,7 +12468,7 @@ const vocabData = [
     "Romaji": "amidana",
     "Kanji": "網棚",
     "Meaning": "giá để hành lý (trên tàu)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -12479,7 +12479,7 @@ const vocabData = [
     "Romaji": "tashika",
     "Kanji": "確か",
     "Meaning": "chắc là (theo trí nhớ)",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -12490,7 +12490,7 @@ const vocabData = [
     "Romaji": "aa yokatta",
     "Kanji": "",
     "Meaning": "Ôi, may quá",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -12501,7 +12501,7 @@ const vocabData = [
     "Romaji": "jishin",
     "Kanji": "地震",
     "Meaning": "động đất",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -12512,7 +12512,7 @@ const vocabData = [
     "Romaji": "kabe",
     "Kanji": "壁",
     "Meaning": "bức tường",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -12523,7 +12523,7 @@ const vocabData = [
     "Romaji": "hari",
     "Kanji": "針",
     "Meaning": "kim (đồng hồ)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -12534,7 +12534,7 @@ const vocabData = [
     "Romaji": "sashimasu",
     "Kanji": "",
     "Meaning": "chỉ (hướng)",
-    "category": "verb",
+    "category": 2,
     "Vru": "さす",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -12545,7 +12545,7 @@ const vocabData = [
     "Romaji": "ekimae",
     "Kanji": "駅前",
     "Meaning": "trước ga",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -12556,7 +12556,7 @@ const vocabData = [
     "Romaji": "taoremasu",
     "Kanji": "倒れます",
     "Meaning": "đổ, ngã",
-    "category": "verb",
+    "category": 2,
     "Vru": "たおれる",
     "type": "Nhóm II",
     "note": "Tự động từ"
@@ -12567,7 +12567,7 @@ const vocabData = [
     "Romaji": "nishi no hou",
     "Kanji": "西の方",
     "Meaning": "phía tây",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -12578,7 +12578,7 @@ const vocabData = [
     "Romaji": "moemasu",
     "Kanji": "燃えます",
     "Meaning": "cháy",
-    "category": "verb",
+    "category": 2,
     "Vru": "もえる",
     "type": "Nhóm II",
     "note": "Tự động từ"
@@ -12589,7 +12589,7 @@ const vocabData = [
     "Romaji": "harimasu",
     "Kanji": "",
     "Meaning": "dán",
-    "category": "verb",
+    "category": 2,
     "Vru": "はる",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -12600,7 +12600,7 @@ const vocabData = [
     "Romaji": "kakemasu",
     "Kanji": "掛けます",
     "Meaning": "treo",
-    "category": "verb",
+    "category": 2,
     "Vru": "かける",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -12611,7 +12611,7 @@ const vocabData = [
     "Romaji": "kazarimasu",
     "Kanji": "飾ります",
     "Meaning": "trang trí",
-    "category": "verb",
+    "category": 2,
     "Vru": "かざる",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -12622,7 +12622,7 @@ const vocabData = [
     "Romaji": "narabemasu",
     "Kanji": "並べます",
     "Meaning": "xếp thành hàng",
-    "category": "verb",
+    "category": 2,
     "Vru": "ならべる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -12633,7 +12633,7 @@ const vocabData = [
     "Romaji": "uemasu",
     "Kanji": "植えます",
     "Meaning": "trồng (cây)",
-    "category": "verb",
+    "category": 2,
     "Vru": "うえる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -12644,7 +12644,7 @@ const vocabData = [
     "Romaji": "modoshimasu",
     "Kanji": "戻します",
     "Meaning": "đưa về, trả về",
-    "category": "verb",
+    "category": 2,
     "Vru": "もどす",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -12655,7 +12655,7 @@ const vocabData = [
     "Romaji": "matomemasu",
     "Kanji": "",
     "Meaning": "nhóm lại, tóm tắt, thu xếp",
-    "category": "verb",
+    "category": 2,
     "Vru": "まとめる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -12666,7 +12666,7 @@ const vocabData = [
     "Romaji": "katadukemasu",
     "Kanji": "片付けます",
     "Meaning": "dọn dẹp, sắp xếp",
-    "category": "verb",
+    "category": 2,
     "Vru": "かたづける",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -12677,7 +12677,7 @@ const vocabData = [
     "Romaji": "shimarimasu",
     "Kanji": "",
     "Meaning": "cất vào, để vào",
-    "category": "verb",
+    "category": 2,
     "Vru": "しまう",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -12688,7 +12688,7 @@ const vocabData = [
     "Romaji": "kimemasu",
     "Kanji": "決めます",
     "Meaning": "quyết định",
-    "category": "verb",
+    "category": 2,
     "Vru": "きめる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -12699,7 +12699,7 @@ const vocabData = [
     "Romaji": "shirasemasu",
     "Kanji": "知らせます",
     "Meaning": "thông báo",
-    "category": "verb",
+    "category": 2,
     "Vru": "しらせる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -12710,7 +12710,7 @@ const vocabData = [
     "Romaji": "soudan shimasu",
     "Kanji": "相談します",
     "Meaning": "thảo luận, trao đổi, bàn bạc",
-    "category": "verb",
+    "category": 2,
     "Vru": "そうだんする",
     "type": "Nhóm III",
     "note": "Tha động từ"
@@ -12721,7 +12721,7 @@ const vocabData = [
     "Romaji": "yoshuu shimasu",
     "Kanji": "予習します",
     "Meaning": "chuẩn bị bài mới",
-    "category": "verb",
+    "category": 2,
     "Vru": "よしゅうする",
     "type": "Nhóm III",
     "note": "Tha động từ"
@@ -12732,7 +12732,7 @@ const vocabData = [
     "Romaji": "fukushuu shimasu",
     "Kanji": "復習します",
     "Meaning": "ôn bài cũ",
-    "category": "verb",
+    "category": 2,
     "Vru": "ふくしゅうする",
     "type": "Nhóm III",
     "note": "Tha động từ"
@@ -12743,7 +12743,7 @@ const vocabData = [
     "Romaji": "sonomama ni shimasu",
     "Kanji": "",
     "Meaning": "để nguyên như thế",
-    "category": "verb",
+    "category": 2,
     "Vru": "する",
     "type": "Nhóm III",
     "note": "Tha động từ"
@@ -12754,7 +12754,7 @@ const vocabData = [
     "Romaji": "okosan",
     "Kanji": "お子さん",
     "Meaning": "con (của người khác)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -12765,7 +12765,7 @@ const vocabData = [
     "Romaji": "jugyou",
     "Kanji": "授業",
     "Meaning": "giờ học",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -12776,7 +12776,7 @@ const vocabData = [
     "Romaji": "kougi",
     "Kanji": "講義",
     "Meaning": "bài giảng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -12787,7 +12787,7 @@ const vocabData = [
     "Romaji": "mi-tingu",
     "Kanji": "",
     "Meaning": "cuộc họp",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -12798,7 +12798,7 @@ const vocabData = [
     "Romaji": "yotei",
     "Kanji": "予定",
     "Meaning": "kế hoạch, dự định",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -12809,7 +12809,7 @@ const vocabData = [
     "Romaji": "oshirase",
     "Kanji": "お知らせ",
     "Meaning": "bản thông báo",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -12820,7 +12820,7 @@ const vocabData = [
     "Romaji": "annaisho",
     "Kanji": "案内書",
     "Meaning": "tài liệu hướng dẫn",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -12831,7 +12831,7 @@ const vocabData = [
     "Romaji": "karenda-",
     "Kanji": "",
     "Meaning": "lịch, tờ lịch",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -12842,7 +12842,7 @@ const vocabData = [
     "Romaji": "posuta-",
     "Kanji": "",
     "Meaning": "tờ quảng cáo, áp phích",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -12853,7 +12853,7 @@ const vocabData = [
     "Romaji": "gomibako",
     "Kanji": "ごみ箱",
     "Meaning": "thùng rác",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -12864,7 +12864,7 @@ const vocabData = [
     "Romaji": "ningyou",
     "Kanji": "人形",
     "Meaning": "con búp bê, con rối",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -12875,7 +12875,7 @@ const vocabData = [
     "Romaji": "kabin",
     "Kanji": "花瓶",
     "Meaning": "lọ hoa, bình hoa",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -12886,7 +12886,7 @@ const vocabData = [
     "Romaji": "kagami",
     "Kanji": "鏡",
     "Meaning": "cái gương",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -12897,7 +12897,7 @@ const vocabData = [
     "Romaji": "hikidashi",
     "Kanji": "引き出し",
     "Meaning": "ngăn kéo",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -12908,7 +12908,7 @@ const vocabData = [
     "Romaji": "genkan",
     "Kanji": "玄関",
     "Meaning": "cửa ra vào (khu vực sảnh vào)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -12919,7 +12919,7 @@ const vocabData = [
     "Romaji": "rouka",
     "Kanji": "廊下",
     "Meaning": "hành lang",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -12930,7 +12930,7 @@ const vocabData = [
     "Romaji": "kabe",
     "Kanji": "壁",
     "Meaning": "bức tường",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -12941,7 +12941,7 @@ const vocabData = [
     "Romaji": "ike",
     "Kanji": "池",
     "Meaning": "cái ao",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -12952,7 +12952,7 @@ const vocabData = [
     "Romaji": "kouban",
     "Kanji": "交番",
     "Meaning": "đồn cảnh sát, bốt cảnh sát",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -12963,7 +12963,7 @@ const vocabData = [
     "Romaji": "moto no tokoro",
     "Kanji": "元の所",
     "Meaning": "địa điểm ban đầu",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -12974,7 +12974,7 @@ const vocabData = [
     "Romaji": "mawari",
     "Kanji": "周り",
     "Meaning": "xung quanh",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -12985,7 +12985,7 @@ const vocabData = [
     "Romaji": "mannaka",
     "Kanji": "真ん中",
     "Meaning": "giữa, trung tâm",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -12996,7 +12996,7 @@ const vocabData = [
     "Romaji": "sumi",
     "Kanji": "",
     "Meaning": "góc (phía trong)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13007,7 +13007,7 @@ const vocabData = [
     "Romaji": "mada",
     "Kanji": "",
     "Meaning": "vẫn còn (đi với khẳng định)",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13018,7 +13018,7 @@ const vocabData = [
     "Romaji": "～hodo",
     "Kanji": "",
     "Meaning": "chừng ～",
-    "category": "particle",
+    "category": 3,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13029,7 +13029,7 @@ const vocabData = [
     "Romaji": "yoteihyou",
     "Kanji": "予定表",
     "Meaning": "thời khóa biểu, lịch trình",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13040,7 +13040,7 @@ const vocabData = [
     "Romaji": "gokurousama",
     "Kanji": "",
     "Meaning": "anh/chị đã vất vả rồi",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13051,7 +13051,7 @@ const vocabData = [
     "Romaji": "kibou",
     "Kanji": "希望",
     "Meaning": "hy vọng, nguyện vọng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13062,7 +13062,7 @@ const vocabData = [
     "Romaji": "nanika gokibou ga arimasu ka",
     "Kanji": "何かご希望がありますか",
     "Meaning": "Anh/chị có nguyện vọng gì không?",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13073,7 +13073,7 @@ const vocabData = [
     "Romaji": "myu-jikaru",
     "Kanji": "",
     "Meaning": "ca kịch",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13084,7 +13084,7 @@ const vocabData = [
     "Romaji": "sore wa ii desu ne",
     "Kanji": "",
     "Meaning": "Hay quá nhỉ",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13095,7 +13095,7 @@ const vocabData = [
     "Romaji": "marui",
     "Kanji": "丸い",
     "Meaning": "tròn",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -13106,7 +13106,7 @@ const vocabData = [
     "Romaji": "tsuki",
     "Kanji": "月",
     "Meaning": "mặt trăng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13117,7 +13117,7 @@ const vocabData = [
     "Romaji": "chikyuu",
     "Kanji": "地球",
     "Meaning": "trái đất",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13128,7 +13128,7 @@ const vocabData = [
     "Romaji": "ureshii",
     "Kanji": "",
     "Meaning": "vui mừng, hạnh phúc",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -13139,7 +13139,7 @@ const vocabData = [
     "Romaji": "iya",
     "Kanji": "",
     "Meaning": "chán, ghét, không thích",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi な"
@@ -13150,7 +13150,7 @@ const vocabData = [
     "Romaji": "suruto",
     "Kanji": "",
     "Meaning": "sau đó, thế rồi",
-    "category": "conjunction",
+    "category": 8,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13161,7 +13161,7 @@ const vocabData = [
     "Romaji": "me ga samemasu",
     "Kanji": "目が覚めます",
     "Meaning": "tỉnh giấc, mở mắt",
-    "category": "verb",
+    "category": 2,
     "Vru": "さめる",
     "type": "Nhóm II",
     "note": "Tự động từ"
@@ -13172,7 +13172,7 @@ const vocabData = [
     "Romaji": "hajimarimasu",
     "Kanji": "始まります",
     "Meaning": "bắt đầu (buổi lễ)",
-    "category": "verb",
+    "category": 2,
     "Vru": "はじまる",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -13183,7 +13183,7 @@ const vocabData = [
     "Romaji": "tsudukemasu",
     "Kanji": "続けます",
     "Meaning": "tiếp tục",
-    "category": "verb",
+    "category": 2,
     "Vru": "つづける",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -13194,7 +13194,7 @@ const vocabData = [
     "Romaji": "mitsukemasu",
     "Kanji": "見つけます",
     "Meaning": "tìm thấy",
-    "category": "verb",
+    "category": 2,
     "Vru": "みつける",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -13205,7 +13205,7 @@ const vocabData = [
     "Romaji": "ukemasu",
     "Kanji": "受けます",
     "Meaning": "thi [kì thi]",
-    "category": "verb",
+    "category": 2,
     "Vru": "うける",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -13216,7 +13216,7 @@ const vocabData = [
     "Romaji": "nyuugaku shimasu",
     "Kanji": "入学します",
     "Meaning": "nhập học [đại học]",
-    "category": "verb",
+    "category": 2,
     "Vru": "にゅうがくする",
     "type": "Nhóm III",
     "note": "Tự động từ"
@@ -13227,7 +13227,7 @@ const vocabData = [
     "Romaji": "sotsugyou shimasu",
     "Kanji": "卒業します",
     "Meaning": "tốt nghiệp [đại học]",
-    "category": "verb",
+    "category": 2,
     "Vru": "そつぎょうする",
     "type": "Nhóm III",
     "note": "Tự động từ"
@@ -13238,7 +13238,7 @@ const vocabData = [
     "Romaji": "kyuukei shimasu",
     "Kanji": "休憩します",
     "Meaning": "giải lao, nghỉ giải lao",
-    "category": "verb",
+    "category": 2,
     "Vru": "きゅうけいする",
     "type": "Nhóm III",
     "note": "Tự động từ"
@@ -13249,7 +13249,7 @@ const vocabData = [
     "Romaji": "renkyuu",
     "Kanji": "連休",
     "Meaning": "ngày nghỉ liền nhau",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13260,7 +13260,7 @@ const vocabData = [
     "Romaji": "sakubun",
     "Kanji": "作文",
     "Meaning": "bài văn, bài luận",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13271,7 +13271,7 @@ const vocabData = [
     "Romaji": "tenrankai",
     "Kanji": "展覧会",
     "Meaning": "triển lãm",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13282,7 +13282,7 @@ const vocabData = [
     "Romaji": "kekkonshiki",
     "Kanji": "結婚式",
     "Meaning": "lễ cưới, đám cưới",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13293,7 +13293,7 @@ const vocabData = [
     "Romaji": "soushiki",
     "Kanji": "葬式",
     "Meaning": "lễ tang, đám tang",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13304,7 +13304,7 @@ const vocabData = [
     "Romaji": "shiki",
     "Kanji": "式",
     "Meaning": "buổi lễ",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13315,7 +13315,7 @@ const vocabData = [
     "Romaji": "honsha",
     "Kanji": "本社",
     "Meaning": "trụ sở chính",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13326,7 +13326,7 @@ const vocabData = [
     "Romaji": "shiten",
     "Kanji": "支店",
     "Meaning": "chi nhánh",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13337,7 +13337,7 @@ const vocabData = [
     "Romaji": "kyoukai",
     "Kanji": "教会",
     "Meaning": "nhà thờ",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13348,7 +13348,7 @@ const vocabData = [
     "Romaji": "daigakuin",
     "Kanji": "大学院",
     "Meaning": "cao học",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13359,7 +13359,7 @@ const vocabData = [
     "Romaji": "doubutsuen",
     "Kanji": "動物園",
     "Meaning": "sở thú",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13370,7 +13370,7 @@ const vocabData = [
     "Romaji": "onsen",
     "Kanji": "温泉",
     "Meaning": "suối nước nóng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13381,7 +13381,7 @@ const vocabData = [
     "Romaji": "okyakusan",
     "Kanji": "お客さん",
     "Meaning": "khách hàng, khách",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13392,7 +13392,7 @@ const vocabData = [
     "Romaji": "dareka",
     "Kanji": "",
     "Meaning": "ai đó",
-    "category": "pronoun",
+    "category": 9,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13403,7 +13403,7 @@ const vocabData = [
     "Romaji": "～no hou",
     "Kanji": "～の方",
     "Meaning": "hướng ～, phía ～",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13414,7 +13414,7 @@ const vocabData = [
     "Romaji": "zutto",
     "Kanji": "",
     "Meaning": "suốt, liền, mãi",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13425,7 +13425,7 @@ const vocabData = [
     "Romaji": "nokorimasu",
     "Kanji": "残ります",
     "Meaning": "ở lại, còn lại",
-    "category": "verb",
+    "category": 2,
     "Vru": "のこる",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -13436,7 +13436,7 @@ const vocabData = [
     "Romaji": "tsuki ni",
     "Kanji": "月に",
     "Meaning": "(trong) một tháng",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13447,7 +13447,7 @@ const vocabData = [
     "Romaji": "futsuu no",
     "Kanji": "普通の",
     "Meaning": "thường, thông thường",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13458,7 +13458,7 @@ const vocabData = [
     "Romaji": "inta-netto",
     "Kanji": "",
     "Meaning": "internet",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13469,7 +13469,7 @@ const vocabData = [
     "Romaji": "mura",
     "Kanji": "村",
     "Meaning": "làng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13480,7 +13480,7 @@ const vocabData = [
     "Romaji": "eigakan",
     "Kanji": "映画館",
     "Meaning": "rạp chiếu phim",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13491,7 +13491,7 @@ const vocabData = [
     "Romaji": "iya",
     "Kanji": "嫌[な]",
     "Meaning": "chán ghét, không thích",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi な"
@@ -13502,7 +13502,7 @@ const vocabData = [
     "Romaji": "sora",
     "Kanji": "空",
     "Meaning": "bầu trời",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13513,7 +13513,7 @@ const vocabData = [
     "Romaji": "tojimasu",
     "Kanji": "閉じます",
     "Meaning": "nhắm (mắt), đóng (sách)",
-    "category": "verb",
+    "category": 2,
     "Vru": "とじる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -13524,7 +13524,7 @@ const vocabData = [
     "Romaji": "tokai",
     "Kanji": "都会",
     "Meaning": "thành phố, đô thị",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13535,7 +13535,7 @@ const vocabData = [
     "Romaji": "kodomotachi",
     "Kanji": "子供たち",
     "Meaning": "bọn trẻ",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13546,7 +13546,7 @@ const vocabData = [
     "Romaji": "jiyuu ni",
     "Kanji": "自由に",
     "Meaning": "tự do",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13557,7 +13557,7 @@ const vocabData = [
     "Romaji": "sekaijuu",
     "Kanji": "世界中",
     "Meaning": "khắp thế giới",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13568,7 +13568,7 @@ const vocabData = [
     "Romaji": "atsumarimasu",
     "Kanji": "集まります",
     "Meaning": "tập hợp, tập trung",
-    "category": "verb",
+    "category": 2,
     "Vru": "あつまる",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -13579,7 +13579,7 @@ const vocabData = [
     "Romaji": "utsukushii",
     "Kanji": "美しい",
     "Meaning": "đẹp, xinh đẹp",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -13590,7 +13590,7 @@ const vocabData = [
     "Romaji": "shizen",
     "Kanji": "自然",
     "Meaning": "thiên nhiên, tự nhiên",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13601,7 +13601,7 @@ const vocabData = [
     "Romaji": "subarashisa",
     "Kanji": "",
     "Meaning": "sự tuyệt vời",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13612,7 +13612,7 @@ const vocabData = [
     "Romaji": "ki ga tsukimasu",
     "Kanji": "気が付きます",
     "Meaning": "để ý, nhận ra",
-    "category": "verb",
+    "category": 2,
     "Vru": "つく",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -13623,7 +13623,7 @@ const vocabData = [
     "Romaji": "undou shimasu",
     "Kanji": "運動します",
     "Meaning": "vận động, tập thể thao",
-    "category": "verb",
+    "category": 2,
     "Vru": "うんどうする",
     "type": "Nhóm III",
     "note": "Tự động từ"
@@ -13634,7 +13634,7 @@ const vocabData = [
     "Romaji": "seikou shimasu",
     "Kanji": "成功します",
     "Meaning": "thành công",
-    "category": "verb",
+    "category": 2,
     "Vru": "せいこうする",
     "type": "Nhóm III",
     "note": "Tự động từ"
@@ -13645,7 +13645,7 @@ const vocabData = [
     "Romaji": "shippai shimasu",
     "Kanji": "失敗します",
     "Meaning": "thất bại, trượt [kì thi]",
-    "category": "verb",
+    "category": 2,
     "Vru": "しっぱいする",
     "type": "Nhóm III",
     "note": "Tự động từ"
@@ -13656,7 +13656,7 @@ const vocabData = [
     "Romaji": "goukaku shimasu",
     "Kanji": "合格します",
     "Meaning": "đỗ [kì thi]",
-    "category": "verb",
+    "category": 2,
     "Vru": "ごうかくする",
     "type": "Nhóm III",
     "note": "Tự động từ"
@@ -13667,7 +13667,7 @@ const vocabData = [
     "Romaji": "modorimasu",
     "Kanji": "戻ります",
     "Meaning": "quay lại, trở lại",
-    "category": "verb",
+    "category": 2,
     "Vru": "もどる",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -13678,7 +13678,7 @@ const vocabData = [
     "Romaji": "yamimasu",
     "Kanji": "",
     "Meaning": "tạnh, ngừng [mưa]",
-    "category": "verb",
+    "category": 2,
     "Vru": "やむ",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -13689,7 +13689,7 @@ const vocabData = [
     "Romaji": "haremasu",
     "Kanji": "晴れます",
     "Meaning": "nắng, quang đãng",
-    "category": "verb",
+    "category": 2,
     "Vru": "はれる",
     "type": "Nhóm II",
     "note": "Tự động từ"
@@ -13700,7 +13700,7 @@ const vocabData = [
     "Romaji": "kumorimasu",
     "Kanji": "曇ります",
     "Meaning": "có mây, mây mù",
-    "category": "verb",
+    "category": 2,
     "Vru": "くもる",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -13711,7 +13711,7 @@ const vocabData = [
     "Romaji": "fukimasu",
     "Kanji": "吹きます",
     "Meaning": "thổi [gió]",
-    "category": "verb",
+    "category": 2,
     "Vru": "ふく",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -13722,7 +13722,7 @@ const vocabData = [
     "Romaji": "naorimasu",
     "Kanji": "治ります,直ります",
     "Meaning": "khỏi [bệnh], được sửa xong [hỏng]",
-    "category": "verb",
+    "category": 2,
     "Vru": "なおる",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -13733,7 +13733,7 @@ const vocabData = [
     "Romaji": "tsudukimasu",
     "Kanji": "",
     "Meaning": "tiếp tục, tiếp diễn",
-    "category": "verb",
+    "category": 2,
     "Vru": "つづく",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -13744,7 +13744,7 @@ const vocabData = [
     "Romaji": "hiyashimasu",
     "Kanji": "冷やします",
     "Meaning": "làm lạnh",
-    "category": "verb",
+    "category": 2,
     "Vru": "ひやす",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -13755,7 +13755,7 @@ const vocabData = [
     "Romaji": "shinpai[na]",
     "Kanji": "心配[な]",
     "Meaning": "lo lắng",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi な"
@@ -13766,7 +13766,7 @@ const vocabData = [
     "Romaji": "juubun[na]",
     "Kanji": "十分[な]",
     "Meaning": "đủ",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi な"
@@ -13777,7 +13777,7 @@ const vocabData = [
     "Romaji": "okashii",
     "Kanji": "",
     "Meaning": "có vấn đề, lạ, buồn cười",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -13788,7 +13788,7 @@ const vocabData = [
     "Romaji": "urusai",
     "Kanji": "",
     "Meaning": "ồn ào",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -13799,7 +13799,7 @@ const vocabData = [
     "Romaji": "yakedo",
     "Kanji": "",
     "Meaning": "bỏng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13810,7 +13810,7 @@ const vocabData = [
     "Romaji": "kega",
     "Kanji": "",
     "Meaning": "bị thương",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13821,7 +13821,7 @@ const vocabData = [
     "Romaji": "seki",
     "Kanji": "",
     "Meaning": "ho",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13832,7 +13832,7 @@ const vocabData = [
     "Romaji": "infuruenza",
     "Kanji": "",
     "Meaning": "cúm dịch",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13843,7 +13843,7 @@ const vocabData = [
     "Romaji": "sora",
     "Kanji": "空",
     "Meaning": "bầu trời",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13854,7 +13854,7 @@ const vocabData = [
     "Romaji": "taiyou",
     "Kanji": "太陽",
     "Meaning": "mặt trời",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13865,7 +13865,7 @@ const vocabData = [
     "Romaji": "hoshi",
     "Kanji": "星",
     "Meaning": "ngôi sao",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13876,7 +13876,7 @@ const vocabData = [
     "Romaji": "tsuki",
     "Kanji": "月",
     "Meaning": "mặt trăng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13887,7 +13887,7 @@ const vocabData = [
     "Romaji": "kaze",
     "Kanji": "風",
     "Meaning": "gió",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13898,7 +13898,7 @@ const vocabData = [
     "Romaji": "kita",
     "Kanji": "北",
     "Meaning": "phía bắc",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13909,7 +13909,7 @@ const vocabData = [
     "Romaji": "minami",
     "Kanji": "南",
     "Meaning": "phía nam",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13920,7 +13920,7 @@ const vocabData = [
     "Romaji": "nishi",
     "Kanji": "西",
     "Meaning": "phía tây",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13931,7 +13931,7 @@ const vocabData = [
     "Romaji": "higashi",
     "Kanji": "東",
     "Meaning": "phía đông",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13942,7 +13942,7 @@ const vocabData = [
     "Romaji": "suidou",
     "Kanji": "水道",
     "Meaning": "nước máy",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13953,7 +13953,7 @@ const vocabData = [
     "Romaji": "enjin",
     "Kanji": "",
     "Meaning": "động cơ",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13964,7 +13964,7 @@ const vocabData = [
     "Romaji": "chi-mu",
     "Kanji": "",
     "Meaning": "đội",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13975,7 +13975,7 @@ const vocabData = [
     "Romaji": "konya",
     "Kanji": "今夜",
     "Meaning": "tối nay, đêm nay",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13986,7 +13986,7 @@ const vocabData = [
     "Romaji": "yuugata",
     "Kanji": "夕方",
     "Meaning": "chiều tối",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -13997,7 +13997,7 @@ const vocabData = [
     "Romaji": "mae",
     "Kanji": "前",
     "Meaning": "trước (thời gian)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14008,7 +14008,7 @@ const vocabData = [
     "Romaji": "osoku",
     "Kanji": "遅く",
     "Meaning": "muộn, khuya",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14019,7 +14019,7 @@ const vocabData = [
     "Romaji": "konna ni",
     "Kanji": "",
     "Meaning": "như thế này (mức độ)",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14030,7 +14030,7 @@ const vocabData = [
     "Romaji": "sonna ni",
     "Kanji": "",
     "Meaning": "như thế đó (mức độ)",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14041,7 +14041,7 @@ const vocabData = [
     "Romaji": "anna ni",
     "Kanji": "",
     "Meaning": "như thế kia (mức độ)",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14052,7 +14052,7 @@ const vocabData = [
     "Romaji": "moshikashitara",
     "Kanji": "",
     "Meaning": "có thể là, biết đâu là",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14063,7 +14063,7 @@ const vocabData = [
     "Romaji": "sore wa ikemasen ne",
     "Kanji": "",
     "Meaning": "Thế thì thật không tốt (chia buồn/lo lắng)",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14074,7 +14074,7 @@ const vocabData = [
     "Romaji": "orinpikku",
     "Kanji": "",
     "Meaning": "Olympic",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14085,7 +14085,7 @@ const vocabData = [
     "Romaji": "genki",
     "Kanji": "元気",
     "Meaning": "khỏe mạnh",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14096,7 +14096,7 @@ const vocabData = [
     "Romaji": "i",
     "Kanji": "胃",
     "Meaning": "dạ dày",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14107,7 +14107,7 @@ const vocabData = [
     "Romaji": "hatarakisugi",
     "Kanji": "働きすぎ",
     "Meaning": "làm việc quá sức",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14118,7 +14118,7 @@ const vocabData = [
     "Romaji": "sutoresu",
     "Kanji": "",
     "Meaning": "stress, căng thẳng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14129,7 +14129,7 @@ const vocabData = [
     "Romaji": "muri wo shimasu",
     "Kanji": "無理をします",
     "Meaning": "làm quá sức",
-    "category": "verb",
+    "category": 2,
     "Vru": "する",
     "type": "Nhóm III",
     "note": "Tự động từ"
@@ -14140,7 +14140,7 @@ const vocabData = [
     "Romaji": "yukkuri shimasu",
     "Kanji": "",
     "Meaning": "nghỉ ngơi, thư thái",
-    "category": "verb",
+    "category": 2,
     "Vru": "する",
     "type": "Nhóm III",
     "note": "Tự động từ"
@@ -14151,7 +14151,7 @@ const vocabData = [
     "Romaji": "hoshiuranai",
     "Kanji": "星占い",
     "Meaning": "bói sao",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14162,7 +14162,7 @@ const vocabData = [
     "Romaji": "oushiya",
     "Kanji": "牡牛座",
     "Meaning": "chòm sao Kim Ngưu",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14173,7 +14173,7 @@ const vocabData = [
     "Romaji": "komarimasu",
     "Kanji": "困ります",
     "Meaning": "rắc rối, khó xử, vấn đề",
-    "category": "verb",
+    "category": 2,
     "Vru": "こまる",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -14184,7 +14184,7 @@ const vocabData = [
     "Romaji": "takarakuji",
     "Kanji": "宝くじ",
     "Meaning": "xổ số",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14195,7 +14195,7 @@ const vocabData = [
     "Romaji": "atarimasu",
     "Kanji": "当たります",
     "Meaning": "trúng [xổ số]",
-    "category": "verb",
+    "category": 2,
     "Vru": "あたる",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -14206,7 +14206,7 @@ const vocabData = [
     "Romaji": "kenkou",
     "Kanji": "健康",
     "Meaning": "sức khỏe",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14217,7 +14217,7 @@ const vocabData = [
     "Romaji": "renai",
     "Kanji": "恋愛",
     "Meaning": "tình yêu",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14228,7 +14228,7 @@ const vocabData = [
     "Romaji": "koibito",
     "Kanji": "恋人",
     "Meaning": "người yêu",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14239,7 +14239,7 @@ const vocabData = [
     "Romaji": "okane mochi",
     "Kanji": "お)金持ち",
     "Meaning": "người giàu có",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14250,7 +14250,7 @@ const vocabData = [
     "Romaji": "nigemasu",
     "Kanji": "逃げます",
     "Meaning": "chạy trốn, bỏ chạy",
-    "category": "verb",
+    "category": 2,
     "Vru": "にげる",
     "type": "Nhóm II",
     "note": "Tự động từ"
@@ -14261,7 +14261,7 @@ const vocabData = [
     "Romaji": "sawagimasu",
     "Kanji": "騒ぎます",
     "Meaning": "làm ồn, làm rùm beng",
-    "category": "verb",
+    "category": 2,
     "Vru": "さわぐ",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -14272,7 +14272,7 @@ const vocabData = [
     "Romaji": "akiramemasu",
     "Kanji": "",
     "Meaning": "từ bỏ, đầu hàng",
-    "category": "verb",
+    "category": 2,
     "Vru": "あきらめる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -14283,7 +14283,7 @@ const vocabData = [
     "Romaji": "nagemasu",
     "Kanji": "投げます",
     "Meaning": "ném",
-    "category": "verb",
+    "category": 2,
     "Vru": "なげる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -14294,7 +14294,7 @@ const vocabData = [
     "Romaji": "mamorimasu",
     "Kanji": "守ります",
     "Meaning": "bảo vệ, tuân thủ [quy tắc]",
-    "category": "verb",
+    "category": 2,
     "Vru": "まもる",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -14305,7 +14305,7 @@ const vocabData = [
     "Romaji": "agemasu",
     "Kanji": "上げます",
     "Meaning": "nâng lên, tăng lên",
-    "category": "verb",
+    "category": 2,
     "Vru": "あげる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -14316,7 +14316,7 @@ const vocabData = [
     "Romaji": "sagemasu",
     "Kanji": "下げます",
     "Meaning": "hạ xuống, giảm xuống",
-    "category": "verb",
+    "category": 2,
     "Vru": "さげる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -14327,7 +14327,7 @@ const vocabData = [
     "Romaji": "tsutaemasu",
     "Kanji": "伝えます",
     "Meaning": "truyền đạt",
-    "category": "verb",
+    "category": 2,
     "Vru": "つたえる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -14338,7 +14338,7 @@ const vocabData = [
     "Romaji": "chuui shimasu",
     "Kanji": "注意します",
     "Meaning": "chú ý [vào ô tô]",
-    "category": "verb",
+    "category": 2,
     "Vru": "ちゅういする",
     "type": "Nhóm III",
     "note": "Tự động từ"
@@ -14349,7 +14349,7 @@ const vocabData = [
     "Romaji": "hazushimasu",
     "Kanji": "外します",
     "Meaning": "rời [chỗ ngồi], tháo ra",
-    "category": "verb",
+    "category": 2,
     "Vru": "はずす",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -14360,7 +14360,7 @@ const vocabData = [
     "Romaji": "dame[na]",
     "Kanji": "",
     "Meaning": "không được, không thể",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi な"
@@ -14371,7 +14371,7 @@ const vocabData = [
     "Romaji": "seki",
     "Kanji": "席",
     "Meaning": "chỗ ngồi, ghế",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14382,7 +14382,7 @@ const vocabData = [
     "Romaji": "faito",
     "Kanji": "",
     "Meaning": "quyết chiến, cố lên",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14393,7 +14393,7 @@ const vocabData = [
     "Romaji": "ma-ku",
     "Kanji": "",
     "Meaning": "kí hiệu, dấu hiệu",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14404,7 +14404,7 @@ const vocabData = [
     "Romaji": "bo-ru",
     "Kanji": "",
     "Meaning": "quả bóng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14415,7 +14415,7 @@ const vocabData = [
     "Romaji": "sentakuki",
     "Kanji": "洗濯機",
     "Meaning": "máy giặt",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14426,7 +14426,7 @@ const vocabData = [
     "Romaji": "～ki",
     "Kanji": "～機",
     "Meaning": "máy ～",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": "Hậu tố"
@@ -14437,7 +14437,7 @@ const vocabData = [
     "Romaji": "kisoku",
     "Kanji": "規則",
     "Meaning": "quy tắc, kỷ luật",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14448,7 +14448,7 @@ const vocabData = [
     "Romaji": "shiyou kinshi",
     "Kanji": "使用禁止",
     "Meaning": "cấm sử dụng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14459,7 +14459,7 @@ const vocabData = [
     "Romaji": "tachiiri kinshi",
     "Kanji": "立ち入り禁止",
     "Meaning": "cấm vào",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14470,7 +14470,7 @@ const vocabData = [
     "Romaji": "iriguchi",
     "Kanji": "入口",
     "Meaning": "cửa vào",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14481,7 +14481,7 @@ const vocabData = [
     "Romaji": "deguchi",
     "Kanji": "出口",
     "Meaning": "cửa ra",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14492,7 +14492,7 @@ const vocabData = [
     "Romaji": "hijouguchi",
     "Kanji": "非常口",
     "Meaning": "cửa thoát hiểm",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14503,7 +14503,7 @@ const vocabData = [
     "Romaji": "muryou",
     "Kanji": "無料",
     "Meaning": "miễn phí",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14514,7 +14514,7 @@ const vocabData = [
     "Romaji": "honjitsu kyuugyou",
     "Kanji": "本日休業",
     "Meaning": "hôm nay nghỉ",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14525,7 +14525,7 @@ const vocabData = [
     "Romaji": "eigyou chuu",
     "Kanji": "営業中",
     "Meaning": "đang mở cửa",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14536,7 +14536,7 @@ const vocabData = [
     "Romaji": "shiyou chuu",
     "Kanji": "使用中",
     "Meaning": "đang sử dụng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14547,7 +14547,7 @@ const vocabData = [
     "Romaji": "～chuu",
     "Kanji": "～中",
     "Meaning": "đang ～",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": "Hậu tố"
@@ -14558,7 +14558,7 @@ const vocabData = [
     "Romaji": "douiu",
     "Kanji": "",
     "Meaning": "～ gì, ～ thế nào",
-    "category": "pronoun",
+    "category": 9,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14569,7 +14569,7 @@ const vocabData = [
     "Romaji": "mou",
     "Kanji": "",
     "Meaning": "(không) ～ nữa (đi với phủ định)",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14580,7 +14580,7 @@ const vocabData = [
     "Romaji": "ato",
     "Kanji": "",
     "Meaning": "còn ～ (về số lượng/thời gian)",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14591,7 +14591,7 @@ const vocabData = [
     "Romaji": "chuusha ihan",
     "Kanji": "駐車違反",
     "Meaning": "đỗ xe trái phép",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14602,7 +14602,7 @@ const vocabData = [
     "Romaji": "soryaa",
     "Kanji": "",
     "Meaning": "thế thì, ồ (cách nói thân mật)",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14613,7 +14613,7 @@ const vocabData = [
     "Romaji": "～inai",
     "Kanji": "～以内",
     "Meaning": "trong vòng ～ (phạm vi)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14624,7 +14624,7 @@ const vocabData = [
     "Romaji": "keisatsu",
     "Kanji": "警察",
     "Meaning": "cảnh sát",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14635,7 +14635,7 @@ const vocabData = [
     "Romaji": "bakkin",
     "Kanji": "罰金",
     "Meaning": "tiền phạt",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14646,7 +14646,7 @@ const vocabData = [
     "Romaji": "denpou",
     "Kanji": "電報",
     "Meaning": "điện báo",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14657,7 +14657,7 @@ const vocabData = [
     "Romaji": "hitobito",
     "Kanji": "人々",
     "Meaning": "nhiều người, mọi người",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14668,7 +14668,7 @@ const vocabData = [
     "Romaji": "kyuuyou",
     "Kanji": "急用",
     "Meaning": "việc gấp",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14679,7 +14679,7 @@ const vocabData = [
     "Romaji": "uchimasu",
     "Kanji": "打ちます",
     "Meaning": "gửi [điện báo], đánh [máy chữ]",
-    "category": "verb",
+    "category": 2,
     "Vru": "うつ",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -14690,7 +14690,7 @@ const vocabData = [
     "Romaji": "denpoudai",
     "Kanji": "電報代",
     "Meaning": "phí điện báo",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14701,7 +14701,7 @@ const vocabData = [
     "Romaji": "dekiru dake",
     "Kanji": "",
     "Meaning": "cố gắng trong khả năng có thể",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14712,7 +14712,7 @@ const vocabData = [
     "Romaji": "mijikaku",
     "Kanji": "短く",
     "Meaning": "ngắn gọn",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14723,7 +14723,7 @@ const vocabData = [
     "Romaji": "mata",
     "Kanji": "",
     "Meaning": "thêm nữa, lại",
-    "category": "conjunction",
+    "category": 8,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14734,7 +14734,7 @@ const vocabData = [
     "Romaji": "tatoeba",
     "Kanji": "例えば",
     "Meaning": "ví dụ",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14745,7 +14745,7 @@ const vocabData = [
     "Romaji": "kitoku",
     "Kanji": "危篤",
     "Meaning": "tình trạng hiểm nghèo",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14756,7 +14756,7 @@ const vocabData = [
     "Romaji": "omoi byouki",
     "Kanji": "重い病気",
     "Meaning": "bệnh nặng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14767,7 +14767,7 @@ const vocabData = [
     "Romaji": "asu",
     "Kanji": "明日",
     "Meaning": "ngày mai (cách nói trang trọng)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14778,7 +14778,7 @@ const vocabData = [
     "Romaji": "rusu",
     "Kanji": "留守",
     "Meaning": "vắng nhà",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14789,7 +14789,7 @@ const vocabData = [
     "Romaji": "rusuban",
     "Kanji": "留守番",
     "Meaning": "trông nhà",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14800,7 +14800,7 @@ const vocabData = [
     "Romaji": "oiwai",
     "Kanji": "お祝い",
     "Meaning": "việc mừng, quà mừng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14811,7 +14811,7 @@ const vocabData = [
     "Romaji": "nakunarimasu",
     "Kanji": "",
     "Meaning": "mất, chết",
-    "category": "verb",
+    "category": 2,
     "Vru": "なくなる",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -14822,7 +14822,7 @@ const vocabData = [
     "Romaji": "kanashii",
     "Kanji": "悲しい",
     "Meaning": "buồn, đau buồn",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -14833,7 +14833,7 @@ const vocabData = [
     "Romaji": "riyou shimasu",
     "Kanji": "利用します",
     "Meaning": "sử dụng, tận dụng",
-    "category": "verb",
+    "category": 2,
     "Vru": "りようする",
     "type": "Nhóm III",
     "note": "Tha động từ"
@@ -14844,7 +14844,7 @@ const vocabData = [
     "Romaji": "migakimasu",
     "Kanji": "磨きます",
     "Meaning": "đánh [răng], mài, chải",
-    "category": "verb",
+    "category": 2,
     "Vru": "みがく",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -14855,7 +14855,7 @@ const vocabData = [
     "Romaji": "kumitateramasu",
     "Kanji": "組み立てます",
     "Meaning": "lắp ráp, lắp đặt",
-    "category": "verb",
+    "category": 2,
     "Vru": "くみたてる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -14866,7 +14866,7 @@ const vocabData = [
     "Romaji": "orimasu",
     "Kanji": "おります",
     "Meaning": "gấp, gập, bẻ gãy",
-    "category": "verb",
+    "category": 2,
     "Vru": "おる",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -14877,7 +14877,7 @@ const vocabData = [
     "Romaji": "ki ga tsukimasu",
     "Kanji": "気が付きます",
     "Meaning": "nhận thấy, phát hiện [đồ bỏ quên]",
-    "category": "verb",
+    "category": 2,
     "Vru": "つく",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -14888,7 +14888,7 @@ const vocabData = [
     "Romaji": "tsukemasu",
     "Kanji": "付けます",
     "Meaning": "chấm [nước xốt], phết",
-    "category": "verb",
+    "category": 2,
     "Vru": "つける",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -14899,7 +14899,7 @@ const vocabData = [
     "Romaji": "mitsukarimasu",
     "Kanji": "見つかります",
     "Meaning": "được tìm thấy [đồ vật]",
-    "category": "verb",
+    "category": 2,
     "Vru": "みつかる",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -14910,7 +14910,7 @@ const vocabData = [
     "Romaji": "shimasu",
     "Kanji": "",
     "Meaning": "đeo, thắt [cà vạt]",
-    "category": "verb",
+    "category": 2,
     "Vru": "する",
     "type": "Nhóm III",
     "note": "Tha động từ"
@@ -14921,7 +14921,7 @@ const vocabData = [
     "Romaji": "shitsumon shimasu",
     "Kanji": "質問します",
     "Meaning": "hỏi, đặt câu hỏi",
-    "category": "verb",
+    "category": 2,
     "Vru": "しつもんする",
     "type": "Nhóm III",
     "note": "Tha động từ"
@@ -14932,7 +14932,7 @@ const vocabData = [
     "Romaji": "hosoi",
     "Kanji": "細い",
     "Meaning": "gầy, hẹp, thon",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -14943,7 +14943,7 @@ const vocabData = [
     "Romaji": "futoi",
     "Kanji": "太い",
     "Meaning": "béo, to, mập",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -14954,7 +14954,7 @@ const vocabData = [
     "Romaji": "bon-odori",
     "Kanji": "盆踊り",
     "Meaning": "múa trong hội Bon",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14965,7 +14965,7 @@ const vocabData = [
     "Romaji": "supo-tsu kurabu",
     "Kanji": "",
     "Meaning": "câu lạc bộ thể thao",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14976,7 +14976,7 @@ const vocabData = [
     "Romaji": "kagu",
     "Kanji": "家具",
     "Meaning": "gia cụ, đồ dùng nội thất",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14987,7 +14987,7 @@ const vocabData = [
     "Romaji": "ki-",
     "Kanji": "",
     "Meaning": "chìa khóa",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -14998,7 +14998,7 @@ const vocabData = [
     "Romaji": "shi-toberuto",
     "Kanji": "",
     "Meaning": "dây an toàn (trong xe)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15009,7 +15009,7 @@ const vocabData = [
     "Romaji": "setsumeisho",
     "Kanji": "説明書",
     "Meaning": "quyển hướng dẫn",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15020,7 +15020,7 @@ const vocabData = [
     "Romaji": "zu",
     "Kanji": "図",
     "Meaning": "sơ đồ, hình vẽ",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15031,7 +15031,7 @@ const vocabData = [
     "Romaji": "sen",
     "Kanji": "線",
     "Meaning": "đường kẻ, dòng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15042,7 +15042,7 @@ const vocabData = [
     "Romaji": "yajirushi",
     "Kanji": "矢印",
     "Meaning": "dấu mũi tên",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15053,7 +15053,7 @@ const vocabData = [
     "Romaji": "kuro",
     "Kanji": "黒",
     "Meaning": "màu đen",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15064,7 +15064,7 @@ const vocabData = [
     "Romaji": "shiro",
     "Kanji": "白",
     "Meaning": "màu trắng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15075,7 +15075,7 @@ const vocabData = [
     "Romaji": "aka",
     "Kanji": "赤",
     "Meaning": "màu đỏ",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15086,7 +15086,7 @@ const vocabData = [
     "Romaji": "ao",
     "Kanji": "青",
     "Meaning": "màu xanh da trời, xanh lá cây",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15097,7 +15097,7 @@ const vocabData = [
     "Romaji": "kon",
     "Kanji": "紺",
     "Meaning": "màu xanh lam, xanh đậm",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15108,7 +15108,7 @@ const vocabData = [
     "Romaji": "kiiro",
     "Kanji": "黄色",
     "Meaning": "màu vàng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15119,7 +15119,7 @@ const vocabData = [
     "Romaji": "chairo",
     "Kanji": "茶色",
     "Meaning": "màu nâu",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15130,7 +15130,7 @@ const vocabData = [
     "Romaji": "shouyu",
     "Kanji": "",
     "Meaning": "xì dầu, nước tương",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15141,7 +15141,7 @@ const vocabData = [
     "Romaji": "so-su",
     "Kanji": "",
     "Meaning": "nước xốt, nước chấm",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15152,7 +15152,7 @@ const vocabData = [
     "Romaji": "yuube",
     "Kanji": "",
     "Meaning": "tối qua, đêm qua",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15163,7 +15163,7 @@ const vocabData = [
     "Romaji": "sakki",
     "Kanji": "",
     "Meaning": "vừa rồi, vừa lúc nãy",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15174,7 +15174,7 @@ const vocabData = [
     "Romaji": "sadou",
     "Kanji": "茶道",
     "Meaning": "trà đạo",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15185,7 +15185,7 @@ const vocabData = [
     "Romaji": "ocha wo tatemasu",
     "Kanji": "お茶をたてます",
     "Meaning": "pha trà (trong trà đạo)",
-    "category": "verb",
+    "category": 2,
     "Vru": "たてる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -15196,7 +15196,7 @@ const vocabData = [
     "Romaji": "saki ni",
     "Kanji": "先に",
     "Meaning": "trước (làm gì đó trước)",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15207,7 +15207,7 @@ const vocabData = [
     "Romaji": "nosemasu",
     "Kanji": "載せます",
     "Meaning": "đặt lên, để lên",
-    "category": "verb",
+    "category": 2,
     "Vru": "のせる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -15218,7 +15218,7 @@ const vocabData = [
     "Romaji": "kore de ii desu ka",
     "Kanji": "",
     "Meaning": "Thế này được không?",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15229,7 +15229,7 @@ const vocabData = [
     "Romaji": "nigai",
     "Kanji": "苦い",
     "Meaning": "đắng",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -15240,7 +15240,7 @@ const vocabData = [
     "Romaji": "oyako donburi",
     "Kanji": "親子どんぶり",
     "Meaning": "món cơm thịt gà trứng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15251,7 +15251,7 @@ const vocabData = [
     "Romaji": "zairyou",
     "Kanji": "材料",
     "Meaning": "nguyên liệu",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15262,7 +15262,7 @@ const vocabData = [
     "Romaji": "～bun",
     "Kanji": "～分",
     "Meaning": "phần ～ (lượng)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15273,7 +15273,7 @@ const vocabData = [
     "Romaji": "toriniku",
     "Kanji": "鶏肉",
     "Meaning": "thịt gà",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15284,7 +15284,7 @@ const vocabData = [
     "Romaji": "～guramu",
     "Kanji": "",
     "Meaning": "gam (gram)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15295,7 +15295,7 @@ const vocabData = [
     "Romaji": "tamanegi",
     "Kanji": "",
     "Meaning": "hành củ, hành tây",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15306,7 +15306,7 @@ const vocabData = [
     "Romaji": "yon bun no ichi",
     "Kanji": "４分の１",
     "Meaning": "1/4 (một phần tư)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15317,7 +15317,7 @@ const vocabData = [
     "Romaji": "choumiryou",
     "Kanji": "調味料",
     "Meaning": "gia vị",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15328,7 +15328,7 @@ const vocabData = [
     "Romaji": "nabe",
     "Kanji": "",
     "Meaning": "cái nồi",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15339,7 +15339,7 @@ const vocabData = [
     "Romaji": "hi",
     "Kanji": "火",
     "Meaning": "lửa",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15350,7 +15350,7 @@ const vocabData = [
     "Romaji": "hi ni kakemasu",
     "Kanji": "火にかけます",
     "Meaning": "đun lửa (bắc lên bếp)",
-    "category": "verb",
+    "category": 2,
     "Vru": "かける",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -15361,7 +15361,7 @@ const vocabData = [
     "Romaji": "nimasu",
     "Kanji": "煮ます",
     "Meaning": "nấu, ninh, kho",
-    "category": "verb",
+    "category": 2,
     "Vru": "にる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -15372,7 +15372,7 @@ const vocabData = [
     "Romaji": "niemasu",
     "Kanji": "煮えます",
     "Meaning": "chín [được nấu]",
-    "category": "verb",
+    "category": 2,
     "Vru": "にえる",
     "type": "Nhóm II",
     "note": "Tự động từ"
@@ -15383,7 +15383,7 @@ const vocabData = [
     "Romaji": "donburi",
     "Kanji": "",
     "Meaning": "bát ô tô lớn",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15394,7 +15394,7 @@ const vocabData = [
     "Romaji": "sakimasu",
     "Kanji": "咲きます",
     "Meaning": "nở [hoa]",
-    "category": "verb",
+    "category": 2,
     "Vru": "さく",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -15405,7 +15405,7 @@ const vocabData = [
     "Romaji": "kawarimasu",
     "Kanji": "変わります",
     "Meaning": "thay đổi, đổi",
-    "category": "verb",
+    "category": 2,
     "Vru": "かわる",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -15416,7 +15416,7 @@ const vocabData = [
     "Romaji": "komarimasu",
     "Kanji": "困ります",
     "Meaning": "rắc rối, khó xử, có vấn đề",
-    "category": "verb",
+    "category": 2,
     "Vru": "こまる",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -15427,7 +15427,7 @@ const vocabData = [
     "Romaji": "tsukemasu",
     "Kanji": "付けます",
     "Meaning": "vẽ, đánh dấu [vòng tròn]",
-    "category": "verb",
+    "category": 2,
     "Vru": "つける",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -15438,7 +15438,7 @@ const vocabData = [
     "Romaji": "hiroimasu",
     "Kanji": "拾います",
     "Meaning": "nhặt lên",
-    "category": "verb",
+    "category": 2,
     "Vru": "ひろう",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -15449,7 +15449,7 @@ const vocabData = [
     "Romaji": "kakarimasu",
     "Kanji": "",
     "Meaning": "có [điện thoại]",
-    "category": "verb",
+    "category": 2,
     "Vru": "かかる",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -15460,7 +15460,7 @@ const vocabData = [
     "Romaji": "raku[na]",
     "Kanji": "楽[な]",
     "Meaning": "thoải mái, nhàn hạ, dễ dàng",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi な"
@@ -15471,7 +15471,7 @@ const vocabData = [
     "Romaji": "tadashii",
     "Kanji": "正しい",
     "Meaning": "đúng, chính xác",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -15482,7 +15482,7 @@ const vocabData = [
     "Romaji": "mezurashii",
     "Kanji": "珍しい",
     "Meaning": "hiếm có, lạ",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -15493,7 +15493,7 @@ const vocabData = [
     "Romaji": "kata",
     "Kanji": "方",
     "Meaning": "vị, người (lịch sự của 人)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15504,7 +15504,7 @@ const vocabData = [
     "Romaji": "mukou",
     "Kanji": "向こう",
     "Meaning": "bên kia, bên đấy",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15515,7 +15515,7 @@ const vocabData = [
     "Romaji": "shima",
     "Kanji": "島",
     "Meaning": "đảo, hòn đảo",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15526,7 +15526,7 @@ const vocabData = [
     "Romaji": "mura",
     "Kanji": "村",
     "Meaning": "làng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15537,7 +15537,7 @@ const vocabData = [
     "Romaji": "minato",
     "Kanji": "港",
     "Meaning": "cảng, bến cảng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15548,7 +15548,7 @@ const vocabData = [
     "Romaji": "kinjo",
     "Kanji": "近所",
     "Meaning": "hàng xóm, khu vực lân cận",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15559,7 +15559,7 @@ const vocabData = [
     "Romaji": "okujou",
     "Kanji": "屋上",
     "Meaning": "mái nhà, sân thượng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15570,7 +15570,7 @@ const vocabData = [
     "Romaji": "kaigai",
     "Kanji": "海外",
     "Meaning": "nước ngoài, hải ngoại",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15581,7 +15581,7 @@ const vocabData = [
     "Romaji": "yamanobori",
     "Kanji": "山登り",
     "Meaning": "leo núi (danh từ)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15592,7 +15592,7 @@ const vocabData = [
     "Romaji": "haikingu",
     "Kanji": "",
     "Meaning": "đi bộ trên núi, dã ngoại",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15603,7 +15603,7 @@ const vocabData = [
     "Romaji": "kikai",
     "Kanji": "機会",
     "Meaning": "cơ hội",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15614,7 +15614,7 @@ const vocabData = [
     "Romaji": "kyoka",
     "Kanji": "許可",
     "Meaning": "sự cho phép",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15625,7 +15625,7 @@ const vocabData = [
     "Romaji": "maru",
     "Kanji": "丸",
     "Meaning": "vòng tròn",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15636,7 +15636,7 @@ const vocabData = [
     "Romaji": "sousa",
     "Kanji": "操作",
     "Meaning": "thao tác",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15647,7 +15647,7 @@ const vocabData = [
     "Romaji": "houhou",
     "Kanji": "方法",
     "Meaning": "phương pháp, cách thức",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15658,7 +15658,7 @@ const vocabData = [
     "Romaji": "setsubi",
     "Kanji": "設備",
     "Meaning": "thiết bị",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15669,7 +15669,7 @@ const vocabData = [
     "Romaji": "ka-ten",
     "Kanji": "",
     "Meaning": "cái rèm",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15680,7 +15680,7 @@ const vocabData = [
     "Romaji": "himo",
     "Kanji": "",
     "Meaning": "sợi dây",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15691,7 +15691,7 @@ const vocabData = [
     "Romaji": "futa",
     "Kanji": "",
     "Meaning": "cái nắp",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15702,7 +15702,7 @@ const vocabData = [
     "Romaji": "ha",
     "Kanji": "葉",
     "Meaning": "cái lá",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15713,7 +15713,7 @@ const vocabData = [
     "Romaji": "kyoku",
     "Kanji": "曲",
     "Meaning": "bài hát, bản nhạc",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15724,7 +15724,7 @@ const vocabData = [
     "Romaji": "tanoshimi",
     "Kanji": "楽しみ",
     "Meaning": "niềm vui, sự mong đợi",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15735,7 +15735,7 @@ const vocabData = [
     "Romaji": "motto",
     "Kanji": "",
     "Meaning": "hơn nữa",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15746,7 +15746,7 @@ const vocabData = [
     "Romaji": "hajime ni",
     "Kanji": "初めに",
     "Meaning": "đầu tiên, trước hết",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15757,7 +15757,7 @@ const vocabData = [
     "Romaji": "kore de owarimasu",
     "Kanji": "これで終わります",
     "Meaning": "Đến đây là hết",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15768,7 +15768,7 @@ const vocabData = [
     "Romaji": "sorenara",
     "Kanji": "",
     "Meaning": "Nếu thế thì",
-    "category": "conjunction",
+    "category": 8,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15779,7 +15779,7 @@ const vocabData = [
     "Romaji": "yakou basu",
     "Kanji": "夜行バス",
     "Meaning": "xe buýt chạy đêm",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15790,7 +15790,7 @@ const vocabData = [
     "Romaji": "ryokousha",
     "Kanji": "旅行社",
     "Meaning": "công ty du lịch",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15801,7 +15801,7 @@ const vocabData = [
     "Romaji": "kuwashii",
     "Kanji": "詳しい",
     "Meaning": "cụ thể, chi tiết, rành tường",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -15812,7 +15812,7 @@ const vocabData = [
     "Romaji": "suki-jou",
     "Kanji": "スキー場",
     "Meaning": "bãi trượt tuyết",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15823,7 +15823,7 @@ const vocabData = [
     "Romaji": "shu",
     "Kanji": "朱",
     "Meaning": "màu đỏ chu sa",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15834,7 +15834,7 @@ const vocabData = [
     "Romaji": "majiwarimasu",
     "Kanji": "交わります",
     "Meaning": "giao lưu, quan hệ với",
-    "category": "verb",
+    "category": 2,
     "Vru": "まじわる",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -15845,7 +15845,7 @@ const vocabData = [
     "Romaji": "kotowaza",
     "Kanji": "",
     "Meaning": "tục ngữ",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -15856,7 +15856,7 @@ const vocabData = [
     "Romaji": "nakayoku shimasu",
     "Kanji": "仲よくします",
     "Meaning": "quan hệ tốt với, chơi thân với",
-    "category": "verb",
+    "category": 2,
     "Vru": "する",
     "type": "Nhóm III",
     "note": "Tự động từ"
@@ -15867,7 +15867,7 @@ const vocabData = [
     "Romaji": "hitsuyou[na]",
     "Kanji": "必要[na]",
     "Meaning": "cần thiết",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi な"
@@ -15878,7 +15878,7 @@ const vocabData = [
     "Romaji": "todokimasu",
     "Kanji": "届きます",
     "Meaning": "được gửi đến, được chuyển đến",
-    "category": "verb",
+    "category": 2,
     "Vru": "とどく",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -15889,7 +15889,7 @@ const vocabData = [
     "Romaji": "demasu",
     "Kanji": "出ます",
     "Meaning": "tham gia, tham dự [trận đấu]",
-    "category": "verb",
+    "category": 2,
     "Vru": "でる",
     "type": "Nhóm II",
     "note": "Tự động từ"
@@ -15900,7 +15900,7 @@ const vocabData = [
     "Romaji": "uchimasu",
     "Kanji": "打ちます",
     "Meaning": "đánh [máy chữ], gõ",
-    "category": "verb",
+    "category": 2,
     "Vru": "うつ",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -15911,7 +15911,7 @@ const vocabData = [
     "Romaji": "chokin shimasu",
     "Kanji": "貯金します",
     "Meaning": "tiết kiệm tiền, để dành tiền",
-    "category": "verb",
+    "category": 2,
     "Vru": "ちょきんする",
     "type": "Nhóm III",
     "note": "Tự động từ"
@@ -15922,7 +15922,7 @@ const vocabData = [
     "Romaji": "futorimasu",
     "Kanji": "太ります",
     "Meaning": "béo lên, tăng cân",
-    "category": "verb",
+    "category": 2,
     "Vru": "ふとり",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -15933,7 +15933,7 @@ const vocabData = [
     "Romaji": "yasemasu",
     "Kanji": "",
     "Meaning": "gầy đi, giảm cân",
-    "category": "verb",
+    "category": 2,
     "Vru": "やせる",
     "type": "Nhóm II",
     "note": "Tự động từ"
@@ -15944,7 +15944,7 @@ const vocabData = [
     "Romaji": "sugimasu",
     "Kanji": "過ぎます",
     "Meaning": "quá [7 giờ]",
-    "category": "verb",
+    "category": 2,
     "Vru": "すぎる",
     "type": "Nhóm II",
     "note": "Tự động từ"
@@ -15955,7 +15955,7 @@ const vocabData = [
     "Romaji": "naremasu",
     "Kanji": "",
     "Meaning": "làm quen, quen với [tập quán]",
-    "category": "verb",
+    "category": 2,
     "Vru": "なれる",
     "type": "Nhóm II",
     "note": "Tự động từ"
@@ -15966,7 +15966,7 @@ const vocabData = [
     "Romaji": "katai",
     "Kanji": "固い",
     "Meaning": "cứng",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -15977,7 +15977,7 @@ const vocabData = [
     "Romaji": "yawarakai",
     "Kanji": "軟らかい",
     "Meaning": "mềm",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -15988,7 +15988,7 @@ const vocabData = [
     "Romaji": "denshi",
     "Kanji": "電子",
     "Meaning": "điện tử",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": "Thường dùng làm tiền tố"
@@ -15999,7 +15999,7 @@ const vocabData = [
     "Romaji": "keitai",
     "Kanji": "携帯",
     "Meaning": "cầm tay, di động",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -16010,7 +16010,7 @@ const vocabData = [
     "Romaji": "koujou",
     "Kanji": "工場",
     "Meaning": "nhà máy, phân xưởng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -16021,7 +16021,7 @@ const vocabData = [
     "Romaji": "kenkou",
     "Kanji": "健康",
     "Meaning": "sức khỏe",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -16032,7 +16032,7 @@ const vocabData = [
     "Romaji": "kendou",
     "Kanji": "剣道",
     "Meaning": "Kiếm đạo",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -16043,7 +16043,7 @@ const vocabData = [
     "Romaji": "maishuu",
     "Kanji": "毎週",
     "Meaning": "hàng tuần",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -16054,7 +16054,7 @@ const vocabData = [
     "Romaji": "maitsuki",
     "Kanji": "毎月",
     "Meaning": "hàng tháng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -16065,7 +16065,7 @@ const vocabData = [
     "Romaji": "maitoshi / mainen",
     "Kanji": "毎年",
     "Meaning": "hàng năm",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -16076,7 +16076,7 @@ const vocabData = [
     "Romaji": "yatto",
     "Kanji": "",
     "Meaning": "cuối cùng thì (sau nhiều nỗ lực)",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -16087,7 +16087,7 @@ const vocabData = [
     "Romaji": "kanari",
     "Kanji": "",
     "Meaning": "khá, tương đối",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -16098,7 +16098,7 @@ const vocabData = [
     "Romaji": "kanarazu",
     "Kanji": "必ず",
     "Meaning": "nhất định, luôn luôn",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -16109,7 +16109,7 @@ const vocabData = [
     "Romaji": "zettai ni",
     "Kanji": "絶対に",
     "Meaning": "tuyệt đối (thường đi với phủ định)",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -16120,7 +16120,7 @@ const vocabData = [
     "Romaji": "jouzu ni",
     "Kanji": "上手に",
     "Meaning": "giỏi, khéo léo",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -16131,7 +16131,7 @@ const vocabData = [
     "Romaji": "dekiru dake",
     "Kanji": "",
     "Meaning": "cố gắng trong khả năng có thể",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -16142,7 +16142,7 @@ const vocabData = [
     "Romaji": "konogoro",
     "Kanji": "",
     "Meaning": "gần đây, dạo này",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -16153,7 +16153,7 @@ const vocabData = [
     "Romaji": "～no hou ga",
     "Kanji": "",
     "Meaning": "cái đó ～ hơn",
-    "category": "phrase",
+    "category": 10,
     "Vru": "",
     "type": "",
     "note": ""
@@ -16164,7 +16164,7 @@ const vocabData = [
     "Romaji": "okyakusama",
     "Kanji": "お客様",
     "Meaning": "khách hàng (kính ngữ)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -16175,7 +16175,7 @@ const vocabData = [
     "Romaji": "tokubetsu[na]",
     "Kanji": "特別[な]",
     "Meaning": "đặc biệt",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi な"
@@ -16186,7 +16186,7 @@ const vocabData = [
     "Romaji": "shite irasshaimasu",
     "Kanji": "",
     "Meaning": "đang làm (tôn kính ngữ của しています)",
-    "category": "verb",
+    "category": 2,
     "Vru": "する",
     "type": "Nhóm III",
     "note": "Tha động từ"
@@ -16197,7 +16197,7 @@ const vocabData = [
     "Romaji": "suiei",
     "Kanji": "水泳",
     "Meaning": "môn bơi lội",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -16208,7 +16208,7 @@ const vocabData = [
     "Romaji": "～toka, ～toka",
     "Kanji": "",
     "Meaning": "như là... và... (liệt kê không giới hạn)",
-    "category": "particle",
+    "category": 3,
     "Vru": "",
     "type": "",
     "note": ""
@@ -16219,7 +16219,7 @@ const vocabData = [
     "Romaji": "tango",
     "Kanji": "",
     "Meaning": "nhạc Tango",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -16230,7 +16230,7 @@ const vocabData = [
     "Romaji": "charenji shimasu",
     "Kanji": "",
     "Meaning": "thử thách, thách thức",
-    "category": "verb",
+    "category": 2,
     "Vru": "チャレンジする",
     "type": "Nhóm III",
     "note": "Tự động từ"
@@ -16241,7 +16241,7 @@ const vocabData = [
     "Romaji": "kimochi",
     "Kanji": "気持ち",
     "Meaning": "cảm giác, tâm trạng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -16252,7 +16252,7 @@ const vocabData = [
     "Romaji": "norimono",
     "Kanji": "乗り物",
     "Meaning": "phương tiện đi lại",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -16263,7 +16263,7 @@ const vocabData = [
     "Romaji": "rekishi",
     "Kanji": "歴史",
     "Meaning": "lịch sử",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -16274,7 +16274,7 @@ const vocabData = [
     "Romaji": "～seiki",
     "Kanji": "～世紀",
     "Meaning": "thế kỷ ～",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -16285,7 +16285,7 @@ const vocabData = [
     "Romaji": "tooku",
     "Kanji": "遠く",
     "Meaning": "xa, ở xa",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -16296,7 +16296,7 @@ const vocabData = [
     "Romaji": "kisha",
     "Kanji": "汽車",
     "Meaning": "tàu hỏa hơi nước",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -16307,7 +16307,7 @@ const vocabData = [
     "Romaji": "kisen",
     "Kanji": "汽船",
     "Meaning": "thuyền hơi nước",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -16318,7 +16318,7 @@ const vocabData = [
     "Romaji": "oozei no",
     "Kanji": "",
     "Meaning": "nhiều (người)",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": "Dùng cho người"
@@ -16329,7 +16329,7 @@ const vocabData = [
     "Romaji": "hakobimasu",
     "Kanji": "運びます",
     "Meaning": "vận chuyển, bê, vác",
-    "category": "verb",
+    "category": 2,
     "Vru": "はこぶ",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -16340,7 +16340,7 @@ const vocabData = [
     "Romaji": "anzen[na]",
     "Kanji": "安全[な]",
     "Meaning": "an toàn",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi な"
@@ -16351,7 +16351,7 @@ const vocabData = [
     "Romaji": "tobimasu",
     "Kanji": "飛びます",
     "Meaning": "bay",
-    "category": "verb",
+    "category": 2,
     "Vru": "とぶ",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -16362,7 +16362,7 @@ const vocabData = [
     "Romaji": "uchuu",
     "Kanji": "宇宙",
     "Meaning": "vũ trụ",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -16373,7 +16373,7 @@ const vocabData = [
     "Romaji": "chikyuu",
     "Kanji": "地球",
     "Meaning": "trái đất",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -16384,7 +16384,7 @@ const vocabData = [
     "Romaji": "homemasu",
     "Kanji": "褒めます",
     "Meaning": "khen",
-    "category": "verb",
+    "category": 2,
     "Vru": "ほめる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -16395,7 +16395,7 @@ const vocabData = [
     "Romaji": "shikarimasu",
     "Kanji": "",
     "Meaning": "mắng",
-    "category": "verb",
+    "category": 2,
     "Vru": "しかる",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -16406,7 +16406,7 @@ const vocabData = [
     "Romaji": "sasoimasu",
     "Kanji": "誘います",
     "Meaning": "mời, rủ rê",
-    "category": "verb",
+    "category": 2,
     "Vru": "さ誘う",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -16417,7 +16417,7 @@ const vocabData = [
     "Romaji": "okoshimasu",
     "Kanji": "起こします",
     "Meaning": "đánh thức",
-    "category": "verb",
+    "category": 2,
     "Vru": "おこす",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -16428,7 +16428,7 @@ const vocabData = [
     "Romaji": "shoutai shimasu",
     "Kanji": "招待します",
     "Meaning": "mời (đi tiệc, đám cưới)",
-    "category": "verb",
+    "category": 2,
     "Vru": "しょうたいする",
     "type": "Nhóm III",
     "note": "Tha động từ"
@@ -16439,7 +16439,7 @@ const vocabData = [
     "Romaji": "tanomimasu",
     "Kanji": "頼みます",
     "Meaning": "nhờ, yêu cầu",
-    "category": "verb",
+    "category": 2,
     "Vru": "たのむ",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -16450,7 +16450,7 @@ const vocabData = [
     "Romaji": "chuui shimasu",
     "Kanji": "注意します",
     "Meaning": "chú ý, nhắc nhở",
-    "category": "verb",
+    "category": 2,
     "Vru": "ちゅういする",
     "type": "Nhóm III",
     "note": "Tự động từ"
@@ -16461,7 +16461,7 @@ const vocabData = [
     "Romaji": "torimasu",
     "Kanji": "",
     "Meaning": "ăn trộm, lấy cắp",
-    "category": "verb",
+    "category": 2,
     "Vru": "とる",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -16472,7 +16472,7 @@ const vocabData = [
     "Romaji": "fumimasu",
     "Kanji": "踏みます",
     "Meaning": "giẫm, giẫm lên",
-    "category": "verb",
+    "category": 2,
     "Vru": "ふむ",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -16483,7 +16483,7 @@ const vocabData = [
     "Romaji": "kowashimasu",
     "Kanji": "壊します",
     "Meaning": "phá, làm hỏng",
-    "category": "verb",
+    "category": 2,
     "Vru": "こわす",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -16494,7 +16494,7 @@ const vocabData = [
     "Romaji": "yogoshimasu",
     "Kanji": "汚します",
     "Meaning": "làm bẩn",
-    "category": "verb",
+    "category": 2,
     "Vru": "よごす",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -16505,7 +16505,7 @@ const vocabData = [
     "Romaji": "okonaimasu",
     "Kanji": "行います",
     "Meaning": "thực hiện, tiến hành, tổ chức",
-    "category": "verb",
+    "category": 2,
     "Vru": "おこなう",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -16516,7 +16516,7 @@ const vocabData = [
     "Romaji": "yushutsu shimasu",
     "Kanji": "輸出します",
     "Meaning": "xuất khẩu",
-    "category": "verb",
+    "category": 2,
     "Vru": "ゆしゅつする",
     "type": "Nhóm III",
     "note": "Tha động từ"
@@ -16527,7 +16527,7 @@ const vocabData = [
     "Romaji": "yunyuu shimasu",
     "Kanji": "輸入します",
     "Meaning": "nhập khẩu",
-    "category": "verb",
+    "category": 2,
     "Vru": "ゆにゅうする",
     "type": "Nhóm III",
     "note": "Tha động từ"
@@ -16538,7 +16538,7 @@ const vocabData = [
     "Romaji": "hon'yaku shimasu",
     "Kanji": "翻訳します",
     "Meaning": "dịch (sách, tài liệu)",
-    "category": "verb",
+    "category": 2,
     "Vru": "ほんやくする",
     "type": "Nhóm III",
     "note": "Tha động từ"
@@ -16549,7 +16549,7 @@ const vocabData = [
     "Romaji": "hatsumei shimasu",
     "Kanji": "発明します",
     "Meaning": "phát minh",
-    "category": "verb",
+    "category": 2,
     "Vru": "はつめいする",
     "type": "Nhóm III",
     "note": "Tha động từ"
@@ -16560,7 +16560,7 @@ const vocabData = [
     "Romaji": "hakken shimasu",
     "Kanji": "発見します",
     "Meaning": "phát kiến, tìm thấy, khám phá",
-    "category": "verb",
+    "category": 2,
     "Vru": "はっけんする",
     "type": "Nhóm III",
     "note": "Tha động từ"
@@ -16571,7 +16571,7 @@ const vocabData = [
     "Romaji": "sekkei shimasu",
     "Kanji": "設計します",
     "Meaning": "thiết kế",
-    "category": "verb",
+    "category": 2,
     "Vru": "せっけいする",
     "type": "Nhóm III",
     "note": "Tha động từ"
@@ -16582,7 +16582,7 @@ const vocabData = [
     "Romaji": "kome",
     "Kanji": "米",
     "Meaning": "gạo",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -16593,7 +16593,7 @@ const vocabData = [
     "Romaji": "mugi",
     "Kanji": "麦",
     "Meaning": "lúa mạch, lúa mì",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -16604,7 +16604,7 @@ const vocabData = [
     "Romaji": "sekiyu",
     "Kanji": "石油",
     "Meaning": "dầu mỏ, dầu hỏa",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -16615,7 +16615,7 @@ const vocabData = [
     "Romaji": "genryou",
     "Kanji": "原料",
     "Meaning": "nguyên liệu",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -16626,7 +16626,7 @@ const vocabData = [
     "Romaji": "de-to",
     "Kanji": "",
     "Meaning": "cuộc hẹn hò",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -16637,7 +16637,7 @@ const vocabData = [
     "Romaji": "dorobou",
     "Kanji": "泥棒",
     "Meaning": "kẻ trộm",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -16648,7 +16648,7 @@ const vocabData = [
     "Romaji": "keikan",
     "Kanji": "警官",
     "Meaning": "cảnh sát",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -16659,7 +16659,7 @@ const vocabData = [
     "Romaji": "kenchikuka",
     "Kanji": "建築家",
     "Meaning": "kiến trúc sư",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -16670,7 +16670,7 @@ const vocabData = [
     "Romaji": "kagakusha",
     "Kanji": "科学者",
     "Meaning": "nhà khoa học",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -16681,7 +16681,7 @@ const vocabData = [
     "Romaji": "manga",
     "Kanji": "漫画",
     "Meaning": "truyện tranh",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -16692,7 +16692,7 @@ const vocabData = [
     "Romaji": "sekaijuu",
     "Kanji": "世界中",
     "Meaning": "khắp thế giới, toàn thế giới",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -16703,7 +16703,7 @@ const vocabData = [
     "Romaji": "～juu",
     "Kanji": "～中",
     "Meaning": "khắp ～ (phạm vi)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": "Hậu tố"
@@ -16714,7 +16714,7 @@ const vocabData = [
     "Romaji": "ni yotte",
     "Kanji": "",
     "Meaning": "bởi ～, do ～ (dùng trong câu bị động)",
-    "category": "particle",
+    "category": 3,
     "Vru": "",
     "type": "",
     "note": ""
@@ -16725,7 +16725,7 @@ const vocabData = [
     "Romaji": "yokatta desu ne",
     "Kanji": "",
     "Meaning": "May nhỉ, Tốt quá nhỉ",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -16736,7 +16736,7 @@ const vocabData = [
     "Romaji": "umetateramasu",
     "Kanji": "埋め立てます",
     "Meaning": "lấp (biển, ao)",
-    "category": "verb",
+    "category": 2,
     "Vru": "うめたてる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -16747,7 +16747,7 @@ const vocabData = [
     "Romaji": "gijutsu",
     "Kanji": "技術",
     "Meaning": "kỹ thuật, công nghệ",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -16758,7 +16758,7 @@ const vocabData = [
     "Romaji": "tochi",
     "Kanji": "土地",
     "Meaning": "đất, diện tích đất",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -16769,7 +16769,7 @@ const vocabData = [
     "Romaji": "souon",
     "Kanji": "騒音",
     "Meaning": "tiếng ồn",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -16780,7 +16780,7 @@ const vocabData = [
     "Romaji": "riyou shimasu",
     "Kanji": "利用します",
     "Meaning": "sử dụng, tận dụng",
-    "category": "verb",
+    "category": 2,
     "Vru": "りようする",
     "type": "Nhóm III",
     "note": "Tha động từ"
@@ -16791,7 +16791,7 @@ const vocabData = [
     "Romaji": "akusesu",
     "Kanji": "",
     "Meaning": "đường đi đến (giao thông)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -16802,7 +16802,7 @@ const vocabData = [
     "Romaji": "dominika",
     "Kanji": "",
     "Meaning": "Dominica",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -16813,7 +16813,7 @@ const vocabData = [
     "Romaji": "～seiki",
     "Kanji": "～世紀",
     "Meaning": "thế kỷ ～",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -16824,7 +16824,7 @@ const vocabData = [
     "Romaji": "gouka[na]",
     "Kanji": "豪華[な]",
     "Meaning": "hào hoa, sang trọng",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi な"
@@ -16835,7 +16835,7 @@ const vocabData = [
     "Romaji": "choukoku",
     "Kanji": "彫刻",
     "Meaning": "điêu khắc",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -16846,7 +16846,7 @@ const vocabData = [
     "Romaji": "nemurimasu",
     "Kanji": "眠ります",
     "Meaning": "ngủ",
-    "category": "verb",
+    "category": 2,
     "Vru": "ねむる",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -16857,7 +16857,7 @@ const vocabData = [
     "Romaji": "horimasu",
     "Kanji": "彫ります",
     "Meaning": "khắc, chạm khắc",
-    "category": "verb",
+    "category": 2,
     "Vru": "ほる",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -16868,7 +16868,7 @@ const vocabData = [
     "Romaji": "nakama",
     "Kanji": "仲間",
     "Meaning": "bạn bè, đồng nghiệp",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -16879,7 +16879,7 @@ const vocabData = [
     "Romaji": "sono ato",
     "Kanji": "",
     "Meaning": "sau đó",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -16890,7 +16890,7 @@ const vocabData = [
     "Romaji": "isshoukenmei",
     "Kanji": "一生懸命",
     "Meaning": "cố gắng hết sức",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -16901,7 +16901,7 @@ const vocabData = [
     "Romaji": "nezumi",
     "Kanji": "",
     "Meaning": "con chuột",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -16912,7 +16912,7 @@ const vocabData = [
     "Romaji": "ippiki mo imasen",
     "Kanji": "一匹もいません",
     "Meaning": "không có lấy một con",
-    "category": "phrase",
+    "category": 10,
     "Vru": "",
     "type": "",
     "note": ""
@@ -16923,7 +16923,7 @@ const vocabData = [
     "Romaji": "sodatemasu",
     "Kanji": "育てます",
     "Meaning": "nuôi, trồng",
-    "category": "verb",
+    "category": 2,
     "Vru": "そだてる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -16934,7 +16934,7 @@ const vocabData = [
     "Romaji": "hakobimasu",
     "Kanji": "運びます",
     "Meaning": "chở, vận chuyển",
-    "category": "verb",
+    "category": 2,
     "Vru": "はこぶ",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -16945,7 +16945,7 @@ const vocabData = [
     "Romaji": "nakunarimasu",
     "Kanji": "亡くなります",
     "Meaning": "mất, qua đời (kính trọng của しにます)",
-    "category": "verb",
+    "category": 2,
     "Vru": "なくなる",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -16956,7 +16956,7 @@ const vocabData = [
     "Romaji": "nyuuin shimasu",
     "Kanji": "入院します",
     "Meaning": "nhập viện",
-    "category": "verb",
+    "category": 2,
     "Vru": "にゅういんする",
     "type": "Nhóm III",
     "note": "Tự động từ"
@@ -16967,7 +16967,7 @@ const vocabData = [
     "Romaji": "taiin shimasu",
     "Kanji": "退院します",
     "Meaning": "xuất viện",
-    "category": "verb",
+    "category": 2,
     "Vru": "たいいんする",
     "type": "Nhóm III",
     "note": "Tự động từ"
@@ -16978,7 +16978,7 @@ const vocabData = [
     "Romaji": "iremasu",
     "Kanji": "入れます",
     "Meaning": "bật [công tắc nguồn]",
-    "category": "verb",
+    "category": 2,
     "Vru": "いれる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -16989,7 +16989,7 @@ const vocabData = [
     "Romaji": "kirimasu",
     "Kanji": "切ります",
     "Meaning": "tắt [công tắc nguồn]",
-    "category": "verb",
+    "category": 2,
     "Vru": "きる",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -17000,7 +17000,7 @@ const vocabData = [
     "Romaji": "kakemasu",
     "Kanji": "掛けます",
     "Meaning": "khóa [chìa khóa]",
-    "category": "verb",
+    "category": 2,
     "Vru": "かける",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -17011,7 +17011,7 @@ const vocabData = [
     "Romaji": "kibun ga ii",
     "Kanji": "気持ちがいい",
     "Meaning": "dễ chịu, thư giãn",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -17022,7 +17022,7 @@ const vocabData = [
     "Romaji": "kibun ga warui",
     "Kanji": "気持ちが悪い",
     "Meaning": "khó chịu, buồn nôn",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -17033,7 +17033,7 @@ const vocabData = [
     "Romaji": "ookina",
     "Kanji": "",
     "Meaning": "～ to, ～ lớn (luôn đứng trước danh từ)",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17044,7 +17044,7 @@ const vocabData = [
     "Romaji": "chiisana",
     "Kanji": "",
     "Meaning": "～ nhỏ, ～ bé (luôn đứng trước danh từ)",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17055,7 +17055,7 @@ const vocabData = [
     "Romaji": "akachan",
     "Kanji": "赤ちゃん",
     "Meaning": "em bé",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17066,7 +17066,7 @@ const vocabData = [
     "Romaji": "shougakkou",
     "Kanji": "小学校",
     "Meaning": "trường tiểu học",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17077,7 +17077,7 @@ const vocabData = [
     "Romaji": "chuugakkou",
     "Kanji": "中学校",
     "Meaning": "trường trung học cơ sở",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17088,7 +17088,7 @@ const vocabData = [
     "Romaji": "ekimae",
     "Kanji": "駅前",
     "Meaning": "khu vực trước nhà ga",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17099,7 +17099,7 @@ const vocabData = [
     "Romaji": "kaigan",
     "Kanji": "海岸",
     "Meaning": "bờ biển",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17110,7 +17110,7 @@ const vocabData = [
     "Romaji": "uso",
     "Kanji": "",
     "Meaning": "lời nói dối, sự dối trá",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17121,7 +17121,7 @@ const vocabData = [
     "Romaji": "shorui",
     "Kanji": "書類",
     "Meaning": "giấy tờ, tài liệu",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17132,7 +17132,7 @@ const vocabData = [
     "Romaji": "dengen",
     "Kanji": "電源",
     "Meaning": "nguồn điện, công tắc nguồn",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17143,7 +17143,7 @@ const vocabData = [
     "Romaji": "～sei",
     "Kanji": "～製",
     "Meaning": "sản xuất tại ～ / làm bằng ～",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": "Hậu tố"
@@ -17154,7 +17154,7 @@ const vocabData = [
     "Romaji": "a, ikenai",
     "Kanji": "",
     "Meaning": "Ôi, hỏng mất rồi / Ôi trời ơi",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17165,7 +17165,7 @@ const vocabData = [
     "Romaji": "osaki ni",
     "Kanji": "お先に",
     "Meaning": "Tôi xin phép về trước",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17176,7 +17176,7 @@ const vocabData = [
     "Romaji": "kairan",
     "Kanji": "回覧",
     "Meaning": "tập thông báo truyền tay",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17187,7 +17187,7 @@ const vocabData = [
     "Romaji": "kenkyuushitsu",
     "Kanji": "研究室",
     "Meaning": "phòng nghiên cứu",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17198,7 +17198,7 @@ const vocabData = [
     "Romaji": "kichinto",
     "Kanji": "",
     "Meaning": "nghiêm chỉnh, hẳn hoi, ngăn nắp",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17209,7 +17209,7 @@ const vocabData = [
     "Romaji": "seiri shimasu",
     "Kanji": "整理します",
     "Meaning": "sắp xếp, chỉnh đốn",
-    "category": "verb",
+    "category": 2,
     "Vru": "せいりする",
     "type": "Nhóm III",
     "note": "Tha động từ"
@@ -17220,7 +17220,7 @@ const vocabData = [
     "Romaji": "hanko",
     "Kanji": "",
     "Meaning": "con dấu",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17231,7 +17231,7 @@ const vocabData = [
     "Romaji": "oshimasu",
     "Kanji": "押します",
     "Meaning": "đóng [dấu], ấn, đẩy",
-    "category": "verb",
+    "category": 2,
     "Vru": "おす",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -17242,7 +17242,7 @@ const vocabData = [
     "Romaji": "futago",
     "Kanji": "双子",
     "Meaning": "cặp sinh đôi",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17253,7 +17253,7 @@ const vocabData = [
     "Romaji": "shimai",
     "Kanji": "姉妹",
     "Meaning": "chị em",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17264,7 +17264,7 @@ const vocabData = [
     "Romaji": "～nensei",
     "Kanji": "～年生",
     "Meaning": "học sinh năm thứ ～",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17275,7 +17275,7 @@ const vocabData = [
     "Romaji": "nite imasu",
     "Kanji": "似ています",
     "Meaning": "giống [với ai đó]",
-    "category": "verb",
+    "category": 2,
     "Vru": "にる",
     "type": "Nhóm II",
     "note": "Tự động từ"
@@ -17286,7 +17286,7 @@ const vocabData = [
     "Romaji": "seikaku",
     "Kanji": "性格",
     "Meaning": "tính cách",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17297,7 +17297,7 @@ const vocabData = [
     "Romaji": "otonashii",
     "Kanji": "",
     "Meaning": "hiền lành, trầm tính, ngoan ngoãn",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -17308,7 +17308,7 @@ const vocabData = [
     "Romaji": "sewa wo shimasu",
     "Kanji": "世話をします",
     "Meaning": "chăm sóc, giúp đỡ",
-    "category": "verb",
+    "category": 2,
     "Vru": "する",
     "type": "Nhóm III",
     "note": "Tha động từ"
@@ -17319,7 +17319,7 @@ const vocabData = [
     "Romaji": "jikan ga tachimasu",
     "Kanji": "時間がたちます",
     "Meaning": "thời gian trôi đi",
-    "category": "verb",
+    "category": 2,
     "Vru": "たつ",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -17330,7 +17330,7 @@ const vocabData = [
     "Romaji": "daisuki",
     "Kanji": "大好き",
     "Meaning": "rất thích",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi な"
@@ -17341,7 +17341,7 @@ const vocabData = [
     "Romaji": "kurasu",
     "Kanji": "",
     "Meaning": "lớp học",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17352,7 +17352,7 @@ const vocabData = [
     "Romaji": "kenka shimasu",
     "Kanji": "",
     "Meaning": "cãi nhau, đánh nhau",
-    "category": "verb",
+    "category": 2,
     "Vru": "けんかする",
     "type": "Nhóm III",
     "note": "Tự động từ"
@@ -17363,7 +17363,7 @@ const vocabData = [
     "Romaji": "fushigi[na]",
     "Kanji": "不思議[な]",
     "Meaning": "bí ẩn, kỳ thú, lạ lùng",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi な"
@@ -17374,7 +17374,7 @@ const vocabData = [
     "Romaji": "kazoemasu",
     "Kanji": "数えます",
     "Meaning": "đếm",
-    "category": "verb",
+    "category": 2,
     "Vru": "かぞえる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -17385,7 +17385,7 @@ const vocabData = [
     "Romaji": "hakarimasu",
     "Kanji": "測ります / 量ります",
     "Meaning": "đo [chiều dài/thời gian] / cân [trọng lượng]",
-    "category": "verb",
+    "category": 2,
     "Vru": "はかる",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -17396,7 +17396,7 @@ const vocabData = [
     "Romaji": "tashikamemasu",
     "Kanji": "確かめます",
     "Meaning": "xác nhận, kiểm tra lại",
-    "category": "verb",
+    "category": 2,
     "Vru": "たしかめる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -17407,7 +17407,7 @@ const vocabData = [
     "Romaji": "aimasu",
     "Kanji": "合います",
     "Meaning": "vừa, hợp [kích thước/màu sắc]",
-    "category": "verb",
+    "category": 2,
     "Vru": "あう",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -17418,7 +17418,7 @@ const vocabData = [
     "Romaji": "shuppatsu shimasu",
     "Kanji": "出発します",
     "Meaning": "xuất phát, khởi hành",
-    "category": "verb",
+    "category": 2,
     "Vru": "しゅっぱつする",
     "type": "Nhóm III",
     "note": "Tự động từ"
@@ -17429,7 +17429,7 @@ const vocabData = [
     "Romaji": "touchaku shimasu",
     "Kanji": "到着します",
     "Meaning": "đến nơi, cập bến",
-    "category": "verb",
+    "category": 2,
     "Vru": "とうちゃくする",
     "type": "Nhóm III",
     "note": "Tự động từ"
@@ -17440,7 +17440,7 @@ const vocabData = [
     "Romaji": "yoimasu",
     "Kanji": "酔います",
     "Meaning": "say [rượu/xe]",
-    "category": "verb",
+    "category": 2,
     "Vru": "よう",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -17451,7 +17451,7 @@ const vocabData = [
     "Romaji": "kiken[na]",
     "Kanji": "危険[な]",
     "Meaning": "nguy hiểm",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi な"
@@ -17462,7 +17462,7 @@ const vocabData = [
     "Romaji": "hitsuyou[na]",
     "Kanji": "必要[な]",
     "Meaning": "cần thiết",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi な"
@@ -17473,7 +17473,7 @@ const vocabData = [
     "Romaji": "uchuu",
     "Kanji": "宇宙",
     "Meaning": "vũ trụ",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17484,7 +17484,7 @@ const vocabData = [
     "Romaji": "chikyuu",
     "Kanji": "地球",
     "Meaning": "trái đất",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17495,7 +17495,7 @@ const vocabData = [
     "Romaji": "bounenkai",
     "Kanji": "忘年会",
     "Meaning": "tiệc tất niên",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17506,7 +17506,7 @@ const vocabData = [
     "Romaji": "shinnenkai",
     "Kanji": "新年会",
     "Meaning": "tiệc tân niên",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17517,7 +17517,7 @@ const vocabData = [
     "Romaji": "nijikai",
     "Kanji": "二次会",
     "Meaning": "tăng hai (bữa tiệc thứ hai)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17528,7 +17528,7 @@ const vocabData = [
     "Romaji": "taikai",
     "Kanji": "大会",
     "Meaning": "đại hội, cuộc thi lớn",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17539,7 +17539,7 @@ const vocabData = [
     "Romaji": "marason",
     "Kanji": "",
     "Meaning": "chạy ma-ra-tông",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17550,7 +17550,7 @@ const vocabData = [
     "Romaji": "kontesuto",
     "Kanji": "",
     "Meaning": "cuộc thi (nhan sắc/năng khiếu)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17561,7 +17561,7 @@ const vocabData = [
     "Romaji": "omote",
     "Kanji": "表",
     "Meaning": "phía trước, mặt ngoài, mặt phải",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17572,7 +17572,7 @@ const vocabData = [
     "Romaji": "ura",
     "Kanji": "裏",
     "Meaning": "phía sau, mặt trong, mặt trái",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17583,7 +17583,7 @@ const vocabData = [
     "Romaji": "henji",
     "Kanji": "返事",
     "Meaning": "hồi âm, trả lời",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17594,7 +17594,7 @@ const vocabData = [
     "Romaji": "moushikomi",
     "Kanji": "申し込み",
     "Meaning": "đăng ký",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17605,7 +17605,7 @@ const vocabData = [
     "Romaji": "hontou",
     "Kanji": "本当",
     "Meaning": "thật, sự thật",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17616,7 +17616,7 @@ const vocabData = [
     "Romaji": "machigai",
     "Kanji": "",
     "Meaning": "sai, lỗi",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17627,7 +17627,7 @@ const vocabData = [
     "Romaji": "kizu",
     "Kanji": "傷",
     "Meaning": "vết thương, vết xước, vết nứt",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17638,7 +17638,7 @@ const vocabData = [
     "Romaji": "zubon",
     "Kanji": "",
     "Meaning": "cái quần dài",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17649,7 +17649,7 @@ const vocabData = [
     "Romaji": "nagasa",
     "Kanji": "長さ",
     "Meaning": "chiều dài",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17660,7 +17660,7 @@ const vocabData = [
     "Romaji": "omosa",
     "Kanji": "重さ",
     "Meaning": "cân nặng, trọng lượng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17671,7 +17671,7 @@ const vocabData = [
     "Romaji": "takasa",
     "Kanji": "高さ",
     "Meaning": "chiều cao",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17682,7 +17682,7 @@ const vocabData = [
     "Romaji": "ookisa",
     "Kanji": "大きさ",
     "Meaning": "độ lớn, kích thước",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17693,7 +17693,7 @@ const vocabData = [
     "Romaji": "～bin",
     "Kanji": "～便",
     "Meaning": "chuyến bay số ～",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": "Hậu tố"
@@ -17704,7 +17704,7 @@ const vocabData = [
     "Romaji": "～gou",
     "Kanji": "～号",
     "Meaning": "số ～ (tàu/xe)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": "Hậu tố"
@@ -17715,7 +17715,7 @@ const vocabData = [
     "Romaji": "～ko",
     "Kanji": "～個",
     "Meaning": "cái, quả, cục (đếm vật nhỏ)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": "Hậu tố"
@@ -17726,7 +17726,7 @@ const vocabData = [
     "Romaji": "～hon",
     "Kanji": "～本",
     "Meaning": "cái, chiếc (đếm vật dài)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": "Hậu tố"
@@ -17737,7 +17737,7 @@ const vocabData = [
     "Romaji": "～hai",
     "Kanji": "～杯",
     "Meaning": "cốc, chén (đếm lượng nước)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": "Hậu tố"
@@ -17748,7 +17748,7 @@ const vocabData = [
     "Romaji": "～kiro",
     "Kanji": "",
     "Meaning": "ki-lô-gam / ki-lô-mét",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": "Hậu tố"
@@ -17759,7 +17759,7 @@ const vocabData = [
     "Romaji": "～guramu",
     "Kanji": "",
     "Meaning": "gam (gram)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": "Hậu tố"
@@ -17770,7 +17770,7 @@ const vocabData = [
     "Romaji": "～senchi",
     "Kanji": "",
     "Meaning": "xăng-ti-mét",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": "Hậu tố"
@@ -17781,7 +17781,7 @@ const vocabData = [
     "Romaji": "～miri",
     "Kanji": "",
     "Meaning": "mi-li-mét",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": "Hậu tố"
@@ -17792,7 +17792,7 @@ const vocabData = [
     "Romaji": "～ijou",
     "Kanji": "～以上",
     "Meaning": "trở lên, trên ～",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17803,7 +17803,7 @@ const vocabData = [
     "Romaji": "～ika",
     "Kanji": "～以下",
     "Meaning": "trở xuống, dưới ～",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17814,7 +17814,7 @@ const vocabData = [
     "Romaji": "saa",
     "Kanji": "",
     "Meaning": "à... / ồ... (khi không rõ)",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17825,7 +17825,7 @@ const vocabData = [
     "Romaji": "dou deshou ka",
     "Kanji": "",
     "Meaning": "thế nào? (lịch sự của どうですか)",
-    "category": "phrase",
+    "category": 10,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17836,7 +17836,7 @@ const vocabData = [
     "Romaji": "kurasu",
     "Kanji": "",
     "Meaning": "lớp học",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17847,7 +17847,7 @@ const vocabData = [
     "Romaji": "tesuto",
     "Kanji": "",
     "Meaning": "bài kiểm tra",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17858,7 +17858,7 @@ const vocabData = [
     "Romaji": "seiseki",
     "Kanji": "成績",
     "Meaning": "thành tích, kết quả học tập",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17869,7 +17869,7 @@ const vocabData = [
     "Romaji": "tokorode",
     "Kanji": "",
     "Meaning": "nhân tiện (dùng khi chuyển chủ đề)",
-    "category": "conjunction",
+    "category": 8,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17880,7 +17880,7 @@ const vocabData = [
     "Romaji": "irasshaimasu",
     "Kanji": "",
     "Meaning": "đến (kính ngữ của きます)",
-    "category": "verb",
+    "category": 2,
     "Vru": "くる",
     "type": "Nhóm III",
     "note": "Tự động từ"
@@ -17891,7 +17891,7 @@ const vocabData = [
     "Romaji": "yousu",
     "Kanji": "様子",
     "Meaning": "vẻ ngoài, tình hình",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17902,7 +17902,7 @@ const vocabData = [
     "Romaji": "jiken",
     "Kanji": "事件",
     "Meaning": "vụ án, sự cố",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17913,7 +17913,7 @@ const vocabData = [
     "Romaji": "o-tobai",
     "Kanji": "",
     "Meaning": "xe máy",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17924,7 +17924,7 @@ const vocabData = [
     "Romaji": "bakudan",
     "Kanji": "爆弾",
     "Meaning": "bom, thuốc nổ",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17935,7 +17935,7 @@ const vocabData = [
     "Romaji": "tsumimasu",
     "Kanji": "積みます",
     "Meaning": "xếp hàng lên, chất lên",
-    "category": "verb",
+    "category": 2,
     "Vru": "つむ",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -17946,7 +17946,7 @@ const vocabData = [
     "Romaji": "untenshu",
     "Kanji": "運転手",
     "Meaning": "lái xe, tài xế",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17957,7 +17957,7 @@ const vocabData = [
     "Romaji": "hanareta",
     "Kanji": "離れた",
     "Meaning": "xa cách, cách xa",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17968,7 +17968,7 @@ const vocabData = [
     "Romaji": "ga",
     "Kanji": "",
     "Meaning": "nhưng",
-    "category": "particle",
+    "category": 3,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17979,7 +17979,7 @@ const vocabData = [
     "Romaji": "kyuu ni",
     "Kanji": "急に",
     "Meaning": "gấp, đột nhiên",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -17990,7 +17990,7 @@ const vocabData = [
     "Romaji": "ugokashimasu",
     "Kanji": "動かします",
     "Meaning": "khởi động, làm cho chuyển động",
-    "category": "verb",
+    "category": 2,
     "Vru": "うごかす",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -18001,7 +18001,7 @@ const vocabData = [
     "Romaji": "isshoukenmei",
     "Kanji": "一生懸命",
     "Meaning": "hết sức, chăm chỉ",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18012,7 +18012,7 @@ const vocabData = [
     "Romaji": "itadakimasu",
     "Kanji": "",
     "Meaning": "nhận (kính ngữ của もらいます)",
-    "category": "verb",
+    "category": 2,
     "Vru": "いただく",
     "type": "Nhóm I",
     "note": "Khiêm nhường ngữ"
@@ -18023,7 +18023,7 @@ const vocabData = [
     "Romaji": "kudasaimasu",
     "Kanji": "",
     "Meaning": "cho, tặng (kính ngữ của くれます)",
-    "category": "verb",
+    "category": 2,
     "Vru": "くださる",
     "type": "Nhóm I",
     "note": "Tôn kính ngữ"
@@ -18034,7 +18034,7 @@ const vocabData = [
     "Romaji": "yarimasu",
     "Kanji": "",
     "Meaning": "cho (dùng cho cấp dưới, động vật, cây cỏ)",
-    "category": "verb",
+    "category": 2,
     "Vru": "やる",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -18045,7 +18045,7 @@ const vocabData = [
     "Romaji": "yobimasu",
     "Kanji": "呼びます",
     "Meaning": "mời, gọi",
-    "category": "verb",
+    "category": 2,
     "Vru": "よぶ",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -18056,7 +18056,7 @@ const vocabData = [
     "Romaji": "torikaemasu",
     "Kanji": "取り替えます",
     "Meaning": "đổi, thay",
-    "category": "verb",
+    "category": 2,
     "Vru": "とりかえる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -18067,7 +18067,7 @@ const vocabData = [
     "Romaji": "shinsetsu ni shimasu",
     "Kanji": "親切にします",
     "Meaning": "đối xử thân thiện, tử tế",
-    "category": "verb",
+    "category": 2,
     "Vru": "する",
     "type": "Nhóm III",
     "note": "Tự động từ"
@@ -18078,7 +18078,7 @@ const vocabData = [
     "Romaji": "kawaii",
     "Kanji": "",
     "Meaning": "dễ thương, đáng yêu",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -18089,7 +18089,7 @@ const vocabData = [
     "Romaji": "oiwai",
     "Kanji": "お祝い",
     "Meaning": "quà mừng, việc chúc mừng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18100,7 +18100,7 @@ const vocabData = [
     "Romaji": "otoshidama",
     "Kanji": "お年玉",
     "Meaning": "tiền mừng tuổi (lì xì)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18111,7 +18111,7 @@ const vocabData = [
     "Romaji": "omimai",
     "Kanji": "お見舞い",
     "Meaning": "thăm người ốm",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18122,7 +18122,7 @@ const vocabData = [
     "Romaji": "kyoumi",
     "Kanji": "興味",
     "Meaning": "hứng thú, quan tâm",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18133,7 +18133,7 @@ const vocabData = [
     "Romaji": "jouhou",
     "Kanji": "情報",
     "Meaning": "thông tin",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18144,7 +18144,7 @@ const vocabData = [
     "Romaji": "bunpou",
     "Kanji": "文法",
     "Meaning": "ngữ pháp",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18155,7 +18155,7 @@ const vocabData = [
     "Romaji": "hatsuon",
     "Kanji": "発音",
     "Meaning": "phát âm",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18166,7 +18166,7 @@ const vocabData = [
     "Romaji": "saru",
     "Kanji": "猿",
     "Meaning": "con khỉ",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18177,7 +18177,7 @@ const vocabData = [
     "Romaji": "esa",
     "Kanji": "",
     "Meaning": "mồi, thức ăn cho động vật",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18188,7 +18188,7 @@ const vocabData = [
     "Romaji": "omocha",
     "Kanji": "",
     "Meaning": "đồ chơi",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18199,7 +18199,7 @@ const vocabData = [
     "Romaji": "ehon",
     "Kanji": "絵本",
     "Meaning": "truyện tranh (cho thiếu nhi), sách tranh",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18210,7 +18210,7 @@ const vocabData = [
     "Romaji": "ehagaki",
     "Kanji": "絵はがき",
     "Meaning": "bưu ảnh",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18221,7 +18221,7 @@ const vocabData = [
     "Romaji": "doraiba-",
     "Kanji": "",
     "Meaning": "tua-vít",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18232,7 +18232,7 @@ const vocabData = [
     "Romaji": "hankachi",
     "Kanji": "",
     "Meaning": "khăn tay",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18243,7 +18243,7 @@ const vocabData = [
     "Romaji": "kutsushita",
     "Kanji": "靴下",
     "Meaning": "tất, vớ",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18254,7 +18254,7 @@ const vocabData = [
     "Romaji": "tebukuro",
     "Kanji": "手袋",
     "Meaning": "găng tay",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18265,7 +18265,7 @@ const vocabData = [
     "Romaji": "yubiwa",
     "Kanji": "指輪",
     "Meaning": "nhẫn (đeo tay)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18276,7 +18276,7 @@ const vocabData = [
     "Romaji": "baggu",
     "Kanji": "",
     "Meaning": "túi xách",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18287,7 +18287,7 @@ const vocabData = [
     "Romaji": "sofu",
     "Kanji": "祖父",
     "Meaning": "ông (của mình)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18298,7 +18298,7 @@ const vocabData = [
     "Romaji": "sobo",
     "Kanji": "祖母",
     "Meaning": "bà (của mình)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18309,7 +18309,7 @@ const vocabData = [
     "Romaji": "mago",
     "Kanji": "孫",
     "Meaning": "cháu (nội/ngoại)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18320,7 +18320,7 @@ const vocabData = [
     "Romaji": "oji",
     "Kanji": "",
     "Meaning": "chú, bác, cậu (của mình)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18331,7 +18331,7 @@ const vocabData = [
     "Romaji": "ojisan",
     "Kanji": "",
     "Meaning": "chú, bác (của người khác / gọi người lạ)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18342,7 +18342,7 @@ const vocabData = [
     "Romaji": "oba",
     "Kanji": "",
     "Meaning": "cô, dì (của mình)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18353,7 +18353,7 @@ const vocabData = [
     "Romaji": "obasan",
     "Kanji": "",
     "Meaning": "cô, dì (của người khác / gọi người lạ)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18364,7 +18364,7 @@ const vocabData = [
     "Romaji": "ototoshi",
     "Kanji": "",
     "Meaning": "năm kia",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18375,7 +18375,7 @@ const vocabData = [
     "Romaji": "haa",
     "Kanji": "",
     "Meaning": "vâng (cách trả lời lịch sự hơn はい)",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18386,7 +18386,7 @@ const vocabData = [
     "Romaji": "moushiwake arimasen",
     "Kanji": "申し訳ありません",
     "Meaning": "Xin lỗi (rất lịch sự)",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18397,7 +18397,7 @@ const vocabData = [
     "Romaji": "azukarimasu",
     "Kanji": "預かります",
     "Meaning": "giữ giùm, trông nom, thu nhận",
-    "category": "verb",
+    "category": 2,
     "Vru": "あずかる",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -18408,7 +18408,7 @@ const vocabData = [
     "Romaji": "senjitsu",
     "Kanji": "先日",
     "Meaning": "hôm nọ, mấy ngày trước",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18419,7 +18419,7 @@ const vocabData = [
     "Romaji": "tasukarimasu",
     "Kanji": "助かります",
     "Meaning": "may quá, giúp ích được nhiều",
-    "category": "verb",
+    "category": 2,
     "Vru": "たすかる",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -18430,7 +18430,7 @@ const vocabData = [
     "Romaji": "mukashibanashi",
     "Kanji": "昔話",
     "Meaning": "chuyện cổ tích",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18441,7 +18441,7 @@ const vocabData = [
     "Romaji": "aru～",
     "Kanji": "",
     "Meaning": "có một ～ (nào đó)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18452,7 +18452,7 @@ const vocabData = [
     "Romaji": "otoko",
     "Kanji": "男",
     "Meaning": "đàn ông, nam giới",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18463,7 +18463,7 @@ const vocabData = [
     "Romaji": "kodomotachi",
     "Kanji": "子どもたち",
     "Meaning": "trẻ con",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18474,7 +18474,7 @@ const vocabData = [
     "Romaji": "ijimemasu",
     "Kanji": "",
     "Meaning": "bắt nạt, trêu chọc",
-    "category": "verb",
+    "category": 2,
     "Vru": "いじめる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -18485,7 +18485,7 @@ const vocabData = [
     "Romaji": "kame",
     "Kanji": "亀",
     "Meaning": "con rùa",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18496,7 +18496,7 @@ const vocabData = [
     "Romaji": "tasukemasu",
     "Kanji": "助けます",
     "Meaning": "cứu, giúp đỡ",
-    "category": "verb",
+    "category": 2,
     "Vru": "たすける",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -18507,7 +18507,7 @@ const vocabData = [
     "Romaji": "oshiro",
     "Kanji": "お城",
     "Meaning": "tòa thành, lâu đài",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18518,7 +18518,7 @@ const vocabData = [
     "Romaji": "ohimesama",
     "Kanji": "お姫様",
     "Meaning": "công chúa",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18529,7 +18529,7 @@ const vocabData = [
     "Romaji": "tanoshiku",
     "Kanji": "楽しく",
     "Meaning": "vui vẻ (trạng từ)",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18540,7 +18540,7 @@ const vocabData = [
     "Romaji": "kurashimasu",
     "Kanji": "暮らします",
     "Meaning": "sinh sống, sống qua ngày",
-    "category": "verb",
+    "category": 2,
     "Vru": "くらす",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -18551,7 +18551,7 @@ const vocabData = [
     "Romaji": "riku",
     "Kanji": "陸",
     "Meaning": "đất liền, lục địa",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18562,7 +18562,7 @@ const vocabData = [
     "Romaji": "suruto",
     "Kanji": "",
     "Meaning": "thế rồi, ngay sau đó",
-    "category": "conjunction",
+    "category": 8,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18573,7 +18573,7 @@ const vocabData = [
     "Romaji": "kemuri",
     "Kanji": "煙",
     "Meaning": "khói",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18584,7 +18584,7 @@ const vocabData = [
     "Romaji": "masshiro[na]",
     "Kanji": "真っ白[な]",
     "Meaning": "trắng xóa",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi な"
@@ -18595,7 +18595,7 @@ const vocabData = [
     "Romaji": "nakami",
     "Kanji": "中身",
     "Meaning": "nội dung, bên trong (vật chứa)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18606,7 +18606,7 @@ const vocabData = [
     "Romaji": "tsutsumimasu",
     "Kanji": "包みます",
     "Meaning": "bọc, gói",
-    "category": "verb",
+    "category": 2,
     "Vru": "つつむ",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -18617,7 +18617,7 @@ const vocabData = [
     "Romaji": "wakashimasu",
     "Kanji": "沸かします",
     "Meaning": "đun sôi",
-    "category": "verb",
+    "category": 2,
     "Vru": "わかす",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -18628,7 +18628,7 @@ const vocabData = [
     "Romaji": "mazemasu",
     "Kanji": "混ぜます",
     "Meaning": "trộn, khuấy",
-    "category": "verb",
+    "category": 2,
     "Vru": "まぜる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -18639,7 +18639,7 @@ const vocabData = [
     "Romaji": "keisan shimasu",
     "Kanji": "計算します",
     "Meaning": "tính toán",
-    "category": "verb",
+    "category": 2,
     "Vru": "けいさんする",
     "type": "Nhóm III",
     "note": "Tha động từ"
@@ -18650,7 +18650,7 @@ const vocabData = [
     "Romaji": "atsui",
     "Kanji": "厚い",
     "Meaning": "dày",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -18661,7 +18661,7 @@ const vocabData = [
     "Romaji": "usui",
     "Kanji": "薄い",
     "Meaning": "mỏng",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -18672,7 +18672,7 @@ const vocabData = [
     "Romaji": "bengoshi",
     "Kanji": "弁護士",
     "Meaning": "luật sư",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18683,7 +18683,7 @@ const vocabData = [
     "Romaji": "ongakuka",
     "Kanji": "音楽家",
     "Meaning": "nhạc sĩ",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18694,7 +18694,7 @@ const vocabData = [
     "Romaji": "kodomotachi",
     "Kanji": "子どもたち",
     "Meaning": "trẻ em, bọn trẻ",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18705,7 +18705,7 @@ const vocabData = [
     "Romaji": "futari",
     "Kanji": "二人",
     "Meaning": "hai người",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18716,7 +18716,7 @@ const vocabData = [
     "Romaji": "kyouiku",
     "Kanji": "教育",
     "Meaning": "giáo dục",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18727,7 +18727,7 @@ const vocabData = [
     "Romaji": "rekishi",
     "Kanji": "歴史",
     "Meaning": "lịch sử",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18738,7 +18738,7 @@ const vocabData = [
     "Romaji": "bunka",
     "Kanji": "文化",
     "Meaning": "văn hóa",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18749,7 +18749,7 @@ const vocabData = [
     "Romaji": "shakai",
     "Kanji": "社会",
     "Meaning": "xã hội",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18760,7 +18760,7 @@ const vocabData = [
     "Romaji": "houritsu",
     "Kanji": "法律",
     "Meaning": "pháp luật",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18771,7 +18771,7 @@ const vocabData = [
     "Romaji": "sensou",
     "Kanji": "戦争",
     "Meaning": "chiến tranh",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18782,7 +18782,7 @@ const vocabData = [
     "Romaji": "heiwa",
     "Kanji": "平和",
     "Meaning": "hòa bình",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18793,7 +18793,7 @@ const vocabData = [
     "Romaji": "mokuteki",
     "Kanji": "目的",
     "Meaning": "mục đích",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18804,7 +18804,7 @@ const vocabData = [
     "Romaji": "anzen",
     "Kanji": "安全",
     "Meaning": "an toàn",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18815,7 +18815,7 @@ const vocabData = [
     "Romaji": "ronbun",
     "Kanji": "論文",
     "Meaning": "luận văn, bài báo khoa học",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18826,7 +18826,7 @@ const vocabData = [
     "Romaji": "kankei",
     "Kanji": "関係",
     "Meaning": "quan hệ",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18837,7 +18837,7 @@ const vocabData = [
     "Romaji": "mikisa-",
     "Kanji": "",
     "Meaning": "máy trộn, máy xay sinh tố",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18848,7 +18848,7 @@ const vocabData = [
     "Romaji": "yakan",
     "Kanji": "",
     "Meaning": "ấm đun nước",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18859,7 +18859,7 @@ const vocabData = [
     "Romaji": "sennuki",
     "Kanji": "栓抜き",
     "Meaning": "cái mở nút chai",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18870,7 +18870,7 @@ const vocabData = [
     "Romaji": "kankiri",
     "Kanji": "缶切り",
     "Meaning": "đồ mở đồ hộp",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18881,7 +18881,7 @@ const vocabData = [
     "Romaji": "kanzume",
     "Kanji": "缶詰",
     "Meaning": "đồ hộp",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18892,7 +18892,7 @@ const vocabData = [
     "Romaji": "furoshiki",
     "Kanji": "",
     "Meaning": "khăn vải gói đồ (truyền thống Nhật)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18903,7 +18903,7 @@ const vocabData = [
     "Romaji": "soroban",
     "Kanji": "",
     "Meaning": "bàn tính",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18914,7 +18914,7 @@ const vocabData = [
     "Romaji": "taionkei",
     "Kanji": "体温計",
     "Meaning": "cặp nhiệt độ",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18925,7 +18925,7 @@ const vocabData = [
     "Romaji": "zairyou",
     "Kanji": "材料",
     "Meaning": "nguyên liệu, vật liệu",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18936,7 +18936,7 @@ const vocabData = [
     "Romaji": "ishi",
     "Kanji": "石",
     "Meaning": "đá, sỏi",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18947,7 +18947,7 @@ const vocabData = [
     "Romaji": "piramiddo",
     "Kanji": "",
     "Meaning": "kim tự tháp",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18958,7 +18958,7 @@ const vocabData = [
     "Romaji": "de-ta",
     "Kanji": "",
     "Meaning": "dữ liệu",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18969,7 +18969,7 @@ const vocabData = [
     "Romaji": "fairu",
     "Kanji": "",
     "Meaning": "tập tin, bìa hồ sơ",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18980,7 +18980,7 @@ const vocabData = [
     "Romaji": "aru～",
     "Kanji": "",
     "Meaning": "có một ～ (nào đó / nọ)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -18991,7 +18991,7 @@ const vocabData = [
     "Romaji": "isshoukenmei",
     "Kanji": "一生懸命",
     "Meaning": "hết sức, chăm chỉ",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19002,7 +19002,7 @@ const vocabData = [
     "Romaji": "naze",
     "Kanji": "",
     "Meaning": "tại sao (lịch sự hơn なぜ)",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19013,7 +19013,7 @@ const vocabData = [
     "Romaji": "kokuren",
     "Kanji": "国連",
     "Meaning": "Liên Hiệp Quốc (viết tắt)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19024,7 +19024,7 @@ const vocabData = [
     "Romaji": "kokusai rengou",
     "Kanji": "国際連合",
     "Meaning": "Liên Hiệp Quốc (tên đầy đủ)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19035,7 +19035,7 @@ const vocabData = [
     "Romaji": "po-rando",
     "Kanji": "",
     "Meaning": "Ba Lan",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19046,7 +19046,7 @@ const vocabData = [
     "Romaji": "ro-n",
     "Kanji": "",
     "Meaning": "khoản vay, trả góp",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19057,7 +19057,7 @@ const vocabData = [
     "Romaji": "setto",
     "Kanji": "",
     "Meaning": "bộ, set",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19068,7 +19068,7 @@ const vocabData = [
     "Romaji": "ato wa",
     "Kanji": "",
     "Meaning": "còn lại thì...",
-    "category": "phrase",
+    "category": 10,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19079,7 +19079,7 @@ const vocabData = [
     "Romaji": "kappu ra-men",
     "Kanji": "",
     "Meaning": "mì ly",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19090,7 +19090,7 @@ const vocabData = [
     "Romaji": "insutanto ra-men",
     "Kanji": "",
     "Meaning": "mì ăn liền",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19101,7 +19101,7 @@ const vocabData = [
     "Romaji": "nabe",
     "Kanji": "",
     "Meaning": "cái nồi",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19112,7 +19112,7 @@ const vocabData = [
     "Romaji": "donburi",
     "Kanji": "",
     "Meaning": "bát ô tô lớn",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19123,7 +19123,7 @@ const vocabData = [
     "Romaji": "shokuhin",
     "Kanji": "食品",
     "Meaning": "thực phẩm",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19134,7 +19134,7 @@ const vocabData = [
     "Romaji": "chousa",
     "Kanji": "調査",
     "Meaning": "điều tra, khảo sát",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19145,7 +19145,7 @@ const vocabData = [
     "Romaji": "kappu",
     "Kanji": "",
     "Meaning": "tách, chén, cúp",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19156,7 +19156,7 @@ const vocabData = [
     "Romaji": "mata",
     "Kanji": "",
     "Meaning": "hơn nữa, ngoài ra, lại",
-    "category": "conjunction",
+    "category": 8,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19167,7 +19167,7 @@ const vocabData = [
     "Romaji": "～no kawari ni",
     "Kanji": "～の代わりに",
     "Meaning": "thay cho ～",
-    "category": "phrase",
+    "category": 10,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19178,7 +19178,7 @@ const vocabData = [
     "Romaji": "doko de demo",
     "Kanji": "",
     "Meaning": "bất cứ nơi nào",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19189,7 +19189,7 @@ const vocabData = [
     "Romaji": "ima de wa",
     "Kanji": "今では",
     "Meaning": "hiện nay, bây giờ (so với trước kia)",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19200,7 +19200,7 @@ const vocabData = [
     "Romaji": "fuemasu",
     "Kanji": "増えます",
     "Meaning": "tăng, tăng lên [xuất khẩu]",
-    "category": "verb",
+    "category": 2,
     "Vru": "ふえる",
     "type": "Nhóm II",
     "note": "Tự động từ"
@@ -19211,7 +19211,7 @@ const vocabData = [
     "Romaji": "herimasu",
     "Kanji": "減ります",
     "Meaning": "giảm, giảm xuống [xuất khẩu]",
-    "category": "verb",
+    "category": 2,
     "Vru": "へる",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -19222,7 +19222,7 @@ const vocabData = [
     "Romaji": "agarimasu",
     "Kanji": "上がります",
     "Meaning": "tăng, tăng lên [giá cả]",
-    "category": "verb",
+    "category": 2,
     "Vru": "あがる",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -19233,7 +19233,7 @@ const vocabData = [
     "Romaji": "sagarimasu",
     "Kanji": "下がります",
     "Meaning": "giảm, giảm xuống [giá cả]",
-    "category": "verb",
+    "category": 2,
     "Vru": "さがる",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -19244,7 +19244,7 @@ const vocabData = [
     "Romaji": "kiremasu",
     "Kanji": "切れます",
     "Meaning": "đứt [sợi dây]",
-    "category": "verb",
+    "category": 2,
     "Vru": "きれる",
     "type": "Nhóm II",
     "note": "Tự động từ"
@@ -19255,7 +19255,7 @@ const vocabData = [
     "Romaji": "toremasu",
     "Kanji": "",
     "Meaning": "tuột [cái cúc]",
-    "category": "verb",
+    "category": 2,
     "Vru": "とれる",
     "type": "Nhóm II",
     "note": "Tự động từ"
@@ -19266,7 +19266,7 @@ const vocabData = [
     "Romaji": "ochimasu",
     "Kanji": "落ちます",
     "Meaning": "rơi, ngã [hành lý]",
-    "category": "verb",
+    "category": 2,
     "Vru": "おちる",
     "type": "Nhóm II",
     "note": "Tự động từ"
@@ -19277,7 +19277,7 @@ const vocabData = [
     "Romaji": "nakunarimasu",
     "Kanji": "",
     "Meaning": "mất, hết [xăng]",
-    "category": "verb",
+    "category": 2,
     "Vru": "なくなる",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -19288,7 +19288,7 @@ const vocabData = [
     "Romaji": "joubu[na]",
     "Kanji": "丈夫[な]",
     "Meaning": "chắc, bền, khỏe mạnh",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi な"
@@ -19299,7 +19299,7 @@ const vocabData = [
     "Romaji": "hen[na]",
     "Kanji": "変[な]",
     "Meaning": "lạ, kì quặc",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi な"
@@ -19310,7 +19310,7 @@ const vocabData = [
     "Romaji": "shiawase[na]",
     "Kanji": "幸せ[な]",
     "Meaning": "hạnh phúc",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi な"
@@ -19321,7 +19321,7 @@ const vocabData = [
     "Romaji": "umai",
     "Kanji": "",
     "Meaning": "ngon (cách nói thân mật hơn oishii), giỏi",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -19332,7 +19332,7 @@ const vocabData = [
     "Romaji": "mazui",
     "Kanji": "",
     "Meaning": "dở, không ngon",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -19343,7 +19343,7 @@ const vocabData = [
     "Romaji": "tsumaranai",
     "Kanji": "",
     "Meaning": "buồn tẻ, không thú vị",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -19354,7 +19354,7 @@ const vocabData = [
     "Romaji": "gasorin",
     "Kanji": "",
     "Meaning": "xăng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19365,7 +19365,7 @@ const vocabData = [
     "Romaji": "hi",
     "Kanji": "火",
     "Meaning": "lửa",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19376,7 +19376,7 @@ const vocabData = [
     "Romaji": "danbou",
     "Kanji": "暖房",
     "Meaning": "thiết bị làm ấm, lò sưởi",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19387,7 +19387,7 @@ const vocabData = [
     "Romaji": "reibou",
     "Kanji": "冷房",
     "Meaning": "thiết bị làm mát, máy lạnh",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19398,7 +19398,7 @@ const vocabData = [
     "Romaji": "sensu",
     "Kanji": "",
     "Meaning": "có khiếu [thời trang/âm nhạc], gu",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19409,7 +19409,7 @@ const vocabData = [
     "Romaji": "ima ni mo",
     "Kanji": "今にも",
     "Meaning": "(có vẻ sắp) ～ đến nơi rồi",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19420,7 +19420,7 @@ const vocabData = [
     "Romaji": "waa",
     "Kanji": "",
     "Meaning": "Ôi! / Chà! (biểu thị sự ngạc nhiên)",
-    "category": "interjection",
+    "category": 7,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19431,7 +19431,7 @@ const vocabData = [
     "Romaji": "kaiin",
     "Kanji": "会員",
     "Meaning": "thành viên, hội viên",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19442,7 +19442,7 @@ const vocabData = [
     "Romaji": "tekitou[na]",
     "Kanji": "適当[な]",
     "Meaning": "thích hợp, vừa phải",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi な"
@@ -19453,7 +19453,7 @@ const vocabData = [
     "Romaji": "nenrei",
     "Kanji": "年齢",
     "Meaning": "tuổi tác",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19464,7 +19464,7 @@ const vocabData = [
     "Romaji": "shuunyuu",
     "Kanji": "収入",
     "Meaning": "thu nhập",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19475,7 +19475,7 @@ const vocabData = [
     "Romaji": "pittari",
     "Kanji": "",
     "Meaning": "vừa vặn, đúng khít",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19486,7 +19486,7 @@ const vocabData = [
     "Romaji": "sono ue",
     "Kanji": "",
     "Meaning": "thêm vào đó, hơn thế nữa",
-    "category": "conjunction",
+    "category": 8,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19497,7 +19497,7 @@ const vocabData = [
     "Romaji": "～to iimasu",
     "Kanji": "～と言います",
     "Meaning": "tên là ～ / được gọi là ～",
-    "category": "phrase",
+    "category": 10,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19508,7 +19508,7 @@ const vocabData = [
     "Romaji": "bara",
     "Kanji": "",
     "Meaning": "hoa hồng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19519,7 +19519,7 @@ const vocabData = [
     "Romaji": "doraibu",
     "Kanji": "",
     "Meaning": "lái xe đi chơi (dã ngoại)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19530,7 +19530,7 @@ const vocabData = [
     "Romaji": "nakimasu",
     "Kanji": "泣きます",
     "Meaning": "khóc",
-    "category": "verb",
+    "category": 2,
     "Vru": "なく",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -19541,7 +19541,7 @@ const vocabData = [
     "Romaji": "waraimasu",
     "Kanji": "笑います",
     "Meaning": "cười",
-    "category": "verb",
+    "category": 2,
     "Vru": "わらう",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -19552,7 +19552,7 @@ const vocabData = [
     "Romaji": "kawakimasu",
     "Kanji": "乾きます",
     "Meaning": "khô",
-    "category": "verb",
+    "category": 2,
     "Vru": "かわく",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -19563,7 +19563,7 @@ const vocabData = [
     "Romaji": "nuremasu",
     "Kanji": "",
     "Meaning": "ướt",
-    "category": "verb",
+    "category": 2,
     "Vru": "ぬれる",
     "type": "Nhóm II",
     "note": "Tự động từ"
@@ -19574,7 +19574,7 @@ const vocabData = [
     "Romaji": "suberimasu",
     "Kanji": "滑ります",
     "Meaning": "trượt chân, trượt",
-    "category": "verb",
+    "category": 2,
     "Vru": "すべる",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -19585,7 +19585,7 @@ const vocabData = [
     "Romaji": "okimasu",
     "Kanji": "起きます",
     "Meaning": "xảy ra [tai nạn]",
-    "category": "verb",
+    "category": 2,
     "Vru": "おきる",
     "type": "Nhóm II",
     "note": "Tự động từ"
@@ -19596,7 +19596,7 @@ const vocabData = [
     "Romaji": "chousetsu shimasu",
     "Kanji": "調節します",
     "Meaning": "điều chỉnh",
-    "category": "verb",
+    "category": 2,
     "Vru": "ちょうせつする",
     "type": "Nhóm III",
     "note": "Tha động từ"
@@ -19607,7 +19607,7 @@ const vocabData = [
     "Romaji": "anzen[na]",
     "Kanji": "安全[な]",
     "Meaning": "an toàn",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi な"
@@ -19618,7 +19618,7 @@ const vocabData = [
     "Romaji": "teinei[na]",
     "Kanji": "丁寧[な]",
     "Meaning": "lịch sự, cẩn thận",
-    "category": "adjective",
+    "category": 5,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi な"
@@ -19629,7 +19629,7 @@ const vocabData = [
     "Romaji": "komakai",
     "Kanji": "細かい",
     "Meaning": "nhỏ, chi tiết, lẻ (tiền)",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -19640,7 +19640,7 @@ const vocabData = [
     "Romaji": "koi",
     "Kanji": "濃い",
     "Meaning": "đậm, nồng (vị/màu)",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -19651,7 +19651,7 @@ const vocabData = [
     "Romaji": "usui",
     "Kanji": "薄い",
     "Meaning": "nhạt, mỏng",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -19662,7 +19662,7 @@ const vocabData = [
     "Romaji": "kuuki",
     "Kanji": "空気",
     "Meaning": "không khí",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19673,7 +19673,7 @@ const vocabData = [
     "Romaji": "namida",
     "Kanji": "涙",
     "Meaning": "nước mắt",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19684,7 +19684,7 @@ const vocabData = [
     "Romaji": "washoku",
     "Kanji": "和食",
     "Meaning": "món ăn Nhật",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19695,7 +19695,7 @@ const vocabData = [
     "Romaji": "youshoku",
     "Kanji": "洋食",
     "Meaning": "món ăn Tây",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19706,7 +19706,7 @@ const vocabData = [
     "Romaji": "okazu",
     "Kanji": "",
     "Meaning": "thức ăn (dùng với cơm)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19717,7 +19717,7 @@ const vocabData = [
     "Romaji": "ryou",
     "Kanji": "量",
     "Meaning": "lượng, số lượng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19728,7 +19728,7 @@ const vocabData = [
     "Romaji": "～bai",
     "Kanji": "～倍",
     "Meaning": "gấp ～ lần",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": "Hậu tố"
@@ -19739,7 +19739,7 @@ const vocabData = [
     "Romaji": "hanbun",
     "Kanji": "半分",
     "Meaning": "một nửa",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19750,7 +19750,7 @@ const vocabData = [
     "Romaji": "shinguru",
     "Kanji": "",
     "Meaning": "phòng đơn (khách sạn)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19761,7 +19761,7 @@ const vocabData = [
     "Romaji": "tsuin",
     "Kanji": "",
     "Meaning": "phòng đôi (2 giường đơn)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19772,7 +19772,7 @@ const vocabData = [
     "Romaji": "tansu",
     "Kanji": "",
     "Meaning": "tủ quần áo",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19783,7 +19783,7 @@ const vocabData = [
     "Romaji": "sentakumono",
     "Kanji": "洗濯物",
     "Meaning": "đồ giặt",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19794,7 +19794,7 @@ const vocabData = [
     "Romaji": "riyuu",
     "Kanji": "理由",
     "Meaning": "lý do",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19805,7 +19805,7 @@ const vocabData = [
     "Romaji": "dou nasaimasu ka",
     "Kanji": "",
     "Meaning": "ông/bà muốn làm gì? (kính ngữ của どうしますか)",
-    "category": "phrase",
+    "category": 10,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19816,7 +19816,7 @@ const vocabData = [
     "Romaji": "katto",
     "Kanji": "",
     "Meaning": "cắt tóc",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19827,7 +19827,7 @@ const vocabData = [
     "Romaji": "shanpu-",
     "Kanji": "",
     "Meaning": "gội đầu (xà bông gội đầu)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19838,7 +19838,7 @@ const vocabData = [
     "Romaji": "douiu fuu ni nasaimasu ka",
     "Kanji": "",
     "Meaning": "ông/bà muốn làm như thế nào?",
-    "category": "phrase",
+    "category": 10,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19849,7 +19849,7 @@ const vocabData = [
     "Romaji": "sho-to",
     "Kanji": "",
     "Meaning": "kiểu tóc ngắn",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19860,7 +19860,7 @@ const vocabData = [
     "Romaji": "～mitai ni shite kudasai",
     "Kanji": "",
     "Meaning": "hãy làm giống như ～",
-    "category": "phrase",
+    "category": 10,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19871,7 +19871,7 @@ const vocabData = [
     "Romaji": "kore de yoroshii deshou ka",
     "Kanji": "",
     "Meaning": "thế này đã được chưa ạ? (lịch sự)",
-    "category": "phrase",
+    "category": 10,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19882,7 +19882,7 @@ const vocabData = [
     "Romaji": "otsukaresama deshita",
     "Kanji": "",
     "Meaning": "cảm ơn ông/bà (sau khi xong việc)",
-    "category": "phrase",
+    "category": 10,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19893,7 +19893,7 @@ const vocabData = [
     "Romaji": "iyagarimasu",
     "Kanji": "嫌がります",
     "Meaning": "ghét, không thích (dùng cho ngôi thứ 3)",
-    "category": "verb",
+    "category": 2,
     "Vru": "いやがる",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -19904,7 +19904,7 @@ const vocabData = [
     "Romaji": "mata",
     "Kanji": "",
     "Meaning": "và, thêm nữa",
-    "category": "conjunction",
+    "category": 8,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19915,7 +19915,7 @@ const vocabData = [
     "Romaji": "junjo",
     "Kanji": "順序",
     "Meaning": "thứ tự",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19926,7 +19926,7 @@ const vocabData = [
     "Romaji": "hyougen",
     "Kanji": "表現",
     "Meaning": "cách nói, biểu hiện",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19937,7 +19937,7 @@ const vocabData = [
     "Romaji": "tatoeba",
     "Kanji": "例えば",
     "Meaning": "ví dụ",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19948,7 +19948,7 @@ const vocabData = [
     "Romaji": "wakaremasu",
     "Kanji": "別れます",
     "Meaning": "chia tay, chia cách",
-    "category": "verb",
+    "category": 2,
     "Vru": "わかれる",
     "type": "Nhóm II",
     "note": "Tự động từ"
@@ -19959,7 +19959,7 @@ const vocabData = [
     "Romaji": "korera",
     "Kanji": "",
     "Meaning": "những cái này",
-    "category": "pronoun",
+    "category": 9,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19970,7 +19970,7 @@ const vocabData = [
     "Romaji": "engi ga warui",
     "Kanji": "縁起が悪い",
     "Meaning": "điềm xấu, không lành",
-    "category": "phrase",
+    "category": 10,
     "Vru": "",
     "type": "",
     "note": ""
@@ -19981,7 +19981,7 @@ const vocabData = [
     "Romaji": "ayamarimasu",
     "Kanji": "謝ります",
     "Meaning": "xin lỗi, tạ lỗi",
-    "category": "verb",
+    "category": 2,
     "Vru": "あやまる",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -19992,7 +19992,7 @@ const vocabData = [
     "Romaji": "aimasu",
     "Kanji": "",
     "Meaning": "gặp [tai nạn]",
-    "category": "verb",
+    "category": 2,
     "Vru": "あう",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -20003,7 +20003,7 @@ const vocabData = [
     "Romaji": "shinjimasu",
     "Kanji": "信じます",
     "Meaning": "tin, tin tưởng",
-    "category": "verb",
+    "category": 2,
     "Vru": "しんじる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -20014,7 +20014,7 @@ const vocabData = [
     "Romaji": "youi shimasu",
     "Kanji": "用意します",
     "Meaning": "chuẩn bị",
-    "category": "verb",
+    "category": 2,
     "Vru": "よういする",
     "type": "Nhóm III",
     "note": "Tha động từ"
@@ -20025,7 +20025,7 @@ const vocabData = [
     "Romaji": "kyanseru shimasu",
     "Kanji": "",
     "Meaning": "hủy, hủy bỏ",
-    "category": "verb",
+    "category": 2,
     "Vru": "キャンセルする",
     "type": "Nhóm III",
     "note": "Tha động từ"
@@ -20036,7 +20036,7 @@ const vocabData = [
     "Romaji": "umaku ikimasu",
     "Kanji": "",
     "Meaning": "tốt, thuận lợi, suôn sẻ",
-    "category": "verb",
+    "category": 2,
     "Vru": "いく",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -20047,7 +20047,7 @@ const vocabData = [
     "Romaji": "hoshousho",
     "Kanji": "保証書",
     "Meaning": "giấy bảo hành",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20058,7 +20058,7 @@ const vocabData = [
     "Romaji": "ryoushuusho",
     "Kanji": "領収書",
     "Meaning": "hóa đơn (loại viết tay/chính thức)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20069,7 +20069,7 @@ const vocabData = [
     "Romaji": "okurimono",
     "Kanji": "贈り物",
     "Meaning": "quà tặng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20080,7 +20080,7 @@ const vocabData = [
     "Romaji": "machigai denwa",
     "Kanji": "間違い電話",
     "Meaning": "điện thoại nhầm số",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20091,7 +20091,7 @@ const vocabData = [
     "Romaji": "kyanpu",
     "Kanji": "",
     "Meaning": "cắm trại",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20102,7 +20102,7 @@ const vocabData = [
     "Romaji": "kakari",
     "Kanji": "係",
     "Meaning": "người phụ trách, sự phụ trách",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20113,7 +20113,7 @@ const vocabData = [
     "Romaji": "chuushi",
     "Kanji": "中止",
     "Meaning": "hủy bỏ, đình chỉ, hoãn",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20124,7 +20124,7 @@ const vocabData = [
     "Romaji": "ten",
     "Kanji": "点",
     "Meaning": "điểm (số)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20135,7 +20135,7 @@ const vocabData = [
     "Romaji": "reba-",
     "Kanji": "",
     "Meaning": "cần gạt, tay bẻ, cần số",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20146,7 +20146,7 @@ const vocabData = [
     "Romaji": "～satsu",
     "Kanji": "～札",
     "Meaning": "tờ tiền giấy ～",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": "Hậu tố"
@@ -20157,7 +20157,7 @@ const vocabData = [
     "Romaji": "chanto",
     "Kanji": "",
     "Meaning": "đúng, hẳn hoi, nghiêm chỉnh",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20168,7 +20168,7 @@ const vocabData = [
     "Romaji": "kyuu ni",
     "Kanji": "急に",
     "Meaning": "đột ngột, gấp",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20179,7 +20179,7 @@ const vocabData = [
     "Romaji": "tanoshimi ni shite imasu",
     "Kanji": "楽しみにしています",
     "Meaning": "đang mong đợi, lấy làm vui",
-    "category": "phrase",
+    "category": 10,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20190,7 +20190,7 @@ const vocabData = [
     "Romaji": "ijou desu",
     "Kanji": "以上です",
     "Meaning": "Xin hết (kết thúc bài nói)",
-    "category": "phrase",
+    "category": 10,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20201,7 +20201,7 @@ const vocabData = [
     "Romaji": "kakariin",
     "Kanji": "係員",
     "Meaning": "nhân viên phụ trách",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20212,7 +20212,7 @@ const vocabData = [
     "Romaji": "ko-su",
     "Kanji": "",
     "Meaning": "đường chạy (maraton), khóa học",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20223,7 +20223,7 @@ const vocabData = [
     "Romaji": "suta-to",
     "Kanji": "",
     "Meaning": "xuất phát (start)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20234,7 +20234,7 @@ const vocabData = [
     "Romaji": "yuushou shimasu",
     "Kanji": "優勝します",
     "Meaning": "vô địch, đoạt giải nhất",
-    "category": "verb",
+    "category": 2,
     "Vru": "ゆうしょうする",
     "type": "Nhóm III",
     "note": "Tự động từ"
@@ -20245,7 +20245,7 @@ const vocabData = [
     "Romaji": "nayami",
     "Kanji": "悩み",
     "Meaning": "điều lo nghĩ, nỗi trăn trở, phiền muộn",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20256,7 +20256,7 @@ const vocabData = [
     "Romaji": "mezamashidokei",
     "Kanji": "目覚まし時計",
     "Meaning": "đồng hồ báo thức",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20267,7 +20267,7 @@ const vocabData = [
     "Romaji": "nemurimasu",
     "Kanji": "眠ります",
     "Meaning": "ngủ",
-    "category": "verb",
+    "category": 2,
     "Vru": "ねむる",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -20278,7 +20278,7 @@ const vocabData = [
     "Romaji": "me ga samemasu",
     "Kanji": "目が覚めます",
     "Meaning": "tỉnh giấc, mở mắt",
-    "category": "verb",
+    "category": 2,
     "Vru": "さめる",
     "type": "Nhóm II",
     "note": "Tự động từ"
@@ -20289,7 +20289,7 @@ const vocabData = [
     "Romaji": "daigakusei",
     "Kanji": "大学生",
     "Meaning": "sinh viên đại học",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20300,7 +20300,7 @@ const vocabData = [
     "Romaji": "kaitou",
     "Kanji": "回答",
     "Meaning": "câu trả lời, giải đáp",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20311,7 +20311,7 @@ const vocabData = [
     "Romaji": "narimasu",
     "Kanji": "",
     "Meaning": "kêu [chuông]",
-    "category": "verb",
+    "category": 2,
     "Vru": "なる",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -20322,7 +20322,7 @@ const vocabData = [
     "Romaji": "setto shimasu",
     "Kanji": "",
     "Meaning": "cài đặt",
-    "category": "verb",
+    "category": 2,
     "Vru": "セットする",
     "type": "Nhóm III",
     "note": "Tha động từ"
@@ -20333,7 +20333,7 @@ const vocabData = [
     "Romaji": "soredemo",
     "Kanji": "",
     "Meaning": "tuy nhiên, mặc dù thế",
-    "category": "conjunction",
+    "category": 8,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20344,7 +20344,7 @@ const vocabData = [
     "Romaji": "yakimasu",
     "Kanji": "焼きます",
     "Meaning": "nướng, rán, thêu",
-    "category": "verb",
+    "category": 2,
     "Vru": "やく",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -20355,7 +20355,7 @@ const vocabData = [
     "Romaji": "watashimasu",
     "Kanji": "渡します",
     "Meaning": "trao, đưa cho",
-    "category": "verb",
+    "category": 2,
     "Vru": "わたす",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -20366,7 +20366,7 @@ const vocabData = [
     "Romaji": "kaette kimasu",
     "Kanji": "帰ってきます",
     "Meaning": "quay về, trở lại",
-    "category": "verb",
+    "category": 2,
     "Vru": "くる",
     "type": "Nhóm III",
     "note": "Tự động từ"
@@ -20377,7 +20377,7 @@ const vocabData = [
     "Romaji": "demasu",
     "Kanji": "出ます",
     "Meaning": "xuất phát, rời bến [xe buýt]",
-    "category": "verb",
+    "category": 2,
     "Vru": "でる",
     "type": "Nhóm II",
     "note": "Tự động từ"
@@ -20388,7 +20388,7 @@ const vocabData = [
     "Romaji": "rusu",
     "Kanji": "留守",
     "Meaning": "vắng nhà",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20399,7 +20399,7 @@ const vocabData = [
     "Romaji": "takuhaibin",
     "Kanji": "宅配便",
     "Meaning": "dịch vụ chuyển phát tận nhà",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20410,7 +20410,7 @@ const vocabData = [
     "Romaji": "genin",
     "Kanji": "原因",
     "Meaning": "nguyên nhân",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20421,7 +20421,7 @@ const vocabData = [
     "Romaji": "chuusha",
     "Kanji": "注射",
     "Meaning": "tiêm [thuốc]",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20432,7 +20432,7 @@ const vocabData = [
     "Romaji": "shokuyoku",
     "Kanji": "食欲",
     "Meaning": "sự thèm ăn, cảm giác ngon miệng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20443,7 +20443,7 @@ const vocabData = [
     "Romaji": "panfuretto",
     "Kanji": "",
     "Meaning": "tờ rơi quảng cáo (pamphlet)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20454,7 +20454,7 @@ const vocabData = [
     "Romaji": "sutereo",
     "Kanji": "",
     "Meaning": "máy nghe nhạc stereo (âm thanh nổi)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20465,7 +20465,7 @@ const vocabData = [
     "Romaji": "kochira",
     "Kanji": "",
     "Meaning": "phía chúng tôi, chỗ chúng tôi",
-    "category": "pronoun",
+    "category": 9,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20476,7 +20476,7 @@ const vocabData = [
     "Romaji": "～no tokoro",
     "Kanji": "～の所",
     "Meaning": "quanh vùng ～ / chỗ của ～",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20487,7 +20487,7 @@ const vocabData = [
     "Romaji": "choudo",
     "Kanji": "",
     "Meaning": "vừa đúng, vừa khít",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20498,7 +20498,7 @@ const vocabData = [
     "Romaji": "tatta ima",
     "Kanji": "たった今",
     "Meaning": "vừa mới hồi nãy (dùng với thể quá khứ)",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20509,7 +20509,7 @@ const vocabData = [
     "Romaji": "ima ii deshou ka",
     "Kanji": "今いいでしょうか",
     "Meaning": "Bây giờ tôi làm phiền anh/chị có được không?",
-    "category": "phrase",
+    "category": 10,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20520,7 +20520,7 @@ const vocabData = [
     "Romaji": "gasu sa-bisu senta-",
     "Kanji": "",
     "Meaning": "trung tâm dịch vụ ga",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20531,7 +20531,7 @@ const vocabData = [
     "Romaji": "gasukonro",
     "Kanji": "",
     "Meaning": "bếp ga",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20542,7 +20542,7 @@ const vocabData = [
     "Romaji": "guai",
     "Kanji": "具合",
     "Meaning": "tình trạng, trạng thái (sức khỏe/máy móc)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20553,7 +20553,7 @@ const vocabData = [
     "Romaji": "dochira sama deshou ka",
     "Kanji": "どちら様でしょうか",
     "Meaning": "Xin hỏi vị nào đấy ạ? (lịch sự)",
-    "category": "phrase",
+    "category": 10,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20564,7 +20564,7 @@ const vocabData = [
     "Romaji": "mukaimasu",
     "Kanji": "向かいます",
     "Meaning": "hướng về phía, đi về phía",
-    "category": "verb",
+    "category": 2,
     "Vru": "むかう",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -20575,7 +20575,7 @@ const vocabData = [
     "Romaji": "omatase shimashita",
     "Kanji": "お待たせしました",
     "Meaning": "Xin lỗi vì đã để anh/chị chờ lâu",
-    "category": "phrase",
+    "category": 10,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20586,7 +20586,7 @@ const vocabData = [
     "Romaji": "chishiki",
     "Kanji": "知識",
     "Meaning": "tri thức, kiến thức",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20597,7 +20597,7 @@ const vocabData = [
     "Romaji": "houko",
     "Kanji": "宝庫",
     "Meaning": "kho báu, kho tàng",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20608,7 +20608,7 @@ const vocabData = [
     "Romaji": "nayami",
     "Kanji": "",
     "Meaning": "nỗi lo âu, trăn trở",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20619,7 +20619,7 @@ const vocabData = [
     "Romaji": "te ni hairimasu",
     "Kanji": "手に入ります",
     "Meaning": "có được trong tay [thông tin]",
-    "category": "verb",
+    "category": 2,
     "Vru": "はいる",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -20630,7 +20630,7 @@ const vocabData = [
     "Romaji": "shisutemu",
     "Kanji": "",
     "Meaning": "hệ thống",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20641,7 +20641,7 @@ const vocabData = [
     "Romaji": "ki-wa-do",
     "Kanji": "",
     "Meaning": "từ khóa",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20652,7 +20652,7 @@ const vocabData = [
     "Romaji": "ichibubun",
     "Kanji": "一部分",
     "Meaning": "một bộ phận, một phần",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20663,7 +20663,7 @@ const vocabData = [
     "Romaji": "nyuuryoku shimasu",
     "Kanji": "入力します",
     "Meaning": "nhập vào (dữ liệu)",
-    "category": "verb",
+    "category": 2,
     "Vru": "にゅうりょくする",
     "type": "Nhóm III",
     "note": "Tha động từ"
@@ -20674,7 +20674,7 @@ const vocabData = [
     "Romaji": "byou",
     "Kanji": "秒",
     "Meaning": "giây (đơn vị thời gian)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20685,7 +20685,7 @@ const vocabData = [
     "Romaji": "demasu",
     "Kanji": "出ます",
     "Meaning": "được xuất bản [sách]",
-    "category": "verb",
+    "category": 2,
     "Vru": "でる",
     "type": "Nhóm II",
     "note": "Tự động từ"
@@ -20696,7 +20696,7 @@ const vocabData = [
     "Romaji": "atsumarimasu",
     "Kanji": "集まります",
     "Meaning": "tập hợp, tập trung [người]",
-    "category": "verb",
+    "category": 2,
     "Vru": "あつまる",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -20707,7 +20707,7 @@ const vocabData = [
     "Romaji": "wakaremasu",
     "Kanji": "別れます",
     "Meaning": "chia tay [người]",
-    "category": "verb",
+    "category": 2,
     "Vru": "わかれる",
     "type": "Nhóm II",
     "note": "Tự động từ"
@@ -20718,7 +20718,7 @@ const vocabData = [
     "Romaji": "nagaiki shimasu",
     "Kanji": "長生きします",
     "Meaning": "sống lâu",
-    "category": "verb",
+    "category": 2,
     "Vru": "ながいきする",
     "type": "Nhóm III",
     "note": "Tự động từ"
@@ -20729,7 +20729,7 @@ const vocabData = [
     "Romaji": "oto/koe ga shimasu",
     "Kanji": "音・声がします",
     "Meaning": "có/nghe thấy [âm thanh/tiếng nói]",
-    "category": "verb",
+    "category": 2,
     "Vru": "する",
     "type": "Nhóm III",
     "note": "Tự động từ"
@@ -20740,7 +20740,7 @@ const vocabData = [
     "Romaji": "aji ga shimasu",
     "Kanji": "味がします",
     "Meaning": "có [vị]",
-    "category": "verb",
+    "category": 2,
     "Vru": "する",
     "type": "Nhóm III",
     "note": "Tự động từ"
@@ -20751,7 +20751,7 @@ const vocabData = [
     "Romaji": "nioi ga shimasu",
     "Kanji": "においがします",
     "Meaning": "có [mùi]",
-    "category": "verb",
+    "category": 2,
     "Vru": "する",
     "type": "Nhóm III",
     "note": "Tự động từ"
@@ -20762,7 +20762,7 @@ const vocabData = [
     "Romaji": "kasa wo sashimasu",
     "Kanji": "傘をさします",
     "Meaning": "che [dù/ô]",
-    "category": "verb",
+    "category": 2,
     "Vru": "さす",
     "type": "Nhóm I",
     "note": "Tha động từ"
@@ -20773,7 +20773,7 @@ const vocabData = [
     "Romaji": "hidoi",
     "Kanji": "",
     "Meaning": "tồi tệ, xấu, kinh khủng",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -20784,7 +20784,7 @@ const vocabData = [
     "Romaji": "kowai",
     "Kanji": "怖い",
     "Meaning": "sợ, khiếp",
-    "category": "adjective",
+    "category": 4,
     "Vru": "",
     "type": "",
     "note": "Tính từ \"đuôi い"
@@ -20795,7 +20795,7 @@ const vocabData = [
     "Romaji": "tenki yohou",
     "Kanji": "天気予報",
     "Meaning": "dự báo thời tiết",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20806,7 +20806,7 @@ const vocabData = [
     "Romaji": "happyou",
     "Kanji": "発表",
     "Meaning": "công bố, thuyết trình, báo cáo",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20817,7 +20817,7 @@ const vocabData = [
     "Romaji": "jikken",
     "Kanji": "実験",
     "Meaning": "thí nghiệm, thực nghiệm",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20828,7 +20828,7 @@ const vocabData = [
     "Romaji": "jinkou",
     "Kanji": "人口",
     "Meaning": "dân số",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20839,7 +20839,7 @@ const vocabData = [
     "Romaji": "nioi",
     "Kanji": "",
     "Meaning": "mùi",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20850,7 +20850,7 @@ const vocabData = [
     "Romaji": "kagaku",
     "Kanji": "科学",
     "Meaning": "khoa học",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20861,7 +20861,7 @@ const vocabData = [
     "Romaji": "igaku",
     "Kanji": "医学",
     "Meaning": "y học, ngành y",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20872,7 +20872,7 @@ const vocabData = [
     "Romaji": "bungaku",
     "Kanji": "文学",
     "Meaning": "văn học",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20883,7 +20883,7 @@ const vocabData = [
     "Romaji": "patoka-",
     "Kanji": "",
     "Meaning": "xe tuần tra của cảnh sát",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20894,7 +20894,7 @@ const vocabData = [
     "Romaji": "kyuukyuusha",
     "Kanji": "救急車",
     "Meaning": "xe cứu thương",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20905,7 +20905,7 @@ const vocabData = [
     "Romaji": "sansei",
     "Kanji": "賛成",
     "Meaning": "tán thành, đồng ý",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20916,7 +20916,7 @@ const vocabData = [
     "Romaji": "hantai",
     "Kanji": "反対",
     "Meaning": "phản đối",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20927,7 +20927,7 @@ const vocabData = [
     "Romaji": "dansei",
     "Kanji": "男性",
     "Meaning": "phái nam, đàn ông",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20938,7 +20938,7 @@ const vocabData = [
     "Romaji": "josei",
     "Kanji": "女性",
     "Meaning": "phái nữ, phụ nữ",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20949,7 +20949,7 @@ const vocabData = [
     "Romaji": "doumo",
     "Kanji": "",
     "Meaning": "dường như (dùng khi phán đoán)",
-    "category": "adverb",
+    "category": 6,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20960,7 +20960,7 @@ const vocabData = [
     "Romaji": "～ni yoru to",
     "Kanji": "",
     "Meaning": "theo như ～ (nguồn tin)",
-    "category": "particle",
+    "category": 3,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20971,7 +20971,7 @@ const vocabData = [
     "Romaji": "iran",
     "Kanji": "",
     "Meaning": "Iran",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20982,7 +20982,7 @@ const vocabData = [
     "Romaji": "koibito",
     "Kanji": "恋人",
     "Meaning": "người yêu",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -20993,7 +20993,7 @@ const vocabData = [
     "Romaji": "kon'yaku shimasu",
     "Kanji": "婚約します",
     "Meaning": "đính hôn",
-    "category": "verb",
+    "category": 2,
     "Vru": "こんやくする",
     "type": "Nhóm III",
     "note": "Tự động từ"
@@ -21004,7 +21004,7 @@ const vocabData = [
     "Romaji": "aite",
     "Kanji": "相手",
     "Meaning": "đối phương, đối tác, \"nửa kia",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -21015,7 +21015,7 @@ const vocabData = [
     "Romaji": "shiriaimasu",
     "Kanji": "知り合います",
     "Meaning": "quen biết nhau",
-    "category": "verb",
+    "category": 2,
     "Vru": "しりあう",
     "type": "Nhóm I",
     "note": "Tự động từ"
@@ -21026,7 +21026,7 @@ const vocabData = [
     "Romaji": "heikin jumyou",
     "Kanji": "平均寿命",
     "Meaning": "tuổi thọ trung bình",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -21037,7 +21037,7 @@ const vocabData = [
     "Romaji": "kurabemasu",
     "Kanji": "比べます",
     "Meaning": "so sánh",
-    "category": "verb",
+    "category": 2,
     "Vru": "くらべる",
     "type": "Nhóm II",
     "note": "Tha động từ"
@@ -21048,7 +21048,7 @@ const vocabData = [
     "Romaji": "hakase",
     "Kanji": "博士",
     "Meaning": "tiến sĩ",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -21059,7 +21059,7 @@ const vocabData = [
     "Romaji": "nou",
     "Kanji": "脳",
     "Meaning": "não",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -21070,7 +21070,7 @@ const vocabData = [
     "Romaji": "horumon",
     "Kanji": "",
     "Meaning": "hoóc-môn",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -21081,7 +21081,7 @@ const vocabData = [
     "Romaji": "keshouhin",
     "Kanji": "化粧品",
     "Meaning": "mỹ phẩm",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -21092,7 +21092,7 @@ const vocabData = [
     "Romaji": "shirabe",
     "Kanji": "調べ",
     "Meaning": "cuộc điều tra, việc tìm kiếm",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -21103,7 +21103,7 @@ const vocabData = [
     "Romaji": "keshou",
     "Kanji": "化粧",
     "Meaning": "trang điểm (～をします：trang điểm)",
-    "category": "noun",
+    "category": 1,
     "Vru": "",
     "type": "",
     "note": ""
@@ -21114,7 +21114,7 @@ const vocabData = [
       "Romaji": "kotaemasu",
       "Kanji": "答えます",
       "Meaning": "trả lời [câu hỏi]",
-      "category": "verb",
+      "category": 2,
       "Vru": "こたえる",
       "type": "Nhóm II",
       "note": "Tự động từ"
@@ -21125,7 +21125,7 @@ const vocabData = [
       "Romaji": "taoremasu",
       "Kanji": "倒れます",
       "Meaning": "đổ [tòa nhà ,]",
-      "category": "verb",
+      "category": 2,
       "Vru": "たおれる",
       "type": "Nhóm II",
       "note": "Tự động từ"
@@ -21136,7 +21136,7 @@ const vocabData = [
       "Romaji": "toorimasu",
       "Kanji": "通ります",
       "Meaning": "đi (xuyên) qua [đường]",
-      "category": "verb",
+      "category": 2,
       "Vru": "とおる",
       "type": "Nhóm I",
       "note": "Tự động từ"
@@ -21147,7 +21147,7 @@ const vocabData = [
       "Romaji": "shinimasu",
       "Kanji": "死にます",
       "Meaning": "chết",
-      "category": "verb",
+      "category": 2,
       "Vru": "しぬ",
       "type": "Nhóm I",
       "note": "Tự động từ"
@@ -21158,7 +21158,7 @@ const vocabData = [
       "Romaji": "bikkurishimasu",
       "Kanji": "",
       "Meaning": "giật mình",
-      "category": "verb",
+      "category": 2,
       "Vru": "びっくりする",
       "type": "Nhóm III",
       "note": "Tự động từ"
@@ -21169,7 +21169,7 @@ const vocabData = [
       "Romaji": "gakkarishimasu",
       "Kanji": "",
       "Meaning": "thất vọng",
-      "category": "verb",
+      "category": 2,
       "Vru": "がっかりする",
       "type": "Nhóm III",
       "note": "Tự động từ"
@@ -21180,7 +21180,7 @@ const vocabData = [
       "Romaji": "anshinshimasu",
       "Kanji": "安心します",
       "Meaning": "yên tâm",
-      "category": "verb",
+      "category": 2,
       "Vru": "あんしんする",
       "type": "Nhóm III",
       "note": "Tự động từ"
@@ -21191,7 +21191,7 @@ const vocabData = [
       "Romaji": "kenkashimasu",
       "Kanji": "",
       "Meaning": "cãi nhau",
-      "category": "verb",
+      "category": 2,
       "Vru": "けんかする",
       "type": "Nhóm III",
       "note": "Tự động từ"
@@ -21202,7 +21202,7 @@ const vocabData = [
       "Romaji": "rikonshimasu",
       "Kanji": "離婚します",
       "Meaning": "ly hôn",
-      "category": "verb",
+      "category": 2,
       "Vru": "りこんする",
       "type": "Nhóm III",
       "note": "Tự động từ"
@@ -21213,7 +21213,7 @@ const vocabData = [
       "Romaji": "futorimasu",
       "Kanji": "太ります",
       "Meaning": "béo ra",
-      "category": "verb",
+      "category": 2,
       "Vru": "ふとる",
       "type": "Nhóm I",
       "note": "Tự động từ"
@@ -21224,7 +21224,7 @@ const vocabData = [
       "Romaji": "yasemasu",
       "Kanji": "",
       "Meaning": "gầy đi",
-      "category": "verb",
+      "category": 2,
       "Vru": "やせる",
       "type": "Nhóm II",
       "note": "Tự động từ"
@@ -21235,7 +21235,7 @@ const vocabData = [
       "Romaji": "fukuzatsu",
       "Kanji": "複雑",
       "Meaning": "phức tạp",
-      "category": "adjective",
+      "category": 5,
       "Vru": "",
       "type": "",
       "note": "Tính từ \"đuôi な"
@@ -21246,7 +21246,7 @@ const vocabData = [
       "Romaji": "jama",
       "Kanji": "邪魔",
       "Meaning": "vướng, vướng víu",
-      "category": "adjective",
+      "category": 5,
       "Vru": "",
       "type": "",
       "note": "Tính từ \"đuôi な"
@@ -21257,7 +21257,7 @@ const vocabData = [
       "Romaji": "katai",
       "Kanji": "硬い",
       "Meaning": "cứng",
-      "category": "adjective",
+      "category": 4,
       "Vru": "",
       "type": "",
       "note": "Tính từ \"đuôi い"
@@ -21268,7 +21268,7 @@ const vocabData = [
       "Romaji": "yawarakai",
       "Kanji": "軟らかい",
       "Meaning": "mềm",
-      "category": "adjective",
+      "category": 4,
       "Vru": "",
       "type": "",
       "note": "Tính từ \"đuôi い"
@@ -21279,7 +21279,7 @@ const vocabData = [
       "Romaji": "kitanai",
       "Kanji": "汚い",
       "Meaning": "bẩn",
-      "category": "adjective",
+      "category": 4,
       "Vru": "",
       "type": "",
       "note": "Tính từ \"đuôi い"
@@ -21290,7 +21290,7 @@ const vocabData = [
       "Romaji": "ureshii",
       "Kanji": "",
       "Meaning": "vui",
-      "category": "adjective",
+      "category": 4,
       "Vru": "",
       "type": "",
       "note": "Tính từ \"đuôi い"
@@ -21301,7 +21301,7 @@ const vocabData = [
       "Romaji": "kanashii",
       "Kanji": "悲しい",
       "Meaning": "buồn",
-      "category": "adjective",
+      "category": 4,
       "Vru": "",
       "type": "",
       "note": "Tính từ \"đuôi い"
@@ -21312,7 +21312,7 @@ const vocabData = [
       "Romaji": "hazukashii",
       "Kanji": "恥ずかしい",
       "Meaning": "xấu hổ, ngượng",
-      "category": "adjective",
+      "category": 4,
       "Vru": "",
       "type": "",
       "note": "Tính từ \"đuôi い"
@@ -21323,7 +21323,7 @@ const vocabData = [
       "Romaji": "shushou",
       "Kanji": "首相",
       "Meaning": "thủ tướng",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -21334,7 +21334,7 @@ const vocabData = [
       "Romaji": "jishin",
       "Kanji": "地震",
       "Meaning": "động đất",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -21345,7 +21345,7 @@ const vocabData = [
       "Romaji": "tsunami",
       "Kanji": "津波",
       "Meaning": "sóng thần",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -21356,7 +21356,7 @@ const vocabData = [
       "Romaji": "taifuu",
       "Kanji": "台風",
       "Meaning": "bão",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -21367,7 +21367,7 @@ const vocabData = [
       "Romaji": "kaminari",
       "Kanji": "雷",
       "Meaning": "sấm",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -21378,7 +21378,7 @@ const vocabData = [
       "Romaji": "kaji",
       "Kanji": "火事",
       "Meaning": "hỏa hoạn",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -21389,7 +21389,7 @@ const vocabData = [
       "Romaji": "jiko",
       "Kanji": "事故",
       "Meaning": "tai nạn, sự cố",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -21400,7 +21400,7 @@ const vocabData = [
       "Romaji": "baikingu",
       "Kanji": "",
       "Meaning": "dã ngoại",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -21411,7 +21411,7 @@ const vocabData = [
       "Romaji": "omiai",
       "Kanji": "見合い",
       "Meaning": "xem mặt (để kết hôn)",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -21422,7 +21422,7 @@ const vocabData = [
       "Romaji": "sousa",
       "Kanji": "操作",
       "Meaning": "thao tác",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -21433,7 +21433,7 @@ const vocabData = [
       "Romaji": "kaijou",
       "Kanji": "会場",
       "Meaning": "hội trường",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -21444,7 +21444,7 @@ const vocabData = [
       "Romaji": "dai",
       "Kanji": "代",
       "Meaning": "phí ~, tiền ~",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -21455,7 +21455,7 @@ const vocabData = [
       "Romaji": "ya",
       "Kanji": "屋",
       "Meaning": "người bán ~",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -21466,7 +21466,7 @@ const vocabData = [
       "Romaji": "furonto",
       "Kanji": "",
       "Meaning": "lễ tân",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -21477,7 +21477,7 @@ const vocabData = [
       "Romaji": "goushitsu",
       "Kanji": "号室",
       "Meaning": "số phòng -",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -21488,7 +21488,7 @@ const vocabData = [
       "Romaji": "taoru",
       "Kanji": "",
       "Meaning": "khăn tắm",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -21499,7 +21499,7 @@ const vocabData = [
       "Romaji": "sekken",
       "Kanji": "",
       "Meaning": "xà phòng",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -21510,7 +21510,7 @@ const vocabData = [
       "Romaji": "oozei",
       "Kanji": "大勢",
       "Meaning": "nhiều (người)",
-      "category": "adverb",
+      "category": 6,
       "Vru": "",
       "type": "",
       "note": ""
@@ -21521,7 +21521,7 @@ const vocabData = [
       "Romaji": "otsukaresama",
       "Kanji": "お疲れさま",
       "Meaning": "Anh/chị đã vất vả quá.",
-      "category": "interjection",
+      "category": 7,
       "Vru": "",
       "type": "",
       "note": ""
@@ -21532,7 +21532,7 @@ const vocabData = [
       "Romaji": "ukagaimasu",
       "Kanji": "伺います",
       "Meaning": "Tôi sẽ đi đến chỗ anh/chị ạ.",
-      "category": "verb",
+      "category": 2,
       "Vru": "うかがう",
       "type": "Nhóm I",
       "note": "Khiêm nhường ngữ"
@@ -21543,7 +21543,7 @@ const vocabData = [
       "Romaji": "tochuude",
       "Kanji": "途中で",
       "Meaning": "trên đường",
-      "category": "adverb",
+      "category": 6,
       "Vru": "",
       "type": "",
       "note": ""
@@ -21554,7 +21554,7 @@ const vocabData = [
       "Romaji": "torakku",
       "Kanji": "",
       "Meaning": "xe tải",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -21565,7 +21565,7 @@ const vocabData = [
       "Romaji": "butsukarimasu",
       "Kanji": "",
       "Meaning": "đâm nhau",
-      "category": "verb",
+      "category": 2,
       "Vru": "ぶつかる",
       "type": "Nhóm I",
       "note": "Tự động từ"
@@ -21576,7 +21576,7 @@ const vocabData = [
       "Romaji": "otona",
       "Kanji": "大人",
       "Meaning": "người lớn",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -21587,7 +21587,7 @@ const vocabData = [
       "Romaji": "shikashi",
       "Kanji": "",
       "Meaning": "nhưng",
-      "category": "conjunction",
+      "category": 8,
       "Vru": "",
       "type": "",
       "note": ""
@@ -21598,7 +21598,7 @@ const vocabData = [
       "Romaji": "mata",
       "Kanji": "",
       "Meaning": "hơn nưa, và",
-      "category": "conjunction",
+      "category": 8,
       "Vru": "",
       "type": "",
       "note": ""
@@ -21609,7 +21609,7 @@ const vocabData = [
       "Romaji": "youfuku",
       "Kanji": "洋服",
       "Meaning": "áo quần",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -21620,7 +21620,7 @@ const vocabData = [
       "Romaji": "seiyoukashimasu",
       "Kanji": "西洋化します",
       "Meaning": "Âu Mỹ hóa",
-      "category": "verb",
+      "category": 2,
       "Vru": "せいようかする",
       "type": "Nhóm III",
       "note": ""
@@ -21631,7 +21631,7 @@ const vocabData = [
       "Romaji": "aimasu",
       "Kanji": "会います",
       "Meaning": "phù hợp (với)",
-      "category": "verb",
+      "category": 2,
       "Vru": "あu",
       "type": "Nhóm I",
       "note": "Tự động từ"
@@ -21642,7 +21642,7 @@ const vocabData = [
       "Romaji": "imadeha",
       "Kanji": "今では",
       "Meaning": "bây giờ, hiện nay",
-      "category": "adverb",
+      "category": 6,
       "Vru": "",
       "type": "",
       "note": ""
@@ -21653,7 +21653,7 @@ const vocabData = [
       "Romaji": "seijinshiki",
       "Kanji": "成人式",
       "Meaning": "lễ thành nhân",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -21664,7 +21664,7 @@ const vocabData = [
       "Romaji": "dentouteki",
       "Kanji": "伝統的",
       "Meaning": "mang tính truyền thống",
-      "category": "adjective",
+      "category": 5,
       "Vru": "",
       "type": "",
       "note": "Tính từ \"đuôi な"
@@ -21675,7 +21675,7 @@ const vocabData = [
       "Romaji": "oroshimasu",
       "Kanji": "降ろします",
       "Meaning": "lấy xuống",
-      "category": "verb",
+      "category": 2,
       "Vru": "おろす",
       "type": "Nhóm I",
       "note": "Tha động từ"
@@ -21686,7 +21686,7 @@ const vocabData = [
       "Romaji": "todokemasu",
       "Kanji": "届けます",
       "Meaning": "đưa đến, chuyển đên",
-      "category": "verb",
+      "category": 2,
       "Vru": "とどける",
       "type": "Nhóm II",
       "note": "Tha động từ"
@@ -21697,7 +21697,7 @@ const vocabData = [
       "Romaji": "sewaoshimasu",
       "Kanji": "世話をします",
       "Meaning": "chăm sóc",
-      "category": "verb",
+      "category": 2,
       "Vru": "せわをする",
       "type": "Nhóm III",
       "note": ""
@@ -21708,7 +21708,7 @@ const vocabData = [
       "Romaji": "rokuonshimasu",
       "Kanji": "録音します",
       "Meaning": "ghi âm",
-      "category": "verb",
+      "category": 2,
       "Vru": "ろくおんする",
       "type": "Nhóm III",
       "note": ""
@@ -21719,7 +21719,7 @@ const vocabData = [
       "Romaji": "iya",
       "Kanji": "嫌",
       "Meaning": "chán, không thích",
-      "category": "adjective",
+      "category": 5,
       "Vru": "",
       "type": "",
       "note": "Tính từ \"đuôi な"
@@ -21730,7 +21730,7 @@ const vocabData = [
       "Romaji": "juku",
       "Kanji": "塾",
       "Meaning": "lò luyện thi, nơi học thêm",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -21741,7 +21741,7 @@ const vocabData = [
       "Romaji": "seito",
       "Kanji": "生徒",
       "Meaning": "học sinh",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -21752,7 +21752,7 @@ const vocabData = [
       "Romaji": "fairu",
       "Kanji": "",
       "Meaning": "tài liệu, kẹp tài liệu",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -21763,7 +21763,7 @@ const vocabData = [
       "Romaji": "jiyuuni",
       "Kanji": "自由に",
       "Meaning": "một cách tự do, một cách thoải mái",
-      "category": "adverb",
+      "category": 6,
       "Vru": "",
       "type": "",
       "note": ""
@@ -21774,7 +21774,7 @@ const vocabData = [
       "Romaji": "kan",
       "Kanji": "間",
       "Meaning": "trong khoảng ~",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -21785,7 +21785,7 @@ const vocabData = [
       "Romaji": "iikotodesune",
       "Kanji": "",
       "Meaning": "Điều đó hay quá nhỉ!",
-      "category": "interjection",
+      "category": 7,
       "Vru": "",
       "type": "",
       "note": ""
@@ -21796,7 +21796,7 @@ const vocabData = [
       "Romaji": "oisogashiidesuka",
       "Kanji": "お忙しいですか",
       "Meaning": "Anh/Chị có bận không ạ?",
-      "category": "interjection",
+      "category": 7,
       "Vru": "",
       "type": "",
       "note": ""
@@ -21807,7 +21807,7 @@ const vocabData = [
       "Romaji": "eigyou",
       "Kanji": "営業",
       "Meaning": "kinh doanh",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -21818,7 +21818,7 @@ const vocabData = [
       "Romaji": "soremadeni",
       "Kanji": "",
       "Meaning": "cho đến lúc đấy",
-      "category": "adverb",
+      "category": 6,
       "Vru": "",
       "type": "",
       "note": ""
@@ -21829,7 +21829,7 @@ const vocabData = [
       "Romaji": "kamaimasen",
       "Kanji": "",
       "Meaning": "Không sao.",
-      "category": "verb",
+      "category": 2,
       "Vru": "かまう",
       "type": "Nhóm I",
       "note": ""
@@ -21840,7 +21840,7 @@ const vocabData = [
       "Romaji": "tanoshimimasu",
       "Kanji": "楽しみます",
       "Meaning": "tận hưởng",
-      "category": "verb",
+      "category": 2,
       "Vru": "たのしむ",
       "type": "Nhóm I",
       "note": ""
@@ -21851,7 +21851,7 @@ const vocabData = [
       "Romaji": "oya",
       "Kanji": "親",
       "Meaning": "bố mẹ",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -21862,7 +21862,7 @@ const vocabData = [
       "Romaji": "shougakusei",
       "Kanji": "小学生",
       "Meaning": "học sinh tiểu học",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -21873,7 +21873,7 @@ const vocabData = [
       "Romaji": "paasento",
       "Kanji": "",
       "Meaning": "phần trăm",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -21884,7 +21884,7 @@ const vocabData = [
       "Romaji": "sonotsugi",
       "Kanji": "その次",
       "Meaning": "tiếp theo đó",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -21895,7 +21895,7 @@ const vocabData = [
       "Romaji": "shuuji",
       "Kanji": "習字",
       "Meaning": "học viết chữ bằng bút lông",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -21906,7 +21906,7 @@ const vocabData = [
       "Romaji": "futsuuno",
       "Kanji": "普通の",
       "Meaning": "thông thường, bình thường",
-      "category": "adjective",
+      "category": 5,
       "Vru": "",
       "type": "",
       "note": ""
@@ -21917,7 +21917,7 @@ const vocabData = [
       "Romaji": "riyoushimasu",
       "Kanji": "利用します",
       "Meaning": "sử dụng",
-      "category": "verb",
+      "category": 2,
       "Vru": "りようする",
       "type": "Nhóm III",
       "note": ""
@@ -21928,7 +21928,7 @@ const vocabData = [
       "Romaji": "tsutomemasu",
       "Kanji": "勤めます",
       "Meaning": "làm việc [ở công ty]",
-      "category": "verb",
+      "category": 2,
       "Vru": "つとめる",
       "type": "Nhóm II",
       "note": ""
@@ -21939,7 +21939,7 @@ const vocabData = [
       "Romaji": "kakemasu",
       "Kanji": "掛けます",
       "Meaning": "ngồi xuống [ghế]",
-      "category": "verb",
+      "category": 2,
       "Vru": "かける",
       "type": "Nhóm II",
       "note": ""
@@ -21950,7 +21950,7 @@ const vocabData = [
       "Romaji": "sugoshimasu",
       "Kanji": "過ごします",
       "Meaning": "trải qua",
-      "category": "verb",
+      "category": 2,
       "Vru": "すごす",
       "type": "Nhóm I",
       "note": ""
@@ -21961,7 +21961,7 @@ const vocabData = [
       "Romaji": "irasshaimasu",
       "Kanji": "",
       "Meaning": "đi, ở, đên",
-      "category": "verb",
+      "category": 2,
       "Vru": "いらっしゃる",
       "type": "Nhóm I",
       "note": "Kính ngữ"
@@ -21972,7 +21972,7 @@ const vocabData = [
       "Romaji": "meshiagarimasu",
       "Kanji": "召し上がります",
       "Meaning": "ăn, uống",
-      "category": "verb",
+      "category": 2,
       "Vru": "めしあがる",
       "type": "Nhóm I",
       "note": "Kính ngữ"
@@ -21983,7 +21983,7 @@ const vocabData = [
       "Romaji": "osshaimasu",
       "Kanji": "",
       "Meaning": "nói, tên là~",
-      "category": "verb",
+      "category": 2,
       "Vru": "おっしゃる",
       "type": "Nhóm I",
       "note": "Kính ngữ"
@@ -21994,7 +21994,7 @@ const vocabData = [
       "Romaji": "nasaimasu",
       "Kanji": "",
       "Meaning": "làm",
-      "category": "verb",
+      "category": 2,
       "Vru": "なさる",
       "type": "Nhóm I",
       "note": "Kính ngữ"
@@ -22005,7 +22005,7 @@ const vocabData = [
       "Romaji": "goranninarimasu",
       "Kanji": "ご覧になります",
       "Meaning": "xem",
-      "category": "verb",
+      "category": 2,
       "Vru": "ごらんになる",
       "type": "Nhóm I",
       "note": "Kính ngữ"
@@ -22016,7 +22016,7 @@ const vocabData = [
       "Romaji": "gozonjidesu",
       "Kanji": "ご存じです",
       "Meaning": "biết",
-      "category": "verb",
+      "category": 2,
       "Vru": "",
       "type": "",
       "note": "Kính ngữ"
@@ -22027,7 +22027,7 @@ const vocabData = [
       "Romaji": "aisatsu",
       "Kanji": "",
       "Meaning": "chào hỏi",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -22038,7 +22038,7 @@ const vocabData = [
       "Romaji": "ryokan",
       "Kanji": "",
       "Meaning": "nhà khách kiểu Nhật truyền thống",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -22049,7 +22049,7 @@ const vocabData = [
       "Romaji": "basutei",
       "Kanji": "",
       "Meaning": "bến xe buýt",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -22060,7 +22060,7 @@ const vocabData = [
       "Romaji": "okusama",
       "Kanji": "奥様",
       "Meaning": "vợ của người khác",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": "Kính ngữ"
@@ -22071,7 +22071,7 @@ const vocabData = [
       "Romaji": "sama",
       "Kanji": "様",
       "Meaning": "(kính ngữ của ~さん)",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -22082,7 +22082,7 @@ const vocabData = [
       "Romaji": "tamani",
       "Kanji": "",
       "Meaning": "thỉnh thoảng",
-      "category": "adverb",
+      "category": 6,
       "Vru": "",
       "type": "",
       "note": ""
@@ -22093,7 +22093,7 @@ const vocabData = [
       "Romaji": "donatademo",
       "Kanji": "",
       "Meaning": "vị nào cũng",
-      "category": "pronoun",
+      "category": 9,
       "Vru": "",
       "type": "",
       "note": ""
@@ -22104,7 +22104,7 @@ const vocabData = [
       "Romaji": "toiimasu",
       "Kanji": "",
       "Meaning": "tên là ~",
-      "category": "verb",
+      "category": 2,
       "Vru": "",
       "type": "",
       "note": ""
@@ -22115,7 +22115,7 @@ const vocabData = [
       "Romaji": "nenkumi",
       "Kanji": "年組",
       "Meaning": "tổ - năm thứ -",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -22126,7 +22126,7 @@ const vocabData = [
       "Romaji": "dashimasu",
       "Kanji": "出します",
       "Meaning": "bị [sốt]",
-      "category": "verb",
+      "category": 2,
       "Vru": "だす",
       "type": "Nhóm I",
       "note": ""
@@ -22137,7 +22137,7 @@ const vocabData = [
       "Romaji": "yoroshikuotsutaekudasai",
       "Kanji": "よろしくお伝えください",
       "Meaning": "Cho tôi gửi lời hỏi thăm.",
-      "category": "interjection",
+      "category": 7,
       "Vru": "",
       "type": "",
       "note": ""
@@ -22148,7 +22148,7 @@ const vocabData = [
       "Romaji": "shitsureiitashimasu",
       "Kanji": "失礼いたします",
       "Meaning": "Xin phép thầy tôi cúp máy ạ.",
-      "category": "verb",
+      "category": 2,
       "Vru": "しつれいいたす",
       "type": "Nhóm I",
       "note": "Kính ngữ"
@@ -22159,7 +22159,7 @@ const vocabData = [
       "Romaji": "himawarishougakkou",
       "Kanji": "ひまわり小学校",
       "Meaning": "trường tiểu học giả định",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -22170,7 +22170,7 @@ const vocabData = [
       "Romaji": "keireki",
       "Kanji": "経歴",
       "Meaning": "lí lịch",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -22181,7 +22181,7 @@ const vocabData = [
       "Romaji": "igakubu",
       "Kanji": "医学部",
       "Meaning": "khoa y",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -22192,7 +22192,7 @@ const vocabData = [
       "Romaji": "mezashimasu",
       "Kanji": "目指します",
       "Meaning": "hướng đến, muốn trở thành",
-      "category": "verb",
+      "category": 2,
       "Vru": "めざす",
       "type": "Nhóm I",
       "note": ""
@@ -22203,7 +22203,7 @@ const vocabData = [
       "Romaji": "susumimasu",
       "Kanji": "進みます",
       "Meaning": "học lên",
-      "category": "verb",
+      "category": 2,
       "Vru": "すすむ",
       "type": "Nhóm I",
       "note": ""
@@ -22214,7 +22214,7 @@ const vocabData = [
       "Romaji": "IPSsaibou",
       "Kanji": "IPS細胞",
       "Meaning": "tế bào iPS",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -22225,7 +22225,7 @@ const vocabData = [
       "Romaji": "kaihatsushimasu",
       "Kanji": "開発します",
       "Meaning": "phát triển",
-      "category": "verb",
+      "category": 2,
       "Vru": "かいはつする",
       "type": "Nhóm III",
       "note": ""
@@ -22236,7 +22236,7 @@ const vocabData = [
       "Romaji": "mausu",
       "Kanji": "",
       "Meaning": "chuột",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -22247,7 +22247,7 @@ const vocabData = [
       "Romaji": "hito",
       "Kanji": "",
       "Meaning": "người",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -22258,7 +22258,7 @@ const vocabData = [
       "Romaji": "jushoushimasu",
       "Kanji": "受賞します",
       "Meaning": "nhận giải thưởng",
-      "category": "verb",
+      "category": 2,
       "Vru": "じゅしょうする",
       "type": "Nhóm III",
       "note": ""
@@ -22269,7 +22269,7 @@ const vocabData = [
       "Romaji": "kouenkai",
       "Kanji": "講演会",
       "Meaning": "buổi nói chuyện",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -22280,7 +22280,7 @@ const vocabData = [
       "Romaji": "yamanakashinya",
       "Kanji": "山中伸弥",
       "Meaning": "nhà nghiên cứu người Nhật",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -22291,7 +22291,7 @@ const vocabData = [
       "Romaji": "nooberushou",
       "Kanji": "ノーベル賞",
       "Meaning": "giải Nobel",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -22302,7 +22302,7 @@ const vocabData = [
       "Romaji": "mairimasu",
       "Kanji": "参ります",
       "Meaning": "đi,đến",
-      "category": "verb",
+      "category": 2,
       "Vru": "まいる",
       "type": "Nhóm I",
       "note": "Khiêm nhường ngữ"
@@ -22313,7 +22313,7 @@ const vocabData = [
       "Romaji": "orimasu",
       "Kanji": "",
       "Meaning": "ở",
-      "category": "verb",
+      "category": 2,
       "Vru": "おる",
       "type": "Nhóm I",
       "note": "Khiêm nhường ngữ"
@@ -22324,7 +22324,7 @@ const vocabData = [
       "Romaji": "itadakimasu",
       "Kanji": "",
       "Meaning": "ăn, uống, nhận",
-      "category": "verb",
+      "category": 2,
       "Vru": "いただく",
       "type": "Nhóm I",
       "note": "Khiêm nhường ngữ"
@@ -22335,7 +22335,7 @@ const vocabData = [
       "Romaji": "moushimasu",
       "Kanji": "申します",
       "Meaning": "nói, tên là ~",
-      "category": "verb",
+      "category": 2,
       "Vru": "もうす",
       "type": "Nhóm I",
       "note": "Khiêm nhường ngữ"
@@ -22346,7 +22346,7 @@ const vocabData = [
       "Romaji": "itashimasu",
       "Kanji": "",
       "Meaning": "làm",
-      "category": "verb",
+      "category": 2,
       "Vru": "いたす",
       "type": "Nhóm I",
       "note": "Khiêm nhường ngữ"
@@ -22357,7 +22357,7 @@ const vocabData = [
       "Romaji": "haikenshimasu",
       "Kanji": "拝見します",
       "Meaning": "xem",
-      "category": "verb",
+      "category": 2,
       "Vru": "はいけんする",
       "type": "Nhóm III",
       "note": "Khiêm nhường ngữ"
@@ -22368,7 +22368,7 @@ const vocabData = [
       "Romaji": "zonjimasu",
       "Kanji": "存じます",
       "Meaning": "biết",
-      "category": "verb",
+      "category": 2,
       "Vru": "ぞんじる",
       "type": "Nhóm II",
       "note": "Khiêm nhường ngữ"
@@ -22379,7 +22379,7 @@ const vocabData = [
       "Romaji": "ukagaimasu",
       "Kanji": "伺います",
       "Meaning": "hỏi, đến thăm",
-      "category": "verb",
+      "category": 2,
       "Vru": "うかがう",
       "type": "Nhóm I",
       "note": "Khiêm nhường ngữ"
@@ -22390,7 +22390,7 @@ const vocabData = [
       "Romaji": "omenikakarimasu",
       "Kanji": "お目にかかります",
       "Meaning": "gặp",
-      "category": "verb",
+      "category": 2,
       "Vru": "おめにかかる",
       "type": "Nhóm I",
       "note": "Khiêm nhường ngữ"
@@ -22401,7 +22401,7 @@ const vocabData = [
       "Romaji": "iremasu",
       "Kanji": "入れます",
       "Meaning": "pha [cà phê]",
-      "category": "verb",
+      "category": 2,
       "Vru": "いれる",
       "type": "Nhóm II",
       "note": "Tha động từ"
@@ -22412,7 +22412,7 @@ const vocabData = [
       "Romaji": "youishimasu",
       "Kanji": "用意します",
       "Meaning": "chuẩn bị sẵn",
-      "category": "verb",
+      "category": 2,
       "Vru": "よういする",
       "type": "Nhóm III",
       "note": ""
@@ -22423,7 +22423,7 @@ const vocabData = [
       "Romaji": "watakushi",
       "Kanji": "私",
       "Meaning": "tôi",
-      "category": "pronoun",
+      "category": 9,
       "Vru": "",
       "type": "",
       "note": "Khiêm nhường ngữ"
@@ -22434,7 +22434,7 @@ const vocabData = [
       "Romaji": "gaido",
       "Kanji": "",
       "Meaning": "hướng dẫn viên du lịch",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -22445,7 +22445,7 @@ const vocabData = [
       "Romaji": "meeruadoresu",
       "Kanji": "",
       "Meaning": "địa chỉ email",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -22456,7 +22456,7 @@ const vocabData = [
       "Romaji": "sukejuuru",
       "Kanji": "",
       "Meaning": "lịch làm việc",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -22467,7 +22467,7 @@ const vocabData = [
       "Romaji": "saraishuu",
       "Kanji": "再来週",
       "Meaning": "tuần sau nữa",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -22478,7 +22478,7 @@ const vocabData = [
       "Romaji": "saraigetsu",
       "Kanji": "再来月",
       "Meaning": "tháng sau nữa",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -22489,7 +22489,7 @@ const vocabData = [
       "Romaji": "sarainen",
       "Kanji": "再来年",
       "Meaning": "năm sau nữa",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -22500,7 +22500,7 @@ const vocabData = [
       "Romaji": "hajimeni",
       "Kanji": "初めに",
       "Meaning": "trước hết, đầu tiên",
-      "category": "adverb",
+      "category": 6,
       "Vru": "",
       "type": "",
       "note": ""
@@ -22511,7 +22511,7 @@ const vocabData = [
       "Romaji": "edotoukyouhakubutsukan",
       "Kanji": "江戸東京博物館",
       "Meaning": "Bảo tàng Edo Tokyo",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -22522,7 +22522,7 @@ const vocabData = [
       "Romaji": "kinchoushimasu",
       "Kanji": "緊張します",
       "Meaning": "hồi hộp",
-      "category": "verb",
+      "category": 2,
       "Vru": "きんちょうする",
       "type": "Nhóm III",
       "note": ""
@@ -22533,7 +22533,7 @@ const vocabData = [
       "Romaji": "shoukin",
       "Kanji": "賞金",
       "Meaning": "tiền thưởng",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -22544,7 +22544,7 @@ const vocabData = [
       "Romaji": "kirin",
       "Kanji": "",
       "Meaning": "hươu cao cổ",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -22555,7 +22555,7 @@ const vocabData = [
       "Romaji": "koro",
       "Kanji": "",
       "Meaning": "lúc, thời",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -22566,7 +22566,7 @@ const vocabData = [
       "Romaji": "kanaimasu",
       "Kanji": "",
       "Meaning": "thành hiện thực",
-      "category": "verb",
+      "category": 2,
       "Vru": "かなう",
       "type": "Nhóm I",
       "note": "Tự động từ"
@@ -22577,7 +22577,7 @@ const vocabData = [
       "Romaji": "ouenshimasu",
       "Kanji": "応援します",
       "Meaning": "động viên",
-      "category": "verb",
+      "category": 2,
       "Vru": "おうえんする",
       "type": "Nhóm III",
       "note": ""
@@ -22588,7 +22588,7 @@ const vocabData = [
       "Romaji": "kokorokara",
       "Kanji": "心から",
       "Meaning": "từ đáy lòng",
-      "category": "adverb",
+      "category": 6,
       "Vru": "",
       "type": "",
       "note": ""
@@ -22599,7 +22599,7 @@ const vocabData = [
       "Romaji": "kanshashimasu",
       "Kanji": "感謝します",
       "Meaning": "cảm ơn",
-      "category": "verb",
+      "category": 2,
       "Vru": "かんしゃする",
       "type": "Nhóm III",
       "note": ""
@@ -22610,7 +22610,7 @@ const vocabData = [
       "Romaji": "orei",
       "Kanji": "お礼",
       "Meaning": "cảm ơn",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
@@ -22621,7 +22621,7 @@ const vocabData = [
       "Romaji": "ogenkideirasshaimasuka",
       "Kanji": "お元気でいらっしゃいますか",
       "Meaning": "Anh/Chị có khỏe không ạ?",
-      "category": "interjection",
+      "category": 7,
       "Vru": "",
       "type": "",
       "note": "Kính ngữ"
@@ -22632,7 +22632,7 @@ const vocabData = [
       "Romaji": "meiwakuokakemasu",
       "Kanji": "迷惑をかけます",
       "Meaning": "làm phiền",
-      "category": "verb",
+      "category": 2,
       "Vru": "めいわくをかける",
       "type": "Nhóm II",
       "note": ""
@@ -22643,7 +22643,7 @@ const vocabData = [
       "Romaji": "ikashimasu",
       "Kanji": "生かします",
       "Meaning": "phát huy",
-      "category": "verb",
+      "category": 2,
       "Vru": "いかす",
       "type": "Nhóm I",
       "note": "Tha động từ"
@@ -22654,7 +22654,7 @@ const vocabData = [
       "Romaji": "myunhen",
       "Kanji": "",
       "Meaning": "Munchen (Đức)",
-      "category": "noun",
+      "category": 1,
       "Vru": "",
       "type": "",
       "note": ""
