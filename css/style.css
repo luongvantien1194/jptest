@@ -2924,10 +2924,13 @@ select:focus {
   gap: 6px 8px;
 }
 
-/* Test từ vựng / Test Kanji config forms: tăng cỡ chữ cho dễ đọc */
+/* Test từ vựng / Test Kanji config forms: chữ trong ô input/select giữ nguyên, còn lại thu nhỏ */
 .test-config-form .field-label,
 .test-config-form .kt-section-label,
-.test-config-form .kt-mode-label,
+.test-config-form .kt-mode-label {
+  font-size: 11px;
+}
+
 .test-config-form .input-text,
 .test-config-form select {
   font-size: 16px;
