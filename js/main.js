@@ -5033,18 +5033,29 @@
 
   function renderScreen () {
     const appShell = document.querySelector(".app-shell");
+const mappingGame = document.querySelector(".mapping-game");
 
-    if (state.displaySettings.iphoneTaiTho) {
-      if (appShell) {
-          appShell.style.paddingTop = "30px";
-          appShell.style.paddingBottom = "30px";
-      }
-    } else {
-      if (appShell) {
-          appShell.style.paddingTop = "0px";
-          appShell.style.paddingBottom = "0px";
-      }
+  if (state.displaySettings.iphoneTaiTho) {
+    if (appShell) {
+      appShell.style.paddingTop = "30px";
+      appShell.style.paddingBottom = "30px";
     }
+  
+    if (mappingGame) {
+      mappingGame.style.paddingTop = "30px";
+      mappingGame.style.paddingBottom = "30px";
+    }
+  } else {
+    if (appShell) {
+      appShell.style.paddingTop = "0px";
+      appShell.style.paddingBottom = "0px";
+    }
+  
+    if (mappingGame) {
+      mappingGame.style.paddingTop = "0px";
+      mappingGame.style.paddingBottom = "0px";
+    }
+  }
 
   }
   function setupVocabFilters() {
@@ -6872,6 +6883,7 @@ history.replaceState({}, "", newUrl);
     });
     btnRow.appendChild(quitBtn);
     //wrapper.appendChild(btnRow);
+
 
     if (detailModalState.bodyEl) {
       openDetailModal("Test mapping", "");
