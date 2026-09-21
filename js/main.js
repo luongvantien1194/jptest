@@ -6871,7 +6871,7 @@ history.replaceState({}, "", newUrl);
       renderMappingTestResult();
     });
     btnRow.appendChild(quitBtn);
-    wrapper.appendChild(btnRow);
+    //wrapper.appendChild(btnRow);
 
     if (detailModalState.bodyEl) {
       openDetailModal("Test mapping", "");
