@@ -276,10 +276,10 @@
             <div class="form-row">
                 <div class="form-group">
                     <label>Từ loại (Category)</label>
-                    <input type="text" id="inp-category" class="form-control">
+                    <select id="inp-category" class="form-control"></select>
                 </div>
                 <div class="form-group">
-                    <label>Thể từ điển (Vru)</label>
+                    <label>Thể ます (Vru)</label>
                     <input type="text" id="inp-vru" class="form-control">
                 </div>
             </div>
@@ -311,6 +311,7 @@
 
     <div id="toast" class="toast"></div>
 
+    <script src="../data/master.js"></script>
     <script>
         let vocabData = JSON.parse(localStorage.getItem('vocab_extra_list')) || [];
         let pendingAction = null;
@@ -340,7 +341,7 @@
                 
                 let tagsHtml = '';
                 if(item.Lesson && item.Lesson !== 9999) tagsHtml += `<span class="mini-tag tag-lesson">L. ${item.Lesson}</span>`;
-                if(item.category) tagsHtml += `<span class="mini-tag">${item.category}</span>`;
+                if(item.category !== '' && item.category != null) tagsHtml += `<span class="mini-tag">${window.getVocabCategoryLabel ? window.getVocabCategoryLabel(item.category) : item.category}</span>`;
                 if(item.Vru) tagsHtml += `<span class="mini-tag tag-vru">Vru: ${item.Vru}</span>`;
                 if(item.type) tagsHtml += `<span class="mini-tag">${item.type}</span>`;
                 if(item.note) tagsHtml += `<span class="mini-tag tag-note">📌 ${item.note}</span>`;
@@ -385,13 +386,17 @@
                 return;
             }
 
+const categoryRules = (window.VOCAB_CATEGORY_MASTER || [])
+    .map(function (c) { return c.id + " = " + c.label; })
+    .join(", ");
+
 const promptText = `Phân tích từ tiếng Nhật: "${targetWord}".
  
 Input có thể là Hiragana, Katakana, Kanji hoặc Romaji (có thể viết sai/gõ nhầm/chưa dấu).
  
 Chỉ trả về DUY NHẤT một chuỗi JSON chuẩn hợp lệ (không markdown, không giải thích, chỉ dùng dấu ngoặc kép thẳng ") theo đúng định dạng sau:
  
-{"Lesson":9999,"Hiragana":"...","Romaji":"...","Kanji":"...","Meaning":"...","category":"...","Vru":"...","type":"...","note":"..."}
+{"Lesson":9999,"Hiragana":"...","Romaji":"...","Kanji":"...","Meaning":"...","category":0,"Vru":"...","type":"...","note":"..."}
  
 Quy tắc:
 - Trước tiên xác định từ tiếng Nhật chuẩn mà input đang muốn nhắc tới, dù input là Hiragana, Katakana, Kanji hay Romaji.
@@ -401,6 +406,12 @@ Quy tắc:
 - Nếu input là Romaji, chuyển đổi sang Hiragana (hoặc Katakana nếu từ đó vốn là từ mượn/ngoại lai) rồi điền vào trường "Hiragana".
 - Trường "Hiragana" chỉ được chứa Hiragana hoặc Katakana, tuyệt đối không chứa Kanji hoặc Romaji.
 - Trường "Kanji" phải là dạng Kanji chuẩn của từ nếu có; nếu từ không có Kanji thì để "".
+- Trường "category" PHẢI là một số nguyên (không để trong dấu ngoặc kép) lấy đúng từ danh sách từ loại sau: ${categoryRules}. Nếu không xác định được từ loại nào phù hợp, để "category":0.
+- Trường "type" chỉ áp dụng khi "category" là 2 (Động từ), dùng để phân nhóm chia động từ tiếng Nhật, PHẢI là đúng một trong 3 giá trị sau (giữ nguyên chữ, có dấu cách): "Nhóm I" (động từ nhóm 1, godan/五段動詞, chia う→い/て/た..., ví dụ 書く, 飲む, 話す, 会う), "Nhóm II" (động từ nhóm 2, ichidan/一段動詞, thân từ kết thúc bằng い hoặc え rồi thêm る, bỏ る để chia て/た, ví dụ 食べる, 見る, 起きる), "Nhóm III" (động từ bất quy tắc, chỉ gồm duy nhất する và 来る/来ます). Nếu "category" khác 2 (không phải động từ) thì "type" PHẢI để chuỗi rỗng "".
+- Trường "Vru" là thể ます (thể lịch sự, hiện tại khẳng định), KHÔNG phải thể từ điển, cũng không phải câu ví dụ hay nghĩa tiếng Việt, áp dụng trong 2 trường hợp:
+  1) "category" là 2 (Động từ): Vru là thể ます chia đúng từ "Hiragana". Ví dụ Hiragana là "たべる" thì Vru là "たべます"; Hiragana là "のむ" thì Vru là "のみます"; Hiragana là "する"/"くる" thì Vru là "します"/"きます".
+  2) "category" là 1 (Danh từ) nhưng bản thân danh từ đó có thể ghép thêm 「する」để thành động từ (danh từ + suru, thường là từ Hán-Nhật/từ mượn chỉ hành động, ví dụ 勉強, 準備, 提案, 誕生, 合格...): Vru là thể ます của "[Hiragana]します". Ví dụ Hiragana là "べんきょう" thì Vru là "べんきょうします"; Hiragana là "せいちょう" thì Vru là "せいちょうします".
+  Nếu không rơi vào 2 trường hợp trên (không phải động từ, và danh từ đó không ghép được với する) thì "Vru" PHẢI để chuỗi rỗng "".
 - Nếu input bị viết sai, gõ nhầm hoặc sai chính tả nhưng có thể suy ra từ người dùng muốn nhập, hãy tự động sửa thành từ tiếng Nhật chuẩn và trả về kết quả đúng.
 - "Romaji" sử dụng chuẩn Hepburn.
 - Chỉ trả về đúng một đối tượng JSON hợp lệ, không thêm bất kỳ ký tự hay nội dung nào khác.`;
@@ -481,7 +492,8 @@ Quy tắc:
                 
                 document.getElementById('inp-romaji').value = getValue(['Romaji', 'romaji']);
                 document.getElementById('inp-meaning').value = meaning;
-                document.getElementById('inp-category').value = getValue(['category', 'cat']);
+                const parsedCategoryId = window.resolveVocabCategoryId ? window.resolveVocabCategoryId(getValue(['category', 'cat'])) : '';
+                document.getElementById('inp-category').value = parsedCategoryId === '' ? '' : String(parsedCategoryId);
                 document.getElementById('inp-vru').value = getValue(['Vru', 'vru']);
                 document.getElementById('inp-type').value = getValue(['type']);
                 document.getElementById('inp-note').value = getValue(['note']);
@@ -545,7 +557,7 @@ Quy tắc:
                 "Romaji": document.getElementById('inp-romaji').value.trim(),
                 "Kanji": document.getElementById('inp-kanji').value.trim(),
                 "Meaning": document.getElementById('inp-meaning').value.trim(),
-                "category": document.getElementById('inp-category').value.trim(),
+                "category": document.getElementById('inp-category').value === '' ? '' : parseInt(document.getElementById('inp-category').value, 10),
                 "Vru": document.getElementById('inp-vru').value.trim(),
                 "type": document.getElementById('inp-type').value.trim(),
                 "note": document.getElementById('inp-note').value.trim()
@@ -568,7 +580,7 @@ Quy tắc:
             document.getElementById('inp-romaji').value = item.Romaji;
             document.getElementById('inp-kanji').value = item.Kanji;
             document.getElementById('inp-meaning').value = item.Meaning;
-            document.getElementById('inp-category').value = item.category;
+            document.getElementById('inp-category').value = item.category != null ? String(item.category) : '';
             document.getElementById('inp-vru').value = item.Vru;
             document.getElementById('inp-type').value = item.type;
             document.getElementById('inp-note').value = item.note;
@@ -579,7 +591,8 @@ Quy tắc:
             let txt = ``;
             vocabData.forEach(i => {
                 txt += `  // --- Lesson ${i.Lesson}: ${i.Hiragana} ---\n`;
-                txt += `  { "Lesson": ${i.Lesson}, "Hiragana": "${i.Hiragana}", "Romaji": "${i.Romaji}", "Kanji": "${i.Kanji}", "Meaning": "${i.Meaning}", "category": "${i.category}", "Vru": "${i.Vru}", "type": "${i.type}", "note": "${i.note}" },\n`;
+                const categoryOut = i.category === '' || i.category == null ? '""' : i.category;
+                txt += `  { "Lesson": ${i.Lesson}, "Hiragana": "${i.Hiragana}", "Romaji": "${i.Romaji}", "Kanji": "${i.Kanji}", "Meaning": "${i.Meaning}", "category": ${categoryOut}, "Vru": "${i.Vru}", "type": "${i.type}", "note": "${i.note}" },\n`;
             });
             navigator.clipboard.writeText(txt).then(() => showToast('📋 Đã copy code JS!'));
         }
@@ -598,7 +611,23 @@ Quy tắc:
             }
         }
 
+        function populateCategorySelect() {
+            const select = document.getElementById('inp-category');
+            select.innerHTML = '';
+            const emptyOpt = document.createElement('option');
+            emptyOpt.value = '';
+            emptyOpt.textContent = '(chưa xác định)';
+            select.appendChild(emptyOpt);
+            (window.VOCAB_CATEGORY_MASTER || []).forEach(cat => {
+                const opt = document.createElement('option');
+                opt.value = String(cat.id);
+                opt.textContent = cat.label;
+                select.appendChild(opt);
+            });
+        }
+
         document.addEventListener('DOMContentLoaded', () => {
+            populateCategorySelect();
             renderList();
             openFromQueryString();
         });
