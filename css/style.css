@@ -2358,15 +2358,15 @@ select:focus {
 .detail-modal--taitho .detail-modal__dialog {
   margin-top: 30px;
   margin-bottom: 30px;
-  max-height: calc(100dvh - 100px);
-  max-height: calc(100vh - 100px);
+  max-height: calc(100dvh - 120px);
+  max-height: calc(100vh - 120px);
 }
 
 .detail-modal--taitho.detail-modal--mapping .detail-modal__dialog {
-  height: calc(100dvh - 60px);
-  height: calc(100vh - 60px);
-  max-height: calc(100dvh - 84px);
-  max-height: calc(100vh - 84px);
+  height: calc(100dvh - 104px);
+  height: calc(100vh - 104px);
+  max-height: calc(100dvh - 104px);
+  max-height: calc(100vh - 104px);
 }
 
 .detail-modal__dialog .detail-modal__body {
