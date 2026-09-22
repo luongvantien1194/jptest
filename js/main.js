@@ -82,15 +82,15 @@
       pool: [],
       usedCount: 0,
       pairsPerRound: 9,
-      timeLimit: 30,
-      timeRemaining: 30,
+      timeLimit: 60,
+      timeRemaining: 60,
       lives: 3,
       wrongCount: 0,
       correctCount: 0,
       roundTiles: [],
       selectedTileId: null,
       locked: false,
-      endReason: "", // "done" | "timeout" | "lives"
+      endReason: "", // "timeout" | "lives" | "quit"
       // vocab config
       questionField: "hiragana",
       answerField: "meaning",
@@ -1443,6 +1443,7 @@
       detailModalState.bodyEl.innerHTML = htmlContentOrNode || "";
     }
     detailModalState.el.classList.add("detail-modal--open");
+    detailModalState.el.classList.toggle("detail-modal--taitho", !!state.displaySettings.iphoneTaiTho);
     detailModalState.el.setAttribute("aria-hidden", "false");
     state.ui.detailModal.isOpen = true;
   }
@@ -6366,9 +6367,9 @@ history.replaceState({}, "", newUrl);
 
   // ----- Test mapping (vocab + kanji) -----
   var MAPPING_DIFFICULTY_PRESETS = [
-    { key: "easy", label: "Dễ", seconds: 40 },
-    { key: "medium", label: "Vừa", seconds: 30 },
-    { key: "hard", label: "Khó", seconds: 20 }
+    { key: "easy", label: "Dễ", seconds: 90 },
+    { key: "medium", label: "Vừa", seconds: 60 },
+    { key: "hard", label: "Khó", seconds: 30 }
   ];
 
   function buildVocabMappingPool(config) {
@@ -6464,9 +6465,11 @@ history.replaceState({}, "", newUrl);
       ts.fromStt = 1;
       ts.toStt = null;
     } else {
-      ts.lessonMin = 1;
-      ts.lessonMax = 50;
-      ts.selectedCategory = "all";
+      var screenFrom = parseInt(state.filter.vocabLessonFrom, 10);
+      var screenTo = parseInt(state.filter.vocabLessonTo, 10);
+      ts.lessonMin = isNaN(screenFrom) ? 1 : screenFrom;
+      ts.lessonMax = isNaN(screenTo) ? 50 : screenTo;
+      ts.selectedCategory = state.filter.vocabCategory || "all";
     }
     renderMappingTestInitialMessage();
   }
@@ -6768,7 +6771,7 @@ history.replaceState({}, "", newUrl);
     wrapper.appendChild(btnRow);
 
     if (detailModalState.bodyEl) {
-      openDetailModal("Test mapping", "");
+      openDetailModal("", "");
       detailModalState.bodyEl.innerHTML = "";
       detailModalState.bodyEl.appendChild(wrapper);
     }
@@ -6778,10 +6781,10 @@ history.replaceState({}, "", newUrl);
     var ts = state.mappingTestState;
     var remaining = ts.pool.length - ts.usedCount;
     if (remaining <= 0) {
-      ts.isFinished = true;
-      ts.endReason = "done";
-      renderMappingTestResult();
-      return;
+      // Hết pool: xáo lại và tiếp tục random mapping thay vì kết thúc bài test
+      ts.pool = shuffleArray(ts.pool);
+      ts.usedCount = 0;
+      remaining = ts.pool.length;
     }
     var batchSize = Math.min(ts.pairsPerRound, remaining);
     var batch = ts.pool.slice(ts.usedCount, ts.usedCount + batchSize);
@@ -6818,7 +6821,6 @@ history.replaceState({}, "", newUrl);
     var ts = state.mappingTestState;
     if (detailModalState.el) {
       detailModalState.el.classList.add("detail-modal--mapping");
-      detailModalState.el.classList.toggle("detail-modal--taitho", !!state.displaySettings.iphoneTaiTho);
     }
 
     var wrapper = createElement("div", "mapping-game", "");
@@ -6832,7 +6834,7 @@ history.replaceState({}, "", newUrl);
     }
     header.appendChild(livesWrap);
 
-    var progressText = ts.usedCount + "/" + ts.pool.length + " cặp — Đúng: " + ts.correctCount;
+    var progressText = ts.usedCount + "/" + ts.pool.length + " cặp — 🏆 Điểm: " + ts.correctCount;
     header.appendChild(createElement("div", "mapping-progress-text", progressText));
 
     var timerWrap = createElement("div", "mapping-timer", "");
@@ -6882,7 +6884,7 @@ history.replaceState({}, "", newUrl);
     }
 
     if (detailModalState.bodyEl) {
-      openDetailModal("Test mapping", "");
+      openDetailModal("", "");
       detailModalState.bodyEl.innerHTML = "";
       detailModalState.bodyEl.appendChild(wrapper);
     }
@@ -6951,13 +6953,11 @@ history.replaceState({}, "", newUrl);
     }
 
     var wrapper = createElement("div", "test-result", "");
-    var scoreMain = createElement("div", "score-main", "Ghép đúng: " + ts.correctCount + " cặp");
+    var scoreMain = createElement("div", "score-main", "🏆 Điểm: " + ts.correctCount);
     wrapper.appendChild(scoreMain);
 
     var reasonText = "";
-    if (ts.endReason === "done") {
-      reasonText = "Bạn đã hoàn thành hết " + ts.pool.length + " cặp!";
-    } else if (ts.endReason === "timeout") {
+    if (ts.endReason === "timeout") {
       reasonText = "Hết giờ cho lượt mapping này.";
     } else if (ts.endReason === "lives") {
       reasonText = "Đã sai 3 lần, kết thúc bài test.";
