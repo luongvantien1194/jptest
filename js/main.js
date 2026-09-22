@@ -98,11 +98,35 @@
       lessonMin: 1,
       lessonMax: 50,
       isStar: false,
+      isNotMastered: false,
       // kanji config
       level: "all",
       fromStt: 1,
       toStt: null,
       modes: [4]
+    },
+    assembleTestState: {
+      isActive: false,
+      isFinished: false,
+      questions: [],
+      currentIndex: 0,
+      correctCount: 0,
+      answers: [],
+      selectedCategory: "all",
+      lessonMin: 1,
+      lessonMax: 50,
+      questionCount: 20,
+      isStar: false,
+      isNotMastered: false,
+      /** Hiện Kanji của từ (nếu Kanji chỉ là hiragana/katakana lặp lại thì luôn ẩn vì đó là data sai) */
+      showKanji: true,
+      readAfterAnswer: true,
+      // Trạng thái ghép từ của câu hỏi hiện tại
+      builtIndex: -1,
+      tileBag: [],
+      selectedIds: [],
+      /** null = không đang gợi ý; nếu có giá trị N thì các ô từ vị trí N trở đi đang là tile gợi ý (⚡) */
+      revealedFrom: null
     },
     kanjiViewMode: "grid",
     note: {
@@ -1074,6 +1098,26 @@
     }
     const shuffled = shuffleArray(indices);
     return shuffled.slice(0, n);
+  }
+
+  /** true nếu chuỗi có ít nhất 1 ký tự Hán (Kanji thật sự, không phải hiragana/katakana) */
+  function hasRealKanjiChar(str) {
+    return /[㐀-鿿]/.test(String(str || ""));
+  }
+
+  /** Tách một từ hiragana thành các "tile" theo âm tiết (mora): gộp ゃゅょ nhỏ vào ký tự đứng trước */
+  function splitHiraganaTiles(str) {
+    var YOON = { "ゃ": 1, "ゅ": 1, "ょ": 1, "ャ": 1, "ュ": 1, "ョ": 1 };
+    var chars = Array.from(String(str || ""));
+    var tiles = [];
+    chars.forEach(function (c) {
+      if (YOON[c] && tiles.length > 0) {
+        tiles[tiles.length - 1] += c;
+      } else {
+        tiles.push(c);
+      }
+    });
+    return tiles;
   }
 
   // Hiragana → Romaji để đặt tên file âm thanh
@@ -3370,6 +3414,584 @@
       detailModalState.bodyEl.appendChild(wrapper);
     } else if (container) {
       container.appendChild(wrapper);
+    }
+  }
+
+  // ----- Test ghép từ (chọn tile hiragana ghép thành từ đúng) -----
+  var assembleProcessing = false;
+
+  function buildAssembleTilesForQuestion(rawQuestion, pool) {
+    var hira = rawQuestion.hiragana != null ? rawQuestion.hiragana : rawQuestion.Hiragana;
+    var correctTiles = splitHiraganaTiles(hira);
+    var bag = correctTiles.map(function (t, i) {
+      return { id: "c" + i, text: t };
+    });
+
+    var extrasNeeded = Math.min(6, Math.max(2, Math.ceil(correctTiles.length / 2)));
+    var otherWords = shuffleArray((pool || []).filter(function (v) { return v !== rawQuestion; }));
+    var extraTiles = [];
+    otherWords.forEach(function (v) {
+      var h = v.hiragana != null ? v.hiragana : v.Hiragana;
+      splitHiraganaTiles(h).forEach(function (t) {
+        extraTiles.push(t);
+      });
+    });
+    extraTiles = shuffleArray(extraTiles);
+    for (var i = 0; i < extraTiles.length && bag.length < correctTiles.length + extrasNeeded; i += 1) {
+      bag.push({ id: "e" + i, text: extraTiles[i] });
+    }
+    return shuffleArray(bag);
+  }
+
+  function applyVocabScreenDefaultsToAssembleTestState() {
+    var screenFrom = parseInt(state.filter.vocabLessonFrom, 10);
+    var screenTo = parseInt(state.filter.vocabLessonTo, 10);
+    state.assembleTestState.lessonMin = isNaN(screenFrom) ? 1 : screenFrom;
+    state.assembleTestState.lessonMax = isNaN(screenTo) ? 50 : screenTo;
+    state.assembleTestState.selectedCategory = state.filter.vocabCategory || "all";
+  }
+
+  function startAssembleTest() {
+    var ts = state.assembleTestState;
+    ts.isActive = false;
+    ts.isFinished = false;
+    ts.questions = [];
+    ts.currentIndex = 0;
+    ts.correctCount = 0;
+    ts.answers = [];
+    ts.builtIndex = -1;
+    ts.tileBag = [];
+    ts.selectedIds = [];
+    applyVocabScreenDefaultsToAssembleTestState();
+    ts.questionCount = 20;
+    renderAssembleTestInitialMessage();
+  }
+
+  function renderAssembleTestInitialMessage() {
+    var ts = state.assembleTestState;
+    const wrapper = createElement("div", "test-result test-config-form", "");
+    const configGrid = createElement("div", "test-config-fields", "");
+
+    const lessonMinField = createElement("div", "field-group", "");
+    lessonMinField.appendChild(createElement("div", "field-label", "Từ bài"));
+    const lessonMinInput = createElement("input", "input-text", "");
+    lessonMinInput.type = "number";
+    lessonMinInput.min = 1;
+    lessonMinInput.max = 999;
+    lessonMinInput.value = String(ts.lessonMin != null ? ts.lessonMin : 1);
+    lessonMinInput.id = "vocab-assemble-lesson-min";
+    lessonMinField.appendChild(lessonMinInput);
+    configGrid.appendChild(lessonMinField);
+
+    const lessonMaxField = createElement("div", "field-group", "");
+    lessonMaxField.appendChild(createElement("div", "field-label", "Đến bài"));
+    const lessonMaxInput = createElement("input", "input-text", "");
+    lessonMaxInput.type = "number";
+    lessonMaxInput.min = 1;
+    lessonMaxInput.max = 999;
+    lessonMaxInput.value = String(ts.lessonMax != null ? ts.lessonMax : 50);
+    lessonMaxInput.id = "vocab-assemble-lesson-max";
+    lessonMaxField.appendChild(lessonMaxInput);
+    configGrid.appendChild(lessonMaxField);
+
+    const catField = createElement("div", "field-group", "");
+    catField.appendChild(createElement("div", "field-label", "Category"));
+    const catSelect = createElement("select", "", "");
+    catSelect.id = "vocab-assemble-category-select";
+    var optAll = createElement("option", "", "Tất cả");
+    optAll.value = "all";
+    catSelect.appendChild(optAll);
+    var categories = getUniqueSorted(
+      vocabData.map(function (v) { return v.category; }).filter(function (c) { return c; })
+    );
+    categories.forEach(function (cat) {
+      const opt = createElement("option", "", getCategoryLabel(cat));
+      opt.value = cat;
+      catSelect.appendChild(opt);
+    });
+    catSelect.value = ts.selectedCategory || "all";
+    catField.appendChild(catSelect);
+    configGrid.appendChild(catField);
+
+    const qCountField = createElement("div", "field-group", "");
+    qCountField.appendChild(createElement("div", "field-label", "Số câu hỏi (5–50)"));
+    const qCountInput = createElement("input", "input-text", "");
+    qCountInput.type = "number";
+    qCountInput.min = 5;
+    qCountInput.max = 50;
+    qCountInput.value = String(ts.questionCount != null ? ts.questionCount : 20);
+    qCountInput.id = "vocab-assemble-question-count";
+    qCountField.appendChild(qCountInput);
+    configGrid.appendChild(qCountField);
+
+    const sStarField = createElement("div", "field-group", "");
+    sStarField.appendChild(createElement("div", "field-label", "Chỉ test từ vựng có ★"));
+    const sStarInput = createElement("input", "", "");
+    sStarInput.type = "checkbox";
+    sStarInput.checked = !!ts.isStar;
+    sStarInput.style = "text-align: left";
+    sStarInput.id = "vocab-assemble-star";
+    sStarField.appendChild(sStarInput);
+    configGrid.appendChild(sStarField);
+
+    const sNotMasteredField = createElement("div", "field-group", "");
+    sNotMasteredField.appendChild(createElement("div", "field-label", "Chỉ test từ chưa thuộc"));
+    const sNotMasteredInput = createElement("input", "", "");
+    sNotMasteredInput.type = "checkbox";
+    sNotMasteredInput.checked = !!ts.isNotMastered;
+    sNotMasteredInput.style = "text-align: left";
+    sNotMasteredInput.id = "vocab-assemble-not-mastered";
+    sNotMasteredField.appendChild(sNotMasteredInput);
+    configGrid.appendChild(sNotMasteredField);
+
+    const showKanjiField = createElement("div", "field-group", "");
+    showKanjiField.appendChild(createElement("div", "field-label", "Hiện Kanji của từ (nếu có)"));
+    const showKanjiInput = createElement("input", "", "");
+    showKanjiInput.type = "checkbox";
+    showKanjiInput.checked = ts.showKanji !== false;
+    showKanjiInput.style = "text-align: left";
+    showKanjiInput.id = "vocab-assemble-show-kanji";
+    showKanjiField.appendChild(showKanjiInput);
+    configGrid.appendChild(showKanjiField);
+
+    const readAfterAnswerField = createElement("div", "field-group", "");
+    readAfterAnswerField.appendChild(createElement("div", "field-label", "Đọc từ vựng sau khi trả lời"));
+    const readAfterAnswerInput = createElement("input", "", "");
+    readAfterAnswerInput.type = "checkbox";
+    readAfterAnswerInput.checked = ts.readAfterAnswer !== false;
+    readAfterAnswerInput.style = "text-align: left";
+    readAfterAnswerInput.id = "vocab-assemble-read-after-answer";
+    readAfterAnswerField.appendChild(readAfterAnswerInput);
+    configGrid.appendChild(readAfterAnswerField);
+
+    wrapper.appendChild(configGrid);
+
+    const hintEl = createElement(
+      "div",
+      "test-question-sub",
+      "Ghép các mảnh hiragana theo đúng thứ tự để tạo thành từ. Bấm ⚡ nếu muốn xem đáp án đúng. " +
+      "Lưu ý: từ nào Kanji bị sai (chỉ là hiragana/katakana) sẽ luôn tự động ẩn Kanji dù có bật hiển thị."
+    );
+    wrapper.appendChild(hintEl);
+
+    const btnRow = createElement("div", "btn-row", "");
+    const startBtn = createElement("button", "btn", "Bắt đầu");
+    startBtn.type = "button";
+    startBtn.addEventListener("click", function () {
+      var lessonMin = parseInt(lessonMinInput.value, 10);
+      if (isNaN(lessonMin) || lessonMin < 1) {
+        lessonMin = 1;
+      }
+      var lessonMax = parseInt(lessonMaxInput.value, 10);
+      if (isNaN(lessonMax) || lessonMax < lessonMin) {
+        lessonMax = 999;
+      }
+      var selectedCat = catSelect.value || "all";
+      var questionCount = parseInt(qCountInput.value, 10);
+      if (isNaN(questionCount) || questionCount < 5) {
+        questionCount = 5;
+      }
+      if (questionCount > 50) {
+        questionCount = 50;
+      }
+      var isStar = !!sStarInput.checked;
+      var isNotMastered = !!sNotMasteredInput.checked;
+      var showKanji = !!showKanjiInput.checked;
+      var readAfterAnswer = !!readAfterAnswerInput.checked;
+
+      var pool = vocabData.filter(function (raw) {
+        if (!raw) {
+          return false;
+        }
+        if (isVocabHidden(raw)) {
+          return false;
+        }
+        var idx = vocabData.indexOf(raw);
+        if (isStar && !state.vocabFavorites[idx]) {
+          return false;
+        }
+        if (isNotMastered && state.vocabMastered[idx]) {
+          return false;
+        }
+        var lesson = raw.lesson != null ? raw.lesson : raw.Lesson;
+        var lessonNum = typeof lesson === "number" ? lesson : parseInt(lesson, 10);
+        if (isNaN(lessonNum) || lessonNum < lessonMin || lessonNum > lessonMax) {
+          return false;
+        }
+        var hira = raw.hiragana != null ? raw.hiragana : raw.Hiragana;
+        if (!String(hira || "").trim()) {
+          return false;
+        }
+        if (selectedCat === "all") {
+          return true;
+        }
+        return String(raw.category) === String(selectedCat);
+      });
+
+      var questions = buildTestQuestions(pool, questionCount);
+      if (questions.length === 0) {
+        alert("Không có từ vựng phù hợp (phạm vi bài " + lessonMin + "–" + lessonMax + " và category đã chọn).");
+        return;
+      }
+
+      var ts2 = state.assembleTestState;
+      ts2.isActive = true;
+      ts2.isFinished = false;
+      ts2.questions = questions;
+      ts2.currentIndex = 0;
+      ts2.correctCount = 0;
+      ts2.answers = [];
+      ts2.selectedCategory = selectedCat;
+      ts2.lessonMin = lessonMin;
+      ts2.lessonMax = lessonMax;
+      ts2.questionCount = questionCount;
+      ts2.isStar = isStar;
+      ts2.isNotMastered = isNotMastered;
+      ts2.showKanji = showKanji;
+      ts2.readAfterAnswer = readAfterAnswer;
+      ts2.builtIndex = -1;
+      ts2.tileBag = [];
+      ts2.selectedIds = [];
+      ts2._pool = pool;
+      renderAssembleTestQuestion();
+    });
+
+    const cancelBtn = createElement("button", "btn-ghost", "Đóng");
+    cancelBtn.type = "button";
+    cancelBtn.addEventListener("click", function () {
+      closeDetailModal();
+    });
+
+    btnRow.appendChild(startBtn);
+    btnRow.appendChild(cancelBtn);
+    wrapper.appendChild(btnRow);
+
+    openDetailModal("Ghép từ (Hiragana)", "");
+    detailModalState.bodyEl.innerHTML = "";
+    detailModalState.bodyEl.appendChild(wrapper);
+  }
+
+  function renderAssembleTestQuestion() {
+    var ts = state.assembleTestState;
+    if (!ts.isActive || ts.questions.length === 0) {
+      renderAssembleTestInitialMessage();
+      return;
+    }
+    if (ts.isFinished || ts.currentIndex >= ts.questions.length) {
+      renderAssembleTestResult();
+      return;
+    }
+
+    var rawQuestion = ts.questions[ts.currentIndex];
+    if (!rawQuestion) {
+      renderAssembleTestInitialMessage();
+      return;
+    }
+
+    var hiragana = rawQuestion.hiragana != null ? rawQuestion.hiragana : rawQuestion.Hiragana;
+    var kanji = rawQuestion.kanji != null ? rawQuestion.kanji : rawQuestion.Kanji;
+    var meaning = rawQuestion.meaning != null ? rawQuestion.meaning : rawQuestion.Meaning;
+    var correctTiles = splitHiraganaTiles(hiragana);
+
+    if (ts.builtIndex !== ts.currentIndex) {
+      ts.tileBag = buildAssembleTilesForQuestion(rawQuestion, ts._pool || vocabData);
+      ts.selectedIds = [];
+      ts.revealedFrom = null;
+      ts.builtIndex = ts.currentIndex;
+    }
+
+    // Chỉ hiện Kanji khi config bật VÀ chuỗi Kanji thực sự chứa Hán tự
+    // (nếu Kanji chỉ toàn hiragana/katakana thì đó là data sai, luôn ẩn)
+    var canShowKanji = !!(ts.showKanji && kanji && hasRealKanjiChar(kanji));
+
+    var questionWrapper = createElement("div", "test-question", "");
+
+    var header = createElement("div", "test-question-header", "");
+    header.appendChild(createElement("div", "", "Câu " + (ts.currentIndex + 1) + " / " + ts.questions.length));
+    header.appendChild(createElement("div", "", "Đã đúng: " + ts.correctCount));
+    questionWrapper.appendChild(header);
+
+    var qMain = createElement("div", "test-question-main", "");
+    if (canShowKanji) {
+      qMain.appendChild(createElement("div", "test-question-text", kanji));
+      qMain.appendChild(createElement("div", "test-question-sub", meaning || ""));
+    } else {
+      qMain.appendChild(createElement("div", "test-question-text", meaning || ""));
+    }
+    var progressBarOuter = createElement("div", "test-progress", "");
+    var progressInner = createElement("div", "test-progress-bar", "");
+    progressInner.style.width = ((ts.currentIndex / ts.questions.length) * 100).toFixed(2) + "%";
+    progressBarOuter.appendChild(progressInner);
+    qMain.appendChild(progressBarOuter);
+    questionWrapper.appendChild(qMain);
+
+    // Hàng đáp án: dấu ⚡ (gợi ý, không viền/nền) nằm bên trái, cùng hàng với các ô ghép từ
+    var answerWrap = createElement("div", "assemble-answer-wrap", "");
+
+    var revealBtn = createElement("button", "assemble-reveal-btn", "⚡");
+    revealBtn.type = "button";
+    revealBtn.title = "Gợi ý: hiện đáp án đúng để tham khảo (không tự qua câu tiếp theo)";
+    revealBtn.addEventListener("click", function () {
+      if (assembleProcessing) {
+        return;
+      }
+      revealAssembleAnswer();
+    });
+    answerWrap.appendChild(revealBtn);
+
+    // Các ô đã chọn theo thứ tự - bấm vào để bỏ chọn lại (kể cả khi đang hiện gợi ý)
+    var answerRow = createElement("div", "assemble-answer-row", "");
+    ts.selectedIds.forEach(function (chosenId, slotIdx) {
+      var chosenTile = ts.tileBag.filter(function (t) { return t.id === chosenId; })[0];
+      var isHintTile = ts.revealedFrom != null && slotIdx >= ts.revealedFrom;
+      var slotClass = "assemble-slot assemble-slot--filled" + (isHintTile ? " assemble-slot--revealed" : "");
+      var slotBtn = createElement("button", slotClass, chosenTile ? chosenTile.text : "");
+      slotBtn.type = "button";
+      slotBtn.addEventListener("click", function () {
+        if (assembleProcessing) {
+          return;
+        }
+        ts.selectedIds.splice(slotIdx, 1);
+        ts.revealedFrom = null;
+        renderAssembleTestQuestion();
+      });
+      answerRow.appendChild(slotBtn);
+    });
+    for (var emptySlot = ts.selectedIds.length; emptySlot < correctTiles.length; emptySlot += 1) {
+      answerRow.appendChild(createElement("button", "assemble-slot", ""));
+    }
+    answerWrap.appendChild(answerRow);
+    // Spacer vô hình cùng kích thước với nút ⚡ để hàng đáp án thực sự nằm chính giữa
+    var answerSpacer = createElement("div", "assemble-reveal-spacer", "");
+    answerWrap.appendChild(answerSpacer);
+    questionWrapper.appendChild(answerWrap);
+
+    // Danh sách các mảnh hiragana đề xuất để chọn
+    var poolGrid = createElement("div", "assemble-tile-pool", "");
+    ts.tileBag.forEach(function (tile) {
+      var used = ts.selectedIds.indexOf(tile.id) !== -1;
+      var tileBtn = createElement("button", "assemble-tile" + (used ? " assemble-tile--used" : ""), tile.text);
+      tileBtn.type = "button";
+      tileBtn.disabled = used;
+      tileBtn.addEventListener("click", function () {
+        if (assembleProcessing || used) {
+          return;
+        }
+        if (ts.selectedIds.length >= correctTiles.length) {
+          return;
+        }
+        ts.selectedIds.push(tile.id);
+        renderAssembleTestQuestion();
+        if (ts.selectedIds.length === correctTiles.length) {
+          checkAssembleAnswer();
+        }
+      });
+      poolGrid.appendChild(tileBtn);
+    });
+    questionWrapper.appendChild(poolGrid);
+
+    if (detailModalState.bodyEl) {
+      openDetailModal("Ghép từ (Hiragana)", "");
+      detailModalState.bodyEl.innerHTML = "";
+      detailModalState.bodyEl.appendChild(questionWrapper);
+    }
+  }
+
+  // Khi ghép đủ ô: đúng thì mới qua câu tiếp theo, sai thì reset để làm lại tại chỗ (bắt buộc phải đúng mới qua)
+  function checkAssembleAnswer() {
+    if (assembleProcessing) {
+      return;
+    }
+    var ts = state.assembleTestState;
+    var rawQuestion = ts.questions[ts.currentIndex];
+    var hiragana = rawQuestion.hiragana != null ? rawQuestion.hiragana : rawQuestion.Hiragana;
+    var selectedText = ts.selectedIds.map(function (id) {
+      var t = ts.tileBag.filter(function (x) { return x.id === id; })[0];
+      return t ? t.text : "";
+    }).join("");
+
+    if (selectedText === hiragana) {
+      assembleProcessing = true;
+      finishAssembleQuestion(hiragana, rawQuestion);
+    } else {
+      flashAssembleWrongThenReset();
+    }
+  }
+
+  /** Ghép sai: rung nhẹ để báo sai rồi tự xoá các ô đã chọn cho user ghép lại, không qua câu tiếp theo */
+  function flashAssembleWrongThenReset() {
+    assembleProcessing = true;
+    var ts = state.assembleTestState;
+    var answerRow = detailModalState.bodyEl
+      ? detailModalState.bodyEl.querySelector(".assemble-answer-row")
+      : null;
+    if (answerRow) {
+      answerRow.classList.add("assemble-answer-row--wrong");
+    }
+    setTimeout(function () {
+      ts.selectedIds = [];
+      ts.revealedFrom = null;
+      assembleProcessing = false;
+      renderAssembleTestQuestion();
+    }, 500);
+  }
+
+  /** Nút ⚡: chớp gợi ý đáp án đúng trong 1 giây rồi tự ẩn lại — không tính điểm và KHÔNG tự qua
+   * câu tiếp theo. Những ô user đã xếp ĐÚNG từ trước (tính theo prefix liên tục từ đầu) được giữ
+   * nguyên cả trong lúc chớp lẫn sau khi ẩn; chỉ phần còn thiếu/sai mới bị coi là gợi ý và bị xoá lại. */
+  function revealAssembleAnswer() {
+    if (assembleProcessing) {
+      return;
+    }
+    var ts = state.assembleTestState;
+    var rawQuestion = ts.questions[ts.currentIndex];
+    var hiragana = rawQuestion.hiragana != null ? rawQuestion.hiragana : rawQuestion.Hiragana;
+    var correctTiles = splitHiraganaTiles(hiragana);
+    var correctIds = ts.tileBag
+      .filter(function (t) { return t.id.charAt(0) === "c"; })
+      .sort(function (a, b) { return parseInt(a.id.slice(1), 10) - parseInt(b.id.slice(1), 10); })
+      .map(function (t) { return t.id; });
+
+    // Xác định phần prefix user đã chọn đúng liên tục từ đầu (dừng lại ở ô đầu tiên sai/còn trống)
+    var prefixLen = 0;
+    while (prefixLen < correctTiles.length) {
+      var curId = ts.selectedIds[prefixLen];
+      var curTile = curId ? ts.tileBag.filter(function (t) { return t.id === curId; })[0] : null;
+      if (!curTile || curTile.text !== correctTiles[prefixLen]) {
+        break;
+      }
+      prefixLen += 1;
+    }
+    var keptIds = ts.selectedIds.slice(0, prefixLen);
+
+    ts.selectedIds = keptIds.concat(correctIds.slice(prefixLen));
+    ts.revealedFrom = prefixLen;
+    assembleProcessing = true;
+    renderAssembleTestQuestion();
+
+    var builtIndexAtReveal = ts.builtIndex;
+    setTimeout(function () {
+      // Chỉ ẩn lại nếu vẫn đang ở đúng câu hỏi lúc bấm ⚡ (chưa bị xoá/next bởi thao tác khác)
+      if (ts.builtIndex === builtIndexAtReveal) {
+        ts.selectedIds = keptIds;
+        ts.revealedFrom = null;
+      }
+      assembleProcessing = false;
+      renderAssembleTestQuestion();
+    }, 1000);
+  }
+
+  function finishAssembleQuestion(hiragana, rawQuestion) {
+    var ts = state.assembleTestState;
+    ts.correctCount += 1;
+    var kanji = rawQuestion.kanji != null ? rawQuestion.kanji : rawQuestion.Kanji;
+    var meaning = rawQuestion.meaning != null ? rawQuestion.meaning : rawQuestion.Meaning;
+    var qLabelParts = [String(hiragana || "")];
+    if (kanji && hasRealKanjiChar(kanji)) {
+      qLabelParts.push("(" + kanji + ")");
+    }
+    if (meaning) {
+      qLabelParts.push("– " + meaning);
+    }
+    ts.answers.push({
+      questionWord: qLabelParts.join(" "),
+      correctMeaning: hiragana,
+      isCorrect: true
+    });
+
+    if (hiragana && ts.readAfterAnswer !== false) {
+      speakJapanese(hiragana, null);
+    }
+
+    setTimeout(function () {
+      assembleProcessing = false;
+      if (ts.currentIndex < ts.questions.length - 1) {
+        ts.currentIndex += 1;
+        renderAssembleTestQuestion();
+      } else {
+        ts.isFinished = true;
+        renderAssembleTestResult();
+      }
+    }, 700);
+  }
+
+  function renderAssembleTestResult() {
+    var ts = state.assembleTestState;
+    var total = ts.questions.length;
+    var score = ts.correctCount;
+    var percent = total > 0 ? (score / total) * 100 : 0;
+    var wrongList = ts.answers.filter(function (a) { return !a.isCorrect; });
+    var correctList = ts.answers.filter(function (a) { return a.isCorrect; });
+
+    var wrapper = createElement("div", "test-result", "");
+    wrapper.appendChild(createElement("div", "score-main", score + " / " + total));
+    wrapper.appendChild(createElement("div", "score-detail", "Hoàn thành bài ghép từ. Số câu sai: " + wrongList.length + "."));
+
+    var commentText = "";
+    if (percent > 90) {
+      commentText = "%Kinh vãi (^_^)";
+    } else if (percent > 80) {
+      commentText = "Cũng được đó bạn (-_-)";
+    } else if (percent > 60) {
+      commentText = "Căng nha bạn (@_@)";
+    } else if (percent > 40) {
+      commentText = "è è è è è è è è è";
+    } else {
+      commentText = "Tôi chịu thua bạn rồi (~_#)";
+    }
+    wrapper.appendChild(createElement("div", "score-detail", commentText));
+
+    var btnRow = createElement("div", "btn-row", "");
+    var retryBtn = createElement("button", "btn", "Làm lại");
+    retryBtn.type = "button";
+    retryBtn.addEventListener("click", function () {
+      startAssembleTest();
+    });
+    btnRow.appendChild(retryBtn);
+    wrapper.appendChild(btnRow);
+
+    if (wrongList.length > 0) {
+      wrapper.appendChild(createElement("div", "card-subtitle", "Danh sách câu sai:"));
+      var wrongContainer = createElement("div", "wrong-list", "");
+      wrongList.forEach(function (w) {
+        var item = createElement("div", "wrong-item", "");
+        item.appendChild(createElement("div", "wrong-q", w.questionWord));
+        var correct = createElement("div", "wrong-a wrong-a--correct", "Đáp án đúng: ");
+        correct.appendChild(createElement("span", "", w.correctMeaning));
+        var selected = createElement("div", "wrong-a wrong-a--selected", "Bạn ghép: ");
+        selected.appendChild(createElement("span", "", w.selectedMeaning || "(không trả lời)"));
+        item.appendChild(correct);
+        item.appendChild(selected);
+        wrongContainer.appendChild(item);
+      });
+      wrapper.appendChild(wrongContainer);
+    }
+
+    if (correctList.length > 0) {
+      wrapper.appendChild(createElement("div", "card-subtitle", "Danh sách câu đúng:"));
+      var correctContainer = createElement("div", "wrong-list", "");
+      correctList.forEach(function (c) {
+        var item = createElement("div", "wrong-item", "");
+        item.appendChild(createElement("div", "wrong-q", c.questionWord));
+        var ansRow = createElement("div", "wrong-a wrong-a--correct", "Đáp án: ");
+        ansRow.appendChild(createElement("span", "", c.correctMeaning));
+        item.appendChild(ansRow);
+        correctContainer.appendChild(item);
+      });
+      wrapper.appendChild(correctContainer);
+    }
+
+    openDetailModal("Ghép từ (Hiragana)", "");
+    detailModalState.bodyEl.innerHTML = "";
+    detailModalState.bodyEl.appendChild(wrapper);
+  }
+
+  function setupAssembleTestSection() {
+    var startBtn = document.getElementById("start-vocab-assemble-btn");
+    if (startBtn) {
+      startBtn.addEventListener("click", function () {
+        startAssembleTest();
+      });
     }
   }
 
@@ -6378,6 +7000,7 @@ history.replaceState({}, "", newUrl);
       if (isVocabHidden(raw)) return false;
       var idx = vocabData.indexOf(raw);
       if (config.isStar && !state.vocabFavorites[idx]) return false;
+      if (config.isNotMastered && state.vocabMastered[idx]) return false;
       var lesson = raw.lesson != null ? raw.lesson : raw.Lesson;
       var lessonNum = typeof lesson === "number" ? lesson : parseInt(lesson, 10);
       if (isNaN(lessonNum) || lessonNum < config.lessonMin || lessonNum > config.lessonMax) return false;
@@ -6650,9 +7273,20 @@ history.replaceState({}, "", newUrl);
       starFieldV.appendChild(starInputV);
       configGrid.appendChild(starFieldV);
 
+      var notMasteredFieldV = createElement("div", "field-group", "");
+      notMasteredFieldV.style.gridColumn = "1 / -1";
+      var notMasteredLabelV = createElement("div", "field-label", "Chỉ test từ chưa thuộc");
+      var notMasteredInputV = createElement("input", "", "");
+      notMasteredInputV.type = "checkbox";
+      notMasteredInputV.style = "text-align: left";
+      notMasteredInputV.checked = ts.isNotMastered || false;
+      notMasteredFieldV.appendChild(notMasteredLabelV);
+      notMasteredFieldV.appendChild(notMasteredInputV);
+      configGrid.appendChild(notMasteredFieldV);
+
       wrapper.appendChild(configGrid);
 
-      configFields.push({ lessonMinInput: lessonMinInput, lessonMaxInput: lessonMaxInput, catSelect: catSelect, qFieldSelect: qFieldSelect, aFieldSelect: aFieldSelect, starInput: starInputV });
+      configFields.push({ lessonMinInput: lessonMinInput, lessonMaxInput: lessonMaxInput, catSelect: catSelect, qFieldSelect: qFieldSelect, aFieldSelect: aFieldSelect, starInput: starInputV, notMasteredInput: notMasteredInputV });
     }
 
     // --- Mức độ khó / giới hạn thời gian ---
@@ -6743,6 +7377,7 @@ history.replaceState({}, "", newUrl);
         ts.questionField = questionField;
         ts.answerField = answerField;
         ts.isStar = cfv.starInput.checked || false;
+        ts.isNotMastered = cfv.notMasteredInput.checked || false;
         pool = buildVocabMappingPool(ts);
       }
 
@@ -7135,6 +7770,7 @@ history.replaceState({}, "", newUrl);
     setupVocabViewModeToggle();
     setupVocabFlashcardFullscreen();
     setupTestSection();
+    setupAssembleTestSection();
     setupKanjiFilters();
     setupMappingTestSection();
     setupGrammarFilters();
