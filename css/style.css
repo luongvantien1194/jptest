@@ -3079,6 +3079,11 @@ select:focus {
   padding: 0 60px;
 }
 
+.detail-modal--mapping.detail-modal--taitho .detail-modal__dialog {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
 .detail-modal--mapping .detail-modal__body {
   display: flex;
   flex-direction: column;
