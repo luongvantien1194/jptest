@@ -1454,6 +1454,7 @@
     detailModalState.el.classList.remove("detail-modal--open");
     detailModalState.el.classList.remove("detail-modal--practice");
     detailModalState.el.classList.remove("detail-modal--mapping");
+    detailModalState.el.classList.remove("detail-modal--taitho");
     detailModalState.el.setAttribute("aria-hidden", "true");
     state.ui.detailModal.isOpen = false;
     clearMappingTestTimer();
@@ -5033,29 +5034,18 @@
 
   function renderScreen () {
     const appShell = document.querySelector(".app-shell");
-const mappingGame = document.querySelector(".mapping-game");
 
-  if (state.displaySettings.iphoneTaiTho) {
-    if (appShell) {
-      appShell.style.paddingTop = "30px";
-      appShell.style.paddingBottom = "30px";
+    if (state.displaySettings.iphoneTaiTho) {
+      if (appShell) {
+          appShell.style.paddingTop = "30px";
+          appShell.style.paddingBottom = "30px";
+      }
+    } else {
+      if (appShell) {
+          appShell.style.paddingTop = "0px";
+          appShell.style.paddingBottom = "0px";
+      }
     }
-  
-    if (mappingGame) {
-      mappingGame.style.paddingTop = "30px";
-      mappingGame.style.paddingBottom = "30px";
-    }
-  } else {
-    if (appShell) {
-      appShell.style.paddingTop = "0px";
-      appShell.style.paddingBottom = "0px";
-    }
-  
-    if (mappingGame) {
-      mappingGame.style.paddingTop = "0px";
-      mappingGame.style.paddingBottom = "0px";
-    }
-  }
 
   }
   function setupVocabFilters() {
@@ -5365,6 +5355,10 @@ history.replaceState({}, "", newUrl);
         if (!navMenuPopup.contains(e.target)) closeNavMenu();
       });
       navMenuPopup.addEventListener("click", function (e) {
+        if (e.target.closest("#nav-menu-reload")) {
+          window.location.reload();
+          return;
+        }
         var item = e.target.closest("[data-tab]");
         if (!item) return;
         var tabBtn = document.querySelector('.tab[data-tab="' + item.getAttribute("data-tab") + '"]');
@@ -6824,6 +6818,7 @@ history.replaceState({}, "", newUrl);
     var ts = state.mappingTestState;
     if (detailModalState.el) {
       detailModalState.el.classList.add("detail-modal--mapping");
+      detailModalState.el.classList.toggle("detail-modal--taitho", !!state.displaySettings.iphoneTaiTho);
     }
 
     var wrapper = createElement("div", "mapping-game", "");
@@ -6872,18 +6867,19 @@ history.replaceState({}, "", newUrl);
     });
     wrapper.appendChild(grid);
 
-    var btnRow = createElement("div", "btn-row", "");
-    var quitBtn = createElement("button", "btn-ghost btn-ghost--danger", "Kết thúc");
-    quitBtn.type = "button";
-    quitBtn.addEventListener("click", function () {
-      clearMappingTestTimer();
-      ts.isFinished = true;
-      ts.endReason = "quit";
-      renderMappingTestResult();
-    });
-    btnRow.appendChild(quitBtn);
-    //wrapper.appendChild(btnRow);
-
+    if (!state.displaySettings.iphoneTaiTho) {
+      var btnRow = createElement("div", "btn-row", "");
+      var quitBtn = createElement("button", "btn-ghost btn-ghost--danger", "Kết thúc");
+      quitBtn.type = "button";
+      quitBtn.addEventListener("click", function () {
+        clearMappingTestTimer();
+        ts.isFinished = true;
+        ts.endReason = "quit";
+        renderMappingTestResult();
+      });
+      btnRow.appendChild(quitBtn);
+      wrapper.appendChild(btnRow);
+    }
 
     if (detailModalState.bodyEl) {
       openDetailModal("Test mapping", "");
