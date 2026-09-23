@@ -2356,17 +2356,17 @@ select:focus {
 }
 
 .detail-modal--taitho .detail-modal__dialog {
-  margin-top: 30px;
+  margin-top: 60px;
   margin-bottom: 30px;
-  max-height: calc(100dvh - 76px);
-  max-height: calc(100vh - 76px);
+  max-height: calc(100dvh - 106px);
+  max-height: calc(100vh - 106px);
 }
 
 .detail-modal--taitho.detail-modal--mapping .detail-modal__dialog {
-  height: calc(100dvh - 60px);
-  height: calc(100vh - 60px);
-  max-height: calc(100dvh - 60px);
-  max-height: calc(100vh - 60px);
+  height: calc(100dvh - 90px);
+  height: calc(100vh - 90px);
+  max-height: calc(100dvh - 90px);
+  max-height: calc(100vh - 90px);
 }
 
 .detail-modal__dialog .detail-modal__body {
