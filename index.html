@@ -9,18 +9,18 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="theme-color" content="#6366f1" />
-  <script src="js/kanjiHanViet.js?v=1024"></script>
+  <script src="js/kanjiHanViet.js?v=1025"></script>
 
-  <script src="data/master.js?v=1024"></script>
-  <script src="data/vocabData.js?v=1024"></script>
-  <script src="data/vocabData_1.js?v=1024"></script>
-  <script src="data/dup.js?v=1024"></script>
-  <script src="data/vocabExtra/extra.js?v=1024"></script>
+  <script src="data/master.js?v=1025"></script>
+  <script src="data/vocabData.js?v=1025"></script>
+  <script src="data/vocabData_1.js?v=1025"></script>
+  <script src="data/dup.js?v=1025"></script>
+  <script src="data/vocabExtra/extra.js?v=1025"></script>
 
 
-  <script src="data/kanjiData.js?v=1024"></script>
-  <script src="data/kanjiData_1.js?v=1024"></script>
-  <script src="data/kanjiExtra/extra.js?v=1024"></script>
+  <script src="data/kanjiData.js?v=1025"></script>
+  <script src="data/kanjiData_1.js?v=1025"></script>
+  <script src="data/kanjiExtra/extra.js?v=1025"></script>
 
   <script>
     window._vocabExtra = window._vocabExtra || [];
@@ -44,8 +44,8 @@
   </script>
 
 
-  <script src="data/grammarData.js?v=1024"></script>
-  <script src="data/grammarData_1.js?v=1024"></script>
+  <script src="data/grammarData.js?v=1025"></script>
+  <script src="data/grammarData_1.js?v=1025"></script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -223,9 +223,10 @@
         <div id="vocab-fixed-actions" style="position:fixed;right:-5px;bottom:16px;display:flex;flex-direction:column;gap:3px;z-index:9999">
           <button class="filter-icon-btn2" id="vocab-lesson-pre" style="width:100%;">⏮️</button>
           <button class="filter-icon-btn2" id="vocab-lesson-next" style="width:100%">⏭️</button>
-          <button class="filter-icon-btn2" id="start-vocab-test-btn">T</button>
-          <button class="filter-icon-btn2" id="start-vocab-mapping-btn" title="Test mapping">M</button>
-          <button class="filter-icon-btn2" id="start-vocab-assemble-btn" title="Ghép từ (chọn hiragana)">G</button>
+          <button class="filter-icon-btn2" id="open-vocab-test-menu-btn" title="Test từ vựng">T</button>
+          <button id="start-vocab-test-btn" style="display:none !important">T</button>
+          <button id="start-vocab-mapping-btn" style="display:none !important" title="Test mapping">M</button>
+          <button id="start-vocab-assemble-btn" style="display:none !important" title="Ghép từ (chọn hiragana)">G</button>
           <button class="filter-icon-btn2" id="vocab-export-md-btn">MD</button>
           <button class="filter-icon-btn2" id="add-vocab-btn" type="button">+あ</button>
           <button class="filter-icon-btn2" id="add-kanji">漢</button>
@@ -285,8 +286,10 @@
           </div>
         </div>
         <div style="position:fixed;right:-8px;bottom:16px;display:flex;flex-direction:column;gap:3px;z-index:9999">.
-          <button class="filter-icon-btn2" type="button" id="start-kanji-test-btn" title="Test Kanji">T</button>
-          <button class="filter-icon-btn2" type="button" id="start-kanji-mapping-btn" title="Test mapping">M</button>
+          <button class="filter-icon-btn2" type="button" id="open-kanji-test-menu-btn" title="Test Kanji">T</button>
+          <button type="button" id="start-kanji-test-btn" style="display:none !important">T</button>
+          <button type="button" id="start-kanji-mapping-btn" style="display:none !important" title="Test mapping">M</button>
+          <button type="button" id="start-kanji-review-btn" style="display:none !important" title="Ôn lại Kanji chưa thuộc">🔁</button>
           <button class="filter-icon-btn2" type="button" id="add-vocab-btn-kanji">+あ</button>
         </div>
       </section>
@@ -525,9 +528,9 @@
   <!-- soundOverlay removed (no mp3 audio) -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
-  <script src="data/configDoc.js?v=1024"></script>
-  <script src="js/main.js?v=1024"></script>
-  <script src="js/vocabEditor.js?v=1024"></script>
+  <script src="data/configDoc.js?v=1025"></script>
+  <script src="js/main.js?v=1025"></script>
+  <script src="js/vocabEditor.js?v=1025"></script>
 </body>
 
 </html>
