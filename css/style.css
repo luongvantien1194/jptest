@@ -3983,6 +3983,130 @@ select:focus {
   box-shadow: 0 2px 8px rgba(146, 64, 14, 0.18);
 }
 
+/* Kanji breakdown toggle */
+.kd-breakdown-toggle {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  gap: 8px;
+  padding: 2px 0;
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.kd-breakdown-toggle-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #b45309;
+}
+
+.kd-breakdown-toggle-icon {
+  font-size: 11px;
+  color: #b45309;
+  transition: transform var(--transition-fast);
+  flex-shrink: 0;
+}
+
+.kd-breakdown-body {
+  margin-top: 8px;
+}
+
+.kd-breakdown-body--collapsed {
+  display: none;
+}
+
+/* Kanji breakdown tree */
+.kd-tree-wrap {
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+  padding: 4px 4px 10px;
+  margin-bottom: 6px;
+}
+
+.kd-tree-node {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+.kd-tree-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  padding: 6px 10px;
+  border-radius: var(--radius-md);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid rgba(245, 158, 11, 0.25);
+  min-width: 40px;
+}
+
+.kd-tree-char {
+  font-family: var(--font-jp);
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.1;
+}
+
+.kd-tree-label {
+  font-size: 9.5px;
+  color: #92400e;
+  max-width: 84px;
+  overflow-wrap: break-word;
+  text-align: center;
+  line-height: 1.25;
+}
+
+.kd-tree-box--clickable {
+  cursor: pointer;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.kd-tree-box--clickable:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 2px 8px rgba(245, 158, 11, 0.25);
+}
+
+.kd-tree-children {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  margin-top: 14px;
+}
+
+.kd-tree-children::before {
+  content: "";
+  position: absolute;
+  top: -14px;
+  left: 0;
+  right: 0;
+  border-top: 1.5px solid rgba(180, 83, 9, 0.35);
+}
+
+.kd-tree-children:has(> .kd-tree-node:only-child)::before {
+  display: none;
+}
+
+.kd-tree-children > .kd-tree-node {
+  padding: 14px 8px 0;
+}
+
+.kd-tree-children > .kd-tree-node::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  width: 0;
+  height: 14px;
+  border-left: 1.5px solid rgba(180, 83, 9, 0.35);
+}
+
 /* Story rows */
 .kd-story-row {
   display: flex;
