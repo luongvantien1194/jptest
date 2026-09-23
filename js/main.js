@@ -4623,6 +4623,140 @@
     sec1.appendChild(sec1Grid);
     targetEl.appendChild(sec1);
 
+    // Kanji Breakdown: sơ đồ cây phân rã đệ quy + câu chuyện/logic/mẹo nhớ đi kèm
+    var breakdownParts = String(item.radicals || "")
+      .split("|")
+      .map(function (p) { return p.trim(); })
+      .filter(Boolean);
+    var hasStoryContent =
+      (item.story_image && String(item.story_image).trim()) ||
+      (item.logic_development && String(item.logic_development).trim()) ||
+      (item.memory_tip && String(item.memory_tip).trim());
+    var hasTree = breakdownParts.length > 0 && breakdownParts.some(function (p) {
+      var dashIdx = p.indexOf("-");
+      var c = dashIdx === -1 ? p : p.slice(0, dashIdx).trim();
+      return c !== item.kanji;
+    });
+
+    if (hasTree || hasStoryContent) {
+      var secBreak = createElement("div", "kd-section kd-section--amber", "");
+      var breakToggle = createElement("button", "kd-breakdown-toggle", "");
+      breakToggle.type = "button";
+      var breakToggleLabel = createElement("span", "kd-breakdown-toggle-label", "🧩 Phân rã Kanji");
+      var breakToggleIcon = createElement("span", "kd-breakdown-toggle-icon", "▸");
+      breakToggle.appendChild(breakToggleLabel);
+      breakToggle.appendChild(breakToggleIcon);
+      var breakBody = createElement("div", "kd-breakdown-body kd-breakdown-body--collapsed", "");
+      breakToggle.setAttribute("aria-expanded", "false");
+      breakToggle.addEventListener("click", function () {
+        var collapsed = breakBody.classList.toggle("kd-breakdown-body--collapsed");
+        breakToggle.setAttribute("aria-expanded", collapsed ? "false" : "true");
+        breakToggleIcon.textContent = collapsed ? "▸" : "▾";
+      });
+      secBreak.appendChild(breakToggle);
+      secBreak.appendChild(breakBody);
+
+      function goToKanjiIndex(idx) {
+        if (idx === -1 || idx === state.selected.kanjiIndex) return;
+        if (state.selected.kanjiIndex != null) {
+          state.kanjiHistory.push(state.selected.kanjiIndex);
+        }
+        state.selected.kanjiIndex = idx;
+        renderKanjiDetail();
+      }
+
+      // Sơ đồ cây: kanji gốc -> các thành phần -> đệ quy xuống thành phần con của chúng
+      function parseRadicalsField(radicalsStr) {
+        return String(radicalsStr || "")
+          .split("|")
+          .map(function (p) { return p.trim(); })
+          .filter(Boolean)
+          .map(function (p) {
+            var dashIdx = p.indexOf("-");
+            return {
+              char: dashIdx === -1 ? p : p.slice(0, dashIdx).trim(),
+              hv: dashIdx === -1 ? "" : p.slice(dashIdx + 1).trim(),
+            };
+          });
+      }
+
+      function buildTreeNode(char, hv, depth, ancestors) {
+        var node = createElement("div", "kd-tree-node", "");
+        var box = createElement("div", "kd-tree-box", "");
+        var compIdx = findKanjiIndexByChar(char);
+        var entry = compIdx !== -1 ? kanjiData[compIdx] : null;
+        var label = entry ? (entry.core_meaning || hv) : hv;
+
+        box.appendChild(createElement("div", "kd-tree-char", char));
+        if (label) box.appendChild(createElement("div", "kd-tree-label", label));
+
+        if (entry && !readOnly && char !== item.kanji) {
+          box.classList.add("kd-tree-box--clickable");
+          box.title = "Xem chi tiết " + char;
+          box.addEventListener("click", function (e) {
+            e.stopPropagation();
+            goToKanjiIndex(compIdx);
+          });
+        }
+        node.appendChild(box);
+
+        var canonical = entry ? entry.kanji : char;
+        var canRecurse = entry && depth < 4 && ancestors.indexOf(canonical) === -1;
+        if (canRecurse) {
+          var children = parseRadicalsField(entry.radicals).filter(function (c) {
+            return c.char !== canonical; // bỏ bộ thủ tự-quy chiếu (kanji gốc là chính nó)
+          });
+          if (children.length) {
+            var childrenWrap = createElement("div", "kd-tree-children", "");
+            children.forEach(function (c) {
+              childrenWrap.appendChild(buildTreeNode(c.char, c.hv, depth + 1, ancestors.concat(canonical)));
+            });
+            node.appendChild(childrenWrap);
+          }
+        }
+        return node;
+      }
+
+      if (hasTree) {
+        var treeWrap = createElement("div", "kd-tree-wrap", "");
+        treeWrap.appendChild(buildTreeNode(item.kanji, item.hanviet, 0, []));
+        breakBody.appendChild(treeWrap);
+      }
+
+      function addStoryRow(icon, label, text, linkify) {
+        var raw = text ? String(text).trim() : "";
+        if (!raw) return;
+        var row = createElement("div", "kd-story-row", "");
+        row.appendChild(createElement("div", "kd-story-icon", icon));
+        var body = createElement("div", "kd-story-body", "");
+        body.appendChild(createElement("div", "kd-story-label", label));
+        var valueEl = createElement("div", "kd-story-value", "");
+        if (linkify) {
+          valueEl.innerHTML = linkifyKanjiText(raw, item.kanji);
+          if (!readOnly) {
+            valueEl.addEventListener("click", function (e) {
+              var target = e.target;
+              if (target && target.classList.contains("kd-inline-kanji-link")) {
+                var idx = parseInt(target.getAttribute("data-kanji-index"), 10);
+                if (!isNaN(idx)) goToKanjiIndex(idx);
+              }
+            });
+          }
+        } else {
+          valueEl.textContent = raw;
+        }
+        body.appendChild(valueEl);
+        row.appendChild(body);
+        breakBody.appendChild(row);
+      }
+
+      addStoryRow("📖", "Câu chuyện ghi nhớ", item.story_image, false);
+      addStoryRow("🔗", "Diễn giải cấu tạo", item.logic_development, true);
+      addStoryRow("💡", "Mẹo nhớ", item.memory_tip, false);
+
+      targetEl.appendChild(secBreak);
+    }
+
     if (item.adjectives && String(item.adjectives).trim() && String(item.adjectives).toLowerCase() !== "không có") {
       var sec3 = createElement("div", "kd-section kd-section--green", "");
       var adjWrap = createElement("div", "kd-vocab-pills", "");
