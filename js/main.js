@@ -530,6 +530,264 @@
     }
     return !!state.vocabHiddenBaseline[key];
   }
+
+  // ========================
+  // MASTERY ENGINE (điểm thành thạo từ vựng/kanji + cold start)
+  // ========================
+  // 2 store độc lập, cùng cấu trúc:
+  //   state.vocabMastery  (localStorage jp_vocab_mastery)  key = getVocabDupKey(item)
+  //   state.kanjiMastery  (localStorage jp_kanji_mastery)  key = getKanjiDupKey(raw) | getKanjiVocabDupKey(raw, ve)
+  // Đều dùng key theo NỘI DUNG (không dùng index) để bền vững qua các lần sửa/sắp xếp lại data.
+  var MASTERY_REVIEW_THRESHOLD = 60;   // < 60: chưa thuộc, cần học lại
+  var MASTERY_MASTERED_THRESHOLD = 80; // >= 80: đã thuộc
+  var MASTERY_COLD_START_SCORE = 50;   // điểm trung gian mặc định cho mục cũ chưa có dữ liệu
+  var MASTERY_MIN = 0;
+  var MASTERY_MAX = 100;
+
+  function clampMasteryScore(v) {
+    return Math.max(MASTERY_MIN, Math.min(MASTERY_MAX, v));
+  }
+
+  function masteryTodayStr() {
+    return new Date().toISOString().slice(0, 10);
+  }
+
+  function masteryTomorrowStr() {
+    var d = new Date();
+    d.setDate(d.getDate() + 1);
+    return d.toISOString().slice(0, 10);
+  }
+
+  // Load state.vocabMastery / state.kanjiMastery từ localStorage
+  try {
+    var savedMastery = localStorage.getItem("jp_vocab_mastery");
+    state.vocabMastery = savedMastery ? JSON.parse(savedMastery) : {};
+  } catch (e) {
+    state.vocabMastery = {};
+  }
+  try {
+    var savedKanjiMastery = localStorage.getItem("jp_kanji_mastery");
+    state.kanjiMastery = savedKanjiMastery ? JSON.parse(savedKanjiMastery) : {};
+  } catch (e) {
+    state.kanjiMastery = {};
+  }
+
+  function saveVocabMastery() {
+    try { localStorage.setItem("jp_vocab_mastery", JSON.stringify(state.vocabMastery)); } catch (e) { }
+  }
+  function saveKanjiMastery() {
+    try { localStorage.setItem("jp_kanji_mastery", JSON.stringify(state.kanjiMastery)); } catch (e) { }
+  }
+
+  /** Lấy (và khởi tạo nếu chưa có) bản ghi mastery cho 1 key trong 1 store — mục cũ chưa test lần nào sẽ là cold-start: score=50, is_calibrated=false. */
+  function getMasteryRecordFrom(store, key) {
+    if (!store || !key) return null;
+    var rec = store[key];
+    if (!rec) {
+      rec = {
+        score: MASTERY_COLD_START_SCORE,
+        is_calibrated: false,
+        needs_review_tomorrow: false,
+        review_after: null, // ISO date (yyyy-mm-dd): nếu set, bắt buộc xuất hiện lại từ ngày này bất kể điểm
+        last_test_at: null,
+        last_test_type: null,
+        history_count: 0
+      };
+      store[key] = rec;
+    }
+    return rec;
+  }
+
+  /**
+   * Cập nhật điểm mastery của 1 mục (từ vựng hoặc kanji/từ-vựng-kanji) sau khi làm 1 câu test.
+   * testType: "choice" (trắc nghiệm) | "mapping" (mapping) | "assemble" (ghép từ, chỉ áp dụng cho vocab)
+   * payload:
+   *   - choice / mapping: { isCorrect: boolean }
+   *   - assemble: { attempts: number (số lần sai trước khi đúng), revealedAnswer: boolean (đã bấm xem gợi ý/đáp án) }
+   */
+  function applyMasteryTestResultTo(store, saveFn, key, testType, payload) {
+    var rec = getMasteryRecordFrom(store, key);
+    if (!rec) return null;
+    payload = payload || {};
+
+    var delta = 0;
+    var coldStartSignalGood = null; // dùng riêng cho lần test hiệu chỉnh đầu tiên (cold start)
+
+    if (testType === "choice") {
+      delta = payload.isCorrect ? 5 : -10;
+      coldStartSignalGood = !!payload.isCorrect;
+    } else if (testType === "mapping") {
+      delta = payload.isCorrect ? 10 : -15;
+      coldStartSignalGood = !!payload.isCorrect;
+    } else if (testType === "assemble") {
+      var attempts = payload.attempts || 0;
+      if (payload.revealedAnswer) {
+        delta = -5;
+        coldStartSignalGood = false;
+      } else if (attempts === 0) {
+        delta = 15;
+        coldStartSignalGood = true;
+      } else if (attempts <= 2) {
+        delta = 5;
+        coldStartSignalGood = true;
+      } else {
+        delta = 0;
+        coldStartSignalGood = false;
+      }
+      // Phải sửa sai (hoặc phải xem đáp án) -> bắt buộc ôn lại vào hôm sau, bất kể tổng điểm
+      if (attempts > 0 || payload.revealedAnswer) {
+        rec.needs_review_tomorrow = true;
+        rec.review_after = masteryTomorrowStr();
+      }
+    } else {
+      return rec;
+    }
+
+    if (!rec.is_calibrated) {
+      // Cold start: lần test đầu tiên của mục cũ quyết định thẳng trạng thái, không cộng dồn mù mờ từ nền 50.
+      rec.score = coldStartSignalGood
+        ? clampMasteryScore(Math.max(70, MASTERY_COLD_START_SCORE + delta))
+        : clampMasteryScore(Math.min(59, MASTERY_COLD_START_SCORE + delta));
+      rec.is_calibrated = true;
+    } else {
+      rec.score = clampMasteryScore(rec.score + delta);
+    }
+
+    rec.last_test_at = Date.now();
+    rec.last_test_type = testType;
+    rec.history_count = (rec.history_count || 0) + 1;
+    saveFn();
+    return rec;
+  }
+
+  function applyMasteryTestResult(vocabKey, testType, payload) {
+    return applyMasteryTestResultTo(state.vocabMastery, saveVocabMastery, vocabKey, testType, payload);
+  }
+  function applyKanjiMasteryTestResult(kanjiKey, testType, payload) {
+    return applyMasteryTestResultTo(state.kanjiMastery, saveKanjiMastery, kanjiKey, testType, payload);
+  }
+
+  /** needs_review_tomorrow chỉ thực sự "đến hạn" từ ngày review_after trở đi. */
+  function isMasteryDueByFlag(rec) {
+    if (!rec || !rec.needs_review_tomorrow) return false;
+    if (!rec.review_after) return true;
+    return masteryTodayStr() >= rec.review_after;
+  }
+
+  /** true nếu mục này cần đưa vào danh sách học lại (điểm thấp hoặc bị gắn cờ ôn lại). */
+  function isDueForReviewIn(store, key) {
+    var rec = store[key];
+    if (!rec) return false; // chưa có dữ liệu -> để hàng đợi cold start ưu tiên đưa vào test hiệu chỉnh, chưa ép vào "chưa thuộc"
+    return rec.score < MASTERY_REVIEW_THRESHOLD || isMasteryDueByFlag(rec);
+  }
+
+  function isVocabDueForReview(item) {
+    return isDueForReviewIn(state.vocabMastery, getVocabDupKey(item));
+  }
+  function isVocabMasteredByScore(item) {
+    var rec = state.vocabMastery[getVocabDupKey(item)];
+    return !!rec && rec.score >= MASTERY_MASTERED_THRESHOLD;
+  }
+  /** Toàn bộ danh sách từ "chưa thuộc" cần học lại, dùng để lọc khi tạo bộ đề test. */
+  function getVocabReviewList() {
+    return vocabData.filter(function (raw) { return isVocabDueForReview(raw); });
+  }
+
+  /**
+   * Sắp xếp lại 1 danh sách bất kỳ theo độ ưu tiên mastery (không đổi kích thước danh sách):
+   * 1) needs_review_tomorrow đã đến hạn -> lên đầu
+   * 2) chưa is_calibrated (cold start) -> ưu tiên tiếp theo
+   * 3) score thấp hơn -> ưu tiên hơn
+   * keyFn(item) phải trả về đúng key mastery của mục tương ứng trong `store`.
+   * Truyền list đã shuffle sẵn để các phần tử cùng hạng ưu tiên vẫn ra ngẫu nhiên, tránh lặp thứ tự mỗi lần test.
+   */
+  function sortByMasteryPriority(list, keyFn, store) {
+    store = store || state.vocabMastery;
+    var scored = list.map(function (item) {
+      var key = keyFn(item);
+      var rec = key ? store[key] : null;
+      return {
+        item: item,
+        calibrated: rec ? !!rec.is_calibrated : false,
+        score: rec ? rec.score : MASTERY_COLD_START_SCORE,
+        dueTomorrowFlag: isMasteryDueByFlag(rec)
+      };
+    });
+    scored.sort(function (a, b) {
+      if (a.dueTomorrowFlag !== b.dueTomorrowFlag) return a.dueTomorrowFlag ? -1 : 1;
+      if (a.calibrated !== b.calibrated) return a.calibrated ? 1 : -1;
+      return a.score - b.score;
+    });
+    return scored.map(function (s) { return s.item; });
+  }
+
+  /** Lấy ra tối đa `count` từ vựng ưu tiên nhất (needs_review_tomorrow > cold-start > điểm thấp) từ 1 pool từ vựng thô. */
+  function pickVocabTestQueue(pool, count) {
+    var prioritized = sortByMasteryPriority(shuffleArray(pool), getVocabDupKey, state.vocabMastery);
+    if (typeof count === "number") {
+      return prioritized.slice(0, count);
+    }
+    return prioritized;
+  }
+
+  // ----- Kanji mastery: key + review list + priority queue -----
+  /** Key ổn định cho 1 chữ Kanji (dùng cho mode 1-4: On/Kun/Hán Việt). */
+  function getKanjiDupKey(raw) {
+    return "k␟" + String(raw && raw.kanji || "").trim();
+  }
+  /** Key ổn định cho 1 từ vựng thuộc về 1 Kanji (dùng cho mode 5-9: word/reading/meaning của kanji.vocabulary). */
+  function getKanjiVocabDupKey(raw, ve) {
+    return "kv␟" + String(raw && raw.kanji || "").trim() + "␟" +
+      String(ve && ve.word || "").trim() + "␟" +
+      String(ve && ve.reading || "").trim() + "␟" +
+      String(ve && ve.meaning || "").trim();
+  }
+  /** Suy ra key mastery từ 1 candidate { kanjiIdx, mode, vocabEntry } dùng chung trong buildKanjiTestQuestions/mapping. */
+  function getKanjiCandidateMasteryKey(candidate) {
+    if (!candidate) return "";
+    var raw = kanjiData[candidate.kanjiIdx];
+    if (!raw) return "";
+    if (candidate.mode >= 5 && candidate.mode <= 9 && candidate.vocabEntry) {
+      return getKanjiVocabDupKey(raw, candidate.vocabEntry);
+    }
+    return getKanjiDupKey(raw);
+  }
+
+  function isKanjiDueForReview(key) {
+    return isDueForReviewIn(state.kanjiMastery, key);
+  }
+
+  /**
+   * Danh sách "candidate chưa thuộc" cần ôn lại cho Kanji, ở dạng { kanjiIdx, mode, vocabEntry } giống
+   * candidate của buildKanjiTestQuestions — chỉ xét 2 dạng theo yêu cầu ôn tập: Kanji->Hán Việt (mode 4)
+   * và Từ vựng(kanji)->Nghĩa (mode 5).
+   */
+  function getKanjiReviewCandidates() {
+    var candidates = [];
+    kanjiData.forEach(function (raw, i) {
+      if (!raw) return;
+      if (kanjiModeAvailable(raw, 4) && isKanjiDueForReview(getKanjiDupKey(raw))) {
+        candidates.push({ kanjiIdx: i, mode: 4, vocabEntry: null });
+      }
+      if (kanjiModeAvailable(raw, 5)) {
+        parseKanjiVocab(raw.vocabulary).forEach(function (ve) {
+          if (isKanjiDueForReview(getKanjiVocabDupKey(raw, ve))) {
+            candidates.push({ kanjiIdx: i, mode: 5, vocabEntry: ve });
+          }
+        });
+      }
+    });
+    return candidates;
+  }
+
+  /** Lấy ra tối đa `count` candidate Kanji ưu tiên nhất từ 1 pool candidate thô (dùng chung cho test Kanji và Mapping Kanji). */
+  function pickKanjiTestQueue(pool, count) {
+    var prioritized = sortByMasteryPriority(shuffleArray(pool), getKanjiCandidateMasteryKey, state.kanjiMastery);
+    if (typeof count === "number") {
+      return prioritized.slice(0, count);
+    }
+    return prioritized;
+  }
   /** Với các bản trùng nhau 100% (Hiragana+Kanji+Meaning giống hệt), lưu vị trí bản CUỐI CÙNG của mỗi khoá — mọi bản đứng trước sẽ tự động bị ẩn, không cần chọn thủ công. */
   var autoDedupLastIndexByKey = {};
   function buildAutoDedupIndex() {
@@ -3068,7 +3326,7 @@
         return String(raw.category) === String(selectedCat);
       });
 
-      const questions = buildTestQuestions(pool, questionCount);
+      const questions = pickVocabTestQueue(pool, questionCount);
       if (questions.length === 0) {
         alert("Không có từ vựng phù hợp (phạm vi bài " + lessonMin + "–" + lessonMax + " và category đã chọn).");
         return;
@@ -3628,7 +3886,7 @@
         return String(raw.category) === String(selectedCat);
       });
 
-      var questions = buildTestQuestions(pool, questionCount);
+      var questions = pickVocabTestQueue(pool, questionCount);
       if (questions.length === 0) {
         alert("Không có từ vựng phù hợp (phạm vi bài " + lessonMin + "–" + lessonMax + " và category đã chọn).");
         return;
@@ -3698,6 +3956,8 @@
       ts.selectedIds = [];
       ts.revealedFrom = null;
       ts.builtIndex = ts.currentIndex;
+      ts.currentAttempts = 0;
+      ts.currentRevealed = false;
     }
 
     // Chỉ hiện Kanji khi config bật VÀ chuỗi Kanji thực sự chứa Hán tự
@@ -3814,6 +4074,7 @@
       assembleProcessing = true;
       finishAssembleQuestion(hiragana, rawQuestion);
     } else {
+      ts.currentAttempts = (ts.currentAttempts || 0) + 1;
       flashAssembleWrongThenReset();
     }
   }
@@ -3846,6 +4107,7 @@
     var ts = state.assembleTestState;
     var rawQuestion = ts.questions[ts.currentIndex];
     var hiragana = rawQuestion.hiragana != null ? rawQuestion.hiragana : rawQuestion.Hiragana;
+    ts.currentRevealed = true;
     var correctTiles = splitHiraganaTiles(hiragana);
     var correctIds = ts.tileBag
       .filter(function (t) { return t.id.charAt(0) === "c"; })
@@ -3884,6 +4146,12 @@
   function finishAssembleQuestion(hiragana, rawQuestion) {
     var ts = state.assembleTestState;
     ts.correctCount += 1;
+
+    applyMasteryTestResult(getVocabDupKey(rawQuestion), "assemble", {
+      attempts: ts.currentAttempts || 0,
+      revealedAnswer: !!ts.currentRevealed
+    });
+
     var kanji = rawQuestion.kanji != null ? rawQuestion.kanji : rawQuestion.Kanji;
     var meaning = rawQuestion.meaning != null ? rawQuestion.meaning : rawQuestion.Meaning;
     var qLabelParts = [String(hiragana || "")];
@@ -3991,6 +4259,72 @@
     if (startBtn) {
       startBtn.addEventListener("click", function () {
         startAssembleTest();
+      });
+    }
+  }
+
+  /** Menu lưới dùng chung cho cả Vocab và Kanji: mỗi mode = { icon, label, hint?, isReview?, triggerId? | action() }. */
+  function openTestModeMenu(title, modes) {
+    var grid = createElement("div", "test-mode-grid");
+    modes.forEach(function (mode) {
+      var card = createElement("button", "test-mode-card" + (mode.isReview ? " test-mode-card--review" : ""));
+      card.type = "button";
+      card.appendChild(createElement("div", "test-mode-card__icon", mode.icon));
+      card.appendChild(createElement("div", "test-mode-card__label", mode.label));
+      if (mode.hint) {
+        card.appendChild(createElement("div", "test-mode-card__hint", mode.hint));
+      }
+      card.addEventListener("click", function () {
+        closeDetailModal();
+        if (typeof mode.action === "function") {
+          mode.action();
+          return;
+        }
+        var triggerBtn = document.getElementById(mode.triggerId);
+        if (triggerBtn) {
+          triggerBtn.click();
+        }
+      });
+      grid.appendChild(card);
+    });
+    openDetailModal(title, grid);
+  }
+
+  var VOCAB_TEST_MODES = [
+    { icon: "🔤", label: "Chọn đáp án", hint: "Trắc nghiệm 20 câu", triggerId: "start-vocab-test-btn" },
+    { icon: "🔗", label: "Mapping", hint: "Nối từ - nghĩa", triggerId: "start-vocab-mapping-btn" },
+    { icon: "🧩", label: "Ghép từ", hint: "Chọn hiragana ghép từ", triggerId: "start-vocab-assemble-btn" },
+    { icon: "🔁", label: "Ôn lại từ chưa thuộc", hint: "Ưu tiên từ điểm thấp / cold-start", action: function () { startVocabReviewTest(); }, isReview: true }
+  ];
+
+  function openVocabTestModeMenu() {
+    openTestModeMenu("Chọn kiểu test từ vựng", VOCAB_TEST_MODES);
+  }
+
+  function setupVocabTestModeMenu() {
+    var openBtn = document.getElementById("open-vocab-test-menu-btn");
+    if (openBtn) {
+      openBtn.addEventListener("click", function () {
+        openVocabTestModeMenu();
+      });
+    }
+  }
+
+  var KANJI_TEST_MODES = [
+    { icon: "🈁", label: "Test Kanji", hint: "Trắc nghiệm On/Kun/Hán Việt", triggerId: "start-kanji-test-btn" },
+    { icon: "🔗", label: "Mapping", hint: "Nối Kanji - Hán Việt / từ vựng", triggerId: "start-kanji-mapping-btn" },
+    { icon: "🔁", label: "Ôn lại Kanji chưa thuộc", hint: "Kanji→Hán Việt / Từ vựng→Nghĩa", action: function () { startKanjiReviewTest(); }, isReview: true }
+  ];
+
+  function openKanjiTestModeMenu() {
+    openTestModeMenu("Chọn kiểu test Kanji", KANJI_TEST_MODES);
+  }
+
+  function setupKanjiTestModeMenu() {
+    var openBtn = document.getElementById("open-kanji-test-menu-btn");
+    if (openBtn) {
+      openBtn.addEventListener("click", function () {
+        openKanjiTestModeMenu();
       });
     }
   }
@@ -6057,6 +6391,38 @@ history.replaceState({}, "", newUrl);
     renderTestInitialMessage();
   }
 
+  /** Bấm "Ôn lại từ chưa thuộc": bỏ qua màn hình cấu hình, vào thẳng bài trắc nghiệm chỉ gồm các từ
+   * đang mastery_score < 60 hoặc đến hạn needs_review_tomorrow (không giới hạn theo bài/category đang lọc trên màn hình). */
+  function startVocabReviewTest() {
+    var reviewPool = getVocabReviewList().filter(function (raw) {
+      return raw && !isVocabHidden(raw) && String(raw.hiragana || raw.Hiragana || "").trim();
+    });
+    if (reviewPool.length === 0) {
+      alert("Chưa có từ nào cần ôn lại (mastery score đều ổn hoặc chưa đủ dữ liệu).");
+      return;
+    }
+    var questionCount = Math.min(20, reviewPool.length);
+    var questions = pickVocabTestQueue(reviewPool, questionCount);
+
+    state.testState.isActive = true;
+    state.testState.isFinished = false;
+    state.testState.questions = questions;
+    state.testState.currentIndex = 0;
+    state.testState.correctCount = 0;
+    state.testState.answers = [];
+    state.testState.selectedCategory = "all";
+    state.testState.lessonMin = 1;
+    state.testState.lessonMax = 999;
+    state.testState.questionCount = questionCount;
+    state.testState.optionCount = 6;
+    state.testState.questionField = "hiragana";
+    state.testState.answerField = "meaning";
+    state.testState.isStar = false;
+    state.testState.isNotMastered = false;
+    state.testState.readAfterAnswer = true;
+    renderTestQuestion();
+  }
+
   function resetVocabTest() {
     state.testState.isActive = false;
     state.testState.isFinished = false;
@@ -6080,6 +6446,8 @@ history.replaceState({}, "", newUrl);
 
     const testState = state.testState;
     const isCorrect = selectedAnswer === correctAnswer;
+
+    applyMasteryTestResult(getVocabDupKey(questionWord), "choice", { isCorrect: isCorrect });
 
     if (isCorrect) {
       testState.correctCount += 1;
@@ -6288,7 +6656,37 @@ history.replaceState({}, "", newUrl);
         }
       });
     });
-    return shuffleArray(candidates).slice(0, count);
+    return pickKanjiTestQueue(candidates, count);
+  }
+
+  /** Bấm "🔁 Ôn lại Kanji chưa thuộc": bỏ qua màn hình cấu hình, vào thẳng bài test Kanji chỉ gồm các
+   * mục đang mastery_score < 60 hoặc đến hạn needs_review_tomorrow, trộn ngẫu nhiên 2 dạng câu hỏi:
+   * Kanji -> Hán Việt (mode 4) và Từ vựng (của kanji) -> Nghĩa (mode 5). */
+  function startKanjiReviewTest() {
+    var candidates = getKanjiReviewCandidates();
+    if (candidates.length === 0) {
+      alert("Chưa có Kanji/từ vựng kanji nào cần ôn lại (mastery score đều ổn hoặc chưa đủ dữ liệu).");
+      return;
+    }
+    var ts = state.kanjiTestState;
+    var questionCount = Math.min(20, candidates.length);
+    var questions = pickKanjiTestQueue(candidates, questionCount);
+
+    ts.showAnswerKanjiDetailAfterEach = false;
+    ts.level = "all";
+    ts.fromStt = 1;
+    ts.toStt = null;
+    ts.questionCount = questionCount;
+    ts.optionCount = 6;
+    ts.modes = [4, 5];
+    ts.isStar = false;
+    ts.isActive = true;
+    ts.isFinished = false;
+    ts.currentIndex = 0;
+    ts.correctCount = 0;
+    ts.answers = [];
+    ts.questions = questions;
+    renderKanjiTestQuestion();
   }
 
   function buildVocabKanjiHanVietHint(word, raw) {
@@ -6760,6 +7158,12 @@ history.replaceState({}, "", newUrl);
   function handleKanjiSelectAnswer(item, mode, correct, selected, kanjiIdxForReveal) {
     var testState = state.kanjiTestState;
     var isCorrect = selected === correct;
+
+    var masteryKey = (mode >= 5 && mode <= 9 && item && item.ve)
+      ? getKanjiVocabDupKey({ kanji: item.kanji }, item.ve)
+      : getKanjiDupKey({ kanji: item && item.kanji });
+    applyKanjiMasteryTestResult(masteryKey, "choice", { isCorrect: isCorrect });
+
     if (isCorrect) testState.correctCount += 1;
     testState.answers.push({ item: item, mode: mode, correct: correct, selected: selected, isCorrect: isCorrect });
 
@@ -6985,6 +7389,13 @@ history.replaceState({}, "", newUrl);
         renderKanjiTestInitialMessage();
       });
     }
+
+    const startKanjiReviewBtn = document.getElementById("start-kanji-review-btn");
+    if (startKanjiReviewBtn) {
+      startKanjiReviewBtn.addEventListener("click", function () {
+        startKanjiReviewTest();
+      });
+    }
   }
 
   // ----- Test mapping (vocab + kanji) -----
@@ -7018,9 +7429,10 @@ history.replaceState({}, "", newUrl);
       var q = String(normalized[config.questionField] || "").trim();
       var a = String(normalized[config.answerField] || "").trim();
       if (!q || !a) return null;
-      return { pairId: "v" + i, question: q, answer: a };
+      return { pairId: "v" + i, question: q, answer: a, vocabKey: getVocabDupKey(raw) };
     }).filter(Boolean);
-    return shuffleArray(items);
+    // Ưu tiên đưa từ điểm thấp/cold-start/đến hạn ôn lại vào các round đầu (ts.usedCount đi tuần tự theo thứ tự pool)
+    return sortByMasteryPriority(shuffleArray(items), function (p) { return p.vocabKey; });
   }
 
   function mappingPairForKanjiMode(raw, mode, ve) {
@@ -7055,18 +7467,19 @@ history.replaceState({}, "", newUrl);
             var q = String((pair && pair.q) || "").trim();
             var a = String((pair && pair.a) || "").trim();
             if (!q || !a) return;
-            pool.push({ pairId: "k" + i + "-m" + mode + "-" + vi, question: q, answer: a });
+            pool.push({ pairId: "k" + i + "-m" + mode + "-" + vi, question: q, answer: a, vocabKey: getKanjiVocabDupKey(raw, ve) });
           });
         } else {
           var pair = mappingPairForKanjiMode(raw, mode, null);
           var q = String((pair && pair.q) || "").trim();
           var a = String((pair && pair.a) || "").trim();
           if (!q || !a) return;
-          pool.push({ pairId: "k" + i + "-m" + mode, question: q, answer: a });
+          pool.push({ pairId: "k" + i + "-m" + mode, question: q, answer: a, vocabKey: getKanjiDupKey(raw) });
         }
       });
     });
-    return shuffleArray(pool);
+    // Ưu tiên đưa cặp điểm thấp/cold-start/đến hạn ôn lại vào các round đầu
+    return sortByMasteryPriority(shuffleArray(pool), function (p) { return p.vocabKey; }, state.kanjiMastery);
   }
 
   function startMappingTest(source) {
@@ -7427,8 +7840,8 @@ history.replaceState({}, "", newUrl);
 
     var tiles = [];
     batch.forEach(function (pair, i) {
-      tiles.push({ id: pair.pairId + "-q", pairId: pair.pairId, text: pair.question, matched: false });
-      tiles.push({ id: pair.pairId + "-a", pairId: pair.pairId, text: pair.answer, matched: false });
+      tiles.push({ id: pair.pairId + "-q", pairId: pair.pairId, text: pair.question, matched: false, vocabKey: pair.vocabKey });
+      tiles.push({ id: pair.pairId + "-a", pairId: pair.pairId, text: pair.answer, matched: false, vocabKey: pair.vocabKey });
     });
     ts.roundTiles = shuffleArray(tiles);
     ts.selectedTileId = null;
@@ -7546,10 +7959,15 @@ history.replaceState({}, "", newUrl);
     var firstTile = ts.roundTiles.filter(function (t) { return t.id === ts.selectedTileId; })[0];
     ts.selectedTileId = null;
 
+    var applyMappingMastery = ts.source === "kanji" ? applyKanjiMasteryTestResult : applyMasteryTestResult;
+
     if (firstTile && firstTile.pairId === tile.pairId) {
       firstTile.matched = true;
       tile.matched = true;
       ts.correctCount += 1;
+      if (tile.vocabKey) {
+        applyMappingMastery(tile.vocabKey, "mapping", { isCorrect: true });
+      }
       var remainingInRound = ts.roundTiles.filter(function (t) { return !t.matched; }).length;
       if (remainingInRound === 0) {
         clearMappingTestTimer();
@@ -7559,6 +7977,13 @@ history.replaceState({}, "", newUrl);
       renderMappingTestGame();
     } else {
       ts.wrongCount += 1;
+      // Không biết chắc user chưa thuộc bên nào, nên trừ điểm cả 2 mục liên quan đến cặp ghép sai
+      if (firstTile && firstTile.vocabKey) {
+        applyMappingMastery(firstTile.vocabKey, "mapping", { isCorrect: false });
+      }
+      if (tile.vocabKey && tile.vocabKey !== (firstTile && firstTile.vocabKey)) {
+        applyMappingMastery(tile.vocabKey, "mapping", { isCorrect: false });
+      }
       firstTile.wrongFlash = true;
       tile.wrongFlash = true;
       ts.locked = true;
@@ -7771,7 +8196,9 @@ history.replaceState({}, "", newUrl);
     setupVocabFlashcardFullscreen();
     setupTestSection();
     setupAssembleTestSection();
+    setupVocabTestModeMenu();
     setupKanjiFilters();
+    setupKanjiTestModeMenu();
     setupMappingTestSection();
     setupGrammarFilters();
     setupFilterToggles();
