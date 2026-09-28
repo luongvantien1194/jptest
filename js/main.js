@@ -2739,6 +2739,7 @@
   function scheduleVocabAutoNextTimer() {
     clearVocabAutoNextTimer();
     if (!state.ui.vocabFlashcardAutoNext || state.ui.vocabViewMode !== "flashcard") return;
+    if (vocabPipClip) return; // video PiP dựng sẵn đang tự chuyển từ
     vocabAutoNextTimer = setTimeout(vocabAutoNextTick, getVocabAutoNextDelayMs());
   }
 
@@ -2772,6 +2773,23 @@
     scheduleVocabAutoNextTimer();
   }
 
+  /** Chuẩn hoá 1 dòng vocabData thành dữ liệu hiển thị trên thẻ / PiP */
+  function buildVocabPipItem(raw) {
+    return {
+      lesson: raw.lesson != null ? raw.lesson : raw.Lesson,
+      hiragana: raw.hiragana != null ? raw.hiragana : raw.Hiragana,
+      romaji: raw.romaji != null ? raw.romaji
+        : (raw.Romaji != null ? raw.Romaji
+          : (raw.romazi != null ? raw.romazi : raw.Romazi)),
+      kanji: getVocabRealKanji(raw),
+      meaning: raw.meaning != null ? raw.meaning : raw.Meaning,
+      vru: raw.vru != null ? raw.vru : raw.Vru,
+      type: raw.type != null ? raw.type : raw.Type,
+      note: raw.note != null ? raw.note : raw.Note,
+      category: raw.category != null ? raw.category : raw.Category
+    };
+  }
+
   function renderVocabFlashcard(filtered, listContainer) {
     if (filtered.length === 0) {
       const empty = createElement("div", "detail-empty", "Không có từ vựng phù hợp với bộ lọc hiện tại.");
@@ -2803,19 +2821,7 @@
     const vocabIndex = vocabData.indexOf(raw);
     state.ui.vocabFlashcardVocabIndex = vocabIndex;
 
-    const item = {
-      lesson: raw.lesson != null ? raw.lesson : raw.Lesson,
-      hiragana: raw.hiragana != null ? raw.hiragana : raw.Hiragana,
-      romaji: raw.romaji != null ? raw.romaji
-        : (raw.Romaji != null ? raw.Romaji
-          : (raw.romazi != null ? raw.romazi : raw.Romazi)),
-      kanji: getVocabRealKanji(raw),
-      meaning: raw.meaning != null ? raw.meaning : raw.Meaning,
-      vru: raw.vru != null ? raw.vru : raw.Vru,
-      type: raw.type != null ? raw.type : raw.Type,
-      note: raw.note != null ? raw.note : raw.Note,
-      category: raw.category != null ? raw.category : raw.Category
-    };
+    const item = buildVocabPipItem(raw);
 
     const wrap = createElement("div", "vocab-flashcard-wrap" + (state.ui.vocabFlashcardFullscreen ? " vocab-flashcard-wrap--fullscreen" : ""), "");
 
@@ -3178,6 +3184,7 @@
     var pumpUntil = 0;
     var recordTimer = 0;
     var recordedUrl = null; // đang phát video đã ghi thay cho stream trực tiếp
+    var clip = null; // { handlers, ready } — đang phát video dựng sẵn (playClip), canvas không vẽ nữa
     var generation = 0; // tăng mỗi lần nội dung đổi, để bỏ bản ghi đã cũ
     var dbg = { frames: 0, draws: 0, playErr: "", reqErr: "", rec: "" };
 
@@ -3244,6 +3251,7 @@
     /** (Tạo lại) stream trực tiếp từ canvas và gắn vào video, bỏ video đã ghi nếu có */
     function attachLiveStream() {
       clearTimeout(recordTimer);
+      clip = null;
       if (recordedUrl) {
         URL.revokeObjectURL(recordedUrl);
         recordedUrl = null;
@@ -3323,6 +3331,20 @@
         keepPumping(1500);
         opts.onChange();
       });
+      video.addEventListener("timeupdate", function () {
+        if (clip && clip.handlers.onTime) clip.handlers.onTime(video.currentTime);
+      });
+      video.addEventListener("playing", function () {
+        if (clip) clip.ready = true;
+      });
+      video.addEventListener("pause", function () {
+        // Bấm dừng trong cửa sổ PiP (iOS không qua mediaSession); chờ chút để bỏ qua lúc đóng PiP / đổi nguồn
+        var c = clip;
+        if (!c || !c.ready || !c.handlers.onPause) return;
+        setTimeout(function () {
+          if (clip === c && video.paused && isActive()) c.handlers.onPause();
+        }, 300);
+      });
       if (document.fonts && document.fonts.ready) {
         document.fonts.ready.then(function () { redraw(); });
       }
@@ -3338,7 +3360,7 @@
         pipDebugTargets.push(function () {
           var v = el.video;
           var track = el.stream && el.stream.getVideoTracks()[0];
-          return "[" + opts.name + "] pip=" + isActive() + " src=" + (recordedUrl ? "recorded" : "live") +
+          return "[" + opts.name + "] pip=" + isActive() + " src=" + (clip ? "clip" : recordedUrl ? "recorded" : "live") +
             "\n  video rs=" + v.readyState + " paused=" + v.paused + " " + v.videoWidth + "x" + v.videoHeight +
             " t=" + v.currentTime.toFixed(1) + " frames=" + (v.requestVideoFrameCallback ? dbg.frames : "n/a") +
             "\n  sáng: video=" + pipDebugBrightness(v) + " canvas=" + pipDebugBrightness(el.canvas) + " draws=" + dbg.draws +
@@ -3351,6 +3373,11 @@
     /** Gọi khi nội dung đổi */
     function redraw() {
       if (!el) return;
+      if (clip) {
+        // Video dựng sẵn tự chạy nội dung, không vẽ đè
+        syncPlaybackState();
+        return;
+      }
       generation++;
       if (isActive() && recordedUrl) attachLiveStream();
       draw();
@@ -3387,7 +3414,147 @@
       }
     }
 
-    return { isActive: isActive, warm: warm, redraw: redraw, open: open, exit: exit };
+    /**
+     * Phát video dựng sẵn (blob URL, lặp lại) thay cho canvas, bắt đầu từ giây startAt.
+     * handlers.onTime(t): khi video chạy tới giây t; handlers.onPause(): khi bị dừng trong cửa sổ PiP.
+     * Video tự chạy nên vẫn chuyển nội dung khi trang bị treo JS (iOS chuyển app / khoá màn hình).
+     */
+    function playClip(url, startAt, handlers) {
+      if (!el) return;
+      clearTimeout(recordTimer);
+      generation++;
+      if (recordedUrl) URL.revokeObjectURL(recordedUrl);
+      if (el.stream) {
+        el.stream.getTracks().forEach(function (t) { t.stop(); });
+        el.stream = null;
+      }
+      recordedUrl = url;
+      clip = { handlers: handlers || {}, ready: false };
+      el.video.srcObject = null;
+      el.video.loop = true;
+      el.video.addEventListener("loadedmetadata", function () {
+        try { el.video.currentTime = startAt || 0; } catch (e) { }
+      }, { once: true });
+      el.video.src = url;
+      play();
+    }
+
+    /** Bỏ video dựng sẵn, quay lại vẽ canvas trực tiếp */
+    function stopClip() {
+      if (!el || !clip) return;
+      attachLiveStream();
+      if (isActive()) {
+        play();
+        keepPumping(0);
+        scheduleRecordedLoop();
+      }
+    }
+
+    function isClip() {
+      return !!clip;
+    }
+
+    function clipTime() {
+      return clip ? el.video.currentTime : -1;
+    }
+
+    function seekClip(t) {
+      if (!clip) return;
+      try { el.video.currentTime = t; } catch (e) { }
+      if (el.video.paused) play();
+    }
+
+    return {
+      isActive: isActive, warm: warm, redraw: redraw, open: open, exit: exit,
+      playClip: playClip, stopClip: stopClip, isClip: isClip, clipTime: clipTime, seekClip: seekClip
+    };
+  }
+
+  // Dựng video mp4 (WebCodecs + mp4-muxer) từ nhiều khung hình, mỗi khung giữ N giây
+  var MP4_MUXER_SRC = "https://cdn.jsdelivr.net/npm/mp4-muxer@5.2.2/build/mp4-muxer.min.js";
+  var mp4MuxerPromise = null;
+
+  function isPipClipSupported() {
+    return typeof VideoEncoder !== "undefined" && typeof VideoFrame !== "undefined";
+  }
+
+  function loadMp4Muxer() {
+    if (window.Mp4Muxer) return Promise.resolve(window.Mp4Muxer);
+    if (!mp4MuxerPromise) {
+      mp4MuxerPromise = new Promise(function (resolve, reject) {
+        var s = document.createElement("script");
+        s.src = MP4_MUXER_SRC;
+        s.onload = function () {
+          if (window.Mp4Muxer) resolve(window.Mp4Muxer);
+          else reject(new Error("Không tải được mp4-muxer"));
+        };
+        s.onerror = function () {
+          mp4MuxerPromise = null;
+          reject(new Error("Không tải được mp4-muxer"));
+        };
+        document.head.appendChild(s);
+      });
+    }
+    return mp4MuxerPromise;
+  }
+
+  /**
+   * Dựng video mp4 W×H gồm count khung, khung i do drawFrame(ctx, i) vẽ và giữ secs giây.
+   * Trả Promise<Blob>, hoặc null nếu isCancelled() trả true giữa chừng.
+   */
+  function encodePipClip(W, H, count, secs, drawFrame, isCancelled) {
+    return loadMp4Muxer().then(function (M) {
+      var config = { codec: "avc1.42001f", width: W, height: H, bitrate: 1000000, framerate: 1 };
+      return VideoEncoder.isConfigSupported(config).then(function (res) {
+        if (!res || !res.supported) throw new Error("Trình duyệt không mã hoá được H.264");
+        var canvas = document.createElement("canvas");
+        canvas.width = W;
+        canvas.height = H;
+        var ctx = canvas.getContext("2d");
+        var muxer = new M.Muxer({
+          target: new M.ArrayBufferTarget(),
+          video: { codec: "avc", width: W, height: H },
+          fastStart: "in-memory"
+        });
+        var encodeErr = null;
+        var encoder = new VideoEncoder({
+          output: function (chunk, meta) { muxer.addVideoChunk(chunk, meta); },
+          error: function (e) { encodeErr = e; }
+        });
+        encoder.configure(config);
+        var dur = Math.round(secs * 1e6);
+        var i = 0;
+
+        function wait(ms) {
+          return new Promise(function (r) { setTimeout(r, ms); });
+        }
+
+        function step() {
+          if (encodeErr) throw encodeErr;
+          if (isCancelled()) {
+            try { encoder.close(); } catch (e) { }
+            return null;
+          }
+          // Mỗi lượt vài khung rồi nhả luồng cho trang; hàng đợi encoder đầy thì chờ
+          if (encoder.encodeQueueSize > 8) return wait(15).then(step);
+          for (var n = 0; n < 5 && i < count; n++, i++) {
+            drawFrame(ctx, i);
+            var frame = new VideoFrame(canvas, { timestamp: i * dur, duration: dur });
+            encoder.encode(frame, { keyFrame: true }); // mỗi từ là keyframe → tua tới từ nào cũng hiện ngay
+            frame.close();
+          }
+          if (i < count) return wait(0).then(step);
+          return encoder.flush().then(function () {
+            if (encodeErr) throw encodeErr;
+            encoder.close();
+            muxer.finalize();
+            return new Blob([muxer.target.buffer], { type: "video/mp4" });
+          });
+        }
+
+        return step();
+      });
+    });
   }
 
   /** Tách dòng theo khoảng trắng; từ dài hơn 1 dòng (vd. tiếng Nhật không có khoảng trắng) thì cắt theo ký tự */
@@ -3472,10 +3639,12 @@
 
   // ----- PiP Flashcard: hiện thẻ đang học, đi theo mỗi lần chuyển thẻ -----
   var vocabPipCurrent = { item: null, pos: 0, total: 0 };
+  var VOCAB_PIP_W = 800;
+  var VOCAB_PIP_H = 450;
   var vocabPip = createCanvasPip({
     name: "flashcard",
-    width: 800,
-    height: 450,
+    width: VOCAB_PIP_W,
+    height: VOCAB_PIP_H,
     draw: drawVocabPip,
     actions: {
       previoustrack: function () { advanceVocabFlashcard(-1); },
@@ -3484,7 +3653,10 @@
       pause: function () { setVocabAutoNext(false); }
     },
     playbackState: function () { return state.ui.vocabFlashcardAutoNext ? "playing" : "paused"; },
-    onChange: syncVocabPipBtn
+    onChange: function () {
+      syncVocabPipBtn();
+      syncVocabPipClip();
+    }
   });
 
   function applyVocabPipBtnState(btn) {
@@ -3503,6 +3675,101 @@
   function updateVocabPip(item, pos, total) {
     vocabPipCurrent = { item: item, pos: pos, total: total };
     vocabPip.redraw();
+    syncVocabPipClip();
+  }
+
+  // ----- PiP Flashcard + Auto: dựng sẵn 1 video cả danh sách, mỗi từ giữ đúng số giây Auto -----
+  // Video tự chạy nên vẫn chuyển từ khi trang bị treo (iOS chuyển app / khoá màn hình, tab nền bị hãm timer).
+  var VOCAB_PIP_CLIP_MAX_WORDS = 200; // danh sách dài hơn thì dựng 200 từ tính từ từ đang học
+  var vocabPipClip = null; // { base, start, count, total, secs } — video đang phát
+  var vocabPipClipJob = null; // video đang dựng (cùng dạng)
+  var vocabPipClipFailed = false; // trình duyệt không dựng được → dùng timer như cũ
+
+  /** Vị trí của từ pos (trong danh sách lọc) bên trong video c, -1 nếu không có */
+  function vocabPipClipOffset(c, pos) {
+    var off = (pos - c.start + c.total) % c.total;
+    return off < c.count ? off : -1;
+  }
+
+  function stopVocabPipClip() {
+    vocabPipClipJob = null;
+    if (!vocabPipClip) return;
+    vocabPipClip = null;
+    vocabPip.stopClip();
+    scheduleVocabAutoNextTimer();
+  }
+
+  /** Gọi mỗi khi thẻ / danh sách / tuỳ chọn Auto / trạng thái PiP đổi: dựng, tua hoặc bỏ video cho khớp */
+  function syncVocabPipClip() {
+    var want = !vocabPipClipFailed && isPipClipSupported() && vocabPip.isActive() &&
+      state.ui.vocabFlashcardAutoNext && state.ui.vocabViewMode === "flashcard";
+    var filtered = want ? applyVocabFilters() : [];
+    if (!filtered.length) {
+      stopVocabPipClip();
+      return;
+    }
+    var pos = state.ui.vocabFlashcardIndex;
+    var secs = getVocabAutoNextDelayMs() / 1000;
+    var base = secs + "|" + JSON.stringify(state.displaySettings) + "|" +
+      filtered.map(function (r) { return vocabData.indexOf(r); }).join(",");
+
+    var c = vocabPipClip;
+    if (c && c.base === base && vocabPipClipOffset(c, pos) >= 0) {
+      vocabPipClipJob = null;
+      // Cùng video: người dùng tự chuyển từ thì tua video tới đúng từ đó
+      var off = vocabPipClipOffset(c, pos);
+      if (Math.floor(vocabPip.clipTime() / secs) !== off) vocabPip.seekClip(off * secs + 0.05);
+      return;
+    }
+    var job = vocabPipClipJob;
+    if (job && job.base === base && vocabPipClipOffset(job, pos) >= 0) return; // đang dựng đúng video này
+
+    var total = filtered.length;
+    var count = Math.min(total, VOCAB_PIP_CLIP_MAX_WORDS);
+    job = { base: base, start: total > count ? pos : 0, count: count, total: total, secs: secs };
+    vocabPipClipJob = job;
+    var raws = [];
+    for (var k = 0; k < count; k++) raws.push(filtered[(job.start + k) % total]);
+
+    encodePipClip(VOCAB_PIP_W, VOCAB_PIP_H, count, secs, function (ctx, k) {
+      var saved = vocabPipCurrent;
+      vocabPipCurrent = { item: buildVocabPipItem(raws[k]), pos: (job.start + k) % total, total: total };
+      drawVocabPip(ctx, VOCAB_PIP_W, VOCAB_PIP_H);
+      vocabPipCurrent = saved;
+    }, function () {
+      return vocabPipClipJob !== job;
+    }).then(function (blob) {
+      if (!blob || vocabPipClipJob !== job) return;
+      vocabPipClipJob = null;
+      if (!vocabPip.isActive() || !state.ui.vocabFlashcardAutoNext) return;
+      var off = vocabPipClipOffset(job, state.ui.vocabFlashcardIndex);
+      vocabPipClip = job;
+      clearVocabAutoNextTimer(); // từ giờ video tự chuyển từ
+      vocabPip.playClip(URL.createObjectURL(blob), Math.max(0, off) * secs + 0.05, {
+        onTime: onVocabPipClipTime,
+        onPause: function () { setVocabAutoNext(false); }
+      });
+    }).catch(function (err) {
+      if (vocabPipClipJob !== job) return;
+      vocabPipClipJob = null;
+      vocabPipClipFailed = true;
+      console.warn("PiP: không dựng được video danh sách, dùng timer", err);
+    });
+  }
+
+  /** Video chạy tới từ nào thì flashcard trong trang đi theo từ đó */
+  function onVocabPipClipTime(t) {
+    var c = vocabPipClip;
+    if (!c || vocabPipClipJob || state.ui.vocabViewMode !== "flashcard") return;
+    var off = Math.min(c.count - 1, Math.floor(t / c.secs));
+    var pos = (c.start + off) % c.total;
+    if (pos === state.ui.vocabFlashcardIndex) return;
+    var filtered = applyVocabFilters();
+    if (!filtered[pos]) return;
+    state.ui.vocabFlashcardIndex = pos;
+    state.ui.vocabFlashcardFlipped = false;
+    saveVocabViewState(vocabData.indexOf(filtered[pos]));
+    renderVocabList();
   }
 
   function drawVocabPip(ctx, W, H) {
