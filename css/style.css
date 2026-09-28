@@ -938,13 +938,6 @@ select:focus {
   transition: background var(--transition-fast), border-color var(--transition-fast);
 }
 
-#vocab-export-md-btn {
-  width: auto;
-  padding: 0 8px;
-  font-size: 12px;
-  font-weight: 700;
-}
-
 #start-vocab-test-btn {
   font-size: 13px;
   font-weight: 700;
@@ -1534,7 +1527,15 @@ select:focus {
   color: var(--text-muted);
 }
 
-.vocab-flashcard-fullscreen-btn {
+.vocab-flashcard-view-btns {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-left: auto;
+}
+
+.vocab-flashcard-fullscreen-btn,
+.vocab-flashcard-pip-btn {
   border: 1px solid var(--border);
   border-radius: var(--radius-full, 999px);
   background: transparent;
@@ -1545,10 +1546,27 @@ select:focus {
   cursor: pointer;
 }
 
-.vocab-flashcard-fullscreen-btn--active {
+.vocab-flashcard-pip-btn {
+  font-size: 11px;
+}
+
+.vocab-flashcard-fullscreen-btn--active,
+.vocab-flashcard-pip-btn--active {
   background: var(--primary);
   border-color: var(--primary);
   color: #fff;
+}
+
+/* Canvas + video nguồn cho PiP (Flashcard, chi tiết Kanji): phải nằm trong DOM nhưng không hiển thị */
+.canvas-pip-hidden {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  overflow: hidden;
+  pointer-events: none;
 }
 
 .vocab-flashcard-wrap--fullscreen {
@@ -3864,6 +3882,19 @@ select:focus {
   border-color: rgba(192, 57, 43, 0.35);
 }
 
+button.kd-pip-link {
+  font-family: inherit;
+  line-height: inherit;
+  cursor: pointer;
+}
+
+.kd-pip-link--active,
+.kd-pip-link--active:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #fff;
+}
+
 .kd-section {
   border-radius: var(--radius-md);
   padding: 10px 12px;
@@ -4689,6 +4720,135 @@ select:focus {
     text-decoration:none !important;
     cursor:pointer !important;
     box-shadow:0 5px 15px #0003 !important;
+}
+
+/* ===== FAB MENU (góc dưới-phải tab Từ vựng / Kanji: bấm nút tròn để xổ danh sách thao tác) ===== */
+.fab-menu {
+  position: fixed;
+  right: calc(4px + env(safe-area-inset-right));
+  bottom: calc(16px + env(safe-area-inset-bottom));
+  z-index: 35; /* dưới .detail-modal (40) để modal che được FAB */
+}
+
+.fab-menu__toggle {
+  position: relative;
+  width: 38px;
+  height: 38px;
+  border: 1px solid rgba(192, 57, 43, 0.25);
+  border-radius: 50%;
+  background: rgba(255, 254, 249, 0.96);
+  color: var(--primary);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: var(--shadow-hover);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast),
+    background var(--transition-fast);
+  -webkit-tap-highlight-color: transparent;
+}
+
+.fab-menu--open .fab-menu__toggle {
+  background: #fbeee9;
+}
+
+.fab-menu__toggle svg {
+  width: 18px;
+  height: 18px;
+  transition: transform var(--transition-med);
+}
+
+.fab-menu--open .fab-menu__toggle svg {
+  transform: rotate(45deg);
+}
+
+.fab-menu__toggle:active {
+  transform: scale(0.94);
+}
+
+.fab-menu__toggle:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(192, 57, 43, 0.2), var(--shadow-hover);
+}
+
+.fab-menu__list {
+  position: absolute;
+  right: 2px; /* căn tâm icon 34px thẳng tâm nút 38px */
+  bottom: calc(100% + 8px);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(8px) scale(0.96);
+  transform-origin: bottom right;
+  transition: opacity var(--transition-fast), transform var(--transition-fast), visibility var(--transition-fast);
+}
+
+.fab-menu--open .fab-menu__list {
+  opacity: 1;
+  visibility: visible;
+  transform: none;
+}
+
+.fab-menu__item {
+  display: inline-flex;
+  padding: 0;
+  border: 0;
+  background: none;
+  font: inherit;
+  color: var(--text);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.fab-menu__item:focus-visible {
+  outline: none;
+}
+
+.fab-menu__icon {
+  width: 34px;
+  height: 34px;
+  flex-shrink: 0;
+  border-radius: 50%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--bg-card);
+  border: 1px solid rgba(192, 57, 43, 0.22);
+  color: var(--primary);
+  box-shadow: var(--shadow-card);
+  font-family: var(--font-jp);
+  font-size: 15px;
+  font-weight: 600;
+  transition: background var(--transition-fast), color var(--transition-fast),
+    border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.fab-menu__icon svg {
+  width: 16px;
+  height: 16px;
+}
+
+.fab-menu__item:hover .fab-menu__icon,
+.fab-menu__item:focus-visible .fab-menu__icon {
+  background: #fbeee9;
+  border-color: rgba(192, 57, 43, 0.35);
+  color: var(--primary-dark);
+}
+
+.fab-menu__item:active .fab-menu__icon {
+  transform: scale(0.92);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .fab-menu__list,
+  .fab-menu__toggle svg {
+    transition: none;
+  }
 }
 
 .icon-search {
