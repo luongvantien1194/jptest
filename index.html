@@ -9,18 +9,18 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="theme-color" content="#6366f1" />
-  <script src="js/kanjiHanViet.js?v=1027"></script>
+  <script src="js/kanjiHanViet.js?v=1029"></script>
 
-  <script src="data/master.js?v=1027"></script>
-  <script src="data/vocabData.js?v=1027"></script>
-  <script src="data/vocabData_1.js?v=1027"></script>
-  <script src="data/dup.js?v=1027"></script>
-  <script src="data/vocabExtra/extra.js?v=1027"></script>
+  <script src="data/master.js?v=1029"></script>
+  <script src="data/vocabData.js?v=1029"></script>
+  <script src="data/vocabData_1.js?v=1029"></script>
+  <script src="data/dup.js?v=1029"></script>
+  <script src="data/vocabExtra/extra.js?v=1029"></script>
 
 
-  <script src="data/kanjiData.js?v=1027"></script>
-  <script src="data/kanjiData_1.js?v=1027"></script>
-  <script src="data/kanjiExtra/extra.js?v=1027"></script>
+  <script src="data/kanjiData.js?v=1029"></script>
+  <script src="data/kanjiData_1.js?v=1029"></script>
+  <script src="data/kanjiExtra/extra.js?v=1029"></script>
 
   <script>
     window._vocabExtra = window._vocabExtra || [];
@@ -44,14 +44,14 @@
   </script>
 
 
-  <script src="data/grammarData.js?v=1027"></script>
-  <script src="data/grammarData_1.js?v=1027"></script>
+  <script src="data/grammarData.js?v=1029"></script>
+  <script src="data/grammarData_1.js?v=1029"></script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=1024">
+  <link rel="stylesheet" href="css/style.css?v=1032">
 </head>
 
 <body>
@@ -100,6 +100,7 @@
               <button type="button" class="filter-icon-btn nav-menu-btn" title="Menu điều hướng">☰</button>
               <input id="vocab-search-input" type="text" placeholder="Hiragana / Kanji / Romaji / Meaning"
                 class="input-text" />
+              <span class="chip" id="vocab-count-label" style="flex-shrink:0; margin-left:4px">0</span>
               <a class="icon-search" href="searchKanji/index.html?type=vocabTab">🔍</a>
               <button type="button" class="filter-icon-btn" id="vocab-view-mode-toggle"
                 title="Chuyển sang chế độ Flashcard">🗂</button>
@@ -220,18 +221,37 @@
           </div>
 
         </div> <!-- Đóng .section-inner -->
-        <div id="vocab-fixed-actions" style="position:fixed;right:-5px;bottom:16px;display:flex;flex-direction:column;gap:3px;z-index:9999">
-          <button class="filter-icon-btn2" id="vocab-lesson-pre" style="width:100%;">⏮️</button>
-          <button class="filter-icon-btn2" id="vocab-lesson-next" style="width:100%">⏭️</button>
-          <button class="filter-icon-btn2" id="open-vocab-test-menu-btn" title="Test từ vựng">T</button>
-          <button id="start-vocab-test-btn" style="display:none !important">T</button>
-          <button id="start-vocab-mapping-btn" style="display:none !important" title="Test mapping">M</button>
-          <button id="start-vocab-assemble-btn" style="display:none !important" title="Ghép từ (chọn hiragana)">G</button>
-          <button class="filter-icon-btn2" id="vocab-export-md-btn">MD</button>
-          <button class="filter-icon-btn2" id="add-vocab-btn" type="button">+あ</button>
-          <button class="filter-icon-btn2" id="add-kanji">漢</button>
-          <span class="vocab-count-chip" id="vocab-count-label">0</span>
+        <!-- Nút trigger ẩn cho menu chọn kiểu test (openTestModeMenu gọi .click()) -->
+        <button id="start-vocab-test-btn" style="display:none !important">T</button>
+        <button id="start-vocab-mapping-btn" style="display:none !important" title="Test mapping">M</button>
+        <button id="start-vocab-assemble-btn" style="display:none !important" title="Ghép từ (chọn hiragana)">G</button>
 
+        <!-- FAB góc dưới-phải: bấm để xổ danh sách thao tác -->
+        <div class="fab-menu" id="vocab-fixed-actions">
+          <div class="fab-menu__list" id="vocab-fab-list">
+            <button type="button" class="fab-menu__item" id="add-kanji" title="Tra Kanji" aria-label="Tra Kanji">
+              <span class="fab-menu__icon">漢</span>
+            </button>
+            <button type="button" class="fab-menu__item" id="add-vocab-btn" title="Thêm từ vựng" aria-label="Thêm từ vựng">
+              <span class="fab-menu__icon">あ</span>
+            </button>
+            <button type="button" class="fab-menu__item" id="vocab-export-md-btn" title="Xuất Markdown" aria-label="Xuất Markdown">
+              <span class="fab-menu__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7Z"/><path d="M14 2v4a2 2 0 0 0 2 2h4"/><path d="M12 18v-6"/><path d="m9 15 3 3 3-3"/></svg></span>
+            </button>
+            <button type="button" class="fab-menu__item" id="open-vocab-test-menu-btn" title="Test từ vựng" aria-label="Test từ vựng">
+              <span class="fab-menu__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg></span>
+            </button>
+            <button type="button" class="fab-menu__item" id="vocab-lesson-pre" title="Bài trước" aria-label="Bài trước">
+              <span class="fab-menu__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M19 20 9 12l10-8v16Z"/><path d="M5 19V5"/></svg></span>
+            </button>
+            <button type="button" class="fab-menu__item" id="vocab-lesson-next" title="Bài sau" aria-label="Bài sau">
+              <span class="fab-menu__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m5 4 10 8-10 8V4Z"/><path d="M19 5v14"/></svg></span>
+            </button>
+          </div>
+          <button type="button" class="fab-menu__toggle" aria-expanded="false" aria-controls="vocab-fab-list"
+            aria-label="Mở danh sách thao tác" title="Thao tác">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
         </div>
       </section> <!-- Đóng #section-vocab -->
 
@@ -285,12 +305,25 @@
             </div>
           </div>
         </div>
-        <div style="position:fixed;right:-8px;bottom:16px;display:flex;flex-direction:column;gap:3px;z-index:9999">.
-          <button class="filter-icon-btn2" type="button" id="open-kanji-test-menu-btn" title="Test Kanji">T</button>
-          <button type="button" id="start-kanji-test-btn" style="display:none !important">T</button>
-          <button type="button" id="start-kanji-mapping-btn" style="display:none !important" title="Test mapping">M</button>
-          <button type="button" id="start-kanji-review-btn" style="display:none !important" title="Ôn lại Kanji chưa thuộc">🔁</button>
-          <button class="filter-icon-btn2" type="button" id="add-vocab-btn-kanji">+あ</button>
+        <!-- Nút trigger ẩn cho menu chọn kiểu test (openTestModeMenu gọi .click()) -->
+        <button type="button" id="start-kanji-test-btn" style="display:none !important">T</button>
+        <button type="button" id="start-kanji-mapping-btn" style="display:none !important" title="Test mapping">M</button>
+        <button type="button" id="start-kanji-review-btn" style="display:none !important" title="Ôn lại Kanji chưa thuộc">🔁</button>
+
+        <!-- FAB góc dưới-phải: bấm để xổ danh sách thao tác -->
+        <div class="fab-menu" id="kanji-fixed-actions">
+          <div class="fab-menu__list" id="kanji-fab-list">
+            <button type="button" class="fab-menu__item" id="add-vocab-btn-kanji" title="Thêm từ vựng" aria-label="Thêm từ vựng">
+              <span class="fab-menu__icon">あ</span>
+            </button>
+            <button type="button" class="fab-menu__item" id="open-kanji-test-menu-btn" title="Test Kanji" aria-label="Test Kanji">
+              <span class="fab-menu__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="8" height="4" x="8" y="2" rx="1"/><path d="M16 4h2a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h2"/><path d="m9 14 2 2 4-4"/></svg></span>
+            </button>
+          </div>
+          <button type="button" class="fab-menu__toggle" aria-expanded="false" aria-controls="kanji-fab-list"
+            aria-label="Mở danh sách thao tác" title="Thao tác">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg>
+          </button>
         </div>
       </section>
 
@@ -528,9 +561,9 @@
   <!-- soundOverlay removed (no mp3 audio) -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
-  <script src="data/configDoc.js?v=1027"></script>
-  <script src="js/main.js?v=1027"></script>
-  <script src="js/vocabEditor.js?v=1027"></script>
+  <script src="data/configDoc.js?v=1029"></script>
+  <script src="js/main.js?v=1030"></script>
+  <script src="js/vocabEditor.js?v=1029"></script>
 </body>
 
 </html>
