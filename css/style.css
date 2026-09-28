@@ -1961,6 +1961,23 @@ select:focus {
   color: var(--text);
 }
 
+.grammar-structure-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.grammar-structure-row .grammar-structure {
+  margin-bottom: 0;
+  min-width: 0;
+}
+
+.grammar-gpt-link {
+  white-space: nowrap;
+}
+
 /* ===== APP FOOTER ===== */
 .app-footer {
   padding: 6px 14px;
