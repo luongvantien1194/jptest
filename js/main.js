@@ -3147,6 +3147,9 @@
   function setupPipDebugPanel() {
     if (!PIP_DEBUG) return;
     var panel = createElement("pre", "pip-debug-panel", "PiP debug: chưa mở PiP");
+    panel.style.cssText = "position:fixed;left:4px;bottom:4px;z-index:100000;max-width:calc(100vw - 8px);margin:0;" +
+      "padding:6px 8px;border-radius:6px;background:rgba(0,0,0,0.78);color:#4ade80;" +
+      "font:10px/1.35 ui-monospace,Menlo,monospace;white-space:pre-wrap;pointer-events:none;";
     document.body.appendChild(panel);
     setInterval(function () {
       var lines = ["recordedLoop=" + PIP_USE_RECORDED_LOOP + " pipEl=" + (document.pictureInPictureElement ? "video" : "none")];
@@ -3272,13 +3275,21 @@
     /** Tạo canvas + video (1 lần) và gắn sẵn stream — gọi khi nút PiP được hiển thị, trước lúc bấm */
     function warm() {
       if (el) return;
+      // Giống trang pip-kanji-pwa (chạy được trên iOS): canvas vẫn được vẽ ra màn hình (chỉ lộ 1px góc
+      // trên-trái), video trong suốt nhưng nằm trong viewport — iOS không vẽ frame cho video bị coi là
+      // không hiển thị → PiP đen. Style inline để không phụ thuộc style.css (bản cũ trong cache → canvas hiện nguyên khổ).
+      var boxStyle = "position:fixed;left:0;top:0;width:1px;height:1px;overflow:hidden;pointer-events:none;";
       var srcBox = createElement("div", "canvas-pip-src", "");
+      srcBox.style.cssText = boxStyle;
       var canvas = document.createElement("canvas");
       canvas.width = opts.width;
       canvas.height = opts.height;
+      canvas.style.cssText = "position:absolute;left:0;top:0;";
       srcBox.appendChild(canvas);
       var videoBox = createElement("div", "canvas-pip-video", "");
+      videoBox.style.cssText = boxStyle + "opacity:0;";
       var video = document.createElement("video");
+      video.style.cssText = "position:absolute;left:0;top:0;";
       video.muted = true;
       video.defaultMuted = true;
       video.playsInline = true;
