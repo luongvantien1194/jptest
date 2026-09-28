@@ -2301,6 +2301,7 @@
         sec.classList.remove("section--active");
       }
     });
+    syncFlashcardWakeLock();
   }
 
   // ----- Vocab -----
@@ -2891,7 +2892,7 @@
       applyVocabPipBtnState(pipBtn);
       // Chuẩn bị stream ngay khi chạm, để lúc click video đã có metadata (Safari cần gọi PiP ngay trong click)
       pipBtn.addEventListener("pointerdown", function () {
-        vocabPip.ensure();
+        vocabPip.prepare();
       });
       pipBtn.addEventListener("click", function (e) {
         e.stopPropagation();
@@ -3060,13 +3061,74 @@
       typeof HTMLCanvasElement !== "undefined" && "captureStream" in HTMLCanvasElement.prototype;
   }
 
+  // iOS/Safari: PiP phát trực tiếp stream canvas dễ bị đen khi chuyển app / khoá màn hình
+  // → sau khi mở PiP, ghi vài giây stream thành video lặp rồi phát file đó (cách của trang pip-kanji-pwa)
+  var PIP_USE_RECORDED_LOOP = (function () {
+    if (typeof MediaRecorder === "undefined") return false;
+    var ua = navigator.userAgent || "";
+    var isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === "MacIntel" && navigator.maxTouchPoints > 1);
+    var isSafari = /Safari/.test(ua) && !/Chrome|Chromium|CriOS|FxiOS|EdgiOS|Edg|OPR|Android/.test(ua);
+    return isIOS || isSafari;
+  })();
+
+  function pickPipRecorderMime() {
+    if (!MediaRecorder.isTypeSupported) return "";
+    var types = ["video/mp4", "video/mp4; codecs=avc1.42E01E", "video/webm;codecs=vp9", "video/webm;codecs=vp8", "video/webm"];
+    for (var i = 0; i < types.length; i++) {
+      if (MediaRecorder.isTypeSupported(types[i])) return types[i];
+    }
+    return "";
+  }
+
+  /** Ghi durationMs từ stream → gọi done(blob) (null nếu lỗi) */
+  function recordPipStream(stream, durationMs, done) {
+    var mime = pickPipRecorderMime();
+    var rec;
+    try {
+      rec = mime ? new MediaRecorder(stream, { mimeType: mime, videoBitsPerSecond: 2500000 }) : new MediaRecorder(stream);
+    } catch (e1) {
+      try { rec = new MediaRecorder(stream); } catch (e2) { done(null); return; }
+    }
+    var chunks = [];
+    var finished = false;
+    function finish(blob) {
+      if (finished) return;
+      finished = true;
+      done(blob);
+    }
+    rec.ondataavailable = function (e) {
+      if (e.data && e.data.size) chunks.push(e.data);
+    };
+    rec.onstop = function () {
+      finish(chunks.length ? new Blob(chunks, { type: mime || rec.mimeType || "video/mp4" }) : null);
+    };
+    try {
+      rec.start(200);
+    } catch (e) {
+      finish(null);
+      return;
+    }
+    setTimeout(function () {
+      if (rec.state === "recording") {
+        try { rec.stop(); } catch (e) { finish(null); }
+      }
+    }, durationMs);
+    setTimeout(function () { finish(null); }, durationMs + 2200);
+  }
+
   /**
    * opts.width / opts.height: kích thước canvas; opts.draw(ctx, W, H): vẽ nội dung hiện tại;
    * opts.actions: { previoustrack, nexttrack, play, pause } cho các nút trong cửa sổ PiP (Chrome);
    * opts.playbackState(): "playing" | "paused" cho nút ⏯ (tuỳ chọn); opts.onChange(): khi mở / đóng PiP.
    */
   function createCanvasPip(opts) {
-    var el = null; // { ctx, video, stream } — tạo khi dùng PiP lần đầu
+    // content: canvas vẽ nội dung; canvas: canvas nguồn của stream (chép từ content mỗi frame)
+    var el = null; // { canvas, ctx, content, contentCtx, video, stream } — tạo khi dùng PiP lần đầu
+    var pumpTimer = 0;
+    var pumpUntil = 0;
+    var recordTimer = 0;
+    var recordedUrl = null; // đang phát video đã ghi thay cho stream trực tiếp
+    var generation = 0; // tăng mỗi lần nội dung đổi, để bỏ bản ghi đã cũ
 
     function isActive() {
       return !!el && document.pictureInPictureElement === el.video;
@@ -3100,60 +3162,134 @@
       }
     }
 
-    /** Tạo canvas + video ẩn và bắt đầu phát stream, để lúc bấm nút video đã có metadata */
-    function ensure() {
-      if (el) return el;
-      var box = createElement("div", "canvas-pip-hidden", "");
-      var canvas = document.createElement("canvas");
-      canvas.width = opts.width;
-      canvas.height = opts.height;
-      var video = document.createElement("video");
-      video.muted = true;
-      video.playsInline = true;
-      video.setAttribute("playsinline", "");
-      video.setAttribute("webkit-playsinline", "");
-      box.appendChild(canvas);
-      box.appendChild(video);
-      document.body.appendChild(box);
-
-      var stream = canvas.captureStream();
-      video.srcObject = stream;
-      video.addEventListener("enterpictureinpicture", function () {
-        setMediaSession(true);
-        opts.onChange();
-      });
-      video.addEventListener("leavepictureinpicture", function () {
-        // Đang chuyển sang PiP khác (vd. Flashcard → Kanji) thì không xoá nút của PiP mới
-        if (!document.pictureInPictureElement) setMediaSession(false);
-        video.pause();
-        opts.onChange();
-      });
-
-      el = { ctx: canvas.getContext("2d"), video: video, stream: stream };
-      redraw();
-      play();
-      if (document.fonts && document.fonts.ready) {
-        document.fonts.ready.then(redraw);
+    /** Chép nội dung sang canvas nguồn → stream nhận 1 frame mới */
+    function pushFrame() {
+      el.ctx.drawImage(el.content, 0, 0);
+      var track = el.stream && el.stream.getVideoTracks()[0];
+      if (track && track.readyState === "live" && typeof track.requestFrame === "function") {
+        try { track.requestFrame(); } catch (e) { }
       }
+    }
+
+    function render() {
+      opts.draw(el.contentCtx, opts.width, opts.height);
+      pushFrame();
+    }
+
+    /** Đẩy frame liên tục (iOS hiện PiP đen nếu stream không có frame mới), tự dừng khi PiP đóng và hết hạn ms */
+    function keepPumping(ms) {
+      pumpUntil = Math.max(pumpUntil, Date.now() + ms);
+      if (pumpTimer) return;
+      pumpTimer = setInterval(function () {
+        if (!isActive() && Date.now() > pumpUntil) {
+          clearInterval(pumpTimer);
+          pumpTimer = 0;
+          return;
+        }
+        if (!recordedUrl) pushFrame();
+      }, 100);
+    }
+
+    /** (Tạo lại) stream trực tiếp từ canvas và gắn vào video, bỏ video đã ghi nếu có */
+    function attachLiveStream() {
+      clearTimeout(recordTimer);
+      if (recordedUrl) {
+        URL.revokeObjectURL(recordedUrl);
+        recordedUrl = null;
+      }
+      if (el.stream) {
+        el.stream.getTracks().forEach(function (t) { t.stop(); });
+      }
+      el.video.removeAttribute("src");
+      el.video.loop = false;
+      el.stream = el.canvas.captureStream(30);
+      el.video.srcObject = el.stream;
+      pushFrame();
+    }
+
+    function scheduleRecordedLoop() {
+      if (!PIP_USE_RECORDED_LOOP) return;
+      clearTimeout(recordTimer);
+      var gen = generation;
+      recordTimer = setTimeout(function () {
+        if (!isActive() || recordedUrl || gen !== generation) return;
+        // fix pip tang thoi gian
+        recordPipStream(el.stream, 1600, function (blob) {
+          if (!blob || !blob.size || !isActive() || recordedUrl || gen !== generation) return;
+          recordedUrl = URL.createObjectURL(blob);
+          el.video.srcObject = null;
+          el.video.src = recordedUrl;
+          el.video.loop = true;
+          play();
+          el.stream.getTracks().forEach(function (t) { t.stop(); });
+        });
+      }, 450);
+    }
+
+    /** Tạo canvas + video ẩn (1 lần) và cho stream chạy, để lúc bấm nút video đã có metadata */
+    function prepare() {
+      if (!el) {
+        var box = createElement("div", "canvas-pip-hidden", "");
+        var canvas = document.createElement("canvas");
+        canvas.width = opts.width;
+        canvas.height = opts.height;
+        var content = document.createElement("canvas");
+        content.width = opts.width;
+        content.height = opts.height;
+        var video = document.createElement("video");
+        video.muted = true;
+        video.defaultMuted = true;
+        video.playsInline = true;
+        video.setAttribute("muted", "");
+        video.setAttribute("playsinline", "");
+        video.setAttribute("webkit-playsinline", "");
+        box.appendChild(canvas);
+        box.appendChild(video);
+        document.body.appendChild(box);
+
+        el = { canvas: canvas, ctx: canvas.getContext("2d"), content: content, contentCtx: content.getContext("2d"), video: video, stream: null };
+        render();
+        attachLiveStream();
+
+        video.addEventListener("enterpictureinpicture", function () {
+          setMediaSession(true);
+          keepPumping(0);
+          scheduleRecordedLoop();
+          opts.onChange();
+        });
+        video.addEventListener("leavepictureinpicture", function () {
+          // Đang chuyển sang PiP khác (vd. Flashcard → Kanji) thì không xoá nút của PiP mới
+          if (!document.pictureInPictureElement) setMediaSession(false);
+          if (recordedUrl) attachLiveStream();
+          keepPumping(1500);
+          opts.onChange();
+        });
+        if (document.fonts && document.fonts.ready) {
+          document.fonts.ready.then(function () { redraw(); });
+        }
+      }
+      render();
+      play();
+      keepPumping(3000);
       return el;
     }
 
+    /** Gọi khi nội dung đổi */
     function redraw() {
       if (!el) return;
-      opts.draw(el.ctx, opts.width, opts.height);
-      // Khi trang bị ẩn (đang xem app khác) canvas có thể không tự đẩy frame — ép capture frame mới
-      var track = el.stream.getVideoTracks()[0];
-      if (track && typeof track.requestFrame === "function") {
-        try { track.requestFrame(); } catch (e) { }
+      generation++;
+      if (isActive() && recordedUrl) attachLiveStream();
+      render();
+      if (isActive()) {
+        play();
+        keepPumping(0);
+        scheduleRecordedLoop();
       }
-      if (isActive() && el.video.paused) play();
       syncPlaybackState();
     }
 
     function open() {
-      ensure();
-      redraw();
-      play();
+      prepare();
       function request() {
         el.video.requestPictureInPicture().catch(function (err) {
           alert("Không bật được PiP: " + (err && err.message ? err.message : err) + " (thử bấm lại nút PiP)");
@@ -3173,7 +3309,7 @@
       }
     }
 
-    return { isActive: isActive, ensure: ensure, redraw: redraw, open: open, exit: exit };
+    return { isActive: isActive, prepare: prepare, redraw: redraw, open: open, exit: exit };
   }
 
   /** Tách dòng theo khoảng trắng; từ dài hơn 1 dòng (vd. tiếng Nhật không có khoảng trắng) thì cắt theo ký tự */
@@ -4890,7 +5026,7 @@
         applyKanjiPipBtnState(pipBtn);
         // Chuẩn bị stream ngay khi chạm, để lúc click video đã có metadata (Safari cần gọi PiP ngay trong click)
         pipBtn.addEventListener("pointerdown", function () {
-          kanjiPip.ensure();
+          kanjiPip.prepare();
         });
         pipBtn.addEventListener("click", function (e) {
           e.stopPropagation();
@@ -6891,6 +7027,7 @@ history.replaceState({}, "", newUrl);
         vocabPip.exit();
       }
       syncBtn();
+      syncFlashcardWakeLock();
       saveVocabViewState(state.ui.vocabFlashcardVocabIndex);
       renderVocabList();
       scheduleVocabAutoNextTimer();
@@ -6926,6 +7063,52 @@ history.replaceState({}, "", newUrl);
       try { document.exitFullscreen(); } catch (e) { }
     }
     renderVocabList();
+  }
+
+  // ----- Giữ màn hình luôn sáng khi đang học Flashcard (Screen Wake Lock API) -----
+  var flashcardWakeLock = null;
+  var flashcardWakeLockPending = false;
+
+  function shouldKeepScreenOn() {
+    return state.currentTab === "vocab" && state.ui.vocabViewMode === "flashcard" &&
+      document.visibilityState === "visible";
+  }
+
+  /** Xin / nhả wake lock theo trạng thái hiện tại — gọi lại mỗi khi đổi tab, đổi chế độ xem, ẩn/hiện trang */
+  function syncFlashcardWakeLock() {
+    if (!("wakeLock" in navigator)) return;
+    if (!shouldKeepScreenOn()) {
+      if (flashcardWakeLock) {
+        var held = flashcardWakeLock;
+        flashcardWakeLock = null;
+        held.release().catch(function () { });
+      }
+      return;
+    }
+    if (flashcardWakeLock || flashcardWakeLockPending) return;
+    flashcardWakeLockPending = true;
+    navigator.wakeLock.request("screen").then(function (lock) {
+      flashcardWakeLockPending = false;
+      flashcardWakeLock = lock;
+      // Trình duyệt tự nhả khi trang bị ẩn (chuyển app, khoá màn hình) → xin lại khi trang hiện lại
+      lock.addEventListener("release", function () {
+        if (flashcardWakeLock === lock) flashcardWakeLock = null;
+      });
+      // Trạng thái có thể đã đổi trong lúc chờ
+      if (!shouldKeepScreenOn()) syncFlashcardWakeLock();
+    }).catch(function () {
+      flashcardWakeLockPending = false;
+    });
+  }
+
+  function setupFlashcardWakeLock() {
+    document.addEventListener("visibilitychange", syncFlashcardWakeLock);
+    // Một số trình duyệt (Safari) chỉ cho xin wake lock sau thao tác của người dùng → thử lại khi chạm / bấm phím
+    ["pointerup", "keydown"].forEach(function (type) {
+      document.addEventListener(type, function () {
+        if (!flashcardWakeLock) syncFlashcardWakeLock();
+      }, { capture: true, passive: true });
+    });
   }
 
   /** Đồng bộ state khi người dùng thoát fullscreen bằng Esc/F11 (không qua nút toggle) */
@@ -8867,6 +9050,7 @@ history.replaceState({}, "", newUrl);
     setupDisplaySettings();
     setupVocabViewModeToggle();
     setupVocabFlashcardFullscreen();
+    setupFlashcardWakeLock();
     setupTestSection();
     setupAssembleTestSection();
     setupVocabTestModeMenu();
