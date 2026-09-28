@@ -1557,18 +1557,6 @@ select:focus {
   color: #fff;
 }
 
-/* Canvas + video nguồn cho PiP (Flashcard, chi tiết Kanji): phải nằm trong DOM nhưng không hiển thị */
-.canvas-pip-hidden {
-  position: fixed;
-  left: 0;
-  top: 0;
-  width: 1px;
-  height: 1px;
-  opacity: 0;
-  overflow: hidden;
-  pointer-events: none;
-}
-
 .vocab-flashcard-wrap--fullscreen {
   position: fixed;
   inset: 0;
