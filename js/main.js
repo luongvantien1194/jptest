@@ -2769,6 +2769,7 @@
     if (filtered.length === 0) {
       const empty = createElement("div", "detail-empty", "Không có từ vựng phù hợp với bộ lọc hiện tại.");
       listContainer.appendChild(empty);
+      updateVocabPip(null, 0, 0);
       return;
     }
 
@@ -2845,10 +2846,7 @@
       ? "Đang tự động chuyển thẻ mỗi " + autoNextSecondsValue + " giây — bấm để tắt"
       : "Bật để tự động chuyển sang thẻ tiếp theo mỗi " + autoNextSecondsValue + " giây (quay lại thẻ đầu khi hết danh sách)";
     autoNextBtn.addEventListener("click", function () {
-      state.ui.vocabFlashcardAutoNext = !state.ui.vocabFlashcardAutoNext;
-      saveVocabViewState(vocabIndex);
-      scheduleVocabAutoNextTimer();
-      renderVocabList();
+      setVocabAutoNext(!state.ui.vocabFlashcardAutoNext);
     });
     autoNextGroup.appendChild(autoNextBtn);
 
@@ -2885,7 +2883,28 @@
       e.stopPropagation();
       toggleVocabFlashcardFullscreen();
     });
-    topRow.appendChild(fullscreenBtn);
+
+    var viewBtns = createElement("div", "vocab-flashcard-view-btns", "");
+    if (isCanvasPipSupported()) {
+      var pipBtn = createElement("button", "vocab-flashcard-pip-btn", "PiP");
+      pipBtn.type = "button";
+      applyVocabPipBtnState(pipBtn);
+      // Chuẩn bị stream ngay khi chạm, để lúc click video đã có metadata (Safari cần gọi PiP ngay trong click)
+      pipBtn.addEventListener("pointerdown", function () {
+        vocabPip.ensure();
+      });
+      pipBtn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        if (vocabPip.isActive()) {
+          vocabPip.exit();
+        } else {
+          vocabPip.open();
+        }
+      });
+      viewBtns.appendChild(pipBtn);
+    }
+    viewBtns.appendChild(fullscreenBtn);
+    topRow.appendChild(viewBtns);
     wrap.appendChild(topRow);
 
     const stage = createElement("div", "vocab-flashcard-stage", "");
@@ -3020,6 +3039,318 @@
 
     listContainer.appendChild(wrap);
     saveVocabViewState(vocabIndex);
+    updateVocabPip(item, pos, filtered.length);
+  }
+
+  function setVocabAutoNext(on) {
+    state.ui.vocabFlashcardAutoNext = !!on;
+    saveVocabViewState(state.ui.vocabFlashcardVocabIndex);
+    scheduleVocabAutoNextTimer();
+    renderVocabList();
+  }
+
+  // ----- PiP từ canvas (dùng chung cho Flashcard từ vựng và chi tiết Kanji) -----
+  // Vẽ nội dung lên canvas → captureStream vào <video> ẩn → requestPictureInPicture.
+  var PIP_FONT_JP = '"Noto Serif JP", serif';
+  var PIP_FONT_UI = 'system-ui, -apple-system, "Segoe UI", sans-serif';
+
+  function isCanvasPipSupported() {
+    return document.pictureInPictureEnabled !== false &&
+      typeof HTMLVideoElement !== "undefined" && "requestPictureInPicture" in HTMLVideoElement.prototype &&
+      typeof HTMLCanvasElement !== "undefined" && "captureStream" in HTMLCanvasElement.prototype;
+  }
+
+  /**
+   * opts.width / opts.height: kích thước canvas; opts.draw(ctx, W, H): vẽ nội dung hiện tại;
+   * opts.actions: { previoustrack, nexttrack, play, pause } cho các nút trong cửa sổ PiP (Chrome);
+   * opts.playbackState(): "playing" | "paused" cho nút ⏯ (tuỳ chọn); opts.onChange(): khi mở / đóng PiP.
+   */
+  function createCanvasPip(opts) {
+    var el = null; // { ctx, video, stream } — tạo khi dùng PiP lần đầu
+
+    function isActive() {
+      return !!el && document.pictureInPictureElement === el.video;
+    }
+
+    function play() {
+      try {
+        var p = el.video.play();
+        if (p && typeof p.catch === "function") p.catch(function () { });
+      } catch (e) { }
+    }
+
+    function syncPlaybackState() {
+      if (!isActive() || !("mediaSession" in navigator)) return;
+      try {
+        navigator.mediaSession.playbackState = opts.playbackState ? opts.playbackState() : "none";
+      } catch (e) { }
+    }
+
+    function setMediaSession(on) {
+      if (!("mediaSession" in navigator)) return;
+      ["previoustrack", "nexttrack", "play", "pause"].forEach(function (action) {
+        try {
+          navigator.mediaSession.setActionHandler(action, (on && opts.actions && opts.actions[action]) || null);
+        } catch (e) { }
+      });
+      if (on) {
+        syncPlaybackState();
+      } else {
+        try { navigator.mediaSession.playbackState = "none"; } catch (e) { }
+      }
+    }
+
+    /** Tạo canvas + video ẩn và bắt đầu phát stream, để lúc bấm nút video đã có metadata */
+    function ensure() {
+      if (el) return el;
+      var box = createElement("div", "canvas-pip-hidden", "");
+      var canvas = document.createElement("canvas");
+      canvas.width = opts.width;
+      canvas.height = opts.height;
+      var video = document.createElement("video");
+      video.muted = true;
+      video.playsInline = true;
+      video.setAttribute("playsinline", "");
+      video.setAttribute("webkit-playsinline", "");
+      box.appendChild(canvas);
+      box.appendChild(video);
+      document.body.appendChild(box);
+
+      var stream = canvas.captureStream();
+      video.srcObject = stream;
+      video.addEventListener("enterpictureinpicture", function () {
+        setMediaSession(true);
+        opts.onChange();
+      });
+      video.addEventListener("leavepictureinpicture", function () {
+        // Đang chuyển sang PiP khác (vd. Flashcard → Kanji) thì không xoá nút của PiP mới
+        if (!document.pictureInPictureElement) setMediaSession(false);
+        video.pause();
+        opts.onChange();
+      });
+
+      el = { ctx: canvas.getContext("2d"), video: video, stream: stream };
+      redraw();
+      play();
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(redraw);
+      }
+      return el;
+    }
+
+    function redraw() {
+      if (!el) return;
+      opts.draw(el.ctx, opts.width, opts.height);
+      // Khi trang bị ẩn (đang xem app khác) canvas có thể không tự đẩy frame — ép capture frame mới
+      var track = el.stream.getVideoTracks()[0];
+      if (track && typeof track.requestFrame === "function") {
+        try { track.requestFrame(); } catch (e) { }
+      }
+      if (isActive() && el.video.paused) play();
+      syncPlaybackState();
+    }
+
+    function open() {
+      ensure();
+      redraw();
+      play();
+      function request() {
+        el.video.requestPictureInPicture().catch(function (err) {
+          alert("Không bật được PiP: " + (err && err.message ? err.message : err) + " (thử bấm lại nút PiP)");
+        });
+      }
+      // requestPictureInPicture cần video đã có metadata và phải gọi trong lúc còn user activation
+      if (el.video.readyState >= 1) {
+        request();
+      } else {
+        el.video.addEventListener("loadedmetadata", request, { once: true });
+      }
+    }
+
+    function exit() {
+      if (isActive() && document.exitPictureInPicture) {
+        document.exitPictureInPicture().catch(function () { });
+      }
+    }
+
+    return { isActive: isActive, ensure: ensure, redraw: redraw, open: open, exit: exit };
+  }
+
+  /** Tách dòng theo khoảng trắng; từ dài hơn 1 dòng (vd. tiếng Nhật không có khoảng trắng) thì cắt theo ký tự */
+  function wrapCanvasText(ctx, text, maxW) {
+    var lines = [];
+    var cur = "";
+    String(text).trim().split(/\s+/).forEach(function (word) {
+      var test = cur ? cur + " " + word : word;
+      if (ctx.measureText(test).width <= maxW) {
+        cur = test;
+        return;
+      }
+      if (cur) lines.push(cur);
+      cur = "";
+      Array.from(word).forEach(function (ch) {
+        if (cur && ctx.measureText(cur + ch).width > maxW) {
+          lines.push(cur);
+          cur = "";
+        }
+        cur += ch;
+      });
+    });
+    if (cur) lines.push(cur);
+    return lines;
+  }
+
+  /**
+   * Xếp các khối chữ (tự xuống dòng) vào khung rộng maxW; cao quá maxH thì thu nhỏ dần cỡ chữ.
+   * block: { text, size, weight, family, color, gap } hoặc { divider: true, size } (khoảng trống có vạch kẻ)
+   */
+  function fitCanvasBlocks(ctx, blocks, maxW, maxH) {
+    var lines = [];
+    var height = 0;
+    for (var scale = 1, tries = 0; tries < 10; tries++, scale *= 0.88) {
+      lines = [];
+      height = 0;
+      blocks.forEach(function (b) {
+        var size = Math.round(b.size * scale);
+        if (b.divider) {
+          lines.push({ divider: true, h: size });
+          height += size;
+          return;
+        }
+        var font = (b.weight || 400) + " " + size + "px " + b.family;
+        ctx.font = font;
+        wrapCanvasText(ctx, b.text, maxW).forEach(function (t) {
+          lines.push({ text: t, font: font, color: b.color, h: size * 1.3 });
+          height += size * 1.3;
+        });
+        if (b.gap) {
+          lines.push({ h: b.gap * scale });
+          height += b.gap * scale;
+        }
+      });
+      if (height <= maxH) break;
+    }
+    return { lines: lines, height: height };
+  }
+
+  /** Vẽ các dòng từ fitCanvasBlocks, căn giữa theo cx, bắt đầu từ y */
+  function drawCanvasLines(ctx, lines, cx, y, dividerW) {
+    ctx.textAlign = "center";
+    ctx.textBaseline = "middle";
+    lines.forEach(function (ln) {
+      if (ln.divider) {
+        ctx.strokeStyle = "rgba(160, 100, 60, 0.3)";
+        ctx.lineWidth = 2;
+        ctx.setLineDash([6, 6]);
+        ctx.beginPath();
+        ctx.moveTo(cx - dividerW / 2, y + ln.h / 2);
+        ctx.lineTo(cx + dividerW / 2, y + ln.h / 2);
+        ctx.stroke();
+        ctx.setLineDash([]);
+      } else if (ln.text != null) {
+        ctx.font = ln.font;
+        ctx.fillStyle = ln.color;
+        ctx.fillText(ln.text, cx, y + ln.h / 2);
+      }
+      y += ln.h;
+    });
+  }
+
+  // ----- PiP Flashcard: hiện thẻ đang học, đi theo mỗi lần chuyển thẻ -----
+  var vocabPipCurrent = { item: null, pos: 0, total: 0 };
+  var vocabPip = createCanvasPip({
+    width: 800,
+    height: 450,
+    draw: drawVocabPip,
+    actions: {
+      previoustrack: function () { advanceVocabFlashcard(-1); },
+      nexttrack: function () { advanceVocabFlashcard(1); },
+      play: function () { setVocabAutoNext(true); },
+      pause: function () { setVocabAutoNext(false); }
+    },
+    playbackState: function () { return state.ui.vocabFlashcardAutoNext ? "playing" : "paused"; },
+    onChange: syncVocabPipBtn
+  });
+
+  function applyVocabPipBtnState(btn) {
+    var active = vocabPip.isActive();
+    btn.classList.toggle("vocab-flashcard-pip-btn--active", active);
+    btn.title = active
+      ? "Đóng cửa sổ PiP"
+      : "Mở cửa sổ nổi PiP cho danh sách đang học (trong cửa sổ PiP: ⏮ ⏭ chuyển từ, ⏯ bật/tắt Auto)";
+  }
+
+  function syncVocabPipBtn() {
+    document.querySelectorAll(".vocab-flashcard-pip-btn").forEach(applyVocabPipBtnState);
+  }
+
+  /** Gọi mỗi lần render flashcard để cửa sổ PiP luôn hiện đúng thẻ đang học */
+  function updateVocabPip(item, pos, total) {
+    vocabPipCurrent = { item: item, pos: pos, total: total };
+    vocabPip.redraw();
+  }
+
+  function drawVocabPip(ctx, W, H) {
+    var pad = 32;
+    var cur = vocabPipCurrent;
+    var item = cur.item;
+    var ds = state.displaySettings;
+
+    // Màu theo theme Warm Paper trong style.css
+    ctx.fillStyle = "#fdf8f0";
+    ctx.fillRect(0, 0, W, H);
+    ctx.textBaseline = "middle";
+
+    // Thanh trên: vị trí trong danh sách + trạng thái Auto
+    ctx.font = "700 22px " + PIP_FONT_UI;
+    if (cur.total) {
+      ctx.textAlign = "left";
+      ctx.fillStyle = "#78716c";
+      ctx.fillText((cur.pos + 1) + " / " + cur.total, pad, 34);
+    }
+    if (state.ui.vocabFlashcardAutoNext) {
+      ctx.textAlign = "right";
+      ctx.fillStyle = "#c0392b";
+      ctx.fillText("⏱ Auto " + Math.round(getVocabAutoNextDelayMs() / 1000) + "s", W - pad, 34);
+    }
+
+    if (!item) {
+      ctx.textAlign = "center";
+      ctx.font = "26px " + PIP_FONT_UI;
+      ctx.fillStyle = "#78716c";
+      ctx.fillText("Không có từ vựng phù hợp với bộ lọc hiện tại.", W / 2, H / 2);
+      return;
+    }
+
+    // Hiện đủ 2 mặt thẻ (trong PiP không lật được), theo tuỳ chọn hiển thị
+    var blocks = [];
+    if (ds.hiragana && item.hiragana) blocks.push({ text: item.hiragana, size: 64, weight: 700, family: PIP_FONT_JP, color: "#1c1917" });
+    if (ds.kanji && item.kanji) blocks.push({ text: "(" + item.kanji + ")", size: 40, weight: 600, family: PIP_FONT_JP, color: "#9b2335" });
+    if (ds.romaji && item.romaji) blocks.push({ text: "(" + item.romaji + ")", size: 24, family: PIP_FONT_UI, color: "#78716c" });
+    var frontCount = blocks.length;
+    if (ds.meaning && item.meaning) blocks.push({ text: item.meaning, size: 34, weight: 600, family: PIP_FONT_UI, color: "#1c1917" });
+    if (ds.hanviet && item.kanji && window.getHanViet) {
+      var hv = window.getHanViet(item.kanji);
+      if (hv) blocks.push({ text: "[" + hv + "]", size: 24, family: PIP_FONT_UI, color: "#92400e" });
+    }
+    if (frontCount > 0 && blocks.length > frontCount) {
+      blocks.splice(frontCount, 0, { divider: true, size: 28 });
+    }
+
+    // Chừa thanh trên và dòng bài học phía dưới
+    var top = 60;
+    var areaH = H - 48 - top;
+    var fit = fitCanvasBlocks(ctx, blocks, W - pad * 2, areaH);
+    drawCanvasLines(ctx, fit.lines, W / 2, top + Math.max(0, (areaH - fit.height) / 2), 280);
+
+    var meta = [];
+    if (ds.lesson && item.lesson) meta.push("Bài " + item.lesson);
+    if (ds.type && item.type) meta.push(item.type);
+    if (meta.length) {
+      ctx.font = "20px " + PIP_FONT_UI;
+      ctx.fillStyle = "#78716c";
+      ctx.fillText(meta.join(" · "), W / 2, H - 26);
+    }
   }
 
   // renderVocabDetail removed — detail popup no longer used
@@ -4329,6 +4660,20 @@
     }
   }
 
+  /** FAB góc dưới-phải (tab Vocab/Kanji): bấm nút tròn để xổ danh sách thao tác,
+   *  chỉ thu lại khi bấm lại nút tròn (bấm item / bấm ra ngoài vẫn giữ menu mở). */
+  function setupFabMenus() {
+    document.querySelectorAll(".fab-menu").forEach(function (menu) {
+      var toggle = menu.querySelector(".fab-menu__toggle");
+      if (!toggle) return;
+      toggle.addEventListener("click", function () {
+        var open = menu.classList.toggle("fab-menu--open");
+        toggle.setAttribute("aria-expanded", open ? "true" : "false");
+        toggle.setAttribute("aria-label", open ? "Đóng danh sách thao tác" : "Mở danh sách thao tác");
+      });
+    });
+  }
+
   // ----- Kanji -----
   function applyKanjiFilter() {
     return kanjiData.filter(function (item) {
@@ -4537,16 +4882,21 @@
       jdictLink.target = "_blank";
       jdictLink.rel = "noopener noreferrer";
       jdictLink.textContent = "JDict";
-      var pipStt = raw.stt != null ? String(raw.stt) : String(globalIndex + 1);
-      var pipUrl = new URL("pip-kanji-pwa/index.html", window.location.href);
-      pipUrl.hash = "kanji=" + encodeURIComponent(pipStt);
-      var pipLink = document.createElement("a");
-      pipLink.className = "kd-mazii-link kd-pip-link";
-      pipLink.href = pipUrl.href;
-      pipLink.target = "_blank";
-      pipLink.rel = "noopener noreferrer";
-      pipLink.textContent = "PiP";
-      pipLink.title = "Kanji PiP Lab (id " + pipStt + ")";
+      var pipBtn = null;
+      if (isCanvasPipSupported()) {
+        pipBtn = createElement("button", "kd-mazii-link kd-pip-link", "PiP");
+        pipBtn.type = "button";
+        pipBtn.setAttribute("data-kanji-index", String(globalIndex));
+        applyKanjiPipBtnState(pipBtn);
+        // Chuẩn bị stream ngay khi chạm, để lúc click video đã có metadata (Safari cần gọi PiP ngay trong click)
+        pipBtn.addEventListener("pointerdown", function () {
+          kanjiPip.ensure();
+        });
+        pipBtn.addEventListener("click", function (e) {
+          e.stopPropagation();
+          toggleKanjiPip(globalIndex);
+        });
+      }
       var openWriteBtn = createElement("button", "kd-writing-toggle-btn", "✏️");
       openWriteBtn.type = "button";
       openWriteBtn.addEventListener("click", function (e) {
@@ -4555,7 +4905,7 @@
       });
       heroActions.appendChild(maziiLink);
       heroActions.appendChild(jdictLink);
-      heroActions.appendChild(pipLink);
+      if (pipBtn) heroActions.appendChild(pipBtn);
       heroActions.appendChild(openWriteBtn);
     }
     var kanjiStt = raw.stt != null ? raw.stt : (globalIndex + 1);
@@ -4912,6 +5262,133 @@
     return navRow;
   }
 
+  // ----- PiP chi tiết Kanji: mở ngay trong trang, đi theo chữ Kanji đang xem -----
+  var kanjiPipIndex = null; // index trong kanjiData đang hiện trong PiP
+  var kanjiPip = createCanvasPip({
+    width: 810,
+    height: 1000,
+    draw: drawKanjiPip,
+    actions: {
+      previoustrack: function () { advanceKanjiPip(-1); },
+      nexttrack: function () { advanceKanjiPip(1); }
+    },
+    onChange: syncKanjiPipBtn
+  });
+
+  function applyKanjiPipBtnState(btn) {
+    var active = kanjiPip.isActive() && String(kanjiPipIndex) === btn.getAttribute("data-kanji-index");
+    btn.classList.toggle("kd-pip-link--active", active);
+    btn.title = active
+      ? "Đóng cửa sổ PiP"
+      : "Mở cửa sổ nổi PiP cho chữ Kanji này (trong cửa sổ PiP: ⏮ ⏭ chuyển chữ)";
+  }
+
+  function syncKanjiPipBtn() {
+    document.querySelectorAll(".kd-pip-link").forEach(applyKanjiPipBtnState);
+  }
+
+  function toggleKanjiPip(kanjiIndex) {
+    if (kanjiPip.isActive() && kanjiPipIndex === kanjiIndex) {
+      kanjiPip.exit();
+      return;
+    }
+    kanjiPipIndex = kanjiIndex;
+    if (kanjiPip.isActive()) {
+      kanjiPip.redraw();
+      syncKanjiPipBtn();
+    } else {
+      kanjiPip.open();
+    }
+  }
+
+  function isKanjiDetailModalOpen() {
+    return !!state.ui.detailModal.isOpen && !!detailModalState.bodyEl &&
+      !!detailModalState.bodyEl.querySelector(".kd-detail-content:not(.kd-detail-content--test-reveal)");
+  }
+
+  /** ⏮ ⏭ trong PiP: chuyển chữ trước/sau trong danh sách đang lọc (giống nút ‹ › của chi tiết Kanji) */
+  function advanceKanjiPip(delta) {
+    var filtered = applyKanjiFilter();
+    var pos = filtered.findIndex(function (r) {
+      return kanjiData.indexOf(r) === kanjiPipIndex;
+    });
+    var target = pos >= 0 ? filtered[pos + delta] : null;
+    if (!target) return;
+    var idx = kanjiData.indexOf(target);
+    if (isKanjiDetailModalOpen()) {
+      // Chi tiết đang mở thì chuyển luôn trong trang (renderKanjiDetail cũng cập nhật PiP)
+      state.kanjiHistory = [];
+      state.selected.kanjiIndex = idx;
+      renderKanjiDetail();
+    } else {
+      kanjiPipIndex = idx;
+      kanjiPip.redraw();
+    }
+  }
+
+  function drawKanjiPip(ctx, W, H) {
+    ctx.fillStyle = "#fdf8f0";
+    ctx.fillRect(0, 0, W, H);
+    var raw = kanjiPipIndex != null ? kanjiData[kanjiPipIndex] : null;
+    if (!raw) return;
+
+    var pad = 28;
+    var midY = Math.round(H * 0.52);
+    var colW = W / 2 - pad * 2;
+
+    // Vạch chia: ngang giữa khung, dọc ở nửa trên
+    ctx.strokeStyle = "rgba(160, 100, 60, 0.2)";
+    ctx.lineWidth = 2;
+    ctx.setLineDash([]);
+    ctx.beginPath();
+    ctx.moveTo(pad, midY);
+    ctx.lineTo(W - pad, midY);
+    ctx.moveTo(W / 2, pad);
+    ctx.lineTo(W / 2, midY - pad);
+    ctx.stroke();
+
+    // Nửa trên bên trái: số thứ tự · cấp độ + chữ Kanji
+    ctx.textBaseline = "middle";
+    ctx.textAlign = "left";
+    ctx.font = "700 26px " + PIP_FONT_UI;
+    ctx.fillStyle = "#78716c";
+    ctx.fillText([raw.stt, raw.level ? String(raw.level).toUpperCase() : ""].filter(Boolean).join(" · "), pad, pad + 14);
+    ctx.textAlign = "center";
+    ctx.fillStyle = "#1c1917";
+    ctx.font = "700 230px " + PIP_FONT_JP;
+    ctx.fillText(raw.kanji, W * 0.25, midY * 0.52);
+
+    // Nửa trên bên phải: Hán Việt, nghĩa, âm On/Kun, bộ, mẹo nhớ
+    var on = String(raw.on_reading || "").replace(/\|/g, "、");
+    var kun = String(raw.kun_reading || "").replace(/\|/g, "、");
+    var info = [];
+    if (raw.hanviet) info.push({ text: raw.hanviet, size: 46, weight: 700, family: PIP_FONT_UI, color: "#c0392b", gap: 6 });
+    if (raw.core_meaning) info.push({ text: raw.core_meaning, size: 38, weight: 600, family: PIP_FONT_UI, color: "#1c1917", gap: 14 });
+    info.push({ text: "On: " + (on || "—"), size: 32, family: PIP_FONT_JP, color: "#44403c" });
+    info.push({ text: "Kun: " + (kun || "—"), size: 32, family: PIP_FONT_JP, color: "#44403c", gap: 14 });
+    if (raw.radicals) info.push({ text: "Bộ: " + String(raw.radicals).replace(/\|/g, ", "), size: 28, family: PIP_FONT_UI, color: "#92400e", gap: 10 });
+    if (raw.memory_tip) info.push({ text: raw.memory_tip, size: 26, family: PIP_FONT_UI, color: "#78716c" });
+    var infoH = midY - pad * 2;
+    var infoFit = fitCanvasBlocks(ctx, info, colW, infoH);
+    drawCanvasLines(ctx, infoFit.lines, W * 0.75, pad + Math.max(0, (infoH - infoFit.height) / 2), 0);
+
+    // Nửa dưới: từ vựng
+    var vocabs = parseKanjiVocab(raw.vocabulary).filter(function (v) {
+      return v.word && v.word.toLowerCase() !== "không có";
+    });
+    if (!vocabs.length) return;
+    var vb = [{ text: "Từ vựng", size: 28, weight: 700, family: PIP_FONT_UI, color: "#78716c", gap: 8 }];
+    vocabs.forEach(function (v) {
+      vb.push({
+        text: v.word + (v.reading ? "(" + v.reading + ")" : "") + (v.meaning ? " — " + v.meaning : ""),
+        size: 36, family: PIP_FONT_JP, color: "#1c1917", gap: 10
+      });
+    });
+    var vTop = midY + 20;
+    var vFit = fitCanvasBlocks(ctx, vb, W - pad * 2, H - vTop - pad);
+    drawCanvasLines(ctx, vFit.lines, W / 2, vTop, 0);
+  }
+
   function renderKanjiDetail() {
     var container = document.getElementById("kanji-detail-container");
     container.innerHTML = "";
@@ -4925,6 +5402,12 @@
     if (!raw || !raw.kanji) {
       container.appendChild(createElement("div", "detail-empty", "Không tìm thấy dữ liệu Kanji."));
       return;
+    }
+
+    // PiP Kanji đang mở thì đi theo chữ đang xem
+    if (kanjiPip.isActive() && kanjiPipIndex !== state.selected.kanjiIndex) {
+      kanjiPipIndex = state.selected.kanjiIndex;
+      kanjiPip.redraw();
     }
 
     if (state.currentTab === "stars") {
@@ -5874,6 +6357,10 @@
     function getNoteFilePath(doc) {
       const type = String(doc.type || "md").toLowerCase();
       var filePath = String(doc.file || "");
+      if (filePath.indexOf("/") === -1 && type === "video") {
+        // Video: `file` là tên file đầy đủ (vd: a.mp4) => `data/video/a.mp4`
+        return "data/video/" + filePath;
+      }
       if (filePath.indexOf("/") === -1) {
         // Keep old behavior: `file: "theT"` => `data/doc/theT.md` (default)
         const hasExt = /\.[a-z0-9]+$/i.test(filePath);
@@ -5933,6 +6420,57 @@
 
       wrap.appendChild(link);
       wrap.appendChild(iframe);
+      container.innerHTML = "";
+      container.appendChild(wrap);
+      noteSearchReset();
+      return;
+    }
+
+    if (type === "video") {
+      // `file` có thể là file local (data/doc/abc.mp4) hoặc link YouTube
+      const ytMatch = filePath.match(
+        /(?:youtube\.com\/(?:watch\?(?:.*&)?v=|embed\/|shorts\/|live\/)|youtu\.be\/)([\w-]{11})/
+      );
+      const wrap = document.createElement("div");
+      const link = document.createElement("a");
+      link.href = filePath;
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.textContent = "Mở video: " + filePath;
+      link.style.display = "inline-block";
+      link.style.marginBottom = "10px";
+
+      var player;
+      if (ytMatch) {
+        player = document.createElement("iframe");
+        player.src = "https://www.youtube.com/embed/" + ytMatch[1];
+        player.title = target.label || "Video";
+        player.allow =
+          "accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture";
+        player.allowFullscreen = true;
+        player.referrerPolicy = "strict-origin-when-cross-origin";
+        player.style.width = "100%";
+        player.style.aspectRatio = "16 / 9";
+        player.style.border = "0";
+      } else {
+        player = document.createElement("video");
+        player.src = filePath;
+        player.controls = true;
+        player.preload = "metadata";
+        player.style.width = "100%";
+        player.style.maxHeight = "75vh";
+        player.style.display = "block";
+        player.style.background = "#000";
+        player.addEventListener("error", function () {
+          const err = document.createElement("div");
+          err.className = "detail-empty";
+          err.textContent = "Không tải được video: " + filePath;
+          if (player.parentNode) player.parentNode.replaceChild(err, player);
+        });
+      }
+
+      wrap.appendChild(link);
+      wrap.appendChild(player);
       container.innerHTML = "";
       container.appendChild(wrap);
       noteSearchReset();
@@ -6350,6 +6888,7 @@ history.replaceState({}, "", newUrl);
       state.ui.vocabFlashcardFlipped = false;
       if (state.ui.vocabViewMode !== "flashcard") {
         exitVocabFlashcardFullscreen();
+        vocabPip.exit();
       }
       syncBtn();
       saveVocabViewState(state.ui.vocabFlashcardVocabIndex);
@@ -8333,6 +8872,7 @@ history.replaceState({}, "", newUrl);
     setupVocabTestModeMenu();
     setupKanjiFilters();
     setupKanjiTestModeMenu();
+    setupFabMenus();
     setupMappingTestSection();
     setupGrammarFilters();
     setupFilterToggles();
