@@ -1363,6 +1363,12 @@
     return /[㐀-鿿]/.test(String(str || ""));
   }
 
+  /** Kanji của từ vựng để hiển thị; rỗng nếu data sai (chỉ có hiragana/katakana, không có chữ Hán) */
+  function getVocabRealKanji(raw) {
+    var kanji = String((raw && (raw.kanji != null ? raw.kanji : raw.Kanji)) || "").trim();
+    return hasRealKanjiChar(kanji) ? kanji : "";
+  }
+
   /** Tách một từ hiragana thành các "tile" theo âm tiết (mora): gộp ゃゅょ nhỏ vào ký tự đứng trước */
   function splitHiraganaTiles(str) {
     var YOON = { "ゃ": 1, "ゅ": 1, "ょ": 1, "ャ": 1, "ュ": 1, "ョ": 1 };
@@ -2604,7 +2610,7 @@
         romaji: raw.romaji != null ? raw.romaji
           : (raw.Romaji != null ? raw.Romaji
             : (raw.romazi != null ? raw.romazi : raw.Romazi)),
-        kanji: raw.kanji != null ? raw.kanji : raw.Kanji,
+        kanji: getVocabRealKanji(raw),
         meaning: raw.meaning != null ? raw.meaning : raw.Meaning,
         vru: raw.vru != null ? raw.vru : raw.Vru,
         type: raw.type != null ? raw.type : raw.Type,
@@ -2803,7 +2809,7 @@
       romaji: raw.romaji != null ? raw.romaji
         : (raw.Romaji != null ? raw.Romaji
           : (raw.romazi != null ? raw.romazi : raw.Romazi)),
-      kanji: raw.kanji != null ? raw.kanji : raw.Kanji,
+      kanji: getVocabRealKanji(raw),
       meaning: raw.meaning != null ? raw.meaning : raw.Meaning,
       vru: raw.vru != null ? raw.vru : raw.Vru,
       type: raw.type != null ? raw.type : raw.Type,
@@ -3441,9 +3447,9 @@
     return { lines: lines, height: height };
   }
 
-  /** Vẽ các dòng từ fitCanvasBlocks, căn giữa theo cx, bắt đầu từ y */
-  function drawCanvasLines(ctx, lines, cx, y, dividerW) {
-    ctx.textAlign = "center";
+  /** Vẽ các dòng từ fitCanvasBlocks, căn giữa theo cx (align = "left" thì cx là mép trái), bắt đầu từ y */
+  function drawCanvasLines(ctx, lines, cx, y, dividerW, align) {
+    ctx.textAlign = align || "center";
     ctx.textBaseline = "middle";
     lines.forEach(function (ln) {
       if (ln.divider) {
@@ -3500,7 +3506,7 @@
   }
 
   function drawVocabPip(ctx, W, H) {
-    var pad = 32;
+    var pad = 24;
     var cur = vocabPipCurrent;
     var item = cur.item;
     var ds = state.displaySettings;
@@ -3533,17 +3539,17 @@
 
     // Hiện đủ 2 mặt thẻ (trong PiP không lật được), theo tuỳ chọn hiển thị
     var blocks = [];
-    if (ds.hiragana && item.hiragana) blocks.push({ text: item.hiragana, size: 64, weight: 700, family: PIP_FONT_JP, color: "#1c1917" });
-    if (ds.kanji && item.kanji) blocks.push({ text: "(" + item.kanji + ")", size: 40, weight: 600, family: PIP_FONT_JP, color: "#9b2335" });
-    if (ds.romaji && item.romaji) blocks.push({ text: "(" + item.romaji + ")", size: 24, family: PIP_FONT_UI, color: "#78716c" });
+    if (ds.hiragana && item.hiragana) blocks.push({ text: item.hiragana, size: 96, weight: 700, family: PIP_FONT_JP, color: "#1c1917" });
+    if (ds.kanji && item.kanji) blocks.push({ text: "(" + item.kanji + ")", size: 72, weight: 600, family: PIP_FONT_JP, color: "#9b2335" });
+    if (ds.romaji && item.romaji) blocks.push({ text: "(" + item.romaji + ")", size: 32, family: PIP_FONT_UI, color: "#78716c" });
     var frontCount = blocks.length;
-    if (ds.meaning && item.meaning) blocks.push({ text: item.meaning, size: 34, weight: 600, family: PIP_FONT_UI, color: "#1c1917" });
+    if (ds.meaning && item.meaning) blocks.push({ text: item.meaning, size: 56, weight: 600, family: PIP_FONT_UI, color: "#1c1917" });
     if (ds.hanviet && item.kanji && window.getHanViet) {
       var hv = window.getHanViet(item.kanji);
-      if (hv) blocks.push({ text: "[" + hv + "]", size: 24, family: PIP_FONT_UI, color: "#92400e" });
+      if (hv) blocks.push({ text: "[" + hv + "]", size: 36, family: PIP_FONT_UI, color: "#92400e" });
     }
     if (frontCount > 0 && blocks.length > frontCount) {
-      blocks.splice(frontCount, 0, { divider: true, size: 28 });
+      blocks.splice(frontCount, 0, { divider: true, size: 24 });
     }
 
     // Chừa thanh trên và dòng bài học phía dưới
@@ -5540,61 +5546,54 @@
     var raw = kanjiPipIndex != null ? kanjiData[kanjiPipIndex] : null;
     if (!raw) return;
 
+    // Phần đầu gọn: chữ Kanji bên trái, Hán Việt / nghĩa / cách đọc bên phải → nhường chỗ cho từ vựng
     var pad = 28;
-    var midY = Math.round(H * 0.52);
-    var colW = W / 2 - pad * 2;
+    var kanjiW = 250;
+    var headH = 250;
+    var colX = pad + kanjiW + pad;
+    var colW = W - colX - pad;
 
-    // Vạch chia: ngang giữa khung, dọc ở nửa trên
-    ctx.strokeStyle = "rgba(160, 100, 60, 0.2)";
+    ctx.textBaseline = "middle";
+    ctx.textAlign = "center";
+    ctx.fillStyle = "#1c1917";
+    ctx.font = "700 220px " + PIP_FONT_JP;
+    ctx.fillText(raw.kanji, pad + kanjiW / 2, pad + headH / 2);
+
+    var readings = [raw.on_reading, raw.kun_reading].map(function (r) {
+      return String(r || "").replace(/\|/g, "、").trim();
+    }).filter(Boolean);
+    var info = [];
+    if (raw.hanviet) info.push({ text: raw.hanviet, size: 68, weight: 700, family: PIP_FONT_UI, color: "#c0392b", gap: 4 });
+    if (raw.core_meaning) info.push({ text: raw.core_meaning, size: 40, weight: 600, family: PIP_FONT_UI, color: "#1c1917", gap: 8 });
+    if (readings.length) info.push({ text: readings.join(" | "), size: 42, family: PIP_FONT_JP, color: "#44403c" });
+    var infoFit = fitCanvasBlocks(ctx, info, colW, headH);
+    // Căn giữa cả ngang lẫn dọc trong cột bên phải
+    drawCanvasLines(ctx, infoFit.lines, colX + colW / 2, pad + Math.max(0, (headH - infoFit.height) / 2), 0);
+
+    // Vạch ngang tách phần đầu với từ vựng
+    var lineY = pad + headH + 14;
+    ctx.strokeStyle = "rgba(160, 100, 60, 0.25)";
     ctx.lineWidth = 2;
     ctx.setLineDash([]);
     ctx.beginPath();
-    ctx.moveTo(pad, midY);
-    ctx.lineTo(W - pad, midY);
-    ctx.moveTo(W / 2, pad);
-    ctx.lineTo(W / 2, midY - pad);
+    ctx.moveTo(pad, lineY);
+    ctx.lineTo(W - pad, lineY);
     ctx.stroke();
 
-    // Nửa trên bên trái: số thứ tự · cấp độ + chữ Kanji
-    ctx.textBaseline = "middle";
-    ctx.textAlign = "left";
-    ctx.font = "700 26px " + PIP_FONT_UI;
-    ctx.fillStyle = "#78716c";
-    ctx.fillText([raw.stt, raw.level ? String(raw.level).toUpperCase() : ""].filter(Boolean).join(" · "), pad, pad + 14);
-    ctx.textAlign = "center";
-    ctx.fillStyle = "#1c1917";
-    ctx.font = "700 230px " + PIP_FONT_JP;
-    ctx.fillText(raw.kanji, W * 0.25, midY * 0.52);
-
-    // Nửa trên bên phải: Hán Việt, nghĩa, âm On/Kun, bộ, mẹo nhớ
-    var on = String(raw.on_reading || "").replace(/\|/g, "、");
-    var kun = String(raw.kun_reading || "").replace(/\|/g, "、");
-    var info = [];
-    if (raw.hanviet) info.push({ text: raw.hanviet, size: 46, weight: 700, family: PIP_FONT_UI, color: "#c0392b", gap: 6 });
-    if (raw.core_meaning) info.push({ text: raw.core_meaning, size: 38, weight: 600, family: PIP_FONT_UI, color: "#1c1917", gap: 14 });
-    info.push({ text: "On: " + (on || "—"), size: 32, family: PIP_FONT_JP, color: "#44403c" });
-    info.push({ text: "Kun: " + (kun || "—"), size: 32, family: PIP_FONT_JP, color: "#44403c", gap: 14 });
-    if (raw.radicals) info.push({ text: "Bộ: " + String(raw.radicals).replace(/\|/g, ", "), size: 28, family: PIP_FONT_UI, color: "#92400e", gap: 10 });
-    if (raw.memory_tip) info.push({ text: raw.memory_tip, size: 26, family: PIP_FONT_UI, color: "#78716c" });
-    var infoH = midY - pad * 2;
-    var infoFit = fitCanvasBlocks(ctx, info, colW, infoH);
-    drawCanvasLines(ctx, infoFit.lines, W * 0.75, pad + Math.max(0, (infoH - infoFit.height) / 2), 0);
-
-    // Nửa dưới: từ vựng
+    // Phần còn lại: từ vựng, chữ to, căn trái
     var vocabs = parseKanjiVocab(raw.vocabulary).filter(function (v) {
       return v.word && v.word.toLowerCase() !== "không có";
     });
     if (!vocabs.length) return;
-    var vb = [{ text: "Từ vựng", size: 28, weight: 700, family: PIP_FONT_UI, color: "#78716c", gap: 8 }];
-    vocabs.forEach(function (v) {
-      vb.push({
+    var vb = vocabs.map(function (v) {
+      return {
         text: v.word + (v.reading ? "(" + v.reading + ")" : "") + (v.meaning ? " — " + v.meaning : ""),
-        size: 36, family: PIP_FONT_JP, color: "#1c1917", gap: 10
-      });
+        size: 44, family: PIP_FONT_JP, color: "#1c1917", gap: 12
+      };
     });
-    var vTop = midY + 20;
+    var vTop = lineY + 18;
     var vFit = fitCanvasBlocks(ctx, vb, W - pad * 2, H - vTop - pad);
-    drawCanvasLines(ctx, vFit.lines, W / 2, vTop, 0);
+    drawCanvasLines(ctx, vFit.lines, pad, vTop, 0, "left");
   }
 
   function renderKanjiDetail() {
@@ -6123,8 +6122,30 @@
 
     const root = createElement("div", "grammar-detail", "");
 
+    const structureRow = createElement("div", "grammar-structure-row", "");
     const structure = createElement("div", "grammar-structure", item.structure);
-    root.appendChild(structure);
+    structureRow.appendChild(structure);
+
+    // Nút hỏi ChatGPT: giải thích mẫu ngữ pháp kèm nghĩa + ví dụ (trình độ N3)
+    const gptPrompt =
+      "Tôi đang học tiếng Nhật trình độ N3. Hãy giải thích chi tiết mẫu ngữ pháp 「" +
+      String(item.structure || "").trim() + "」" +
+      (item.content ? " (nghĩa: " + String(item.content).split("\n").join(" ").trim() + ")" : "") +
+      " bằng tiếng Việt, gồm:\n" +
+      "1. Ý nghĩa và sắc thái sử dụng\n" +
+      "2. Cách kết hợp (cấu trúc với danh từ / động từ / tính từ)\n" +
+      "3. 5 câu ví dụ trình độ N3, mỗi câu có: câu tiếng Nhật, cách đọc hiragana, nghĩa tiếng Việt\n" +
+      "4. Lưu ý khi dùng và so sánh với các mẫu ngữ pháp dễ nhầm lẫn";
+    const gptLink = document.createElement("a");
+    gptLink.className = "kd-mazii-link grammar-gpt-link";
+    gptLink.href = "https://chatgpt.com/?q=" + encodeURIComponent(gptPrompt);
+    gptLink.target = "_blank";
+    gptLink.rel = "noopener noreferrer";
+    gptLink.title = "Hỏi ChatGPT về mẫu ngữ pháp này";
+    gptLink.textContent = "Hỏi ChatGPT";
+    structureRow.appendChild(gptLink);
+
+    root.appendChild(structureRow);
 
 
     // Meaning section (inline "Ý nghĩa: xxxxx" — không tách header riêng)
