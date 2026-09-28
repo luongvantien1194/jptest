@@ -2890,10 +2890,8 @@
       var pipBtn = createElement("button", "vocab-flashcard-pip-btn", "PiP");
       pipBtn.type = "button";
       applyVocabPipBtnState(pipBtn);
-      // Chuẩn bị stream ngay khi chạm, để lúc click video đã có metadata (Safari cần gọi PiP ngay trong click)
-      pipBtn.addEventListener("pointerdown", function () {
-        vocabPip.prepare();
-      });
+      // Gắn sẵn stream vào video từ lúc nút hiện, để lúc bấm video đã có metadata (Safari cần gọi PiP ngay trong click)
+      vocabPip.warm();
       pipBtn.addEventListener("click", function (e) {
         e.stopPropagation();
         if (vocabPip.isActive()) {
@@ -3116,19 +3114,63 @@
     setTimeout(function () { finish(null); }, durationMs + 2200);
   }
 
+  // Chẩn đoán PiP trên điện thoại: mở trang với ?pipdebug=1 (được nhớ lại), ?pipdebug=0 để tắt
+  var PIP_DEBUG = (function () {
+    try {
+      var v = new URLSearchParams(location.search).get("pipdebug");
+      if (v === "1") localStorage.setItem("jp_pip_debug", "1");
+      if (v === "0") localStorage.removeItem("jp_pip_debug");
+      return localStorage.getItem("jp_pip_debug") === "1";
+    } catch (e) {
+      return false;
+    }
+  })();
+  var pipDebugTargets = [];
+
+  /** Độ sáng trung bình 0 (đen) → 255 (trắng) của video / canvas, để biết hình có tới được video không */
+  function pipDebugBrightness(source) {
+    try {
+      var c = document.createElement("canvas");
+      c.width = 16;
+      c.height = 16;
+      var g = c.getContext("2d");
+      g.drawImage(source, 0, 0, 16, 16);
+      var d = g.getImageData(0, 0, 16, 16).data;
+      var sum = 0;
+      for (var i = 0; i < d.length; i += 4) sum += d[i] + d[i + 1] + d[i + 2];
+      return Math.round(sum / (d.length / 4) / 3);
+    } catch (e) {
+      return "lỗi " + e.name;
+    }
+  }
+
+  function setupPipDebugPanel() {
+    if (!PIP_DEBUG) return;
+    var panel = createElement("pre", "pip-debug-panel", "PiP debug: chưa mở PiP");
+    document.body.appendChild(panel);
+    setInterval(function () {
+      var lines = ["recordedLoop=" + PIP_USE_RECORDED_LOOP + " pipEl=" + (document.pictureInPictureElement ? "video" : "none")];
+      pipDebugTargets.forEach(function (t) { lines.push(t()); });
+      panel.textContent = lines.join("\n");
+    }, 500);
+  }
+
   /**
-   * opts.width / opts.height: kích thước canvas; opts.draw(ctx, W, H): vẽ nội dung hiện tại;
+   * opts.name: tên hiện trong bảng chẩn đoán; opts.width / opts.height: kích thước canvas;
+   * opts.draw(ctx, W, H): vẽ nội dung hiện tại;
    * opts.actions: { previoustrack, nexttrack, play, pause } cho các nút trong cửa sổ PiP (Chrome);
    * opts.playbackState(): "playing" | "paused" cho nút ⏯ (tuỳ chọn); opts.onChange(): khi mở / đóng PiP.
+   * Cách làm theo trang pip-kanji-pwa (chạy được trên iOS): stream gắn sẵn vào video từ trước khi bấm,
+   * vẽ trực tiếp lên canvas liên tục khi PiP mở, lúc bấm mới play() + requestPictureInPicture().
    */
   function createCanvasPip(opts) {
-    // content: canvas vẽ nội dung; canvas: canvas nguồn của stream (chép từ content mỗi frame)
-    var el = null; // { canvas, ctx, content, contentCtx, video, stream } — tạo khi dùng PiP lần đầu
+    var el = null; // { canvas, ctx, video, stream } — tạo khi nút PiP hiện lần đầu
     var pumpTimer = 0;
     var pumpUntil = 0;
     var recordTimer = 0;
     var recordedUrl = null; // đang phát video đã ghi thay cho stream trực tiếp
     var generation = 0; // tăng mỗi lần nội dung đổi, để bỏ bản ghi đã cũ
+    var dbg = { frames: 0, draws: 0, playErr: "", reqErr: "", rec: "" };
 
     function isActive() {
       return !!el && document.pictureInPictureElement === el.video;
@@ -3137,8 +3179,12 @@
     function play() {
       try {
         var p = el.video.play();
-        if (p && typeof p.catch === "function") p.catch(function () { });
-      } catch (e) { }
+        if (p && typeof p.catch === "function") {
+          p.catch(function (err) { dbg.playErr = err && err.name; });
+        }
+      } catch (e) {
+        dbg.playErr = e && e.name;
+      }
     }
 
     function syncPlaybackState() {
@@ -3162,21 +3208,17 @@
       }
     }
 
-    /** Chép nội dung sang canvas nguồn → stream nhận 1 frame mới */
-    function pushFrame() {
-      el.ctx.drawImage(el.content, 0, 0);
+    /** Vẽ nội dung lên canvas nguồn → stream nhận frame mới */
+    function draw() {
+      opts.draw(el.ctx, opts.width, opts.height);
+      dbg.draws++;
       var track = el.stream && el.stream.getVideoTracks()[0];
       if (track && track.readyState === "live" && typeof track.requestFrame === "function") {
         try { track.requestFrame(); } catch (e) { }
       }
     }
 
-    function render() {
-      opts.draw(el.contentCtx, opts.width, opts.height);
-      pushFrame();
-    }
-
-    /** Đẩy frame liên tục (iOS hiện PiP đen nếu stream không có frame mới), tự dừng khi PiP đóng và hết hạn ms */
+    /** Vẽ lại liên tục (~30 fps) trong ms tới và suốt lúc PiP mở; khi đang phát video đã ghi thì không cần */
     function keepPumping(ms) {
       pumpUntil = Math.max(pumpUntil, Date.now() + ms);
       if (pumpTimer) return;
@@ -3186,8 +3228,8 @@
           pumpTimer = 0;
           return;
         }
-        if (!recordedUrl) pushFrame();
-      }, 100);
+        if (!recordedUrl) draw();
+      }, 33);
     }
 
     /** (Tạo lại) stream trực tiếp từ canvas và gắn vào video, bỏ video đã ghi nếu có */
@@ -3204,7 +3246,7 @@
       el.video.loop = false;
       el.stream = el.canvas.captureStream(30);
       el.video.srcObject = el.stream;
-      pushFrame();
+      draw();
     }
 
     function scheduleRecordedLoop() {
@@ -3213,8 +3255,9 @@
       var gen = generation;
       recordTimer = setTimeout(function () {
         if (!isActive() || recordedUrl || gen !== generation) return;
-        // fix pip tang thoi gian
+        dbg.rec = "đang ghi";
         recordPipStream(el.stream, 1600, function (blob) {
+          dbg.rec = blob ? (blob.type || "?") + " " + Math.round(blob.size / 1024) + "KB" : "ghi lỗi";
           if (!blob || !blob.size || !isActive() || recordedUrl || gen !== generation) return;
           recordedUrl = URL.createObjectURL(blob);
           el.video.srcObject = null;
@@ -3226,52 +3269,66 @@
       }, 450);
     }
 
-    /** Tạo canvas + video ẩn (1 lần) và cho stream chạy, để lúc bấm nút video đã có metadata */
-    function prepare() {
-      if (!el) {
-        var box = createElement("div", "canvas-pip-hidden", "");
-        var canvas = document.createElement("canvas");
-        canvas.width = opts.width;
-        canvas.height = opts.height;
-        var content = document.createElement("canvas");
-        content.width = opts.width;
-        content.height = opts.height;
-        var video = document.createElement("video");
-        video.muted = true;
-        video.defaultMuted = true;
-        video.playsInline = true;
-        video.setAttribute("muted", "");
-        video.setAttribute("playsinline", "");
-        video.setAttribute("webkit-playsinline", "");
-        box.appendChild(canvas);
-        box.appendChild(video);
-        document.body.appendChild(box);
+    /** Tạo canvas + video (1 lần) và gắn sẵn stream — gọi khi nút PiP được hiển thị, trước lúc bấm */
+    function warm() {
+      if (el) return;
+      var srcBox = createElement("div", "canvas-pip-src", "");
+      var canvas = document.createElement("canvas");
+      canvas.width = opts.width;
+      canvas.height = opts.height;
+      srcBox.appendChild(canvas);
+      var videoBox = createElement("div", "canvas-pip-video", "");
+      var video = document.createElement("video");
+      video.muted = true;
+      video.defaultMuted = true;
+      video.playsInline = true;
+      video.setAttribute("muted", "");
+      video.setAttribute("playsinline", "");
+      video.setAttribute("webkit-playsinline", "");
+      videoBox.appendChild(video);
+      document.body.appendChild(srcBox);
+      document.body.appendChild(videoBox);
 
-        el = { canvas: canvas, ctx: canvas.getContext("2d"), content: content, contentCtx: content.getContext("2d"), video: video, stream: null };
-        render();
-        attachLiveStream();
+      el = { canvas: canvas, ctx: canvas.getContext("2d"), video: video, stream: null };
+      attachLiveStream();
+      keepPumping(1500);
 
-        video.addEventListener("enterpictureinpicture", function () {
-          setMediaSession(true);
-          keepPumping(0);
-          scheduleRecordedLoop();
-          opts.onChange();
-        });
-        video.addEventListener("leavepictureinpicture", function () {
-          // Đang chuyển sang PiP khác (vd. Flashcard → Kanji) thì không xoá nút của PiP mới
-          if (!document.pictureInPictureElement) setMediaSession(false);
-          if (recordedUrl) attachLiveStream();
-          keepPumping(1500);
-          opts.onChange();
-        });
-        if (document.fonts && document.fonts.ready) {
-          document.fonts.ready.then(function () { redraw(); });
-        }
+      video.addEventListener("enterpictureinpicture", function () {
+        setMediaSession(true);
+        keepPumping(0);
+        scheduleRecordedLoop();
+        opts.onChange();
+      });
+      video.addEventListener("leavepictureinpicture", function () {
+        // Đang chuyển sang PiP khác (vd. Flashcard → Kanji) thì không xoá nút của PiP mới
+        if (!document.pictureInPictureElement) setMediaSession(false);
+        if (recordedUrl) attachLiveStream();
+        keepPumping(1500);
+        opts.onChange();
+      });
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(function () { redraw(); });
       }
-      render();
-      play();
-      keepPumping(3000);
-      return el;
+
+      if (PIP_DEBUG) {
+        if (video.requestVideoFrameCallback) {
+          var onFrame = function () {
+            dbg.frames++;
+            video.requestVideoFrameCallback(onFrame);
+          };
+          video.requestVideoFrameCallback(onFrame);
+        }
+        pipDebugTargets.push(function () {
+          var v = el.video;
+          var track = el.stream && el.stream.getVideoTracks()[0];
+          return "[" + opts.name + "] pip=" + isActive() + " src=" + (recordedUrl ? "recorded" : "live") +
+            "\n  video rs=" + v.readyState + " paused=" + v.paused + " " + v.videoWidth + "x" + v.videoHeight +
+            " t=" + v.currentTime.toFixed(1) + " frames=" + (v.requestVideoFrameCallback ? dbg.frames : "n/a") +
+            "\n  sáng: video=" + pipDebugBrightness(v) + " canvas=" + pipDebugBrightness(el.canvas) + " draws=" + dbg.draws +
+            "\n  track=" + (track ? track.readyState + (track.muted ? " muted" : "") : "none") +
+            " rec=" + (dbg.rec || "-") + (dbg.playErr ? " playErr=" + dbg.playErr : "") + (dbg.reqErr ? " reqErr=" + dbg.reqErr : "");
+        });
+      }
     }
 
     /** Gọi khi nội dung đổi */
@@ -3279,7 +3336,7 @@
       if (!el) return;
       generation++;
       if (isActive() && recordedUrl) attachLiveStream();
-      render();
+      draw();
       if (isActive()) {
         play();
         keepPumping(0);
@@ -3289,13 +3346,17 @@
     }
 
     function open() {
-      prepare();
+      warm();
+      draw();
+      keepPumping(3000);
       function request() {
         el.video.requestPictureInPicture().catch(function (err) {
+          dbg.reqErr = err && err.name;
           alert("Không bật được PiP: " + (err && err.message ? err.message : err) + " (thử bấm lại nút PiP)");
         });
       }
-      // requestPictureInPicture cần video đã có metadata và phải gọi trong lúc còn user activation
+      // Như trang cũ: play() rồi gọi requestPictureInPicture() ngay trong cùng lần bấm (Safari cần user activation)
+      play();
       if (el.video.readyState >= 1) {
         request();
       } else {
@@ -3309,7 +3370,7 @@
       }
     }
 
-    return { isActive: isActive, prepare: prepare, redraw: redraw, open: open, exit: exit };
+    return { isActive: isActive, warm: warm, redraw: redraw, open: open, exit: exit };
   }
 
   /** Tách dòng theo khoảng trắng; từ dài hơn 1 dòng (vd. tiếng Nhật không có khoảng trắng) thì cắt theo ký tự */
@@ -3395,6 +3456,7 @@
   // ----- PiP Flashcard: hiện thẻ đang học, đi theo mỗi lần chuyển thẻ -----
   var vocabPipCurrent = { item: null, pos: 0, total: 0 };
   var vocabPip = createCanvasPip({
+    name: "flashcard",
     width: 800,
     height: 450,
     draw: drawVocabPip,
@@ -5024,10 +5086,8 @@
         pipBtn.type = "button";
         pipBtn.setAttribute("data-kanji-index", String(globalIndex));
         applyKanjiPipBtnState(pipBtn);
-        // Chuẩn bị stream ngay khi chạm, để lúc click video đã có metadata (Safari cần gọi PiP ngay trong click)
-        pipBtn.addEventListener("pointerdown", function () {
-          kanjiPip.prepare();
-        });
+        // Gắn sẵn stream vào video từ lúc nút hiện, để lúc bấm video đã có metadata (Safari cần gọi PiP ngay trong click)
+        kanjiPip.warm();
         pipBtn.addEventListener("click", function (e) {
           e.stopPropagation();
           toggleKanjiPip(globalIndex);
@@ -5401,6 +5461,7 @@
   // ----- PiP chi tiết Kanji: mở ngay trong trang, đi theo chữ Kanji đang xem -----
   var kanjiPipIndex = null; // index trong kanjiData đang hiện trong PiP
   var kanjiPip = createCanvasPip({
+    name: "kanji",
     width: 810,
     height: 1000,
     draw: drawKanjiPip,
@@ -9051,6 +9112,7 @@ history.replaceState({}, "", newUrl);
     setupVocabViewModeToggle();
     setupVocabFlashcardFullscreen();
     setupFlashcardWakeLock();
+    setupPipDebugPanel();
     setupTestSection();
     setupAssembleTestSection();
     setupVocabTestModeMenu();
