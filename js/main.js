@@ -543,19 +543,72 @@
   var MASTERY_COLD_START_SCORE = 50;   // điểm trung gian mặc định cho mục cũ chưa có dữ liệu
   var MASTERY_MIN = 0;
   var MASTERY_MAX = 100;
+  // Lặp lại ngắt quãng (📅 Ôn hôm nay): trả lời đúng khi đã đến hạn -> giãn sang mốc tiếp theo (ngày),
+  // trả lời sai (hoặc ghép từ phải làm lại / xem gợi ý) -> quay về mốc đầu, ôn lại từ ngày mai.
+  var SRS_INTERVALS = [1, 3, 7, 14, 30, 60];
 
   function clampMasteryScore(v) {
     return Math.max(MASTERY_MIN, Math.min(MASTERY_MAX, v));
   }
 
+  /** yyyy-mm-dd theo giờ máy của ngày `base` (mặc định hôm nay) cộng thêm `days` ngày */
+  function masteryDateStr(days, base) {
+    var d = base ? new Date(base) : new Date();
+    d.setDate(d.getDate() + (days || 0));
+    var m = d.getMonth() + 1;
+    var day = d.getDate();
+    return d.getFullYear() + "-" + (m < 10 ? "0" : "") + m + "-" + (day < 10 ? "0" : "") + day;
+  }
+
   function masteryTodayStr() {
-    return new Date().toISOString().slice(0, 10);
+    return masteryDateStr(0);
   }
 
   function masteryTomorrowStr() {
-    var d = new Date();
-    d.setDate(d.getDate() + 1);
-    return d.toISOString().slice(0, 10);
+    return masteryDateStr(1);
+  }
+
+  function nextSrsInterval(interval) {
+    for (var i = 0; i < SRS_INTERVALS.length; i += 1) {
+      if (SRS_INTERVALS[i] > interval) return SRS_INTERVALS[i];
+    }
+    return SRS_INTERVALS[SRS_INTERVALS.length - 1];
+  }
+
+  /**
+   * Lịch ôn { interval, due } của 1 bản ghi mastery, null nếu chưa test lần nào.
+   * Bản ghi cũ (trước khi có due_at) được suy ra, không ghi đè dữ liệu:
+   *   - còn cờ needs_review_tomorrow -> đến hạn từ review_after
+   *   - điểm < 60 -> đến hạn ngay; 60–79 -> 3 ngày; >= 80 -> 7 ngày kể từ lần test cuối
+   */
+  function getSrsSchedule(rec) {
+    if (!rec || !rec.is_calibrated) return null;
+    if (rec.due_at) {
+      return { interval: rec.srs_interval || SRS_INTERVALS[0], due: rec.due_at };
+    }
+    if (rec.needs_review_tomorrow) {
+      return { interval: SRS_INTERVALS[0], due: rec.review_after || masteryTodayStr() };
+    }
+    var interval = rec.score < MASTERY_REVIEW_THRESHOLD ? 0 : (rec.score < MASTERY_MASTERED_THRESHOLD ? 3 : 7);
+    return { interval: interval, due: masteryDateStr(interval, rec.last_test_at || Date.now()) };
+  }
+
+  /** Cập nhật lịch ôn sau 1 câu test. `schedule` là lịch TRƯỚC khi làm câu này. */
+  function applySrsResult(rec, schedule, isGood) {
+    if (!isGood) {
+      rec.srs_interval = SRS_INTERVALS[0];
+      rec.due_at = masteryTomorrowStr();
+    } else if (!schedule || schedule.due <= masteryTodayStr()) {
+      rec.srs_interval = nextSrsInterval(schedule ? schedule.interval : 0);
+      rec.due_at = masteryDateStr(rec.srs_interval);
+    } else if (!rec.due_at) {
+      // Bản ghi cũ trả lời đúng khi chưa đến hạn: chốt lịch suy ra thành dữ liệu thật
+      rec.srs_interval = schedule.interval;
+      rec.due_at = schedule.due;
+    }
+    // Đúng khi chưa đến hạn (ôn sớm / làm nhiều lần trong ngày) thì giữ nguyên lịch
+    delete rec.needs_review_tomorrow;
+    delete rec.review_after;
   }
 
   // Load state.vocabMastery / state.kanjiMastery từ localStorage
@@ -587,8 +640,8 @@
       rec = {
         score: MASTERY_COLD_START_SCORE,
         is_calibrated: false,
-        needs_review_tomorrow: false,
-        review_after: null, // ISO date (yyyy-mm-dd): nếu set, bắt buộc xuất hiện lại từ ngày này bất kể điểm
+        srs_interval: 0, // mốc lặp lại ngắt quãng hiện tại (ngày), xem SRS_INTERVALS
+        due_at: null, // yyyy-mm-dd: từ ngày này mục đến hạn ôn (📅 Ôn hôm nay)
         last_test_at: null,
         last_test_type: null,
         history_count: 0
@@ -612,13 +665,17 @@
 
     var delta = 0;
     var coldStartSignalGood = null; // dùng riêng cho lần test hiệu chỉnh đầu tiên (cold start)
+    var srsGood = false; // true = nhớ tốt -> giãn lịch ôn, false = ôn lại từ ngày mai
+    var scheduleBefore = getSrsSchedule(rec);
 
     if (testType === "choice") {
       delta = payload.isCorrect ? 5 : -10;
       coldStartSignalGood = !!payload.isCorrect;
+      srsGood = !!payload.isCorrect;
     } else if (testType === "mapping") {
       delta = payload.isCorrect ? 10 : -15;
       coldStartSignalGood = !!payload.isCorrect;
+      srsGood = !!payload.isCorrect;
     } else if (testType === "assemble") {
       var attempts = payload.attempts || 0;
       if (payload.revealedAnswer) {
@@ -635,10 +692,7 @@
         coldStartSignalGood = false;
       }
       // Phải sửa sai (hoặc phải xem đáp án) -> bắt buộc ôn lại vào hôm sau, bất kể tổng điểm
-      if (attempts > 0 || payload.revealedAnswer) {
-        rec.needs_review_tomorrow = true;
-        rec.review_after = masteryTomorrowStr();
-      }
+      srsGood = attempts === 0 && !payload.revealedAnswer;
     } else {
       return rec;
     }
@@ -652,6 +706,7 @@
     } else {
       rec.score = clampMasteryScore(rec.score + delta);
     }
+    applySrsResult(rec, scheduleBefore, srsGood);
 
     rec.last_test_at = Date.now();
     rec.last_test_type = testType;
@@ -667,18 +722,17 @@
     return applyMasteryTestResultTo(state.kanjiMastery, saveKanjiMastery, kanjiKey, testType, payload);
   }
 
-  /** needs_review_tomorrow chỉ thực sự "đến hạn" từ ngày review_after trở đi. */
-  function isMasteryDueByFlag(rec) {
-    if (!rec || !rec.needs_review_tomorrow) return false;
-    if (!rec.review_after) return true;
-    return masteryTodayStr() >= rec.review_after;
+  /** true nếu mục đã đến hạn ôn theo lịch lặp lại ngắt quãng (tính đến hết ngày hôm nay + dayOffset). */
+  function isMasteryDueToday(rec, dayOffset) {
+    var schedule = getSrsSchedule(rec);
+    return !!schedule && schedule.due <= masteryDateStr(dayOffset || 0);
   }
 
-  /** true nếu mục này cần đưa vào danh sách học lại (điểm thấp hoặc bị gắn cờ ôn lại). */
+  /** true nếu mục này "chưa thuộc" (điểm < 60), dùng cho "Ôn lại chưa thuộc". Mục đến hạn theo lịch nằm ở "Ôn hôm nay". */
   function isDueForReviewIn(store, key) {
     var rec = store[key];
     if (!rec) return false; // chưa có dữ liệu -> để hàng đợi cold start ưu tiên đưa vào test hiệu chỉnh, chưa ép vào "chưa thuộc"
-    return rec.score < MASTERY_REVIEW_THRESHOLD || isMasteryDueByFlag(rec);
+    return rec.score < MASTERY_REVIEW_THRESHOLD;
   }
 
   function isVocabDueForReview(item) {
@@ -692,10 +746,17 @@
   function getVocabReviewList() {
     return vocabData.filter(function (raw) { return isVocabDueForReview(raw); });
   }
+  /** Từ vựng (không ẩn, có hiragana) đã đến hạn ôn theo lịch tính đến hết ngày hôm nay + dayOffset. */
+  function getVocabDailyDueList(dayOffset) {
+    return vocabData.filter(function (raw) {
+      if (!raw || isVocabHidden(raw) || !getVocabHiragana(raw)) return false;
+      return isMasteryDueToday(state.vocabMastery[getVocabDupKey(raw)], dayOffset);
+    });
+  }
 
   /**
    * Sắp xếp lại 1 danh sách bất kỳ theo độ ưu tiên mastery (không đổi kích thước danh sách):
-   * 1) needs_review_tomorrow đã đến hạn -> lên đầu
+   * 1) đã đến hạn ôn theo lịch (isMasteryDueToday) -> lên đầu
    * 2) chưa is_calibrated (cold start) -> ưu tiên tiếp theo
    * 3) score thấp hơn -> ưu tiên hơn
    * keyFn(item) phải trả về đúng key mastery của mục tương ứng trong `store`.
@@ -710,18 +771,18 @@
         item: item,
         calibrated: rec ? !!rec.is_calibrated : false,
         score: rec ? rec.score : MASTERY_COLD_START_SCORE,
-        dueTomorrowFlag: isMasteryDueByFlag(rec)
+        due: isMasteryDueToday(rec)
       };
     });
     scored.sort(function (a, b) {
-      if (a.dueTomorrowFlag !== b.dueTomorrowFlag) return a.dueTomorrowFlag ? -1 : 1;
+      if (a.due !== b.due) return a.due ? -1 : 1;
       if (a.calibrated !== b.calibrated) return a.calibrated ? 1 : -1;
       return a.score - b.score;
     });
     return scored.map(function (s) { return s.item; });
   }
 
-  /** Lấy ra tối đa `count` từ vựng ưu tiên nhất (needs_review_tomorrow > cold-start > điểm thấp) từ 1 pool từ vựng thô. */
+  /** Lấy ra tối đa `count` từ vựng ưu tiên nhất (đến hạn ôn > cold-start > điểm thấp) từ 1 pool từ vựng thô. */
   function pickVocabTestQueue(pool, count) {
     var prioritized = sortByMasteryPriority(shuffleArray(pool), getVocabDupKey, state.vocabMastery);
     if (typeof count === "number") {
@@ -2294,6 +2355,7 @@
       { id: "section-kanji", tab: "kanji" },
       { id: "section-grammar", tab: "grammar" },
       { id: "section-stars", tab: "stars" },
+      { id: "section-daily", tab: "daily" },
       { id: "section-note", tab: "note" },
       { id: "section-dup", tab: "dup" },
       { id: "section-vocab-edit", tab: "vocab-edit" }
@@ -4365,6 +4427,23 @@
     }
   }
 
+  /** Các mục (không trùng) của những câu sai trong `answers`, lấy theo answer[field] — dùng cho nút "Ôn lại câu sai". */
+  function collectWrongItems(answers, field) {
+    var items = [];
+    (answers || []).forEach(function (a) {
+      var item = a && !a.isCorrect ? a[field] : null;
+      if (item && items.indexOf(item) === -1) items.push(item);
+    });
+    return items;
+  }
+
+  function createRetryWrongButton(count, onClick) {
+    var btn = createElement("button", "btn", "🔁 Ôn lại " + count + " câu sai");
+    btn.type = "button";
+    btn.addEventListener("click", onClick);
+    return btn;
+  }
+
   function renderTestResult() {
     const container = document.getElementById("vocab-test-container");
     if (container) {
@@ -4410,10 +4489,30 @@
     wrapper.appendChild(commentEl);
 
     const btnRow = createElement("div", "btn-row", "");
-    const retryBtn = createElement("button", "btn", "Làm lại test");
+    const wrongItems = collectWrongItems(testState.answers, "raw");
+    if (wrongItems.length > 0) {
+      btnRow.appendChild(createRetryWrongButton(wrongItems.length, function () {
+        startVocabRetryWrong(wrongItems);
+      }));
+    }
+    // Ôn hôm nay: còn từ đến hạn thì cho ôn tiếp lượt sau; Ôn lại chưa thuộc: làm lượt mới; còn lại về màn hình cấu hình
+    var restartLabel = "Làm lại test";
+    var restartFn = startVocabTest;
+    if (testState.mode === "daily") {
+      var remainingDue = getVocabDailyDueList().length;
+      if (remainingDue > 0) {
+        restartLabel = "📅 Ôn tiếp (" + remainingDue + " từ)";
+        restartFn = startVocabDailyReview;
+      }
+    } else if (testState.mode === "review") {
+      restartFn = startVocabReviewTest;
+    } else if (testState.mode === "daily-set") {
+      restartFn = startDailySetTest;
+    }
+    const retryBtn = createElement("button", wrongItems.length > 0 ? "btn-ghost" : "btn", restartLabel);
     retryBtn.type = "button";
     retryBtn.addEventListener("click", function () {
-      startVocabTest();
+      restartFn();
     });
     btnRow.appendChild(retryBtn);
     wrapper.appendChild(btnRow);
@@ -4958,11 +5057,17 @@
 
   function finishAssembleQuestion(hiragana, rawQuestion) {
     var ts = state.assembleTestState;
-    ts.correctCount += 1;
+    var attempts = ts.currentAttempts || 0;
+    var revealed = !!ts.currentRevealed;
+    // Chỉ tính là đúng khi ghép đúng ngay lần đầu và không xem gợi ý ⚡
+    var isCleanCorrect = attempts === 0 && !revealed;
+    if (isCleanCorrect) {
+      ts.correctCount += 1;
+    }
 
     applyMasteryTestResult(getVocabDupKey(rawQuestion), "assemble", {
-      attempts: ts.currentAttempts || 0,
-      revealedAnswer: !!ts.currentRevealed
+      attempts: attempts,
+      revealedAnswer: revealed
     });
 
     var kanji = rawQuestion.kanji != null ? rawQuestion.kanji : rawQuestion.Kanji;
@@ -4977,7 +5082,10 @@
     ts.answers.push({
       questionWord: qLabelParts.join(" "),
       correctMeaning: hiragana,
-      isCorrect: true
+      isCorrect: isCleanCorrect,
+      attempts: attempts,
+      revealed: revealed,
+      raw: rawQuestion
     });
 
     if (hiragana && ts.readAfterAnswer !== false) {
@@ -5006,7 +5114,7 @@
 
     var wrapper = createElement("div", "test-result", "");
     wrapper.appendChild(createElement("div", "score-main", score + " / " + total));
-    wrapper.appendChild(createElement("div", "score-detail", "Hoàn thành bài ghép từ. Số câu sai: " + wrongList.length + "."));
+    wrapper.appendChild(createElement("div", "score-detail", "Hoàn thành bài ghép từ. Số câu phải ghép lại / xem gợi ý: " + wrongList.length + "."));
 
     var commentText = "";
     if (percent > 90) {
@@ -5023,7 +5131,13 @@
     wrapper.appendChild(createElement("div", "score-detail", commentText));
 
     var btnRow = createElement("div", "btn-row", "");
-    var retryBtn = createElement("button", "btn", "Làm lại");
+    var wrongItems = collectWrongItems(ts.answers, "raw");
+    if (wrongItems.length > 0) {
+      btnRow.appendChild(createRetryWrongButton(wrongItems.length, function () {
+        startAssembleRetryWrong(wrongItems);
+      }));
+    }
+    var retryBtn = createElement("button", wrongItems.length > 0 ? "btn-ghost" : "btn", "Làm lại");
     retryBtn.type = "button";
     retryBtn.addEventListener("click", function () {
       startAssembleTest();
@@ -5039,8 +5153,11 @@
         item.appendChild(createElement("div", "wrong-q", w.questionWord));
         var correct = createElement("div", "wrong-a wrong-a--correct", "Đáp án đúng: ");
         correct.appendChild(createElement("span", "", w.correctMeaning));
-        var selected = createElement("div", "wrong-a wrong-a--selected", "Bạn ghép: ");
-        selected.appendChild(createElement("span", "", w.selectedMeaning || "(không trả lời)"));
+        var noteParts = [];
+        if (w.attempts > 0) noteParts.push("ghép sai " + w.attempts + " lần");
+        if (w.revealed) noteParts.push("đã xem gợi ý ⚡");
+        var selected = createElement("div", "wrong-a wrong-a--selected", "Ghi chú: ");
+        selected.appendChild(createElement("span", "", noteParts.join(", ")));
         item.appendChild(correct);
         item.appendChild(selected);
         wrongContainer.appendChild(item);
@@ -5067,6 +5184,21 @@
     detailModalState.bodyEl.appendChild(wrapper);
   }
 
+  /** "Ôn lại câu sai" của bài ghép từ: giữ nguyên cấu hình + pool ô nhiễu của lượt trước. */
+  function startAssembleRetryWrong(questions) {
+    var ts = state.assembleTestState;
+    ts.isActive = true;
+    ts.isFinished = false;
+    ts.questions = shuffleArray(questions);
+    ts.currentIndex = 0;
+    ts.correctCount = 0;
+    ts.answers = [];
+    ts.builtIndex = -1;
+    ts.tileBag = [];
+    ts.selectedIds = [];
+    renderAssembleTestQuestion();
+  }
+
   function setupAssembleTestSection() {
     var startBtn = document.getElementById("start-vocab-assemble-btn");
     if (startBtn) {
@@ -5076,7 +5208,7 @@
     }
   }
 
-  /** Menu lưới dùng chung cho cả Vocab và Kanji: mỗi mode = { icon, label, hint?, isReview?, triggerId? | action() }. */
+  /** Menu lưới dùng chung cho cả Vocab và Kanji: mỗi mode = { icon, label, hint? (chuỗi hoặc hàm trả về chuỗi), isReview?, triggerId? | action() }. */
   function openTestModeMenu(title, modes) {
     var grid = createElement("div", "test-mode-grid");
     modes.forEach(function (mode) {
@@ -5084,8 +5216,9 @@
       card.type = "button";
       card.appendChild(createElement("div", "test-mode-card__icon", mode.icon));
       card.appendChild(createElement("div", "test-mode-card__label", mode.label));
-      if (mode.hint) {
-        card.appendChild(createElement("div", "test-mode-card__hint", mode.hint));
+      var hint = typeof mode.hint === "function" ? mode.hint() : mode.hint;
+      if (hint) {
+        card.appendChild(createElement("div", "test-mode-card__hint", hint));
       }
       card.addEventListener("click", function () {
         closeDetailModal();
@@ -5107,7 +5240,15 @@
     { icon: "🔤", label: "Chọn đáp án", hint: "Trắc nghiệm 20 câu", triggerId: "start-vocab-test-btn" },
     { icon: "🔗", label: "Mapping", hint: "Nối từ - nghĩa", triggerId: "start-vocab-mapping-btn" },
     { icon: "🧩", label: "Ghép từ", hint: "Chọn hiragana ghép từ", triggerId: "start-vocab-assemble-btn" },
-    { icon: "🔁", label: "Ôn lại từ chưa thuộc", hint: "Ưu tiên từ điểm thấp / cold-start", action: function () { startVocabReviewTest(); }, isReview: true }
+    {
+      icon: "📅", label: "Ôn hôm nay", isReview: true,
+      hint: function () {
+        var dueCount = getVocabDailyDueList().length;
+        return dueCount ? dueCount + " từ đến hạn ôn" : "Không có từ đến hạn";
+      },
+      action: function () { startVocabDailyReview(); }
+    },
+    { icon: "🔁", label: "Ôn lại từ chưa thuộc", hint: "Từ có điểm dưới 60", action: function () { startVocabReviewTest(); }, isReview: true }
   ];
 
   function openVocabTestModeMenu() {
@@ -6350,6 +6491,447 @@
     }
   }
 
+  // ----- Ôn tập mỗi ngày -----
+  // Mỗi ngày tự chọn 1 bộ Kanji (có từ ví dụ) / từ vựng / ngữ pháp N4-N5 / ngữ pháp N3, số lượng theo cấu hình
+  // (jp_daily_review_config). Bộ của ngày lưu theo khoá NỘI DUNG vào jp_daily_review:
+  //   { date, keys: { phần: [khoá của hôm nay] }, history: { phần: [khoá đã học ở các ngày trước trong vòng hiện tại] },
+  //     lastDayKeys: { phần: [khoá của ngày học gần nhất] } }
+  // Trong ngày luôn hiện lại đúng bộ đó (đổi cấu hình thì bổ sung / bớt ngay trên bộ hôm nay);
+  // sang ngày mới chỉ chọn mục chưa có trong history -> không trùng qua các ngày cho đến khi học hết pool,
+  // lúc đó phần đó bắt đầu vòng mới.
+  var DAILY_REVIEW_STORAGE_KEY = "jp_daily_review";
+  var DAILY_REVIEW_CONFIG_KEY = "jp_daily_review_config";
+  var DAILY_REVIEW_PART_DEFS = [
+    { name: "kanji", label: "Kanji", defaultCount: 2, max: 20 },
+    { name: "vocab", label: "Từ vựng", defaultCount: 20, max: 200 },
+    { name: "grammarN45", label: "Ngữ pháp N4-N5", defaultCount: 1, max: 10 },
+    { name: "grammarN3", label: "Ngữ pháp N3", defaultCount: 1, max: 10 }
+  ];
+
+  function isGrammarN3(raw) {
+    return String(raw && raw.Type || "").toLowerCase() === "n3";
+  }
+  function getGrammarStructure(raw) {
+    return String((raw && (raw.structure != null ? raw.structure : raw.Structure)) || "").trim();
+  }
+  function getGrammarDailyKey(raw) {
+    var structure = getGrammarStructure(raw);
+    if (!structure) return "";
+    return (isGrammarN3(raw) ? "n3" : "n45") + "␟" + structure + "␟" + String(raw.Meaning || "").trim();
+  }
+  function getKanjiExamples(raw) {
+    return parseKanjiVocab(raw && raw.vocabulary).filter(function (ve) { return ve.word; });
+  }
+
+  /** Số lượng mỗi phần theo cấu hình (thiếu/sai thì lấy mặc định, kẹp trong 0..max) */
+  function getDailyReviewConfig() {
+    var saved = {};
+    try { saved = JSON.parse(localStorage.getItem(DAILY_REVIEW_CONFIG_KEY)) || {}; } catch (e) { }
+    var config = {};
+    DAILY_REVIEW_PART_DEFS.forEach(function (def) {
+      var n = parseInt(saved[def.name], 10);
+      config[def.name] = isNaN(n) ? def.defaultCount : Math.max(0, Math.min(def.max, n));
+    });
+    return config;
+  }
+  function saveDailyReviewConfig(config) {
+    try { localStorage.setItem(DAILY_REVIEW_CONFIG_KEY, JSON.stringify(config)); } catch (e) { }
+  }
+
+  /** Pool nguồn của từng phần (mỗi khoá nội dung chỉ lấy 1 lần), kèm hàm lấy khoá */
+  function getDailyReviewParts() {
+    var pools = {
+      kanji: {
+        key: getKanjiDupKey,
+        pool: kanjiData.filter(function (raw) { return raw && raw.kanji && getKanjiExamples(raw).length > 0; })
+      },
+      vocab: {
+        key: getVocabDupKey,
+        pool: vocabData.filter(function (raw) {
+          return raw && !isVocabHidden(raw) && getVocabHiragana(raw) && getVocabMeaning(raw);
+        })
+      },
+      grammarN45: {
+        key: getGrammarDailyKey,
+        pool: grammarData.filter(function (raw) { return raw && !isGrammarN3(raw); })
+      },
+      grammarN3: {
+        key: getGrammarDailyKey,
+        pool: grammarData.filter(function (raw) { return raw && isGrammarN3(raw); })
+      }
+    };
+    return DAILY_REVIEW_PART_DEFS.map(function (def) {
+      var byKey = {};
+      var allKeys = [];
+      pools[def.name].pool.forEach(function (raw) {
+        var k = pools[def.name].key(raw);
+        if (k && !Object.prototype.hasOwnProperty.call(byKey, k)) {
+          byKey[k] = raw;
+          allKeys.push(k);
+        }
+      });
+      return { name: def.name, label: def.label, byKey: byKey, allKeys: allKeys };
+    });
+  }
+
+  function toKeySet(list) {
+    var set = {};
+    (list || []).forEach(function (k) { set[k] = true; });
+    return set;
+  }
+
+  function loadDailyReviewStore() {
+    var store;
+    try {
+      store = JSON.parse(localStorage.getItem(DAILY_REVIEW_STORAGE_KEY));
+    } catch (e) {
+      return null;
+    }
+    if (!store || typeof store !== "object" || !store.keys) return null;
+    store.history = store.history || {};
+    // Dữ liệu bản cũ chỉ nhớ bộ của lần trước (prev) -> đưa vào history
+    if (store.prev) {
+      Object.keys(store.prev).forEach(function (name) {
+        store.history[name] = mergeUniqueKeys(store.history[name], store.prev[name]);
+      });
+      delete store.prev;
+    }
+    return store;
+  }
+  function saveDailyReviewStore(store) {
+    try { localStorage.setItem(DAILY_REVIEW_STORAGE_KEY, JSON.stringify(store)); } catch (e) { }
+  }
+  function mergeUniqueKeys(a, b) {
+    var seen = toKeySet(a);
+    var out = (a || []).slice();
+    (b || []).forEach(function (k) {
+      if (!seen[k]) {
+        seen[k] = true;
+        out.push(k);
+      }
+    });
+    return out;
+  }
+
+  /**
+   * Bộ ôn tập của hôm nay { kanji: [], vocab: [], grammarN45: [], grammarN3: [] } (raw data).
+   * Gọi lại bất cứ lúc nào cũng được: chỉ thay đổi khi sang ngày mới, đổi cấu hình, hoặc có mục không còn trong data.
+   */
+  function getDailyReviewSet() {
+    var today = masteryTodayStr();
+    var config = getDailyReviewConfig();
+    var store = loadDailyReviewStore();
+    var changed = false;
+    if (!store) {
+      store = { date: today, keys: {}, history: {} };
+      changed = true;
+    } else if (store.date !== today) {
+      // Kết thúc ngày cũ: bộ của ngày đó thành lịch sử, không được chọn lại
+      Object.keys(store.keys).forEach(function (name) {
+        store.history[name] = mergeUniqueKeys(store.history[name], store.keys[name]);
+      });
+      store.lastDayKeys = store.keys;
+      store.keys = {};
+      store.date = today;
+      changed = true;
+    }
+
+    var result = {};
+    getDailyReviewParts().forEach(function (part) {
+      var count = config[part.name];
+      var savedKeys = store.keys[part.name] || [];
+      // Bỏ mục không còn trong data (bị xoá / ẩn), rồi bớt nếu cấu hình giảm
+      var keys = savedKeys.filter(function (k) { return Object.prototype.hasOwnProperty.call(part.byKey, k); }).slice(0, count);
+      if (keys.length < count) {
+        var need = count - keys.length;
+        var taken = toKeySet(keys);
+        var learned = toKeySet(store.history[part.name]);
+        var picked = shuffleArray(part.allKeys.filter(function (k) { return !taken[k] && !learned[k]; })).slice(0, need);
+        if (picked.length < need) {
+          // Đã học hết pool của phần này -> bắt đầu vòng mới; vẫn ưu tiên tránh bộ của ngày gần nhất
+          store.history[part.name] = [];
+          picked.forEach(function (k) { taken[k] = true; });
+          var lastDay = toKeySet((store.lastDayKeys || {})[part.name]);
+          var rest = part.allKeys.filter(function (k) { return !taken[k]; });
+          var restFresh = shuffleArray(rest.filter(function (k) { return !lastDay[k]; }));
+          var restLastDay = shuffleArray(rest.filter(function (k) { return lastDay[k]; }));
+          picked = picked.concat(restFresh.concat(restLastDay).slice(0, need - picked.length));
+        }
+        keys = keys.concat(picked);
+      }
+      if (keys.join("\n") !== savedKeys.join("\n")) changed = true;
+      store.keys[part.name] = keys;
+      result[part.name] = keys.map(function (k) { return part.byKey[k]; });
+    });
+    if (changed) saveDailyReviewStore(store);
+    return result;
+  }
+
+  /** Tiến độ vòng hiện tại của từng phần: đã học (các ngày trước + hôm nay) / tổng pool */
+  function getDailyReviewProgress() {
+    var store = loadDailyReviewStore() || { keys: {}, history: {} };
+    return getDailyReviewParts().map(function (part) {
+      var seen = toKeySet(mergeUniqueKeys(store.history[part.name], store.keys[part.name]));
+      var done = part.allKeys.filter(function (k) { return seen[k]; }).length;
+      return { name: part.name, label: part.label, done: done, total: part.allKeys.length };
+    });
+  }
+
+  function formatDailyReviewDate() {
+    var d = new Date();
+    var weekdays = ["Chủ nhật", "Thứ 2", "Thứ 3", "Thứ 4", "Thứ 5", "Thứ 6", "Thứ 7"];
+    var dd = d.getDate(), mm = d.getMonth() + 1;
+    return weekdays[d.getDay()] + ", " + (dd < 10 ? "0" : "") + dd + "/" + (mm < 10 ? "0" : "") + mm + "/" + d.getFullYear();
+  }
+
+  function createDailySectionTitle(text, count) {
+    var title = createElement("div", "daily-section-title", text);
+    if (count != null) title.appendChild(createElement("span", "chip", String(count)));
+    return title;
+  }
+
+  function buildDailyKanjiCard(raw) {
+    var kanjiIndex = kanjiData.indexOf(raw);
+    var card = createElement("div", "daily-card daily-kanji-card", "");
+    card.title = "Xem chi tiết Kanji";
+
+    var head = createElement("div", "daily-kanji-head", "");
+    head.appendChild(createElement("div", "daily-kanji-char", raw.kanji));
+    var info = createElement("div", "daily-kanji-info", "");
+    var hvRow = createElement("div", "daily-kanji-hanviet", raw.hanviet || "");
+    hvRow.appendChild(createElement("span", "pill", raw.level === "n3" ? "N3" : "N4-N5"));
+    info.appendChild(hvRow);
+    if (raw.core_meaning) info.appendChild(createElement("div", "daily-kanji-meaning", raw.core_meaning));
+    var readings = [];
+    if (raw.on_reading) readings.push("On: " + String(raw.on_reading).split("|").join("・"));
+    if (raw.kun_reading) readings.push("Kun: " + String(raw.kun_reading).split("|").join("・"));
+    if (readings.length) info.appendChild(createElement("div", "daily-kanji-readings", readings.join("　")));
+    head.appendChild(info);
+    card.appendChild(head);
+
+    var examples = createElement("div", "daily-kanji-examples", "");
+    getKanjiExamples(raw).forEach(function (ve) {
+      var row = createElement("div", "daily-kanji-example", "");
+      var text = createElement("div", "daily-kanji-example-text", "");
+      text.appendChild(createElement("span", "daily-kanji-example-word", ve.word));
+      if (ve.reading) text.appendChild(createElement("span", "daily-kanji-example-reading", "(" + ve.reading + ")"));
+      if (ve.meaning) text.appendChild(createElement("span", "daily-kanji-example-meaning", ve.meaning));
+      row.appendChild(text);
+      row.appendChild(createAudioBtn(ve.reading || ve.word));
+      examples.appendChild(row);
+    });
+    card.appendChild(examples);
+
+    card.addEventListener("click", function () {
+      if (kanjiIndex < 0) return;
+      state.kanjiHistory = [];
+      state.selected.kanjiIndex = kanjiIndex;
+      renderKanjiDetail();
+    });
+    return card;
+  }
+
+  function buildDailyVocabRow(raw, order) {
+    var vocabIndex = vocabData.indexOf(raw);
+    var hiragana = getVocabHiragana(raw);
+    var kanji = getVocabRealKanji(raw);
+    var lesson = getVocabLessonValue(raw);
+
+    var row = createElement("div", "vocab-item daily-vocab-item", "");
+    var top = createElement("div", "daily-vocab-top", "");
+    top.appendChild(createElement("span", "daily-vocab-order", String(order)));
+    var main = createElement("div", "daily-vocab-main", "");
+    main.appendChild(createElement("span", "vocab-hira", hiragana));
+    if (kanji) main.appendChild(createElement("span", "vocab-kanji", "(" + kanji + ")"));
+    main.appendChild(createElement("span", "vocab-meaning", getVocabMeaning(raw)));
+    top.appendChild(main);
+    // 0 = chưa phân bài, 8888 / 9999 = nhóm từ thêm tay -> không phải bài thật, không hiện
+    var lessonNum = parseInt(lesson, 10);
+    if (lessonNum > 0 && lessonNum < 8888) top.appendChild(createElement("span", "pill pill--lesson", "Bài " + lessonNum));
+    top.appendChild(createAudioBtn(hiragana));
+
+    var isMastered = !!state.vocabMastered[vocabIndex];
+    var masteredBtn = createElement("button", "mastered-btn" + (isMastered ? " mastered-btn--active" : ""), isMastered ? "✓" : "○");
+    masteredBtn.type = "button";
+    masteredBtn.title = isMastered ? "Đã thuộc — bấm để bỏ đánh dấu" : "Đánh dấu đã thuộc";
+    masteredBtn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      if (vocabIndex < 0) return;
+      if (state.vocabMastered[vocabIndex]) {
+        delete state.vocabMastered[vocabIndex];
+      } else {
+        state.vocabMastered[vocabIndex] = true;
+      }
+      saveVocabMastered();
+      var nowMastered = !!state.vocabMastered[vocabIndex];
+      masteredBtn.textContent = nowMastered ? "✓" : "○";
+      masteredBtn.title = nowMastered ? "Đã thuộc — bấm để bỏ đánh dấu" : "Đánh dấu đã thuộc";
+      masteredBtn.classList.toggle("mastered-btn--active", nowMastered);
+      renderVocabList();
+    });
+    top.appendChild(masteredBtn);
+    row.appendChild(top);
+    return row;
+  }
+
+  function buildDailyGrammarCard(raw) {
+    var card = createElement("div", "daily-card daily-grammar-card", "");
+    card.title = "Xem chi tiết ngữ pháp";
+    var head = createElement("div", "daily-grammar-head", "");
+    head.appendChild(createElement("span", "pill", isGrammarN3(raw) ? "N3" : "N4-N5"));
+    head.appendChild(createElement("span", "daily-grammar-structure", getGrammarStructure(raw)));
+    card.appendChild(head);
+    if (raw.Meaning) {
+      card.appendChild(createElement("div", "daily-grammar-meaning", String(raw.Meaning).split("\n").join(" ")));
+    }
+    var firstExample = splitGrammarExampleLines(raw.Example)[0];
+    if (firstExample) {
+      var ex = createElement("div", "daily-grammar-example", "");
+      var match = firstExample.match(/^(.*?)\s*\[([^\]]*)\]\s*\(([^()]*)\)\s*$/);
+      if (match) {
+        ex.appendChild(createElement("div", "daily-grammar-example-jp", match[1].trim()));
+        ex.appendChild(createElement("div", "daily-grammar-example-sub", match[2].trim()));
+        ex.appendChild(createElement("div", "daily-grammar-example-sub", match[3].trim()));
+      } else {
+        ex.appendChild(createElement("div", "daily-grammar-example-jp", firstExample));
+      }
+      card.appendChild(ex);
+    }
+    card.addEventListener("click", function () {
+      var idx = grammarData.indexOf(raw);
+      if (idx < 0) return;
+      state.selected.grammarIndex = idx;
+      renderGrammarDetail();
+    });
+    return card;
+  }
+
+  function renderDailyReviewTab() {
+    var container = document.getElementById("daily-review-container");
+    if (!container) return;
+    var set = getDailyReviewSet();
+    state.dailyReviewDate = masteryTodayStr();
+    state.dailyReviewVocab = set.vocab;
+
+    var dateLabel = document.getElementById("daily-date-label");
+    if (dateLabel) dateLabel.textContent = formatDailyReviewDate();
+
+    container.innerHTML = "";
+
+    if (set.kanji.length) {
+      var kanjiSection = createElement("div", "daily-section", "");
+      kanjiSection.appendChild(createDailySectionTitle("Kanji", set.kanji.length));
+      var kanjiGrid = createElement("div", "daily-card-grid", "");
+      set.kanji.forEach(function (raw) { kanjiGrid.appendChild(buildDailyKanjiCard(raw)); });
+      kanjiSection.appendChild(kanjiGrid);
+      container.appendChild(kanjiSection);
+    }
+
+    if (set.vocab.length) {
+      var vocabSection = createElement("div", "daily-section", "");
+      vocabSection.appendChild(createDailySectionTitle("Từ vựng", set.vocab.length));
+      var vocabList = createElement("div", "daily-vocab-list", "");
+      set.vocab.forEach(function (raw, i) { vocabList.appendChild(buildDailyVocabRow(raw, i + 1)); });
+      vocabSection.appendChild(vocabList);
+      container.appendChild(vocabSection);
+    }
+
+    var grammarItems = set.grammarN45.concat(set.grammarN3);
+    if (grammarItems.length) {
+      var grammarSection = createElement("div", "daily-section", "");
+      grammarSection.appendChild(createDailySectionTitle("Ngữ pháp", grammarItems.length));
+      var grammarGrid = createElement("div", "daily-card-grid", "");
+      grammarItems.forEach(function (raw) { grammarGrid.appendChild(buildDailyGrammarCard(raw)); });
+      grammarSection.appendChild(grammarGrid);
+      container.appendChild(grammarSection);
+    }
+
+    if (!container.firstChild) {
+      container.appendChild(createElement("div", "detail-empty", "Bộ ôn tập hôm nay đang trống. Bấm ⚙️ để chọn số lượng Kanji / từ vựng / ngữ pháp."));
+    }
+
+    var testBtn = document.getElementById("daily-test-btn");
+    if (testBtn) testBtn.disabled = !set.vocab.length;
+  }
+
+  /** Modal ⚙️: chọn số lượng mỗi phần. Lưu xong áp dụng ngay cho hôm nay (tăng thì bổ sung, giảm thì bớt ở cuối). */
+  function openDailyReviewConfig() {
+    var config = getDailyReviewConfig();
+    var progress = {};
+    getDailyReviewProgress().forEach(function (p) { progress[p.name] = p; });
+
+    var wrapper = createElement("div", "test-result test-config-form daily-config-form", "");
+    var grid = createElement("div", "test-config-fields", "");
+    var inputs = {};
+    DAILY_REVIEW_PART_DEFS.forEach(function (def) {
+      var field = createElement("div", "field-group", "");
+      field.appendChild(createElement("div", "field-label", def.label + " (0–" + def.max + ")"));
+      var input = createElement("input", "input-text", "");
+      input.type = "number";
+      input.min = 0;
+      input.max = def.max;
+      input.inputMode = "numeric";
+      input.value = String(config[def.name]);
+      input.id = "daily-config-" + def.name;
+      field.appendChild(input);
+      var p = progress[def.name];
+      if (p) {
+        field.appendChild(createElement("div", "daily-config-progress", "Vòng hiện tại: đã học " + p.done + " / " + p.total));
+      }
+      inputs[def.name] = input;
+      grid.appendChild(field);
+    });
+    wrapper.appendChild(grid);
+    wrapper.appendChild(createElement("div", "daily-config-note",
+      "Lưu xong áp dụng ngay cho hôm nay: tăng thì bổ sung thêm, giảm thì bớt ở cuối danh sách. " +
+      "Mục đã học ở các ngày trước sẽ không lặp lại cho đến khi học hết, sau đó phần đó bắt đầu vòng mới."));
+
+    var btnRow = createElement("div", "btn-row", "");
+    var saveBtn = createElement("button", "btn", "Lưu");
+    saveBtn.type = "button";
+    saveBtn.addEventListener("click", function () {
+      var next = {};
+      DAILY_REVIEW_PART_DEFS.forEach(function (def) {
+        var n = parseInt(inputs[def.name].value, 10);
+        next[def.name] = isNaN(n) ? config[def.name] : Math.max(0, Math.min(def.max, n));
+      });
+      saveDailyReviewConfig(next);
+      closeDetailModal();
+      renderDailyReviewTab();
+    });
+    var cancelBtn = createElement("button", "btn-ghost", "Đóng");
+    cancelBtn.type = "button";
+    cancelBtn.addEventListener("click", function () { closeDetailModal(); });
+    btnRow.appendChild(saveBtn);
+    btnRow.appendChild(cancelBtn);
+    wrapper.appendChild(btnRow);
+
+    openDetailModal("Cấu hình ôn tập mỗi ngày", wrapper);
+  }
+
+  /** Nút "📝 Test": trắc nghiệm Hiragana -> Nghĩa với đúng các từ vựng của bộ ôn tập hôm nay. */
+  function startDailySetTest() {
+    var set = getDailyReviewSet();
+    if (!set.vocab.length) {
+      alert("Chưa có từ vựng nào trong bộ ôn tập hôm nay.");
+      return;
+    }
+    startVocabQuickChoiceTest("daily-set", shuffleArray(set.vocab));
+  }
+
+  function setupDailyReviewTab() {
+    var testBtn = document.getElementById("daily-test-btn");
+    if (testBtn) testBtn.addEventListener("click", startDailySetTest);
+    var configBtn = document.getElementById("daily-config-btn");
+    if (configBtn) configBtn.addEventListener("click", openDailyReviewConfig);
+    // Để app mở qua đêm: quay lại màn hình mà đã sang ngày mới thì tự đổi bộ mới
+    document.addEventListener("visibilitychange", function () {
+      if (!document.hidden && state.currentTab === "daily" && state.dailyReviewDate !== masteryTodayStr()) {
+        renderDailyReviewTab();
+      }
+    });
+  }
+
   function splitGrammarExampleLines(text) {
     const lines = [];
     String(text || "").split(/\r?\n/).forEach(function (block) {
@@ -7089,7 +7671,7 @@
     var rawTab = params.get("tab") || "vocab";
     var detail = parseKanjiDetailFromQuery();
     var tabName;
-    if (rawTab === "kanji" || rawTab === "grammar" || rawTab === "stars" || rawTab === "note" || rawTab === "dup" || rawTab === "vocab-edit") {
+    if (rawTab === "kanji" || rawTab === "grammar" || rawTab === "stars" || rawTab === "daily" || rawTab === "note" || rawTab === "dup" || rawTab === "vocab-edit") {
       tabName = rawTab;
     } else {
       tabName = "vocab";
@@ -7102,6 +7684,8 @@
       renderStarsTab();
     } else if (tabName === "dup") {
       renderDupTab();
+    } else if (tabName === "daily") {
+      renderDailyReviewTab();
     }
 
     if (detail.tab && detail.slug && (tabName === "kanji" || tabName === "stars")) {
@@ -7593,6 +8177,7 @@ history.replaceState({}, "", newUrl);
   }
 
   function startVocabTest() {
+    state.testState.mode = "config";
     state.testState.isActive = false;
     state.testState.isFinished = false;
     state.testState.questions = [];
@@ -7608,7 +8193,7 @@ history.replaceState({}, "", newUrl);
   }
 
   /** Bấm "Ôn lại từ chưa thuộc": bỏ qua màn hình cấu hình, vào thẳng bài trắc nghiệm chỉ gồm các từ
-   * đang mastery_score < 60 hoặc đến hạn needs_review_tomorrow (không giới hạn theo bài/category đang lọc trên màn hình). */
+   * đang mastery_score < 60 (không giới hạn theo bài/category đang lọc trên màn hình). */
   function startVocabReviewTest() {
     var reviewPool = getVocabReviewList().filter(function (raw) {
       return raw && !isVocabHidden(raw) && String(raw.hiragana || raw.Hiragana || "").trim();
@@ -7617,9 +8202,25 @@ history.replaceState({}, "", newUrl);
       alert("Chưa có từ nào cần ôn lại (mastery score đều ổn hoặc chưa đủ dữ liệu).");
       return;
     }
-    var questionCount = Math.min(20, reviewPool.length);
-    var questions = pickVocabTestQueue(reviewPool, questionCount);
+    startVocabQuickChoiceTest("review", pickVocabTestQueue(reviewPool, 20));
+  }
 
+  /** Bấm "📅 Ôn hôm nay": trắc nghiệm các từ đã đến hạn ôn theo lịch lặp lại ngắt quãng (tối đa 20 câu/lượt). */
+  function startVocabDailyReview() {
+    var duePool = getVocabDailyDueList();
+    if (duePool.length === 0) {
+      var tomorrowCount = getVocabDailyDueList(1).length;
+      alert("Hôm nay không còn từ nào đến hạn ôn." +
+        (tomorrowCount ? " Ngày mai có " + tomorrowCount + " từ." : " Hãy làm thêm bài test để lên lịch ôn cho từ mới."));
+      return;
+    }
+    startVocabQuickChoiceTest("daily", pickVocabTestQueue(duePool, 20));
+  }
+
+  /** Vào thẳng bài trắc nghiệm Hiragana -> Nghĩa (6 đáp án) với bộ câu hỏi cho sẵn, đáp án nhiễu lấy từ toàn bộ từ vựng. */
+  function startVocabQuickChoiceTest(mode, questions) {
+    var questionCount = questions.length;
+    state.testState.mode = mode;
     state.testState.isActive = true;
     state.testState.isFinished = false;
     state.testState.questions = questions;
@@ -7639,7 +8240,20 @@ history.replaceState({}, "", newUrl);
     renderTestQuestion();
   }
 
+  /** "Ôn lại câu sai": chạy lại ngay bài trắc nghiệm chỉ gồm các từ vừa sai, giữ nguyên cấu hình của lượt trước. */
+  function startVocabRetryWrong(questions) {
+    var ts = state.testState;
+    ts.isActive = true;
+    ts.isFinished = false;
+    ts.questions = shuffleArray(questions);
+    ts.currentIndex = 0;
+    ts.correctCount = 0;
+    ts.answers = [];
+    renderTestQuestion();
+  }
+
   function resetVocabTest() {
+    state.testState.mode = "config";
     state.testState.isActive = false;
     state.testState.isFinished = false;
     state.testState.questions = [];
@@ -7702,7 +8316,8 @@ history.replaceState({}, "", newUrl);
       questionWord: qLabel,
       correctMeaning: correctAnswer,
       selectedMeaning: selectedAnswer,
-      isCorrect: isCorrect
+      isCorrect: isCorrect,
+      raw: testState.questions[testState.currentIndex]
     });
 
     // Sau khi chọn đáp án thì đọc lại từ vựng (hiragana) bằng TTS (nếu bật trong config)
@@ -7876,7 +8491,7 @@ history.replaceState({}, "", newUrl);
   }
 
   /** Bấm "🔁 Ôn lại Kanji chưa thuộc": bỏ qua màn hình cấu hình, vào thẳng bài test Kanji chỉ gồm các
-   * mục đang mastery_score < 60 hoặc đến hạn needs_review_tomorrow, trộn ngẫu nhiên 2 dạng câu hỏi:
+   * mục đang mastery_score < 60, trộn ngẫu nhiên 2 dạng câu hỏi:
    * Kanji -> Hán Việt (mode 4) và Từ vựng (của kanji) -> Nghĩa (mode 5). */
   function startKanjiReviewTest() {
     var candidates = getKanjiReviewCandidates();
@@ -8343,7 +8958,13 @@ history.replaceState({}, "", newUrl);
     }
 
     const btnRow = createElement("div", "btn-row", "");
-    const retryBtn = createElement("button", "btn", "Làm lại");
+    const wrongCandidates = collectWrongItems(testState.answers, "candidate");
+    if (wrongCandidates.length > 0) {
+      btnRow.appendChild(createRetryWrongButton(wrongCandidates.length, function () {
+        startKanjiRetryWrong(wrongCandidates);
+      }));
+    }
+    const retryBtn = createElement("button", wrongCandidates.length > 0 ? "btn-ghost" : "btn", "Làm lại");
     retryBtn.type = "button";
     retryBtn.addEventListener("click", function () {
       var ts = state.kanjiTestState;
@@ -8371,6 +8992,18 @@ history.replaceState({}, "", newUrl);
     }
   }
 
+  /** "Ôn lại câu sai" của test Kanji: chạy lại ngay các câu vừa sai (đúng dạng câu hỏi cũ), giữ nguyên cấu hình. */
+  function startKanjiRetryWrong(candidates) {
+    var ts = state.kanjiTestState;
+    ts.isActive = true;
+    ts.isFinished = false;
+    ts.questions = shuffleArray(candidates);
+    ts.currentIndex = 0;
+    ts.correctCount = 0;
+    ts.answers = [];
+    renderKanjiTestQuestion();
+  }
+
   function handleKanjiSelectAnswer(item, mode, correct, selected, kanjiIdxForReveal) {
     var testState = state.kanjiTestState;
     var isCorrect = selected === correct;
@@ -8381,7 +9014,10 @@ history.replaceState({}, "", newUrl);
     applyKanjiMasteryTestResult(masteryKey, "choice", { isCorrect: isCorrect });
 
     if (isCorrect) testState.correctCount += 1;
-    testState.answers.push({ item: item, mode: mode, correct: correct, selected: selected, isCorrect: isCorrect });
+    testState.answers.push({
+      item: item, mode: mode, correct: correct, selected: selected, isCorrect: isCorrect,
+      candidate: testState.questions[testState.currentIndex]
+    });
 
     if (item && item.ve && item.ve.reading) {
       speakJapanese(item.ve.reading, null);
@@ -9426,6 +10062,7 @@ history.replaceState({}, "", newUrl);
     setupNoteAnchors();
     setupDetailModal();
     setupDupTab();
+    setupDailyReviewTab();
 
     renderDisplaySettingsUI();
     renderVocabList();
