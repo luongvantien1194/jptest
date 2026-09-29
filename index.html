@@ -9,17 +9,17 @@
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
   <meta name="theme-color" content="#6366f1" />
-  <script src="js/kanjiHanViet.js?v=1035"></script>
+  <script src="js/kanjiHanViet.js?v=1037"></script>
 
-  <script src="data/master.js?v=1035"></script>
-  <script src="data/vocabData.js?v=1035"></script>
-  <script src="data/vocabData_1.js?v=1035"></script>
-  <script src="data/dup.js?v=1035"></script>
-  <script src="data/vocabExtra/extra.js?v=1035"></script>
+  <script src="data/master.js?v=1037"></script>
+  <script src="data/vocabData.js?v=1037"></script>
+  <script src="data/vocabData_1.js?v=1037"></script>
+  <script src="data/dup.js?v=1037"></script>
+  <script src="data/vocabExtra/extra.js?v=1037"></script>
 
-  <script src="data/kanjiData.js?v=1035"></script>
-  <script src="data/kanjiData_1.js?v=1035"></script>
-  <script src="data/kanjiExtra/extra.js?v=1035"></script>
+  <script src="data/kanjiData.js?v=1037"></script>
+  <script src="data/kanjiData_1.js?v=1037"></script>
+  <script src="data/kanjiExtra/extra.js?v=1037"></script>
 
   <script>
     window._vocabExtra = window._vocabExtra || [];
@@ -43,14 +43,14 @@
   </script>
 
 
-  <script src="data/grammarData.js?v=1035"></script>
-  <script src="data/grammarData_1.js?v=1035"></script>
+  <script src="data/grammarData.js?v=1037"></script>
+  <script src="data/grammarData_1.js?v=1037"></script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=1035">
+  <link rel="stylesheet" href="css/style.css?v=1036">
 </head>
 
 <body>
@@ -71,6 +71,10 @@
         </button>
         <button class="tab" data-tab="grammar" type="button">
           <span class="tab-label-main">Ngữ pháp</span>
+          <span class="tab-indicator"></span>
+        </button>
+        <button class="tab" data-tab="daily" type="button">
+          <span class="tab-label-main">📅 Ôn tập</span>
           <span class="tab-indicator"></span>
         </button>
         <button class="tab" data-tab="note" type="button">
@@ -378,6 +382,22 @@
         </div>
       </section>
 
+      <!-- Daily Review Section: mỗi ngày 1 bộ Kanji / từ vựng / ngữ pháp (renderDailyReviewTab) -->
+      <section class="section" id="section-daily" aria-labelledby="section-daily-title">
+        <div class="section-inner daily-tab-stack">
+          <div class="section-header">
+            <button type="button" class="filter-icon-btn nav-menu-btn" title="Menu điều hướng">☰</button>
+            <div class="daily-header-main">
+              <span id="section-daily-title" class="daily-title">Ôn tập mỗi ngày</span>
+              <span class="chip" id="daily-date-label"></span>
+            </div>
+            <button type="button" class="btn-ghost daily-test-btn" id="daily-test-btn" title="Làm bài trắc nghiệm với các từ vựng của hôm nay">📝 Test</button>
+            <button type="button" class="filter-icon-btn" id="daily-config-btn" title="Cấu hình số lượng Kanji / từ vựng / ngữ pháp mỗi ngày">⚙️</button>
+          </div>
+          <div class="daily-scroll scroll-thin" id="daily-review-container"></div>
+        </div>
+      </section>
+
       <!-- Note Section -->
       <section class="section" id="section-note" aria-labelledby="section-note-title">
         <div class="section-inner">
@@ -552,21 +572,46 @@
     <button class="nav-menu-item" data-tab="kanji">Kanji</button>
     <button class="nav-menu-item" data-tab="stars">⭐ Yêu thích</button>
     <button class="nav-menu-item" data-tab="grammar">Ngữ pháp</button>
+    <button class="nav-menu-item" data-tab="daily">📅 Ôn tập mỗi ngày</button>
     <button class="nav-menu-item" data-tab="note">Ghi chú</button>
     <button class="nav-menu-item" data-tab="dup">Từ trùng</button>
     <button class="nav-menu-item" data-tab="vocab-edit">✏️ Sửa từ vựng</button>
     <button class="nav-menu-item" id="nav-menu-reload">🔄 Tải lại màn hình</button>
-    <button class="nav-menu-item" id="nav-menu-export" title="Tải file sao lưu dữ liệu học (đã thuộc, điểm test, yêu thích, cài đặt...) để mang sang trình duyệt khác">💾 Xuất dữ liệu học</button>
-    <button class="nav-menu-item" id="nav-menu-import" title="Nhập file sao lưu, thay thế dữ liệu học hiện có trên trình duyệt này">📥 Nhập dữ liệu học</button>
+    <button class="nav-menu-item" id="nav-menu-export" title="Copy hoặc tải file sao lưu dữ liệu học (đã thuộc, điểm test, yêu thích, cài đặt...) để mang sang trình duyệt khác">💾 Xuất dữ liệu học</button>
+    <button class="nav-menu-item" id="nav-menu-import" title="Nhập dữ liệu sao lưu từ file hoặc dán từ clipboard">📥 Nhập dữ liệu học</button>
+  </div>
+  <!-- Sao lưu / khôi phục dữ liệu học (js/dataBackup.js) -->
+  <div class="detail-modal backup-modal" id="backup-modal" aria-hidden="true">
+    <div class="detail-modal__backdrop"></div>
+    <div class="detail-modal__dialog backup-modal__dialog" role="dialog" aria-modal="true" aria-labelledby="backup-modal-title">
+      <button class="detail-modal__close" type="button" id="backup-modal-close" aria-label="Đóng">×</button>
+      <div class="detail-modal__title backup-modal__title" id="backup-modal-title"></div>
+      <div class="backup-modal__panel" id="backup-export-panel">
+        <div class="backup-modal__summary" id="backup-export-summary"></div>
+        <div class="backup-modal__actions">
+          <button type="button" class="btn-ghost" id="backup-export-copy">📋 Copy vào clipboard</button>
+          <button type="button" class="btn" id="backup-export-file">💾 Tải file .json</button>
+        </div>
+      </div>
+      <div class="backup-modal__panel" id="backup-import-panel">
+        <button type="button" class="btn-ghost backup-modal__file-btn" id="backup-import-file">📂 Chọn file .json</button>
+        <div class="backup-modal__or">hoặc dán dữ liệu đã copy</div>
+        <textarea class="input-text backup-modal__textarea" id="backup-import-text" rows="6" placeholder="Dán dữ liệu vào đây" spellcheck="false"></textarea>
+        <div class="backup-modal__actions">
+          <button type="button" class="btn" id="backup-import-paste">📥 Nhập dữ liệu đã dán</button>
+        </div>
+      </div>
+      <div class="backup-modal__status" id="backup-modal-status" role="status"></div>
+    </div>
   </div>
   <input type="file" id="backup-import-input" accept=".json,application/json" hidden>
   <!-- soundOverlay removed (no mp3 audio) -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
-  <script src="data/configDoc.js?v=1035"></script>
-  <script src="js/main.js?v=1035"></script>
-  <script src="js/vocabEditor.js?v=1035"></script>
-  <script src="js/dataBackup.js?v=1035"></script>
+  <script src="data/configDoc.js?v=1037"></script>
+  <script src="js/main.js?v=1037"></script>
+  <script src="js/vocabEditor.js?v=1037"></script>
+  <script src="js/dataBackup.js?v=1037"></script>
 </body>
 
 </html>
