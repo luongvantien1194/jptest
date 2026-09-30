@@ -7129,7 +7129,11 @@
       return;
     }
 
-    const raw = grammarData[state.selected.grammarIndex];
+    openDetailModal("Chi tiết ngữ pháp", buildGrammarDetailNode(grammarData[state.selected.grammarIndex]));
+  }
+
+  /** Khối nội dung chi tiết 1 mẫu ngữ pháp (cấu trúc, ý nghĩa, giải thích, ví dụ) — dùng cho modal chi tiết và màn bài tập */
+  function buildGrammarDetailNode(raw) {
     const item = {
       lesson: raw.lesson != null ? raw.lesson : raw.Lesson,
       structure: raw.structure != null ? raw.structure : raw.Structure,
@@ -7137,12 +7141,6 @@
       explain: raw.Explanation,
       example: raw.Example
     };
-    if (!item) {
-      const notFound = createElement("div", "detail-empty", "Không tìm thấy dữ liệu ngữ pháp.");
-      container.appendChild(notFound);
-      return;
-    }
-
     const root = createElement("div", "grammar-detail", "");
 
     const structureRow = createElement("div", "grammar-structure-row", "");
@@ -7241,7 +7239,1163 @@
       root.appendChild(exampleSection);
     }
 
-    openDetailModal("Chi tiết ngữ pháp", root);
+    return root;
+  }
+
+  // ----- Bài tập ngữ pháp (đề do ChatGPT sinh, dán lại vào app) -----
+  // Luồng: chọn phạm vi → app bốc ngẫu nhiên số mẫu muốn làm, soạn prompt rồi mở ChatGPT
+  // (prompt cũng được copy sẵn) → ChatGPT trả về khối JSON (đề dài thì có thể nhiều phần) → dán lại vào app để làm bài:
+  //   - "order":  xem nghĩa tiếng Việt, xếp các cụm hiragana thành câu đúng (sai thì xếp lại tới khi đúng)
+  //   - "choice": câu bị khuyết phần ngữ pháp, chọn 1 trong 4 đáp án (chọn xong luôn hiện đáp án đúng)
+  // Xong mỗi câu đều hiện lại thông tin mẫu ngữ pháp. Cấu hình, đề đang chờ dán data và bộ bài đang làm
+  // đều lưu localStorage để chuyển qua app ChatGPT rồi quay lại (kể cả khi trang bị tải lại) vẫn làm tiếp được.
+  var GRAMMAR_EX_DEFAULT_COUNT = 10;
+  /** Đề nhiều hơn số câu này thì dặn ChatGPT được trả làm nhiều phần (1 lần trả dài quá hay bị cắt giữa chừng) */
+  var GRAMMAR_EX_SPLIT_THRESHOLD = 15;
+  /** URL ?q= dài hơn mức này thì chỉ mở ChatGPT trống, người dùng tự dán prompt đã copy */
+  var GRAMMAR_EX_URL_MAX = 12000;
+  var GRAMMAR_EX_CONFIG_KEY = "jp_grammar_ex_config";
+  var GRAMMAR_EX_PENDING_KEY = "jp_grammar_ex_pending";
+  var GRAMMAR_EX_SESSION_KEY = "jp_grammar_ex_session";
+  /** Đề đã tạo nhưng chưa dán data: quá hạn này thì mở bài tập sẽ về màn cấu hình thay vì màn dán data */
+  var GRAMMAR_EX_PENDING_TTL = 24 * 60 * 60 * 1000;
+  var GRAMMAR_EX_BLANK = "＿＿＿";
+  var GRAMMAR_EX_LEVELS = [
+    { value: "n45", label: "N4-N5 (Minna)", rangeLabel: "bài" },
+    { value: "n3", label: "N3", rangeLabel: "STT" },
+    { value: "filtered", label: "Theo danh sách đang lọc" }
+  ];
+  var GRAMMAR_EX_MODES = [
+    { value: "mix", label: "Trộn 2 dạng" },
+    { value: "order", label: "Chỉ sắp xếp câu" },
+    { value: "choice", label: "Chỉ chọn đáp án" }
+  ];
+  var GRAMMAR_EX_TYPE_LABELS = { order: "Sắp xếp câu", choice: "Chọn đáp án" };
+
+  /** session: bộ bài đang làm (lưu localStorage); q: trạng thái câu đang hiển thị (không lưu) */
+  var grammarEx = { session: null, q: null };
+
+  function loadGrammarExStore(key) {
+    try { return JSON.parse(localStorage.getItem(key)) || null; } catch (e) { return null; }
+  }
+  function saveGrammarExStore(key, value) {
+    try {
+      if (value == null) {
+        localStorage.removeItem(key);
+      } else {
+        localStorage.setItem(key, JSON.stringify(value));
+      }
+    } catch (e) { }
+  }
+
+  /** Id ổn định để ChatGPT trả lại & app tra ngược ra mẫu ngữ pháp: "N45-<STT>" / "N3-<STT>" */
+  function getGrammarExId(raw) {
+    return (isGrammarN3(raw) ? "N3-" : "N45-") + raw.STT;
+  }
+  function findGrammarByExId(id) {
+    var key = String(id || "").trim().toUpperCase();
+    if (!key) return null;
+    for (var i = 0; i < grammarData.length; i++) {
+      if (grammarData[i] && getGrammarExId(grammarData[i]) === key) return grammarData[i];
+    }
+    return null;
+  }
+  /** Số dùng để lọc phạm vi: N4-N5 theo số bài (Lesson), N3 không có Lesson nên theo STT */
+  function getGrammarExRangeNumber(raw) {
+    return parseInt(isGrammarN3(raw) ? raw.STT : (raw.lesson != null ? raw.lesson : raw.Lesson), 10);
+  }
+  function getGrammarExRangeMax(level) {
+    var max = 0;
+    grammarData.forEach(function (raw) {
+      if (!raw || isGrammarN3(raw) !== (level === "n3")) return;
+      var n = getGrammarExRangeNumber(raw);
+      if (!isNaN(n) && n > max) max = n;
+    });
+    return max || 1;
+  }
+  function hasActiveGrammarFilter() {
+    return state.filter.grammarLesson !== "all" || state.filter.checkboxGrammarN3 === true ||
+      !!String(state.filter.grammarSearch || "").trim();
+  }
+
+  function loadGrammarExConfig() {
+    var saved = loadGrammarExStore(GRAMMAR_EX_CONFIG_KEY) || {};
+    var savedRanges = saved.ranges || {};
+    var cfg = {
+      level: GRAMMAR_EX_LEVELS.some(function (l) { return l.value === saved.level; }) ? saved.level : "n45",
+      ranges: {},
+      count: Math.max(1, parseInt(saved.count, 10) || GRAMMAR_EX_DEFAULT_COUNT),
+      mode: GRAMMAR_EX_MODES.some(function (m) { return m.value === saved.mode; }) ? saved.mode : "mix",
+      distractors: saved.distractors !== false,
+      readAfter: saved.readAfter !== false
+    };
+    ["n45", "n3"].forEach(function (level) {
+      var r = savedRanges[level] || {};
+      var from = parseInt(r.from, 10);
+      var to = parseInt(r.to, 10);
+      cfg.ranges[level] = { from: isNaN(from) ? 1 : from, to: isNaN(to) ? getGrammarExRangeMax(level) : to };
+    });
+    // Đang lọc ở tab Ngữ pháp thì mặc định làm bài đúng danh sách đang lọc; hết lọc thì quay về N4-N5
+    if (hasActiveGrammarFilter()) {
+      cfg.level = "filtered";
+    } else if (cfg.level === "filtered") {
+      cfg.level = "n45";
+    }
+    return cfg;
+  }
+
+  function getGrammarExPool(cfg) {
+    if (cfg.level === "filtered") {
+      return applyGrammarFilter().filter(function (raw) { return !!getGrammarStructure(raw); });
+    }
+    var isN3 = cfg.level === "n3";
+    var range = cfg.ranges[cfg.level];
+    return grammarData.filter(function (raw) {
+      if (!raw || isGrammarN3(raw) !== isN3 || !getGrammarStructure(raw)) return false;
+      var n = getGrammarExRangeNumber(raw);
+      return !isNaN(n) && n >= range.from && n <= range.to;
+    });
+  }
+
+  /** Bốc ngẫu nhiên cfg.count mẫu trong phạm vi; chế độ trộn thì chia xen kẽ 2 dạng bài */
+  function buildGrammarExPlan(pool, cfg) {
+    return shuffleArray(pool).slice(0, cfg.count).map(function (raw, i) {
+      return {
+        id: getGrammarExId(raw),
+        type: cfg.mode === "mix" ? (i % 2 === 0 ? "order" : "choice") : cfg.mode,
+        structure: getGrammarStructure(raw),
+        meaning: String(raw.Meaning || "").split("\n").join(" ").trim()
+      };
+    });
+  }
+
+  function buildGrammarExPrompt(plan, cfg) {
+    var sampleOrder = plan.filter(function (p) { return p.type === "order"; })[0];
+    var sampleChoice = plan.filter(function (p) { return p.type === "choice"; })[0];
+    var lines = [
+      "Bạn là giáo viên tiếng Nhật. Tạo " + plan.length + " bài tập ngữ pháp cho người Việt, mỗi dòng dưới đây là 1 bài, " +
+      "câu của bài phải dùng đúng mẫu ngữ pháp của dòng đó (id N45 = trình độ N4-N5, N3 = trình độ N3; giữ nguyên id và dạng).",
+      "",
+      "id | dạng | mẫu ngữ pháp | nghĩa"
+    ];
+    plan.forEach(function (p) {
+      lines.push(p.id + " | " + p.type + " | " + p.structure + " | " + p.meaning);
+    });
+    lines.push(
+      "",
+      "Yêu cầu chung:",
+      "- Câu mới, tự nhiên, độ dài vừa phải, từ vựng đúng trình độ, thể hiện rõ mẫu ngữ pháp.",
+      "- jp: câu hoàn chỉnh (kanji + kana, kết thúc bằng 。); kana: cả câu bằng hiragana (katakana cho từ ngoại lai); " +
+      "vi: nghĩa tiếng Việt; explain: 1-2 câu tiếng Việt giải thích cách dùng mẫu ngữ pháp trong câu."
+    );
+    if (sampleOrder) {
+      lines.push(
+        "",
+        "Dạng order (sắp xếp câu):",
+        "- tiles: câu kana (bỏ 。) tách thành 4-8 cụm theo 文節 (trợ từ đi liền từ đứng trước), đúng thứ tự; nối tiles phải ra đúng kana.",
+        "- Ưu tiên câu chỉ có 1 thứ tự đúng; nếu có thứ tự khác cũng tự nhiên thì thêm alt: [[tiles theo thứ tự đó]]."
+      );
+      if (cfg.distractors) {
+        lines.push("- extra: 2 cụm gây nhiễu dễ nhầm (sai trợ từ hoặc sai cách chia), không dùng được trong câu đúng.");
+      }
+    }
+    if (sampleChoice) {
+      lines.push(
+        "",
+        "Dạng choice (chọn đáp án):",
+        "- q: câu jp nhưng phần thể hiện mẫu ngữ pháp thay bằng " + GRAMMAR_EX_BLANK + "; qKana: cách đọc hiragana của q (giữ " + GRAMMAR_EX_BLANK + ").",
+        "- options: 4 đáp án (1 đúng, 3 sai nhưng dễ nhầm: mẫu gần nghĩa hoặc chia sai); answer: chép y nguyên đáp án đúng trong options.",
+        "- explain nói thêm ngắn gọn vì sao các đáp án còn lại sai."
+      );
+    }
+    var samples = [];
+    if (sampleOrder) {
+      var orderSample = { id: sampleOrder.id, type: "order", jp: "", kana: "", vi: "", tiles: ["", ""] };
+      if (cfg.distractors) orderSample.extra = ["", ""];
+      orderSample.explain = "";
+      samples.push(JSON.stringify(orderSample));
+    }
+    if (sampleChoice) {
+      samples.push(JSON.stringify({
+        id: sampleChoice.id, type: "choice", q: "", qKana: "", options: ["", "", "", ""], answer: "",
+        jp: "", kana: "", vi: "", explain: ""
+      }));
+    }
+    lines.push(
+      "",
+      "Chỉ trả về đúng 1 code block JSON (không viết gì ngoài code block), đủ " + plan.length + " phần tử, theo cấu trúc:",
+      "{\"items\":[",
+      samples.join(",\n"),
+      "]}"
+    );
+    if (plan.length > GRAMMAR_EX_SPLIT_THRESHOLD) {
+      lines.push(
+        "Nếu không trả hết trong 1 lần: dừng ngay sau 1 phần tử trọn vẹn và đóng code block; khi tôi nhắn \"tiếp\" " +
+        "thì trả các phần tử còn lại trong code block mới cùng cấu trúc {\"items\":[...]}."
+      );
+    }
+    return lines.join("\n");
+  }
+
+  function getGrammarExChatGptUrl(prompt) {
+    var url = "https://chatgpt.com/?q=" + encodeURIComponent(prompt);
+    // URL quá dài có thể bị từ chối → chỉ mở ChatGPT, prompt đã được copy sẵn để dán tay
+    return url.length > GRAMMAR_EX_URL_MAX ? "https://chatgpt.com/" : url;
+  }
+  function isGrammarExPromptPrefilled(prompt) {
+    return getGrammarExChatGptUrl(prompt) !== "https://chatgpt.com/";
+  }
+
+  /** Copy đồng bộ (execCommand) trước: ngay sau đó mở tab ChatGPT làm trang mất focus, Clipboard API bất đồng bộ dễ bị từ chối */
+  function copyGrammarExText(text, callback) {
+    var ok = false;
+    try {
+      var ta = document.createElement("textarea");
+      ta.value = text;
+      ta.setAttribute("readonly", "");
+      ta.style.position = "fixed";
+      ta.style.top = "-9999px";
+      ta.style.left = "-9999px";
+      document.body.appendChild(ta);
+      ta.select();
+      ta.setSelectionRange(0, text.length);
+      ok = document.execCommand("copy");
+      document.body.removeChild(ta);
+    } catch (e) {
+      ok = false;
+    }
+    if (ok) {
+      if (callback) callback(true);
+      return;
+    }
+    copyTextToClipboard(text, callback || function () { });
+  }
+
+  /** So đáp án bỏ qua khoảng trắng, dấu ～ và dấu câu (ChatGPT hay thêm/bớt những ký tự này) */
+  function normalizeGrammarExAnswer(s) {
+    return String(s == null ? "" : s).replace(/[\s　～~〜。、]/g, "");
+  }
+
+  function parseGrammarExItem(obj) {
+    if (!obj || typeof obj !== "object") return null;
+    function str(v) { return v == null ? "" : String(v).trim(); }
+    function strList(v) { return Array.isArray(v) ? v.map(str).filter(Boolean) : []; }
+    var type = str(obj.type).toLowerCase();
+    if (type !== "order" && type !== "choice") {
+      type = Array.isArray(obj.tiles) ? "order" : (Array.isArray(obj.options) ? "choice" : "");
+    }
+    var item = {
+      id: str(obj.id).toUpperCase(),
+      type: type,
+      jp: str(obj.jp),
+      kana: str(obj.kana),
+      vi: str(obj.vi),
+      explain: str(obj.explain)
+    };
+    if (type === "order") {
+      item.tiles = strList(obj.tiles);
+      if (item.tiles.length < 2) return null;
+      var tilesKey = item.tiles.slice().sort().join("␟");
+      var mainText = item.tiles.join("");
+      // Thứ tự đúng khác chỉ nhận khi dùng đúng bộ cụm của đáp án chính
+      item.alt = (Array.isArray(obj.alt) ? obj.alt : []).map(strList).filter(function (a) {
+        return a.slice().sort().join("␟") === tilesKey && a.join("") !== mainText;
+      });
+      item.extra = strList(obj.extra).filter(function (t) { return item.tiles.indexOf(t) === -1; }).slice(0, 4);
+      return item;
+    }
+    if (type === "choice") {
+      // Chuẩn hoá các kiểu chỗ trống ChatGPT hay dùng (___, ＿＿, （　）) về 1 dạng
+      var blankRe = /[＿_]{2,}|（\s*）|\(\s*\)/g;
+      item.q = str(obj.q).replace(blankRe, GRAMMAR_EX_BLANK);
+      item.qKana = str(obj.qKana).replace(blankRe, GRAMMAR_EX_BLANK);
+      item.options = strList(obj.options).filter(function (o, i, arr) { return arr.indexOf(o) === i; });
+      var answer = str(obj.answer);
+      var answerIdx = -1;
+      item.options.forEach(function (o, i) {
+        if (answerIdx === -1 && normalizeGrammarExAnswer(o) === normalizeGrammarExAnswer(answer)) answerIdx = i;
+      });
+      // Phòng khi ChatGPT trả về chỉ số (0-based) thay vì nội dung đáp án
+      if (answerIdx === -1 && /^\d+$/.test(answer) && Number(answer) < item.options.length) {
+        answerIdx = Number(answer);
+      }
+      if (!item.q || item.options.length < 2 || answerIdx === -1) return null;
+      item.answer = item.options[answerIdx];
+      return item;
+    }
+    return null;
+  }
+
+  /** Nhặt từng object {...} còn trọn vẹn trong chuỗi — cho data bị cắt dở hoặc nhiều phần dán nối nhau */
+  function salvageGrammarExObjects(src) {
+    var found = [];
+    var stack = [];
+    var inString = false;
+    for (var i = 0; i < src.length; i++) {
+      var ch = src.charAt(i);
+      if (inString) {
+        if (ch === "\\") {
+          i++;
+        } else if (ch === "\"") {
+          inString = false;
+        }
+      } else if (ch === "\"") {
+        inString = true;
+      } else if (ch === "{") {
+        stack.push(i);
+      } else if (ch === "}" && stack.length) {
+        var chunk = src.slice(stack.pop(), i + 1);
+        try {
+          found.push(JSON.parse(chunk));
+        } catch (e) {
+          try { found.push(JSON.parse(chunk.replace(/,\s*([}\]])/g, "$1"))); } catch (e2) { }
+        }
+      }
+    }
+    return found;
+  }
+
+  /**
+   * Đọc data ChatGPT trả về: chấp nhận có/không có ```json```, chữ thừa trước/sau, dấu phẩy thừa, thiếu [ ],
+   * nhiều phần (nhiều code block) dán nối nhau, hoặc phần cuối bị cắt dở (bỏ bài chưa trọn vẹn).
+   */
+  function parseGrammarExData(text) {
+    var src = String(text || "").trim();
+    if (!src) return { error: "Chưa dán dữ liệu." };
+    src = src.replace(/```[a-z]*/gi, "\n");
+    var start = src.search(/[\[{]/);
+    if (start === -1) return { error: "Không tìm thấy dữ liệu JSON trong nội dung đã dán." };
+    src = src.slice(start);
+    var end = Math.max(src.lastIndexOf("}"), src.lastIndexOf("]"));
+    var body = src.slice(0, end + 1);
+    var noTrailingComma = body.replace(/,\s*([}\]])/g, "$1");
+    var candidates = [body, noTrailingComma, "[" + noTrailingComma + "]"];
+    var data = null;
+    var firstError = "";
+    for (var i = 0; i < candidates.length && data == null; i++) {
+      try {
+        data = JSON.parse(candidates[i]);
+      } catch (e) {
+        if (!firstError) firstError = e.message;
+      }
+    }
+    var list;
+    if (data != null) {
+      list = Array.isArray(data) ? data : (data.items || data.exercises || data.data || [data]);
+      if (!Array.isArray(list)) list = [];
+    } else {
+      list = salvageGrammarExObjects(src);
+    }
+    var items = [];
+    var seen = {};
+    var skipped = 0;
+    list.forEach(function (obj) {
+      var item = parseGrammarExItem(obj);
+      if (!item) {
+        // Chỉ đếm những object trông giống bài tập (bỏ qua object bọc ngoài {"items": ...})
+        if (obj && typeof obj === "object" && (obj.type || obj.tiles || obj.options)) skipped++;
+        return;
+      }
+      var key = JSON.stringify(item);
+      if (seen[key]) return;
+      seen[key] = true;
+      items.push(item);
+    });
+    if (!items.length) {
+      return {
+        error: data == null
+          ? "JSON không hợp lệ: " + firstError
+          : "Không có bài hợp lệ (dạng order cần tiles; dạng choice cần q, options và answer nằm trong options)."
+      };
+    }
+    return { items: items, skipped: skipped };
+  }
+
+  function loadGrammarExSession() {
+    var s = loadGrammarExStore(GRAMMAR_EX_SESSION_KEY);
+    if (!s || !Array.isArray(s.items) || !s.items.length || !Array.isArray(s.queue)) return null;
+    if (!Array.isArray(s.results)) s.results = [];
+    return s;
+  }
+  function saveGrammarExSession() {
+    saveGrammarExStore(GRAMMAR_EX_SESSION_KEY, grammarEx.session);
+  }
+  function loadGrammarExPending() {
+    var p = loadGrammarExStore(GRAMMAR_EX_PENDING_KEY);
+    return p && Array.isArray(p.plan) && p.prompt ? p : null;
+  }
+
+  function startGrammarExSession(items) {
+    grammarEx.session = {
+      createdAt: Date.now(),
+      items: items,
+      queue: [],
+      pos: 0,
+      results: [],
+      finished: false,
+      readAfter: loadGrammarExConfig().readAfter
+    };
+    restartGrammarExSession(items.map(function (_, i) { return i; }));
+  }
+  /** Làm (lại) bộ hiện tại với danh sách câu `indices` (chỉ số trong session.items), xáo thứ tự */
+  function restartGrammarExSession(indices) {
+    var s = grammarEx.session;
+    s.queue = shuffleArray(indices);
+    s.pos = 0;
+    s.results = [];
+    s.finished = false;
+    grammarEx.q = null;
+    saveGrammarExSession();
+    renderGrammarExQuestion();
+  }
+
+  function getGrammarExCurrentItem() {
+    var s = grammarEx.session;
+    return s && !s.finished && s.pos < s.queue.length ? s.items[s.queue[s.pos]] : null;
+  }
+  function countGrammarExCorrect() {
+    return grammarEx.session.results.filter(function (r) { return r && r.correct; }).length;
+  }
+
+  function buildGrammarExQuestionState(item) {
+    var q = {
+      pos: grammarEx.session.pos,
+      attempts: 0,
+      hinted: false,
+      gaveUp: false,
+      answered: false,
+      correct: false,
+      locked: false,
+      picked: null,
+      selected: [],
+      wrongFrom: null,
+      showVi: false,
+      justAnswered: false,
+      rendered: false
+    };
+    if (item.type === "order") {
+      var bag = item.tiles.map(function (t, i) { return { id: "c" + i, text: t }; })
+        .concat(item.extra.map(function (t, i) { return { id: "e" + i, text: t }; }));
+      var answerKey = item.tiles.join("␟");
+      // Xáo lại vài lần để các cụm không hiện ra đúng luôn thứ tự đáp án
+      for (var tries = 0; tries < 6; tries++) {
+        q.bag = shuffleArray(bag);
+        if (q.bag.map(function (t) { return t.text; }).join("␟").indexOf(answerKey) === -1) break;
+      }
+    } else {
+      q.options = shuffleArray(item.options);
+    }
+    return q;
+  }
+
+  function getGrammarExSelectedTexts(q) {
+    return q.selected.map(function (id) {
+      var tile = q.bag.filter(function (t) { return t.id === id; })[0];
+      return tile ? tile.text : "";
+    });
+  }
+  /** Phần đầu đang xếp đúng liên tục dài nhất (so với đáp án chính và các thứ tự alt) */
+  function getGrammarExBestPrefix(item, texts) {
+    var best = { len: -1, order: item.tiles };
+    [item.tiles].concat(item.alt || []).forEach(function (order) {
+      var n = 0;
+      while (n < texts.length && n < order.length && texts[n] === order[n]) n++;
+      if (n > best.len) best = { len: n, order: order };
+    });
+    return best;
+  }
+
+  function pickGrammarExTile(tileId) {
+    var q = grammarEx.q;
+    var item = getGrammarExCurrentItem();
+    if (!q || !item || q.answered || q.locked || q.selected.indexOf(tileId) !== -1 ||
+      q.selected.length >= item.tiles.length) {
+      return;
+    }
+    q.selected.push(tileId);
+    if (q.selected.length === item.tiles.length) {
+      checkGrammarExOrder();
+    } else {
+      renderGrammarExQuestion();
+    }
+  }
+
+  /** Xếp đủ cụm: đúng thì xong câu; sai thì rung + tô đỏ phần sai rồi giữ lại phần đầu đã đúng để xếp tiếp */
+  function checkGrammarExOrder() {
+    var q = grammarEx.q;
+    var item = getGrammarExCurrentItem();
+    var best = getGrammarExBestPrefix(item, getGrammarExSelectedTexts(q));
+    if (best.len === item.tiles.length) {
+      finishGrammarExQuestion(q.attempts === 0 && !q.hinted);
+      return;
+    }
+    q.attempts += 1;
+    q.wrongFrom = best.len;
+    q.locked = true;
+    renderGrammarExQuestion();
+    setTimeout(function () {
+      if (grammarEx.q !== q) return;
+      q.selected = q.selected.slice(0, best.len);
+      q.wrongFrom = null;
+      q.locked = false;
+      renderGrammarExQuestion();
+    }, 800);
+  }
+
+  /** 💡 Gợi ý: bỏ phần đang sai và điền thêm 1 cụm đúng tiếp theo (câu này không còn tính là đúng) */
+  function hintGrammarExOrder() {
+    var q = grammarEx.q;
+    var item = getGrammarExCurrentItem();
+    if (!q || !item || q.answered || q.locked) return;
+    var best = getGrammarExBestPrefix(item, getGrammarExSelectedTexts(q));
+    q.hinted = true;
+    q.selected = q.selected.slice(0, best.len);
+    var nextText = best.order[best.len];
+    var tile = q.bag.filter(function (t) { return t.text === nextText && q.selected.indexOf(t.id) === -1; })[0];
+    if (tile) q.selected.push(tile.id);
+    if (q.selected.length === item.tiles.length) {
+      checkGrammarExOrder();
+    } else {
+      renderGrammarExQuestion();
+    }
+  }
+
+  function giveUpGrammarExOrder() {
+    var q = grammarEx.q;
+    var item = getGrammarExCurrentItem();
+    if (!q || !item || q.answered || q.locked) return;
+    var used = [];
+    q.selected = item.tiles.map(function (text) {
+      var tile = q.bag.filter(function (t) { return t.text === text && used.indexOf(t.id) === -1; })[0];
+      used.push(tile.id);
+      return tile.id;
+    });
+    q.gaveUp = true;
+    finishGrammarExQuestion(false);
+  }
+
+  function pickGrammarExOption(opt) {
+    var q = grammarEx.q;
+    var item = getGrammarExCurrentItem();
+    if (!q || !item || q.answered) return;
+    q.picked = opt;
+    finishGrammarExQuestion(opt === item.answer);
+  }
+
+  /** Chỉ tính đúng khi làm đúng ngay (dạng xếp câu: không sai lần nào, không dùng gợi ý) */
+  function finishGrammarExQuestion(isCorrect) {
+    var s = grammarEx.session;
+    var q = grammarEx.q;
+    var item = getGrammarExCurrentItem();
+    q.answered = true;
+    q.correct = isCorrect;
+    q.locked = false;
+    q.justAnswered = true;
+    s.results[s.pos] = { item: s.queue[s.pos], correct: isCorrect };
+    saveGrammarExSession();
+    renderGrammarExQuestion();
+    if (s.readAfter !== false) {
+      speakJapanese(getGrammarExFullSentence(item), null);
+    }
+  }
+
+  function nextGrammarExQuestion() {
+    var s = grammarEx.session;
+    s.pos += 1;
+    grammarEx.q = null;
+    if (s.pos >= s.queue.length) s.finished = true;
+    saveGrammarExSession();
+    if (s.finished) {
+      renderGrammarExResult();
+    } else {
+      renderGrammarExQuestion();
+    }
+  }
+
+  function getGrammarExFullSentence(item) {
+    if (item.jp) return item.jp;
+    if (item.type === "choice") return item.q.split(GRAMMAR_EX_BLANK).join(item.answer);
+    return item.kana || item.tiles.join("");
+  }
+
+  /** Câu có chỗ trống ＿＿＿: chưa trả lời thì để ô trống, trả lời rồi thì điền đáp án đúng vào */
+  function buildGrammarExBlankSentence(text, fill, className) {
+    var el = createElement("div", className, "");
+    String(text || "").split(GRAMMAR_EX_BLANK).forEach(function (part, i) {
+      if (i > 0) {
+        el.appendChild(createElement("span", "gx-blank" + (fill ? " gx-blank--filled" : ""), fill || "　　　"));
+      }
+      el.appendChild(document.createTextNode(part));
+    });
+    return el;
+  }
+
+  function renderGrammarExQuestion() {
+    var s = grammarEx.session;
+    var item = getGrammarExCurrentItem();
+    if (!item) {
+      renderGrammarExResult();
+      return;
+    }
+    if (!grammarEx.q || grammarEx.q.pos !== s.pos) {
+      grammarEx.q = buildGrammarExQuestionState(item);
+    }
+    var q = grammarEx.q;
+
+    var root = createElement("div", "test-question gx-root", "");
+    var header = createElement("div", "test-question-header", "");
+    header.appendChild(createElement("div", "", "Câu " + (s.pos + 1) + " / " + s.queue.length + " · " + GRAMMAR_EX_TYPE_LABELS[item.type]));
+    header.appendChild(createElement("div", "", "Đã đúng: " + countGrammarExCorrect()));
+    root.appendChild(header);
+
+    var main = createElement("div", "test-question-main gx-question", "");
+    if (item.type === "order") {
+      main.appendChild(createElement("div", "gx-question-label", "Sắp xếp các cụm thành câu có nghĩa:"));
+      main.appendChild(createElement("div", "gx-question-vi", item.vi || "(ChatGPT không gửi nghĩa tiếng Việt)"));
+    } else {
+      main.appendChild(createElement("div", "gx-question-label", "Chọn đáp án đúng cho chỗ trống:"));
+      main.appendChild(buildGrammarExBlankSentence(item.q, q.answered ? item.answer : "", "gx-sentence"));
+      if (item.qKana) {
+        main.appendChild(buildGrammarExBlankSentence(item.qKana, "", "gx-kana"));
+      }
+      if (item.vi) {
+        if (q.showVi || q.answered) {
+          main.appendChild(createElement("div", "gx-question-vi gx-question-vi--small", item.vi));
+        } else {
+          var viBtn = createElement("button", "gx-link-btn", "Xem nghĩa");
+          viBtn.type = "button";
+          viBtn.addEventListener("click", function () {
+            q.showVi = true;
+            renderGrammarExQuestion();
+          });
+          main.appendChild(viBtn);
+        }
+      }
+    }
+    var progressOuter = createElement("div", "test-progress", "");
+    var progressInner = createElement("div", "test-progress-bar", "");
+    progressInner.style.width = (((s.pos + (q.answered ? 1 : 0)) / s.queue.length) * 100).toFixed(2) + "%";
+    progressOuter.appendChild(progressInner);
+    main.appendChild(progressOuter);
+    root.appendChild(main);
+
+    if (item.type === "order") {
+      appendGrammarExOrderUI(root, item, q);
+    } else {
+      appendGrammarExChoiceUI(root, item, q);
+    }
+
+    var reveal = null;
+    if (q.answered) {
+      reveal = buildGrammarExReveal(item, q);
+      root.appendChild(reveal);
+    }
+
+    // Vẽ lại cùng 1 câu (chọn cụm, bỏ cụm...) thì giữ nguyên vị trí cuộn của modal
+    var bodyEl = detailModalState.bodyEl;
+    var keepScroll = bodyEl && q.rendered ? bodyEl.scrollTop : 0;
+    openDetailModal("Bài tập ngữ pháp", root);
+    q.rendered = true;
+    if (bodyEl && keepScroll) bodyEl.scrollTop = keepScroll;
+    if (reveal && q.justAnswered) {
+      q.justAnswered = false;
+      reveal.scrollIntoView({ block: "nearest", behavior: "smooth" });
+    }
+  }
+
+  function appendGrammarExOrderUI(root, item, q) {
+    var build = createElement("div", "gx-build" + (q.wrongFrom != null ? " gx-build--wrong" : "") + (q.answered ? " gx-build--done" : ""), "");
+    var texts = getGrammarExSelectedTexts(q);
+    if (!texts.length) {
+      build.appendChild(createElement("span", "gx-build-placeholder", "Chạm vào các cụm bên dưới theo đúng thứ tự"));
+    }
+    texts.forEach(function (text, idx) {
+      var chip = createElement("button", "gx-chip" + (q.wrongFrom != null && idx >= q.wrongFrom ? " gx-chip--wrong" : ""), text);
+      chip.type = "button";
+      chip.disabled = q.answered;
+      chip.title = "Bỏ cụm này";
+      chip.addEventListener("click", function () {
+        if (q.answered || q.locked) return;
+        q.selected.splice(idx, 1);
+        renderGrammarExQuestion();
+      });
+      build.appendChild(chip);
+    });
+    root.appendChild(build);
+    if (q.answered) return;
+
+    var pool = createElement("div", "gx-pool", "");
+    q.bag.forEach(function (tile) {
+      var used = q.selected.indexOf(tile.id) !== -1;
+      var tileBtn = createElement("button", "gx-tile" + (used ? " gx-tile--used" : ""), tile.text);
+      tileBtn.type = "button";
+      tileBtn.disabled = used;
+      tileBtn.addEventListener("click", function () {
+        pickGrammarExTile(tile.id);
+      });
+      pool.appendChild(tileBtn);
+    });
+    root.appendChild(pool);
+
+    var tools = createElement("div", "gx-tools", "");
+    tools.appendChild(createElement("span", "gx-tools-count", texts.length + " / " + item.tiles.length + " cụm" +
+      (q.attempts ? " · sai " + q.attempts + " lần" : "")));
+    var hintBtn = createElement("button", "btn-ghost", "💡 Gợi ý 1 cụm");
+    hintBtn.type = "button";
+    hintBtn.addEventListener("click", hintGrammarExOrder);
+    tools.appendChild(hintBtn);
+    var giveUpBtn = createElement("button", "btn-ghost", "Xem đáp án");
+    giveUpBtn.type = "button";
+    giveUpBtn.addEventListener("click", giveUpGrammarExOrder);
+    tools.appendChild(giveUpBtn);
+    root.appendChild(tools);
+  }
+
+  function appendGrammarExChoiceUI(root, item, q) {
+    var grid = createElement("div", "options-grid gx-options", "");
+    q.options.forEach(function (opt, idx) {
+      var cls = "option-btn";
+      if (q.answered) {
+        if (opt === item.answer) {
+          cls += " gx-option--correct";
+        } else if (opt === q.picked) {
+          cls += " gx-option--wrong";
+        } else {
+          cls += " gx-option--dim";
+        }
+      }
+      var btn = createElement("button", cls, "");
+      btn.type = "button";
+      btn.disabled = q.answered;
+      btn.appendChild(createElement("span", "option-index", String(idx + 1)));
+      btn.appendChild(createElement("span", "gx-option-text", opt));
+      btn.addEventListener("click", function () {
+        pickGrammarExOption(opt);
+      });
+      grid.appendChild(btn);
+    });
+    root.appendChild(grid);
+  }
+
+  function buildGrammarExReveal(item, q) {
+    var s = grammarEx.session;
+    var wrap = createElement("div", "gx-reveal", "");
+
+    var status;
+    if (q.correct) {
+      status = "Đúng rồi!";
+    } else if (item.type === "choice") {
+      status = "Chưa đúng — đáp án: " + item.answer;
+    } else if (q.gaveUp) {
+      status = "Đáp án đúng";
+    } else {
+      var notes = [];
+      if (q.attempts) notes.push("sai " + q.attempts + " lần");
+      if (q.hinted) notes.push("có dùng gợi ý");
+      status = "Đã xếp đúng (" + notes.join(", ") + ")";
+    }
+    var banner = createElement("div", "kt-test-reveal-banner " + (q.correct ? "kt-test-reveal-banner--correct" : "kt-test-reveal-banner--wrong"), "");
+    banner.appendChild(createElement("div", "kt-test-reveal-status", status));
+
+    var sentence = getGrammarExFullSentence(item);
+    var sentenceRow = createElement("div", "gx-reveal-sentence-row", "");
+    sentenceRow.appendChild(createElement("div", "gx-reveal-jp", sentence));
+    var speakBtn = createElement("button", "gx-speak-btn", "🔊");
+    speakBtn.type = "button";
+    speakBtn.title = "Đọc câu";
+    speakBtn.addEventListener("click", function () {
+      speakJapanese(sentence, speakBtn);
+    });
+    sentenceRow.appendChild(speakBtn);
+    banner.appendChild(sentenceRow);
+    if (item.kana && item.kana !== sentence) {
+      banner.appendChild(createElement("div", "gx-reveal-kana", item.kana));
+    }
+    if (item.vi) {
+      banner.appendChild(createElement("div", "gx-reveal-vi", item.vi));
+    }
+    if (item.explain) {
+      banner.appendChild(createElement("div", "gx-reveal-explain", "💡 " + item.explain));
+    }
+    wrap.appendChild(banner);
+
+    var raw = findGrammarByExId(item.id);
+    if (raw) {
+      wrap.appendChild(buildGrammarDetailNode(raw));
+    }
+
+    var nextBar = createElement("div", "gx-next-bar", "");
+    var isLast = s.pos >= s.queue.length - 1;
+    var nextBtn = createElement("button", "btn", isLast ? "Xem kết quả" : "Câu tiếp theo →");
+    nextBtn.type = "button";
+    nextBtn.addEventListener("click", nextGrammarExQuestion);
+    nextBar.appendChild(nextBtn);
+    wrap.appendChild(nextBar);
+    return wrap;
+  }
+
+  function renderGrammarExResult() {
+    var s = grammarEx.session;
+    var results = s.results.filter(Boolean);
+    var total = s.queue.length;
+    var correct = countGrammarExCorrect();
+
+    var root = createElement("div", "test-result gx-root", "");
+    root.appendChild(createElement("div", "score-main", correct + " / " + total));
+    root.appendChild(createElement("div", "score-detail", "Hoàn thành bài tập ngữ pháp. Câu sai / phải xếp lại / dùng gợi ý: " + (total - correct) + "."));
+
+    var list = createElement("div", "gx-result-list", "");
+    results.forEach(function (r) {
+      var item = s.items[r.item];
+      var raw = findGrammarByExId(item.id);
+      var row = createElement("div", "gx-result-row" + (r.correct ? "" : " gx-result-row--wrong"), "");
+      row.appendChild(createElement("span", "gx-result-mark", r.correct ? "✓" : "✗"));
+      var body = createElement("div", "gx-result-body", "");
+      body.appendChild(createElement("div", "gx-result-structure", (raw ? getGrammarStructure(raw) : item.id) + " · " + GRAMMAR_EX_TYPE_LABELS[item.type]));
+      body.appendChild(createElement("div", "gx-result-sentence", getGrammarExFullSentence(item)));
+      row.appendChild(body);
+      list.appendChild(row);
+    });
+    root.appendChild(list);
+
+    var wrongIdx = [];
+    results.forEach(function (r) {
+      if (!r.correct && wrongIdx.indexOf(r.item) === -1) wrongIdx.push(r.item);
+    });
+    var btnRow = createElement("div", "btn-row", "");
+    if (wrongIdx.length) {
+      btnRow.appendChild(createRetryWrongButton(wrongIdx.length, function () {
+        restartGrammarExSession(wrongIdx);
+      }));
+    }
+    var againBtn = createElement("button", wrongIdx.length ? "btn-ghost" : "btn", "Làm lại bộ này");
+    againBtn.type = "button";
+    againBtn.addEventListener("click", function () {
+      restartGrammarExSession(s.items.map(function (_, i) { return i; }));
+    });
+    btnRow.appendChild(againBtn);
+    var newBtn = createElement("button", "btn-ghost", "✨ Tạo bộ mới");
+    newBtn.type = "button";
+    newBtn.addEventListener("click", renderGrammarExConfig);
+    btnRow.appendChild(newBtn);
+    root.appendChild(btnRow);
+
+    openDetailModal("Bài tập ngữ pháp", root);
+  }
+
+  function renderGrammarExConfig() {
+    var cfg = loadGrammarExConfig();
+    var root = createElement("div", "test-result test-config-form gx-root", "");
+
+    var s = grammarEx.session;
+    if (s && !s.finished && s.pos < s.queue.length) {
+      var resumeBtn = createElement("button", "btn-ghost gx-resume-btn", "▶ Làm tiếp bộ đang làm (câu " + (s.pos + 1) + " / " + s.queue.length + ")");
+      resumeBtn.type = "button";
+      resumeBtn.addEventListener("click", function () {
+        grammarEx.q = null;
+        renderGrammarExQuestion();
+      });
+      root.appendChild(resumeBtn);
+    }
+
+    var grid = createElement("div", "test-config-fields", "");
+    function addField(label, control) {
+      var field = createElement("div", "field-group", "");
+      var labelEl = createElement("div", "field-label", label);
+      field.appendChild(labelEl);
+      field.appendChild(control);
+      grid.appendChild(field);
+      return { field: field, label: labelEl };
+    }
+    function addNumberInput(value, min, max) {
+      var input = createElement("input", "input-text", "");
+      input.type = "number";
+      input.inputMode = "numeric";
+      input.min = String(min);
+      if (max != null) input.max = String(max);
+      input.value = String(value);
+      return input;
+    }
+    function addCheckbox(label, checked) {
+      var input = createElement("input", "", "");
+      input.type = "checkbox";
+      input.checked = checked;
+      addField(label, input);
+      return input;
+    }
+
+    var levelSelect = createElement("select", "", "");
+    GRAMMAR_EX_LEVELS.forEach(function (lv) {
+      var label = lv.value === "filtered" ? lv.label + " (" + applyGrammarFilter().length + " mẫu)" : lv.label;
+      var opt = createElement("option", "", label);
+      opt.value = lv.value;
+      levelSelect.appendChild(opt);
+    });
+    levelSelect.value = cfg.level;
+    addField("Phạm vi ngữ pháp", levelSelect);
+
+    var countInput = addNumberInput(cfg.count, 1, null);
+    addField("Số câu", countInput);
+
+    var fromInput = addNumberInput(1, 1, null);
+    var toInput = addNumberInput(1, 1, null);
+    var fromField = addField("", fromInput);
+    var toField = addField("", toInput);
+
+    var modeSelect = createElement("select", "", "");
+    GRAMMAR_EX_MODES.forEach(function (m) {
+      var opt = createElement("option", "", m.label);
+      opt.value = m.value;
+      modeSelect.appendChild(opt);
+    });
+    modeSelect.value = cfg.mode;
+    addField("Dạng bài", modeSelect);
+
+    var distractorInput = addCheckbox("Thêm cụm gây nhiễu (dạng sắp xếp)", cfg.distractors);
+    var readAfterInput = addCheckbox("Đọc câu sau khi trả lời", cfg.readAfter);
+    root.appendChild(grid);
+
+    var scopeInfo = createElement("div", "test-question-sub gx-scope-info", "");
+    root.appendChild(scopeInfo);
+
+    /** Cấp độ đang hiển thị trong 2 ô Từ/Đến (khác levelSelect.value ngay lúc vừa đổi cấp độ) */
+    var shownLevel = null;
+    function readForm() {
+      if (cfg.ranges[shownLevel]) {
+        var from = parseInt(fromInput.value, 10);
+        var to = parseInt(toInput.value, 10);
+        cfg.ranges[shownLevel] = {
+          from: isNaN(from) || from < 1 ? 1 : from,
+          to: isNaN(to) ? getGrammarExRangeMax(shownLevel) : to
+        };
+      }
+      cfg.level = levelSelect.value;
+      cfg.count = Math.max(1, parseInt(countInput.value, 10) || GRAMMAR_EX_DEFAULT_COUNT);
+      cfg.mode = modeSelect.value;
+      cfg.distractors = !!distractorInput.checked;
+      cfg.readAfter = !!readAfterInput.checked;
+      return cfg;
+    }
+    function refresh() {
+      var level = levelSelect.value;
+      if (level !== shownLevel) {
+        // Đổi cấp độ: lưu khoảng của cấp độ cũ rồi nạp khoảng đã lưu của cấp độ mới vào 2 ô Từ/Đến
+        readForm();
+        shownLevel = level;
+        var lv = GRAMMAR_EX_LEVELS.filter(function (l) { return l.value === level; })[0];
+        var hasRange = !!cfg.ranges[level];
+        fromField.field.style.display = hasRange ? "" : "none";
+        toField.field.style.display = hasRange ? "" : "none";
+        if (hasRange) {
+          var max = getGrammarExRangeMax(level);
+          fromField.label.textContent = "Từ " + lv.rangeLabel;
+          toField.label.textContent = "Đến " + lv.rangeLabel + " (tối đa " + max + ")";
+          fromInput.max = String(max);
+          toInput.max = String(max);
+          fromInput.value = String(cfg.ranges[level].from);
+          toInput.value = String(cfg.ranges[level].to);
+        }
+      }
+      var c = readForm();
+      var poolSize = getGrammarExPool(c).length;
+      var takeCount = Math.min(poolSize, c.count);
+      if (!poolSize) {
+        scopeInfo.textContent = "Không có mẫu ngữ pháp nào trong phạm vi đã chọn.";
+      } else {
+        scopeInfo.textContent = "Phạm vi có " + poolSize + " mẫu ngữ pháp → " +
+          (takeCount === poolSize ? "lấy cả " + poolSize + " mẫu (thứ tự ngẫu nhiên)" : "bốc ngẫu nhiên " + takeCount + " mẫu") +
+          " để tạo đề." +
+          (takeCount > GRAMMAR_EX_SPLIT_THRESHOLD ? " Đề nhiều câu nên ChatGPT có thể trả làm nhiều phần." : "");
+      }
+    }
+    [levelSelect, modeSelect].forEach(function (el) { el.addEventListener("change", refresh); });
+    [fromInput, toInput, countInput].forEach(function (el) { el.addEventListener("input", refresh); });
+    refresh();
+
+    root.appendChild(createElement(
+      "div",
+      "test-question-sub",
+      "Bấm \"Tạo data\": app mở ChatGPT với prompt soạn sẵn (prompt cũng đã được copy). " +
+      "Chờ ChatGPT trả lời xong, copy khối JSON rồi quay lại app dán vào để làm bài."
+    ));
+
+    var btnRow = createElement("div", "btn-row", "");
+    var genBtn = createElement("button", "btn", "✨ Tạo data (ChatGPT)");
+    genBtn.type = "button";
+    genBtn.addEventListener("click", function () {
+      var c = readForm();
+      saveGrammarExStore(GRAMMAR_EX_CONFIG_KEY, c);
+      var pool = getGrammarExPool(c);
+      if (!pool.length) {
+        alert("Không có mẫu ngữ pháp nào trong phạm vi đã chọn.");
+        return;
+      }
+      var plan = buildGrammarExPlan(pool, c);
+      var pending = { createdAt: Date.now(), plan: plan, prompt: buildGrammarExPrompt(plan, c) };
+      saveGrammarExStore(GRAMMAR_EX_PENDING_KEY, pending);
+      copyGrammarExText(pending.prompt);
+      window.open(getGrammarExChatGptUrl(pending.prompt), "_blank", "noopener");
+      renderGrammarExPaste(pending);
+    });
+    btnRow.appendChild(genBtn);
+
+    var pasteBtn = createElement("button", "btn-ghost", "📋 Dán data");
+    pasteBtn.type = "button";
+    pasteBtn.title = "Dán data bài tập đã có sẵn (ChatGPT đã trả về trước đó)";
+    pasteBtn.addEventListener("click", function () {
+      saveGrammarExStore(GRAMMAR_EX_CONFIG_KEY, readForm());
+      renderGrammarExPaste(loadGrammarExPending());
+    });
+    btnRow.appendChild(pasteBtn);
+
+    var closeBtn = createElement("button", "btn-ghost", "Đóng");
+    closeBtn.type = "button";
+    closeBtn.addEventListener("click", function () {
+      saveGrammarExStore(GRAMMAR_EX_CONFIG_KEY, readForm());
+      closeDetailModal();
+    });
+    btnRow.appendChild(closeBtn);
+    root.appendChild(btnRow);
+
+    openDetailModal("Bài tập ngữ pháp", root);
+  }
+
+  function renderGrammarExPaste(pending) {
+    var root = createElement("div", "test-result gx-root", "");
+    var status = createElement("div", "gx-status", "");
+    function setStatus(text, isError) {
+      status.textContent = text || "";
+      status.className = "gx-status" + (text ? (isError ? " gx-status--error" : " gx-status--ok") : "");
+    }
+
+    if (pending) {
+      var isLarge = pending.plan.length > GRAMMAR_EX_SPLIT_THRESHOLD;
+      var steps = createElement("ol", "gx-steps", "");
+      [
+        isGrammarExPromptPrefilled(pending.prompt)
+          ? "ChatGPT đã mở với prompt soạn sẵn (prompt cũng đã được copy — nếu ô chat còn trống thì dán vào rồi gửi)."
+          : "Prompt dài nên ChatGPT mở ô chat trống: dán prompt (đã được copy sẵn) vào rồi gửi.",
+        isLarge
+          ? "Chờ ChatGPT trả lời xong, bấm Copy ở khối JSON. Nếu ChatGPT dừng giữa chừng, nhắn \"tiếp\" để nhận phần còn lại."
+          : "Chờ ChatGPT trả lời xong, bấm Copy ở khối JSON.",
+        isLarge
+          ? "Quay lại đây bấm \"Dán & bắt đầu\" — nhiều phần thì dán lần lượt từng phần, các phần được nối tiếp vào ô bên dưới."
+          : "Quay lại đây, bấm \"Dán & bắt đầu\" (hoặc dán tay vào ô bên dưới)."
+      ].forEach(function (text) { steps.appendChild(createElement("li", "", text)); });
+      root.appendChild(steps);
+      root.appendChild(createElement("div", "gx-scope-info", "Đề gồm " + pending.plan.length + " mẫu ngữ pháp:"));
+
+      var planList = createElement("div", "gx-plan-list", "");
+      pending.plan.forEach(function (p) {
+        var chip = createElement("span", "gx-plan-chip", p.structure);
+        chip.title = GRAMMAR_EX_TYPE_LABELS[p.type] + " · " + p.meaning;
+        planList.appendChild(chip);
+      });
+      root.appendChild(planList);
+
+      var linkRow = createElement("div", "btn-row", "");
+      var openLink = createElement("a", "btn-ghost", "↗ Mở lại ChatGPT");
+      openLink.href = getGrammarExChatGptUrl(pending.prompt);
+      openLink.target = "_blank";
+      openLink.rel = "noopener noreferrer";
+      openLink.addEventListener("click", function () {
+        copyGrammarExText(pending.prompt);
+      });
+      linkRow.appendChild(openLink);
+      var copyBtn = createElement("button", "btn-ghost", "📋 Copy prompt");
+      copyBtn.type = "button";
+      copyBtn.addEventListener("click", function () {
+        copyGrammarExText(pending.prompt, function (ok) {
+          setStatus(ok ? "Đã copy prompt." : "Không copy được prompt.", !ok);
+        });
+      });
+      linkRow.appendChild(copyBtn);
+      root.appendChild(linkRow);
+    } else {
+      root.appendChild(createElement("div", "test-question-sub", "Dán data JSON bài tập (do ChatGPT sinh theo prompt của app) vào ô bên dưới."));
+    }
+
+    var textarea = createElement("textarea", "input-text gx-textarea", "");
+    textarea.rows = 7;
+    textarea.spellcheck = false;
+    textarea.placeholder = "{\"items\":[ ... ]}";
+    root.appendChild(textarea);
+    root.appendChild(status);
+
+    function tryStart() {
+      var res = parseGrammarExData(textarea.value);
+      if (res.error) {
+        setStatus(res.error, true);
+        return;
+      }
+      var skippedNote = res.skipped ? "Bỏ qua " + res.skipped + " bài không hợp lệ.\n" : "";
+      var expected = pending ? pending.plan.length : 0;
+      if (expected && res.items.length < expected) {
+        // Thiếu bài (ChatGPT trả thiếu / đang trả nhiều phần): cho chọn làm luôn hay dán thêm phần tiếp theo
+        var goNow = confirm(
+          skippedNote + "Mới đọc được " + res.items.length + "/" + expected + " bài.\n" +
+          "OK: làm luôn " + res.items.length + " bài.\n" +
+          "Huỷ: dán thêm phần còn lại (nhắn \"tiếp\" cho ChatGPT, copy rồi bấm lại \"Dán & bắt đầu\")."
+        );
+        if (!goNow) {
+          setStatus("Đã đọc " + res.items.length + "/" + expected + " bài — dán thêm phần còn lại rồi bấm lại.", false);
+          return;
+        }
+      } else if (skippedNote) {
+        alert(skippedNote + "Làm " + res.items.length + " bài còn lại.");
+      }
+      saveGrammarExStore(GRAMMAR_EX_PENDING_KEY, null);
+      startGrammarExSession(res.items);
+    }
+
+    var btnRow = createElement("div", "btn-row", "");
+    if (navigator.clipboard && navigator.clipboard.readText) {
+      var clipBtn = createElement("button", "btn", "📥 Dán & bắt đầu");
+      clipBtn.type = "button";
+      clipBtn.addEventListener("click", function () {
+        navigator.clipboard.readText().then(function (text) {
+          // Ô đã có phần trước (ChatGPT trả nhiều phần) thì nối phần mới vào sau, trùng thì bỏ qua
+          var current = textarea.value.trim();
+          textarea.value = current && current.indexOf(text.trim()) === -1 ? current + "\n" + text : (current || text);
+          tryStart();
+        }).catch(function () {
+          setStatus("Trình duyệt không cho đọc clipboard — hãy nhấn giữ vào ô trên và chọn Dán.", true);
+          textarea.focus();
+        });
+      });
+      btnRow.appendChild(clipBtn);
+    }
+    var startBtn = createElement("button", btnRow.children.length ? "btn-ghost" : "btn", "▶ Bắt đầu làm bài");
+    startBtn.type = "button";
+    startBtn.addEventListener("click", tryStart);
+    btnRow.appendChild(startBtn);
+    var backBtn = createElement("button", "btn-ghost", "← Cấu hình");
+    backBtn.type = "button";
+    backBtn.addEventListener("click", renderGrammarExConfig);
+    btnRow.appendChild(backBtn);
+    root.appendChild(btnRow);
+
+    openDetailModal("Dán data bài tập", root);
+  }
+
+  /** Mở bài tập: còn đề vừa tạo chưa dán data (quay lại từ ChatGPT) thì vào thẳng màn dán data */
+  function openGrammarExercise() {
+    if (!grammarEx.session) {
+      grammarEx.session = loadGrammarExSession();
+    }
+    var pending = loadGrammarExPending();
+    if (pending && Date.now() - (pending.createdAt || 0) < GRAMMAR_EX_PENDING_TTL) {
+      renderGrammarExPaste(pending);
+    } else {
+      renderGrammarExConfig();
+    }
+  }
+
+  function setupGrammarExercise() {
+    var btn = document.getElementById("grammar-exercise-btn");
+    if (btn) {
+      btn.addEventListener("click", openGrammarExercise);
+    }
   }
 
   // ----- Note -----
@@ -10251,6 +11405,7 @@ history.replaceState({}, "", newUrl);
     setupFabMenus();
     setupMappingTestSection();
     setupGrammarFilters();
+    setupGrammarExercise();
     setupFilterToggles();
     setupNoteSelect();
     setupNoteSearch();
