@@ -172,6 +172,8 @@
       vocabFlashcardAutoNextSeconds: 60,
       /** Chế độ trình chiếu toàn màn hình — không khôi phục lại sau khi tải lại trang */
       vocabFlashcardFullscreen: false,
+      /** Hệ số cỡ chữ trên thẻ, chỉnh bằng nút A− / A+ (xem VOCAB_FLASHCARD_FONT_SCALE_*) */
+      vocabFlashcardFontScale: 1,
       kanjiVocabFavOnly: false,
       /** Khi mở chi tiết Kanji từ tab ⭐(kanji), đóng modal thì quay lại tab này */
       kanjiDetailReturnTab: null
@@ -453,6 +455,9 @@
       if (typeof parsedVVS.autoNextSeconds === "number" && parsedVVS.autoNextSeconds >= 3) {
         state.ui.vocabFlashcardAutoNextSeconds = parsedVVS.autoNextSeconds;
       }
+      if (typeof parsedVVS.fontScale === "number" && isFinite(parsedVVS.fontScale)) {
+        state.ui.vocabFlashcardFontScale = parsedVVS.fontScale;
+      }
     }
   } catch (e) {
     // ignore parse errors
@@ -478,7 +483,8 @@
         flipped: !!state.ui.vocabFlashcardFlipped,
         cardMode: state.ui.vocabFlashcardMode,
         autoNext: !!state.ui.vocabFlashcardAutoNext,
-        autoNextSeconds: state.ui.vocabFlashcardAutoNextSeconds
+        autoNextSeconds: state.ui.vocabFlashcardAutoNextSeconds,
+        fontScale: state.ui.vocabFlashcardFontScale
       }));
     } catch (e) { }
   }
@@ -2370,6 +2376,7 @@
       }
     });
     syncFlashcardWakeLock();
+    syncFlashcardScrollLock();
   }
 
   // ----- Vocab -----
@@ -2886,6 +2893,8 @@
     const item = buildVocabPipItem(raw);
 
     const wrap = createElement("div", "vocab-flashcard-wrap" + (state.ui.vocabFlashcardFullscreen ? " vocab-flashcard-wrap--fullscreen" : ""), "");
+    const fontScale = getVocabFlashcardFontScale();
+    wrap.style.setProperty("--fc-font-scale", String(fontScale));
 
     const topRow = createElement("div", "vocab-flashcard-top-row", "");
     const counter = createElement("div", "vocab-flashcard-counter", (pos + 1) + " / " + filtered.length);
@@ -2960,6 +2969,22 @@
     });
 
     var viewBtns = createElement("div", "vocab-flashcard-view-btns", "");
+
+    var fontPercent = Math.round(fontScale * 100) + "%";
+    var fontGroup = createElement("div", "vocab-flashcard-font-group", "");
+    [[-1, "A−", "Giảm cỡ chữ", VOCAB_FLASHCARD_FONT_SCALE_MIN], [1, "A+", "Tăng cỡ chữ", VOCAB_FLASHCARD_FONT_SCALE_MAX]].forEach(function (cfg) {
+      var fontBtn = createElement("button", "vocab-flashcard-font-btn", cfg[1]);
+      fontBtn.type = "button";
+      fontBtn.title = cfg[2] + " (đang " + fontPercent + ")";
+      fontBtn.disabled = cfg[0] < 0 ? fontScale <= cfg[3] : fontScale >= cfg[3];
+      fontBtn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        changeVocabFlashcardFontScale(cfg[0]);
+      });
+      fontGroup.appendChild(fontBtn);
+    });
+    viewBtns.appendChild(fontGroup);
+
     if (isCanvasPipSupported()) {
       var pipBtn = createElement("button", "vocab-flashcard-pip-btn", "PiP");
       pipBtn.type = "button";
@@ -2980,7 +3005,9 @@
     topRow.appendChild(viewBtns);
     wrap.appendChild(topRow);
 
-    const stage = createElement("div", "vocab-flashcard-stage", "");
+    const stage = createElement("div", "vocab-flashcard-stage" +
+      (vocabFlashcardEnterDir > 0 ? " vocab-flashcard-stage--enter-next" : (vocabFlashcardEnterDir < 0 ? " vocab-flashcard-stage--enter-prev" : "")), "");
+    wireVocabFlashcardSwipe(stage, filtered.length > 1);
 
     const isSingleMode = cardMode === "1";
     const card = createElement("div", "vocab-flashcard" +
@@ -3113,6 +3140,132 @@
     listContainer.appendChild(wrap);
     saveVocabViewState(vocabIndex);
     updateVocabPip(item, pos, filtered.length);
+  }
+
+  var VOCAB_FLASHCARD_FONT_SCALE_MIN = 0.6;
+  var VOCAB_FLASHCARD_FONT_SCALE_MAX = 2;
+  var VOCAB_FLASHCARD_FONT_SCALE_STEP = 0.1;
+
+  function getVocabFlashcardFontScale() {
+    var scale = state.ui.vocabFlashcardFontScale;
+    if (typeof scale !== "number" || !isFinite(scale)) return 1;
+    return Math.min(VOCAB_FLASHCARD_FONT_SCALE_MAX, Math.max(VOCAB_FLASHCARD_FONT_SCALE_MIN, scale));
+  }
+
+  function changeVocabFlashcardFontScale(steps) {
+    var scale = getVocabFlashcardFontScale() + steps * VOCAB_FLASHCARD_FONT_SCALE_STEP;
+    scale = Math.round(scale * 10) / 10; // tránh lệch số thực (0.1 + 0.2...)
+    state.ui.vocabFlashcardFontScale = Math.min(VOCAB_FLASHCARD_FONT_SCALE_MAX, Math.max(VOCAB_FLASHCARD_FONT_SCALE_MIN, scale));
+    saveVocabViewState(state.ui.vocabFlashcardVocabIndex);
+    renderVocabList();
+  }
+
+  // ----- Vuốt ngang trên thẻ để chuyển từ: vuốt sang trái = từ tiếp theo, sang phải = từ trước -----
+  var VOCAB_SWIPE_OUT_MS = 180;
+  /** Hướng trượt vào của thẻ ở lần render kế tiếp (1 = từ tiếp theo, -1 = từ trước, 0 = không hiệu ứng) */
+  var vocabFlashcardEnterDir = 0;
+
+  function wireVocabFlashcardSwipe(stage, enabled) {
+    var startX = 0;
+    var startY = 0;
+    var startTime = 0;
+    var dx = 0;
+    var tracking = false;
+    var dragging = false;
+    var leaving = false;
+    var suppressClickUntil = 0;
+
+    function setOffset(x) {
+      var width = stage.offsetWidth || 300;
+      stage.style.transform = x ? "translateX(" + x + "px) rotate(" + (x * 0.03) + "deg)" : "";
+      stage.style.opacity = x ? String(Math.max(0.35, 1 - Math.abs(x) / (width * 1.4))) : "";
+    }
+
+    function snapBack() {
+      stage.style.transition = "transform 0.2s ease-out, opacity 0.2s ease-out";
+      setOffset(0);
+    }
+
+    stage.addEventListener("animationend", function () {
+      stage.classList.remove("vocab-flashcard-stage--enter-next", "vocab-flashcard-stage--enter-prev");
+    });
+
+    stage.addEventListener("touchstart", function (e) {
+      if (!enabled || leaving) return;
+      if (e.touches.length !== 1) {
+        // Chạm thêm ngón thứ 2 → huỷ vuốt
+        if (dragging) snapBack();
+        tracking = false;
+        dragging = false;
+        return;
+      }
+      stage.classList.remove("vocab-flashcard-stage--enter-next", "vocab-flashcard-stage--enter-prev");
+      startX = e.touches[0].clientX;
+      startY = e.touches[0].clientY;
+      startTime = Date.now();
+      dx = 0;
+      tracking = true;
+      dragging = false;
+      stage.style.transition = "none";
+    }, { passive: true });
+
+    stage.addEventListener("touchmove", function (e) {
+      if (!tracking) return;
+      var mx = e.touches[0].clientX - startX;
+      var my = e.touches[0].clientY - startY;
+      if (!dragging) {
+        if (Math.abs(mx) < 10 && Math.abs(my) < 10) return;
+        // Kéo dọc thì bỏ qua, không coi là vuốt chuyển từ
+        if (Math.abs(my) >= Math.abs(mx)) {
+          tracking = false;
+          return;
+        }
+        dragging = true;
+      }
+      if (e.cancelable) e.preventDefault();
+      dx = mx;
+      setOffset(dx);
+    }, { passive: false });
+
+    stage.addEventListener("touchend", function () {
+      if (!tracking) return;
+      tracking = false;
+      if (!dragging) return;
+      dragging = false;
+      suppressClickUntil = Date.now() + 400;
+      var width = stage.offsetWidth || 300;
+      var speed = Math.abs(dx) / Math.max(1, Date.now() - startTime);
+      // Qua được 1/4 thẻ, hoặc hất nhanh, thì chuyển từ; không thì thẻ bật về chỗ cũ
+      var passed = Math.abs(dx) >= width * 0.25 || (Math.abs(dx) >= 40 && speed > 0.35);
+      if (!passed) {
+        snapBack();
+        return;
+      }
+      var dir = dx < 0 ? 1 : -1;
+      leaving = true;
+      stage.style.transition = "transform " + VOCAB_SWIPE_OUT_MS + "ms ease-in, opacity " + VOCAB_SWIPE_OUT_MS + "ms ease-in";
+      setOffset(-dir * width * 1.1);
+      stage.style.opacity = "0";
+      setTimeout(function () {
+        vocabFlashcardEnterDir = dir;
+        advanceVocabFlashcard(dir);
+        vocabFlashcardEnterDir = 0;
+      }, VOCAB_SWIPE_OUT_MS);
+    });
+
+    stage.addEventListener("touchcancel", function () {
+      if (dragging) snapBack();
+      tracking = false;
+      dragging = false;
+    });
+
+    // Vừa vuốt xong thì không tính là chạm (không lật thẻ / không mở link kanji)
+    stage.addEventListener("click", function (e) {
+      if (Date.now() < suppressClickUntil) {
+        e.preventDefault();
+        e.stopPropagation();
+      }
+    }, true);
   }
 
   function setVocabAutoNext(on) {
@@ -7972,6 +8125,7 @@ history.replaceState({}, "", newUrl);
       }
       syncBtn();
       syncFlashcardWakeLock();
+      syncFlashcardScrollLock();
       saveVocabViewState(state.ui.vocabFlashcardVocabIndex);
       renderVocabList();
       scheduleVocabAutoNextTimer();
@@ -8043,6 +8197,12 @@ history.replaceState({}, "", newUrl);
     }).catch(function () {
       flashcardWakeLockPending = false;
     });
+  }
+
+  /** Khoá cuộn trang khi đang ở Flashcard (CSS chỉ áp dụng ở màn hình nhỏ) — gọi lại mỗi khi đổi tab / đổi chế độ xem */
+  function syncFlashcardScrollLock() {
+    var locked = state.currentTab === "vocab" && state.ui.vocabViewMode === "flashcard";
+    document.documentElement.classList.toggle("vocab-flashcard-scroll-lock", locked);
   }
 
   function setupFlashcardWakeLock() {
