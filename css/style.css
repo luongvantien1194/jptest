@@ -3570,6 +3570,374 @@ select:focus {
   opacity: 0.7;
 }
 
+/* ===== BÀI TẬP NGỮ PHÁP (đề do ChatGPT sinh — xếp câu / chọn đáp án) ===== */
+.detail-modal__dialog:has(.gx-root) {
+  max-width: min(860px, calc(100vw - 12px));
+}
+
+.gx-root a.btn-ghost {
+  text-decoration: none;
+}
+
+.gx-resume-btn {
+  align-self: flex-start;
+  color: var(--primary);
+  border-color: rgba(192, 57, 43, 0.35);
+}
+
+.gx-scope-info {
+  font-weight: 600;
+  color: var(--text);
+}
+
+.gx-steps {
+  margin: 0;
+  padding-left: 20px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text-muted);
+}
+
+.gx-plan-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px;
+}
+
+.gx-plan-chip {
+  font-family: var(--font-jp);
+  font-size: 12px;
+  padding: 3px 9px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border);
+  background: rgba(192, 57, 43, 0.05);
+  color: var(--text);
+}
+
+.gx-textarea {
+  resize: vertical;
+  min-height: 130px;
+  font-family: ui-monospace, Menlo, Consolas, monospace;
+  font-size: 16px; /* >= 16px để iOS không tự phóng to khi focus */
+}
+
+.gx-status {
+  font-size: 13px;
+  font-weight: 600;
+}
+
+.gx-status:empty {
+  display: none;
+}
+
+.gx-status--ok { color: var(--success); }
+.gx-status--error { color: var(--danger); }
+
+.gx-question-label {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-bottom: 6px;
+}
+
+.gx-question-vi {
+  font-size: 17px;
+  font-weight: 700;
+  line-height: 1.45;
+  color: var(--text);
+}
+
+.gx-question-vi--small {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--text-muted);
+  margin-top: 6px;
+}
+
+.gx-sentence {
+  font-family: var(--font-jp);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.7;
+  color: var(--text);
+}
+
+.gx-kana {
+  font-family: var(--font-jp);
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.gx-blank {
+  display: inline-block;
+  min-width: 3em;
+  margin: 0 2px;
+  padding: 0 6px;
+  border-bottom: 2px solid var(--primary);
+  color: transparent;
+}
+
+.gx-kana .gx-blank {
+  border-bottom-width: 1px;
+  border-color: var(--text-muted);
+}
+
+.gx-blank--filled {
+  color: var(--success);
+  border-color: var(--success);
+}
+
+.gx-link-btn {
+  margin-top: 6px;
+  border: none;
+  background: none;
+  padding: 2px 4px;
+  font-size: 12px;
+  color: var(--primary);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Vùng câu đang xếp */
+.gx-build {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  min-height: 58px;
+  padding: 8px;
+  border-radius: var(--radius-md);
+  border: 1px dashed rgba(192, 57, 43, 0.35);
+  background: rgba(0, 0, 0, 0.02);
+}
+
+.gx-build--wrong {
+  animation: assembleShake 0.4s ease;
+}
+
+.gx-build--done {
+  border-style: solid;
+  border-color: rgba(5, 150, 105, 0.35);
+  background: rgba(5, 150, 105, 0.06);
+}
+
+.gx-build-placeholder {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.gx-chip,
+.gx-tile {
+  min-height: 40px;
+  padding: 4px 10px;
+  border-radius: var(--radius-sm);
+  font-family: var(--font-jp);
+  font-size: 17px;
+  color: var(--text);
+  cursor: pointer;
+  transition: border-color var(--transition-fast), background var(--transition-fast), transform var(--transition-fast), opacity var(--transition-fast);
+}
+
+.gx-chip {
+  border: 1px solid rgba(192, 57, 43, 0.4);
+  background: rgba(192, 57, 43, 0.07);
+}
+
+.gx-chip--wrong {
+  border-color: rgba(220, 38, 38, 0.6);
+  background: rgba(220, 38, 38, 0.1);
+  color: var(--danger);
+}
+
+.gx-build--done .gx-chip {
+  border-color: rgba(5, 150, 105, 0.4);
+  background: rgba(5, 150, 105, 0.08);
+  cursor: default;
+}
+
+.gx-pool {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  justify-content: center;
+  padding-top: 10px;
+  border-top: 1px dashed var(--border);
+}
+
+.gx-tile {
+  border: 1px solid var(--border);
+  background: var(--dm-surface, rgba(255, 255, 255, 0.95));
+  box-shadow: var(--shadow-card);
+}
+
+.gx-tile:hover:not(:disabled) {
+  border-color: rgba(192, 57, 43, 0.35);
+  transform: translateY(-1px);
+}
+
+.gx-tile--used,
+.gx-tile:disabled {
+  opacity: 0.25;
+  cursor: default;
+  box-shadow: none;
+  transform: none;
+}
+
+.gx-tools {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 6px;
+}
+
+.gx-tools-count {
+  margin-right: auto;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* Đáp án dạng chọn */
+.gx-option-text {
+  font-family: var(--font-jp);
+  font-size: 15px;
+}
+
+.gx-options .option-btn:disabled {
+  cursor: default;
+  transform: none;
+  box-shadow: none;
+}
+
+.gx-options .option-btn.gx-option--correct {
+  border-color: rgba(5, 150, 105, 0.55);
+  background: rgba(5, 150, 105, 0.1);
+  color: var(--success);
+  font-weight: 700;
+}
+
+.gx-options .option-btn.gx-option--wrong {
+  border-color: rgba(220, 38, 38, 0.55);
+  background: rgba(220, 38, 38, 0.08);
+  color: var(--danger);
+  text-decoration: line-through;
+}
+
+.gx-options .option-btn.gx-option--dim {
+  opacity: 0.55;
+}
+
+/* Phần mở ra sau khi trả lời: câu đầy đủ + giải thích + mẫu ngữ pháp */
+.gx-reveal {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.gx-reveal-sentence-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 6px;
+}
+
+.gx-reveal-jp {
+  flex: 1;
+  font-family: var(--font-jp);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.gx-speak-btn {
+  flex-shrink: 0;
+  border: none;
+  background: none;
+  font-size: 18px;
+  padding: 2px 4px;
+  cursor: pointer;
+}
+
+.gx-reveal-kana {
+  font-family: var(--font-jp);
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.gx-reveal-vi {
+  margin-top: 4px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.gx-reveal-explain {
+  margin-top: 6px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--text);
+}
+
+/* Nút "Câu tiếp theo" dính đáy vùng cuộn của modal để khỏi phải cuộn qua hết phần ngữ pháp */
+.gx-next-bar {
+  position: sticky;
+  bottom: 0;
+  display: flex;
+  justify-content: flex-end;
+  padding: 8px 0 2px;
+  background: linear-gradient(to bottom, transparent, var(--dm-modal, rgba(255, 255, 255, 0.96)) 35%);
+}
+
+/* Kết quả */
+.gx-result-list {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.gx-result-row {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  padding: 7px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(5, 150, 105, 0.25);
+  background: rgba(5, 150, 105, 0.05);
+}
+
+.gx-result-row--wrong {
+  border-color: rgba(245, 158, 11, 0.35);
+  background: rgba(245, 158, 11, 0.07);
+}
+
+.gx-result-mark {
+  font-weight: 800;
+  color: var(--success);
+}
+
+.gx-result-row--wrong .gx-result-mark {
+  color: #b45309;
+}
+
+.gx-result-body {
+  min-width: 0;
+}
+
+.gx-result-structure {
+  font-family: var(--font-jp);
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text);
+}
+
+.gx-result-sentence {
+  font-family: var(--font-jp);
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
 /* ===== KANJI LIST ITEM ===== */
 .kl-item {
   display: flex;
@@ -5721,6 +6089,7 @@ html.theme-dark .detail-modal__body .grammar-section--explanation .grammar-secti
 html.theme-dark .detail-modal__body .grammar-section--example .grammar-section__title { color: #fda4af; }
 
 html.theme-dark .kt-test-reveal-banner--wrong .kt-test-reveal-status,
+html.theme-dark .gx-result-row--wrong .gx-result-mark,
 html.theme-dark .assemble-slot--revealed,
 html.theme-dark .assemble-reveal-btn,
 html.theme-dark .kd-section--amber .kd-section-title,
