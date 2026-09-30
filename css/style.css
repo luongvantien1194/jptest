@@ -146,7 +146,7 @@ body {
   font-weight: 600;
   text-transform: uppercase;
   letter-spacing: 0.08em;
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--dm-surface, rgba(255, 255, 255, 0.9));
   border: 1px solid var(--border);
   color: var(--text-muted);
 }
@@ -185,7 +185,7 @@ body {
   padding: 3px 8px;
   border-radius: var(--radius-full);
   border: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--dm-surface, rgba(255, 255, 255, 0.9));
   font-size: 10px;
   text-transform: uppercase;
   letter-spacing: 0.06em;
@@ -245,7 +245,7 @@ body {
 
 .tab--active {
   color: var(--primary-dark);
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--dm-surface, rgba(255, 255, 255, 0.95));
   box-shadow:
     0 2px 12px rgba(146, 64, 14, 0.15),
     0 1px 3px rgba(0,0,0,0.06);
@@ -510,7 +510,7 @@ body {
   line-height: 1.2;
   border-radius: var(--radius-sm);
   border: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--dm-surface, rgba(255, 255, 255, 0.95));
   color: var(--text);
 }
 
@@ -549,7 +549,7 @@ select {
   padding: 8px 32px 8px 10px;
   border-radius: var(--radius-sm);
   border: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--dm-surface, rgba(255, 255, 255, 0.95));
   color: var(--text);
   outline: none;
   appearance: none;
@@ -585,7 +585,7 @@ select:focus {
   padding: 6px;
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
-  background: rgba(255, 255, 255, 0.6);
+  background: var(--dm-inset, rgba(255, 255, 255, 0.6));
   box-sizing: border-box;
 }
 
@@ -652,7 +652,7 @@ select:focus {
   padding: 8px 10px;
   border-radius: var(--radius-sm);
   border: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--dm-surface, rgba(255, 255, 255, 0.95));
   color: var(--text);
   outline: none;
   transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
@@ -683,7 +683,7 @@ select:focus {
   margin-top: 4px;
   border-radius: var(--radius-md);
   border: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.85);
+  background: var(--dm-surface, rgba(255, 255, 255, 0.85));
   backdrop-filter: blur(10px);
   -webkit-backdrop-filter: blur(10px);
   padding: 8px 10px;
@@ -761,7 +761,7 @@ select:focus {
   padding: 5px 10px;
   border-radius: var(--radius-full);
   font-size: 11px;
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--dm-surface, rgba(255, 255, 255, 0.95));
   border: 1px solid var(--border);
   color: var(--text-muted);
   cursor: pointer;
@@ -789,7 +789,7 @@ select:focus {
   padding: 2px 8px;
   font-size: 11px;
   border: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--dm-surface, rgba(255, 255, 255, 0.9));
   color: var(--text-muted);
 }
 
@@ -865,7 +865,7 @@ select:focus {
   display: inline-flex;
   align-items: center;
   gap: 5px;
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--dm-surface, rgba(255, 255, 255, 0.9));
   color: var(--text-muted);
   transition: background var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
   min-height: 44px;
@@ -1031,7 +1031,7 @@ select:focus {
 /* ===== MASTERED BUTTONS ===== */
 .mastered-btn {
   border: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--dm-surface, rgba(255, 255, 255, 0.9));
   cursor: pointer;
   font-size: 13px;
   font-weight: 600;
@@ -1061,7 +1061,7 @@ select:focus {
 
 .test-mastered-btn {
   border: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--dm-surface, rgba(255, 255, 255, 0.9));
   cursor: pointer;
   font-size: 13px;
   padding: 10px 14px;
@@ -1090,7 +1090,7 @@ select:focus {
 
 .autoplay-btn {
   border: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--dm-surface, rgba(255, 255, 255, 0.9));
   border-radius: var(--radius-full);
   padding: 6px 12px;
   font-size: 12px;
@@ -1171,7 +1171,7 @@ select:focus {
 
 .view-toggle-btn {
   border: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--dm-surface, rgba(255, 255, 255, 0.9));
   border-radius: var(--radius-sm);
   padding: 5px 10px;
   font-size: 12px;
@@ -2146,7 +2146,7 @@ select:focus {
   padding: 5px 10px;
   border-radius: var(--radius-full);
   border: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--dm-surface, rgba(255, 255, 255, 0.9));
   max-width: 160px;
   width: 100%;
 }
@@ -2167,7 +2167,7 @@ select:focus {
   padding: 5px 10px;
   border-radius: var(--radius-full);
   border: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--dm-surface, rgba(255, 255, 255, 0.9));
   color: var(--text);
 }
 
@@ -2464,7 +2464,7 @@ select:focus {
   flex-direction: column;
   border-radius: var(--radius-lg);
   border: 1px solid rgba(255, 255, 255, 0.6);
-  background: rgba(255, 255, 255, 0.96);
+  background: var(--dm-modal, rgba(255, 255, 255, 0.96));
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   box-shadow: var(--shadow-modal);
@@ -2584,7 +2584,7 @@ select:focus {
   font-size: 18px;
   line-height: 1;
   cursor: pointer;
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--dm-surface, rgba(255, 255, 255, 0.95));
   box-shadow: var(--shadow-card);
   transition: all var(--transition-fast);
 }
@@ -2611,7 +2611,7 @@ select:focus {
   padding: 16px 10px;
   border: 1px solid var(--border);
   border-radius: var(--radius-lg, 14px);
-  background: #fff;
+  background: var(--dm-surface, #fff);
   cursor: pointer;
   transition: all var(--transition-fast);
   text-align: center;
@@ -2778,7 +2778,7 @@ select:focus {
   font-size: 15px;
   padding: 10px 12px;
   border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--dm-surface, rgba(255, 255, 255, 0.95));
   border: 1px solid var(--border);
   box-shadow: var(--shadow-card);
 }
@@ -2891,7 +2891,7 @@ select:focus {
 .detail-modal__body .grammar-section {
   padding: 10px 12px;
   border-radius: var(--radius-sm);
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--dm-surface, rgba(255, 255, 255, 0.95));
   border: 1px solid var(--border);
 }
 
@@ -3039,7 +3039,7 @@ select:focus {
   border-radius: var(--radius-full);
   padding: 10px 12px;
   border: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--dm-surface, rgba(255, 255, 255, 0.95));
   color: var(--text);
   font-size: 13px;
   text-align: left;
@@ -3146,7 +3146,7 @@ select:focus {
 .wrong-item {
   border-radius: var(--radius-sm);
   border: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--dm-surface, rgba(255, 255, 255, 0.95));
   padding: 8px 10px;
   box-shadow: var(--shadow-card);
 }
@@ -3210,7 +3210,7 @@ select:focus {
   padding: 6px 10px;
   border-radius: var(--radius-sm);
   border: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--dm-surface, rgba(255, 255, 255, 0.95));
   transition: border-color var(--transition-fast), background var(--transition-fast);
   min-height: 40px;
 }
@@ -3326,7 +3326,7 @@ select:focus {
 .mapping-tile {
   border-radius: var(--radius-sm);
   border: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--dm-surface, rgba(255, 255, 255, 0.95));
   color: var(--text);
   display: flex;
   align-items: center;
@@ -3533,7 +3533,7 @@ select:focus {
   height: 40px;
   border-radius: var(--radius-sm);
   border: 1px solid var(--border);
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--dm-surface, rgba(255, 255, 255, 0.95));
   font-family: var(--font-jp);
   font-size: 18px;
   color: var(--text);
@@ -3876,7 +3876,7 @@ select:focus {
   margin: 6px 0 2px;
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--dm-surface, rgba(255, 255, 255, 0.95));
   box-shadow: var(--shadow-card);
   display: flex;
   align-items: center;
@@ -4088,7 +4088,7 @@ button.kd-pip-link {
 }
 
 .kd-pill--stroke {
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--dm-surface, rgba(255, 255, 255, 0.9));
   border-color: var(--border);
   color: var(--text);
   font-family: inherit;
@@ -4171,7 +4171,7 @@ button.kd-pip-link {
   gap: 2px;
   padding: 6px 10px;
   border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--dm-surface, rgba(255, 255, 255, 0.9));
   border: 1px solid rgba(245, 158, 11, 0.25);
   min-width: 40px;
 }
@@ -4313,7 +4313,7 @@ button.kd-pip-link {
   flex-direction: column;
   padding: 5px 10px;
   border-radius: var(--radius-sm);
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--dm-surface, rgba(255, 255, 255, 0.9));
   border: 1px solid rgba(5, 150, 105, 0.25);
   gap: 1px;
   min-width: 60px;
@@ -4344,13 +4344,13 @@ button.kd-pip-link {
   gap: 8px;
   padding: 7px 9px;
   border-radius: var(--radius-md);
-  background: rgba(255, 255, 255, 0.6);
+  background: var(--dm-row, rgba(255, 255, 255, 0.6));
   border: 1px solid rgba(107, 33, 168, 0.10);
   transition: background var(--transition-fast), border-color var(--transition-fast);
 }
 
 .kd-vocab-row:hover {
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--dm-row-hover, rgba(255, 255, 255, 0.95));
   border-color: rgba(107, 33, 168, 0.22);
 }
 
@@ -4605,7 +4605,7 @@ button.kd-pip-link {
   margin-bottom: 10px;
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
-  background: #fefefe;
+  background: var(--dm-inset, #fefefe);
   box-shadow: var(--shadow-card);
 }
 
@@ -4663,7 +4663,7 @@ button.kd-pip-link {
   padding: 0 12px;
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--dm-surface, rgba(255, 255, 255, 0.95));
   color: var(--text);
   font-size: 13px;
   cursor: pointer;
@@ -4695,7 +4695,7 @@ button.kd-pip-link {
   padding: 8px;
   border: 1px solid var(--border);
   border-radius: var(--radius-sm);
-  background: rgba(255, 255, 255, 0.95);
+  background: var(--dm-surface, rgba(255, 255, 255, 0.95));
 }
 
 .kd-writing-setting-label {
@@ -4835,7 +4835,7 @@ button.kd-pip-link {
   height: 38px;
   border: 1px solid rgba(192, 57, 43, 0.25);
   border-radius: 50%;
-  background: rgba(255, 254, 249, 0.96);
+  background: var(--dm-surface, rgba(255, 254, 249, 0.96));
   color: var(--primary);
   cursor: pointer;
   display: flex;
@@ -4850,7 +4850,7 @@ button.kd-pip-link {
 }
 
 .fab-menu--open .fab-menu__toggle {
-  background: #fbeee9;
+  background: var(--dm-tint, #fbeee9);
 }
 
 .fab-menu__toggle svg {
@@ -4934,7 +4934,7 @@ button.kd-pip-link {
 
 .fab-menu__item:hover .fab-menu__icon,
 .fab-menu__item:focus-visible .fab-menu__icon {
-  background: #fbeee9;
+  background: var(--dm-tint, #fbeee9);
   border-color: rgba(192, 57, 43, 0.35);
   color: var(--primary-dark);
 }
@@ -4990,7 +4990,7 @@ button.kd-pip-link {
 .vocab-edit-io-panel {
   border: 1px solid var(--border);
   border-radius: var(--radius-md, 10px);
-  background: rgba(255, 255, 255, 0.6);
+  background: var(--dm-inset, rgba(255, 255, 255, 0.6));
   padding: 10px;
 }
 
@@ -5044,7 +5044,7 @@ button.kd-pip-link {
 .vocab-edit-input:hover,
 .vocab-edit-input:focus {
   border-color: var(--border);
-  background: rgba(255, 255, 255, 0.9);
+  background: var(--dm-surface, rgba(255, 255, 255, 0.9));
 }
 
 .vocab-edit-input--narrow {
@@ -5572,4 +5572,183 @@ button.kd-pip-link {
 .daily-test-btn:disabled {
   opacity: 0.5;
   cursor: not-allowed;
+}
+
+/* =========================================================
+   DARK MODE — "Tắt đèn" (bật trong Settings hiển thị)
+   Class html.theme-dark: nền gần đen (tiết kiệm pin màn OLED),
+   chữ ngà dịu mắt để đọc ban đêm.
+   Các nền trắng dùng var(--dm-*, <màu sáng>) — biến --dm-* chỉ
+   khai báo ở đây nên light mode vẫn dùng màu fallback như cũ.
+   ========================================================= */
+html.theme-dark {
+  color-scheme: dark;
+  --bg: #000000;
+  --bg-soft: #0c0b0a;
+  --bg-card: #141312;
+  --surface: #141312;
+  --primary: #cf5a4e;
+  --primary-dark: #f0968b;    /* chủ yếu làm màu chữ nhấn → sáng hơn primary */
+  --accent: #e3a064;
+  --accent-soft: rgba(207, 90, 78, 0.14);
+  --success: #4ade80;
+  --danger: #fb7185;
+  --text: #e7e2dc;
+  --text-muted: #a39a90;
+  --border: rgba(231, 226, 220, 0.12);
+
+  --shadow-card: 0 1px 3px rgba(0, 0, 0, 0.6);
+  --shadow-hover: 0 4px 14px rgba(0, 0, 0, 0.7);
+  --shadow-modal: 0 24px 64px rgba(0, 0, 0, 0.85);
+  --shadow-soft: none;
+
+  --dm-surface: #1c1a18;      /* input, chip, nút phụ, ô đáp án */
+  --dm-modal: #161413;
+  --dm-inset: #0c0b0a;        /* vùng lõm: ma trận bộ thủ, canvas luyện viết */
+  --dm-row: rgba(255, 255, 255, 0.03);
+  --dm-row-hover: rgba(255, 255, 255, 0.06);
+  --dm-tint: #2a1a17;
+}
+
+html.theme-dark,
+html.theme-dark body {
+  background: var(--bg);
+}
+
+/* --- Khung app --- */
+html.theme-dark .app-shell {
+  background: var(--bg);
+  border-color: transparent;
+}
+
+html.theme-dark .app-header {
+  background: rgba(0, 0, 0, 0.92);
+}
+
+html.theme-dark .section {
+  background: var(--bg-soft);
+}
+
+html.theme-dark .app-footer {
+  background: rgba(0, 0, 0, 0.9);
+}
+
+html.theme-dark .section::before,
+html.theme-dark .card::before,
+html.theme-dark .simple-list--grammar .simple-item::after {
+  background: none;
+}
+
+html.theme-dark .tab--active {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+html.theme-dark .kd-vocab-row {
+  border-color: rgba(216, 180, 254, 0.12);
+}
+
+html.theme-dark .kd-vocab-row:hover {
+  border-color: rgba(216, 180, 254, 0.24);
+}
+
+html.theme-dark .disabled-gray {
+  background-color: #1f1d1b !important;
+  color: #6b645d !important;
+  border-color: #2e2a27 !important;
+}
+
+/* --- Nút chính: giữ đỏ đậm để chữ trắng đủ tương phản --- */
+html.theme-dark .btn,
+html.theme-dark .kd-meaning-badge {
+  background: linear-gradient(135deg, #b8473c, #8f2f27);
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+html.theme-dark .btn:hover {
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.6);
+}
+
+html.theme-dark .btn:active {
+  box-shadow: 0 1px 4px rgba(0, 0, 0, 0.6);
+}
+
+html.theme-dark .radical-tile-count {
+  background: #8f2f27;
+}
+
+/* --- Modal --- */
+html.theme-dark .detail-modal__backdrop {
+  background: rgba(0, 0, 0, 0.7);
+}
+
+html.theme-dark .detail-modal__dialog {
+  border-color: var(--border);
+}
+
+html.theme-dark .kt-test-reveal-footer {
+  background: linear-gradient(to top, rgba(22, 20, 19, 0.98) 80%, transparent);
+}
+
+/* --- Ghi chú / tìm kiếm --- */
+html.theme-dark .note-search-box--fixed {
+  background: rgba(22, 20, 19, 0.97);
+}
+
+html.theme-dark .note-search-hit {
+  background: rgba(250, 204, 21, 0.35);
+}
+
+/* --- Màu chữ hardcode tối → sáng --- */
+html.theme-dark .vocab-kanji { color: #e9b27a; }
+html.theme-dark .vocab-kanji b { color: #f28b82; }
+html.theme-dark .vocab-kanji b.vocab-kanji--linked { color: #8ab4f8; }
+html.theme-dark .vocab-hira { color: var(--text); }
+html.theme-dark .vocab-romazi { color: #b89486; }
+html.theme-dark .vocab-hanviet { color: #9ca3af; }
+html.theme-dark .vocab-meaning { color: #d6d0c8; }
+
+html.theme-dark .star-btn,
+html.theme-dark .star-filter-btn { color: #57534e; }
+html.theme-dark .star-btn:hover,
+html.theme-dark .star-filter-btn:hover { color: #fbbf24; }
+html.theme-dark .star-btn--active { color: #eab308; }
+html.theme-dark .star-filter-btn--active { color: #f59e0b; }
+html.theme-dark .kl-num { color: #57534e; }
+html.theme-dark .input-kanji-stt-jump::placeholder { color: #6b645d; }
+
+html.theme-dark .detail-modal__body .grammar-section--meaning .grammar-section__title { color: #86efac; }
+html.theme-dark .detail-modal__body .grammar-section--explanation .grammar-section__title { color: #f0968b; }
+html.theme-dark .detail-modal__body .grammar-section--example .grammar-section__title { color: #fda4af; }
+
+html.theme-dark .kt-test-reveal-banner--wrong .kt-test-reveal-status,
+html.theme-dark .assemble-slot--revealed,
+html.theme-dark .assemble-reveal-btn,
+html.theme-dark .kd-section--amber .kd-section-title,
+html.theme-dark .kd-breakdown-toggle-label,
+html.theme-dark .kd-breakdown-toggle-icon { color: #fbbf24; }
+
+html.theme-dark .kd-section--green .kd-section-title { color: #f0968b; }
+html.theme-dark .kd-section--purple .kd-section-title,
+html.theme-dark .kd-vocab-word,
+html.theme-dark .kd-vocab-hanviet { color: #d8b4fe; }
+
+html.theme-dark .kd-pill--kun,
+html.theme-dark .kd-pill--radical,
+html.theme-dark .kd-tree-label,
+html.theme-dark .kd-story-label { color: #e3a064; }
+
+html.theme-dark .kd-char {
+  text-shadow: none;
+}
+
+/* --- Ô Kanji mẫu / luyện viết: nền tối, chữ mẫu mờ sáng --- */
+html.theme-dark .kd-hero-mid-kanji { color: rgba(255, 255, 255, 0.08); }
+html.theme-dark .kd-hero-mid-replay { color: rgba(231, 226, 220, 0.6); }
+html.theme-dark .kd-hero-mid-replay:hover { color: var(--primary); }
+html.theme-dark .kd-hero-mid-fallback { color: rgba(255, 255, 255, 0.10); }
+html.theme-dark .kd-writing-reference { color: rgba(255, 255, 255, 0.10); }
+html.theme-dark .kd-writing-reference-loading { color: rgba(231, 226, 220, 0.5); }
+
+html.theme-dark .scroll-thin::-webkit-scrollbar-thumb {
+  background: rgba(231, 226, 220, 0.18);
 }
