@@ -35,6 +35,7 @@
       note: false,
       voice: true,
       iphoneTaiTho: false,
+      darkMode: false,
     },
     testState: {
       isActive: false,
@@ -2075,16 +2076,18 @@
       var lastMoveTime = 0;
 
       function getPenStyle(penType) {
+        // Chế độ Tắt đèn: canvas nền tối → mực sáng
+        var dark = !!state.displaySettings.darkMode;
         if (penType === "marker") {
-          return { color: "rgba(30, 41, 59, 0.75)", cap: "square", join: "round" };
+          return { color: dark ? "rgba(231, 226, 220, 0.75)" : "rgba(30, 41, 59, 0.75)", cap: "square", join: "round" };
         }
         if (penType === "pencil") {
-          return { color: "rgba(55, 65, 81, 0.6)", cap: "round", join: "round" };
+          return { color: dark ? "rgba(214, 208, 200, 0.6)" : "rgba(55, 65, 81, 0.6)", cap: "round", join: "round" };
         }
         if (penType === "calligraphy") {
-          return { color: "#111827", cap: "butt", join: "miter" };
+          return { color: dark ? "#f3efe9" : "#111827", cap: "butt", join: "miter" };
         }
-        return { color: "#1f2937", cap: "round", join: "round" };
+        return { color: dark ? "#e7e2dc" : "#1f2937", cap: "round", join: "round" };
       }
       function getCalligraphyWidth(currPos) {
         if (!lastPos) return writingConfig.lineWidth;
@@ -3829,13 +3832,29 @@
     return { lines: lines, height: height };
   }
 
+  /** Bảng màu cho canvas PiP (canvas không đọc được CSS variables) — theo chế độ Tắt đèn */
+  function getPipPalette() {
+    if (state.displaySettings.darkMode) {
+      return {
+        bg: "#000000", text: "#e7e2dc", muted: "#a39a90", primary: "#e0675a",
+        kanji: "#f0968b", accent: "#e3a064", reading: "#cfc7bd",
+        divider: "rgba(231, 226, 220, 0.25)", rule: "rgba(231, 226, 220, 0.2)"
+      };
+    }
+    return {
+      bg: "#fdf8f0", text: "#1c1917", muted: "#78716c", primary: "#c0392b",
+      kanji: "#9b2335", accent: "#92400e", reading: "#44403c",
+      divider: "rgba(160, 100, 60, 0.3)", rule: "rgba(160, 100, 60, 0.25)"
+    };
+  }
+
   /** Vẽ các dòng từ fitCanvasBlocks, căn giữa theo cx (align = "left" thì cx là mép trái), bắt đầu từ y */
   function drawCanvasLines(ctx, lines, cx, y, dividerW, align) {
     ctx.textAlign = align || "center";
     ctx.textBaseline = "middle";
     lines.forEach(function (ln) {
       if (ln.divider) {
-        ctx.strokeStyle = "rgba(160, 100, 60, 0.3)";
+        ctx.strokeStyle = getPipPalette().divider;
         ctx.lineWidth = 2;
         ctx.setLineDash([6, 6]);
         ctx.beginPath();
@@ -3992,9 +4011,10 @@
     var cur = vocabPipCurrent;
     var item = cur.item;
     var ds = state.displaySettings;
+    var pal = getPipPalette();
 
-    // Màu theo theme Warm Paper trong style.css
-    ctx.fillStyle = "#fdf8f0";
+    // Màu theo theme trong style.css (Warm Paper / Tắt đèn)
+    ctx.fillStyle = pal.bg;
     ctx.fillRect(0, 0, W, H);
     ctx.textBaseline = "middle";
 
@@ -4002,33 +4022,33 @@
     ctx.font = "700 22px " + PIP_FONT_UI;
     if (cur.total) {
       ctx.textAlign = "left";
-      ctx.fillStyle = "#78716c";
+      ctx.fillStyle = pal.muted;
       ctx.fillText((cur.pos + 1) + " / " + cur.total, pad, 34);
     }
     if (state.ui.vocabFlashcardAutoNext) {
       ctx.textAlign = "right";
-      ctx.fillStyle = "#c0392b";
+      ctx.fillStyle = pal.primary;
       ctx.fillText("⏱ Auto " + Math.round(getVocabAutoNextDelayMs() / 1000) + "s", W - pad, 34);
     }
 
     if (!item) {
       ctx.textAlign = "center";
       ctx.font = "26px " + PIP_FONT_UI;
-      ctx.fillStyle = "#78716c";
+      ctx.fillStyle = pal.muted;
       ctx.fillText("Không có từ vựng phù hợp với bộ lọc hiện tại.", W / 2, H / 2);
       return;
     }
 
     // Hiện đủ 2 mặt thẻ (trong PiP không lật được), theo tuỳ chọn hiển thị
     var blocks = [];
-    if (ds.hiragana && item.hiragana) blocks.push({ text: item.hiragana, size: 96, weight: 700, family: PIP_FONT_JP, color: "#1c1917" });
-    if (ds.kanji && item.kanji) blocks.push({ text: "(" + item.kanji + ")", size: 72, weight: 600, family: PIP_FONT_JP, color: "#9b2335" });
-    if (ds.romaji && item.romaji) blocks.push({ text: "(" + item.romaji + ")", size: 32, family: PIP_FONT_UI, color: "#78716c" });
+    if (ds.hiragana && item.hiragana) blocks.push({ text: item.hiragana, size: 96, weight: 700, family: PIP_FONT_JP, color: pal.text });
+    if (ds.kanji && item.kanji) blocks.push({ text: "(" + item.kanji + ")", size: 72, weight: 600, family: PIP_FONT_JP, color: pal.kanji });
+    if (ds.romaji && item.romaji) blocks.push({ text: "(" + item.romaji + ")", size: 32, family: PIP_FONT_UI, color: pal.muted });
     var frontCount = blocks.length;
-    if (ds.meaning && item.meaning) blocks.push({ text: item.meaning, size: 56, weight: 600, family: PIP_FONT_UI, color: "#1c1917" });
+    if (ds.meaning && item.meaning) blocks.push({ text: item.meaning, size: 56, weight: 600, family: PIP_FONT_UI, color: pal.text });
     if (ds.hanviet && item.kanji && window.getHanViet) {
       var hv = window.getHanViet(item.kanji);
-      if (hv) blocks.push({ text: "[" + hv + "]", size: 36, family: PIP_FONT_UI, color: "#92400e" });
+      if (hv) blocks.push({ text: "[" + hv + "]", size: 36, family: PIP_FONT_UI, color: pal.accent });
     }
     if (frontCount > 0 && blocks.length > frontCount) {
       blocks.splice(frontCount, 0, { divider: true, size: 24 });
@@ -4045,7 +4065,7 @@
     if (ds.type && item.type) meta.push(item.type);
     if (meta.length) {
       ctx.font = "20px " + PIP_FONT_UI;
-      ctx.fillStyle = "#78716c";
+      ctx.fillStyle = pal.muted;
       ctx.fillText(meta.join(" · "), W / 2, H - 26);
     }
   }
@@ -6102,7 +6122,8 @@
   }
 
   function drawKanjiPip(ctx, W, H) {
-    ctx.fillStyle = "#fdf8f0";
+    var pal = getPipPalette();
+    ctx.fillStyle = pal.bg;
     ctx.fillRect(0, 0, W, H);
     var raw = kanjiPipIndex != null ? kanjiData[kanjiPipIndex] : null;
     if (!raw) return;
@@ -6116,7 +6137,7 @@
 
     ctx.textBaseline = "middle";
     ctx.textAlign = "center";
-    ctx.fillStyle = "#1c1917";
+    ctx.fillStyle = pal.text;
     ctx.font = "700 220px " + PIP_FONT_JP;
     ctx.fillText(raw.kanji, pad + kanjiW / 2, pad + headH / 2);
 
@@ -6124,16 +6145,16 @@
       return String(r || "").replace(/\|/g, "、").trim();
     }).filter(Boolean);
     var info = [];
-    if (raw.hanviet) info.push({ text: raw.hanviet, size: 68, weight: 700, family: PIP_FONT_UI, color: "#c0392b", gap: 4 });
-    if (raw.core_meaning) info.push({ text: raw.core_meaning, size: 40, weight: 600, family: PIP_FONT_UI, color: "#1c1917", gap: 8 });
-    if (readings.length) info.push({ text: readings.join(" | "), size: 42, family: PIP_FONT_JP, color: "#44403c" });
+    if (raw.hanviet) info.push({ text: raw.hanviet, size: 68, weight: 700, family: PIP_FONT_UI, color: pal.primary, gap: 4 });
+    if (raw.core_meaning) info.push({ text: raw.core_meaning, size: 40, weight: 600, family: PIP_FONT_UI, color: pal.text, gap: 8 });
+    if (readings.length) info.push({ text: readings.join(" | "), size: 42, family: PIP_FONT_JP, color: pal.reading });
     var infoFit = fitCanvasBlocks(ctx, info, colW, headH);
     // Căn giữa cả ngang lẫn dọc trong cột bên phải
     drawCanvasLines(ctx, infoFit.lines, colX + colW / 2, pad + Math.max(0, (headH - infoFit.height) / 2), 0);
 
     // Vạch ngang tách phần đầu với từ vựng
     var lineY = pad + headH + 14;
-    ctx.strokeStyle = "rgba(160, 100, 60, 0.25)";
+    ctx.strokeStyle = pal.rule;
     ctx.lineWidth = 2;
     ctx.setLineDash([]);
     ctx.beginPath();
@@ -6149,7 +6170,7 @@
     var vb = vocabs.map(function (v) {
       return {
         text: v.word + (v.reading ? "(" + v.reading + ")" : "") + (v.meaning ? " — " + v.meaning : ""),
-        size: 44, family: PIP_FONT_JP, color: "#1c1917", gap: 12
+        size: 44, family: PIP_FONT_JP, color: pal.text, gap: 12
       };
     });
     var vTop = lineY + 18;
@@ -7894,8 +7915,17 @@
     });
   }
 
+  /** Chế độ Tắt đèn: bật/tắt class theme-dark trên <html> (CSS xử lý màu) */
+  function applyTheme() {
+    var isDark = !!state.displaySettings.darkMode;
+    document.documentElement.classList.toggle("theme-dark", isDark);
+    var themeMeta = document.querySelector('meta[name="theme-color"]');
+    if (themeMeta) themeMeta.setAttribute("content", isDark ? "#000000" : "#6366f1");
+  }
+
   function renderScreen () {
     const appShell = document.querySelector(".app-shell");
+    applyTheme();
 
     if (state.displaySettings.iphoneTaiTho) {
       if (appShell) {
@@ -8098,6 +8128,11 @@ history.replaceState({}, "", newUrl);
       }
       state.displaySettings[field] = target.checked;
       saveDisplaySettings();
+      if (field === "darkMode") {
+        applyTheme();
+        vocabPip.redraw();
+        kanjiPip.redraw();
+      }
       renderDisplaySettingsUI();
       renderVocabList();
     });
