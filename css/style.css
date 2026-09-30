@@ -1446,6 +1446,36 @@ select:focus {
   align-items: center;
   padding: 12px 4px 32px;
   gap: 14px;
+  /* Thẻ đang vuốt / trượt vào không làm hiện thanh cuộn ngang */
+  overflow-x: hidden;
+}
+
+/* Màn hình nhỏ: đang ở Flashcard thì khoá cứng, cả trang lẫn khung danh sách đều không cuộn được.
+   Class do syncFlashcardScrollLock() gắn lên <html>. */
+@media (max-width: 768px) {
+  html.vocab-flashcard-scroll-lock,
+  html.vocab-flashcard-scroll-lock body {
+    overflow: hidden;
+    overscroll-behavior: none;
+  }
+
+  /* iOS Safari vẫn kéo được body dù overflow: hidden → ghim body vào khung nhìn thấy */
+  html.vocab-flashcard-scroll-lock body {
+    position: fixed;
+    inset: 0;
+    height: auto;
+  }
+
+  /* 100vh trên mobile cao hơn phần nhìn thấy (tính cả thanh địa chỉ) → cho app vừa khít body */
+  html.vocab-flashcard-scroll-lock .app-shell {
+    height: 100%;
+  }
+
+  html.vocab-flashcard-scroll-lock #vocab-list-container,
+  html.vocab-flashcard-scroll-lock .vocab-flashcard-wrap--fullscreen {
+    overflow: hidden;
+    overscroll-behavior: none;
+  }
 }
 
 .vocab-flashcard-top-row {
@@ -1534,6 +1564,18 @@ select:focus {
   margin-left: auto;
 }
 
+.vocab-flashcard-font-group {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.vocab-flashcard-font-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.vocab-flashcard-font-btn,
 .vocab-flashcard-fullscreen-btn,
 .vocab-flashcard-pip-btn {
   border: 1px solid var(--border);
@@ -1562,9 +1604,18 @@ select:focus {
   inset: 0;
   z-index: 10000;
   background: var(--bg);
-  justify-content: center;
   padding: 24px 16px 40px;
   overflow-y: auto;
+}
+
+/* Căn giữa dọc bằng margin auto thay cho justify-content: center — chữ to quá chiều cao màn hình
+   thì dồn từ trên xuống, hàng nút trên cùng không bị đẩy lọt ra ngoài */
+.vocab-flashcard-wrap--fullscreen > :first-child {
+  margin-top: auto;
+}
+
+.vocab-flashcard-wrap--fullscreen > :last-child {
+  margin-bottom: auto;
 }
 
 .vocab-flashcard-wrap--fullscreen .vocab-flashcard-top-row,
@@ -1577,15 +1628,15 @@ select:focus {
 }
 
 .vocab-flashcard-wrap--fullscreen .vocab-flashcard .vocab-hira {
-  font-size: 48px;
+  font-size: calc(48px * var(--fc-font-scale, 1));
 }
 
 .vocab-flashcard-wrap--fullscreen .vocab-flashcard .vocab-kanji {
-  font-size: 32px;
+  font-size: calc(32px * var(--fc-font-scale, 1));
 }
 
 .vocab-flashcard-wrap--fullscreen .vocab-flashcard .vocab-meaning {
-  font-size: 28px;
+  font-size: calc(28px * var(--fc-font-scale, 1));
 }
 
 .vocab-flashcard-stage {
@@ -1595,19 +1646,49 @@ select:focus {
   display: flex;
   align-items: center;
   justify-content: center;
+  /* Vuốt ngang do JS xử lý (wireVocabFlashcardSwipe) */
+  touch-action: pan-y;
 }
 
+/* Thẻ mới trượt vào sau khi vuốt: vuốt trái (từ tiếp theo) → vào từ bên phải, và ngược lại */
+.vocab-flashcard-stage--enter-next {
+  animation: vocab-flashcard-enter-next 0.22s ease-out;
+}
+
+.vocab-flashcard-stage--enter-prev {
+  animation: vocab-flashcard-enter-prev 0.22s ease-out;
+}
+
+@keyframes vocab-flashcard-enter-next {
+  from { transform: translateX(40%); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+
+@keyframes vocab-flashcard-enter-prev {
+  from { transform: translateX(-40%); opacity: 0; }
+  to { transform: none; opacity: 1; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .vocab-flashcard-stage--enter-next,
+  .vocab-flashcard-stage--enter-prev {
+    animation: none;
+  }
+}
+
+/* 2 mặt xếp chồng trong cùng 1 ô grid: thẻ cao theo mặt dài hơn, nên chữ to lên không bị tràn ra ngoài */
 .vocab-flashcard {
   width: 100%;
   min-height: 200px;
   perspective: 1200px;
   cursor: pointer;
   position: relative;
+  display: grid;
 }
 
 .vocab-flashcard-face {
-  position: absolute;
-  inset: 0;
+  grid-area: 1 / 1;
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -1669,17 +1750,30 @@ select:focus {
   margin: 2px 0 6px;
 }
 
+/* --fc-font-scale: hệ số cỡ chữ chỉnh bằng nút A− / A+ (gắn trên .vocab-flashcard-wrap) */
 .vocab-flashcard .vocab-hira {
-  font-size: 30px;
+  font-size: calc(30px * var(--fc-font-scale, 1));
 }
 
 .vocab-flashcard .vocab-kanji {
-  font-size: 20px;
+  font-size: calc(20px * var(--fc-font-scale, 1));
+}
+
+.vocab-flashcard .vocab-romazi {
+  font-size: calc(12px * var(--fc-font-scale, 1));
 }
 
 .vocab-flashcard .vocab-meaning {
-  font-size: 20px;
+  font-size: calc(20px * var(--fc-font-scale, 1));
   padding-left: 0;
+}
+
+.vocab-flashcard .vocab-hanviet {
+  font-size: calc(11px * var(--fc-font-scale, 1));
+}
+
+.vocab-flashcard .vocab-meta-row .pill {
+  font-size: calc(11px * var(--fc-font-scale, 1));
 }
 
 .vocab-flashcard-hint {
