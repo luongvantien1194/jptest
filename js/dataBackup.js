@@ -372,7 +372,6 @@
     }
 
     $("backup-modal-close").addEventListener("click", closeModal);
-    modal.querySelector(".detail-modal__backdrop").addEventListener("click", closeModal);
     document.addEventListener("keydown", function (e) {
       if (e.key === "Escape" && isModalOpen()) closeModal();
     });
