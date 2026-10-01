@@ -445,18 +445,37 @@ body {
   max-width: 100%;
 }
 
-#section-grammar .filters-row .field-group:first-child {
+/* Hàng search + bộ lọc giữ chiều cao theo nội dung — không giãn khi list ít kết quả */
+#section-grammar .section-inner > .field-group,
+#section-grammar .filters-row .field-group {
   flex: 0 0 auto;
-  max-width: 130px;
 }
 
-#section-grammar .filters-row .field-group:last-child {
+/* Nhóm chip cao bằng select Lesson bên cạnh để 2 nhãn và nội dung thẳng hàng */
+#grammar-filters-row {
+  align-items: stretch;
+}
+
+#grammar-filters-row .field-group {
+  display: flex;
+  flex-direction: column;
+}
+
+#grammar-level-chips {
   flex: 1 1 auto;
-  min-width: 0;
+  display: flex;
+  align-items: center;
+  gap: 4px;
 }
 
+#grammar-level-chips .chip {
+  cursor: pointer;
+}
+
+/* Rộng theo option dài nhất ("Lesson 50") để không bị cắt chữ */
 #section-grammar #grammar-lesson-filter {
-  max-width: 110px;
+  width: auto;
+  min-width: 110px;
 }
 
 #section-grammar #grammar-search-input {
@@ -1328,6 +1347,12 @@ select:focus {
   flex: 1 1 auto;
   overflow-y: auto;
   min-height: 0;
+  padding-bottom: 140px;
+}
+
+/* Khoảng đệm cuộn nằm ở container, list chỉ cao theo số dòng (không còn khung trống khi ít kết quả) */
+#grammar-list-container .simple-list--grammar {
+  padding-bottom: 0;
 }
 
 /* Scrollbar */
@@ -1996,10 +2021,11 @@ select:focus {
 .simple-stt {
   flex: 0 0 34px;
   min-width: 34px;
-  text-align: right;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-size: 11px;
   color: var(--text-muted);
-  padding-top: 2px;
 }
 
 .simple-main--grammar {
@@ -2022,6 +2048,11 @@ select:focus {
 .simple-list--grammar .simple-item:hover {
   background: rgba(192, 57, 43, 0.04);
   border-left-color: rgba(192, 57, 43, 0.45);
+}
+
+.simple-sub-text__label {
+  font-weight: 600;
+  color: var(--primary-dark);
 }
 
 .simple-list--grammar .simple-item::after {
@@ -3935,6 +3966,74 @@ select:focus {
 .gx-result-sentence {
   font-family: var(--font-jp);
   font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* ===== BÀI TẬP KANJI (đề do ChatGPT sinh) — dùng chung giao diện gx-* ở trên ===== */
+/* Từ mục tiêu được gạch chân (dạng cách đọc / câu đáp án), có ruby cách đọc sau khi trả lời */
+.kx-target {
+  text-decoration: underline;
+  text-decoration-color: var(--primary);
+  text-decoration-thickness: 2px;
+  text-underline-offset: 5px;
+}
+
+.kx-target rt {
+  font-size: 0.55em;
+  font-weight: 600;
+  color: var(--success);
+}
+
+.kx-hint-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.kx-word-row {
+  display: flex;
+  align-items: baseline;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.kx-word {
+  font-family: var(--font-jp);
+  font-size: 30px;
+  font-weight: 700;
+  color: var(--text);
+}
+
+.kx-word-kana {
+  font-family: var(--font-jp);
+  font-size: 14px;
+  color: var(--text-muted);
+}
+
+/* Dạng chọn câu: đáp án là cả câu dài → 1 cột, bo góc vừa thay cho dạng viên thuốc */
+.options-grid.kx-options--sentences {
+  grid-template-columns: minmax(0, 1fr);
+}
+
+.kx-options--sentences .option-btn {
+  border-radius: var(--radius-md);
+  align-items: flex-start;
+}
+
+.kx-options--sentences .option-btn.gx-option--wrong {
+  text-decoration: none;
+}
+
+.kx-option-body {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  min-width: 0;
+}
+
+.kx-option-vi {
+  font-size: 12px;
+  font-weight: 400;
   color: var(--text-muted);
 }
 
