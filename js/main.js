@@ -15,8 +15,8 @@
       vocabCategory: "all",
       kanjiRadical: [],
       kanjiLevel: "n3",
+      grammarLevel: "all",
       grammarLesson: "all",
-      checkboxGrammarN3: false,
       vocabSearch: "",
       vocabMastered: "all",
       kanjiSearch: "",
@@ -494,6 +494,10 @@
   }
   function saveKanjiVocabFavorites() {
     try { localStorage.setItem("jp_kanji_vocab_favorites", JSON.stringify(state.kanjiVocabFavorites)); } catch (e) { }
+  }
+  // Lưu toàn bộ state.filter (Từ vựng + Ngữ pháp); khôi phục lại ở setupVocabFilters
+  function saveFillter() {
+    try { localStorage.setItem("jp_fillter", JSON.stringify(state.filter)); } catch (e) { }
   }
 
   // ========================
@@ -5440,6 +5444,7 @@
   var KANJI_TEST_MODES = [
     { icon: "🈁", label: "Test Kanji", hint: "Trắc nghiệm On/Kun/Hán Việt", triggerId: "start-kanji-test-btn" },
     { icon: "🔗", label: "Mapping", hint: "Nối Kanji - Hán Việt / từ vựng", triggerId: "start-kanji-mapping-btn" },
+    { icon: "📝", label: "Bài tập (ChatGPT)", hint: "Điền Kanji / Cách đọc / Chọn câu đúng", action: function () { openKanjiExercise(); } },
     { icon: "🔁", label: "Ôn lại Kanji chưa thuộc", hint: "Kanji→Hán Việt / Từ vựng→Nghĩa", action: function () { startKanjiReviewTest(); }, isReview: true }
   ];
 
@@ -6281,15 +6286,14 @@
       if (!item) {
         return false;
       }
+      if (state.filter.grammarLevel !== "all" &&
+        isGrammarN3(item) !== (state.filter.grammarLevel === "n3")) {
+        return false;
+      }
       var lessonValue = item.lesson != null ? item.lesson : item.Lesson;
       if (state.filter.grammarLesson !== "all" &&
         String(lessonValue) !== String(state.filter.grammarLesson)) {
         return false;
-      }
-      if (state.filter.checkboxGrammarN3 === true) {
-        if (item.Type != 'n3') {
-          return false;
-        }
       }
       var searchRaw = String(state.filter.grammarSearch || "").trim();
       if (searchRaw) {
@@ -6347,7 +6351,7 @@
       const right = createElement(
         "div",
         "simple-sub-text",
-        "Lesson " + (item.lesson != null ? item.lesson : item.Lesson)
+        isGrammarN3(raw) ? "N3" : "Lesson " + item.lesson
       );
       titleRow.appendChild(left);
       titleRow.appendChild(right);
@@ -6367,6 +6371,15 @@
           contentPreview
         );
         main.appendChild(sub);
+      }
+
+      // Cách dùng (chỉ data N3 có) hiển thị ngay dưới dòng ý nghĩa
+      const usage = getGrammarUsage(raw);
+      if (usage) {
+        const usageRow = createElement("div", "simple-sub-text simple-sub-text--usage", "");
+        usageRow.appendChild(createElement("span", "simple-sub-text__label", "Cách dùng: "));
+        usageRow.appendChild(document.createTextNode(usage));
+        main.appendChild(usageRow);
       }
 
       row.appendChild(sttCol);
@@ -6688,6 +6701,15 @@
   function getGrammarStructure(raw) {
     return String((raw && (raw.structure != null ? raw.structure : raw.Structure)) || "").trim();
   }
+  /** Phần "Cách dùng: ..." ở cuối Explanation (data N3); nhiều ý (ngăn bởi |) thì bỏ qua — xem ở chi tiết */
+  function getGrammarUsage(raw) {
+    var match = String((raw && raw.Explanation) || "").match(/Cách dùng\s*:([\s\S]*)$/i);
+    if (!match) return "";
+    var parts = match[1].split("|")
+      .map(function (s) { return s.trim(); })
+      .filter(Boolean);
+    return parts.length === 1 ? parts[0] : "";
+  }
   function getGrammarDailyKey(raw) {
     var structure = getGrammarStructure(raw);
     if (!structure) return "";
@@ -6961,11 +6983,11 @@
     var firstExample = splitGrammarExampleLines(raw.Example)[0];
     if (firstExample) {
       var ex = createElement("div", "daily-grammar-example", "");
-      var match = firstExample.match(/^(.*?)\s*\[([^\]]*)\]\s*\(([^()]*)\)\s*$/);
+      // Ví dụ dạng "câu tiếng Nhật (nghĩa)"
+      var match = firstExample.match(/^([^()]*?)\s*\(([^()]*)\)\s*$/);
       if (match) {
         ex.appendChild(createElement("div", "daily-grammar-example-jp", match[1].trim()));
         ex.appendChild(createElement("div", "daily-grammar-example-sub", match[2].trim()));
-        ex.appendChild(createElement("div", "daily-grammar-example-sub", match[3].trim()));
       } else {
         ex.appendChild(createElement("div", "daily-grammar-example-jp", firstExample));
       }
@@ -7217,14 +7239,14 @@
             ""
         );
 
-        const match = line.match(/^(.*?)\s*\[([^\]]*)\]\s*\(([^()]*)\)\s*$/);
+        // Ví dụ dạng "câu tiếng Nhật (nghĩa)"
+        const match = line.match(/^([^()]*?)\s*\(([^()]*)\)\s*$/);
 
         if (match) {
-            const [, japanese, reading, meaning] = match;
+            const [, japanese, meaning] = match;
 
             p.innerHTML = `
                 <div>${japanese.trim()}</div>
-                <div>${reading.trim()}</div>
                 <div>${meaning.trim()}</div>
             `;
         } else {
@@ -7314,7 +7336,7 @@
     return max || 1;
   }
   function hasActiveGrammarFilter() {
-    return state.filter.grammarLesson !== "all" || state.filter.checkboxGrammarN3 === true ||
+    return state.filter.grammarLevel !== "all" || state.filter.grammarLesson !== "all" ||
       !!String(state.filter.grammarSearch || "").trim();
   }
 
@@ -7555,11 +7577,17 @@
     return found;
   }
 
+  function parseGrammarExData(text) {
+    return parseExerciseData(text, parseGrammarExItem,
+      "Không có bài hợp lệ (dạng order cần tiles; dạng choice cần q, options và answer nằm trong options).");
+  }
+
   /**
-   * Đọc data ChatGPT trả về: chấp nhận có/không có ```json```, chữ thừa trước/sau, dấu phẩy thừa, thiếu [ ],
+   * Đọc data ChatGPT trả về (dùng chung cho bài tập Ngữ pháp & Kanji; parseItem chuẩn hoá từng bài, sai thì trả null):
+   * chấp nhận có/không có ```json```, chữ thừa trước/sau, dấu phẩy thừa, thiếu [ ],
    * nhiều phần (nhiều code block) dán nối nhau, hoặc phần cuối bị cắt dở (bỏ bài chưa trọn vẹn).
    */
-  function parseGrammarExData(text) {
+  function parseExerciseData(text, parseItem, invalidMessage) {
     var src = String(text || "").trim();
     if (!src) return { error: "Chưa dán dữ liệu." };
     src = src.replace(/```[a-z]*/gi, "\n");
@@ -7590,7 +7618,7 @@
     var seen = {};
     var skipped = 0;
     list.forEach(function (obj) {
-      var item = parseGrammarExItem(obj);
+      var item = parseItem(obj);
       if (!item) {
         // Chỉ đếm những object trông giống bài tập (bỏ qua object bọc ngoài {"items": ...})
         if (obj && typeof obj === "object" && (obj.type || obj.tiles || obj.options)) skipped++;
@@ -7603,9 +7631,7 @@
     });
     if (!items.length) {
       return {
-        error: data == null
-          ? "JSON không hợp lệ: " + firstError
-          : "Không có bài hợp lệ (dạng order cần tiles; dạng choice cần q, options và answer nằm trong options)."
+        error: data == null ? "JSON không hợp lệ: " + firstError : invalidMessage
       };
     }
     return { items: items, skipped: skipped };
@@ -8261,6 +8287,23 @@
   }
 
   function renderGrammarExPaste(pending) {
+    renderExercisePaste(pending, {
+      unitLabel: "mẫu ngữ pháp",
+      planChip: function (p) {
+        return { text: p.structure, title: GRAMMAR_EX_TYPE_LABELS[p.type] + " · " + p.meaning };
+      },
+      parse: parseGrammarExData,
+      pendingKey: GRAMMAR_EX_PENDING_KEY,
+      start: startGrammarExSession,
+      back: renderGrammarExConfig
+    });
+  }
+
+  /**
+   * Màn dán data ChatGPT (dùng chung cho bài tập Ngữ pháp & Kanji).
+   * ui: { unitLabel, planChip(p) → {text, title}, parse(text), pendingKey, start(items), back() }
+   */
+  function renderExercisePaste(pending, ui) {
     var root = createElement("div", "test-result gx-root", "");
     var status = createElement("div", "gx-status", "");
     function setStatus(text, isError) {
@@ -8283,12 +8326,13 @@
           : "Quay lại đây, bấm \"Dán & bắt đầu\" (hoặc dán tay vào ô bên dưới)."
       ].forEach(function (text) { steps.appendChild(createElement("li", "", text)); });
       root.appendChild(steps);
-      root.appendChild(createElement("div", "gx-scope-info", "Đề gồm " + pending.plan.length + " mẫu ngữ pháp:"));
+      root.appendChild(createElement("div", "gx-scope-info", "Đề gồm " + pending.plan.length + " " + ui.unitLabel + ":"));
 
       var planList = createElement("div", "gx-plan-list", "");
       pending.plan.forEach(function (p) {
-        var chip = createElement("span", "gx-plan-chip", p.structure);
-        chip.title = GRAMMAR_EX_TYPE_LABELS[p.type] + " · " + p.meaning;
+        var chipInfo = ui.planChip(p);
+        var chip = createElement("span", "gx-plan-chip", chipInfo.text);
+        chip.title = chipInfo.title;
         planList.appendChild(chip);
       });
       root.appendChild(planList);
@@ -8323,7 +8367,7 @@
     root.appendChild(status);
 
     function tryStart() {
-      var res = parseGrammarExData(textarea.value);
+      var res = ui.parse(textarea.value);
       if (res.error) {
         setStatus(res.error, true);
         return;
@@ -8344,8 +8388,8 @@
       } else if (skippedNote) {
         alert(skippedNote + "Làm " + res.items.length + " bài còn lại.");
       }
-      saveGrammarExStore(GRAMMAR_EX_PENDING_KEY, null);
-      startGrammarExSession(res.items);
+      saveGrammarExStore(ui.pendingKey, null);
+      ui.start(res.items);
     }
 
     var btnRow = createElement("div", "btn-row", "");
@@ -8371,7 +8415,7 @@
     btnRow.appendChild(startBtn);
     var backBtn = createElement("button", "btn-ghost", "← Cấu hình");
     backBtn.type = "button";
-    backBtn.addEventListener("click", renderGrammarExConfig);
+    backBtn.addEventListener("click", ui.back);
     btnRow.appendChild(backBtn);
     root.appendChild(btnRow);
 
@@ -8395,6 +8439,819 @@
     var btn = document.getElementById("grammar-exercise-btn");
     if (btn) {
       btn.addEventListener("click", openGrammarExercise);
+    }
+  }
+
+  // ----- Bài tập Kanji (đề do ChatGPT sinh, dán lại vào app) -----
+  // Cùng luồng với bài tập ngữ pháp: chọn phạm vi → app bốc ngẫu nhiên Kanji, mỗi Kanji lấy 1 từ trong data vocabulary
+  // làm từ mục tiêu → soạn prompt mở ChatGPT → dán JSON lại để làm bài. 3 dạng, đều chọn 1 trong các đáp án:
+  //   - "fill":  câu khuyết từ mục tiêu, chọn từ viết bằng Kanji đúng
+  //   - "read":  câu có từ mục tiêu được gạch chân, chọn cách đọc đúng
+  //   - "usage": cho từ mục tiêu, chọn câu dùng từ đó đúng nghĩa
+  // Dùng lại phần chung của bài tập ngữ pháp (lưu localStorage, copy/mở prompt, đọc JSON, màn dán data, giao diện gx-*).
+  var KANJI_EX_DEFAULT_COUNT = 10;
+  var KANJI_EX_CONFIG_KEY = "jp_kanji_ex_config";
+  var KANJI_EX_PENDING_KEY = "jp_kanji_ex_pending";
+  var KANJI_EX_SESSION_KEY = "jp_kanji_ex_session";
+  var KANJI_EX_LEVELS = [
+    { value: "n45", label: "N4-N5" },
+    { value: "n3", label: "N3" },
+    { value: "filtered", label: "Theo danh sách đang lọc" }
+  ];
+  var KANJI_EX_MODES = [
+    { value: "mix", label: "Trộn 3 dạng" },
+    { value: "fill", label: "Chỉ điền Kanji vào chỗ trống" },
+    { value: "read", label: "Chỉ chọn cách đọc" },
+    { value: "usage", label: "Chỉ chọn câu dùng đúng" }
+  ];
+  var KANJI_EX_TYPES = ["fill", "read", "usage"];
+  var KANJI_EX_TYPE_LABELS = { fill: "Điền Kanji", read: "Cách đọc", usage: "Chọn câu đúng" };
+
+  /** session: bộ bài đang làm (lưu localStorage); q: trạng thái câu đang hiển thị (không lưu) */
+  var kanjiEx = { session: null, q: null };
+
+  /** Id ổn định để ChatGPT trả lại & app tra ngược ra Kanji: "N45-<stt>" / "N3-<stt>" (chữ Kanji có thể trùng giữa 2 cấp độ) */
+  function getKanjiExId(raw) {
+    return (raw.level === "n3" ? "N3-" : "N45-") + raw.stt;
+  }
+  function findKanjiIndexByExId(id) {
+    var key = String(id || "").trim().toUpperCase();
+    if (!key) return -1;
+    for (var i = 0; i < kanjiData.length; i++) {
+      if (kanjiData[i] && getKanjiExId(kanjiData[i]) === key) return i;
+    }
+    return -1;
+  }
+  function hasActiveKanjiFilter() {
+    return (Array.isArray(state.filter.kanjiRadical) && state.filter.kanjiRadical.length > 0) ||
+      !!String(state.filter.kanjiSearch || "").trim() || !!state.kanjiFavOnly;
+  }
+  /** Từ mục tiêu: các từ trong data vocabulary có chứa đúng chữ Kanji đó */
+  function getKanjiExWords(raw) {
+    return getKanjiExamples(raw).filter(function (ve) { return ve.word.indexOf(raw.kanji) !== -1; });
+  }
+
+  function loadKanjiExConfig() {
+    var saved = loadGrammarExStore(KANJI_EX_CONFIG_KEY) || {};
+    var savedRanges = saved.ranges || {};
+    var defaultLevel = state.filter.kanjiLevel === "n45" ? "n45" : "n3";
+    var cfg = {
+      level: KANJI_EX_LEVELS.some(function (l) { return l.value === saved.level; }) ? saved.level : defaultLevel,
+      ranges: {},
+      count: Math.max(1, parseInt(saved.count, 10) || KANJI_EX_DEFAULT_COUNT),
+      mode: KANJI_EX_MODES.some(function (m) { return m.value === saved.mode; }) ? saved.mode : "mix",
+      readAfter: saved.readAfter !== false
+    };
+    ["n45", "n3"].forEach(function (level) {
+      var r = savedRanges[level] || {};
+      var from = parseInt(r.from, 10);
+      var to = parseInt(r.to, 10);
+      cfg.ranges[level] = { from: isNaN(from) ? 1 : from, to: isNaN(to) ? getKanjiSttMax(level) : to };
+    });
+    // Đang lọc (bộ thủ / tìm kiếm / yêu thích) ở tab Kanji thì mặc định làm bài đúng danh sách đang lọc
+    if (hasActiveKanjiFilter()) {
+      cfg.level = "filtered";
+    } else if (cfg.level === "filtered") {
+      cfg.level = defaultLevel;
+    }
+    return cfg;
+  }
+
+  function getKanjiExPool(cfg) {
+    var list;
+    if (cfg.level === "filtered") {
+      list = applyKanjiFilter();
+    } else {
+      var range = cfg.ranges[cfg.level];
+      list = kanjiData.filter(function (raw, i) {
+        if (!raw || (raw.level || "n45") !== cfg.level) return false;
+        var stt = raw.stt != null ? raw.stt : (i + 1);
+        return stt >= range.from && stt <= range.to;
+      });
+    }
+    return list.filter(function (raw) { return raw && raw.kanji && getKanjiExWords(raw).length > 0; });
+  }
+
+  /** Bốc ngẫu nhiên cfg.count Kanji, mỗi chữ lấy ngẫu nhiên 1 từ mục tiêu; chế độ trộn thì chia đều 3 dạng */
+  function buildKanjiExPlan(pool, cfg) {
+    return shuffleArray(pool).slice(0, cfg.count).map(function (raw, i) {
+      var words = getKanjiExWords(raw);
+      var word = words[Math.floor(Math.random() * words.length)];
+      return {
+        id: getKanjiExId(raw),
+        type: cfg.mode === "mix" ? KANJI_EX_TYPES[i % KANJI_EX_TYPES.length] : cfg.mode,
+        kanji: raw.kanji,
+        hanviet: String(raw.hanviet || "").trim(),
+        meaning: String(raw.core_meaning || "").trim(),
+        word: word.word,
+        reading: word.reading,
+        wordMeaning: word.meaning
+      };
+    });
+  }
+
+  function buildKanjiExPrompt(plan) {
+    function firstOf(type) { return plan.filter(function (p) { return p.type === type; })[0]; }
+    var sampleFill = firstOf("fill");
+    var sampleRead = firstOf("read");
+    var sampleUsage = firstOf("usage");
+    var lines = [
+      "Bạn là giáo viên tiếng Nhật. Tạo " + plan.length + " bài tập Kanji cho người Việt, mỗi dòng dưới đây là 1 bài, " +
+      "bài phải xoay quanh đúng từ mục tiêu của dòng đó (id N45 = trình độ N4-N5, N3 = trình độ N3; giữ nguyên id, dạng và từ mục tiêu).",
+      "",
+      "id | dạng | kanji (Hán Việt: nghĩa) | từ mục tiêu (cách đọc: nghĩa)"
+    ];
+    plan.forEach(function (p) {
+      var wordInfo = [p.reading, p.wordMeaning].filter(Boolean).join(": ");
+      lines.push(p.id + " | " + p.type + " | " + p.kanji + " (" + p.hanviet + ": " + p.meaning + ") | " +
+        p.word + (wordInfo ? " (" + wordInfo + ")" : ""));
+    });
+    lines.push(
+      "",
+      "Yêu cầu chung:",
+      "- Câu mới, tự nhiên, độ dài vừa phải, từ vựng và ngữ cảnh đúng trình độ; từ mục tiêu viết đúng như trên (bằng kanji).",
+      "- jp: câu hoàn chỉnh có chứa từ mục tiêu (kanji + kana, kết thúc bằng 。); kana: cả câu jp bằng hiragana (katakana cho từ ngoại lai); " +
+      "vi: nghĩa tiếng Việt của câu jp; explain: 1-2 câu tiếng Việt giải thích nghĩa/cách đọc của từ mục tiêu và vì sao các đáp án khác sai."
+    );
+    if (sampleFill) {
+      lines.push(
+        "",
+        "Dạng fill (chọn từ Kanji điền vào chỗ trống):",
+        "- q: câu jp nhưng từ mục tiêu thay bằng " + GRAMMAR_EX_BLANK + "; qKana: cách đọc hiragana của q (giữ " + GRAMMAR_EX_BLANK + "); " +
+        "answerKana: cách đọc hiragana của từ mục tiêu.",
+        "- options: 4 từ viết bằng kanji (1 đúng là từ mục tiêu; 3 sai dễ nhầm: kanji nhìn giống, cùng cách đọc nhưng khác kanji, " +
+        "hoặc từ khác có cùng kanji) — chỉ 1 đáp án hợp với câu; answer: chép y nguyên đáp án đúng trong options."
+      );
+    }
+    if (sampleRead) {
+      lines.push(
+        "",
+        "Dạng read (chọn cách đọc của từ được gạch chân):",
+        "- target: chép y nguyên từ mục tiêu đúng như xuất hiện trong jp (phần này sẽ được gạch chân).",
+        "- options: 4 cách đọc bằng hiragana (1 đúng; 3 sai dễ nhầm: trường âm, âm ngắt っ, âm đục, nhầm âm On/Kun); " +
+        "answer: chép y nguyên cách đọc đúng trong options."
+      );
+    }
+    if (sampleUsage) {
+      lines.push(
+        "",
+        "Dạng usage (chọn câu dùng từ đúng nghĩa):",
+        "- word: từ mục tiêu; wordKana: cách đọc hiragana của word.",
+        "- options: 4 câu jp ngắn đều chứa word, chỉ 1 câu dùng đúng nghĩa và ngữ cảnh, 3 câu dùng sai nghĩa/sai ngữ cảnh " +
+        "(ngữ pháp vẫn đúng); optionsVi: nghĩa tiếng Việt của từng câu theo đúng thứ tự options; answer: chép y nguyên câu đúng trong options.",
+        "- jp là câu đúng; kana, vi theo câu đúng."
+      );
+    }
+    var samples = [];
+    if (sampleFill) {
+      samples.push(JSON.stringify({
+        id: sampleFill.id, type: "fill", q: "", qKana: "", answerKana: "", options: ["", "", "", ""], answer: "",
+        jp: "", kana: "", vi: "", explain: ""
+      }));
+    }
+    if (sampleRead) {
+      samples.push(JSON.stringify({
+        id: sampleRead.id, type: "read", jp: "", target: "", options: ["", "", "", ""], answer: "",
+        kana: "", vi: "", explain: ""
+      }));
+    }
+    if (sampleUsage) {
+      samples.push(JSON.stringify({
+        id: sampleUsage.id, type: "usage", word: "", wordKana: "", options: ["", "", "", ""], optionsVi: ["", "", "", ""],
+        answer: "", jp: "", kana: "", vi: "", explain: ""
+      }));
+    }
+    lines.push(
+      "",
+      "Chỉ trả về đúng 1 code block JSON (không viết gì ngoài code block), đủ " + plan.length + " phần tử, theo cấu trúc:",
+      "{\"items\":[",
+      samples.join(",\n"),
+      "]}"
+    );
+    if (plan.length > GRAMMAR_EX_SPLIT_THRESHOLD) {
+      lines.push(
+        "Nếu không trả hết trong 1 lần: dừng ngay sau 1 phần tử trọn vẹn và đóng code block; khi tôi nhắn \"tiếp\" " +
+        "thì trả các phần tử còn lại trong code block mới cùng cấu trúc {\"items\":[...]}."
+      );
+    }
+    return lines.join("\n");
+  }
+
+  function parseKanjiExItem(obj) {
+    if (!obj || typeof obj !== "object") return null;
+    function str(v) { return v == null ? "" : String(v).trim(); }
+    function strList(v) { return Array.isArray(v) ? v.map(str) : []; }
+    var type = str(obj.type).toLowerCase();
+    if (KANJI_EX_TYPES.indexOf(type) === -1) {
+      type = obj.target ? "read" : (obj.word ? "usage" : (obj.q ? "fill" : ""));
+    }
+    if (!type) return null;
+    var item = {
+      id: str(obj.id).toUpperCase(),
+      type: type,
+      jp: str(obj.jp),
+      kana: str(obj.kana),
+      vi: str(obj.vi),
+      explain: str(obj.explain),
+      options: [],
+      optionsVi: {}
+    };
+    // Bỏ đáp án rỗng/trùng; nghĩa tiếng Việt (dạng usage) đi theo đúng câu của nó
+    var rawVi = strList(obj.optionsVi);
+    strList(obj.options).forEach(function (o, i) {
+      if (!o || item.options.indexOf(o) !== -1) return;
+      item.options.push(o);
+      if (rawVi[i]) item.optionsVi[o] = rawVi[i];
+    });
+    var answer = str(obj.answer);
+    var answerIdx = -1;
+    item.options.forEach(function (o, i) {
+      if (answerIdx === -1 && normalizeGrammarExAnswer(o) === normalizeGrammarExAnswer(answer)) answerIdx = i;
+    });
+    // Phòng khi ChatGPT trả về chỉ số (0-based) thay vì nội dung đáp án
+    if (answerIdx === -1 && /^\d+$/.test(answer) && Number(answer) < item.options.length) {
+      answerIdx = Number(answer);
+    }
+    if (item.options.length < 2 || answerIdx === -1) return null;
+    item.answer = item.options[answerIdx];
+
+    if (type === "fill") {
+      var blankRe = /[＿_]{2,}|（\s*）|\(\s*\)/g;
+      item.q = str(obj.q).replace(blankRe, GRAMMAR_EX_BLANK);
+      item.qKana = str(obj.qKana).replace(blankRe, GRAMMAR_EX_BLANK);
+      item.answerKana = str(obj.answerKana);
+      // Quên khoét chỗ trống nhưng câu jp có chứa đáp án thì tự khoét
+      if (item.q.indexOf(GRAMMAR_EX_BLANK) === -1 && item.jp.indexOf(item.answer) !== -1) {
+        item.q = item.jp.replace(item.answer, GRAMMAR_EX_BLANK);
+      }
+      if (item.q.indexOf(GRAMMAR_EX_BLANK) === -1) return null;
+      if (item.qKana.indexOf(GRAMMAR_EX_BLANK) === -1) item.qKana = "";
+      return item;
+    }
+    if (type === "read") {
+      // Từ gạch chân phải nằm trong câu, không thì không biết gạch chân chỗ nào
+      item.target = str(obj.target) || str(obj.word);
+      if (!item.target || item.jp.indexOf(item.target) === -1) return null;
+      return item;
+    }
+    item.word = str(obj.word) || str(obj.target);
+    item.wordKana = str(obj.wordKana);
+    if (!item.word) return null;
+    if (!item.jp) item.jp = item.answer;
+    return item;
+  }
+
+  function parseKanjiExData(text) {
+    return parseExerciseData(text, parseKanjiExItem,
+      "Không có bài hợp lệ (mỗi bài cần options và answer nằm trong options; dạng fill cần q, dạng read cần target có trong jp, dạng usage cần word).");
+  }
+
+  function loadKanjiExSession() {
+    var s = loadGrammarExStore(KANJI_EX_SESSION_KEY);
+    if (!s || !Array.isArray(s.items) || !s.items.length || !Array.isArray(s.queue)) return null;
+    if (!Array.isArray(s.results)) s.results = [];
+    return s;
+  }
+  function saveKanjiExSession() {
+    saveGrammarExStore(KANJI_EX_SESSION_KEY, kanjiEx.session);
+  }
+  function loadKanjiExPending() {
+    var p = loadGrammarExStore(KANJI_EX_PENDING_KEY);
+    return p && Array.isArray(p.plan) && p.prompt ? p : null;
+  }
+
+  function startKanjiExSession(items) {
+    kanjiEx.session = {
+      createdAt: Date.now(),
+      items: items,
+      queue: [],
+      pos: 0,
+      results: [],
+      finished: false,
+      readAfter: loadKanjiExConfig().readAfter
+    };
+    restartKanjiExSession(items.map(function (_, i) { return i; }));
+  }
+  /** Làm (lại) bộ hiện tại với danh sách câu `indices` (chỉ số trong session.items), xáo thứ tự */
+  function restartKanjiExSession(indices) {
+    var s = kanjiEx.session;
+    s.queue = shuffleArray(indices);
+    s.pos = 0;
+    s.results = [];
+    s.finished = false;
+    kanjiEx.q = null;
+    saveKanjiExSession();
+    renderKanjiExQuestion();
+  }
+
+  function getKanjiExCurrentItem() {
+    var s = kanjiEx.session;
+    return s && !s.finished && s.pos < s.queue.length ? s.items[s.queue[s.pos]] : null;
+  }
+  function countKanjiExCorrect() {
+    return kanjiEx.session.results.filter(function (r) { return r && r.correct; }).length;
+  }
+
+  function pickKanjiExOption(opt) {
+    var s = kanjiEx.session;
+    var q = kanjiEx.q;
+    var item = getKanjiExCurrentItem();
+    if (!q || !item || q.answered) return;
+    q.picked = opt;
+    q.answered = true;
+    q.correct = opt === item.answer;
+    q.justAnswered = true;
+    s.results[s.pos] = { item: s.queue[s.pos], correct: q.correct };
+    saveKanjiExSession();
+    renderKanjiExQuestion();
+    if (s.readAfter !== false) {
+      speakJapanese(getKanjiExFullSentence(item), null);
+    }
+  }
+
+  function nextKanjiExQuestion() {
+    var s = kanjiEx.session;
+    s.pos += 1;
+    kanjiEx.q = null;
+    if (s.pos >= s.queue.length) s.finished = true;
+    saveKanjiExSession();
+    if (s.finished) {
+      renderKanjiExResult();
+    } else {
+      renderKanjiExQuestion();
+    }
+  }
+
+  function getKanjiExFullSentence(item) {
+    if (item.jp) return item.jp;
+    if (item.type === "fill") return item.q.split(GRAMMAR_EX_BLANK).join(item.answer);
+    return item.answer;
+  }
+  /** Từ mục tiêu của bài (dạng fill là đáp án điền vào chỗ trống) */
+  function getKanjiExTargetWord(item) {
+    return item.type === "fill" ? item.answer : (item.target || item.word || "");
+  }
+
+  /** Câu có từ `mark` (lần xuất hiện đầu) được gạch chân; có rubyText thì hiện cách đọc phía trên từ đó */
+  function buildKanjiExMarkedText(text, mark, className, rubyText) {
+    var el = createElement("div", className, "");
+    text = String(text || "");
+    var idx = mark ? text.indexOf(mark) : -1;
+    if (idx === -1) {
+      el.textContent = text;
+      return el;
+    }
+    el.appendChild(document.createTextNode(text.slice(0, idx)));
+    var target = createElement("span", "kx-target", "");
+    if (rubyText) {
+      var ruby = document.createElement("ruby");
+      ruby.appendChild(document.createTextNode(mark));
+      ruby.appendChild(createElement("rt", "", rubyText));
+      target.appendChild(ruby);
+    } else {
+      target.textContent = mark;
+    }
+    el.appendChild(target);
+    el.appendChild(document.createTextNode(text.slice(idx + mark.length)));
+    return el;
+  }
+
+  function renderKanjiExQuestion() {
+    var s = kanjiEx.session;
+    var item = getKanjiExCurrentItem();
+    if (!item) {
+      renderKanjiExResult();
+      return;
+    }
+    if (!kanjiEx.q || kanjiEx.q.pos !== s.pos) {
+      kanjiEx.q = {
+        pos: s.pos,
+        answered: false,
+        correct: false,
+        picked: null,
+        showVi: false,
+        showKana: false,
+        justAnswered: false,
+        rendered: false,
+        options: shuffleArray(item.options)
+      };
+    }
+    var q = kanjiEx.q;
+
+    var root = createElement("div", "test-question gx-root", "");
+    var header = createElement("div", "test-question-header", "");
+    header.appendChild(createElement("div", "", "Câu " + (s.pos + 1) + " / " + s.queue.length + " · " + KANJI_EX_TYPE_LABELS[item.type]));
+    header.appendChild(createElement("div", "", "Đã đúng: " + countKanjiExCorrect()));
+    root.appendChild(header);
+
+    var main = createElement("div", "test-question-main gx-question", "");
+    var hintBtns = [];
+    function addHintBtn(label, onClick) {
+      var btn = createElement("button", "gx-link-btn", label);
+      btn.type = "button";
+      btn.addEventListener("click", function () {
+        onClick();
+        renderKanjiExQuestion();
+      });
+      hintBtns.push(btn);
+    }
+    if (item.type === "fill") {
+      main.appendChild(createElement("div", "gx-question-label", "Chọn từ Kanji đúng cho chỗ trống:"));
+      main.appendChild(buildGrammarExBlankSentence(item.q, q.answered ? item.answer : "", "gx-sentence"));
+      if (item.qKana) {
+        main.appendChild(buildGrammarExBlankSentence(item.qKana, q.answered ? item.answerKana : "", "gx-kana"));
+      }
+      if (item.answerKana && !q.answered) {
+        if (q.showKana) {
+          main.appendChild(createElement("div", "gx-question-vi gx-question-vi--small", "Cách đọc chỗ trống: " + item.answerKana));
+        } else {
+          addHintBtn("Gợi ý cách đọc", function () { q.showKana = true; });
+        }
+      }
+    } else if (item.type === "read") {
+      main.appendChild(createElement("div", "gx-question-label", "Chọn cách đọc đúng của từ được gạch chân:"));
+      main.appendChild(buildKanjiExMarkedText(item.jp, item.target, "gx-sentence", q.answered ? item.answer : ""));
+    } else {
+      main.appendChild(createElement("div", "gx-question-label", "Chọn câu dùng từ này đúng nghĩa:"));
+      var wordRow = createElement("div", "kx-word-row", "");
+      wordRow.appendChild(createElement("span", "kx-word", item.word));
+      if (item.wordKana) wordRow.appendChild(createElement("span", "kx-word-kana", item.wordKana));
+      main.appendChild(wordRow);
+    }
+    // Dạng usage: nghĩa của từng câu chỉ hiện sau khi trả lời (hiện trước thì lộ đáp án)
+    if (item.vi && item.type !== "usage") {
+      if (q.showVi || q.answered) {
+        main.appendChild(createElement("div", "gx-question-vi gx-question-vi--small", item.vi));
+      } else {
+        addHintBtn("Xem nghĩa", function () { q.showVi = true; });
+      }
+    }
+    if (hintBtns.length) {
+      var hintRow = createElement("div", "kx-hint-row", "");
+      hintBtns.forEach(function (btn) { hintRow.appendChild(btn); });
+      main.appendChild(hintRow);
+    }
+    var progressOuter = createElement("div", "test-progress", "");
+    var progressInner = createElement("div", "test-progress-bar", "");
+    progressInner.style.width = (((s.pos + (q.answered ? 1 : 0)) / s.queue.length) * 100).toFixed(2) + "%";
+    progressOuter.appendChild(progressInner);
+    main.appendChild(progressOuter);
+    root.appendChild(main);
+
+    var grid = createElement("div", "options-grid gx-options" + (item.type === "usage" ? " kx-options--sentences" : ""), "");
+    q.options.forEach(function (opt, idx) {
+      var cls = "option-btn";
+      if (q.answered) {
+        if (opt === item.answer) {
+          cls += " gx-option--correct";
+        } else if (opt === q.picked) {
+          cls += " gx-option--wrong";
+        } else {
+          cls += " gx-option--dim";
+        }
+      }
+      var btn = createElement("button", cls, "");
+      btn.type = "button";
+      btn.disabled = q.answered;
+      btn.appendChild(createElement("span", "option-index", String(idx + 1)));
+      if (item.type === "usage") {
+        var body = createElement("div", "kx-option-body", "");
+        body.appendChild(buildKanjiExMarkedText(opt, item.word, "gx-option-text", ""));
+        if (q.answered && item.optionsVi[opt]) {
+          body.appendChild(createElement("div", "kx-option-vi", item.optionsVi[opt]));
+        }
+        btn.appendChild(body);
+      } else {
+        btn.appendChild(createElement("span", "gx-option-text", opt));
+      }
+      btn.addEventListener("click", function () {
+        pickKanjiExOption(opt);
+      });
+      grid.appendChild(btn);
+    });
+    root.appendChild(grid);
+
+    var reveal = null;
+    if (q.answered) {
+      reveal = buildKanjiExReveal(item, q);
+      root.appendChild(reveal);
+    }
+
+    // Vẽ lại cùng 1 câu (bấm gợi ý...) thì giữ nguyên vị trí cuộn của modal
+    var bodyEl = detailModalState.bodyEl;
+    var keepScroll = bodyEl && q.rendered ? bodyEl.scrollTop : 0;
+    openDetailModal("Bài tập Kanji", root);
+    q.rendered = true;
+    if (bodyEl && keepScroll) bodyEl.scrollTop = keepScroll;
+    if (reveal && q.justAnswered) {
+      q.justAnswered = false;
+      reveal.scrollIntoView({ block: "nearest", behavior: "smooth" });
+    }
+  }
+
+  function buildKanjiExReveal(item, q) {
+    var s = kanjiEx.session;
+    var wrap = createElement("div", "gx-reveal", "");
+
+    var status;
+    if (q.correct) {
+      status = "Đúng rồi!";
+    } else if (item.type === "usage") {
+      status = "Chưa đúng — câu dùng đúng là:";
+    } else {
+      status = "Chưa đúng — đáp án: " + item.answer;
+    }
+    var banner = createElement("div", "kt-test-reveal-banner " + (q.correct ? "kt-test-reveal-banner--correct" : "kt-test-reveal-banner--wrong"), "");
+    banner.appendChild(createElement("div", "kt-test-reveal-status", status));
+
+    // Câu đầy đủ: gạch chân từ mục tiêu, kèm cách đọc phía trên
+    var sentence = getKanjiExFullSentence(item);
+    var reading = item.type === "read" ? item.answer : (item.type === "fill" ? item.answerKana : item.wordKana);
+    var sentenceRow = createElement("div", "gx-reveal-sentence-row", "");
+    sentenceRow.appendChild(buildKanjiExMarkedText(sentence, getKanjiExTargetWord(item), "gx-reveal-jp", reading));
+    var speakBtn = createElement("button", "gx-speak-btn", "🔊");
+    speakBtn.type = "button";
+    speakBtn.title = "Đọc câu";
+    speakBtn.addEventListener("click", function () {
+      speakJapanese(sentence, speakBtn);
+    });
+    sentenceRow.appendChild(speakBtn);
+    banner.appendChild(sentenceRow);
+    if (item.kana && item.kana !== sentence) {
+      banner.appendChild(createElement("div", "gx-reveal-kana", item.kana));
+    }
+    if (item.vi) {
+      banner.appendChild(createElement("div", "gx-reveal-vi", item.vi));
+    }
+    if (item.explain) {
+      banner.appendChild(createElement("div", "gx-reveal-explain", "💡 " + item.explain));
+    }
+    wrap.appendChild(banner);
+
+    // Thông tin Kanji của bài (giống phần hiện sau khi trả lời của Test Kanji)
+    var kanjiIndex = findKanjiIndexByExId(item.id);
+    if (kanjiIndex !== -1) {
+      var work = document.createElement("div");
+      appendKanjiDetailSections(work, kanjiIndex, { testReveal: true });
+      var contentDiv = createElement("div", "kd-detail-content kd-detail-content--test-reveal", "");
+      while (work.firstChild) {
+        contentDiv.appendChild(work.firstChild);
+      }
+      wrap.appendChild(contentDiv);
+    }
+
+    var nextBar = createElement("div", "gx-next-bar", "");
+    var isLast = s.pos >= s.queue.length - 1;
+    var nextBtn = createElement("button", "btn", isLast ? "Xem kết quả" : "Câu tiếp theo →");
+    nextBtn.type = "button";
+    nextBtn.addEventListener("click", nextKanjiExQuestion);
+    nextBar.appendChild(nextBtn);
+    wrap.appendChild(nextBar);
+    return wrap;
+  }
+
+  function renderKanjiExResult() {
+    var s = kanjiEx.session;
+    var results = s.results.filter(Boolean);
+    var total = s.queue.length;
+    var correct = countKanjiExCorrect();
+
+    var root = createElement("div", "test-result gx-root", "");
+    root.appendChild(createElement("div", "score-main", correct + " / " + total));
+    root.appendChild(createElement("div", "score-detail", "Hoàn thành bài tập Kanji. Số câu sai: " + (total - correct) + "."));
+
+    var list = createElement("div", "gx-result-list", "");
+    results.forEach(function (r) {
+      var item = s.items[r.item];
+      var raw = kanjiData[findKanjiIndexByExId(item.id)];
+      var row = createElement("div", "gx-result-row" + (r.correct ? "" : " gx-result-row--wrong"), "");
+      row.appendChild(createElement("span", "gx-result-mark", r.correct ? "✓" : "✗"));
+      var body = createElement("div", "gx-result-body", "");
+      var title = (raw ? raw.kanji + " " + (raw.hanviet || "") + " · " : "") + getKanjiExTargetWord(item) +
+        " · " + KANJI_EX_TYPE_LABELS[item.type];
+      body.appendChild(createElement("div", "gx-result-structure", title));
+      body.appendChild(createElement("div", "gx-result-sentence", getKanjiExFullSentence(item)));
+      row.appendChild(body);
+      list.appendChild(row);
+    });
+    root.appendChild(list);
+
+    var wrongIdx = [];
+    results.forEach(function (r) {
+      if (!r.correct && wrongIdx.indexOf(r.item) === -1) wrongIdx.push(r.item);
+    });
+    var btnRow = createElement("div", "btn-row", "");
+    if (wrongIdx.length) {
+      btnRow.appendChild(createRetryWrongButton(wrongIdx.length, function () {
+        restartKanjiExSession(wrongIdx);
+      }));
+    }
+    var againBtn = createElement("button", wrongIdx.length ? "btn-ghost" : "btn", "Làm lại bộ này");
+    againBtn.type = "button";
+    againBtn.addEventListener("click", function () {
+      restartKanjiExSession(s.items.map(function (_, i) { return i; }));
+    });
+    btnRow.appendChild(againBtn);
+    var newBtn = createElement("button", "btn-ghost", "✨ Tạo bộ mới");
+    newBtn.type = "button";
+    newBtn.addEventListener("click", renderKanjiExConfig);
+    btnRow.appendChild(newBtn);
+    root.appendChild(btnRow);
+
+    openDetailModal("Bài tập Kanji", root);
+  }
+
+  function renderKanjiExConfig() {
+    var cfg = loadKanjiExConfig();
+    var root = createElement("div", "test-result test-config-form gx-root", "");
+
+    var s = kanjiEx.session;
+    if (s && !s.finished && s.pos < s.queue.length) {
+      var resumeBtn = createElement("button", "btn-ghost gx-resume-btn", "▶ Làm tiếp bộ đang làm (câu " + (s.pos + 1) + " / " + s.queue.length + ")");
+      resumeBtn.type = "button";
+      resumeBtn.addEventListener("click", function () {
+        kanjiEx.q = null;
+        renderKanjiExQuestion();
+      });
+      root.appendChild(resumeBtn);
+    }
+
+    var grid = createElement("div", "test-config-fields", "");
+    function addField(label, control) {
+      var field = createElement("div", "field-group", "");
+      var labelEl = createElement("div", "field-label", label);
+      field.appendChild(labelEl);
+      field.appendChild(control);
+      grid.appendChild(field);
+      return { field: field, label: labelEl };
+    }
+    function addNumberInput(value, min) {
+      var input = createElement("input", "input-text", "");
+      input.type = "number";
+      input.inputMode = "numeric";
+      input.min = String(min);
+      input.value = String(value);
+      return input;
+    }
+
+    var levelSelect = createElement("select", "", "");
+    KANJI_EX_LEVELS.forEach(function (lv) {
+      var label = lv.value === "filtered" ? lv.label + " (" + applyKanjiFilter().length + " chữ)" : lv.label;
+      var opt = createElement("option", "", label);
+      opt.value = lv.value;
+      levelSelect.appendChild(opt);
+    });
+    levelSelect.value = cfg.level;
+    addField("Phạm vi Kanji", levelSelect);
+
+    var countInput = addNumberInput(cfg.count, 1);
+    addField("Số câu", countInput);
+
+    var fromInput = addNumberInput(1, 1);
+    var toInput = addNumberInput(1, 1);
+    var fromField = addField("Từ STT", fromInput);
+    var toField = addField("", toInput);
+
+    var modeSelect = createElement("select", "", "");
+    KANJI_EX_MODES.forEach(function (m) {
+      var opt = createElement("option", "", m.label);
+      opt.value = m.value;
+      modeSelect.appendChild(opt);
+    });
+    modeSelect.value = cfg.mode;
+    addField("Dạng bài", modeSelect);
+
+    var readAfterInput = createElement("input", "", "");
+    readAfterInput.type = "checkbox";
+    readAfterInput.checked = cfg.readAfter;
+    addField("Đọc câu sau khi trả lời", readAfterInput);
+    root.appendChild(grid);
+
+    var scopeInfo = createElement("div", "test-question-sub gx-scope-info", "");
+    root.appendChild(scopeInfo);
+
+    /** Cấp độ đang hiển thị trong 2 ô Từ/Đến (khác levelSelect.value ngay lúc vừa đổi cấp độ) */
+    var shownLevel = null;
+    function readForm() {
+      if (cfg.ranges[shownLevel]) {
+        var from = parseInt(fromInput.value, 10);
+        var to = parseInt(toInput.value, 10);
+        cfg.ranges[shownLevel] = {
+          from: isNaN(from) || from < 1 ? 1 : from,
+          to: isNaN(to) ? getKanjiSttMax(shownLevel) : to
+        };
+      }
+      cfg.level = levelSelect.value;
+      cfg.count = Math.max(1, parseInt(countInput.value, 10) || KANJI_EX_DEFAULT_COUNT);
+      cfg.mode = modeSelect.value;
+      cfg.readAfter = !!readAfterInput.checked;
+      return cfg;
+    }
+    function refresh() {
+      var level = levelSelect.value;
+      if (level !== shownLevel) {
+        // Đổi cấp độ: lưu khoảng của cấp độ cũ rồi nạp khoảng đã lưu của cấp độ mới vào 2 ô Từ/Đến
+        readForm();
+        shownLevel = level;
+        var hasRange = !!cfg.ranges[level];
+        fromField.field.style.display = hasRange ? "" : "none";
+        toField.field.style.display = hasRange ? "" : "none";
+        if (hasRange) {
+          var max = getKanjiSttMax(level);
+          toField.label.textContent = "Đến STT (tối đa " + max + ")";
+          fromInput.max = String(max);
+          toInput.max = String(max);
+          fromInput.value = String(cfg.ranges[level].from);
+          toInput.value = String(cfg.ranges[level].to);
+        }
+      }
+      var c = readForm();
+      var poolSize = getKanjiExPool(c).length;
+      var takeCount = Math.min(poolSize, c.count);
+      if (!poolSize) {
+        scopeInfo.textContent = "Không có Kanji nào (có từ vựng) trong phạm vi đã chọn.";
+      } else {
+        scopeInfo.textContent = "Phạm vi có " + poolSize + " Kanji → " +
+          (takeCount === poolSize ? "lấy cả " + poolSize + " chữ (thứ tự ngẫu nhiên)" : "bốc ngẫu nhiên " + takeCount + " chữ") +
+          ", mỗi chữ 1 từ vựng để tạo đề." +
+          (takeCount > GRAMMAR_EX_SPLIT_THRESHOLD ? " Đề nhiều câu nên ChatGPT có thể trả làm nhiều phần." : "");
+      }
+    }
+    [levelSelect, modeSelect].forEach(function (el) { el.addEventListener("change", refresh); });
+    [fromInput, toInput, countInput].forEach(function (el) { el.addEventListener("input", refresh); });
+    refresh();
+
+    root.appendChild(createElement(
+      "div",
+      "test-question-sub",
+      "Bấm \"Tạo data\": app mở ChatGPT với prompt soạn sẵn (prompt cũng đã được copy). " +
+      "Chờ ChatGPT trả lời xong, copy khối JSON rồi quay lại app dán vào để làm bài."
+    ));
+
+    var btnRow = createElement("div", "btn-row", "");
+    var genBtn = createElement("button", "btn", "✨ Tạo data (ChatGPT)");
+    genBtn.type = "button";
+    genBtn.addEventListener("click", function () {
+      var c = readForm();
+      saveGrammarExStore(KANJI_EX_CONFIG_KEY, c);
+      var pool = getKanjiExPool(c);
+      if (!pool.length) {
+        alert("Không có Kanji nào (có từ vựng) trong phạm vi đã chọn.");
+        return;
+      }
+      var plan = buildKanjiExPlan(pool, c);
+      var pending = { createdAt: Date.now(), plan: plan, prompt: buildKanjiExPrompt(plan) };
+      saveGrammarExStore(KANJI_EX_PENDING_KEY, pending);
+      copyGrammarExText(pending.prompt);
+      window.open(getGrammarExChatGptUrl(pending.prompt), "_blank", "noopener");
+      renderKanjiExPaste(pending);
+    });
+    btnRow.appendChild(genBtn);
+
+    var pasteBtn = createElement("button", "btn-ghost", "📋 Dán data");
+    pasteBtn.type = "button";
+    pasteBtn.title = "Dán data bài tập đã có sẵn (ChatGPT đã trả về trước đó)";
+    pasteBtn.addEventListener("click", function () {
+      saveGrammarExStore(KANJI_EX_CONFIG_KEY, readForm());
+      renderKanjiExPaste(loadKanjiExPending());
+    });
+    btnRow.appendChild(pasteBtn);
+
+    var closeBtn = createElement("button", "btn-ghost", "Đóng");
+    closeBtn.type = "button";
+    closeBtn.addEventListener("click", function () {
+      saveGrammarExStore(KANJI_EX_CONFIG_KEY, readForm());
+      closeDetailModal();
+    });
+    btnRow.appendChild(closeBtn);
+    root.appendChild(btnRow);
+
+    openDetailModal("Bài tập Kanji", root);
+  }
+
+  function renderKanjiExPaste(pending) {
+    renderExercisePaste(pending, {
+      unitLabel: "từ vựng Kanji",
+      planChip: function (p) {
+        return { text: p.word, title: p.kanji + " " + p.hanviet + " · " + KANJI_EX_TYPE_LABELS[p.type] + " · " + p.wordMeaning };
+      },
+      parse: parseKanjiExData,
+      pendingKey: KANJI_EX_PENDING_KEY,
+      start: startKanjiExSession,
+      back: renderKanjiExConfig
+    });
+  }
+
+  /** Mở bài tập: còn đề vừa tạo chưa dán data (quay lại từ ChatGPT) thì vào thẳng màn dán data */
+  function openKanjiExercise() {
+    if (!kanjiEx.session) {
+      kanjiEx.session = loadKanjiExSession();
+    }
+    var pending = loadKanjiExPending();
+    if (pending && Date.now() - (pending.createdAt || 0) < GRAMMAR_EX_PENDING_TTL) {
+      renderKanjiExPaste(pending);
+    } else {
+      renderKanjiExConfig();
     }
   }
 
@@ -9117,10 +9974,6 @@
       lessonFrom.value = state.filter.vocabLessonFrom;
       lessonTo.value = state.filter.vocabLessonTo;
       notMasteredCb.checked = state.filter.vocabMastered === "not";
-    }
-
-    function saveFillter() {
-        try { localStorage.setItem("jp_fillter", JSON.stringify(state.filter)); } catch (e) { }
     }
 
     const params = new URLSearchParams(window.location.search);
@@ -11264,47 +12117,101 @@ history.replaceState({}, "", newUrl);
   }
 
   function setupGrammarFilters() {
+    const levelChips = document.getElementById("grammar-level-chips");
     const lessonSelect = document.getElementById("grammar-lesson-filter");
-    const checkboxGrammarN3 = document.getElementById("checkbox-grammar-n3");
     const searchInput = document.getElementById("grammar-search-input");
-    const lessons = getUniqueSorted(
-      grammarData.map(function (g) {
-        return g.lesson != null ? g.lesson : g.Lesson;
-      })
-    );
-    lessons.forEach(function (lesson) {
-      const opt = createElement("option", "", "Lesson " + lesson);
-      opt.value = String(lesson);
-      lessonSelect.appendChild(opt);
+
+    function syncGrammarLevelChips() {
+      Array.prototype.forEach.call(levelChips.querySelectorAll("[data-level]"), function (b) {
+        b.classList.toggle("chip--active", b.getAttribute("data-level") === state.filter.grammarLevel);
+      });
+    }
+
+    // Danh sách Lesson phụ thuộc cấp độ đang chọn (N3 không chia lesson → khoá select)
+    function populateGrammarLessonOptions() {
+      const level = state.filter.grammarLevel;
+      const lessons = getUniqueSorted(
+        grammarData
+          .filter(function (g) {
+            return level === "all" || isGrammarN3(g) === (level === "n3");
+          })
+          .map(function (g) {
+            return g.lesson != null ? g.lesson : g.Lesson;
+          })
+          .filter(function (lesson) {
+            return lesson != null && String(lesson).trim() !== "";
+          })
+      );
+      lessonSelect.innerHTML = "";
+      const allOpt = createElement("option", "", "Tất cả");
+      allOpt.value = "all";
+      lessonSelect.appendChild(allOpt);
+      lessons.forEach(function (lesson) {
+        const opt = createElement("option", "", "Lesson " + lesson);
+        opt.value = String(lesson);
+        lessonSelect.appendChild(opt);
+      });
+      // Lesson đang chọn không thuộc cấp độ mới thì quay về "Tất cả"
+      if (!lessons.some(function (lesson) { return String(lesson) === String(state.filter.grammarLesson); })) {
+        state.filter.grammarLesson = "all";
+      }
+      lessonSelect.value = state.filter.grammarLesson;
+      lessonSelect.disabled = lessons.length === 0;
+    }
+
+    // Khôi phục điều kiện lọc đã lưu (state.filter nạp từ jp_fillter ở setupVocabFilters);
+    // dữ liệu lưu từ bản cũ có thể thiếu grammarLevel / còn key checkboxGrammarN3
+    if (["all", "n45", "n3"].indexOf(state.filter.grammarLevel) === -1) {
+      state.filter.grammarLevel = "all";
+    }
+    if (state.filter.grammarLesson == null) {
+      state.filter.grammarLesson = "all";
+    }
+    state.filter.grammarSearch = String(state.filter.grammarSearch || "");
+    delete state.filter.checkboxGrammarN3;
+    syncGrammarLevelChips();
+    populateGrammarLessonOptions();
+    if (searchInput) {
+      searchInput.value = state.filter.grammarSearch;
+    }
+
+    levelChips.addEventListener("click", function (e) {
+      const btn = e.target.closest("[data-level]");
+      if (!btn) return;
+      state.filter.grammarLevel = btn.getAttribute("data-level");
+      syncGrammarLevelChips();
+      populateGrammarLessonOptions();
+      renderGrammarList();
+      saveFillter();
     });
 
     lessonSelect.addEventListener("change", function () {
       state.filter.grammarLesson = lessonSelect.value;
       renderGrammarList();
-    });
-
-    checkboxGrammarN3.addEventListener("change", function () {
-        state.filter.checkboxGrammarN3 = checkboxGrammarN3.checked === true;
-        renderGrammarList();
+      saveFillter();
     });
 
     if (searchInput) {
       searchInput.addEventListener("input", function () {
         state.filter.grammarSearch = searchInput.value || "";
         renderGrammarList();
+        saveFillter();
       });
     }
 
     const resetGrammarFilterBtn = document.getElementById("reset-grammar-filter-btn");
     if (resetGrammarFilterBtn) {
       resetGrammarFilterBtn.addEventListener("click", function () {
+        state.filter.grammarLevel = "all";
         state.filter.grammarLesson = "all";
         state.filter.grammarSearch = "";
-        lessonSelect.value = "all";
+        syncGrammarLevelChips();
+        populateGrammarLessonOptions();
         if (searchInput) {
           searchInput.value = "";
         }
         renderGrammarList();
+        saveFillter();
       });
     }
   }
@@ -11330,11 +12237,7 @@ history.replaceState({}, "", newUrl);
       closeDetailModal();
     });
 
-    el.addEventListener("click", function (event) {
-      if (event.target === el || event.target.classList.contains("detail-modal__backdrop")) {
-        closeDetailModal();
-      }
-    });
+    // Không đóng modal khi click ra vùng ngoài (backdrop) — chỉ đóng bằng nút ✕ để tránh lỡ tay
 
     window.addEventListener("resize", function () {
       if (!isSmallScreen()) {
