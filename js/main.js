@@ -3012,9 +3012,16 @@
     topRow.appendChild(viewBtns);
     wrap.appendChild(topRow);
 
-    const stage = createElement("div", "vocab-flashcard-stage" +
-      (vocabFlashcardEnterDir > 0 ? " vocab-flashcard-stage--enter-next" : (vocabFlashcardEnterDir < 0 ? " vocab-flashcard-stage--enter-prev" : "")), "");
-    wireVocabFlashcardSwipe(stage, filtered.length > 1);
+    const stage = createElement("div", "vocab-flashcard-stage" + getSwipeEnterClass(vocabFlashcardEnterDir), "");
+    wireSwipeNav(stage, {
+      canGo: function () { return filtered.length > 1; },
+      onGo: function (dir) {
+        vocabFlashcardEnterDir = dir;
+        advanceVocabFlashcard(dir);
+        vocabFlashcardEnterDir = 0;
+      },
+      rotate: 0.03
+    });
 
     const isSingleMode = cardMode === "1";
     const card = createElement("div", "vocab-flashcard" +
@@ -3167,12 +3174,35 @@
     renderVocabList();
   }
 
-  // ----- Vuốt ngang trên thẻ để chuyển từ: vuốt sang trái = từ tiếp theo, sang phải = từ trước -----
-  var VOCAB_SWIPE_OUT_MS = 180;
+  // ----- Vuốt ngang để chuyển mục (Flashcard từ vựng, chi tiết Kanji): vuốt sang trái = mục tiếp theo, sang phải = mục trước -----
+  var SWIPE_NAV_OUT_MS = 180;
   /** Hướng trượt vào của thẻ ở lần render kế tiếp (1 = từ tiếp theo, -1 = từ trước, 0 = không hiệu ứng) */
   var vocabFlashcardEnterDir = 0;
 
-  function wireVocabFlashcardSwipe(stage, enabled) {
+  /** Class hiệu ứng trượt vào sau khi vuốt: 1 (mục tiếp theo) → vào từ bên phải, -1 (mục trước) → vào từ bên trái */
+  function getSwipeEnterClass(dir) {
+    return dir > 0 ? " swipe-nav--enter-next" : (dir < 0 ? " swipe-nav--enter-prev" : "");
+  }
+
+  /** Chạm trong vùng cuộn ngang được (vd. cây cấu tạo Kanji) thì vuốt là để cuộn, không chuyển mục */
+  function isInHorizontalScroller(target, root) {
+    for (var node = target; node && node !== root; node = node.parentElement) {
+      if (node.scrollWidth > node.clientWidth + 1) {
+        var overflowX = getComputedStyle(node).overflowX;
+        if (overflowX === "auto" || overflowX === "scroll") return true;
+      }
+    }
+    return false;
+  }
+
+  /**
+   * Gắn vuốt ngang chuyển mục cho el.
+   * opts.canGo(dir): còn mục theo hướng đó không (1 = tiếp theo, -1 = trước) — hết thì kéo nặng tay rồi bật về
+   * opts.onGo(dir): chuyển mục, gọi sau khi el đã trượt ra khỏi màn hình
+   * opts.rotate: số độ nghiêng theo mỗi px kéo (bỏ trống = chỉ trượt ngang)
+   */
+  function wireSwipeNav(el, opts) {
+    var rotate = opts.rotate || 0;
     var startX = 0;
     var startY = 0;
     var startTime = 0;
@@ -3183,22 +3213,26 @@
     var suppressClickUntil = 0;
 
     function setOffset(x) {
-      var width = stage.offsetWidth || 300;
-      stage.style.transform = x ? "translateX(" + x + "px) rotate(" + (x * 0.03) + "deg)" : "";
-      stage.style.opacity = x ? String(Math.max(0.35, 1 - Math.abs(x) / (width * 1.4))) : "";
+      var width = el.offsetWidth || 300;
+      el.style.transform = x ? "translateX(" + x + "px)" + (rotate ? " rotate(" + (x * rotate) + "deg)" : "") : "";
+      el.style.opacity = x ? String(Math.max(0.35, 1 - Math.abs(x) / (width * 1.4))) : "";
     }
 
     function snapBack() {
-      stage.style.transition = "transform 0.2s ease-out, opacity 0.2s ease-out";
+      el.style.transition = "transform 0.2s ease-out, opacity 0.2s ease-out";
       setOffset(0);
     }
 
-    stage.addEventListener("animationend", function () {
-      stage.classList.remove("vocab-flashcard-stage--enter-next", "vocab-flashcard-stage--enter-prev");
+    function clearEnterAnimation() {
+      el.classList.remove("swipe-nav--enter-next", "swipe-nav--enter-prev");
+    }
+
+    el.addEventListener("animationend", function (e) {
+      if (e.target === el) clearEnterAnimation();
     });
 
-    stage.addEventListener("touchstart", function (e) {
-      if (!enabled || leaving) return;
+    el.addEventListener("touchstart", function (e) {
+      if (leaving) return;
       if (e.touches.length !== 1) {
         // Chạm thêm ngón thứ 2 → huỷ vuốt
         if (dragging) snapBack();
@@ -3206,23 +3240,24 @@
         dragging = false;
         return;
       }
-      stage.classList.remove("vocab-flashcard-stage--enter-next", "vocab-flashcard-stage--enter-prev");
+      if (isInHorizontalScroller(e.target, el)) return;
+      clearEnterAnimation();
       startX = e.touches[0].clientX;
       startY = e.touches[0].clientY;
       startTime = Date.now();
       dx = 0;
       tracking = true;
       dragging = false;
-      stage.style.transition = "none";
+      el.style.transition = "none";
     }, { passive: true });
 
-    stage.addEventListener("touchmove", function (e) {
+    el.addEventListener("touchmove", function (e) {
       if (!tracking) return;
       var mx = e.touches[0].clientX - startX;
       var my = e.touches[0].clientY - startY;
       if (!dragging) {
         if (Math.abs(mx) < 10 && Math.abs(my) < 10) return;
-        // Kéo dọc thì bỏ qua, không coi là vuốt chuyển từ
+        // Kéo dọc thì bỏ qua, không coi là vuốt chuyển mục
         if (Math.abs(my) >= Math.abs(mx)) {
           tracking = false;
           return;
@@ -3231,43 +3266,42 @@
       }
       if (e.cancelable) e.preventDefault();
       dx = mx;
-      setOffset(dx);
+      setOffset(opts.canGo(dx < 0 ? 1 : -1) ? dx : dx * 0.25);
     }, { passive: false });
 
-    stage.addEventListener("touchend", function () {
+    el.addEventListener("touchend", function () {
       if (!tracking) return;
       tracking = false;
       if (!dragging) return;
       dragging = false;
       suppressClickUntil = Date.now() + 400;
-      var width = stage.offsetWidth || 300;
+      var width = el.offsetWidth || 300;
       var speed = Math.abs(dx) / Math.max(1, Date.now() - startTime);
-      // Qua được 1/4 thẻ, hoặc hất nhanh, thì chuyển từ; không thì thẻ bật về chỗ cũ
-      var passed = Math.abs(dx) >= width * 0.25 || (Math.abs(dx) >= 40 && speed > 0.35);
+      var dir = dx < 0 ? 1 : -1;
+      // Qua được 1/4 bề ngang, hoặc hất nhanh, thì chuyển mục; không thì bật về chỗ cũ
+      var passed = opts.canGo(dir) && (Math.abs(dx) >= width * 0.25 || (Math.abs(dx) >= 40 && speed > 0.35));
       if (!passed) {
         snapBack();
         return;
       }
-      var dir = dx < 0 ? 1 : -1;
       leaving = true;
-      stage.style.transition = "transform " + VOCAB_SWIPE_OUT_MS + "ms ease-in, opacity " + VOCAB_SWIPE_OUT_MS + "ms ease-in";
+      el.style.transition = "transform " + SWIPE_NAV_OUT_MS + "ms ease-in, opacity " + SWIPE_NAV_OUT_MS + "ms ease-in";
       setOffset(-dir * width * 1.1);
-      stage.style.opacity = "0";
+      el.style.opacity = "0";
       setTimeout(function () {
-        vocabFlashcardEnterDir = dir;
-        advanceVocabFlashcard(dir);
-        vocabFlashcardEnterDir = 0;
-      }, VOCAB_SWIPE_OUT_MS);
+        // Trong lúc trượt ra mà nội dung đã bị render lại / đóng thì thôi, tránh chuyển 2 lần
+        if (el.isConnected) opts.onGo(dir);
+      }, SWIPE_NAV_OUT_MS);
     });
 
-    stage.addEventListener("touchcancel", function () {
+    el.addEventListener("touchcancel", function () {
       if (dragging) snapBack();
       tracking = false;
       dragging = false;
     });
 
     // Vừa vuốt xong thì không tính là chạm (không lật thẻ / không mở link kanji)
-    stage.addEventListener("click", function (e) {
+    el.addEventListener("click", function (e) {
       if (Date.now() < suppressClickUntil) {
         e.preventDefault();
         e.stopPropagation();
@@ -5957,11 +5991,14 @@
         }
         rowHeadline.appendChild(wordEl);
         rowHeadline.appendChild(createElement("span", "kd-vocab-read", wordReading ? "(" + wordReading + ")" : ""));
-        if (wordHanViet) {
-          rowHeadline.appendChild(createElement("span", "kd-vocab-hanviet", wordHanViet));
-        }
         rowMain.appendChild(rowHeadline);
-        rowMain.appendChild(createElement("div", "kd-vocab-mean", wordMeaning));
+        // Hán Việt + nghĩa đi cùng nhau: đủ chỗ thì nằm chung dòng với từ, không thì xuống dòng 2 cả cụm
+        var rowGloss = createElement("div", "kd-vocab-gloss", "");
+        if (wordHanViet) {
+          rowGloss.appendChild(createElement("span", "kd-vocab-hanviet", wordHanViet));
+        }
+        rowGloss.appendChild(createElement("span", "kd-vocab-mean", wordMeaning));
+        rowMain.appendChild(rowGloss);
         row.appendChild(rowMain);
         var rowActions = createElement("div", "kd-vocab-actions", "");
 
@@ -6000,7 +6037,8 @@
           });
         }
 
-        if (wordOnly) {
+        // Nút loa ăn theo tuỳ chọn 🔊 trong cài đặt hiển thị bên Từ vựng
+        if (wordOnly && state.displaySettings.voice) {
           rowActions.appendChild(createAudioBtn(wordOnly));
         }
         rowActions.appendChild(createAddVocab(wordOnly, wordReading, wordMeaning));
@@ -6016,44 +6054,56 @@
     }
   }
 
-  function buildKanjiDetailNavRow() {
+  /** Hướng trượt vào của chi tiết Kanji ở lần render kế tiếp (1 = chữ tiếp theo, -1 = chữ trước, 0 = không hiệu ứng) */
+  var kanjiDetailEnterDir = 0;
+
+  /**
+   * Chữ trước / sau của chi tiết Kanji đang mở (index trong kanjiData, null = hết chữ).
+   * Đang đi theo link chữ Kanji (có lịch sử) thì chỉ lùi được về chữ vừa xem ("← Quay lại").
+   */
+  function getKanjiDetailNav() {
+    if (Array.isArray(state.kanjiHistory) && state.kanjiHistory.length > 0) {
+      return { back: true, prev: state.kanjiHistory[state.kanjiHistory.length - 1], next: null };
+    }
+    var filtered = applyKanjiFilter();
+    var pos = filtered.indexOf(kanjiData[state.selected.kanjiIndex]);
+    return {
+      back: false,
+      prev: pos > 0 ? kanjiData.indexOf(filtered[pos - 1]) : null,
+      next: pos >= 0 && pos < filtered.length - 1 ? kanjiData.indexOf(filtered[pos + 1]) : null
+    };
+  }
+
+  /** Chuyển chữ trong chi tiết Kanji (nút ‹ › / "← Quay lại" hoặc vuốt): dir 1 = chữ tiếp theo, -1 = chữ trước */
+  function stepKanjiDetail(nav, dir) {
+    var idx = dir > 0 ? nav.next : nav.prev;
+    if (idx == null || idx < 0 || idx >= kanjiData.length) return;
+    if (nav.back) state.kanjiHistory.pop();
+    state.selected.kanjiIndex = idx;
+    renderKanjiDetail();
+  }
+
+  function buildKanjiDetailNavRow(nav) {
     var navRow = createElement("div", "kd-nav-row kd-nav-row--header", "");
-    var hasBack = Array.isArray(state.kanjiHistory) && state.kanjiHistory.length > 0;
-    if (hasBack) {
+    if (nav.back) {
       var backBtn = createElement("button", "kd-nav-btn kd-nav-btn--back", "← Quay lại");
       backBtn.type = "button";
       backBtn.addEventListener("click", function () {
-        if (!state.kanjiHistory.length) return;
-        var prevIdx = state.kanjiHistory.pop();
-        if (prevIdx != null && prevIdx >= 0 && prevIdx < kanjiData.length) {
-          state.selected.kanjiIndex = prevIdx;
-          renderKanjiDetail();
-        }
+        stepKanjiDetail(nav, -1);
       });
       navRow.appendChild(backBtn);
     } else {
-      var filtered = applyKanjiFilter();
-      var currentIdxInFiltered = filtered.findIndex(function (r) {
-        return kanjiData.indexOf(r) === state.selected.kanjiIndex;
-      });
-      var hasPrev = currentIdxInFiltered > 0;
-      var hasNext = currentIdxInFiltered >= 0 && currentIdxInFiltered < filtered.length - 1;
-
       var prevBtn = createElement("button", "kd-nav-btn", "‹");
       prevBtn.type = "button";
-      prevBtn.disabled = !hasPrev;
+      prevBtn.disabled = nav.prev == null;
       prevBtn.addEventListener("click", function () {
-        if (!hasPrev) return;
-        state.selected.kanjiIndex = kanjiData.indexOf(filtered[currentIdxInFiltered - 1]);
-        renderKanjiDetail();
+        stepKanjiDetail(nav, -1);
       });
       var nextBtn = createElement("button", "kd-nav-btn", "›");
       nextBtn.type = "button";
-      nextBtn.disabled = !hasNext;
+      nextBtn.disabled = nav.next == null;
       nextBtn.addEventListener("click", function () {
-        if (!hasNext) return;
-        state.selected.kanjiIndex = kanjiData.indexOf(filtered[currentIdxInFiltered + 1]);
-        renderKanjiDetail();
+        stepKanjiDetail(nav, 1);
       });
       navRow.appendChild(prevBtn);
       navRow.appendChild(nextBtn);
@@ -6211,11 +6261,20 @@
     }
 
     appendKanjiDetailSections(container, state.selected.kanjiIndex, { embeddedReadOnly: false });
-    var contentDiv = createElement("div", "kd-detail-content", "");
+    var contentDiv = createElement("div", "kd-detail-content kd-detail-content--swipe" + getSwipeEnterClass(kanjiDetailEnterDir), "");
     while (container.firstChild) {
       contentDiv.appendChild(container.firstChild);
     }
-    openDetailModal("", contentDiv, buildKanjiDetailNavRow());
+    var nav = getKanjiDetailNav();
+    wireSwipeNav(contentDiv, {
+      canGo: function (dir) { return (dir > 0 ? nav.next : nav.prev) != null; },
+      onGo: function (dir) {
+        kanjiDetailEnterDir = dir;
+        stepKanjiDetail(nav, dir);
+        kanjiDetailEnterDir = 0;
+      }
+    });
+    openDetailModal("", contentDiv, buildKanjiDetailNavRow(nav));
     syncKanjiDetailQuery();
   }
 
@@ -6660,7 +6719,7 @@
           renderStarsTab();
         });
         row.appendChild(main);
-        if (speakText) {
+        if (speakText && state.displaySettings.voice) {
           row.appendChild(createAudioBtn(speakText));
         }
         row.appendChild(starBtn);
@@ -6913,7 +6972,7 @@
       if (ve.reading) text.appendChild(createElement("span", "daily-kanji-example-reading", "(" + ve.reading + ")"));
       if (ve.meaning) text.appendChild(createElement("span", "daily-kanji-example-meaning", ve.meaning));
       row.appendChild(text);
-      row.appendChild(createAudioBtn(ve.reading || ve.word));
+      if (state.displaySettings.voice) row.appendChild(createAudioBtn(ve.reading || ve.word));
       examples.appendChild(row);
     });
     card.appendChild(examples);
@@ -6944,7 +7003,7 @@
     // 0 = chưa phân bài, 8888 / 9999 = nhóm từ thêm tay -> không phải bài thật, không hiện
     var lessonNum = parseInt(lesson, 10);
     if (lessonNum > 0 && lessonNum < 8888) top.appendChild(createElement("span", "pill pill--lesson", "Bài " + lessonNum));
-    top.appendChild(createAudioBtn(hiragana));
+    if (hiragana && state.displaySettings.voice) top.appendChild(createAudioBtn(hiragana));
 
     var isMastered = !!state.vocabMastered[vocabIndex];
     var masteredBtn = createElement("button", "mastered-btn" + (isMastered ? " mastered-btn--active" : ""), isMastered ? "✓" : "○");
