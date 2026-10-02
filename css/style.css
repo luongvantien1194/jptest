@@ -1671,32 +1671,33 @@ select:focus {
   display: flex;
   align-items: center;
   justify-content: center;
-  /* Vuốt ngang do JS xử lý (wireVocabFlashcardSwipe) */
+  /* Vuốt ngang do JS xử lý (wireSwipeNav) */
   touch-action: pan-y;
 }
 
-/* Thẻ mới trượt vào sau khi vuốt: vuốt trái (từ tiếp theo) → vào từ bên phải, và ngược lại */
-.vocab-flashcard-stage--enter-next {
-  animation: vocab-flashcard-enter-next 0.22s ease-out;
+/* Mục mới trượt vào sau khi vuốt (wireSwipeNav — Flashcard từ vựng, chi tiết Kanji):
+   vuốt trái (mục tiếp theo) → vào từ bên phải, và ngược lại */
+.swipe-nav--enter-next {
+  animation: swipe-nav-enter-next 0.22s ease-out;
 }
 
-.vocab-flashcard-stage--enter-prev {
-  animation: vocab-flashcard-enter-prev 0.22s ease-out;
+.swipe-nav--enter-prev {
+  animation: swipe-nav-enter-prev 0.22s ease-out;
 }
 
-@keyframes vocab-flashcard-enter-next {
+@keyframes swipe-nav-enter-next {
   from { transform: translateX(40%); opacity: 0; }
   to { transform: none; opacity: 1; }
 }
 
-@keyframes vocab-flashcard-enter-prev {
+@keyframes swipe-nav-enter-prev {
   from { transform: translateX(-40%); opacity: 0; }
   to { transform: none; opacity: 1; }
 }
 
 @media (prefers-reduced-motion: reduce) {
-  .vocab-flashcard-stage--enter-next,
-  .vocab-flashcard-stage--enter-prev {
+  .swipe-nav--enter-next,
+  .swipe-nav--enter-prev {
     animation: none;
   }
 }
@@ -4240,7 +4241,8 @@ select:focus {
 
 .kd-hero-body {
   display: grid;
-  grid-template-columns: 25% 40% 35%;
+  /* Tỉ lệ 25/40/35 nhưng trừ phần gap, tránh tràn ra mép phải */
+  grid-template-columns: minmax(0, 25fr) minmax(0, 40fr) minmax(0, 35fr);
   align-items: center;
   width: 100%;
   min-width: 0;
@@ -4821,10 +4823,13 @@ button.kd-pip-link {
   border-color: rgba(107, 33, 168, 0.22);
 }
 
+/* Cụm tiếng Nhật (từ + cách đọc) và cụm tiếng Việt (Hán Việt + nghĩa): đủ chỗ thì chung 1 dòng, không thì 2 dòng */
 .kd-vocab-main {
   display: flex;
-  flex-direction: column;
-  gap: 2px;
+  flex-wrap: wrap;
+  align-items: baseline;
+  column-gap: 10px;
+  row-gap: 1px;
   flex: 1 1 auto;
   min-width: 0;
 }
@@ -4834,6 +4839,17 @@ button.kd-pip-link {
   align-items: baseline;
   flex-wrap: wrap;
   gap: 6px;
+  min-width: 0;
+}
+
+/* Nghĩa dài thì chảy tiếp xuống dưới nhãn Hán Việt như văn bản thường, không bị bó thành cột hẹp */
+.kd-vocab-gloss {
+  min-width: 0;
+}
+
+.kd-vocab-gloss .kd-vocab-hanviet {
+  display: inline-block;
+  margin-right: 6px;
 }
 
 .kd-vocab-word {
@@ -4869,6 +4885,7 @@ button.kd-pip-link {
   font-size: 14.5px;
   color: var(--text);
   line-height: 1.45;
+  min-width: 0;
   overflow-wrap: anywhere;
 }
 
@@ -4899,9 +4916,26 @@ button.kd-pip-link {
 .kd-detail-content > .kd-section--green { grid-column: 1 / -1; }
 .kd-detail-content > .kd-section--writing { grid-column: 1 / -1; }
 
+/* Vuốt ngang chuyển chữ do JS xử lý (wireSwipeNav); vẫn giữ cuộn dọc và zoom 2 ngón */
+.kd-detail-content--swipe {
+  touch-action: pan-y;
+  touch-action: pan-y pinch-zoom;
+}
+
+/* Không hiện thanh cuộn ngang khi nội dung đang trượt ra/vào */
+.detail-modal__body:has(> .kd-detail-content--swipe) {
+  overflow-x: hidden;
+}
+
+/* Popup chi tiết Kanji: thu gọn theo trục dọc để hạn chế phải cuộn */
 .detail-modal__body .kd-hero {
-  padding: 10px 10px 8px;
-  margin-bottom: 2px;
+  padding: 6px 8px;
+  margin-bottom: 0;
+}
+
+.detail-modal__body .kd-hero-mid-kanji {
+  max-width: 140px;
+  margin: 0;
 }
 
 .detail-modal__body .kd-char { font-size: 28px; }
@@ -4921,25 +4955,33 @@ button.kd-pip-link {
 
 .detail-modal__body .kd-section {
   grid-column: 1 / -1;
-  margin-bottom: 6px;
-  padding: 8px 10px;
-  margin-bottom: 3px;
+  padding: 6px 8px;
+  margin-bottom: 0;
 }
 
 .detail-modal__body .kd-section-title { margin-bottom: 3px; }
-.detail-modal__body .kd-pills-grid { gap: 4px; }
-.detail-modal__body .kd-pill { padding: 3px 8px; font-size: 13px; }
+.detail-modal__body .kd-pills-grid { gap: 4px 6px; }
+.detail-modal__body .kd-pill-group { gap: 1px; }
+.detail-modal__body .kd-pill { padding: 1px 8px; font-size: 13px; }
+.detail-modal__body .kd-breakdown-toggle { padding: 0; }
 .detail-modal__body .kd-pill--stroke { font-size: 12px; }
 .detail-modal__body .kd-pill--radical { font-size: 12px; }
 .detail-modal__body .kd-story-row { padding: 3px 0; }
 .detail-modal__body .kd-story-label { font-size: 9px; }
 .detail-modal__body .kd-story-value { font-size: 13px; }
-.detail-modal__body .kd-vocab-list { gap: 5px; }
-.detail-modal__body .kd-vocab-row { padding: 7px 9px; gap: 6px; }
-.detail-modal__body .kd-vocab-word { font-size: 17px; }
+.detail-modal__body .kd-vocab-list { gap: 3px; }
+.detail-modal__body .kd-vocab-row { padding: 2px 4px 2px 8px; gap: 4px; }
+.detail-modal__body .kd-vocab-word { font-size: 17px; line-height: 1.35; }
 .detail-modal__body .kd-vocab-read { font-size: 13px; }
-.detail-modal__body .kd-vocab-hanviet { font-size: 11px; }
-.detail-modal__body .kd-vocab-mean { font-size: 14px; }
+.detail-modal__body .kd-vocab-hanviet { font-size: 11px; padding: 1px 7px; }
+.detail-modal__body .kd-vocab-gloss { font-size: 14px; line-height: 1.35; }
+.detail-modal__body .kd-vocab-mean { font-size: 14px; line-height: 1.35; }
+.detail-modal__body .kd-vocab-actions .star-btn,
+.detail-modal__body .kd-vocab-actions .audio-btn {
+  min-width: 30px;
+  min-height: 30px;
+  padding: 2px;
+}
 .detail-modal__body .kd-vocab-chip-word { font-size: 13px; }
 .detail-modal__body .kd-vocab-chip-meaning { font-size: 11px; }
 
@@ -4959,27 +5001,17 @@ button.kd-pip-link {
     font-size: 11px;
     padding: 1px 7px;
   }
+  /* Màn hẹp (lưới Kanji còn 4 cột): giữ hero 3 cột như màn rộng hơn (chữ | nét viết | nút), chỉ thu gọn lại
+     thay vì xếp dọc từng khối — đỡ ~160px chiều cao, hạn chế phải cuộn dọc */
   .kd-hero-body {
-    padding-top: 2px;
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1.5fr) minmax(0, 1.25fr);
+    gap: 6px;
   }
   .kd-hero-main {
-    gap: 8px;
-    align-items: flex-start;
-    min-width: 0;
+    gap: 4px;
   }
   .kd-hero-actions {
-    width: 85%;
-    max-width: 100%;
-    margin-left: 5px;
-    gap: 5px;
-    align-items: center;
-    order: 3;
-    grid-column: 1;
-    justify-content: center;
-  }
-  .kd-hero-body {
-    grid-template-columns: 1fr;
-    justify-content: flex-end;
+    gap: 4px;
   }
   .kd-hero .kd-char {
     font-size: clamp(44px, 16vw, 54px);
@@ -5011,16 +5043,22 @@ button.kd-pip-link {
     align-items: center;
   }
   .kd-hero-mid-kanji {
-    width: min(40vmin, 160px);
-    height: min(40vmin, 160px);
+    margin: 0;
     font-size: clamp(60px, 18vmin, 86px);
-    order: 2;
-    grid-column: 1;
-    justify-self: center;
-    justify-content: center;
   }
   .detail-modal__body .kd-hero {
-    padding: 6px 6px 8px;
+    padding: 6px;
+  }
+  .detail-modal__body .kd-vocab-hanviet {
+    font-size: 10.5px;
+    letter-spacing: 0;
+    padding: 0 6px;
+  }
+  .detail-modal__body .kd-vocab-gloss .kd-vocab-hanviet { margin-right: 5px; }
+  .detail-modal__body .kd-vocab-actions { gap: 0; }
+  .detail-modal__body .kd-vocab-actions .star-btn,
+  .detail-modal__body .kd-vocab-actions .audio-btn {
+    min-width: 28px;
   }
   .detail-modal__body .kd-char {
     font-size: 28px;
