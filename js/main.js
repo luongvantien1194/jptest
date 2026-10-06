@@ -270,6 +270,161 @@
     }
   }
 
+  // Nội dung lấy từ data/prompt-kanji.txt (nhúng sẵn vì app chạy được qua file:// nên không fetch file .txt).
+  // Sửa prompt thì cập nhật đồng thời cả 2 nơi.
+  var KANJI_PROMPT_TEMPLATE = [
+    "Bạn là chuyên gia tiếng Nhật, chuyên về Kanji và Hán Việt.",
+    "Nhiệm vụ:",
+    "Sinh dữ liệu chi tiết cho từng chữ Kanji trong danh sách đầu vào.",
+    "",
+    "1. Đầu vào",
+    "- Danh sách Kanji cách nhau dấu phẩy (ví dụ: 誰,韓,帳,鉛,傘).",
+    "- stt bắt đầu: {STT_BAT_DAU}",
+    "- level: {LEVEL} (ví dụ: n3, n45, nx)",
+    "",
+    "Danh sách Kanji:",
+    "{DANH_SACH_KANJI}",
+    "",
+    "2. Quy tắc chung",
+    "- Mỗi chữ Kanji là 1 record.",
+    "- Giữ đúng thứ tự như danh sách đầu vào.",
+    "- Không bỏ sót chữ nào, không thêm chữ ngoài danh sách.",
+    "- Nếu danh sách có chữ trùng thì chỉ sinh 1 record cho chữ đó.",
+    "",
+    "3. Trường dữ liệu phải sinh (đúng thứ tự này)",
+    "stt",
+    "level",
+    "kanji",
+    "hanviet",
+    "on_reading",
+    "kun_reading",
+    "stroke_count",
+    "radicals",
+    "core_meaning",
+    "story_image",
+    "logic_development",
+    "memory_tip",
+    "vocabulary",
+    "",
+    "4. Quy tắc từng trường",
+    "a. stt",
+    "- Là số, tăng dần từ {STT_BAT_DAU}, mỗi record +1.",
+    "b. level",
+    "- Ghi đúng giá trị {LEVEL}, chữ thường.",
+    "c. kanji",
+    "- Đúng 1 chữ Kanji.",
+    "d. hanviet",
+    "- Âm Hán Việt, VIẾT HOA toàn bộ, có dấu tiếng Việt (ví dụ: TRÚ, VÔ, NHẬT).",
+    "- Nếu có nhiều âm Hán Việt thì cách nhau dấu | (ví dụ: \"LẠC|NHẠC\").",
+    "e. on_reading",
+    "- Âm On viết bằng Katakana.",
+    "- Nhiều âm thì cách nhau dấu | (ví dụ: \"ニチ|ジツ\").",
+    "- Không có thì để chuỗi rỗng \"\".",
+    "f. kun_reading",
+    "- Âm Kun viết bằng Hiragana, không ghi okurigana bằng dấu chấm hay dấu gạch.",
+    "- Nhiều âm thì cách nhau dấu | (ví dụ: \"ひ|び\").",
+    "- Không có thì để chuỗi rỗng \"\".",
+    "g. stroke_count",
+    "- Là số nét chuẩn, kiểu số (không đặt trong dấu ngoặc kép).",
+    "h. radicals",
+    "- Các bộ phận cấu tạo nên chữ, dạng \"bộ-âm hán việt viết thường\".",
+    "- Nhiều bộ phận thì cách nhau dấu | (ví dụ: \"林-lâm|示-thị\", \"亻-nhân|系-hệ\").",
+    "- Nếu chữ tự là bộ thủ thì ghi chính nó (ví dụ: \"日-nhật\").",
+    "i. core_meaning",
+    "- Nghĩa cốt lõi bằng tiếng Việt, ngắn gọn, viết hoa chữ cái đầu (ví dụ: \"Đậu, dừng lại\").",
+    "j. story_image",
+    "- 1 câu tiếng Việt mô tả hình ảnh/câu chuyện giúp hình dung chữ, dựa trên các bộ phận cấu tạo.",
+    "k. logic_development",
+    "- Dạng: \"chữ-hán việt viết thường → (bộ phận) giải thích = nghĩa\".",
+    "- Ví dụ: \"駐-trú → (馬) ngựa đứng yên = đậu lại\", \"反-phản → (厂+又) lật tay = phản chiều\".",
+    "l. memory_tip",
+    "- 1 câu mẹo nhớ ngắn, nhắc lại bộ phận và nghĩa của nó trong ngoặc.",
+    "- Ví dụ: \"馬 (ngựa) đứng yên = đậu xe.\", \"厂 (vách) + 又 (tay) = phản ngược (反).\"",
+    "m. vocabulary",
+    "- 5 từ vựng thông dụng có chứa chữ Kanji đó, ưu tiên từ ở level {LEVEL} hoặc dễ hơn.",
+    "- Mỗi từ có dạng: Kanji(hiragana):nghĩa tiếng Việt viết thường.",
+    "- Các từ cách nhau dấu |.",
+    "- Ví dụ: \"駐車(ちゅうしゃ):đậu xe|駐車場(ちゅうしゃじょう):bãi đậu xe|駐在(ちゅうざい):trú đóng|駐日(ちゅうにち):đóng tại Nhật|駐車禁止(ちゅうしゃきんし):cấm đậu xe\"",
+    "",
+    "5. Quy tắc dữ liệu",
+    "- Âm On, âm Kun, số nét, âm Hán Việt phải chính xác theo từ điển chuẩn.",
+    "- Không được bịa âm đọc hoặc nghĩa.",
+    "- Trong các giá trị chuỗi không dùng dấu ngoặc kép \", nếu cần thì dùng dấu nháy đơn '.",
+    "- Không dùng dấu ... để rút gọn.",
+    "- Không dùng etc.",
+    "- Không dùng v.v.",
+    "",
+    "6. Format output bắt buộc",
+    "- Chỉ xuất dữ liệu.",
+    "- Không giải thích.",
+    "- Đặt TOÀN BỘ output trong DUY NHẤT 1 khối code bắt đầu bằng ```js và kết thúc bằng ```, không có chữ nào bên ngoài khối code.",
+    "- Bên trong khối code là văn bản thô: KHÔNG escape ký tự kiểu Markdown (viết on_reading, không viết on\\_reading; viết +, không viết \\+), không thêm dấu \\ ở cuối dòng.",
+    "- Không có tiêu đề.",
+    "- Không có nhận xét.",
+    "- Không có dấu [ ở đầu.",
+    "- Không có dấu ] ở cuối.",
+    "- Mỗi record là 1 object JSON độc lập.",
+    "- Mỗi object nằm trên đúng 1 dòng.",
+    "- Không có dòng trống giữa các object.",
+    "- Mỗi dòng kết thúc bằng dấu phẩy.",
+    "- Object cuối cùng cũng phải có dấu phẩy.",
+    "- Cột stt và stroke_count là số.",
+    "",
+    "Ví dụ output:",
+    "{\"stt\":1,\"level\":\"n3\",\"kanji\":\"駐\",\"hanviet\":\"TRÚ\",\"on_reading\":\"チュウ\",\"kun_reading\":\"\",\"stroke_count\":15,\"radicals\":\"馬-mã\",\"core_meaning\":\"Đậu, dừng lại\",\"story_image\":\"Con ngựa đứng yên không chịu đi - hình ảnh đậu xe.\",\"logic_development\":\"駐-trú → (馬) ngựa đứng yên = đậu lại\",\"memory_tip\":\"馬 (ngựa) đứng yên = đậu xe.\",\"vocabulary\":\"駐車(ちゅうしゃ):đậu xe|駐車場(ちゅうしゃじょう):bãi đậu xe|駐在(ちゅうざい):trú đóng|駐日(ちゅうにち):đóng tại Nhật|駐車禁止(ちゅうしゃきんし):cấm đậu xe\"},",
+    "{\"stt\":2,\"level\":\"n3\",\"kanji\":\"無\",\"hanviet\":\"VÔ\",\"on_reading\":\"ム\",\"kun_reading\":\"ない\",\"stroke_count\":12,\"radicals\":\"無-vô\",\"core_meaning\":\"Không có, vô\",\"story_image\":\"Lửa thiêu rụi mọi thứ - không còn gì sót lại.\",\"logic_development\":\"無-vô → (灬) lửa đốt sạch = không còn gì\",\"memory_tip\":\"灬 (lửa) thiêu sạch tất cả = vô.\",\"vocabulary\":\"無休(むきゅう):không nghỉ|無料(むりょう):miễn phí|無理(むり):vô lý|無い(ない):không có|無駄(むだ):lãng phí\"},"
+  ].join("\n");
+
+  // Duyệt window._vocabExtra, lấy từng chữ Hán ở cột Kanji; chữ nào chưa có trong hệ thống
+  // (kanjiData — đã gồm window._kanjiExtra) thì gom lại (không trùng, giữ thứ tự xuất hiện),
+  // rồi copy prompt-kanji vào Clipboard với level "nx", stt bắt đầu từ max stt của window._kanjiExtra + 1.
+  function exportMissingKanjiCsv() {
+    var existing = new Set();
+    kanjiData.concat(window._kanjiExtra || []).forEach(function (k) {
+      if (k && k.kanji) existing.add(String(k.kanji).trim());
+    });
+
+    var kanjiCharRe = /[㐀-䶿一-鿿豈-﫿]/g;
+    var missing = [];
+    var seen = new Set();
+    (window._vocabExtra || []).forEach(function (raw) {
+      if (!raw) return;
+      var kanjiText = raw.kanji != null ? raw.kanji : raw.Kanji;
+      var chars = String(kanjiText || "").match(kanjiCharRe);
+      if (!chars) return;
+      chars.forEach(function (ch) {
+        if (existing.has(ch) || seen.has(ch)) return;
+        seen.add(ch);
+        missing.push(ch);
+      });
+    });
+
+    if (missing.length === 0) {
+      alert("Tất cả kanji trong từ vựng đều đã có trong hệ thống!");
+      return;
+    }
+
+    var maxStt = 0;
+    (window._kanjiExtra || []).forEach(function (k) {
+      var n = k ? parseInt(k.stt, 10) : NaN;
+      if (!isNaN(n) && n > maxStt) maxStt = n;
+    });
+    var startStt = maxStt + 1;
+
+    var prompt = KANJI_PROMPT_TEMPLATE
+      .split("{STT_BAT_DAU}").join(String(startStt))
+      .split("{LEVEL}").join("nx")
+      .split("{DANH_SACH_KANJI}").join(missing.join(","));
+
+    copyTextToClipboard(prompt, function (ok) {
+      if (ok) {
+        alert("Có " + missing.length + " kanji chưa có trong hệ thống (stt từ " + startStt + "). Đã copy prompt vào Clipboard!");
+      } else {
+        window.prompt("Không copy tự động được, hãy tự chọn & copy nội dung bên dưới:", prompt);
+      }
+    });
+  }
+
   function switchToManualNote(content) {
     state.note.manualContent = content;
     state.note.currentDocKey = "__manual__";
@@ -6954,7 +7109,7 @@
     head.appendChild(createElement("div", "daily-kanji-char", raw.kanji));
     var info = createElement("div", "daily-kanji-info", "");
     var hvRow = createElement("div", "daily-kanji-hanviet", raw.hanviet || "");
-    hvRow.appendChild(createElement("span", "pill", raw.level === "n3" ? "N3" : "N4-N5"));
+    hvRow.appendChild(createElement("span", "pill", raw.level === "n3" ? "N3" : raw.level === "nx" ? "NX" : "N4-N5"));
     info.appendChild(hvRow);
     if (raw.core_meaning) info.appendChild(createElement("div", "daily-kanji-meaning", raw.core_meaning));
     var readings = [];
@@ -8515,6 +8670,7 @@
   var KANJI_EX_LEVELS = [
     { value: "n45", label: "N4-N5" },
     { value: "n3", label: "N3" },
+    { value: "nx", label: "NX" },
     { value: "filtered", label: "Theo danh sách đang lọc" }
   ];
   var KANJI_EX_MODES = [
@@ -8529,9 +8685,9 @@
   /** session: bộ bài đang làm (lưu localStorage); q: trạng thái câu đang hiển thị (không lưu) */
   var kanjiEx = { session: null, q: null };
 
-  /** Id ổn định để ChatGPT trả lại & app tra ngược ra Kanji: "N45-<stt>" / "N3-<stt>" (chữ Kanji có thể trùng giữa 2 cấp độ) */
+  /** Id ổn định để ChatGPT trả lại & app tra ngược ra Kanji: "N45-<stt>" / "N3-<stt>" / "NX-<stt>" (chữ Kanji có thể trùng giữa các cấp độ) */
   function getKanjiExId(raw) {
-    return (raw.level === "n3" ? "N3-" : "N45-") + raw.stt;
+    return (raw.level === "n3" ? "N3-" : raw.level === "nx" ? "NX-" : "N45-") + raw.stt;
   }
   function findKanjiIndexByExId(id) {
     var key = String(id || "").trim().toUpperCase();
@@ -8553,7 +8709,7 @@
   function loadKanjiExConfig() {
     var saved = loadGrammarExStore(KANJI_EX_CONFIG_KEY) || {};
     var savedRanges = saved.ranges || {};
-    var defaultLevel = state.filter.kanjiLevel === "n45" ? "n45" : "n3";
+    var defaultLevel = (state.filter.kanjiLevel === "n45" || state.filter.kanjiLevel === "nx") ? state.filter.kanjiLevel : "n3";
     var cfg = {
       level: KANJI_EX_LEVELS.some(function (l) { return l.value === saved.level; }) ? saved.level : defaultLevel,
       ranges: {},
@@ -8561,7 +8717,7 @@
       mode: KANJI_EX_MODES.some(function (m) { return m.value === saved.mode; }) ? saved.mode : "mix",
       readAfter: saved.readAfter !== false
     };
-    ["n45", "n3"].forEach(function (level) {
+    ["n45", "n3", "nx"].forEach(function (level) {
       var r = savedRanges[level] || {};
       var from = parseInt(r.from, 10);
       var to = parseInt(r.to, 10);
@@ -8616,7 +8772,7 @@
     var sampleUsage = firstOf("usage");
     var lines = [
       "Bạn là giáo viên tiếng Nhật. Tạo " + plan.length + " bài tập Kanji cho người Việt, mỗi dòng dưới đây là 1 bài, " +
-      "bài phải xoay quanh đúng từ mục tiêu của dòng đó (id N45 = trình độ N4-N5, N3 = trình độ N3; giữ nguyên id, dạng và từ mục tiêu).",
+      "bài phải xoay quanh đúng từ mục tiêu của dòng đó (id N45 = trình độ N4-N5, N3 = trình độ N3, NX = Kanji bổ sung; giữ nguyên id, dạng và từ mục tiêu).",
       "",
       "id | dạng | kanji (Hán Việt: nghĩa) | từ mục tiêu (cách đọc: nghĩa)"
     ];
@@ -10427,6 +10583,13 @@ history.replaceState({}, "", newUrl);
         exportVocabToMarkdown();
       });
     }
+
+    var exportMissingKanjiBtn = document.getElementById("vocab-export-missing-kanji-btn");
+    if (exportMissingKanjiBtn) {
+      exportMissingKanjiBtn.addEventListener("click", function () {
+        exportMissingKanjiCsv();
+      });
+    }
   }
 
   function applyVocabScreenDefaultsToTestState() {
@@ -10790,7 +10953,7 @@ history.replaceState({}, "", newUrl);
       if (!isCjk) continue;
       var hv = (ch === raw.kanji && raw.hanviet)
         ? raw.hanviet
-        : ((window.KANJI_HAN_VIET && window.KANJI_HAN_VIET[ch]) || "");
+        : (window.getHanVietChar ? window.getHanVietChar(ch) : "");
       parts.push(hv ? (ch + " " + hv) : ch);
     }
     return parts.join(" | ");
@@ -10937,7 +11100,8 @@ history.replaceState({}, "", newUrl);
     [
       { value: "all", label: "Tất cả" },
       { value: "n45", label: "N4-N5" },
-      { value: "n3", label: "N3" }
+      { value: "n3", label: "N3" },
+      { value: "nx", label: "NX" }
     ].forEach(function (opt) {
       var optEl = document.createElement("option");
       optEl.value = opt.value;
@@ -11644,7 +11808,8 @@ history.replaceState({}, "", newUrl);
       [
         { value: "all", label: "Tất cả" },
         { value: "n45", label: "N4-N5" },
-        { value: "n3", label: "N3" }
+        { value: "n3", label: "N3" },
+        { value: "nx", label: "NX" }
       ].forEach(function (opt) {
         var optEl = document.createElement("option");
         optEl.value = opt.value;
