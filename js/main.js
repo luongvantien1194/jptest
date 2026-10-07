@@ -12462,12 +12462,7 @@ history.replaceState({}, "", newUrl);
     });
 
     // Không đóng modal khi click ra vùng ngoài (backdrop) — chỉ đóng bằng nút ✕ để tránh lỡ tay
-
-    window.addEventListener("resize", function () {
-      if (!isSmallScreen()) {
-        closeDetailModal();
-      }
-    });
+    // Không đóng modal khi resize: xoay ngang điện thoại làm width > 720px sẽ đóng mất popup (detail Kanji, test...)
   }
 
   function boldKanji(text) {
