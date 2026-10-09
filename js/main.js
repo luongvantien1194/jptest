@@ -375,6 +375,52 @@
     "{\"stt\":2,\"level\":\"n3\",\"kanji\":\"無\",\"hanviet\":\"VÔ\",\"on_reading\":\"ム\",\"kun_reading\":\"ない\",\"stroke_count\":12,\"radicals\":\"無-vô\",\"core_meaning\":\"Không có, vô\",\"story_image\":\"Lửa thiêu rụi mọi thứ - không còn gì sót lại.\",\"logic_development\":\"無-vô → (灬) lửa đốt sạch = không còn gì\",\"memory_tip\":\"灬 (lửa) thiêu sạch tất cả = vô.\",\"vocabulary\":\"無休(むきゅう):không nghỉ|無料(むりょう):miễn phí|無理(むり):vô lý|無い(ない):không có|無駄(むだ):lãng phí\"},"
   ].join("\n");
 
+  // Map kanji → Hán-Việt lấy trực tiếp từ data kanji (kanjiData + window._kanjiExtra).
+  // Dựng lại khi số lượng record thay đổi (init merge _kanjiExtra vào kanjiData).
+  var hanVietMap = null;
+  var hanVietMapSize = -1;
+
+  function getHanVietMap() {
+    var extra = Array.isArray(window._kanjiExtra) ? window._kanjiExtra : [];
+    var size = kanjiData.length + extra.length;
+    if (hanVietMap && hanVietMapSize === size) return hanVietMap;
+    var map = {};
+    kanjiData.concat(extra).forEach(function (k) {
+      if (!k || !k.kanji || !k.hanviet) return;
+      var key = String(k.kanji).trim();
+      if (map[key]) return;
+      // hanviet có thể nhiều âm "LẠC|NHẠC" → lấy âm đầu
+      var hv = String(k.hanviet).split("|")[0].trim();
+      if (hv) map[key] = hv.toUpperCase();
+    });
+    hanVietMap = map;
+    hanVietMapSize = size;
+    return map;
+  }
+
+  function isCjkChar(ch) {
+    var code = ch.codePointAt(0);
+    return (code >= 0x4E00 && code <= 0x9FFF) || (code >= 0x3400 && code <= 0x4DBF);
+  }
+
+  // Hán-Việt của 1 chữ kanji
+  function getHanVietChar(ch) {
+    if (!ch) return "";
+    return getHanVietMap()[ch] || "";
+  }
+
+  // Hán-Việt của một chuỗi: các âm viết hoa cách nhau bằng dấu cách, bỏ qua kana/ký tự khác
+  function getHanViet(str) {
+    if (!str) return "";
+    var parts = [];
+    for (var ch of str) {
+      if (!isCjkChar(ch)) continue;
+      var hv = getHanVietChar(ch);
+      if (hv) parts.push(hv);
+    }
+    return parts.join(" ");
+  }
+
   // Duyệt window._vocabExtra, lấy từng chữ Hán ở cột Kanji; chữ nào chưa có trong hệ thống
   // (kanjiData — đã gồm window._kanjiExtra) thì gom lại (không trùng, giữ thứ tự xuất hiện),
   // rồi copy prompt-kanji vào Clipboard với level "nx", stt bắt đầu từ max stt của window._kanjiExtra + 1.
@@ -2871,8 +2917,8 @@
 
         fields.push(kanjiEl);
       }
-      if (state.displaySettings.hanviet && item.kanji && window.getHanViet) {
-        const hv = window.getHanViet(item.kanji);
+      if (state.displaySettings.hanviet && item.kanji) {
+        const hv = getHanViet(item.kanji);
         if (hv) {
           const hvEl = createElement("div", "vocab-hanviet", "[" + hv + "]");
           fields.push(hvEl);
@@ -3208,8 +3254,8 @@
     if (state.displaySettings.meaning && item.meaning) {
       back.appendChild(createElement("div", "vocab-meaning", item.meaning));
     }
-    if (state.displaySettings.hanviet && item.kanji && window.getHanViet) {
-      const hv = window.getHanViet(item.kanji);
+    if (state.displaySettings.hanviet && item.kanji) {
+      const hv = getHanViet(item.kanji);
       if (hv) back.appendChild(createElement("div", "vocab-hanviet", "[" + hv + "]"));
     }
     const backMeta = createElement("div", "vocab-meta-row", "");
@@ -4239,8 +4285,8 @@
     if (ds.romaji && item.romaji) blocks.push({ text: "(" + item.romaji + ")", size: 32, family: PIP_FONT_UI, color: pal.muted });
     var frontCount = blocks.length;
     if (ds.meaning && item.meaning) blocks.push({ text: item.meaning, size: 56, weight: 600, family: PIP_FONT_UI, color: pal.text });
-    if (ds.hanviet && item.kanji && window.getHanViet) {
-      var hv = window.getHanViet(item.kanji);
+    if (ds.hanviet && item.kanji) {
+      var hv = getHanViet(item.kanji);
       if (hv) blocks.push({ text: "[" + hv + "]", size: 36, family: PIP_FONT_UI, color: pal.accent });
     }
     if (frontCount > 0 && blocks.length > frontCount) {
@@ -6133,7 +6179,7 @@
         var wordOnly = (wordMatch ? wordMatch[1] : (parts[0] || "")).trim();
         var wordReading = wordMatch ? wordMatch[2] : "";
         var wordMeaning = parts[1] || "";
-        var wordHanViet = window.getHanViet ? window.getHanViet(wordOnly) : "";
+        var wordHanViet = getHanViet(wordOnly);
 
         var row = createElement("div", "kd-vocab-row", "");
         var rowMain = createElement("div", "kd-vocab-main", "");
@@ -10953,7 +10999,7 @@ history.replaceState({}, "", newUrl);
       if (!isCjk) continue;
       var hv = (ch === raw.kanji && raw.hanviet)
         ? raw.hanviet
-        : (window.getHanVietChar ? window.getHanVietChar(ch) : "");
+        : getHanVietChar(ch);
       parts.push(hv ? (ch + " " + hv) : ch);
     }
     return parts.join(" | ");
