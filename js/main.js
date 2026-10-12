@@ -8586,16 +8586,16 @@
           : "Quay lại đây, bấm \"Dán & bắt đầu\" (hoặc dán tay vào ô bên dưới)."
       ].forEach(function (text) { steps.appendChild(createElement("li", "", text)); });
       root.appendChild(steps);
-      root.appendChild(createElement("div", "gx-scope-info", "Đề gồm " + pending.plan.length + " " + ui.unitLabel + ":"));
+      //root.appendChild(createElement("div", "gx-scope-info", "Đề gồm " + pending.plan.length + " " + ui.unitLabel + ":"));
 
-      var planList = createElement("div", "gx-plan-list", "");
-      pending.plan.forEach(function (p) {
-        var chipInfo = ui.planChip(p);
-        var chip = createElement("span", "gx-plan-chip", chipInfo.text);
-        chip.title = chipInfo.title;
-        planList.appendChild(chip);
-      });
-      root.appendChild(planList);
+      // var planList = createElement("div", "gx-plan-list", "");
+      // pending.plan.forEach(function (p) {
+      //   var chipInfo = ui.planChip(p);
+      //   var chip = createElement("span", "gx-plan-chip", chipInfo.text);
+      //   chip.title = chipInfo.title;
+      //   planList.appendChild(chip);
+      // });
+      // root.appendChild(planList);
 
       var linkRow = createElement("div", "btn-row", "");
       var openLink = createElement("a", "btn-ghost", "↗ Mở lại ChatGPT");
