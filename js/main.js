@@ -421,7 +421,7 @@
     return parts.join(" ");
   }
 
-  // Duyệt window._vocabExtra, lấy từng chữ Hán ở cột Kanji; chữ nào chưa có trong hệ thống
+  // Duyệt toàn bộ vocabData (vocabData.js + window._vocabExtra đã merge lúc init), lấy từng chữ Hán ở cột Kanji; chữ nào chưa có trong hệ thống
   // (kanjiData — đã gồm window._kanjiExtra) thì gom lại (không trùng, giữ thứ tự xuất hiện),
   // rồi copy prompt-kanji vào Clipboard với level "nx", stt bắt đầu từ max stt của window._kanjiExtra + 1.
   function exportMissingKanjiCsv() {
@@ -433,7 +433,7 @@
     var kanjiCharRe = /[㐀-䶿一-鿿豈-﫿]/g;
     var missing = [];
     var seen = new Set();
-    (window._vocabExtra || []).forEach(function (raw) {
+    vocabData.forEach(function (raw) {
       if (!raw) return;
       var kanjiText = raw.kanji != null ? raw.kanji : raw.Kanji;
       var chars = String(kanjiText || "").match(kanjiCharRe);
@@ -2570,6 +2570,7 @@
       { id: "section-grammar", tab: "grammar" },
       { id: "section-stars", tab: "stars" },
       { id: "section-daily", tab: "daily" },
+      { id: "section-study", tab: "study" },
       { id: "section-note", tab: "note" },
       { id: "section-dup", tab: "dup" },
       { id: "section-vocab-edit", tab: "vocab-edit" }
@@ -2692,24 +2693,26 @@
 
       return true;
     });
-    // Danh sách: bài (Lesson) tăng dần, trong cùng bài thì id tăng dần
-    filtered.sort(function (a, b) {
-      var la = a.lesson != null ? a.lesson : a.Lesson;
-      var lb = b.lesson != null ? b.lesson : b.Lesson;
-      var na = Number(la);
-      var nb = Number(lb);
-      if (isNaN(na)) na = 0;
-      if (isNaN(nb)) nb = 0;
-      if (na !== nb) {
-        return na - nb;
-      }
-      var ia = Number(a.id);
-      var ib = Number(b.id);
-      if (isNaN(ia)) ia = 0;
-      if (isNaN(ib)) ib = 0;
-      return ia - ib;
-    });
+    filtered.sort(compareVocabLessonOrder);
     return filtered;
+  }
+
+  /** Thứ tự danh sách từ vựng: bài (Lesson) tăng dần, trong cùng bài thì id tăng dần */
+  function compareVocabLessonOrder(a, b) {
+    var la = a.lesson != null ? a.lesson : a.Lesson;
+    var lb = b.lesson != null ? b.lesson : b.Lesson;
+    var na = Number(la);
+    var nb = Number(lb);
+    if (isNaN(na)) na = 0;
+    if (isNaN(nb)) nb = 0;
+    if (na !== nb) {
+      return na - nb;
+    }
+    var ia = Number(a.id);
+    var ib = Number(b.id);
+    if (isNaN(ia)) ia = 0;
+    if (isNaN(ib)) ib = 0;
+    return ia - ib;
   }
 
   function renderVocabFilterSummary(filteredList) {
@@ -7198,7 +7201,16 @@
     top.appendChild(createElement("span", "daily-vocab-order", String(order)));
     var main = createElement("div", "daily-vocab-main", "");
     main.appendChild(createElement("span", "vocab-hira", hiragana));
-    if (kanji) main.appendChild(createElement("span", "vocab-kanji", "(" + kanji + ")"));
+    if (kanji) {
+      // Mỗi chữ Hán là 1 <b> bấm được để mở chi tiết Kanji (giống tab Từ vựng)
+      var kanjiEl = createElement("span", "vocab-kanji", "(");
+      Array.from(kanji).forEach(function (ch) {
+        kanjiEl.appendChild(/\p{Script=Han}/u.test(ch) ? createElement("b", "", ch) : document.createTextNode(ch));
+      });
+      kanjiEl.appendChild(document.createTextNode(")"));
+      wireVocabKanjiLinks(kanjiEl);
+      main.appendChild(kanjiEl);
+    }
     main.appendChild(createElement("span", "vocab-meaning", getVocabMeaning(raw)));
     top.appendChild(main);
     // 0 = chưa phân bài, 8888 / 9999 = nhóm từ thêm tay -> không phải bài thật, không hiện
@@ -7384,6 +7396,570 @@
     document.addEventListener("visibilitychange", function () {
       if (!document.hidden && state.currentTab === "daily" && state.dailyReviewDate !== masteryTodayStr()) {
         renderDailyReviewTab();
+      }
+    });
+  }
+
+  // ----- Học mỗi ngày -----
+  // Học tuần tự theo vị trí: mỗi phần (từ vựng / ngữ pháp theo cấp độ / Kanji theo cấp độ) có vị trí đang học
+  // và số lượng mỗi ngày (nhập ở ⚙️). Lưu ở jp_daily_study:
+  //   { config: { phần: { level, start (vị trí tính từ 1), count } },
+  //     set: { date, items: { phần: [khoá] } }, done: { phần: { khoá: true } } }
+  // Bài của 1 ngày giữ nguyên cho đến khi tick "đã học" đủ tất cả các mục. Sang ngày mới:
+  //   - bài cũ đã tick đủ -> tải bài tiếp theo (mỗi phần bắt đầu ngay sau mục cuối của bài cũ);
+  //   - chưa tick đủ -> vẫn hiện bài cũ để học bổ sung, tick đủ thì tải luôn bài cho hôm nay.
+  // Tick đủ ngay trong ngày được giao thì chờ sang ngày mới mới có bài tiếp.
+  var DAILY_STUDY_STORAGE_KEY = "jp_daily_study";
+  var DAILY_STUDY_PART_DEFS = [
+    { name: "vocab", label: "Từ vựng", icon: "あ", defaultCount: 20, max: 200 },
+    { name: "grammar", label: "Ngữ pháp", icon: "文", defaultCount: 2, max: 20, levels: [["n45", "N4-N5"], ["n3", "N3"]], defaultLevel: "n3" },
+    { name: "kanji", label: "Kanji", icon: "漢", defaultCount: 5, max: 50, levels: [["n45", "N4-N5"], ["n3", "N3"], ["nx", "NX"]], defaultLevel: "n3" }
+  ];
+  // Ngày của bài vừa học xong khi tự chuyển sang bài mới (để báo cho người dùng), chỉ giữ trong phiên hiện tại
+  var dailyStudyAdvancedFrom = "";
+  // Khoá vừa được tick (chỉ mục này chạy hiệu ứng "nảy" sau khi render lại)
+  var dailyStudyJustTicked = "";
+
+  /**
+   * Danh sách theo thứ tự học của 1 phần: { items: [{ key, raw }], posByKey: { khoá: index } }.
+   * Từ vựng theo đúng thứ tự tab Từ vựng (bài tăng dần, bỏ từ ẩn); Kanji / ngữ pháp theo thứ tự data trong cấp độ.
+   */
+  function getDailyStudyList(name, level) {
+    var pool, keyFn;
+    if (name === "vocab") {
+      pool = vocabData.filter(function (raw) { return raw && getVocabHiragana(raw) && !isVocabHidden(raw); })
+        .sort(compareVocabLessonOrder);
+      keyFn = getVocabDupKey;
+    } else if (name === "kanji") {
+      pool = kanjiData.filter(function (raw) { return raw && raw.kanji && (raw.level || "n45") === level; });
+      keyFn = getKanjiDupKey;
+    } else {
+      pool = grammarData.filter(function (raw) { return raw && (isGrammarN3(raw) ? "n3" : "n45") === level; });
+      keyFn = getGrammarDailyKey;
+    }
+    var items = [];
+    var posByKey = {};
+    pool.forEach(function (raw) {
+      var k = keyFn(raw);
+      if (k && !Object.prototype.hasOwnProperty.call(posByKey, k)) {
+        posByKey[k] = items.length;
+        items.push({ key: k, raw: raw });
+      }
+    });
+    return { items: items, posByKey: posByKey };
+  }
+
+  function getDailyStudyLevelLabel(def, level) {
+    var found = (def.levels || []).filter(function (l) { return l[0] === level; })[0];
+    return found ? found[1] : "";
+  }
+
+  function loadDailyStudyStore() {
+    var store = null;
+    try { store = JSON.parse(localStorage.getItem(DAILY_STUDY_STORAGE_KEY)); } catch (e) { }
+    if (!store || typeof store !== "object") store = {};
+    store.done = store.done || {};
+    return store;
+  }
+  function saveDailyStudyStore(store) {
+    try { localStorage.setItem(DAILY_STUDY_STORAGE_KEY, JSON.stringify(store)); } catch (e) { }
+  }
+
+  /** Cấu hình từng phần { level, start, count } (thiếu/sai thì lấy mặc định, count kẹp trong 0..max) */
+  function getDailyStudyConfig(store) {
+    var saved = store.config || {};
+    var config = {};
+    DAILY_STUDY_PART_DEFS.forEach(function (def) {
+      var s = saved[def.name] || {};
+      var start = parseInt(s.start, 10);
+      var count = parseInt(s.count, 10);
+      config[def.name] = {
+        level: def.levels ? (getDailyStudyLevelLabel(def, s.level) ? s.level : def.defaultLevel) : "",
+        start: isNaN(start) || start < 1 ? 1 : start,
+        count: isNaN(count) ? def.defaultCount : Math.max(0, Math.min(def.max, count))
+      };
+    });
+    return config;
+  }
+
+  function getDailyStudyLists(config) {
+    var lists = {};
+    DAILY_STUDY_PART_DEFS.forEach(function (def) {
+      lists[def.name] = getDailyStudyList(def.name, config[def.name].level);
+    });
+    return lists;
+  }
+
+  /** Khoá các mục của bài mới: mỗi phần lấy `count` mục bắt đầu từ vị trí `start` */
+  function buildDailyStudyItems(config, lists) {
+    var items = {};
+    DAILY_STUDY_PART_DEFS.forEach(function (def) {
+      var c = config[def.name];
+      items[def.name] = lists[def.name].items.slice(c.start - 1, c.start - 1 + c.count)
+        .map(function (it) { return it.key; });
+    });
+    return items;
+  }
+
+  /** Các mục của bài hiện tại còn trong data: { phần: [{ key, raw, pos (index từ 0), done }] } */
+  function resolveDailyStudySet(store, lists) {
+    var result = {};
+    DAILY_STUDY_PART_DEFS.forEach(function (def) {
+      var list = lists[def.name];
+      var done = store.done[def.name] || {};
+      result[def.name] = ((store.set && store.set.items && store.set.items[def.name]) || [])
+        .filter(function (k) { return Object.prototype.hasOwnProperty.call(list.posByKey, k); })
+        .map(function (k) {
+          var pos = list.posByKey[k];
+          return { key: k, raw: list.items[pos].raw, pos: pos, done: !!done[k] };
+        });
+    });
+    return result;
+  }
+
+  function countDailyStudyDone(resolved) {
+    var total = 0;
+    var done = 0;
+    DAILY_STUDY_PART_DEFS.forEach(function (def) {
+      resolved[def.name].forEach(function (it) {
+        total += 1;
+        if (it.done) done += 1;
+      });
+    });
+    return { total: total, done: done };
+  }
+
+  /**
+   * Trạng thái bài học hiện tại { configured, store, config, lists, resolved }.
+   * Bài của ngày trước đã tick đủ -> tự chuyển sang bài tiếp theo và giao cho hôm nay.
+   */
+  function getDailyStudyState() {
+    var store = loadDailyStudyStore();
+    if (!store.config) return { configured: false };
+    var config = getDailyStudyConfig(store);
+    var lists = getDailyStudyLists(config);
+    var today = masteryTodayStr();
+    if (!store.set || !store.set.items) {
+      store.set = { date: today, items: buildDailyStudyItems(config, lists) };
+      store.done = {};
+      saveDailyStudyStore(store);
+    } else if (store.set.date < today) {
+      var resolved = resolveDailyStudySet(store, lists);
+      var progress = countDailyStudyDone(resolved);
+      if (progress.done === progress.total) {
+        DAILY_STUDY_PART_DEFS.forEach(function (def) {
+          var items = resolved[def.name];
+          var savedKeys = store.set.items[def.name] || [];
+          if (items.length) {
+            var lastPos = Math.max.apply(null, items.map(function (it) { return it.pos; }));
+            config[def.name].start = lastPos + 2;
+          } else if (savedKeys.length) {
+            // Các mục của bài cũ không còn trong data -> chỉ đẩy vị trí lên đúng số mục
+            config[def.name].start += savedKeys.length;
+          }
+        });
+        if (progress.total) dailyStudyAdvancedFrom = store.set.date;
+        store.config = config;
+        store.set = { date: today, items: buildDailyStudyItems(config, lists) };
+        store.done = {};
+        saveDailyStudyStore(store);
+      }
+    }
+    return { configured: true, store: store, config: config, lists: lists, resolved: resolveDailyStudySet(store, lists) };
+  }
+
+  function setDailyStudyDone(name, keys, isDone) {
+    var store = loadDailyStudyStore();
+    var done = store.done[name] = store.done[name] || {};
+    dailyStudyJustTicked = isDone && keys.length === 1 ? name + "␟" + keys[0] : "";
+    keys.forEach(function (k) {
+      if (isDone) {
+        done[k] = true;
+      } else {
+        delete done[k];
+      }
+    });
+    saveDailyStudyStore(store);
+    renderDailyStudyTab(true);
+  }
+
+  /** Lưu cấu hình và tạo lại bài hiện tại từ vị trí mới (giữ ngày của bài và tick của mục vẫn còn trong bài) */
+  function saveDailyStudyConfig(next) {
+    var store = loadDailyStudyStore();
+    var items = buildDailyStudyItems(next, getDailyStudyLists(next));
+    var done = {};
+    DAILY_STUDY_PART_DEFS.forEach(function (def) {
+      var oldDone = store.done[def.name] || {};
+      done[def.name] = {};
+      items[def.name].forEach(function (k) {
+        if (oldDone[k]) done[def.name][k] = true;
+      });
+    });
+    store.config = next;
+    store.set = { date: store.set && store.set.date ? store.set.date : masteryTodayStr(), items: items };
+    store.done = done;
+    dailyStudyAdvancedFrom = "";
+    saveDailyStudyStore(store);
+  }
+
+  /** yyyy-mm-dd -> dd/mm */
+  function formatDailyStudyDay(dateStr) {
+    var parts = String(dateStr || "").split("-");
+    return parts.length === 3 ? parts[2] + "/" + parts[1] : String(dateStr || "");
+  }
+
+  /** Mô tả ngắn 1 mục (xem trước vị trí trong cấu hình) */
+  function describeDailyStudyItem(name, raw) {
+    if (name === "vocab") {
+      var kanji = getVocabRealKanji(raw);
+      var lesson = parseInt(getVocabLessonValue(raw), 10);
+      return getVocabHiragana(raw) + (kanji ? " (" + kanji + ")" : "") + " – " + getVocabMeaning(raw) +
+        (lesson > 0 && lesson < 8888 ? " · Bài " + lesson : "");
+    }
+    if (name === "kanji") {
+      return raw.kanji + " " + (raw.hanviet || "") + (raw.stt != null ? " · STT " + raw.stt : "");
+    }
+    return getGrammarStructure(raw) + (raw.STT != null ? " · STT " + raw.STT : "");
+  }
+
+  function buildDailyStudyCheck(isDone, isPop, onToggle) {
+    var btn = createElement("button", "study-check" + (isDone ? " study-check--done" : "") + (isPop ? " study-check--pop" : ""), "");
+    btn.type = "button";
+    btn.title = isDone ? "Đã học — bấm để bỏ tick" : "Đánh dấu đã học";
+    btn.setAttribute("aria-pressed", isDone ? "true" : "false");
+    btn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      onToggle();
+    });
+    return btn;
+  }
+
+  /** Lời nhắn trên thẻ tổng quan, đổi theo tình trạng bài và tiến độ */
+  function getDailyStudyMessage(setDate, today, progress) {
+    var left = progress.total - progress.done;
+    if (setDate < today) {
+      return { mod: "warn", kicker: "Học bù bài ngày " + formatDailyStudyDay(setDate),
+        title: "Hoàn thành nốt bài hôm trước nhé 💪",
+        sub: "Còn " + left + " mục — tick đủ là có bài mới cho hôm nay." };
+    }
+    if (!progress.total) {
+      return { mod: "active", kicker: "Bài hôm nay", title: "Bài hôm nay đang trống", sub: "Bấm ⚙️ để chọn số lượng mỗi ngày." };
+    }
+    if (progress.done === progress.total) {
+      return { mod: "done", kicker: "Bài hôm nay", title: "Tuyệt vời! Xong bài hôm nay 🎉",
+        sub: "Đã học " + progress.total + " mục. Hẹn bạn ngày mai với bài mới nhé!" };
+    }
+    if (dailyStudyAdvancedFrom && progress.done === 0) {
+      return { mod: "active", kicker: "Bài mới cho hôm nay",
+        title: "Bài mới đã sẵn sàng ✨",
+        sub: "Đã hoàn thành bài ngày " + formatDailyStudyDay(dailyStudyAdvancedFrom) + ". Tiếp tục nào!" };
+    }
+    var pct = progress.done / progress.total;
+    if (progress.done === 0) {
+      return { mod: "active", kicker: "Bài hôm nay", title: "Bắt đầu thôi! 🚀", sub: "Có " + progress.total + " mục mới đang chờ bạn." };
+    }
+    if (pct < 0.5) {
+      return { mod: "active", kicker: "Bài hôm nay", title: "Khởi đầu tốt lắm! 🌱", sub: "Còn " + left + " mục nữa, giữ nhịp nhé." };
+    }
+    return { mod: "active", kicker: "Bài hôm nay", title: "Sắp xong rồi, cố lên! 🔥", sub: "Chỉ còn " + left + " mục nữa thôi." };
+  }
+
+  /** Thẻ tổng quan: vòng tiến độ + lời nhắn + tiến độ từng phần */
+  function buildDailyStudyHero(st, today, progress) {
+    var msg = getDailyStudyMessage(st.store.set.date, today, progress);
+    var pct = progress.total ? Math.round(progress.done * 100 / progress.total) : 0;
+    var hero = createElement("div", "study-hero study-hero--" + msg.mod, "");
+
+    var ring = createElement("div", "study-ring", "");
+    ring.style.setProperty("--pct", String(pct));
+    var ringInner = createElement("div", "study-ring-inner", "");
+    ringInner.appendChild(createElement("span", "study-ring-value", msg.mod === "done" ? "✓" : pct + "%"));
+    ringInner.appendChild(createElement("span", "study-ring-sub", progress.done + "/" + progress.total));
+    ring.appendChild(ringInner);
+    hero.appendChild(ring);
+
+    var body = createElement("div", "study-hero-body", "");
+    body.appendChild(createElement("div", "study-hero-kicker", msg.kicker));
+    body.appendChild(createElement("div", "study-hero-title", msg.title));
+    body.appendChild(createElement("div", "study-hero-sub", msg.sub));
+    var stats = createElement("div", "study-hero-stats", "");
+    DAILY_STUDY_PART_DEFS.forEach(function (def) {
+      var items = st.resolved[def.name];
+      if (!items.length) return;
+      var doneCount = items.filter(function (it) { return it.done; }).length;
+      var stat = createElement("span", "study-hero-stat study-hero-stat--" + def.name +
+        (doneCount === items.length ? " study-hero-stat--done" : ""), "");
+      stat.appendChild(createElement("span", "study-hero-stat-icon", def.icon));
+      stat.appendChild(createElement("span", "", doneCount + "/" + items.length));
+      stats.appendChild(stat);
+    });
+    body.appendChild(stats);
+    hero.appendChild(body);
+
+    if (msg.mod === "done") {
+      // Pháo giấy: vị trí / màu / độ trễ ngẫu nhiên, CSS lo phần rơi
+      var confetti = createElement("div", "study-confetti", "");
+      confetti.setAttribute("aria-hidden", "true");
+      for (var i = 0; i < 18; i += 1) {
+        var piece = createElement("span", "study-confetti-piece", "");
+        piece.style.left = Math.round(Math.random() * 100) + "%";
+        piece.style.animationDelay = (Math.random() * 0.6).toFixed(2) + "s";
+        piece.style.setProperty("--hue", String(Math.round(Math.random() * 360)));
+        piece.style.setProperty("--spin", Math.round(180 + Math.random() * 540) + "deg");
+        confetti.appendChild(piece);
+      }
+      hero.appendChild(confetti);
+    }
+    return hero;
+  }
+
+  function renderDailyStudyTab(keepScroll) {
+    var container = document.getElementById("daily-study-container");
+    if (!container) return;
+    var scrollTop = keepScroll ? container.scrollTop : 0;
+    var st = getDailyStudyState();
+    var today = masteryTodayStr();
+    state.dailyStudyDate = today;
+    var justTicked = dailyStudyJustTicked;
+    dailyStudyJustTicked = "";
+
+    var dateLabel = document.getElementById("daily-study-date-label");
+    if (dateLabel) dateLabel.textContent = formatDailyReviewDate();
+
+    container.innerHTML = "";
+
+    if (!st.configured) {
+      var intro = createElement("div", "study-intro", "");
+      intro.appendChild(createElement("div", "study-intro-emoji", "📖"));
+      intro.appendChild(createElement("div", "study-intro-title", "Mỗi ngày một chút, giỏi lên mỗi ngày"));
+      intro.appendChild(createElement("div", "study-intro-text",
+        "Chọn vị trí đang học và số lượng mỗi ngày của từ vựng, ngữ pháp, Kanji. App sẽ tự chuẩn bị bài mới cho bạn mỗi ngày."));
+      var introParts = createElement("div", "study-intro-parts", "");
+      DAILY_STUDY_PART_DEFS.forEach(function (def) {
+        var chip = createElement("span", "study-intro-part study-intro-part--" + def.name, "");
+        chip.appendChild(createElement("span", "study-intro-part-icon", def.icon));
+        chip.appendChild(createElement("span", "", def.label));
+        introParts.appendChild(chip);
+      });
+      intro.appendChild(introParts);
+      var setupBtn = createElement("button", "btn study-intro-btn", "Bắt đầu thiết lập");
+      setupBtn.type = "button";
+      setupBtn.addEventListener("click", openDailyStudyConfig);
+      intro.appendChild(setupBtn);
+      container.appendChild(intro);
+      return;
+    }
+
+    var progress = countDailyStudyDone(st.resolved);
+    container.appendChild(buildDailyStudyHero(st, today, progress));
+
+    DAILY_STUDY_PART_DEFS.forEach(function (def) {
+      var items = st.resolved[def.name];
+      var c = st.config[def.name];
+      var list = st.lists[def.name];
+      if (!items.length && !c.count) return;
+
+      var doneCount = items.filter(function (it) { return it.done; }).length;
+      var partDone = items.length > 0 && doneCount === items.length;
+      var section = createElement("div", "daily-section study-part study-part--" + def.name + (partDone ? " study-part--done" : ""), "");
+
+      var head = createElement("div", "study-part-head", "");
+      head.appendChild(createElement("span", "study-part-icon", partDone ? "✓" : def.icon));
+      var info = createElement("div", "study-part-info", "");
+      var titleRow = createElement("div", "study-part-title", def.label);
+      if (def.levels) titleRow.appendChild(createElement("span", "study-part-level", getDailyStudyLevelLabel(def, c.level)));
+      info.appendChild(titleRow);
+      info.appendChild(createElement("div", "study-part-meta", items.length
+        ? "#" + (items[0].pos + 1) + "–" + (items[items.length - 1].pos + 1) + " / " + list.items.length
+        : "Tổng " + list.items.length));
+      head.appendChild(info);
+      if (items.length) {
+        head.appendChild(createElement("span", "study-part-count", doneCount + "/" + items.length));
+        var tickAllBtn = createElement("button", "study-tick-all", partDone ? "Bỏ tick" : "✓ Tick hết");
+        tickAllBtn.type = "button";
+        tickAllBtn.addEventListener("click", function () {
+          setDailyStudyDone(def.name, items.map(function (it) { return it.key; }), !partDone);
+        });
+        head.appendChild(tickAllBtn);
+      }
+      section.appendChild(head);
+
+      if (!items.length) {
+        section.appendChild(createElement("div", "study-part-empty",
+          "🏁 Đã học hết danh sách (" + list.items.length + " mục). Bấm ⚙️ để chọn cấp độ hoặc vị trí khác."));
+        container.appendChild(section);
+        return;
+      }
+
+      var bar = createElement("div", "study-part-bar", "");
+      var fill = createElement("div", "study-part-bar-fill", "");
+      fill.style.width = Math.round(doneCount * 100 / items.length) + "%";
+      bar.appendChild(fill);
+      section.appendChild(bar);
+
+      var body = createElement("div", def.name === "vocab" ? "daily-vocab-list" : "daily-card-grid", "");
+      items.forEach(function (it) {
+        var node;
+        if (def.name === "vocab") {
+          node = buildDailyVocabRow(it.raw, it.pos + 1);
+        } else if (def.name === "kanji") {
+          node = buildDailyKanjiCard(it.raw);
+        } else {
+          node = buildDailyGrammarCard(it.raw);
+        }
+        node.classList.add("study-item");
+        if (it.done) node.classList.add("study-item--done");
+        var check = buildDailyStudyCheck(it.done, justTicked === def.name + "␟" + it.key, function () {
+          setDailyStudyDone(def.name, [it.key], !it.done);
+        });
+        // Hàng đầu của row / card: từ vựng đặt ô tick ở đầu, Kanji / ngữ pháp đặt ở cuối
+        var nodeHead = node.firstChild;
+        if (def.name === "vocab") {
+          nodeHead.insertBefore(check, nodeHead.firstChild);
+        } else {
+          nodeHead.appendChild(check);
+        }
+        body.appendChild(node);
+      });
+      section.appendChild(body);
+      container.appendChild(section);
+    });
+
+    container.scrollTop = scrollTop;
+  }
+
+  /** Modal ⚙️: vị trí đang học + số lượng mỗi ngày (+ cấp độ) của từng phần */
+  function openDailyStudyConfig() {
+    var config = getDailyStudyConfig(loadDailyStudyStore());
+    var wrapper = createElement("div", "test-result test-config-form study-config-form", "");
+    var inputs = {};
+
+    function addField(grid, labelText, control) {
+      var field = createElement("div", "field-group", "");
+      field.appendChild(createElement("div", "field-label", labelText));
+      field.appendChild(control);
+      grid.appendChild(field);
+    }
+    function createNumberInput(value, min, max) {
+      var input = createElement("input", "input-text", "");
+      input.type = "number";
+      input.min = min;
+      if (max != null) input.max = max;
+      input.inputMode = "numeric";
+      input.value = value === "" ? "" : String(value);
+      return input;
+    }
+
+    DAILY_STUDY_PART_DEFS.forEach(function (def) {
+      var c = config[def.name];
+      var part = createElement("div", "study-config-part study-config-part--" + def.name, "");
+      var partTitle = createElement("div", "study-config-part-title", "");
+      partTitle.appendChild(createElement("span", "study-config-part-icon", def.icon));
+      partTitle.appendChild(createElement("span", "", def.label));
+      part.appendChild(partTitle);
+      var grid = createElement("div", "test-config-fields study-config-fields", "");
+
+      var levelSelect = null;
+      if (def.levels) {
+        levelSelect = createElement("select", "", "");
+        def.levels.forEach(function (l) {
+          var opt = createElement("option", "", l[1]);
+          opt.value = l[0];
+          levelSelect.appendChild(opt);
+        });
+        levelSelect.value = c.level;
+        addField(grid, "Cấp độ", levelSelect);
+      }
+      var startInput = createNumberInput(c.start, 1, null);
+      addField(grid, "Vị trí đang học", startInput);
+      var countInput = createNumberInput(c.count, 0, def.max);
+      addField(grid, "Mỗi ngày (0–" + def.max + ")", countInput);
+
+      var list = getDailyStudyList(def.name, c.level);
+      if (def.name === "vocab") {
+        // Từ vựng không có STT riêng -> cho nhảy tới từ đầu tiên của 1 bài
+        var lessonInput = createNumberInput("", 0, null);
+        lessonInput.placeholder = "Bài";
+        lessonInput.addEventListener("change", function () {
+          var lesson = Number(lessonInput.value);
+          if (lessonInput.value === "" || isNaN(lesson)) return;
+          var idx = list.items.findIndex(function (it) { return Number(getVocabLessonValue(it.raw)) >= lesson; });
+          if (idx >= 0) {
+            startInput.value = String(idx + 1);
+            updatePreview();
+          }
+        });
+        addField(grid, "Nhảy tới bài", lessonInput);
+      }
+      part.appendChild(grid);
+
+      var preview = createElement("div", "study-config-preview", "");
+      function updatePreview() {
+        var n = parseInt(startInput.value, 10);
+        var total = list.items.length;
+        var it = !isNaN(n) && n >= 1 ? list.items[n - 1] : null;
+        if (it) {
+          preview.textContent = "#" + n + ": " + describeDailyStudyItem(def.name, it.raw) + " · tổng " + total;
+        } else {
+          preview.textContent = (n > total ? "Vượt quá cuối danh sách · " : "") + "tổng " + total;
+        }
+      }
+      startInput.addEventListener("input", updatePreview);
+      if (levelSelect) {
+        levelSelect.addEventListener("change", function () {
+          list = getDailyStudyList(def.name, levelSelect.value);
+          startInput.value = "1";
+          updatePreview();
+        });
+      }
+      updatePreview();
+      part.appendChild(preview);
+
+      inputs[def.name] = { level: levelSelect, start: startInput, count: countInput };
+      wrapper.appendChild(part);
+    });
+
+    wrapper.appendChild(createElement("div", "daily-config-note",
+      "Bài mỗi ngày giữ nguyên cho đến khi tick đã học hết. Sang ngày mới: đã tick đủ thì tự tải bài tiếp theo; " +
+      "chưa đủ thì học bổ sung bài cũ, tick đủ là có bài mới ngay. " +
+      "Lưu xong bài hiện tại được tạo lại từ vị trí đã nhập."));
+
+    var btnRow = createElement("div", "btn-row", "");
+    var saveBtn = createElement("button", "btn", "Lưu");
+    saveBtn.type = "button";
+    saveBtn.addEventListener("click", function () {
+      var next = {};
+      DAILY_STUDY_PART_DEFS.forEach(function (def) {
+        var inp = inputs[def.name];
+        var start = parseInt(inp.start.value, 10);
+        var count = parseInt(inp.count.value, 10);
+        next[def.name] = {
+          level: inp.level ? inp.level.value : "",
+          start: isNaN(start) || start < 1 ? 1 : start,
+          count: isNaN(count) ? config[def.name].count : Math.max(0, Math.min(def.max, count))
+        };
+      });
+      saveDailyStudyConfig(next);
+      closeDetailModal();
+      renderDailyStudyTab();
+    });
+    var cancelBtn = createElement("button", "btn-ghost", "Đóng");
+    cancelBtn.type = "button";
+    cancelBtn.addEventListener("click", function () { closeDetailModal(); });
+    btnRow.appendChild(saveBtn);
+    btnRow.appendChild(cancelBtn);
+    wrapper.appendChild(btnRow);
+
+    openDetailModal("Cấu hình học mỗi ngày", wrapper);
+  }
+
+  function setupDailyStudyTab() {
+    var configBtn = document.getElementById("daily-study-config-btn");
+    if (configBtn) configBtn.addEventListener("click", openDailyStudyConfig);
+    // App mở qua đêm: quay lại màn hình mà đã sang ngày mới thì kiểm tra để tải bài mới
+    document.addEventListener("visibilitychange", function () {
+      if (!document.hidden && state.currentTab === "study" && state.dailyStudyDate !== masteryTodayStr()) {
+        renderDailyStudyTab();
       }
     });
   }
@@ -10117,7 +10693,7 @@
     var rawTab = params.get("tab") || "vocab";
     var detail = parseKanjiDetailFromQuery();
     var tabName;
-    if (rawTab === "kanji" || rawTab === "grammar" || rawTab === "stars" || rawTab === "daily" || rawTab === "note" || rawTab === "dup" || rawTab === "vocab-edit") {
+    if (rawTab === "kanji" || rawTab === "grammar" || rawTab === "stars" || rawTab === "daily" || rawTab === "study" || rawTab === "note" || rawTab === "dup" || rawTab === "vocab-edit") {
       tabName = rawTab;
     } else {
       tabName = "vocab";
@@ -10132,6 +10708,8 @@
       renderDupTab();
     } else if (tabName === "daily") {
       renderDailyReviewTab();
+    } else if (tabName === "study") {
+      renderDailyStudyTab();
     }
 
     if (detail.tab && detail.slug && (tabName === "kanji" || tabName === "stars")) {
@@ -12519,13 +13097,13 @@ history.replaceState({}, "", newUrl);
   function wireVocabKanjiLinks(kanjiEl) {
     kanjiEl.querySelectorAll("b").forEach(function (b) {
       const index = kanjiData.findIndex(function (k) { return k.kanji === b.textContent; });
-      if (index > 0) b.classList.add("vocab-kanji--linked");
+      if (index >= 0) b.classList.add("vocab-kanji--linked");
 
       b.addEventListener("click", function (e) {
         e.stopPropagation();
         const clickedText = this.textContent;
         const idx = kanjiData.findIndex(function (item) { return item.kanji === clickedText; });
-        if (idx > 0) {
+        if (idx >= 0) {
           state.selected.kanjiIndex = idx;
           renderKanjiDetail();
         } else {
@@ -12581,6 +13159,7 @@ history.replaceState({}, "", newUrl);
     setupDetailModal();
     setupDupTab();
     setupDailyReviewTab();
+    setupDailyStudyTab();
 
     renderDisplaySettingsUI();
     renderVocabList();
