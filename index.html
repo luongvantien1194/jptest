@@ -18,15 +18,15 @@
     } catch (e) { }
   </script>
 
-  <script src="data/master.js?v=1052"></script>
-  <script src="data/vocabData.js?v=1052"></script>
-  <script src="data/vocabData_1.js?v=10520"></script>
-  <script src="data/dup.js?v=1052"></script>
-  <script src="data/vocabExtra/extra.js?v=1052"></script>
+  <script src="data/master.js?v=1056"></script>
+  <script src="data/vocabData.js?v=1056"></script>
+  <script src="data/vocabData_1.js?v=1056"></script>
+  <script src="data/dup.js?v=1056"></script>
+  <script src="data/vocabExtra/extra.js?v=1056"></script>
 
-  <script src="data/kanjiData.js?v=1052"></script>
-  <script src="data/kanjiData_1.js?v=1052"></script>
-  <script src="data/kanjiExtra/extra.js?v=10520"></script>
+  <script src="data/kanjiData.js?v=1056"></script>
+  <script src="data/kanjiData_1.js?v=1056"></script>
+  <script src="data/kanjiExtra/extra.js?v=1056"></script>
 
   <script>
     window._vocabExtra = window._vocabExtra || [];
@@ -50,14 +50,14 @@
   </script>
 
 
-  <script src="data/grammarData.js?v=1052"></script>
-  <script src="data/grammarData_1.js?v=1052"></script>
+  <script src="data/grammarData.js?v=1056"></script>
+  <script src="data/grammarData_1.js?v=1056"></script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=1052">
+  <link rel="stylesheet" href="css/style.css?v=1056">
 </head>
 
 <body>
@@ -82,6 +82,10 @@
         </button>
         <button class="tab" data-tab="daily" type="button">
           <span class="tab-label-main">📅 Ôn tập</span>
+          <span class="tab-indicator"></span>
+        </button>
+        <button class="tab" data-tab="study" type="button">
+          <span class="tab-label-main">📖 Học mới</span>
           <span class="tab-indicator"></span>
         </button>
         <button class="tab" data-tab="note" type="button">
@@ -416,6 +420,21 @@
         </div>
       </section>
 
+      <!-- Daily Study Section: học tuần tự theo vị trí, tick đủ mới sang bài mới (renderDailyStudyTab) -->
+      <section class="section" id="section-study" aria-labelledby="section-study-title">
+        <div class="section-inner daily-tab-stack">
+          <div class="section-header">
+            <button type="button" class="filter-icon-btn nav-menu-btn" title="Menu điều hướng">☰</button>
+            <div class="daily-header-main">
+              <span id="section-study-title" class="daily-title">Học mỗi ngày</span>
+              <span class="chip" id="daily-study-date-label"></span>
+            </div>
+            <button type="button" class="filter-icon-btn" id="daily-study-config-btn" title="Vị trí đang học và số lượng từ vựng / ngữ pháp / Kanji mỗi ngày">⚙️</button>
+          </div>
+          <div class="daily-scroll scroll-thin" id="daily-study-container"></div>
+        </div>
+      </section>
+
       <!-- Note Section -->
       <section class="section" id="section-note" aria-labelledby="section-note-title">
         <div class="section-inner">
@@ -591,6 +610,7 @@
     <button class="nav-menu-item" data-tab="stars">⭐ Yêu thích</button>
     <button class="nav-menu-item" data-tab="grammar">Ngữ pháp</button>
     <button class="nav-menu-item" data-tab="daily">📅 Ôn tập mỗi ngày</button>
+    <button class="nav-menu-item" data-tab="study">📖 Học mỗi ngày</button>
     <button class="nav-menu-item" data-tab="note">Ghi chú</button>
     <button class="nav-menu-item" data-tab="dup">Từ trùng</button>
     <button class="nav-menu-item" data-tab="vocab-edit">✏️ Sửa từ vựng</button>
@@ -626,10 +646,10 @@
   <!-- soundOverlay removed (no mp3 audio) -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
-  <script src="data/configDoc.js?v=1052"></script>
-  <script src="js/main.js?v=1052"></script>
-  <script src="js/vocabEditor.js?v=1052"></script>
-  <script src="js/dataBackup.js?v=1052"></script>
+  <script src="data/configDoc.js?v=1056"></script>
+  <script src="js/main.js?v=1056"></script>
+  <script src="js/vocabEditor.js?v=1056"></script>
+  <script src="js/dataBackup.js?v=1056"></script>
 </body>
 
 </html>
