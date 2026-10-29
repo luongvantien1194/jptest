@@ -6513,6 +6513,140 @@ button.kd-pip-link {
   color: var(--text);
 }
 
+/* --- Nút luyện ngữ pháp với AI --- */
+.study-ex-cta {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  width: 100%;
+  padding: 12px 14px;
+  border: none;
+  border-radius: var(--radius-md);
+  background: linear-gradient(135deg, var(--part), var(--part-2));
+  box-shadow: 0 6px 18px var(--part-soft);
+  color: #fff;
+  text-align: left;
+  cursor: pointer;
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+/* Vệt sáng lướt qua cho nút thêm "mời gọi" */
+.study-ex-cta::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: -40%;
+  width: 30%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.28), transparent);
+  transform: skewX(-20deg);
+  animation: study-shine 3.2s ease-in-out infinite;
+}
+
+.study-ex-cta:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 10px 24px var(--part-soft);
+}
+
+.study-ex-cta:active {
+  transform: scale(0.99);
+}
+
+.study-ex-cta-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  flex-shrink: 0;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.22);
+  font-size: 22px;
+}
+
+.study-ex-cta-text {
+  flex: 1;
+  min-width: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.study-ex-cta-title {
+  font-size: 15px;
+  font-weight: 800;
+}
+
+.study-ex-cta-sub {
+  font-size: 12px;
+  opacity: 0.9;
+}
+
+.study-ex-cta-arrow {
+  font-size: 26px;
+  line-height: 1;
+  opacity: 0.85;
+}
+
+@keyframes study-shine {
+  0%, 60% { left: -40%; }
+  100% { left: 130%; }
+}
+
+/* Modal cấu hình luyện ngữ pháp */
+.study-ex-intro {
+  font-size: 13px;
+  line-height: 1.55;
+  color: var(--text-muted);
+}
+
+.study-ex-patterns {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin: 8px 0;
+}
+
+.study-ex-pattern {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 8px;
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  border: 1px solid rgba(20, 184, 166, 0.25);
+  border-left: 4px solid #0f766e;
+  background: rgba(20, 184, 166, 0.08);
+}
+
+.study-ex-pattern-structure {
+  font-family: var(--font-jp);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--primary-dark);
+}
+
+.study-ex-pattern-meaning {
+  font-size: 13px;
+  color: var(--text);
+}
+
+html.theme-dark .study-ex-pattern {
+  border-color: rgba(45, 212, 191, 0.2);
+  border-left-color: #5eead4;
+  background: rgba(45, 212, 191, 0.07);
+}
+
+html.theme-dark .study-ex-cta {
+  color: #06201d;
+}
+
+html.theme-dark .study-ex-cta-icon {
+  background: rgba(0, 0, 0, 0.18);
+}
+
 /* --- Mục học + ô tick --- */
 .study-item {
   border-left: 3px solid var(--part);
@@ -6732,7 +6866,8 @@ html.theme-dark .study-item--done {
 
 @media (prefers-reduced-motion: reduce) {
   .study-intro-emoji,
-  .study-check--pop {
+  .study-check--pop,
+  .study-ex-cta::before {
     animation: none;
   }
   .study-confetti {
