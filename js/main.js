@@ -4923,6 +4923,8 @@
       restartFn = startVocabReviewTest;
     } else if (testState.mode === "daily-set") {
       restartFn = startDailySetTest;
+    } else if (testState.mode === "study-set") {
+      restartFn = function () { startDailyStudyVocabTest(dailyStudyVocabTestMode); };
     }
     const retryBtn = createElement("button", wrongItems.length > 0 ? "btn-ghost" : "btn", restartLabel);
     retryBtn.type = "button";
@@ -5047,6 +5049,7 @@
     ts.builtIndex = -1;
     ts.tileBag = [];
     ts.selectedIds = [];
+    ts.fromStudy = false;
     applyVocabScreenDefaultsToAssembleTestState();
     ts.questionCount = 20;
     renderAssembleTestInitialMessage();
@@ -5555,7 +5558,11 @@
     var retryBtn = createElement("button", wrongItems.length > 0 ? "btn-ghost" : "btn", "Làm lại");
     retryBtn.type = "button";
     retryBtn.addEventListener("click", function () {
-      startAssembleTest();
+      if (ts.fromStudy) {
+        startDailyStudyVocabTest("assemble");
+      } else {
+        startAssembleTest();
+      }
     });
     btnRow.appendChild(retryBtn);
     wrapper.appendChild(btnRow);
@@ -7822,6 +7829,8 @@
         body.appendChild(node);
       });
       section.appendChild(body);
+      if (def.name === "vocab") section.appendChild(buildDailyStudyVocabTestCta(items.length));
+      if (def.name === "grammar") section.appendChild(buildDailyStudyGrammarExCta(items.length));
       container.appendChild(section);
     });
 
@@ -7951,6 +7960,266 @@
     wrapper.appendChild(btnRow);
 
     openDetailModal("Cấu hình học mỗi ngày", wrapper);
+  }
+
+  // Luyện ngữ pháp bằng AI cho các mẫu của bài hôm nay: dùng lại luồng bài tập ngữ pháp (ChatGPT sinh đề, dán lại),
+  // nhưng chỉ dạng chọn 1 trong 4 đáp án và mỗi mẫu nhiều câu ví dụ khác nhau.
+  var DAILY_STUDY_EX_DEFAULT_PER_ITEM = 3;
+  var DAILY_STUDY_EX_MAX_PER_ITEM = 5;
+
+  function getDailyStudyGrammarRaws() {
+    var st = getDailyStudyState();
+    return st.configured ? st.resolved.grammar.map(function (it) { return it.raw; }) : [];
+  }
+
+  function getDailyStudyExPerItem() {
+    var n = parseInt(loadDailyStudyStore().exPerItem, 10);
+    return isNaN(n) ? DAILY_STUDY_EX_DEFAULT_PER_ITEM : Math.max(1, Math.min(DAILY_STUDY_EX_MAX_PER_ITEM, n));
+  }
+
+  /** Đề đã tạo từ tab Học nhưng chưa dán data (vừa sang ChatGPT quay lại) */
+  function loadDailyStudyExPending() {
+    var pending = loadGrammarExPending();
+    return pending && pending.source === "study" && Date.now() - (pending.createdAt || 0) < GRAMMAR_EX_PENDING_TTL ? pending : null;
+  }
+
+  /** Nút hành động lớn ở cuối 1 phần (màu theo phần chứa nó) */
+  function buildDailyStudyCta(icon, title, sub, onClick) {
+    var cta = createElement("button", "study-ex-cta", "");
+    cta.type = "button";
+    cta.appendChild(createElement("span", "study-ex-cta-icon", icon));
+    var text = createElement("span", "study-ex-cta-text", "");
+    text.appendChild(createElement("span", "study-ex-cta-title", title));
+    text.appendChild(createElement("span", "study-ex-cta-sub", sub));
+    cta.appendChild(text);
+    cta.appendChild(createElement("span", "study-ex-cta-arrow", "›"));
+    cta.addEventListener("click", onClick);
+    return cta;
+  }
+
+  function buildDailyStudyGrammarExCta(patternCount) {
+    return buildDailyStudyCta("🤖", "Luyện tập với AI", loadDailyStudyExPending()
+      ? "Đề đang chờ dán data từ ChatGPT — bấm để dán"
+      : "Chọn 1 trong 4 đáp án · " + patternCount * getDailyStudyExPerItem() + " câu ví dụ", openDailyStudyGrammarEx);
+  }
+
+  // Test từ vựng của bài hôm nay: dùng lại các bài test từ vựng sẵn có, chỉ thay nguồn câu hỏi bằng các từ của bài
+  // (kiểu đang làm được nhớ lại để nút "Làm lại" ở màn kết quả làm đúng kiểu đó)
+  var dailyStudyVocabTestMode = "choice";
+
+  function buildDailyStudyVocabTestCta(wordCount) {
+    return buildDailyStudyCta("📝", "Test từ vựng hôm nay",
+      wordCount + " từ · Trắc nghiệm / Mapping / Ghép từ", openDailyStudyVocabTestMenu);
+  }
+
+  function openDailyStudyVocabTestMenu() {
+    var count = getDailyStudyVocabRaws().length;
+    openTestModeMenu("Test từ vựng hôm nay", [
+      { icon: "🔤", label: "Từ → Nghĩa", hint: "Trắc nghiệm " + count + " câu", action: function () { startDailyStudyVocabTest("choice"); } },
+      { icon: "🔄", label: "Nghĩa → Từ", hint: "Nhìn nghĩa chọn từ", action: function () { startDailyStudyVocabTest("reverse"); } },
+      { icon: "🔗", label: "Mapping", hint: "Nối từ - nghĩa", action: function () { startDailyStudyVocabTest("mapping"); } },
+      { icon: "🧩", label: "Ghép từ", hint: "Chọn hiragana ghép từ", action: function () { startDailyStudyVocabTest("assemble"); } }
+    ]);
+  }
+
+  function getDailyStudyVocabRaws() {
+    var st = getDailyStudyState();
+    return st.configured ? st.resolved.vocab.map(function (it) { return it.raw; }) : [];
+  }
+
+  /** mode: "choice" (Từ → Nghĩa) | "reverse" (Nghĩa → Từ) | "mapping" | "assemble" */
+  function startDailyStudyVocabTest(mode) {
+    var raws = getDailyStudyVocabRaws();
+    if (!raws.length) {
+      alert("Bài hôm nay chưa có từ vựng nào.");
+      return;
+    }
+    dailyStudyVocabTestMode = mode;
+    if (mode === "choice" || mode === "reverse") {
+      startVocabQuickChoiceTest("study-set", shuffleArray(raws),
+        mode === "reverse" ? { questionField: "meaning", answerField: "hiragana" } : null);
+      return;
+    }
+    if (mode === "mapping") {
+      if (raws.length < 2) {
+        alert("Cần ít nhất 2 từ để chơi mapping.");
+        return;
+      }
+      var ts = state.mappingTestState;
+      ts.source = "vocab";
+      ts.fixedRaws = raws;
+      ts.questionField = "hiragana";
+      ts.answerField = "meaning";
+      ts.pool = buildVocabMappingPool(ts);
+      ts.usedCount = 0;
+      ts.wrongCount = 0;
+      ts.correctCount = 0;
+      ts.roundTiles = [];
+      ts.selectedTileId = null;
+      ts.locked = false;
+      ts.endReason = "";
+      ts.lives = 3;
+      ts.isActive = true;
+      ts.isFinished = false;
+      startMappingRound();
+      return;
+    }
+    var as = state.assembleTestState;
+    as.fromStudy = true;
+    as.isActive = true;
+    as.isFinished = false;
+    as.questions = pickVocabTestQueue(raws);
+    as.questionCount = as.questions.length;
+    as.currentIndex = 0;
+    as.correctCount = 0;
+    as.answers = [];
+    as.builtIndex = -1;
+    as.tileBag = [];
+    as.selectedIds = [];
+    // Ô gây nhiễu lấy từ toàn bộ từ vựng để không đoán được chỉ nhờ loại trừ
+    as._pool = getDailyStudyList("vocab", "").items.map(function (it) { return it.raw; });
+    renderAssembleTestQuestion();
+  }
+
+  function openDailyStudyGrammarEx() {
+    if (!grammarEx.session) grammarEx.session = loadGrammarExSession();
+    var pending = loadDailyStudyExPending();
+    if (pending) {
+      renderDailyStudyGrammarExPaste(pending);
+    } else {
+      renderDailyStudyGrammarExConfig();
+    }
+  }
+
+  function renderDailyStudyGrammarExConfig() {
+    var raws = getDailyStudyGrammarRaws();
+    var root = createElement("div", "test-result test-config-form gx-root study-ex", "");
+    if (!raws.length) {
+      root.appendChild(createElement("div", "detail-empty", "Bài hôm nay chưa có mẫu ngữ pháp nào. Bấm ⚙️ để chọn số lượng ngữ pháp mỗi ngày."));
+      openDetailModal("Luyện ngữ pháp với AI", root);
+      return;
+    }
+
+    var s = grammarEx.session;
+    if (s && s.source === "study" && !s.finished && s.pos < s.queue.length) {
+      var resumeBtn = createElement("button", "btn-ghost gx-resume-btn", "▶ Làm tiếp bộ đang làm (câu " + (s.pos + 1) + " / " + s.queue.length + ")");
+      resumeBtn.type = "button";
+      resumeBtn.addEventListener("click", function () {
+        grammarEx.q = null;
+        renderGrammarExQuestion();
+      });
+      root.appendChild(resumeBtn);
+    }
+
+    root.appendChild(createElement("div", "study-ex-intro",
+      "Mỗi câu ví dụ bị khuyết phần ngữ pháp, chọn 1 trong 4 đáp án. Trả lời xong sẽ hiện câu đầy đủ, nghĩa và giải thích."));
+
+    var patterns = createElement("div", "study-ex-patterns", "");
+    raws.forEach(function (raw) {
+      var row = createElement("div", "study-ex-pattern", "");
+      row.appendChild(createElement("span", "pill", isGrammarN3(raw) ? "N3" : "N4-N5"));
+      row.appendChild(createElement("span", "study-ex-pattern-structure", getGrammarStructure(raw)));
+      row.appendChild(createElement("span", "study-ex-pattern-meaning", String(raw.Meaning || "").split("\n").join(" ")));
+      patterns.appendChild(row);
+    });
+    root.appendChild(patterns);
+
+    var grid = createElement("div", "test-config-fields", "");
+    var field = createElement("div", "field-group", "");
+    field.appendChild(createElement("div", "field-label", "Số câu mỗi mẫu (1–" + DAILY_STUDY_EX_MAX_PER_ITEM + ")"));
+    var perInput = createElement("input", "input-text", "");
+    perInput.type = "number";
+    perInput.inputMode = "numeric";
+    perInput.min = "1";
+    perInput.max = String(DAILY_STUDY_EX_MAX_PER_ITEM);
+    perInput.value = String(getDailyStudyExPerItem());
+    field.appendChild(perInput);
+    grid.appendChild(field);
+    root.appendChild(grid);
+
+    var info = createElement("div", "gx-scope-info", "");
+    function readPerItem() {
+      var n = parseInt(perInput.value, 10);
+      return isNaN(n) ? getDailyStudyExPerItem() : Math.max(1, Math.min(DAILY_STUDY_EX_MAX_PER_ITEM, n));
+    }
+    function refresh() {
+      info.textContent = "→ Tổng " + raws.length * readPerItem() + " câu cho " + raws.length + " mẫu ngữ pháp.";
+    }
+    function savePerItem() {
+      var store = loadDailyStudyStore();
+      store.exPerItem = readPerItem();
+      saveDailyStudyStore(store);
+    }
+    perInput.addEventListener("input", refresh);
+    refresh();
+    root.appendChild(info);
+
+    root.appendChild(createElement("div", "test-question-sub",
+      "Bấm \"Tạo đề\": app mở ChatGPT với prompt soạn sẵn (prompt cũng đã được copy). " +
+      "Chờ ChatGPT trả lời xong, copy khối JSON rồi quay lại đây dán vào để làm bài."));
+
+    var btnRow = createElement("div", "btn-row", "");
+    var genBtn = createElement("button", "btn", "✨ Tạo đề (ChatGPT)");
+    genBtn.type = "button";
+    genBtn.addEventListener("click", function () {
+      savePerItem();
+      var perItem = readPerItem();
+      var plan = [];
+      raws.forEach(function (raw) {
+        for (var i = 0; i < perItem; i += 1) {
+          plan.push({
+            id: getGrammarExId(raw),
+            type: "choice",
+            structure: getGrammarStructure(raw),
+            meaning: String(raw.Meaning || "").split("\n").join(" ").trim()
+          });
+        }
+      });
+      var pending = { createdAt: Date.now(), plan: plan, prompt: buildGrammarExPrompt(plan, { distractors: false }), source: "study" };
+      saveGrammarExStore(GRAMMAR_EX_PENDING_KEY, pending);
+      copyGrammarExText(pending.prompt);
+      window.open(getGrammarExChatGptUrl(pending.prompt), "_blank", "noopener");
+      renderDailyStudyGrammarExPaste(pending);
+      renderDailyStudyTab(true);
+    });
+    btnRow.appendChild(genBtn);
+
+    var pasteBtn = createElement("button", "btn-ghost", "📋 Dán data");
+    pasteBtn.type = "button";
+    pasteBtn.title = "Dán data bài tập đã có sẵn (ChatGPT đã trả về trước đó)";
+    pasteBtn.addEventListener("click", function () {
+      savePerItem();
+      renderDailyStudyGrammarExPaste(loadDailyStudyExPending());
+    });
+    btnRow.appendChild(pasteBtn);
+
+    var closeBtn = createElement("button", "btn-ghost", "Đóng");
+    closeBtn.type = "button";
+    closeBtn.addEventListener("click", function () {
+      savePerItem();
+      closeDetailModal();
+      renderDailyStudyTab(true);
+    });
+    btnRow.appendChild(closeBtn);
+    root.appendChild(btnRow);
+
+    openDetailModal("Luyện ngữ pháp với AI", root);
+  }
+
+  function renderDailyStudyGrammarExPaste(pending) {
+    renderExercisePaste(pending, {
+      unitLabel: "câu",
+      planChip: function (p) {
+        return { text: p.structure, title: p.meaning };
+      },
+      parse: parseGrammarExData,
+      pendingKey: GRAMMAR_EX_PENDING_KEY,
+      start: function (items) {
+        startGrammarExSession(items, "study");
+        renderDailyStudyTab(true);
+      },
+      back: renderDailyStudyGrammarExConfig
+    });
   }
 
   function setupDailyStudyTab() {
@@ -8246,6 +8515,10 @@
       "- jp: câu hoàn chỉnh (kanji + kana, kết thúc bằng 。); kana: cả câu bằng hiragana (katakana cho từ ngoại lai); " +
       "vi: nghĩa tiếng Việt; explain: 1-2 câu tiếng Việt giải thích cách dùng mẫu ngữ pháp trong câu."
     );
+    var planIds = plan.map(function (p) { return p.id; });
+    if (planIds.some(function (id, i) { return planIds.indexOf(id) !== i; })) {
+      lines.push("- Các dòng cùng id là nhiều câu luyện cho cùng 1 mẫu: mỗi câu một ngữ cảnh / tình huống khác nhau, không lặp lại câu.");
+    }
     if (sampleOrder) {
       lines.push(
         "",
@@ -8487,9 +8760,11 @@
     return p && Array.isArray(p.plan) && p.prompt ? p : null;
   }
 
-  function startGrammarExSession(items) {
+  /** source: "study" = mở từ tab Học mỗi ngày (nút "Tạo bộ mới" quay về đúng màn đó) */
+  function startGrammarExSession(items, source) {
     grammarEx.session = {
       createdAt: Date.now(),
+      source: source || "",
       items: items,
       queue: [],
       pos: 0,
@@ -8938,7 +9213,13 @@
     btnRow.appendChild(againBtn);
     var newBtn = createElement("button", "btn-ghost", "✨ Tạo bộ mới");
     newBtn.type = "button";
-    newBtn.addEventListener("click", renderGrammarExConfig);
+    newBtn.addEventListener("click", function () {
+      if (s.source === "study") {
+        renderDailyStudyGrammarExConfig();
+      } else {
+        renderGrammarExConfig();
+      }
+    });
     btnRow.appendChild(newBtn);
     root.appendChild(btnRow);
 
@@ -11265,8 +11546,11 @@ history.replaceState({}, "", newUrl);
     startVocabQuickChoiceTest("daily", pickVocabTestQueue(duePool, 20));
   }
 
-  /** Vào thẳng bài trắc nghiệm Hiragana -> Nghĩa (6 đáp án) với bộ câu hỏi cho sẵn, đáp án nhiễu lấy từ toàn bộ từ vựng. */
-  function startVocabQuickChoiceTest(mode, questions) {
+  /**
+   * Vào thẳng bài trắc nghiệm (6 đáp án) với bộ câu hỏi cho sẵn, đáp án nhiễu lấy từ toàn bộ từ vựng.
+   * Mặc định Hiragana -> Nghĩa; fields = { questionField, answerField } để đổi chiều.
+   */
+  function startVocabQuickChoiceTest(mode, questions, fields) {
     var questionCount = questions.length;
     state.testState.mode = mode;
     state.testState.isActive = true;
@@ -11280,8 +11564,8 @@ history.replaceState({}, "", newUrl);
     state.testState.lessonMax = 999;
     state.testState.questionCount = questionCount;
     state.testState.optionCount = 6;
-    state.testState.questionField = "hiragana";
-    state.testState.answerField = "meaning";
+    state.testState.questionField = (fields && fields.questionField) || "hiragana";
+    state.testState.answerField = (fields && fields.answerField) || "meaning";
     state.testState.isStar = false;
     state.testState.isNotMastered = false;
     state.testState.readAfterAnswer = true;
@@ -12306,8 +12590,9 @@ history.replaceState({}, "", newUrl);
     { key: "hard", label: "Khó", seconds: 30 }
   ];
 
+  /** config.fixedRaws (nếu có): dùng đúng danh sách từ này thay cho bộ lọc bài / category (test từ vựng của tab Học) */
   function buildVocabMappingPool(config) {
-    var pool = vocabData.filter(function (raw) {
+    var pool = config.fixedRaws ? config.fixedRaws.slice() : vocabData.filter(function (raw) {
       if (!raw) return false;
       if (isVocabHidden(raw)) return false;
       var idx = vocabData.indexOf(raw);
@@ -12397,6 +12682,7 @@ history.replaceState({}, "", newUrl);
     ts.locked = false;
     ts.endReason = "";
     ts.lives = 3;
+    ts.fixedRaws = null;
     if (source === "kanji") {
       ts.level = state.filter.kanjiLevel || "all";
       ts.fromStt = 1;
@@ -12933,7 +13219,11 @@ history.replaceState({}, "", newUrl);
     var retryBtn = createElement("button", "btn", "Làm lại");
     retryBtn.type = "button";
     retryBtn.addEventListener("click", function () {
-      startMappingTest(ts.source);
+      if (ts.fixedRaws) {
+        startDailyStudyVocabTest("mapping");
+      } else {
+        startMappingTest(ts.source);
+      }
     });
     var closeBtn = createElement("button", "btn-ghost", "Đóng");
     closeBtn.type = "button";
