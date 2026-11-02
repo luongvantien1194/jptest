@@ -174,7 +174,10 @@
       /** Chế độ trình chiếu toàn màn hình — không khôi phục lại sau khi tải lại trang */
       vocabFlashcardFullscreen: false,
       /** Hệ số cỡ chữ trên thẻ, chỉnh bằng nút A− / A+ (xem VOCAB_FLASHCARD_FONT_SCALE_*) */
-      vocabFlashcardFontScale: 1,
+      /** Hệ số cỡ chữ riêng từng thành phần thẻ (hira, kanji, romazi, meaning, hanviet, meta) */
+      vocabFlashcardFontScales: {},
+      /** Bật chế độ chỉnh cỡ chữ: hiện nút − / + cạnh từng thành phần trên thẻ */
+      vocabFlashcardFontEdit: false,
       kanjiVocabFavOnly: false,
       /** Khi mở chi tiết Kanji từ tab ⭐(kanji), đóng modal thì quay lại tab này */
       kanjiDetailReturnTab: null
@@ -628,6 +631,16 @@
     }
   }
 
+  /** Các thành phần trên flashcard từ vựng chỉnh cỡ chữ được riêng (key ↔ CSS var --fc-fs-<key>) */
+  var VOCAB_FLASHCARD_FONT_PARTS = [
+    { key: "hira", label: "Hiragana" },
+    { key: "kanji", label: "Kanji" },
+    { key: "romazi", label: "Romaji" },
+    { key: "meaning", label: "Nghĩa" },
+    { key: "hanviet", label: "Hán Việt" },
+    { key: "meta", label: "Nhãn" }
+  ];
+
   // Load favorites from localStorage
   try {
     var savedVF = localStorage.getItem("jp_vocab_favorites");
@@ -657,8 +670,13 @@
       if (typeof parsedVVS.autoNextSeconds === "number" && parsedVVS.autoNextSeconds >= 3) {
         state.ui.vocabFlashcardAutoNextSeconds = parsedVVS.autoNextSeconds;
       }
-      if (typeof parsedVVS.fontScale === "number" && isFinite(parsedVVS.fontScale)) {
-        state.ui.vocabFlashcardFontScale = parsedVVS.fontScale;
+      if (parsedVVS.fontScales && typeof parsedVVS.fontScales === "object") {
+        state.ui.vocabFlashcardFontScales = parsedVVS.fontScales;
+      } else if (typeof parsedVVS.fontScale === "number" && isFinite(parsedVVS.fontScale)) {
+        // Dữ liệu cũ (1 hệ số chung) → áp cho mọi thành phần
+        VOCAB_FLASHCARD_FONT_PARTS.forEach(function (part) {
+          state.ui.vocabFlashcardFontScales[part.key] = parsedVVS.fontScale;
+        });
       }
     }
   } catch (e) {
@@ -686,7 +704,7 @@
         cardMode: state.ui.vocabFlashcardMode,
         autoNext: !!state.ui.vocabFlashcardAutoNext,
         autoNextSeconds: state.ui.vocabFlashcardAutoNextSeconds,
-        fontScale: state.ui.vocabFlashcardFontScale
+        fontScales: state.ui.vocabFlashcardFontScales
       }));
     } catch (e) { }
   }
@@ -1262,8 +1280,13 @@
     syncRadicalMatrixActiveState();
     // Bộ thủ có thể thuộc kanji ở bất kỳ cấp độ nào — bỏ giới hạn theo N3/N4-5.
     setKanjiLevelFilterToAll();
-    renderKanjiList();
     closeDetailModal();
+    // Mở chi tiết Kanji từ tab khác (vd. flashcard Từ vựng) → chuyển sang tab Kanji để thấy kết quả lọc
+    if (state.currentTab !== "kanji") {
+      navigateToTab("kanji");
+    } else {
+      renderKanjiList();
+    }
   }
 
   // Map radicals / variant forms to canonical kanji for linking
@@ -2042,6 +2065,10 @@
     clearMappingTestTimer();
     state.mappingTestState.isActive = false;
     clearKanjiDetailResumeHint();
+    if (vocabAutoNextPausedByKanjiDetail) {
+      vocabAutoNextPausedByKanjiDetail = false;
+      if (state.currentTab === "vocab") scheduleVocabAutoNextTimer();
+    }
     var ret = state.ui.kanjiDetailReturnTab;
     state.ui.kanjiDetailReturnTab = null;
     if (ret === "stars") {
@@ -2998,6 +3025,8 @@
   var VOCAB_AUTO_NEXT_MIN_SECONDS = 3;
   var VOCAB_AUTO_NEXT_MAX_SECONDS = 600;
   var vocabAutoNextTimer = null;
+  /** Đang mở chi tiết Kanji từ flashcard → tạm dừng auto-next, đóng modal thì chạy tiếp */
+  var vocabAutoNextPausedByKanjiDetail = false;
 
   function clearVocabAutoNextTimer() {
     if (vocabAutoNextTimer) {
@@ -3020,6 +3049,7 @@
     clearVocabAutoNextTimer();
     if (!state.ui.vocabFlashcardAutoNext || state.ui.vocabViewMode !== "flashcard") return;
     if (vocabPipClip) return; // video PiP dựng sẵn đang tự chuyển từ
+    if (vocabAutoNextPausedByKanjiDetail) return;
     vocabAutoNextTimer = setTimeout(vocabAutoNextTick, getVocabAutoNextDelayMs());
   }
 
@@ -3104,8 +3134,10 @@
     const item = buildVocabPipItem(raw);
 
     const wrap = createElement("div", "vocab-flashcard-wrap" + (state.ui.vocabFlashcardFullscreen ? " vocab-flashcard-wrap--fullscreen" : ""), "");
-    const fontScale = getVocabFlashcardFontScale();
-    wrap.style.setProperty("--fc-font-scale", String(fontScale));
+    VOCAB_FLASHCARD_FONT_PARTS.forEach(function (part) {
+      wrap.style.setProperty("--fc-fs-" + part.key, String(getVocabFlashcardFontScale(part.key)));
+    });
+    var isFontEdit = !!state.ui.vocabFlashcardFontEdit;
 
     const topRow = createElement("div", "vocab-flashcard-top-row", "");
     const counter = createElement("div", "vocab-flashcard-counter", (pos + 1) + " / " + filtered.length);
@@ -3181,20 +3213,15 @@
 
     var viewBtns = createElement("div", "vocab-flashcard-view-btns", "");
 
-    var fontPercent = Math.round(fontScale * 100) + "%";
-    var fontGroup = createElement("div", "vocab-flashcard-font-group", "");
-    [[-1, "A−", "Giảm cỡ chữ", VOCAB_FLASHCARD_FONT_SCALE_MIN], [1, "A+", "Tăng cỡ chữ", VOCAB_FLASHCARD_FONT_SCALE_MAX]].forEach(function (cfg) {
-      var fontBtn = createElement("button", "vocab-flashcard-font-btn", cfg[1]);
-      fontBtn.type = "button";
-      fontBtn.title = cfg[2] + " (đang " + fontPercent + ")";
-      fontBtn.disabled = cfg[0] < 0 ? fontScale <= cfg[3] : fontScale >= cfg[3];
-      fontBtn.addEventListener("click", function (e) {
-        e.stopPropagation();
-        changeVocabFlashcardFontScale(cfg[0]);
-      });
-      fontGroup.appendChild(fontBtn);
+    var fontEditBtn = createElement("button", "vocab-flashcard-font-btn" + (isFontEdit ? " vocab-flashcard-font-btn--active" : ""), "Aa");
+    fontEditBtn.type = "button";
+    fontEditBtn.title = isFontEdit ? "Tắt chỉnh cỡ chữ" : "Bật chỉnh cỡ chữ (hiện − / + cạnh từng thành phần trên thẻ)";
+    fontEditBtn.addEventListener("click", function (e) {
+      e.stopPropagation();
+      state.ui.vocabFlashcardFontEdit = !state.ui.vocabFlashcardFontEdit;
+      renderVocabList();
     });
-    viewBtns.appendChild(fontGroup);
+    viewBtns.appendChild(fontEditBtn);
 
     if (isCanvasPipSupported()) {
       var pipBtn = createElement("button", "vocab-flashcard-pip-btn", "PiP");
@@ -3231,19 +3258,25 @@
     const card = createElement("div", "vocab-flashcard" +
       (isSingleMode ? " vocab-flashcard--single" : (state.ui.vocabFlashcardFlipped ? " vocab-flashcard--flipped" : "")), "");
 
+    /** Thêm el vào face; đang bật chỉnh cỡ chữ thì kèm nút − / + cho riêng thành phần partKey */
+    function appendFontPart(face, el, partKey) {
+      face.appendChild(el);
+      if (isFontEdit) face.appendChild(createVocabFlashcardFontCtrl(partKey));
+    }
+
     // Mặt trước: hiragana / kanji / romaji
     const front = createElement("div", "vocab-flashcard-face vocab-flashcard-face--front", "");
     if (state.displaySettings.hiragana && item.hiragana) {
-      front.appendChild(createElement("div", "vocab-hira", item.hiragana));
+      appendFontPart(front, createElement("div", "vocab-hira", item.hiragana), "hira");
     }
     if (state.displaySettings.kanji && item.kanji) {
       const kanjiEl = createElement("div", "vocab-kanji");
       kanjiEl.innerHTML = "(" + boldKanji(item.kanji) + ")";
       wireVocabKanjiLinks(kanjiEl);
-      front.appendChild(kanjiEl);
+      appendFontPart(front, kanjiEl, "kanji");
     }
     if (state.displaySettings.romaji && item.romaji) {
-      front.appendChild(createElement("div", "vocab-romazi", "(" + item.romaji + ")"));
+      appendFontPart(front, createElement("div", "vocab-romazi", "(" + item.romaji + ")"), "romazi");
     }
     if (!isSingleMode) {
       front.appendChild(createElement("div", "vocab-flashcard-hint", "Chạm để xem nghĩa"));
@@ -3255,11 +3288,11 @@
       back.appendChild(createElement("div", "vocab-flashcard-divider", ""));
     }
     if (state.displaySettings.meaning && item.meaning) {
-      back.appendChild(createElement("div", "vocab-meaning", item.meaning));
+      appendFontPart(back, createElement("div", "vocab-meaning", item.meaning), "meaning");
     }
     if (state.displaySettings.hanviet && item.kanji) {
       const hv = getHanViet(item.kanji);
-      if (hv) back.appendChild(createElement("div", "vocab-hanviet", "[" + hv + "]"));
+      if (hv) appendFontPart(back, createElement("div", "vocab-hanviet", "[" + hv + "]"), "hanviet");
     }
     const backMeta = createElement("div", "vocab-meta-row", "");
     if (state.displaySettings.lesson && item.lesson) {
@@ -3277,13 +3310,13 @@
     if (state.displaySettings.note && item.note) {
       backMeta.appendChild(createElement("span", "pill", "Note: " + item.note));
     }
-    if (backMeta.childNodes.length > 0) back.appendChild(backMeta);
+    if (backMeta.childNodes.length > 0) appendFontPart(back, backMeta, "meta");
 
     card.appendChild(front);
     card.appendChild(back);
     if (!isSingleMode) {
       card.addEventListener("click", function (e) {
-        if (e.target.closest(".star-btn, .mastered-btn, .audio-btn")) return;
+        if (e.target.closest(".star-btn, .mastered-btn, .audio-btn, .vocab-fc-font-ctrl")) return;
         state.ui.vocabFlashcardFlipped = !state.ui.vocabFlashcardFlipped;
         saveVocabViewState(vocabIndex);
         renderVocabList();
@@ -3364,18 +3397,41 @@
   var VOCAB_FLASHCARD_FONT_SCALE_MAX = 2;
   var VOCAB_FLASHCARD_FONT_SCALE_STEP = 0.1;
 
-  function getVocabFlashcardFontScale() {
-    var scale = state.ui.vocabFlashcardFontScale;
+  function getVocabFlashcardFontScale(partKey) {
+    var scales = state.ui.vocabFlashcardFontScales || {};
+    var scale = scales[partKey];
     if (typeof scale !== "number" || !isFinite(scale)) return 1;
     return Math.min(VOCAB_FLASHCARD_FONT_SCALE_MAX, Math.max(VOCAB_FLASHCARD_FONT_SCALE_MIN, scale));
   }
 
-  function changeVocabFlashcardFontScale(steps) {
-    var scale = getVocabFlashcardFontScale() + steps * VOCAB_FLASHCARD_FONT_SCALE_STEP;
+  function changeVocabFlashcardFontScale(partKey, steps) {
+    var scale = getVocabFlashcardFontScale(partKey) + steps * VOCAB_FLASHCARD_FONT_SCALE_STEP;
     scale = Math.round(scale * 10) / 10; // tránh lệch số thực (0.1 + 0.2...)
-    state.ui.vocabFlashcardFontScale = Math.min(VOCAB_FLASHCARD_FONT_SCALE_MAX, Math.max(VOCAB_FLASHCARD_FONT_SCALE_MIN, scale));
+    if (!state.ui.vocabFlashcardFontScales) state.ui.vocabFlashcardFontScales = {};
+    state.ui.vocabFlashcardFontScales[partKey] = Math.min(VOCAB_FLASHCARD_FONT_SCALE_MAX, Math.max(VOCAB_FLASHCARD_FONT_SCALE_MIN, scale));
     saveVocabViewState(state.ui.vocabFlashcardVocabIndex);
     renderVocabList();
+  }
+
+  /** Cụm nút − [x%] + chỉnh cỡ chữ cho 1 thành phần thẻ */
+  function createVocabFlashcardFontCtrl(partKey) {
+    var part = VOCAB_FLASHCARD_FONT_PARTS.filter(function (p) { return p.key === partKey; })[0];
+    var scale = getVocabFlashcardFontScale(partKey);
+    var ctrl = createElement("div", "vocab-fc-font-ctrl", "");
+    ctrl.addEventListener("click", function (e) { e.stopPropagation(); });
+    [[-1, "−", "Giảm", scale <= VOCAB_FLASHCARD_FONT_SCALE_MIN], [1, "+", "Tăng", scale >= VOCAB_FLASHCARD_FONT_SCALE_MAX]].forEach(function (cfg, i) {
+      var btn = createElement("button", "vocab-fc-font-ctrl-btn", cfg[1]);
+      btn.type = "button";
+      btn.title = cfg[2] + " cỡ chữ " + part.label;
+      btn.disabled = cfg[3];
+      btn.addEventListener("click", function (e) {
+        e.stopPropagation();
+        changeVocabFlashcardFontScale(partKey, cfg[0]);
+      });
+      if (i === 1) ctrl.appendChild(createElement("span", "vocab-fc-font-ctrl-label", part.label + " " + Math.round(scale * 100) + "%"));
+      ctrl.appendChild(btn);
+    });
+    return ctrl;
   }
 
   // ----- Vuốt ngang để chuyển mục (Flashcard từ vựng, chi tiết Kanji): vuốt sang trái = mục tiếp theo, sang phải = mục trước -----
@@ -13394,6 +13450,10 @@ history.replaceState({}, "", newUrl);
         const clickedText = this.textContent;
         const idx = kanjiData.findIndex(function (item) { return item.kanji === clickedText; });
         if (idx >= 0) {
+          if (state.currentTab === "vocab" && state.ui.vocabViewMode === "flashcard" && state.ui.vocabFlashcardAutoNext) {
+            vocabAutoNextPausedByKanjiDetail = true;
+            clearVocabAutoNextTimer();
+          }
           state.selected.kanjiIndex = idx;
           renderKanjiDetail();
         } else {
