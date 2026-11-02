@@ -1595,6 +1595,49 @@ select:focus {
   gap: 4px;
 }
 
+.vocab-flashcard-font-btn--active {
+  background: var(--accent, #3b82f6);
+  border-color: var(--accent, #3b82f6);
+  color: #fff;
+}
+
+/* Cụm − / + chỉnh cỡ chữ từng thành phần trên flashcard (hiện khi bật Aa) */
+.vocab-fc-font-ctrl {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  margin: 2px 0 6px;
+  padding: 2px 4px;
+  border: 1px dashed var(--border);
+  border-radius: 999px;
+  font-size: 11px;
+  line-height: 1;
+}
+
+.vocab-fc-font-ctrl-label {
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.vocab-fc-font-ctrl-btn {
+  width: 22px;
+  height: 22px;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: transparent;
+  color: inherit;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1;
+  padding: 0;
+  cursor: pointer;
+}
+
+.vocab-fc-font-ctrl-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
 .vocab-flashcard-font-btn:disabled {
   opacity: 0.35;
   cursor: default;
@@ -1653,15 +1696,15 @@ select:focus {
 }
 
 .vocab-flashcard-wrap--fullscreen .vocab-flashcard .vocab-hira {
-  font-size: calc(48px * var(--fc-font-scale, 1));
+  font-size: calc(48px * var(--fc-fs-hira, 1));
 }
 
 .vocab-flashcard-wrap--fullscreen .vocab-flashcard .vocab-kanji {
-  font-size: calc(32px * var(--fc-font-scale, 1));
+  font-size: calc(32px * var(--fc-fs-kanji, 1));
 }
 
 .vocab-flashcard-wrap--fullscreen .vocab-flashcard .vocab-meaning {
-  font-size: calc(28px * var(--fc-font-scale, 1));
+  font-size: calc(28px * var(--fc-fs-meaning, 1));
 }
 
 .vocab-flashcard-stage {
@@ -1776,30 +1819,30 @@ select:focus {
   margin: 2px 0 6px;
 }
 
-/* --fc-font-scale: hệ số cỡ chữ chỉnh bằng nút A− / A+ (gắn trên .vocab-flashcard-wrap) */
+/* --fc-fs-<thành phần>: hệ số cỡ chữ riêng từng thành phần, chỉnh bằng nút − / + khi bật Aa (gắn trên .vocab-flashcard-wrap) */
 .vocab-flashcard .vocab-hira {
-  font-size: calc(30px * var(--fc-font-scale, 1));
+  font-size: calc(30px * var(--fc-fs-hira, 1));
 }
 
 .vocab-flashcard .vocab-kanji {
-  font-size: calc(20px * var(--fc-font-scale, 1));
+  font-size: calc(20px * var(--fc-fs-kanji, 1));
 }
 
 .vocab-flashcard .vocab-romazi {
-  font-size: calc(12px * var(--fc-font-scale, 1));
+  font-size: calc(12px * var(--fc-fs-romazi, 1));
 }
 
 .vocab-flashcard .vocab-meaning {
-  font-size: calc(20px * var(--fc-font-scale, 1));
+  font-size: calc(20px * var(--fc-fs-meaning, 1));
   padding-left: 0;
 }
 
 .vocab-flashcard .vocab-hanviet {
-  font-size: calc(11px * var(--fc-font-scale, 1));
+  font-size: calc(11px * var(--fc-fs-hanviet, 1));
 }
 
 .vocab-flashcard .vocab-meta-row .pill {
-  font-size: calc(11px * var(--fc-font-scale, 1));
+  font-size: calc(11px * var(--fc-fs-meta, 1));
 }
 
 .vocab-flashcard-hint {
