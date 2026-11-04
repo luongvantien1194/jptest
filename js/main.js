@@ -13,6 +13,7 @@
       vocabLessonFrom: "1",
       vocabLessonTo: "",
       vocabCategory: "all",
+      vocabLevel: "all",
       kanjiRadical: [],
       kanjiLevel: "n3",
       grammarLevel: "all",
@@ -45,6 +46,7 @@
       correctCount: 0,
       answers: [],
       selectedCategory: "all",
+      selectedLevel: "all",
       lessonMax: 50,
       questionCount: 20,
       optionCount: 6,
@@ -96,6 +98,7 @@
       questionField: "hiragana",
       answerField: "meaning",
       selectedCategory: "all",
+      selectedLevel: "all",
       lessonMin: 1,
       lessonMax: 50,
       isStar: false,
@@ -114,6 +117,7 @@
       correctCount: 0,
       answers: [],
       selectedCategory: "all",
+      selectedLevel: "all",
       lessonMin: 1,
       lessonMax: 50,
       questionCount: 20,
@@ -1467,6 +1471,7 @@
     let vocabData = JSON.parse(localStorage.getItem('vocab_extra_list')) || [];
     const item = {
       "Lesson": 9999,
+      "level": "nx",
       "Hiragana": hiragana,
       "Romaji": '',
       "Kanji": kanji,
@@ -2616,6 +2621,37 @@
   }
 
   // ----- Vocab -----
+  // Level của từ vựng: n5/n4 (vocabData.js), n3 (vocabData_1.js), nx (vocabExtra/extra.js).
+  // Từ không có level (vd từ thêm tạm qua localStorage) coi là "nx".
+  var VOCAB_LEVELS = [["all", "Tất cả level"], ["n5", "N5"], ["n4", "N4"], ["n3", "N3"], ["nx", "NX"]];
+
+  function getVocabLevel(raw) {
+    var lv = raw && raw.level != null ? String(raw.level).trim().toLowerCase() : "";
+    return lv || "nx";
+  }
+
+  function isValidVocabLevel(level) {
+    return VOCAB_LEVELS.some(function (l) { return l[0] === level; });
+  }
+
+  function vocabMatchesLevel(raw, level) {
+    return !level || level === "all" || getVocabLevel(raw) === level;
+  }
+
+  /** Tạo <select> chọn level cho các màn cấu hình test */
+  function buildVocabLevelSelect(value, id) {
+    var sel = document.createElement("select");
+    if (id) sel.id = id;
+    VOCAB_LEVELS.forEach(function (l) {
+      var o = document.createElement("option");
+      o.value = l[0];
+      o.textContent = l[0] === "all" ? "Tất cả" : l[1];
+      sel.appendChild(o);
+    });
+    sel.value = isValidVocabLevel(value) ? value : "all";
+    return sel;
+  }
+
   function applyVocabFilters(opts) {
     var ignoreCategory = !!(opts && opts.ignoreCategory);
     var filtered = vocabData.filter(function (item) {
@@ -2698,6 +2734,10 @@
 
       if (!ignoreCategory && state.filter.vocabCategory !== "all" &&
         String(categoryValue) !== String(state.filter.vocabCategory)) {
+        return false;
+      }
+
+      if (!vocabMatchesLevel(item, state.filter.vocabLevel)) {
         return false;
       }
 
@@ -3368,6 +3408,14 @@
     wrap.appendChild(stage);
 
     const navRow = createElement("div", "detail-nav-row vocab-flashcard-nav", "");
+    const firstBtn = createElement("button", "detail-nav-btn", "«");
+    firstBtn.type = "button";
+    firstBtn.title = "Về thẻ đầu tiên (1 / " + filtered.length + ")";
+    firstBtn.disabled = pos <= 0;
+    firstBtn.addEventListener("click", function () {
+      advanceVocabFlashcard(-state.ui.vocabFlashcardIndex);
+    });
+
     const prevBtn = createElement("button", "detail-nav-btn", "‹");
     prevBtn.type = "button";
     prevBtn.title = pos <= 0 ? "Từ trước (quay về từ cuối cùng)" : "Từ trước";
@@ -3384,6 +3432,7 @@
       advanceVocabFlashcard(1);
     });
 
+    navRow.appendChild(firstBtn);
     navRow.appendChild(prevBtn);
     navRow.appendChild(nextBtn);
     wrap.appendChild(navRow);
@@ -4485,6 +4534,12 @@
     field.appendChild(select);
     configGrid.appendChild(field);
 
+    const levelField = createElement("div", "field-group", "");
+    levelField.appendChild(createElement("div", "field-label", "Level"));
+    const levelSelect = buildVocabLevelSelect(state.testState.selectedLevel, "vocab-test-level-select");
+    levelField.appendChild(levelSelect);
+    configGrid.appendChild(levelField);
+
     const qCountField = createElement("div", "field-group", "");
     const qCountLabel = createElement("div", "field-label", "Số câu hỏi (5–100)");
     const qCountInput = createElement("input", "input-text", "");
@@ -4592,6 +4647,7 @@
     startBtn.type = "button";
     startBtn.addEventListener("click", function () {
       var selectedCat = select.value || "all";
+      var selectedLevel = levelSelect.value || "all";
       var questionField = qFieldSelect.value || "hiragana";
       var answerField = aFieldSelect.value || "meaning";
       if (questionField === answerField) {
@@ -4657,13 +4713,17 @@
             return false;
           }
         }
+        // NX (từ bổ sung, Lesson = 9999) không theo bài -> bỏ qua phạm vi bài
         var lesson = raw.lesson != null ? raw.lesson : raw.Lesson;
         var lessonNum = typeof lesson === "number" ? lesson : parseInt(lesson, 10);
-        if (isNaN(lessonNum) || lessonNum < lessonMin || lessonNum > lessonMax) {
+        if (selectedLevel !== "nx" && (isNaN(lessonNum) || lessonNum < lessonMin || lessonNum > lessonMax)) {
           return false;
         }
         var hira = raw.hiragana != null ? raw.hiragana : raw.Hiragana;
         if (!String(hira || "").trim()) {
+          return false;
+        }
+        if (!vocabMatchesLevel(raw, selectedLevel)) {
           return false;
         }
         if (selectedCat === "all") {
@@ -4674,7 +4734,7 @@
 
       const questions = pickVocabTestQueue(pool, questionCount);
       if (questions.length === 0) {
-        alert("Không có từ vựng phù hợp (phạm vi bài " + lessonMin + "–" + lessonMax + " và category đã chọn).");
+        alert("Không có từ vựng phù hợp (phạm vi bài " + lessonMin + "–" + lessonMax + ", level và category đã chọn).");
         return;
       }
 
@@ -4685,6 +4745,7 @@
       state.testState.correctCount = 0;
       state.testState.answers = [];
       state.testState.selectedCategory = selectedCat;
+      state.testState.selectedLevel = selectedLevel;
       state.testState.lessonMin = lessonMin;
       state.testState.lessonMax = lessonMax;
       state.testState.questionCount = questionCount;
@@ -4763,6 +4824,7 @@
 
     // Lọc đáp án sai theo cùng category và phạm vi lesson đã chọn
     const selectedCategory = testState.selectedCategory || "all";
+    const selectedLevel = testState.selectedLevel || "all";
     const lessonMin = testState.lessonMin != null ? testState.lessonMin : 1;
     const lessonMax = testState.lessonMax != null ? testState.lessonMax : 50;
     const answerPool = vocabData.filter(function (v) {
@@ -4781,10 +4843,12 @@
       }
       var lesson = v.lesson != null ? v.lesson : v.Lesson;
       var lessonNum = typeof lesson === "number" ? lesson : parseInt(lesson, 10);
-      if (isNaN(lessonNum) || lessonNum < lessonMin || lessonNum > lessonMax) {
+      if (selectedLevel !== "nx" && (isNaN(lessonNum) || lessonNum < lessonMin || lessonNum > lessonMax)) {
         return false;
       }
-
+      if (!vocabMatchesLevel(v, selectedLevel)) {
+        return false;
+      }
 
       if (selectedCategory === "all") {
         return true;
@@ -5092,6 +5156,7 @@
     state.assembleTestState.lessonMin = isNaN(screenFrom) ? 1 : screenFrom;
     state.assembleTestState.lessonMax = isNaN(screenTo) ? 50 : screenTo;
     state.assembleTestState.selectedCategory = state.filter.vocabCategory || "all";
+    state.assembleTestState.selectedLevel = state.filter.vocabLevel || "all";
   }
 
   function startAssembleTest() {
@@ -5156,6 +5221,12 @@
     catSelect.value = ts.selectedCategory || "all";
     catField.appendChild(catSelect);
     configGrid.appendChild(catField);
+
+    const levelField = createElement("div", "field-group", "");
+    levelField.appendChild(createElement("div", "field-label", "Level"));
+    const levelSelect = buildVocabLevelSelect(ts.selectedLevel, "vocab-assemble-level-select");
+    levelField.appendChild(levelSelect);
+    configGrid.appendChild(levelField);
 
     const qCountField = createElement("div", "field-group", "");
     qCountField.appendChild(createElement("div", "field-label", "Số câu hỏi (5–50)"));
@@ -5231,6 +5302,7 @@
         lessonMax = 999;
       }
       var selectedCat = catSelect.value || "all";
+      var selectedLevel = levelSelect.value || "all";
       var questionCount = parseInt(qCountInput.value, 10);
       if (isNaN(questionCount) || questionCount < 5) {
         questionCount = 5;
@@ -5257,13 +5329,17 @@
         if (isNotMastered && state.vocabMastered[idx]) {
           return false;
         }
+        // NX (từ bổ sung, Lesson = 9999) không theo bài -> bỏ qua phạm vi bài
         var lesson = raw.lesson != null ? raw.lesson : raw.Lesson;
         var lessonNum = typeof lesson === "number" ? lesson : parseInt(lesson, 10);
-        if (isNaN(lessonNum) || lessonNum < lessonMin || lessonNum > lessonMax) {
+        if (selectedLevel !== "nx" && (isNaN(lessonNum) || lessonNum < lessonMin || lessonNum > lessonMax)) {
           return false;
         }
         var hira = raw.hiragana != null ? raw.hiragana : raw.Hiragana;
         if (!String(hira || "").trim()) {
+          return false;
+        }
+        if (!vocabMatchesLevel(raw, selectedLevel)) {
           return false;
         }
         if (selectedCat === "all") {
@@ -5274,7 +5350,7 @@
 
       var questions = pickVocabTestQueue(pool, questionCount);
       if (questions.length === 0) {
-        alert("Không có từ vựng phù hợp (phạm vi bài " + lessonMin + "–" + lessonMax + " và category đã chọn).");
+        alert("Không có từ vựng phù hợp (phạm vi bài " + lessonMin + "–" + lessonMax + ", level và category đã chọn).");
         return;
       }
 
@@ -5286,6 +5362,7 @@
       ts2.correctCount = 0;
       ts2.answers = [];
       ts2.selectedCategory = selectedCat;
+      ts2.selectedLevel = selectedLevel;
       ts2.lessonMin = lessonMin;
       ts2.lessonMax = lessonMax;
       ts2.questionCount = questionCount;
@@ -11134,6 +11211,7 @@
     const lessonPre = document.getElementById("vocab-lesson-pre");
     const lessonNext = document.getElementById("vocab-lesson-next");
     const categorySelect = document.getElementById("vocab-category-filter");
+    const levelSelect = document.getElementById("vocab-level-filter");
     const notMasteredCb = document.getElementById("vocab-not-mastered-cb");
     const searchInput = document.getElementById("vocab-search-input");
     const addKanji = document.getElementById("add-kanji");
@@ -11150,6 +11228,24 @@
       lessonFrom.value = state.filter.vocabLessonFrom;
       lessonTo.value = state.filter.vocabLessonTo;
       notMasteredCb.checked = state.filter.vocabMastered === "not";
+    }
+    // jp_fillter cũ (chưa có vocabLevel) hoặc giá trị lạ -> mặc định "all"
+    if (!isValidVocabLevel(state.filter.vocabLevel)) {
+      state.filter.vocabLevel = "all";
+    }
+    if (levelSelect) {
+      levelSelect.innerHTML = "";
+      VOCAB_LEVELS.forEach(function (l) {
+        const opt = createElement("option", "", l[1]);
+        opt.value = l[0];
+        levelSelect.appendChild(opt);
+      });
+      levelSelect.value = state.filter.vocabLevel;
+      levelSelect.addEventListener("change", function () {
+        state.filter.vocabLevel = levelSelect.value || "all";
+        renderVocabList();
+        saveFillter();
+      });
     }
 
     const params = new URLSearchParams(window.location.search);
@@ -11269,15 +11365,18 @@ history.replaceState({}, "", newUrl);
       state.filter.vocabCategory = "all";
       state.filter.vocabSearch = "";
       state.filter.vocabMastered = "all";
+      state.filter.vocabLevel = "all";
       lessonFrom.value = "1";
       lessonTo.value = "";
       categorySelect.value = "all";
+      if (levelSelect) levelSelect.value = "all";
       if (notMasteredCb) notMasteredCb.checked = false;
       if (searchInput) {
         searchInput.value = "";
       }
       clearVocabTtsFocus();
       renderVocabList();
+      saveFillter();
     });
   }
 
@@ -11559,6 +11658,7 @@ history.replaceState({}, "", newUrl);
     state.testState.lessonMin = isNaN(screenFrom) ? 1 : screenFrom;
     state.testState.lessonMax = isNaN(screenTo) ? 50 : screenTo;
     state.testState.selectedCategory = state.filter.vocabCategory || "all";
+    state.testState.selectedLevel = state.filter.vocabLevel || "all";
   }
 
   function startVocabTest() {
@@ -11616,6 +11716,7 @@ history.replaceState({}, "", newUrl);
     state.testState.correctCount = 0;
     state.testState.answers = [];
     state.testState.selectedCategory = "all";
+    state.testState.selectedLevel = "all";
     state.testState.lessonMin = 1;
     state.testState.lessonMax = 999;
     state.testState.questionCount = questionCount;
@@ -12656,10 +12757,11 @@ history.replaceState({}, "", newUrl);
       if (config.isNotMastered && state.vocabMastered[idx]) return false;
       var lesson = raw.lesson != null ? raw.lesson : raw.Lesson;
       var lessonNum = typeof lesson === "number" ? lesson : parseInt(lesson, 10);
-      if (isNaN(lessonNum) || lessonNum < config.lessonMin || lessonNum > config.lessonMax) return false;
+      if (config.selectedLevel !== "nx" && (isNaN(lessonNum) || lessonNum < config.lessonMin || lessonNum > config.lessonMax)) return false;
       var hira = raw.hiragana != null ? raw.hiragana : raw.Hiragana;
       if (!String(hira || "").trim()) return false;
       if (config.selectedCategory !== "all" && String(raw.category) !== String(config.selectedCategory)) return false;
+      if (!vocabMatchesLevel(raw, config.selectedLevel)) return false;
       return true;
     });
     var items = pool.map(function (raw, i) {
@@ -12749,6 +12851,7 @@ history.replaceState({}, "", newUrl);
       ts.lessonMin = isNaN(screenFrom) ? 1 : screenFrom;
       ts.lessonMax = isNaN(screenTo) ? 50 : screenTo;
       ts.selectedCategory = state.filter.vocabCategory || "all";
+      ts.selectedLevel = state.filter.vocabLevel || "all";
     }
     renderMappingTestInitialMessage();
   }
@@ -12889,6 +12992,13 @@ history.replaceState({}, "", newUrl);
       catField.appendChild(catSelect);
       configGrid.appendChild(catField);
 
+      var vocabLevelField = createElement("div", "field-group", "");
+      vocabLevelField.style.gridColumn = "1 / -1";
+      vocabLevelField.appendChild(createElement("div", "field-label", "Level"));
+      var vocabLevelSelect = buildVocabLevelSelect(ts.selectedLevel, "vocab-mapping-level-select");
+      vocabLevelField.appendChild(vocabLevelSelect);
+      configGrid.appendChild(vocabLevelField);
+
       var fieldOptions = [
         { value: "hiragana", label: "Hiragana" },
         { value: "kanji", label: "Kanji" },
@@ -12943,7 +13053,7 @@ history.replaceState({}, "", newUrl);
 
       wrapper.appendChild(configGrid);
 
-      configFields.push({ lessonMinInput: lessonMinInput, lessonMaxInput: lessonMaxInput, catSelect: catSelect, qFieldSelect: qFieldSelect, aFieldSelect: aFieldSelect, starInput: starInputV, notMasteredInput: notMasteredInputV });
+      configFields.push({ lessonMinInput: lessonMinInput, lessonMaxInput: lessonMaxInput, catSelect: catSelect, vocabLevelSelect: vocabLevelSelect, qFieldSelect: qFieldSelect, aFieldSelect: aFieldSelect, starInput: starInputV, notMasteredInput: notMasteredInputV });
     }
 
     // --- Mức độ khó / giới hạn thời gian ---
@@ -13031,6 +13141,7 @@ history.replaceState({}, "", newUrl);
         ts.lessonMin = lessonMinVal;
         ts.lessonMax = lessonMaxVal;
         ts.selectedCategory = cfv.catSelect.value || "all";
+        ts.selectedLevel = cfv.vocabLevelSelect.value || "all";
         ts.questionField = questionField;
         ts.answerField = answerField;
         ts.isStar = cfv.starInput.checked || false;
