@@ -88,7 +88,7 @@ window._vocabExtra.push(
   // --- Lesson 9999: そん ---
   { "Lesson": 9999, "level": "nx", "Hiragana": "そん", "Romaji": "son", "Kanji": "損", "Meaning": "thiệt hại, tổn thất, bị lỗ", "category": "", "Vru": "損する（そんする）", "type": "Danh từ, Suru động từ", "note": "Âm On: ソン; thường dùng trong 損する (bị thiệt, bị lỗ), 損失 (tổn thất), 損害 (thiệt hại)." },
   // --- Lesson 9999: ばすてい ---
-  { "Lesson": 9999, "level": "nx", "Hiragana": "ばすてい", "Romaji": "basutei", "Kanji": "バス停", "Meaning": "trạm xe buýt", "category": "", "Vru": "バスてい", "type": "word", "note": "Thường được viết bằng kanji là バス停; cách viết バスてい là pha giữa katakana và hiragana." },
+  { "Lesson": 9999, "level": "nx", "Hiragana": "ばすてい", "Romaji": "basutei", "Kanji": "バス停", "Meaning": "trạm xe buýt", "category": "", "Vru": "バスてい", "type": "word", "note": "Thường được viết bằng kanji là バス停; cách viết バスてい là pha giữa katakana và hiragana. バス ← tiếng Anh: bus; 停 = trạm dừng" },
   // --- Lesson 9999: すご ---
   { "Lesson": 9999, "level": "nx", "Hiragana": "すご", "Romaji": "sugo", "Kanji": "", "Meaning": "Tuyệt quá; ghê thật; rất (dạng nói rút gọn của すごい, dùng trong khẩu ngữ để bộc lộ sự ngạc nhiên hoặc thán phục)", "category": 7, "Vru": "すご！", "type": "interjection", "note": "Là dạng rút gọn, không trang trọng của すごい; thường dùng trong hội thoại thân mật." },
   // --- Lesson 9999: ばかり ---
