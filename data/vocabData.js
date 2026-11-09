@@ -225,7 +225,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: engineer"
   },
   {
     "Lesson": 1,
@@ -405,7 +405,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Tên riêng: America"
   },
   {
     "Lesson": 1,
@@ -417,7 +417,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Tên riêng: Inglês (tiếng Bồ Đào Nha, chỉ nước Anh)"
   },
   {
     "Lesson": 1,
@@ -429,7 +429,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Tên riêng: India"
   },
   {
     "Lesson": 1,
@@ -441,7 +441,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Tên riêng: Indonesia"
   },
   {
     "Lesson": 1,
@@ -465,7 +465,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Tên riêng: Thai(land)"
   },
   {
     "Lesson": 1,
@@ -489,7 +489,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Tên riêng: Duits (tiếng Hà Lan, chỉ nước Đức)"
   },
   {
     "Lesson": 1,
@@ -513,7 +513,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Tên riêng: France"
   },
   {
     "Lesson": 1,
@@ -525,7 +525,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Tên riêng: Brasil"
   },
   {
     "Lesson": 1,
@@ -669,7 +669,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Viết tắt kiểu Nhật từ tiếng Anh: notebook"
   },
   {
     "Lesson": 2,
@@ -705,7 +705,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: card"
   },
   {
     "Lesson": 2,
@@ -717,7 +717,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Wasei-eigo (từ ghép kiểu Nhật): telephone + card"
   },
   {
     "Lesson": 2,
@@ -741,7 +741,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Wasei-eigo (từ ghép kiểu Nhật): ball + pen"
   },
   {
     "Lesson": 2,
@@ -753,7 +753,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Wasei-eigo (từ ghép kiểu Nhật): sharp + pencil (từ tên sản phẩm Ever-Sharp pencil)"
   },
   {
     "Lesson": 2,
@@ -813,7 +813,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: cassette tape"
   },
   {
     "Lesson": 2,
@@ -825,7 +825,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: tape recorder"
   },
   {
     "Lesson": 2,
@@ -837,7 +837,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Viết tắt kiểu Nhật từ tiếng Anh: television"
   },
   {
     "Lesson": 2,
@@ -849,7 +849,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: radio"
   },
   {
     "Lesson": 2,
@@ -861,7 +861,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: camera"
   },
   {
     "Lesson": 2,
@@ -873,7 +873,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: computer"
   },
   {
     "Lesson": 2,
@@ -921,7 +921,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: chocolate"
   },
   {
     "Lesson": 2,
@@ -933,7 +933,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Hà Lan: koffie"
   },
   {
     "Lesson": 2,
@@ -1269,7 +1269,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: lobby"
   },
   {
     "Lesson": 3,
@@ -1293,7 +1293,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Viết tắt kiểu Nhật từ tiếng Anh: toilet"
   },
   {
     "Lesson": 3,
@@ -1317,7 +1317,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: elevator"
   },
   {
     "Lesson": 3,
@@ -1329,7 +1329,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: escalator"
   },
   {
     "Lesson": 3,
@@ -1401,7 +1401,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: necktie"
   },
   {
     "Lesson": 3,
@@ -1413,7 +1413,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: wine"
   },
   {
     "Lesson": 3,
@@ -1617,7 +1617,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Tên riêng: Italia"
   },
   {
     "Lesson": 3,
@@ -1629,7 +1629,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Tên riêng: Suisse (tiếng Pháp, chỉ Thụy Sĩ)"
   },
   {
     "Lesson": 3,
@@ -1641,7 +1641,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Tên công ty giả định trong giáo trình"
   },
   {
     "Lesson": 4,
@@ -1725,7 +1725,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Viết tắt kiểu Nhật từ tiếng Anh: department store"
   },
   {
     "Lesson": 4,
@@ -2109,7 +2109,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Tên riêng: Bắc Kinh (âm Hán–Nhật của 北京)"
   },
   {
     "Lesson": 4,
@@ -2121,7 +2121,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Tên riêng: Bangkok"
   },
   {
     "Lesson": 4,
@@ -2133,7 +2133,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Tên riêng: London"
   },
   {
     "Lesson": 4,
@@ -2145,7 +2145,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Tên riêng: Los Angeles"
   },
   {
     "Lesson": 4,
@@ -2253,7 +2253,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Viết tắt kiểu Nhật từ tiếng Anh: supermarket"
   },
   {
     "Lesson": 5,
@@ -2337,7 +2337,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: bus"
   },
   {
     "Lesson": 5,
@@ -2349,7 +2349,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: taxi"
   },
   {
     "Lesson": 5,
@@ -3021,7 +3021,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Bồ Đào Nha: pão"
   },
   {
     "Lesson": 6,
@@ -3129,7 +3129,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "ミルク ← từ mượn tiếng Anh: milk"
   },
   {
     "Lesson": 6,
@@ -3141,7 +3141,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: juice"
   },
   {
     "Lesson": 6,
@@ -3153,7 +3153,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Hà Lan: bier"
   },
   {
     "Lesson": 6,
@@ -3177,7 +3177,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: video"
   },
   {
     "Lesson": 6,
@@ -3225,7 +3225,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: report"
   },
   {
     "Lesson": 6,
@@ -3261,7 +3261,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Pháp: restaurant"
   },
   {
     "Lesson": 6,
@@ -3297,7 +3297,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: tennis"
   },
   {
     "Lesson": 6,
@@ -3309,7 +3309,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: soccer"
   },
   {
     "Lesson": 6,
@@ -3465,7 +3465,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Tên riêng: Mexico"
   },
   {
     "Lesson": 7,
@@ -3585,7 +3585,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: spoon"
   },
   {
     "Lesson": 7,
@@ -3597,7 +3597,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: knife"
   },
   {
     "Lesson": 7,
@@ -3609,7 +3609,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: fork"
   },
   {
     "Lesson": 7,
@@ -3633,7 +3633,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: fax"
   },
   {
     "Lesson": 7,
@@ -3645,7 +3645,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Viết tắt kiểu Nhật từ tiếng Anh: word processor"
   },
   {
     "Lesson": 7,
@@ -3657,7 +3657,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Viết tắt kiểu Nhật từ tiếng Anh: personal computer"
   },
   {
     "Lesson": 7,
@@ -3669,7 +3669,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: punch"
   },
   {
     "Lesson": 7,
@@ -3681,7 +3681,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Tên riêng: Hotchkiss (hãng sản xuất dập ghim Mỹ)"
   },
   {
     "Lesson": 7,
@@ -3693,7 +3693,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Wasei-eigo (từ ghép kiểu Nhật): Cellotape (tên thương hiệu)"
   },
   {
     "Lesson": 7,
@@ -3705,7 +3705,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "ゴム ← từ mượn tiếng Hà Lan: gom"
   },
   {
     "Lesson": 7,
@@ -3741,7 +3741,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: shirt"
   },
   {
     "Lesson": 7,
@@ -3753,7 +3753,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: present"
   },
   {
     "Lesson": 7,
@@ -3801,7 +3801,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: Christmas"
   },
   {
     "Lesson": 7,
@@ -3969,7 +3969,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Tên riêng: Europa (tiếng Bồ Đào Nha/Hà Lan)"
   },
   {
     "Lesson": 8,
@@ -3993,7 +3993,7 @@ const vocabData = [
     "category": 5,
     "Vru": "",
     "type": "",
-    "note": "Tính từ \"đuôi な"
+    "note": "Tính từ \\\"đuôi な. Từ mượn tiếng Anh: handsome"
   },
   {
     "Lesson": 8,
@@ -4653,7 +4653,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: sports"
   },
   {
     "Lesson": 9,
@@ -4677,7 +4677,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: dance"
   },
   {
     "Lesson": 9,
@@ -4713,7 +4713,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: classic"
   },
   {
     "Lesson": 9,
@@ -4725,7 +4725,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: jazz"
   },
   {
     "Lesson": 9,
@@ -4737,7 +4737,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: concert"
   },
   {
     "Lesson": 9,
@@ -4749,7 +4749,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ ghép Nhật: 空 (kara – trống) + オケ (orchestra)"
   },
   {
     "Lesson": 9,
@@ -4833,7 +4833,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "ローマ ← tên riêng: Roma"
   },
   {
     "Lesson": 9,
@@ -4857,7 +4857,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: ticket"
   },
   {
     "Lesson": 9,
@@ -5289,7 +5289,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: film"
   },
   {
     "Lesson": 10,
@@ -5325,7 +5325,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: switch"
   },
   {
     "Lesson": 10,
@@ -5349,7 +5349,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: table"
   },
   {
     "Lesson": 10,
@@ -5361,7 +5361,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: bed"
   },
   {
     "Lesson": 10,
@@ -5385,7 +5385,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: door"
   },
   {
     "Lesson": 10,
@@ -5409,7 +5409,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: post (hòm thư)"
   },
   {
     "Lesson": 10,
@@ -5421,7 +5421,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Viết tắt kiểu Nhật từ tiếng Anh: building"
   },
   {
     "Lesson": 10,
@@ -5685,7 +5685,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: chili sauce"
   },
   {
     "Lesson": 11,
@@ -5961,7 +5961,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: sandwich"
   },
   {
     "Lesson": 11,
@@ -5973,7 +5973,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: curry"
   },
   {
     "Lesson": 11,
@@ -5985,7 +5985,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: ice cream"
   },
   {
     "Lesson": 11,
@@ -6333,7 +6333,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: hotel"
   },
   {
     "Lesson": 12,
@@ -6381,7 +6381,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: party"
   },
   {
     "Lesson": 12,
@@ -6597,7 +6597,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Tên riêng: Hong Kong"
   },
   {
     "Lesson": 12,
@@ -6609,7 +6609,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Tên riêng: Singapore"
   },
   {
     "Lesson": 13,
@@ -6825,7 +6825,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: pool"
   },
   {
     "Lesson": 13,
@@ -6885,7 +6885,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Na Uy: ski"
   },
   {
     "Lesson": 13,
@@ -7017,7 +7017,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Tên riêng: Rossiya"
   },
   {
     "Lesson": 13,
@@ -7305,7 +7305,7 @@ const vocabData = [
     "category": 2,
     "Vru": "コピーする",
     "type": "Nhóm III",
-    "note": "Tha động từ"
+    "note": "Tha động từ. Từ mượn tiếng Anh: copy"
   },
   {
     "Lesson": 14,
@@ -7317,7 +7317,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Viết tắt kiểu Nhật từ tiếng Anh: air conditioner"
   },
   {
     "Lesson": 14,
@@ -7329,7 +7329,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: passport"
   },
   {
     "Lesson": 14,
@@ -7713,7 +7713,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: catalog"
   },
   {
     "Lesson": 15,
@@ -7761,7 +7761,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Viết tắt kiểu Nhật từ tiếng Anh: software"
   },
   {
     "Lesson": 15,
@@ -7809,7 +7809,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Wasei-eigo (từ ghép kiểu Nhật): play + guide (quầy bán vé)"
   },
   {
     "Lesson": 15,
@@ -8217,7 +8217,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: service"
   },
   {
     "Lesson": 16,
@@ -8229,7 +8229,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: jogging"
   },
   {
     "Lesson": 16,
@@ -8241,7 +8241,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: shower"
   },
   {
     "Lesson": 16,
@@ -8361,7 +8361,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: cash card"
   },
   {
     "Lesson": 16,
@@ -8421,7 +8421,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Bồ Đào Nha: botão"
   },
   {
     "Lesson": 16,
@@ -8433,7 +8433,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Tên riêng: Asia"
   },
   {
     "Lesson": 16,
@@ -8445,7 +8445,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Tên riêng: Vietnam"
   },
   {
     "Lesson": 17,
@@ -9165,7 +9165,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: piano"
   },
   {
     "Lesson": 18,
@@ -9177,7 +9177,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Pháp: mètre"
   },
   {
     "Lesson": 18,
@@ -9405,7 +9405,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ tượng thanh tiếng Nhật (pachin – tiếng bật)"
   },
   {
     "Lesson": 19,
@@ -9417,7 +9417,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: golf"
   },
   {
     "Lesson": 19,
@@ -9525,7 +9525,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: diet"
   },
   {
     "Lesson": 19,
@@ -9585,7 +9585,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: cake"
   },
   {
     "Lesson": 20,
@@ -9717,7 +9717,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Wasei-eigo (từ ghép kiểu Nhật): salary + man"
   },
   {
     "Lesson": 20,
@@ -9765,7 +9765,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: visa"
   },
   {
     "Lesson": 20,
@@ -10113,7 +10113,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: news"
   },
   {
     "Lesson": 21,
@@ -10125,7 +10125,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: speech"
   },
   {
     "Lesson": 21,
@@ -10149,7 +10149,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Đức: Arbeit (làm việc)"
   },
   {
     "Lesson": 21,
@@ -10185,7 +10185,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: humor"
   },
   {
     "Lesson": 21,
@@ -10197,7 +10197,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: design"
   },
   {
     "Lesson": 21,
@@ -10221,7 +10221,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Viết tắt kiểu Nhật từ tiếng Anh: rush hour"
   },
   {
     "Lesson": 21,
@@ -10365,7 +10365,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: kangaroo"
   },
   {
     "Lesson": 22,
@@ -10437,7 +10437,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: coat"
   },
   {
     "Lesson": 22,
@@ -10449,7 +10449,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: suit"
   },
   {
     "Lesson": 22,
@@ -10461,7 +10461,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: sweater"
   },
   {
     "Lesson": 22,
@@ -10557,7 +10557,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Wasei-eigo (từ ghép kiểu Nhật): dining + kitchen"
   },
   {
     "Lesson": 22,
@@ -10605,7 +10605,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Viết tắt kiểu Nhật từ tiếng Anh: apartment"
   },
   {
     "Lesson": 22,
@@ -10617,7 +10617,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Tên riêng: Paris"
   },
   {
     "Lesson": 22,
@@ -10641,7 +10641,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "センター ← từ mượn tiếng Anh: center"
   },
   {
     "Lesson": 22,
@@ -10653,7 +10653,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "レジャー ← từ mượn tiếng Anh: leisure"
   },
   {
     "Lesson": 23,
@@ -10869,7 +10869,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: size"
   },
   {
     "Lesson": 23,
@@ -11253,7 +11253,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: group"
   },
   {
     "Lesson": 25,
@@ -11265,7 +11265,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: chance"
   },
   {
     "Lesson": 25,
@@ -11541,7 +11541,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: flea market"
   },
   {
     "Lesson": 26,
@@ -11565,7 +11565,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: volunteer"
   },
   {
     "Lesson": 26,
@@ -11841,7 +11841,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Hà Lan: gas"
   },
   {
     "Lesson": 26,
@@ -11853,7 +11853,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "ガス ← từ mượn tiếng Hà Lan: gas"
   },
   {
     "Lesson": 26,
@@ -12033,7 +12033,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: pet"
   },
   {
     "Lesson": 27,
@@ -12165,7 +12165,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: cleaning"
   },
   {
     "Lesson": 27,
@@ -12177,7 +12177,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Wasei-eigo (từ ghép kiểu Nhật): mansion (nghĩa Nhật: chung cư)"
   },
   {
     "Lesson": 27,
@@ -12237,7 +12237,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Wasei-eigo (từ ghép kiểu Nhật): party + room"
   },
   {
     "Lesson": 27,
@@ -12417,7 +12417,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: robot (gốc tiếng Séc robota)"
   },
   {
     "Lesson": 27,
@@ -12441,7 +12441,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: pocket"
   },
   {
     "Lesson": 27,
@@ -12537,7 +12537,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Tên riêng: nhân vật truyện tranh Nhật (không phải từ mượn)"
   },
   {
     "Lesson": 28,
@@ -12609,7 +12609,7 @@ const vocabData = [
     "category": 2,
     "Vru": "メモする",
     "type": "Nhóm III",
-    "note": "Tha động từ"
+    "note": "Tha động từ. Viết tắt kiểu Nhật từ tiếng Anh: memo(randum)"
   },
   {
     "Lesson": 28,
@@ -12765,7 +12765,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: gum"
   },
   {
     "Lesson": 28,
@@ -12813,7 +12813,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: bonus"
   },
   {
     "Lesson": 28,
@@ -12837,7 +12837,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: drama"
   },
   {
     "Lesson": 28,
@@ -13029,7 +13029,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: homestay"
   },
   {
     "Lesson": 28,
@@ -13389,7 +13389,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Hà Lan: kop"
   },
   {
     "Lesson": 29,
@@ -13401,7 +13401,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Hà Lan: glas"
   },
   {
     "Lesson": 29,
@@ -13473,7 +13473,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: speech"
   },
   {
     "Lesson": 29,
@@ -13569,7 +13569,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: pocket"
   },
   {
     "Lesson": 29,
@@ -13953,7 +13953,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: meeting"
   },
   {
     "Lesson": 30,
@@ -14001,7 +14001,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: calendar"
   },
   {
     "Lesson": 30,
@@ -14013,7 +14013,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: poster"
   },
   {
     "Lesson": 30,
@@ -14265,7 +14265,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: musical"
   },
   {
     "Lesson": 30,
@@ -14685,7 +14685,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: internet"
   },
   {
     "Lesson": 31,
@@ -15093,7 +15093,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Ý: influenza"
   },
   {
     "Lesson": 32,
@@ -15225,7 +15225,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: engine"
   },
   {
     "Lesson": 32,
@@ -15237,7 +15237,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: team"
   },
   {
     "Lesson": 32,
@@ -15357,7 +15357,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: Olympic"
   },
   {
     "Lesson": 32,
@@ -15405,7 +15405,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: stress"
   },
   {
     "Lesson": 32,
@@ -15693,7 +15693,7 @@ const vocabData = [
     "category": 7,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: fight (cố lên!)"
   },
   {
     "Lesson": 33,
@@ -15705,7 +15705,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: mark"
   },
   {
     "Lesson": 33,
@@ -15717,7 +15717,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: ball"
   },
   {
     "Lesson": 33,
@@ -16329,7 +16329,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: sports club"
   },
   {
     "Lesson": 34,
@@ -16353,7 +16353,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: key"
   },
   {
     "Lesson": 34,
@@ -16365,7 +16365,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: seat belt"
   },
   {
     "Lesson": 34,
@@ -16521,7 +16521,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: sauce"
   },
   {
     "Lesson": 34,
@@ -16677,7 +16677,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Pháp: gramme"
   },
   {
     "Lesson": 34,
@@ -17013,7 +17013,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: hiking"
   },
   {
     "Lesson": 35,
@@ -17097,7 +17097,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: curtain"
   },
   {
     "Lesson": 35,
@@ -17217,7 +17217,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "バス ← từ mượn tiếng Anh: bus"
   },
   {
     "Lesson": 35,
@@ -17253,7 +17253,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "スキー ← từ mượn tiếng Na Uy: ski"
   },
   {
     "Lesson": 35,
@@ -17697,7 +17697,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Tây Ban Nha: tango"
   },
   {
     "Lesson": 36,
@@ -17709,7 +17709,7 @@ const vocabData = [
     "category": 2,
     "Vru": "チャレンジする",
     "type": "Nhóm III",
-    "note": "Tự động từ"
+    "note": "Tự động từ. Từ mượn tiếng Anh: challenge"
   },
   {
     "Lesson": 36,
@@ -18141,7 +18141,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: date"
   },
   {
     "Lesson": 37,
@@ -18321,7 +18321,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: access"
   },
   {
     "Lesson": 37,
@@ -18333,7 +18333,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Tên riêng: Dominica"
   },
   {
     "Lesson": 37,
@@ -18921,7 +18921,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: class"
   },
   {
     "Lesson": 38,
@@ -19137,7 +19137,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: marathon"
   },
   {
     "Lesson": 40,
@@ -19149,7 +19149,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: contest"
   },
   {
     "Lesson": 40,
@@ -19245,7 +19245,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Pháp: jupon"
   },
   {
     "Lesson": 40,
@@ -19365,7 +19365,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": "Hậu tố"
+    "note": "Hậu tố. Từ mượn tiếng Pháp: kilo"
   },
   {
     "Lesson": 40,
@@ -19377,7 +19377,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": "Hậu tố"
+    "note": "Hậu tố. Từ mượn tiếng Pháp: gramme"
   },
   {
     "Lesson": 40,
@@ -19389,7 +19389,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": "Hậu tố"
+    "note": "Hậu tố. Từ mượn tiếng Pháp: centi(mètre)"
   },
   {
     "Lesson": 40,
@@ -19401,7 +19401,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": "Hậu tố"
+    "note": "Hậu tố. Từ mượn tiếng Pháp: milli(mètre)"
   },
   {
     "Lesson": 40,
@@ -19461,7 +19461,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: class"
   },
   {
     "Lesson": 40,
@@ -19473,7 +19473,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: test"
   },
   {
     "Lesson": 40,
@@ -19545,7 +19545,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Wasei-eigo (từ ghép kiểu Nhật): auto + bicycle"
   },
   {
     "Lesson": 40,
@@ -19881,7 +19881,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: driver"
   },
   {
     "Lesson": 41,
@@ -19893,7 +19893,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Viết tắt kiểu Nhật từ tiếng Anh: handkerchief"
   },
   {
     "Lesson": 41,
@@ -19941,7 +19941,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: bag"
   },
   {
     "Lesson": 41,
@@ -20553,7 +20553,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: mixer"
   },
   {
     "Lesson": 42,
@@ -20673,7 +20673,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: pyramid"
   },
   {
     "Lesson": 42,
@@ -20685,7 +20685,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: data"
   },
   {
     "Lesson": 42,
@@ -20697,7 +20697,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: file"
   },
   {
     "Lesson": 42,
@@ -20769,7 +20769,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Tên riêng: Poland"
   },
   {
     "Lesson": 42,
@@ -20781,7 +20781,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: loan"
   },
   {
     "Lesson": 42,
@@ -20793,7 +20793,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: set"
   },
   {
     "Lesson": 42,
@@ -20817,7 +20817,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Wasei-eigo (từ ghép kiểu Nhật): cup + ラーメン (gốc tiếng Trung 拉麺 lāmiàn)"
   },
   {
     "Lesson": 42,
@@ -20829,7 +20829,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Ghép: tiếng Anh instant + ラーメン (gốc tiếng Trung 拉麺 lāmiàn)"
   },
   {
     "Lesson": 42,
@@ -20889,7 +20889,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: cup"
   },
   {
     "Lesson": 42,
@@ -21117,7 +21117,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: gasoline"
   },
   {
     "Lesson": 43,
@@ -21165,7 +21165,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: sense"
   },
   {
     "Lesson": 43,
@@ -21297,7 +21297,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: drive"
   },
   {
     "Lesson": 44,
@@ -21549,7 +21549,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: single"
   },
   {
     "Lesson": 44,
@@ -21561,7 +21561,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: twin"
   },
   {
     "Lesson": 44,
@@ -21621,7 +21621,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: cut"
   },
   {
     "Lesson": 44,
@@ -21633,7 +21633,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: shampoo"
   },
   {
     "Lesson": 44,
@@ -21657,7 +21657,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: short"
   },
   {
     "Lesson": 44,
@@ -21849,7 +21849,7 @@ const vocabData = [
     "category": 2,
     "Vru": "キャンセルする",
     "type": "Nhóm III",
-    "note": "Tha động từ"
+    "note": "Tha động từ. Từ mượn tiếng Anh: cancel"
   },
   {
     "Lesson": 45,
@@ -21921,7 +21921,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: camp"
   },
   {
     "Lesson": 45,
@@ -21969,7 +21969,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Đức: Leber (gan)"
   },
   {
     "Lesson": 45,
@@ -22053,7 +22053,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: course"
   },
   {
     "Lesson": 45,
@@ -22065,7 +22065,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: start"
   },
   {
     "Lesson": 45,
@@ -22173,7 +22173,7 @@ const vocabData = [
     "category": 2,
     "Vru": "セットする",
     "type": "Nhóm III",
-    "note": "Tha động từ"
+    "note": "Tha động từ. Từ mượn tiếng Anh: set"
   },
   {
     "Lesson": 45,
@@ -22305,7 +22305,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: pamphlet"
   },
   {
     "Lesson": 46,
@@ -22317,7 +22317,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: stereo"
   },
   {
     "Lesson": 46,
@@ -22389,7 +22389,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Ghép: ガス (tiếng Hà Lan gas) + tiếng Anh service center"
   },
   {
     "Lesson": 46,
@@ -22401,7 +22401,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Ghép: ガス (tiếng Hà Lan gas) + コンロ (từ Nhật 焜炉)"
   },
   {
     "Lesson": 46,
@@ -22509,7 +22509,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: system"
   },
   {
     "Lesson": 46,
@@ -22521,7 +22521,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: keyword"
   },
   {
     "Lesson": 46,
@@ -22785,7 +22785,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Viết tắt kiểu Nhật từ tiếng Anh: patrol car"
   },
   {
     "Lesson": 47,
@@ -22881,7 +22881,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Tên riêng: Iran"
   },
   {
     "Lesson": 47,
@@ -22989,7 +22989,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Đức: Hormon"
   },
   {
     "Lesson": 47,
@@ -23349,7 +23349,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Wasei-eigo (từ ghép kiểu Nhật): Viking (nghĩa Nhật: buffet)"
   },
   {
     "Lesson": 39,
@@ -23421,7 +23421,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Viết tắt kiểu Nhật từ tiếng Anh: front desk"
   },
   {
     "Lesson": 39,
@@ -23445,7 +23445,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: towel"
   },
   {
     "Lesson": 39,
@@ -23517,7 +23517,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: truck"
   },
   {
     "Lesson": 39,
@@ -23733,7 +23733,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: file"
   },
   {
     "Lesson": 48,
@@ -23865,7 +23865,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: percent"
   },
   {
     "Lesson": 48,
@@ -24057,7 +24057,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "バス ← từ mượn tiếng Anh: bus"
   },
   {
     "Lesson": 49,
@@ -24261,7 +24261,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: mouse"
   },
   {
     "Lesson": 49,
@@ -24273,7 +24273,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ Nhật (人), viết katakana trong ngữ cảnh sinh học"
   },
   {
     "Lesson": 49,
@@ -24321,7 +24321,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "ノーベル ← tên riêng: Nobel"
   },
   {
     "Lesson": 50,
@@ -24477,7 +24477,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: guide"
   },
   {
     "Lesson": 50,
@@ -24489,7 +24489,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: mail address"
   },
   {
     "Lesson": 50,
@@ -24501,7 +24501,7 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Từ mượn tiếng Anh: schedule"
   },
   {
     "Lesson": 50,
@@ -24717,6 +24717,6 @@ const vocabData = [
     "category": 1,
     "Vru": "",
     "type": "",
-    "note": ""
+    "note": "Tên riêng: München"
   }
 ];
