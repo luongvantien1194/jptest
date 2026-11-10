@@ -15,8 +15,6 @@
   var CHATGPT_URL = "https://chatgpt.com/";
   /** URL ?q= dài hơn mức này thì chỉ mở ChatGPT trống, người dùng tự dán prompt đã copy */
   var URL_MAX = 12000;
-  /** Khối lượng tối đa ChatGPT trả trong 1 lần (đơn vị ≈ 1 câu trắc nghiệm ngắn); đề lớn hơn thì chia nhiều lần */
-  var BATCH_LIMIT = 50;
   /** Tốc độ đọc (chữ / phút) dùng để tính thời gian đọc bài */
   var READ_CPM = 100;
   /** Bỏ phần nghe: điểm còn thang 120 → quy đổi mốc đậu từ thang 180 */
@@ -303,7 +301,8 @@
     var c = load(CONFIG_KEY) || {};
     return {
       level: LEVELS[c.level] ? c.level : "N3",
-      fraction: fractionOf(c.fraction).value
+      fraction: fractionOf(c.fraction).value,
+      chunk: chunkOf(c.chunk).value
     };
   }
 
@@ -362,26 +361,93 @@
 
   // ===================== Prompt ChatGPT =====================
 
-  /** Chia các dạng thành nhiều lần trả lời để ChatGPT không bị cắt giữa chừng */
-  function buildBatches(parts) {
+  /** Cỡ mỗi phần prompt (đơn vị ≈ 1 câu trắc nghiệm ngắn): ChatGPT trả quá dài hay bị dừng giữa chừng → chia nhỏ */
+  var CHUNK_SIZES = [
+    { value: "small", label: "Ít", limit: 20 },
+    { value: "medium", label: "Vừa", limit: 32 },
+    { value: "large", label: "Nhiều", limit: 50 }
+  ];
+  function chunkOf(value) {
+    return CHUNK_SIZES.filter(function (c) { return c.value === value; })[0] || CHUNK_SIZES[1];
+  }
+
+  /** Khối lượng ChatGPT phải viết cho 1 cụm câu / bài đọc */
+  function pieceWeight(code, count, passages, len) {
+    var def = PARTS[code];
+    return (def.passage ? passages * len * (def.twin ? 2 : 1) / 100 : 0) + count * def.out;
+  }
+
+  /** Tách 1 dạng quá lớn thành nhiều mảnh (theo câu, hoặc theo bài đọc) để mỗi mảnh không vượt `limit` */
+  function splitPart(p, limit) {
+    var def = PARTS[p.code];
+    var base = { code: p.code, section: p.section, len: p.len, extra: p.extra };
+    if (!def.passage) {
+      var maxQ = Math.max(1, Math.floor(limit / def.out));
+      return distribute(p.count, Math.ceil(p.count / maxQ)).map(function (n) {
+        return Object.assign({}, base, { count: n });
+      });
+    }
+    var pieces = [];
+    var cur = null;
+    p.passages.forEach(function (qn) {
+      var w = pieceWeight(p.code, qn, 1, p.len);
+      if (cur && cur.w + w > limit) {
+        pieces.push(cur);
+        cur = null;
+      }
+      if (!cur) cur = Object.assign({}, base, { count: 0, passages: [], w: 0 });
+      cur.count += qn;
+      cur.passages.push(qn);
+      cur.w += w;
+    });
+    if (cur) pieces.push(cur);
+    pieces.forEach(function (x) { delete x.w; });
+    return pieces;
+  }
+
+  /** Chia đề thành nhiều phần, mỗi phần là 1 prompt riêng: [{ parts, count, codes }] */
+  function buildBatches(parts, limit) {
     var batches = [];
-    var cur = [];
+    var cur = null;
     var curW = 0;
     parts.forEach(function (p) {
-      var def = PARTS[p.code];
-      var w = def.passage
-        ? p.passages.length * p.len * (def.twin ? 2 : 1) / 100 + p.count * def.out
-        : p.count * def.out;
-      if (cur.length && curW + w > BATCH_LIMIT) {
-        batches.push(cur);
-        cur = [];
-        curW = 0;
-      }
-      cur.push(p.code);
-      curW += w;
+      splitPart(p, limit).forEach(function (piece) {
+        var w = pieceWeight(piece.code, piece.count, piece.passages ? piece.passages.length : 0, piece.len);
+        if (cur && curW + w > limit) {
+          batches.push(cur);
+          cur = null;
+        }
+        if (!cur) {
+          cur = { parts: [], count: 0 };
+          curW = 0;
+        }
+        var last = cur.parts[cur.parts.length - 1];
+        if (last && last.code === piece.code) {
+          last.count += piece.count;
+          if (piece.passages) last.passages = last.passages.concat(piece.passages);
+        } else {
+          cur.parts.push(piece);
+        }
+        cur.count += piece.count;
+        curW += w;
+      });
     });
-    if (cur.length) batches.push(cur);
+    if (cur) batches.push(cur);
+    batches.forEach(function (b) { b.codes = b.parts.map(function (p) { return p.code; }); });
     return batches;
+  }
+
+  /** Bộ prompt của đề (hoặc phần bổ sung): mỗi phần 1 prompt độc lập, gửi lần lượt cho ChatGPT */
+  function buildPromptSet(level, parts, chunkValue, opts) {
+    var batches = buildBatches(parts, chunkOf(chunkValue).limit);
+    return batches.map(function (b, i) {
+      return {
+        codes: b.codes,
+        count: b.count,
+        parts: b.parts,
+        prompt: buildPrompt(level, b.parts, Object.assign({}, opts || {}, { index: i + 1, total: batches.length }))
+      };
+    });
   }
 
   function describePartCount(p) {
@@ -392,13 +458,41 @@
       " = " + p.count + " câu";
   }
 
-  function buildPrompt(level, parts, batches) {
-    var lines = [
-      "Bạn là người ra đề thi JLPT. Hãy soạn 1 đề thi thử JLPT " + level + " (chỉ phần 言語知識 và 読解, không có 聴解). " +
-      "Toàn bộ câu hỏi do bạn tự soạn mới, đúng độ khó, từ vựng, ngữ pháp, chủ đề và văn phong của đề JLPT " + level + " thật.",
-      "",
-      "Cấu trúc đề (mã | phần | dạng | số lượng):"
-    ];
+  /**
+   * opts: { index, total } = phần thứ mấy / tổng số phần; supplement: true = prompt bổ sung câu còn thiếu;
+   * used: [từ đã hỏi] để ChatGPT không ra trùng.
+   */
+  function buildPrompt(level, parts, opts) {
+    opts = opts || {};
+    var multi = opts.total > 1;
+    var tag = multi ? " (phần " + opts.index + "/" + opts.total + ")" : "";
+    var quality = "câu hỏi mới do bạn tự soạn, đúng độ khó, từ vựng, ngữ pháp, chủ đề và văn phong của đề JLPT " + level + " thật";
+    var lines;
+    if (opts.supplement) {
+      lines = [
+        "Bạn là người ra đề thi JLPT. Đề thi thử JLPT " + level + " (chỉ phần 言語知識 và 読解) của tôi đang bị THIẾU một số câu. " +
+        "Hãy soạn BỔ SUNG" + tag + " đúng các câu dưới đây: " + quality + "; " +
+        "không lặp lại câu / bài đọc đã ra trước đó trong cuộc trò chuyện này (nếu có).",
+        "",
+        "Cần bổ sung (mã | phần | dạng | số lượng):"
+      ];
+    } else if (multi) {
+      lines = [
+        "Bạn là người ra đề thi JLPT. Tôi soạn 1 đề thi thử JLPT " + level + " (chỉ phần 言語知識 và 読解, không có 聴解), " +
+        "chia làm " + opts.total + " phần để mỗi lần trả lời không quá dài. Đây là PHẦN " + opts.index + "/" + opts.total +
+        ": chỉ soạn đúng các mục dưới đây (các phần khác tôi gửi riêng). Yêu cầu " + quality + "; " +
+        "không lặp lại câu, từ được hỏi hay bài đọc đã ra ở các phần trước trong cuộc trò chuyện này (nếu có).",
+        "",
+        "Phần này gồm (mã | phần | dạng | số lượng):"
+      ];
+    } else {
+      lines = [
+        "Bạn là người ra đề thi JLPT. Hãy soạn 1 đề thi thử JLPT " + level + " (chỉ phần 言語知識 và 読解, không có 聴解). " +
+        "Toàn bộ là " + quality + ".",
+        "",
+        "Cấu trúc đề (mã | phần | dạng | số lượng):"
+      ];
+    }
     parts.forEach(function (p) {
       var def = PARTS[p.code];
       lines.push(p.code + " | " + sectionOf(def.section).jp + " | " + def.jp + " | " + describePartCount(p));
@@ -408,30 +502,36 @@
       "Yêu cầu chung:",
       "- Mỗi câu có đúng 4 đáp án, chỉ 1 đúng; 3 đáp án sai phải hợp lý, dễ nhầm như đề thật. answer: chép y nguyên nội dung đáp án đúng (không ghi số thứ tự).",
       "- Từ / phần được gạch chân đặt trong 【】; chỗ trống viết （　）. Câu hỏi và đáp án viết bằng tiếng Nhật như đề thật.",
-      "- explain: tiếng Việt, 1-2 câu, nêu vì sao đáp án đúng (kèm nghĩa từ / mẫu ngữ pháp / câu then chốt), không nhắc tới số thứ tự đáp án.",
-      "- Không lặp lại từ, mẫu ngữ pháp hay chủ đề giữa các câu; vị trí đáp án đúng phân bố ngẫu nhiên.",
+      "- explain: tiếng Việt, 1-2 câu ngắn, nêu vì sao đáp án đúng (kèm nghĩa từ / mẫu ngữ pháp / câu then chốt), không nhắc tới số thứ tự đáp án.",
+      "- Không lặp lại từ, mẫu ngữ pháp hay chủ đề giữa các câu; vị trí đáp án đúng phân bố ngẫu nhiên."
+    );
+    if (opts.used && opts.used.length) {
+      lines.push("- Các từ / cụm sau đã được hỏi, không dùng lại làm từ được hỏi: " + opts.used.join("、"));
+    }
+    lines.push(
       "",
       "Mô tả từng dạng:"
     );
     parts.forEach(function (p) {
       lines.push("- " + p.code + ": " + PARTS[p.code].spec.replace("{len}", String(p.len)));
     });
+    var passagePart = parts.filter(function (p) { return p.passages; })[0];
+    var singlePart = parts.filter(function (p) { return !p.passages; })[0];
     lines.push(
       "",
-      "Định dạng: chỉ trả về code block JSON {\"items\":[...]} (không viết gì ngoài code block). Mỗi phần tử là:",
-      "- câu lẻ: {\"part\":\"KANJI\",\"q\":\"\",\"options\":[\"\",\"\",\"\",\"\"],\"answer\":\"\",\"explain\":\"\"}" +
-      (parts.some(function (p) { return p.code === "NARABE"; }) ? " (NARABE thêm \"full\":\"\")" : ""),
-      "- bài đọc (mỗi bài 1 phần tử): {\"part\":\"" + (parts.filter(function (p) { return p.passages; })[0] || { code: "CHUBUN" }).code +
-      "\",\"passage\":\"\",\"questions\":[{\"q\":\"\",\"options\":[\"\",\"\",\"\",\"\"],\"answer\":\"\",\"explain\":\"\"}]}",
-      "Xuống dòng trong passage dùng \\n."
+      "Định dạng: chỉ trả về đúng 1 code block JSON {\"items\":[...]} (không viết gì ngoài code block). Mỗi phần tử là:"
     );
-    if (batches.length > 1) {
-      var desc = batches.map(function (b, i) { return "lần " + (i + 1) + ": " + b.join(", "); }).join("; ");
-      lines.push(
-        "",
-        "Đề dài nên trả làm " + batches.length + " lần, mỗi lần đúng 1 code block {\"items\":[...]} riêng (" + desc + "). " +
-        "Trả lần 1 rồi dừng; mỗi khi tôi nhắn \"tiếp\" thì trả lần kế tiếp."
-      );
+    if (singlePart) {
+      lines.push("- câu lẻ: {\"part\":\"" + singlePart.code + "\",\"q\":\"\",\"options\":[\"\",\"\",\"\",\"\"],\"answer\":\"\",\"explain\":\"\"}" +
+        (parts.some(function (p) { return p.code === "NARABE"; }) ? " (NARABE thêm \"full\":\"\")" : ""));
+    }
+    if (passagePart) {
+      lines.push("- bài đọc (mỗi bài 1 phần tử): {\"part\":\"" + passagePart.code +
+        "\",\"passage\":\"\",\"questions\":[{\"q\":\"\",\"options\":[\"\",\"\",\"\",\"\"],\"answer\":\"\",\"explain\":\"\"}]}",
+        "Xuống dòng trong passage dùng \\n.");
+    }
+    if (multi || opts.supplement) {
+      lines.push("Chỉ soạn đúng số lượng ở trên, không soạn thêm các dạng khác.");
     }
     return lines.join("\n");
   }
@@ -502,29 +602,52 @@
     return found;
   }
 
-  /** → { groups, skipped } hoặc { error } */
+  /** Đọc 1 khối JSON → { list, error } (khối bị cắt dở thì nhặt các object còn trọn vẹn) */
+  function parseChunk(chunk) {
+    var start = chunk.search(/[\[{]/);
+    if (start === -1) return { list: [] };
+    var src = chunk.slice(start);
+    var body = src.slice(0, Math.max(src.lastIndexOf("}"), src.lastIndexOf("]")) + 1);
+    var data = null;
+    var error = "";
+    [body, body.replace(/,\s*([}\]])/g, "$1")].forEach(function (c) {
+      if (data != null) return;
+      try { data = JSON.parse(c); } catch (e) { if (!error) error = e.message; }
+    });
+    if (data != null) {
+      var list = Array.isArray(data) ? data : (data.items || [data]);
+      return { list: Array.isArray(list) ? list : [] };
+    }
+    // Bị cắt dở: chỉ lấy object có "part" (bỏ object câu hỏi con bên trong)
+    return {
+      list: salvageObjects(src).filter(function (o) { return o && typeof o === "object" && (o.part || o.type); }),
+      error: error
+    };
+  }
+
+  /**
+   * → { groups, skipped } hoặc { error }.
+   * Tách từng code block / từng khối {"items":…} ra đọc riêng: khối trước bị ChatGPT cắt giữa chừng (chuỗi chưa đóng)
+   * không làm hỏng các khối dán sau (các lần "tiếp", data bổ sung).
+   */
   function parseData(text) {
     var src = String(text || "").trim();
     if (!src) return { error: "Chưa dán dữ liệu." };
-    src = src.replace(/```[a-z]*/gi, "\n");
-    var start = src.search(/[\[{]/);
-    if (start === -1) return { error: "Không tìm thấy dữ liệu JSON trong nội dung đã dán." };
-    src = src.slice(start);
-    var body = src.slice(0, Math.max(src.lastIndexOf("}"), src.lastIndexOf("]")) + 1);
-    var data = null;
-    var firstError = "";
-    [body, body.replace(/,\s*([}\]])/g, "$1")].forEach(function (c) {
-      if (data != null) return;
-      try { data = JSON.parse(c); } catch (e) { if (!firstError) firstError = e.message; }
+    var chunks = [];
+    src.split(/```[a-z]*/i).forEach(function (part) {
+      part.split(/(?=\{\s*"items"\s*:)/).forEach(function (c) {
+        if (/[\[{]/.test(c)) chunks.push(c);
+      });
     });
-    var list;
-    if (data != null) {
-      list = Array.isArray(data) ? data : (data.items || [data]);
-      if (!Array.isArray(list)) list = [];
-    } else {
-      // Nhiều code block dán nối nhau / bị cắt dở: chỉ lấy object có "part" (bỏ object câu hỏi con bên trong)
-      list = salvageObjects(src).filter(function (o) { return o && typeof o === "object" && (o.part || o.type); });
-    }
+    if (!chunks.length) return { error: "Không tìm thấy dữ liệu JSON trong nội dung đã dán." };
+    var list = [];
+    var firstError = "";
+    chunks.forEach(function (c) {
+      var r = parseChunk(c);
+      list = list.concat(r.list);
+      if (r.error && !firstError) firstError = r.error;
+    });
+    var data = list.length ? true : null;
     var groups = [];
     var seen = {};
     var skipped = 0;
@@ -553,9 +676,75 @@
     });
     return out;
   }
+  /** Lấy lần lượt câu / bài đọc của dạng cho tới khi đủ số câu (bài đọc bổ sung cho phần thiếu cũng được tính) */
   function takeGroups(planPart, groups) {
-    var gs = groups.filter(function (g) { return g.part === planPart.code; });
-    return gs.slice(0, planPart.passages ? planPart.passages.length : planPart.count);
+    var out = [];
+    var n = 0;
+    groups.forEach(function (g) {
+      if (g.part !== planPart.code || n >= planPart.count) return;
+      out.push(g);
+      n += g.questions.length;
+    });
+    return out;
+  }
+
+  /** Số câu còn thiếu theo dạng → cấu trúc đề bổ sung (chỉ gồm số câu / bài đọc còn thiếu) */
+  function missingPartsFrom(pending, deficit) {
+    var out = [];
+    pending.parts.forEach(function (p) {
+      var m = deficit[p.code] || 0;
+      if (m <= 0) return;
+      var part = { code: p.code, section: p.section, count: m, len: p.len, extra: p.extra };
+      if (PARTS[p.code].passage) {
+        var src = LEVELS[pending.level].parts.filter(function (x) { return x.code === p.code; })[0];
+        var per = src ? src.per : 1;
+        part.passages = distribute(m, Math.max(1, Math.round(m / per)));
+      }
+      out.push(part);
+    });
+    return out;
+  }
+
+  /** Bộ prompt từng phần của đề (đề cũ lưu trước khi có chia phần thì soạn lại) */
+  function pendingPrompts(pending) {
+    if (!Array.isArray(pending.prompts) || !pending.prompts.length) {
+      pending.chunk = chunkOf(pending.chunk).value;
+      pending.prompts = buildPromptSet(pending.level, pending.parts, pending.chunk);
+    }
+    return pending.prompts;
+  }
+
+  /**
+   * Tình trạng từng phần prompt theo data đã dán: done (đủ) / partial (ChatGPT dừng giữa chừng) / waiting (chưa dán).
+   * Dạng bị tách ra nhiều phần thì câu nhận được tính lần lượt cho phần trước rồi phần sau.
+   */
+  function promptStatus(pending, groups) {
+    var got = receivedByPart(pending.parts, groups);
+    var used = {};
+    return pendingPrompts(pending).map(function (pr) {
+      var have = 0;
+      var deficit = {};
+      pr.parts.forEach(function (p) {
+        var before = used[p.code] || 0;
+        var g = Math.max(0, Math.min(p.count, got[p.code] - before));
+        have += g;
+        deficit[p.code] = (deficit[p.code] || 0) + p.count - g;
+        used[p.code] = before + p.count;
+      });
+      return { have: have, count: pr.count, deficit: deficit, state: have >= pr.count ? "done" : (have ? "partial" : "waiting") };
+    });
+  }
+
+  /** Câu / từ đã có trong data (để dặn ChatGPT không ra trùng khi bổ sung) */
+  function usedTopics(groups) {
+    var words = [];
+    groups.forEach(function (g) {
+      g.questions.forEach(function (q) {
+        var m = /【([^【】]+)】/.exec(q.q);
+        if (m && words.indexOf(m[1]) === -1) words.push(m[1]);
+      });
+    });
+    return words.slice(0, 60);
   }
 
   // ===================== Bài thi =====================
@@ -899,30 +1088,48 @@
         "(bổ sung): đề " + cfg.level + " thật không có đọc hiểu đoạn dài — thêm vào để luyện đủ dạng ngắn / trung bình / dài."));
     }
 
+    card.appendChild(el("div", "ex-field-label", "Mỗi lần ChatGPT sinh"));
+    var chunkRow = el("div", "chip-group ex-chips");
+    CHUNK_SIZES.forEach(function (c) {
+      chunkRow.appendChild(btn("chip ex-chip" + (cfg.chunk === c.value ? " chip--active" : ""), c.label, function () {
+        cfg.chunk = c.value;
+        save(CONFIG_KEY, cfg);
+        render();
+      }));
+    });
+    card.appendChild(chunkRow);
+    var promptCount = buildBatches(parts, chunkOf(cfg.chunk).limit).length;
+    card.appendChild(el("div", "ex-note",
+      promptCount > 1
+        ? "Đề chia làm " + promptCount + " phần (mỗi phần 1 prompt riêng) để ChatGPT không bị dừng vì trả lời quá dài. ChatGPT vẫn bị dừng giữa chừng thì chọn \"Ít\" để chia nhỏ hơn."
+        : "Cả đề sinh trong 1 lần. ChatGPT bị dừng giữa chừng thì chọn \"Ít\" để chia làm nhiều phần nhỏ."));
+
     var genRow = el("div", "btn-row");
     genRow.appendChild(btn("btn", "✨ Tạo đề (ChatGPT)", function () {
       var cur = loadSession();
       if (cur && !cur.submitted && !confirm("Đang có bài thi làm dở. Tạo đề mới thì bài đó sẽ bị bỏ khi bắt đầu thi đề mới. Tiếp tục?")) return;
-      var batches = buildBatches(parts);
+      var prompts = buildPromptSet(cfg.level, parts, cfg.chunk);
       var p = {
         createdAt: Date.now(),
         level: cfg.level,
         fraction: cfg.fraction,
+        chunk: cfg.chunk,
         parts: parts,
-        batches: batches.length,
-        prompt: buildPrompt(cfg.level, parts, batches),
+        prompts: prompts,
+        prompt: prompts[0].prompt,
+        copied: { 0: true },
         draft: ""
       };
       save(PENDING_KEY, p);
-      copyText(p.prompt);
-      window.open(chatGptUrl(p.prompt), "_blank", "noopener");
+      copyText(prompts[0].prompt);
+      window.open(chatGptUrl(prompts[0].prompt), "_blank", "noopener");
       ui.view = "paste";
       render();
     }));
     card.appendChild(genRow);
     card.appendChild(el("div", "ex-note",
-      "App soạn prompt theo cấu trúc đề JLPT thật rồi mở ChatGPT (prompt cũng được copy sẵn). ChatGPT tự sinh câu hỏi & đáp án theo level; " +
-      "copy khối JSON ChatGPT trả về rồi quay lại đây dán vào để bắt đầu thi."));
+      "App soạn prompt theo cấu trúc đề JLPT thật rồi mở ChatGPT với prompt phần 1 (prompt cũng được copy sẵn). ChatGPT tự sinh câu hỏi & đáp án theo level; " +
+      "copy khối JSON ChatGPT trả về, quay lại đây dán vào rồi lấy prompt phần tiếp theo."));
     scroll.appendChild(card);
 
     renderHistory(scroll);
@@ -950,52 +1157,180 @@
 
   function renderPaste(root) {
     var pending = load(PENDING_KEY);
+    pendingPrompts(pending);
+    pending.copied = pending.copied || {};
     header(root, "Dán đề từ ChatGPT", [{ text: pending.level + " · " + fractionOf(pending.fraction).label }]);
     var scroll = el("div", "ex-scroll scroll-thin");
     root.appendChild(scroll);
     var card = el("div", "ex-card");
     scroll.appendChild(card);
 
-    var prefilled = chatGptUrl(pending.prompt) !== CHATGPT_URL;
+    var multi = pending.prompts.length > 1;
     var steps = el("ol", "gx-steps");
     [
-      prefilled
-        ? "ChatGPT đã mở với prompt soạn sẵn (prompt cũng đã được copy — nếu ô chat còn trống thì dán vào rồi gửi)."
-        : "Prompt dài nên ChatGPT mở ô chat trống: dán prompt (đã được copy sẵn) vào rồi gửi.",
-      pending.batches > 1
-        ? "Đề dài nên ChatGPT trả làm " + pending.batches + " lần: copy khối JSON của mỗi lần, dán vào đây, rồi nhắn \"tiếp\" để nhận lần sau."
-        : "Chờ ChatGPT trả lời xong, bấm Copy ở khối JSON.",
-      "Quay lại đây bấm \"Dán từ clipboard\" (các lần dán được nối tiếp vào ô bên dưới). Đủ câu thì bấm \"Bắt đầu thi\"."
+      multi
+        ? "Đề chia làm " + pending.prompts.length + " phần, mỗi phần 1 prompt. Gửi lần lượt từng prompt cho ChatGPT, nên gửi trong cùng 1 cuộc trò chuyện để không ra trùng câu."
+        : "Gửi prompt cho ChatGPT (ChatGPT đã mở sẵn với prompt; nếu ô chat trống thì dán prompt đã copy vào).",
+      "ChatGPT trả xong thì bấm Copy ở khối JSON, quay lại đây bấm \"Dán từ clipboard\" (các lần dán được nối tiếp vào ô dán)." +
+        (multi ? " Rồi copy prompt phần kế tiếp." : ""),
+      "ChatGPT dừng giữa chừng → app báo phần còn thiếu và soạn prompt bổ sung. Vẫn hay bị dừng → chọn cỡ \"Ít\" để chia nhỏ hơn.",
+      "Đủ câu thì bấm \"Bắt đầu thi\"."
     ].forEach(function (t) { steps.appendChild(el("li", "", t)); });
     card.appendChild(steps);
 
-    var linkRow = el("div", "btn-row");
-    var openLink = el("a", "btn-ghost", "↗ Mở lại ChatGPT");
-    openLink.href = chatGptUrl(pending.prompt);
-    openLink.target = "_blank";
-    openLink.rel = "noopener noreferrer";
-    openLink.addEventListener("click", function () { copyText(pending.prompt); });
-    linkRow.appendChild(openLink);
-    linkRow.appendChild(btn("btn-ghost", "📋 Copy prompt", function () {
-      copyText(pending.prompt, function (ok) { setStatus(ok ? "Đã copy prompt." : "Không copy được prompt.", !ok); });
-    }));
-    card.appendChild(linkRow);
+    // Cỡ mỗi phần: đổi thì chia lại prompt (data đã dán vẫn giữ, tính theo số câu từng dạng)
+    var chunkRow = el("div", "ex-chunk-row");
+    chunkRow.appendChild(el("span", "ex-field-label", "Mỗi lần ChatGPT sinh:"));
+    var chunkChips = el("div", "chip-group ex-chips");
+    CHUNK_SIZES.forEach(function (c) {
+      chunkChips.appendChild(btn("chip ex-chip" + (pending.chunk === c.value ? " chip--active" : ""), c.label, function () {
+        if (pending.chunk === c.value) return;
+        pending.chunk = c.value;
+        pending.prompts = buildPromptSet(pending.level, pending.parts, pending.chunk);
+        pending.prompt = pending.prompts[0].prompt;
+        pending.copied = {};
+        pending.draft = textarea.value;
+        save(PENDING_KEY, pending);
+        var cfg = loadConfig();
+        cfg.chunk = c.value;
+        save(CONFIG_KEY, cfg);
+        render();
+      }));
+    });
+    chunkRow.appendChild(chunkChips);
+    card.appendChild(chunkRow);
+
+    var promptList = el("div", "ex-prompt-list");
+    card.appendChild(promptList);
 
     var textarea = el("textarea", "input-text gx-textarea ex-textarea");
-    textarea.rows = 7;
+    textarea.rows = 6;
     textarea.spellcheck = false;
-    textarea.placeholder = "{\"items\":[ ... ]}";
+    textarea.placeholder = "Dán khối JSON ChatGPT trả về: {\"items\":[ ... ]}";
     textarea.value = pending.draft || "";
-    card.appendChild(textarea);
     var status = el("div", "gx-status");
+
+    var pasteRow = el("div", "btn-row");
+    if (navigator.clipboard && navigator.clipboard.readText) {
+      pasteRow.appendChild(btn("btn", "📥 Dán từ clipboard", function () {
+        navigator.clipboard.readText().then(function (text) {
+          var cur = textarea.value.trim();
+          if (!text.trim()) return;
+          textarea.value = cur && cur.indexOf(text.trim()) === -1 ? cur + "\n" + text : (cur || text);
+          refresh();
+        }).catch(function () {
+          setStatus("Trình duyệt không cho đọc clipboard — hãy nhấn giữ vào ô dán và chọn Dán.", true);
+          textarea.focus();
+        });
+      }));
+    }
+    pasteRow.appendChild(btn("btn-ghost", "Xoá ô dán", function () {
+      if (textarea.value.trim() && !confirm("Xoá toàn bộ data đã dán?")) return;
+      textarea.value = "";
+      refresh();
+    }));
+    card.appendChild(pasteRow);
+    card.appendChild(textarea);
     card.appendChild(status);
     var progress = el("div", "ex-progress-list");
     card.appendChild(progress);
+    var missingBox = el("div", "ex-missing");
+    card.appendChild(missingBox);
 
     function setStatus(text, isError) {
       status.textContent = text || "";
       status.className = "gx-status" + (text ? (isError ? " gx-status--error" : " gx-status--ok") : "");
     }
+
+    /** Nút copy / mở ChatGPT cho 1 prompt */
+    function promptButtons(prompt, onCopy, primary) {
+      var row = el("div", "ex-prompt-btns");
+      row.appendChild(btn(primary ? "btn ex-btn-sm" : "btn-ghost ex-btn-sm", "📋 Copy prompt", function () {
+        copyText(prompt, function (ok) {
+          setStatus(ok ? "Đã copy prompt — dán vào cuộc trò chuyện ChatGPT rồi gửi." : "Không copy được prompt.", !ok);
+        });
+        if (onCopy) onCopy();
+      }, "Copy để dán vào cuộc trò chuyện ChatGPT đang mở (nên dùng)"));
+      var link = el("a", "btn-ghost ex-btn-sm", "↗ ChatGPT mới");
+      link.href = chatGptUrl(prompt);
+      link.target = "_blank";
+      link.rel = "noopener noreferrer";
+      link.title = "Mở cuộc trò chuyện mới với prompt này";
+      link.addEventListener("click", function () {
+        copyText(prompt);
+        if (onCopy) onCopy();
+      });
+      row.appendChild(link);
+      return row;
+    }
+
+    function renderPromptList(statuses) {
+      promptList.innerHTML = "";
+      var nextIdx = -1;
+      statuses.forEach(function (st, i) {
+        if (nextIdx === -1 && st.state !== "done") nextIdx = i;
+      });
+      pending.prompts.forEach(function (pr, i) {
+        var st = statuses[i];
+        var row = el("div", "ex-prompt-row ex-prompt-row--" + st.state + (i === nextIdx ? " ex-prompt-row--next" : ""));
+        var info = el("div", "ex-prompt-info");
+        var title = el("div", "ex-prompt-title", (multi ? "Phần " + (i + 1) + "/" + pending.prompts.length : "Prompt đề thi") + " · " + pr.count + " câu");
+        var stateText = st.state === "done" ? "✓ Đã đủ"
+          : st.state === "partial" ? "Thiếu " + (st.count - st.have) + " câu"
+            : (pending.copied[i] ? "Đã copy · chờ dán" : "Chưa dán");
+        title.appendChild(el("span", "ex-prompt-state", stateText));
+        info.appendChild(title);
+        info.appendChild(el("div", "ex-muted", pr.parts.map(function (p) {
+          return PARTS[p.code].jp + " " + p.count;
+        }).join(" · ")));
+        row.appendChild(info);
+        if (st.state !== "done") {
+          row.appendChild(promptButtons(pr.prompt, function () {
+            pending.copied[i] = true;
+            save(PENDING_KEY, pending);
+            renderPromptList(statuses);
+          }, i === nextIdx));
+        }
+        promptList.appendChild(row);
+      });
+    }
+
+    function renderMissing(statuses, groups) {
+      missingBox.innerHTML = "";
+      // Chỉ bổ sung cho phần ChatGPT đã trả nhưng bị thiếu (phần chưa dán thì gửi prompt của phần đó)
+      var deficit = {};
+      statuses.forEach(function (st) {
+        if (st.state !== "partial") return;
+        Object.keys(st.deficit).forEach(function (code) { deficit[code] = (deficit[code] || 0) + st.deficit[code]; });
+      });
+      var parts = missingPartsFrom(pending, deficit);
+      missingBox.style.display = parts.length ? "" : "none";
+      if (!parts.length) return;
+      missingBox.appendChild(el("div", "ex-missing-title",
+        "⚠ ChatGPT trả thiếu " + countPlanQuestions(parts) + " câu ở " + parts.length + " dạng"));
+      var list = el("ul", "ex-missing-list");
+      parts.forEach(function (p) {
+        var li = el("li", "");
+        li.appendChild(el("span", "ex-progress-code", p.code));
+        li.appendChild(document.createTextNode(" " + PARTS[p.code].jp + ": " + describePartCount(p)));
+        list.appendChild(li);
+      });
+      missingBox.appendChild(list);
+      var supp = buildPromptSet(pending.level, parts, pending.chunk, { supplement: true, used: usedTopics(groups) });
+      missingBox.appendChild(el("div", "ex-note",
+        "Gửi prompt bổ sung (chỉ xin đúng các câu còn thiếu ở trên)" + (supp.length > 1 ? ", chia " + supp.length + " phần" : "") +
+        " rồi dán JSON bổ sung nối tiếp vào ô dán. Nên gửi vào cùng cuộc trò chuyện cũ để không ra trùng câu."));
+      supp.forEach(function (pr, i) {
+        var row = el("div", "ex-prompt-row ex-prompt-row--supp");
+        var info = el("div", "ex-prompt-info");
+        info.appendChild(el("div", "ex-prompt-title", "Bổ sung" + (supp.length > 1 ? " " + (i + 1) + "/" + supp.length : "") + " · " + pr.count + " câu"));
+        info.appendChild(el("div", "ex-muted", pr.parts.map(function (p) { return PARTS[p.code].jp + " " + p.count; }).join(" · ")));
+        row.appendChild(info);
+        row.appendChild(promptButtons(pr.prompt, null, true));
+        missingBox.appendChild(row);
+      });
+    }
+
     var lastParse = null;
     function refresh() {
       pending.draft = textarea.value;
@@ -1006,14 +1341,18 @@
       var got = receivedByPart(pending.parts, groups);
       var gotTotal = 0;
       pending.parts.forEach(function (p) {
-        gotTotal += Math.min(got[p.code], p.count);
-        var ok = got[p.code] >= p.count;
-        var row = el("div", "ex-progress-row" + (ok ? " ex-progress-row--ok" : (got[p.code] ? " ex-progress-row--part" : "")));
+        var n = Math.min(got[p.code], p.count);
+        gotTotal += n;
+        var ok = n >= p.count;
+        var row = el("div", "ex-progress-row" + (ok ? " ex-progress-row--ok" : (n ? " ex-progress-row--part" : "")));
         row.appendChild(el("span", "ex-progress-code", p.code));
         row.appendChild(el("span", "", PARTS[p.code].jp));
-        row.appendChild(el("span", "ex-progress-count", (ok ? "✓ " : "") + got[p.code] + "/" + p.count));
+        row.appendChild(el("span", "ex-progress-count", (ok ? "✓ " : "") + n + "/" + p.count));
         progress.appendChild(row);
       });
+      var statuses = promptStatus(pending, groups);
+      renderPromptList(statuses);
+      renderMissing(statuses, groups);
       if (!lastParse) setStatus("");
       else if (lastParse.error) setStatus(lastParse.error, true);
       else setStatus("Đã đọc được " + gotTotal + "/" + countPlanQuestions(pending.parts) + " câu" +
@@ -1023,20 +1362,7 @@
     refresh();
 
     var row = el("div", "btn-row");
-    if (navigator.clipboard && navigator.clipboard.readText) {
-      row.appendChild(btn("btn", "📥 Dán từ clipboard", function () {
-        navigator.clipboard.readText().then(function (text) {
-          var cur = textarea.value.trim();
-          if (!text.trim()) return;
-          textarea.value = cur && cur.indexOf(text.trim()) === -1 ? cur + "\n" + text : (cur || text);
-          refresh();
-        }).catch(function () {
-          setStatus("Trình duyệt không cho đọc clipboard — hãy nhấn giữ vào ô trên và chọn Dán.", true);
-          textarea.focus();
-        });
-      }));
-    }
-    row.appendChild(btn(row.children.length ? "btn-ghost" : "btn", "▶ Bắt đầu thi", function () {
+    row.appendChild(btn("btn", "▶ Bắt đầu thi", function () {
       refresh();
       if (!lastParse || lastParse.error) {
         setStatus(lastParse ? lastParse.error : "Chưa dán dữ liệu.", true);
@@ -1046,7 +1372,11 @@
       var missing = pending.parts.filter(function (p) { return got[p.code] < p.count; });
       if (missing.length && !confirm(
         "Còn thiếu câu ở: " + missing.map(function (p) { return PARTS[p.code].jp + " (" + got[p.code] + "/" + p.count + ")"; }).join(", ") + ".\n" +
-        "OK: thi luôn với các câu đã có (thời gian tính lại theo số câu).\nHuỷ: dán thêm phần còn lại.")) return;
+        "OK: thi luôn với các câu đã có (thời gian tính lại theo số câu).\n" +
+        "Huỷ: gửi tiếp prompt các phần còn lại / prompt bổ sung.")) {
+        promptList.scrollIntoView({ block: "start", behavior: "smooth" });
+        return;
+      }
       var s = buildSession(pending, lastParse.groups);
       if (!s.parts.length) {
         setStatus("Không có câu hỏi nào khớp với cấu trúc đề.", true);
@@ -1059,10 +1389,6 @@
       save(PENDING_KEY, null);
       ui.view = "exam";
       render();
-    }));
-    row.appendChild(btn("btn-ghost", "Xoá ô dán", function () {
-      textarea.value = "";
-      refresh();
     }));
     row.appendChild(btn("btn-ghost", "← Quay lại", function () {
       ui.view = "home";
