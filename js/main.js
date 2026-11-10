@@ -2605,7 +2605,8 @@
       { id: "section-study", tab: "study" },
       { id: "section-note", tab: "note" },
       { id: "section-dup", tab: "dup" },
-      { id: "section-vocab-edit", tab: "vocab-edit" }
+      { id: "section-vocab-edit", tab: "vocab-edit" },
+      { id: "section-exam", tab: "exam" }
     ];
 
     sections.forEach(function (entry) {
@@ -2623,7 +2624,7 @@
   // ----- Vocab -----
   // Level của từ vựng: n5/n4 (vocabData.js), n3 (vocabData_1.js), nx (vocabExtra/extra.js).
   // Từ không có level (vd từ thêm tạm qua localStorage) coi là "nx".
-  var VOCAB_LEVELS = [["all", "All"], ["n5", "N5"], ["n4", "N4"], ["n3", "N3"], ["nx", "NX"]];
+  var VOCAB_LEVELS = [["all", "Tất cả level"], ["n5", "N5"], ["n4", "N4"], ["n3", "N3"], ["nx", "NX"]];
 
   function getVocabLevel(raw) {
     var lv = raw && raw.level != null ? String(raw.level).trim().toLowerCase() : "";
@@ -2645,7 +2646,7 @@
     VOCAB_LEVELS.forEach(function (l) {
       var o = document.createElement("option");
       o.value = l[0];
-      o.textContent = l[0] === "all" ? "All" : l[1];
+      o.textContent = l[0] === "all" ? "Tất cả" : l[1];
       sel.appendChild(o);
     });
     sel.value = isValidVocabLevel(value) ? value : "all";
@@ -2835,7 +2836,7 @@
     // ở đây vì "" bị coi là falsy, sẽ sai lệch về "all".
     let currentValue = state.filter.vocabCategory != null ? state.filter.vocabCategory : "all";
     categorySelect.innerHTML = "";
-    const allOpt = createElement("option", "", "All");
+    const allOpt = createElement("option", "", "Tất cả");
     allOpt.value = "all";
     categorySelect.appendChild(allOpt);
     categories.forEach(function (cat) {
@@ -4516,7 +4517,7 @@
     const select = createElement("select", "", "");
     select.id = "vocab-test-category-select";
 
-    var optionAll = createElement("option", "", "All");
+    var optionAll = createElement("option", "", "Tất cả");
     optionAll.value = "all";
     select.appendChild(optionAll);
 
@@ -5207,7 +5208,7 @@
     catField.appendChild(createElement("div", "field-label", "Category"));
     const catSelect = createElement("select", "", "");
     catSelect.id = "vocab-assemble-category-select";
-    var optAll = createElement("option", "", "All");
+    var optAll = createElement("option", "", "Tất cả");
     optAll.value = "all";
     catSelect.appendChild(optAll);
     var categories = getUniqueSorted(
@@ -11107,7 +11108,7 @@
     var rawTab = params.get("tab") || "vocab";
     var detail = parseKanjiDetailFromQuery();
     var tabName;
-    if (rawTab === "kanji" || rawTab === "grammar" || rawTab === "stars" || rawTab === "daily" || rawTab === "study" || rawTab === "note" || rawTab === "dup" || rawTab === "vocab-edit") {
+    if (rawTab === "kanji" || rawTab === "grammar" || rawTab === "stars" || rawTab === "daily" || rawTab === "study" || rawTab === "note" || rawTab === "dup" || rawTab === "vocab-edit" || rawTab === "exam") {
       tabName = rawTab;
     } else {
       tabName = "vocab";
@@ -12163,7 +12164,7 @@ history.replaceState({}, "", newUrl);
     const levelSelect = document.createElement("select");
     levelSelect.className = "input-text";
     [
-      { value: "all", label: "All" },
+      { value: "all", label: "Tất cả" },
       { value: "n45", label: "N4-N5" },
       { value: "n3", label: "N3" },
       { value: "nx", label: "NX" }
@@ -12875,7 +12876,7 @@ history.replaceState({}, "", newUrl);
       var levelSelect = document.createElement("select");
       levelSelect.className = "input-text";
       [
-        { value: "all", label: "All" },
+        { value: "all", label: "Tất cả" },
         { value: "n45", label: "N4-N5" },
         { value: "n3", label: "N3" },
         { value: "nx", label: "NX" }
@@ -12977,7 +12978,7 @@ history.replaceState({}, "", newUrl);
       catField.appendChild(createElement("div", "field-label", "Category"));
       var catSelect = document.createElement("select");
       var optAll = document.createElement("option");
-      optAll.value = "all"; optAll.textContent = "All";
+      optAll.value = "all"; optAll.textContent = "Tất cả";
       catSelect.appendChild(optAll);
       var categories = getUniqueSorted(
         vocabData.map(function (v) { return v.category; }).filter(function (c) { return c; })
@@ -13448,7 +13449,7 @@ history.replaceState({}, "", newUrl);
           })
       );
       lessonSelect.innerHTML = "";
-      const allOpt = createElement("option", "", "All");
+      const allOpt = createElement("option", "", "Tất cả");
       allOpt.value = "all";
       lessonSelect.appendChild(allOpt);
       lessons.forEach(function (lesson) {
@@ -13456,7 +13457,7 @@ history.replaceState({}, "", newUrl);
         opt.value = String(lesson);
         lessonSelect.appendChild(opt);
       });
-      // Lesson đang chọn không thuộc cấp độ mới thì quay về "All"
+      // Lesson đang chọn không thuộc cấp độ mới thì quay về "Tất cả"
       if (!lessons.some(function (lesson) { return String(lesson) === String(state.filter.grammarLesson); })) {
         state.filter.grammarLesson = "all";
       }
