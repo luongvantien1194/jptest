@@ -747,3 +747,117 @@
     grid-row: 2;
   }
 }
+
+/* --- Khung "Còn thiếu" ở màn dán data (ChatGPT sinh thiếu → prompt bổ sung) --- */
+.ex-missing {
+  border: 1px dashed var(--accent);
+  border-radius: var(--radius-sm);
+  background: rgba(146, 64, 14, 0.06);
+  padding: 10px 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ex-missing-title {
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.ex-missing-list {
+  margin: 0;
+  padding-left: 18px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: var(--text);
+}
+
+.ex-missing-list .ex-progress-code {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+/* --- Danh sách prompt từng phần ở màn dán data --- */
+.ex-chunk-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+}
+
+.ex-prompt-list {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.ex-prompt-row {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-sm);
+  background: var(--dm-surface, rgba(255, 255, 255, 0.9));
+  padding: 8px 10px;
+}
+
+.ex-prompt-row--next {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px rgba(192, 57, 43, 0.12);
+}
+
+.ex-prompt-row--done {
+  opacity: 0.75;
+}
+
+.ex-prompt-row--supp {
+  background: var(--bg-card);
+}
+
+.ex-prompt-info {
+  flex: 1 1 180px;
+  min-width: 0;
+}
+
+.ex-prompt-title {
+  font-weight: 700;
+  font-size: 13px;
+  color: var(--text);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: 4px 8px;
+}
+
+.ex-prompt-state {
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-muted);
+}
+
+.ex-prompt-row--done .ex-prompt-state { color: var(--success); }
+.ex-prompt-row--partial .ex-prompt-state { color: var(--accent); }
+.ex-prompt-row--next .ex-prompt-state { color: var(--primary); }
+
+.ex-prompt-row .ex-muted {
+  font-family: var(--font-jp);
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.ex-prompt-btns {
+  display: flex;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+.ex-btn-sm {
+  min-height: 34px;
+  padding: 5px 10px;
+  font-size: 12px;
+  letter-spacing: 0;
+  text-transform: none;
+  text-decoration: none;
+  white-space: nowrap;
+}
