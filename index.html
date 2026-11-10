@@ -18,15 +18,15 @@
     } catch (e) { }
   </script>
 
-  <script src="data/master.js?v=1069"></script>
-  <script src="data/vocabData.js?v=10699"></script>
-  <script src="data/vocabData_1.js?v=10699"></script>
-  <script src="data/dup.js?v=1069"></script>
-  <script src="data/vocabExtra/extra.js?v=10699"></script>
+  <script src="data/master.js?v=1070"></script>
+  <script src="data/vocabData.js?v=1070"></script>
+  <script src="data/vocabData_1.js?v=1070"></script>
+  <script src="data/dup.js?v=1070"></script>
+  <script src="data/vocabExtra/extra.js?v=1070"></script>
 
-  <script src="data/kanjiData.js?v=1069"></script>
-  <script src="data/kanjiData_1.js?v=1069"></script>
-  <script src="data/kanjiExtra/extra.js?v=1069"></script>
+  <script src="data/kanjiData.js?v=1070"></script>
+  <script src="data/kanjiData_1.js?v=1070"></script>
+  <script src="data/kanjiExtra/extra.js?v=1070"></script>
 
   <script>
     window._vocabExtra = window._vocabExtra || [];
@@ -50,14 +50,15 @@
   </script>
 
 
-  <script src="data/grammarData.js?v=1069"></script>
-  <script src="data/grammarData_1.js?v=1069"></script>
+  <script src="data/grammarData.js?v=1070"></script>
+  <script src="data/grammarData_1.js?v=1070"></script>
 
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;600;700&display=swap"
     rel="stylesheet">
-  <link rel="stylesheet" href="css/style.css?v=1069">
+  <link rel="stylesheet" href="css/style.css?v=1070">
+  <link rel="stylesheet" href="css/jlptExam.css?v=1070">
 </head>
 
 <body>
@@ -86,6 +87,10 @@
         </button>
         <button class="tab" data-tab="study" type="button">
           <span class="tab-label-main">📖 Học mới</span>
+          <span class="tab-indicator"></span>
+        </button>
+        <button class="tab" data-tab="exam" type="button">
+          <span class="tab-label-main">🎓 Luyện thi</span>
           <span class="tab-indicator"></span>
         </button>
         <button class="tab" data-tab="note" type="button">
@@ -126,30 +131,34 @@
             <div class="filters-row" id="vocab-filters-row">
               <!-- Sub-group 1: Lesson Filters -->
               <div class="field-group" style="display:flex; gap:4px; align-items:flex-end;">
-                <div style="flex:0.2; min-width:0; padding-bottom: 7px;">
+                <div style="flex:0.2; min-width:0;">
                   <input type="checkbox" id="vocab-one-lesson" style="cursor:pointer">
                 </div>
-                <div style="flex:0.5; min-width:0">
+                <div style="flex:0.4; min-width:0">
                   <div class="field-label">Từ</div>
                   <input type="number" id="vocab-lesson-from" placeholder="" min="0" class="input-text"
                     style="width:100%" />
                 </div>
-                <div style="flex:0.5; min-width:0">
+                <div style="flex:0.4; min-width:0">
                   <div class="field-label">Đến</div>
                   <input type="number" id="vocab-lesson-to" placeholder="" min="0" class="input-text"
                     style="width:100%" />
                 </div>
-                <div style="flex:0.7">
+              </div> <!-- ĐÃ SỬA: Đóng sub-group 1 -->
+
+              <!-- Sub-group 2: Category & Master status -->
+              <div class="field-group" style="display:flex; gap:4px; align-items:flex-end;">
+                <div style="flex:0.6">
                   <div class="field-label">Danh mục</div>
                   <select id="vocab-category-filter" style="width:100%">
-                    <option value="all">All</option>
+                    <option value="all">Tất cả</option>
                     <!-- populated by JS -->
                   </select>
                 </div>
-                <div style="flex:0.5">
-                  <div class="field-label">Level</div>
+                <div style="flex:0.4">
+                  <div class="field-label">&nbsp;</div>
                   <select id="vocab-level-filter" style="width:100%" title="Level">
-                    <option value="all">All</option>
+                    <option value="all">Tất cả level</option>
                     <!-- populated by JS -->
                   </select>
                 </div>
@@ -161,7 +170,7 @@
                 </div>
                 <div style="flex:0.2">
                   <div class="field-label">Chưa</div>
-                  <div style="display:flex; align-items:center; padding:2px 0;padding-bottom: 7px;">
+                  <div style="display:flex; align-items:center; padding:2px 0">
                     <input type="checkbox" id="vocab-not-mastered-cb" style="cursor:pointer">
                   </div>
                 </div>
@@ -296,7 +305,7 @@
                 title="Nhập số thứ tự (như trên ô lưới), đổi giá trị để cuộn tới Kanji đó"
                 aria-label="Nhảy tới Kanji theo số thứ tự" />
               <div class="chip-group" id="kanji-level-chips" style="display:flex;gap:4px;align-items:center">
-                <button type="button" class="chip" data-level="all">All</button>
+                <button type="button" class="chip" data-level="all">Tất cả</button>
                 <button type="button" class="chip" data-level="n45">N4-N5</button>
                 <button type="button" class="chip chip--active" data-level="n3">N3</button>
                 <button type="button" class="chip" data-level="nx">NX</button>
@@ -364,7 +373,7 @@
             <div class="field-group">
               <div class="field-label">Cấp độ</div>
               <div class="chip-group" id="grammar-level-chips">
-                <button type="button" class="chip chip--active" data-level="all">All</button>
+                <button type="button" class="chip chip--active" data-level="all">Tất cả</button>
                 <button type="button" class="chip" data-level="n45">N4-N5</button>
                 <button type="button" class="chip" data-level="n3">N3</button>
               </div>
@@ -436,6 +445,11 @@
           </div>
           <div class="daily-scroll scroll-thin" id="daily-study-container"></div>
         </div>
+      </section>
+
+      <!-- JLPT Exam Section: thi thử JLPT, đề do ChatGPT sinh (js/jlptExam.js) -->
+      <section class="section" id="section-exam" aria-label="Luyện thi JLPT">
+        <div class="section-inner ex-root" id="exam-container"></div>
       </section>
 
       <!-- Note Section -->
@@ -614,6 +628,7 @@
     <button class="nav-menu-item" data-tab="grammar">Ngữ pháp</button>
     <button class="nav-menu-item" data-tab="daily">📅 Ôn tập mỗi ngày</button>
     <button class="nav-menu-item" data-tab="study">📖 Học mỗi ngày</button>
+    <button class="nav-menu-item" data-tab="exam">🎓 Luyện thi</button>
     <button class="nav-menu-item" data-tab="note">Ghi chú</button>
     <button class="nav-menu-item" data-tab="dup">Từ trùng</button>
     <button class="nav-menu-item" data-tab="vocab-edit">✏️ Sửa từ vựng</button>
@@ -649,10 +664,11 @@
   <!-- soundOverlay removed (no mp3 audio) -->
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/xlsx/dist/xlsx.full.min.js"></script>
-  <script src="data/configDoc.js?v=1069"></script>
-  <script src="js/main.js?v=1069"></script>
-  <script src="js/vocabEditor.js?v=1069"></script>
-  <script src="js/dataBackup.js?v=1069"></script>
+  <script src="data/configDoc.js?v=1070"></script>
+  <script src="js/main.js?v=1070"></script>
+  <script src="js/vocabEditor.js?v=1070"></script>
+  <script src="js/dataBackup.js?v=1070"></script>
+  <script src="js/jlptExam.js?v=1070"></script>
 </body>
 
 </html>
