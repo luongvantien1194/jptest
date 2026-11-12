@@ -231,3 +231,46 @@
   color: var(--primary, #c0392b);
   text-decoration: none;
 }
+
+/* --- Dịch (Google) ngay trong popup --- */
+.jl-text--long {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+  word-break: normal;
+}
+
+.jl-translate {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+  padding: 6px 8px;
+  border-radius: 8px;
+  background: rgba(21, 128, 61, 0.07);
+}
+
+.jl-translate-text {
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.45;
+  white-space: pre-wrap;
+  color: var(--text, #1c1917);
+}
+
+.jl-translate-text--loading,
+.jl-translate-text--error {
+  font-size: 13px;
+  font-weight: 400;
+  color: var(--text-muted, #78716c);
+}
+
+.jl-translate-romaji {
+  font-size: 12px;
+  font-style: italic;
+  color: var(--text-muted, #78716c);
+}
