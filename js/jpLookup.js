@@ -9,6 +9,12 @@
   var SETTINGS_KEY = "jp_lookup_settings";
   /** Bôi đen dài hơn mức này (vd cả đoạn văn) thì không hiện popup */
   var MAX_LEN = 30;
+  /** Bôi đen dài hơn MAX_LEN (cả câu / đoạn văn) thì chỉ hiện bản dịch; dài hơn mức này thì bỏ qua */
+  var MAX_SENTENCE = 300;
+  /** Google Dịch (endpoint công khai, cho phép gọi từ trình duyệt). Trang Google Dịch / ChatGPT / Mazii chặn nhúng iframe nên dịch thẳng qua API */
+  var TRANSLATE_URL = "https://translate.googleapis.com/translate_a/single?client=gtx&sl=ja&tl=vi&dt=t&dt=rm&q=";
+  var translateCache = {};
+  var renderId = 0;
   /** Từ dài nhất thử khớp khi tách cụm */
   var MAX_WORD = 12;
   var MAX_ENTRIES = 4;
@@ -325,17 +331,68 @@
     return a;
   }
 
-  function render(text) {
+  /** Gọi Google Dịch → callback({ text, romaji }) hoặc callback(null) nếu lỗi */
+  function translate(raw, callback) {
+    if (translateCache[raw]) {
+      callback(translateCache[raw]);
+      return;
+    }
+    fetch(TRANSLATE_URL + encodeURIComponent(raw)).then(function (res) {
+      if (!res.ok) throw new Error("HTTP " + res.status);
+      return res.json();
+    }).then(function (data) {
+      var parts = Array.isArray(data) && Array.isArray(data[0]) ? data[0] : [];
+      var text = "";
+      var romaji = "";
+      parts.forEach(function (seg) {
+        if (!Array.isArray(seg)) return;
+        if (typeof seg[0] === "string") text += seg[0];
+        else if (typeof seg[3] === "string") romaji += seg[3];
+      });
+      var result = text ? { text: text.trim(), romaji: romaji.trim() } : null;
+      if (result) translateCache[raw] = result;
+      callback(result);
+    }).catch(function () {
+      callback(null);
+    });
+  }
+
+  /** Mục "Dịch (Google)": hiện ngay chữ "Đang dịch…", có kết quả thì điền vào (bỏ qua nếu popup đã đổi sang chữ khác) */
+  function translateSection(raw) {
+    var box = el("div", "jl-translate");
+    var label = el("div", "jl-section-title", "Dịch (Google)");
+    box.appendChild(label);
+    var result = el("div", "jl-translate-text jl-translate-text--loading", "Đang dịch…");
+    box.appendChild(result);
+    var myId = renderId;
+    translate(raw, function (r) {
+      if (myId !== renderId) return;
+      result.classList.remove("jl-translate-text--loading");
+      if (!r) {
+        result.textContent = "Không dịch được (mất mạng?) — bấm \"Mở Google Dịch\" bên dưới.";
+        result.classList.add("jl-translate-text--error");
+        return;
+      }
+      result.textContent = r.text;
+      if (r.romaji) box.appendChild(el("div", "jl-translate-romaji", r.romaji));
+    });
+    return box;
+  }
+
+  function render(text, raw) {
     buildDict();
+    renderId++;
+    raw = raw || text;
+    var sentence = text.length > MAX_LEN;
     var p = ensurePopup();
     p.innerHTML = "";
 
     var head = el("div", "jl-head");
-    head.appendChild(el("div", "jl-text", text));
+    head.appendChild(el("div", "jl-text" + (sentence ? " jl-text--long" : ""), sentence ? raw : text));
     var speakBtn = el("button", "jl-icon-btn", "🔊");
     speakBtn.type = "button";
     speakBtn.title = "Đọc";
-    speakBtn.addEventListener("click", function () { speak(text); });
+    speakBtn.addEventListener("click", function () { speak(raw); });
     head.appendChild(speakBtn);
     var closeBtn = el("button", "jl-icon-btn", "✕");
     closeBtn.type = "button";
@@ -346,6 +403,13 @@
 
     var body = el("div", "jl-body");
     p.appendChild(body);
+    body.appendChild(translateSection(raw));
+    if (sentence) {
+      // Cả câu / đoạn văn: chỉ dịch (từ điển từng từ thì bôi đen ngắn hơn)
+      body.appendChild(el("div", "jl-empty", "Muốn xem cách đọc / nghĩa từng từ thì bôi đen từng cụm ngắn (dưới " + MAX_LEN + " chữ)."));
+      p.appendChild(buildLinks(raw));
+      return;
+    }
 
     var whole = lookupWord(text);
     var segs = whole ? [{ text: text, match: whole }] : segment(text);
@@ -423,13 +487,23 @@
       body.appendChild(kanjiBox);
     }
 
+    p.appendChild(buildLinks(text));
+  }
+
+  /** Link tra ngoài (mở tab mới — các trang này không cho nhúng vào app) */
+  function buildLinks(text) {
+    var sentence = text.length > MAX_LEN;
     var links = el("div", "jl-links");
-    links.appendChild(linkBtn("Mazii", "https://mazii.net/vi-VN/search/word/javi/" + encodeURIComponent(text), "Tra từ điển Mazii (Nhật - Việt)"));
-    links.appendChild(linkBtn("Google Dịch", "https://translate.google.com/?sl=ja&tl=vi&op=translate&text=" + encodeURIComponent(text)));
-    links.appendChild(linkBtn("Hỏi ChatGPT", "https://chatgpt.com/?q=" + encodeURIComponent(
-      "Giải thích từ / cụm tiếng Nhật 「" + text + "」 cho người Việt: cách đọc hiragana, âm Hán Việt, nghĩa tiếng Việt, " +
-      "loại từ / cách dùng (nếu là dạng chia thì nêu dạng gốc), 2 câu ví dụ có dịch.")));
-    p.appendChild(links);
+    if (!sentence) {
+      links.appendChild(linkBtn("Mazii ↗", "https://mazii.net/vi-VN/search/word/javi/" + encodeURIComponent(text), "Tra từ điển Mazii (Nhật - Việt)"));
+    }
+    links.appendChild(linkBtn("Mở Google Dịch ↗", "https://translate.google.com/?sl=ja&tl=vi&op=translate&text=" + encodeURIComponent(text)));
+    links.appendChild(linkBtn("Hỏi ChatGPT ↗", "https://chatgpt.com/?q=" + encodeURIComponent(sentence
+      ? "Dịch và giải thích đoạn tiếng Nhật sau cho người Việt: dịch sát nghĩa, cách đọc hiragana các từ khó, " +
+        "giải thích các mẫu ngữ pháp và từ vựng quan trọng.\n\n" + text
+      : "Giải thích từ / cụm tiếng Nhật 「" + text + "」 cho người Việt: cách đọc hiragana, âm Hán Việt, nghĩa tiếng Việt, " +
+        "loại từ / cách dùng (nếu là dạng chia thì nêu dạng gốc), 2 câu ví dụ có dịch.")));
+    return links;
   }
 
   function infoRow(label, value, cls) {
@@ -472,11 +546,12 @@
     var node = range.commonAncestorContainer;
     var elNode = node.nodeType === 1 ? node : node.parentElement;
     if (!elNode || (popup && popup.contains(elNode)) || elNode.closest("input, textarea, [contenteditable], .jl-popup")) return null;
-    var text = clean(sel.toString());
-    if (!text || text.length > MAX_LEN || !hasJapanese(text)) return null;
+    var raw = sel.toString().replace(/[ \t　]+/g, " ").replace(/\s*\n\s*/g, "\n").trim();
+    var text = clean(raw);
+    if (!text || text.length > MAX_SENTENCE || !hasJapanese(text)) return null;
     var rect = range.getBoundingClientRect();
     if (!rect || (!rect.width && !rect.height)) return null;
-    return { text: text, rect: rect };
+    return { text: text, raw: raw, rect: rect };
   }
 
   function check() {
@@ -486,7 +561,7 @@
     var key = info.text + "@" + Math.round(info.rect.top) + "," + Math.round(info.rect.left);
     if (key === lastKey && popup && popup.classList.contains("jl-popup--open")) return;
     lastKey = key;
-    render(info.text);
+    render(info.text, info.raw);
     popup.classList.add("jl-popup--open");
     popup.scrollTop = 0;
     position(info.rect);
