@@ -1,3 +1,4 @@
+
 // Tab "Luyện thi" — thi thử JLPT (文字・語彙 / 文法 / 読解, không có 聴解).
 // Luồng: chọn level + lượng câu (1/3, 1/2, như đề thật) → app soạn prompt theo đúng cấu trúc đề JLPT thật rồi mở ChatGPT
 // (prompt cũng được copy sẵn) → ChatGPT tự sinh câu hỏi + đáp án theo level (không dùng data từ vựng/ngữ pháp của app)
@@ -824,6 +825,62 @@
     save(SESSION_KEY, session);
   }
 
+  // ----- Nhớ vị trí cuộn (màn làm bài theo từng phần, màn xem lại đáp án) -----
+
+  /**
+   * Vị trí cuộn được neo vào câu hỏi đang ở đầu khung (+ độ lệch so với câu đó),
+   * nên khi đổi cỡ cửa sổ / xoay máy vẫn quay về đúng câu. top là vị trí pixel dự phòng.
+   */
+  function captureScroll(scroller) {
+    if (!scroller || !scroller.isConnected || !scroller.clientHeight) return null;
+    var top = scroller.scrollTop;
+    var base = scroller.getBoundingClientRect().top - top;
+    var items = scroller.querySelectorAll("[data-q]");
+    for (var i = 0; i < items.length; i++) {
+      var r = items[i].getBoundingClientRect();
+      var pos = r.top - base;
+      if (pos + r.height > top) return { top: top, q: items[i].getAttribute("data-q"), offset: Math.round(top - pos) };
+    }
+    return { top: top };
+  }
+
+  function restoreScroll(scroller, pos) {
+    if (!scroller || !pos) return;
+    function apply() {
+      var target = pos.q ? scroller.querySelector('[data-q="' + pos.q + '"]') : null;
+      if (target) {
+        var base = scroller.getBoundingClientRect().top - scroller.scrollTop;
+        scroller.scrollTop = target.getBoundingClientRect().top - base + (pos.offset || 0);
+      } else {
+        scroller.scrollTop = pos.top || 0;
+      }
+    }
+    apply();
+    // Font / bố cục có thể còn thay đổi ngay sau đó → đặt lại một lần (trừ khi người dùng đã tự cuộn)
+    var first = scroller.scrollTop;
+    setTimeout(function () {
+      if (scroller.isConnected && scroller.scrollTop === first) apply();
+    }, 80);
+  }
+
+  /** Theo dõi cuộn: cập nhật vị trí vào session ngay (để thoát lúc nào cũng đúng), ghi localStorage sau 400ms */
+  function trackScroll(scroller, s, store) {
+    var pending = null;
+    var saveTimer = null;
+    scroller.addEventListener("scroll", function () {
+      if (pending) return;
+      pending = setTimeout(function () {
+        pending = null;
+        if (session !== s) return;
+        var pos = captureScroll(scroller);
+        if (!pos) return;
+        store(pos);
+        clearTimeout(saveTimer);
+        saveTimer = setTimeout(function () { if (session === s) saveSession(); }, 400);
+      }, 100);
+    }, { passive: true });
+  }
+
   function buildSession(pending, groups) {
     var n = 0;
     var parts = [];
@@ -973,11 +1030,10 @@
       elapsedSec: session.elapsedSec
     });
     save(HISTORY_KEY, history.slice(0, HISTORY_MAX));
+    session.reviewFilter = "all";
+    session.reviewPos = null;
     ui.view = "result";
-    ui.reviewFilter = "all";
     render();
-    var scroller = document.querySelector("#exam-container .ex-scroll");
-    if (scroller) scroller.scrollTop = 0;
     if (timedOut) {
       setTimeout(function () { alert("Hết giờ! Bài thi đã được tự động nộp."); }, 50);
     }
@@ -1021,6 +1077,7 @@
       session = loadSession();
       if (session && session.section) ui.section = session.section;
       if (session && !session.submitted) ui.view = "exam";
+      else if (session && session.reviewOpen) ui.view = "result";
       else if (load(PENDING_KEY)) ui.view = "paste";
       else ui.view = "home";
     }
@@ -1031,6 +1088,12 @@
     else {
       ui.view = "home";
       renderHome(root);
+    }
+    // Đang xem lại đáp án mà tải lại trang thì mở lại đúng màn đó
+    var reviewOpen = ui.view === "result";
+    if (session && session.submitted && !!session.reviewOpen !== reviewOpen) {
+      session.reviewOpen = reviewOpen;
+      saveSession();
     }
   }
 
@@ -1523,15 +1586,11 @@
       s.section = ui.section;
       saveSession();
     }
-    var restoreTop = s.scroll && s.scroll.section === ui.section ? s.scroll.top : 0;
-    var scrollSaveTimer = null;
-    scroll.addEventListener("scroll", function () {
-      clearTimeout(scrollSaveTimer);
-      scrollSaveTimer = setTimeout(function () {
-        s.scroll = { section: ui.section, top: scroll.scrollTop };
-        saveSession();
-      }, 400);
-    });
+    var secKey = ui.section;
+    if (!s.scrollPos) s.scrollPos = {};
+    // s.scroll: dạng cũ (chỉ nhớ 1 phần, theo pixel)
+    var savedPos = s.scrollPos[secKey] || (s.scroll && s.scroll.section === secKey ? { top: s.scroll.top } : null);
+    trackScroll(scroll, s, function (pos) { s.scrollPos[secKey] = pos; });
     var mondai = 0;
     s.parts.forEach(function (p) {
       if (p.section !== ui.section) return;
@@ -1550,15 +1609,14 @@
     if (idx < sections.length - 1) {
       nav.appendChild(btn("btn", sections[idx + 1].jp + " →", function () {
         ui.section = sections[idx + 1].key;
+        s.scrollPos[ui.section] = null; // sang phần mới thì bắt đầu từ đầu
         render();
-        var sc = document.querySelector("#exam-container .ex-scroll");
-        if (sc) sc.scrollTop = 0;
       }));
     } else {
       nav.appendChild(btn("btn", "Nộp bài", confirmSubmit));
     }
     scroll.appendChild(nav);
-    if (restoreTop) scroll.scrollTop = restoreTop;
+    restoreScroll(scroll, savedPos);
     updateTimerLabel();
   }
 
@@ -1578,9 +1636,9 @@
       var b = btn("ex-nav-cell" + (s.answers[x.q.id] != null ? " ex-nav-cell--done" : ""), no, function () {
         ui.section = x.part.section;
         ui.showNav = false;
+        if (!s.scrollPos) s.scrollPos = {};
+        s.scrollPos[ui.section] = { q: x.q.id, offset: -80 };
         render();
-        var target = document.getElementById("exq-" + x.q.id);
-        if (target) target.scrollIntoView({ block: "center" });
       });
       b.setAttribute("data-nav-q", x.q.id);
       grid.appendChild(b);
@@ -1628,6 +1686,7 @@
   function buildQuestion(s, p, q) {
     var box = el("div", "ex-q" + (s.answers[q.id] != null ? " ex-q--done" : ""));
     box.id = "exq-" + q.id;
+    box.setAttribute("data-q", q.id);
     var head = el("div", "ex-q-head");
     head.appendChild(el("span", "ex-q-no", q.id.slice(1)));
     head.appendChild(rich("div", "ex-q-text" + (p.code === "YOUHOU" ? " ex-q-text--word" : ""), q.q));
@@ -1697,6 +1756,7 @@
   function renderResult(root) {
     var s = session;
     var r = s.result || grade(s);
+    ui.reviewFilter = s.reviewFilter || "all";
     header(root, "Kết quả thi thử", [{ text: s.level + " · " + fractionOf(s.fraction).label }]);
     var scroll = el("div", "ex-scroll scroll-thin");
     root.appendChild(scroll);
@@ -1760,6 +1820,9 @@
       session.timedOut = false;
       session.result = null;
       session.scroll = null;
+      session.scrollPos = null;
+      session.reviewPos = null;
+      session.reviewOpen = false;
       session.parts.forEach(function (p) {
         p.groups.forEach(function (g) {
           g.questions.forEach(function (q) {
@@ -1781,11 +1844,9 @@
     var filterRow = el("div", "chip-group ex-chips");
     [["all", "Tất cả"], ["wrong", "Chỉ câu sai / bỏ trống"]].forEach(function (f) {
       filterRow.appendChild(btn("chip ex-chip" + (ui.reviewFilter === f[0] ? " chip--active" : ""), f[1], function () {
-        ui.reviewFilter = f[0];
-        var y = scroll.scrollTop;
+        s.reviewFilter = f[0];
+        saveSession();
         render();
-        var sc = document.querySelector("#exam-container .ex-scroll");
-        if (sc) sc.scrollTop = y;
       }));
     });
     review.appendChild(filterRow);
@@ -1800,6 +1861,8 @@
       });
     });
     scroll.appendChild(review);
+    trackScroll(scroll, s, function (pos) { s.reviewPos = pos; });
+    restoreScroll(scroll, s.reviewPos);
   }
 
   function buildBarRow(label, c, t, extraClass) {
@@ -1819,6 +1882,7 @@
     var chosen = s.answers[q.id];
     var right = chosen === q.answer;
     var box = el("div", "ex-q ex-q--review " + (right ? "ex-q--right" : "ex-q--wrong"));
+    box.setAttribute("data-q", q.id);
     var head = el("div", "ex-q-head");
     head.appendChild(el("span", "ex-q-no", q.id.slice(1)));
     head.appendChild(rich("div", "ex-q-text" + (p.code === "YOUHOU" ? " ex-q-text--word" : ""), q.q));
@@ -1926,7 +1990,7 @@
         timer.last = Date.now();
         render();
       }
-      if (!active && wasActive && session && !session.submitted) saveSession();
+      if (!active && wasActive && session) saveSession();
       wasActive = active;
     });
     observer.observe(sec, { attributes: true, attributeFilter: ["class"] });
@@ -1937,7 +2001,16 @@
     timer.last = Date.now();
     setInterval(tick, 1000);
     function persist() {
-      if (session && !session.submitted) saveSession();
+      if (!session) return;
+      // Lấy luôn vị trí cuộn hiện tại (không chờ bộ đếm) trước khi đóng / ẩn trang
+      var pos = isSectionActive() ? captureScroll(document.querySelector("#exam-container .ex-scroll")) : null;
+      if (pos && ui.view === "exam" && !session.submitted) {
+        if (!session.scrollPos) session.scrollPos = {};
+        session.scrollPos[ui.section] = pos;
+      } else if (pos && ui.view === "result" && session.submitted) {
+        session.reviewPos = pos;
+      }
+      saveSession();
     }
     document.addEventListener("visibilitychange", function () {
       timer.last = Date.now();
