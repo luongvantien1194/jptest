@@ -38,91 +38,91 @@
   // passage: dạng có bài đọc (thời gian đọc tính thêm theo độ dài bài); spec: mô tả dạng câu cho prompt ({len} = số chữ).
   var PARTS = {
     KANJI: {
-      section: "vocab", jp: "漢字読み", vi: "Cách đọc Kanji", w: 0.5, out: 1,
+      section: "vocab", jp: "漢字読み", vi: "Cách đọc Kanji", w: 0.5, out: 2,
       ins: "＿＿のことばの読み方として最もよいものを、1・2・3・4から一つえらびなさい。",
       hint: "Chọn cách đọc của từ gạch chân.",
       spec: "q là 1 câu, trong đó 1 từ viết bằng kanji đặt trong 【】; options là 4 cách đọc bằng hiragana (sai kiểu trường âm, âm đục, âm ngắt, âm On/Kun dễ nhầm)."
     },
     HYOKI: {
-      section: "vocab", jp: "表記", vi: "Cách viết", w: 0.5, out: 1,
+      section: "vocab", jp: "表記", vi: "Cách viết", w: 0.5, out: 2,
       ins: "＿＿のことばを漢字で書くとき、最もよいものを、1・2・3・4から一つえらびなさい。",
       hint: "Chọn cách viết (Kanji / Katakana) của từ gạch chân.",
       spec: "q là 1 câu, trong đó 1 từ viết bằng hiragana đặt trong 【】; options là 4 cách viết bằng kanji (hoặc katakana) giống nhau về hình / âm."
     },
     GOKEI: {
-      section: "vocab", jp: "語形成", vi: "Ghép từ", w: 0.6, out: 1,
+      section: "vocab", jp: "語形成", vi: "Ghép từ", w: 0.6, out: 2,
       ins: "（　）に入れるのに最もよいものを、1・2・3・4から一つえらびなさい。",
       hint: "Chọn tiền tố / hậu tố ghép vào từ.",
       spec: "q là 1 câu có （　） viết liền với 1 từ (chỗ cần tiền tố / hậu tố tạo từ ghép, vd 再～, ～化, ～的, 未～); options là 4 tiền tố / hậu tố."
     },
     BUNMYAKU: {
-      section: "vocab", jp: "文脈規定", vi: "Điền từ theo ngữ cảnh", w: 0.7, out: 1,
+      section: "vocab", jp: "文脈規定", vi: "Điền từ theo ngữ cảnh", w: 0.7, out: 2.2,
       ins: "（　）に入れるのに最もよいものを、1・2・3・4から一つえらびなさい。",
       hint: "Chọn từ hợp ngữ cảnh điền vào chỗ trống.",
       spec: "q là 1 câu có （　）; options là 4 từ cùng loại từ, chỉ 1 từ hợp ngữ cảnh."
     },
     IIKAE: {
-      section: "vocab", jp: "言い換え類義", vi: "Từ gần nghĩa", w: 0.7, out: 1.2,
+      section: "vocab", jp: "言い換え類義", vi: "Từ gần nghĩa", w: 0.7, out: 2.4,
       ins: "＿＿に意味が最も近いものを、1・2・3・4から一つえらびなさい。",
       hint: "Chọn từ / câu gần nghĩa nhất với phần gạch chân.",
       spec: "q là 1 câu có 1 từ / cụm đặt trong 【】; options là 4 từ / cụm (hoặc 4 câu ngắn), chỉ 1 cái gần nghĩa nhất với phần 【】."
     },
     YOUHOU: {
-      section: "vocab", jp: "用法", vi: "Cách dùng từ", w: 1.2, out: 2.5,
+      section: "vocab", jp: "用法", vi: "Cách dùng từ", w: 1.2, out: 4,
       ins: "つぎのことばの使い方として最もよいものを、1・2・3・4から一つえらびなさい。",
       hint: "Chọn câu dùng từ đã cho đúng nhất.",
       spec: "q chỉ ghi đúng từ được hỏi; options là 4 câu đều có dùng từ đó, chỉ 1 câu dùng đúng nghĩa / ngữ cảnh."
     },
     KEISHIKI: {
-      section: "grammar", jp: "文法形式の判断", vi: "Chọn ngữ pháp đúng", w: 0.8, out: 1,
+      section: "grammar", jp: "文法形式の判断", vi: "Chọn ngữ pháp đúng", w: 0.8, out: 2.4,
       ins: "つぎの文の（　）に入れるのに最もよいものを、1・2・3・4から一つえらびなさい。",
       hint: "Chọn mẫu ngữ pháp / trợ từ / cách chia điền vào chỗ trống.",
       spec: "q là 1 câu (có thể là hội thoại ngắn A：… B：…) có （　）; options là 4 mẫu ngữ pháp / trợ từ / cách chia, chỉ 1 đúng."
     },
     NARABE: {
-      section: "grammar", jp: "文の組み立て", vi: "Sắp xếp câu (★)", w: 1.2, out: 1.5,
+      section: "grammar", jp: "文の組み立て", vi: "Sắp xếp câu (★)", w: 1.2, out: 3,
       ins: "つぎの文の ★ に入る最もよいものを、1・2・3・4から一つえらびなさい。",
       hint: "Sắp xếp 4 cụm thành câu đúng, chọn cụm nằm ở vị trí ★.",
       spec: "q là câu có đúng 4 chỗ trống viết ＿＿ cách nhau bằng dấu cách, 1 trong 4 chỗ thay bằng ★ (vị trí ★ đổi giữa các câu), vd: \"あそこで ＿＿ ＿＿ ★ ＿＿ は田中さんです。\"; options là 4 cụm cần xếp vào 4 chỗ trống; answer là cụm đứng ở vị trí ★; thêm full: câu hoàn chỉnh đã xếp đúng."
     },
     BUNSHOU: {
-      section: "grammar", jp: "文章の文法", vi: "Ngữ pháp trong đoạn văn", w: 1, out: 2, passage: true,
+      section: "grammar", jp: "文章の文法", vi: "Ngữ pháp trong đoạn văn", w: 1, out: 3, passage: true,
       ins: "つぎの文章を読んで、文章全体の内容を考えて、（1）、（2）…の中に入る最もよいものを、1・2・3・4から一つえらびなさい。",
       hint: "Đọc đoạn văn, chọn cụm điền vào từng chỗ trống đánh số.",
       spec: "passage là 1 bài văn / bức thư ~{len} chữ có các chỗ trống đánh số （1）（2）… theo thứ tự; mỗi câu hỏi q chỉ ghi số chỗ trống, vd \"（1）\"; options là 4 cụm (ngữ pháp, từ nối, cách chia, từ chỉ định) điền vào chỗ đó."
     },
     TANBUN: {
-      section: "reading", jp: "内容理解（短文）", vi: "Đọc hiểu đoạn ngắn", w: 1.5, out: 2, passage: true,
+      section: "reading", jp: "内容理解（短文）", vi: "Đọc hiểu đoạn ngắn", w: 1.5, out: 2.8, passage: true,
       ins: "つぎの文章を読んで、質問に答えなさい。答えは、1・2・3・4から最もよいものを一つえらびなさい。",
       hint: "Đọc đoạn văn ngắn và trả lời câu hỏi.",
       spec: "passage là 1 đoạn văn ngắn ~{len} chữ (thư, email, thông báo, ghi chú, đoạn nhận xét…); câu hỏi về ý chính / chi tiết / điều người viết muốn nói."
     },
     CHUBUN: {
-      section: "reading", jp: "内容理解（中文）", vi: "Đọc hiểu đoạn trung bình", w: 1.5, out: 2, passage: true,
+      section: "reading", jp: "内容理解（中文）", vi: "Đọc hiểu đoạn trung bình", w: 1.5, out: 2.8, passage: true,
       ins: "つぎの文章を読んで、質問に答えなさい。答えは、1・2・3・4から最もよいものを一つえらびなさい。",
       hint: "Đọc bài văn độ dài trung bình và trả lời câu hỏi.",
       spec: "passage là bài văn ~{len} chữ (bài luận, giải thích, tuỳ bút…); câu hỏi về nguyên nhân, lý do, ý nghĩa của câu / cụm đặt trong 【】 trong bài, ý người viết."
     },
     CHOUBUN: {
-      section: "reading", jp: "内容理解（長文）", vi: "Đọc hiểu đoạn dài", w: 1.5, out: 2, passage: true,
+      section: "reading", jp: "内容理解（長文）", vi: "Đọc hiểu đoạn dài", w: 1.5, out: 2.8, passage: true,
       ins: "つぎの文章を読んで、質問に答えなさい。答えは、1・2・3・4から最もよいものを一つえらびなさい。",
       hint: "Đọc bài văn dài và trả lời câu hỏi.",
       spec: "passage là bài văn dài ~{len} chữ; câu hỏi về toàn bài: diễn biến, lập luận, ý chính, ý người viết."
     },
     TOUGOU: {
-      section: "reading", jp: "統合理解", vi: "Đọc hiểu tổng hợp (A–B)", w: 2, out: 2, passage: true, twin: true,
+      section: "reading", jp: "統合理解", vi: "Đọc hiểu tổng hợp (A–B)", w: 2, out: 2.8, passage: true, twin: true,
       ins: "つぎのAとBの文章を読んで、後の質問に答えなさい。答えは、1・2・3・4から最もよいものを一つえらびなさい。",
       hint: "Đọc 2 bài A và B cùng chủ đề, so sánh / tổng hợp để trả lời.",
       spec: "passage gồm 2 bài A và B cùng 1 chủ đề nhưng quan điểm khác nhau, mỗi bài ~{len} chữ, dòng đầu mỗi bài chỉ ghi \"A\" / \"B\"; câu hỏi so sánh, tổng hợp ý 2 bài."
     },
     SHUCHOU: {
-      section: "reading", jp: "主張理解（長文）", vi: "Hiểu chủ trương (dài)", w: 2, out: 2, passage: true,
+      section: "reading", jp: "主張理解（長文）", vi: "Hiểu chủ trương (dài)", w: 2, out: 2.8, passage: true,
       ins: "つぎの文章を読んで、後の質問に答えなさい。答えは、1・2・3・4から最もよいものを一つえらびなさい。",
       hint: "Đọc bài bình luận dài, nắm chủ trương / ý kiến của tác giả.",
       spec: "passage là bài bình luận / xã luận dài ~{len} chữ có lập luận rõ ràng; câu hỏi về chủ trương, ý kiến của tác giả."
     },
     JOUHOU: {
-      section: "reading", jp: "情報検索", vi: "Tìm thông tin", w: 1.5, out: 2, passage: true,
+      section: "reading", jp: "情報検索", vi: "Tìm thông tin", w: 1.5, out: 2.8, passage: true,
       ins: "右のページを見て、下の質問に答えなさい。答えは、1・2・3・4から最もよいものを一つえらびなさい。",
       hint: "Đọc thông báo / tờ rơi / bảng thông tin, tìm thông tin theo điều kiện.",
       spec: "passage là thông báo / tờ rơi / hướng dẫn / bảng giá ~{len} chữ, trình bày bằng xuống dòng (có thể kẻ bảng dạng text); câu hỏi tìm thông tin theo điều kiện cho trước (người hỏi có hoàn cảnh cụ thể)."
@@ -502,11 +502,24 @@
       "Yêu cầu chung:",
       "- Mỗi câu có đúng 4 đáp án, chỉ 1 đúng; 3 đáp án sai phải hợp lý, dễ nhầm như đề thật. answer: chép y nguyên nội dung đáp án đúng (không ghi số thứ tự).",
       "- Từ / phần được gạch chân đặt trong 【】; chỗ trống viết （　）. Câu hỏi và đáp án viết bằng tiếng Nhật như đề thật.",
-      "- explain: tiếng Việt, 1-2 câu ngắn, nêu vì sao đáp án đúng (kèm nghĩa từ / mẫu ngữ pháp / câu then chốt), không nhắc tới số thứ tự đáp án.",
+      "- Lời giải (tiếng Việt, không nhắc tới số thứ tự đáp án): vi = dịch câu hỏi (câu có chỗ trống thì dịch câu hoàn chỉnh đã điền đáp án đúng); " +
+      "explain = 2-4 câu giải thích chi tiết vì sao đáp án đúng; wrong = mảng, mỗi đáp án sai 1 phần tử dạng \"<đáp án>: nghĩa / vì sao sai\".",
       "- Không lặp lại từ, mẫu ngữ pháp hay chủ đề giữa các câu; vị trí đáp án đúng phân bố ngẫu nhiên."
     );
     if (opts.used && opts.used.length) {
       lines.push("- Các từ / cụm sau đã được hỏi, không dùng lại làm từ được hỏi: " + opts.used.join("、"));
+    }
+    var sectionsIn = {};
+    parts.forEach(function (p) { sectionsIn[PARTS[p.code].section] = true; });
+    if (sectionsIn.vocab) {
+      lines.push("- Phần 文字・語彙: thêm words = các từ liên quan (từ được hỏi, đáp án đúng và các đáp án là từ vựng), mỗi từ {\"w\": cách viết, \"r\": cách đọc hiragana, \"m\": nghĩa tiếng Việt}.");
+    }
+    if (sectionsIn.grammar) {
+      lines.push("- Phần 文法: thêm grammar = mẫu ngữ pháp dùng trong đáp án đúng (và mẫu dễ nhầm ở đáp án sai nếu có), mỗi mẫu " +
+        "{\"pattern\": mẫu (vd ～ために), \"syntax\": cấu trúc nối (vd V辞書形 / Nの + ために), \"meaning\": nghĩa tiếng Việt, \"note\": lưu ý cách dùng / phân biệt với mẫu gần giống}.");
+    }
+    if (sectionsIn.reading) {
+      lines.push("- Phần 読解: thêm evidence = câu trích nguyên văn trong bài làm căn cứ cho đáp án.");
     }
     lines.push(
       "",
@@ -515,25 +528,40 @@
     parts.forEach(function (p) {
       lines.push("- " + p.code + ": " + PARTS[p.code].spec.replace("{len}", String(p.len)));
     });
-    var passagePart = parts.filter(function (p) { return p.passages; })[0];
-    var singlePart = parts.filter(function (p) { return !p.passages; })[0];
     lines.push(
       "",
-      "Định dạng: chỉ trả về đúng 1 code block JSON {\"items\":[...]} (không viết gì ngoài code block). Mỗi phần tử là:"
+      "Định dạng: chỉ trả về đúng 1 code block JSON {\"items\":[...]} (không viết gì ngoài code block). Mỗi phần tử theo mẫu:"
     );
-    if (singlePart) {
-      lines.push("- câu lẻ: {\"part\":\"" + singlePart.code + "\",\"q\":\"\",\"options\":[\"\",\"\",\"\",\"\"],\"answer\":\"\",\"explain\":\"\"}" +
-        (parts.some(function (p) { return p.code === "NARABE"; }) ? " (NARABE thêm \"full\":\"\")" : ""));
-    }
-    if (passagePart) {
-      lines.push("- bài đọc (mỗi bài 1 phần tử): {\"part\":\"" + passagePart.code +
-        "\",\"passage\":\"\",\"questions\":[{\"q\":\"\",\"options\":[\"\",\"\",\"\",\"\"],\"answer\":\"\",\"explain\":\"\"}]}",
-        "Xuống dòng trong passage dùng \\n.");
-    }
+    // Mẫu JSON cho từng kiểu có trong phần này (câu lẻ từ vựng / ngữ pháp, bài đọc ngữ pháp / đọc hiểu)
+    var sampleKinds = {};
+    parts.forEach(function (p) {
+      var kind = PARTS[p.code].section + (p.passages ? "-passage" : "-single");
+      if (!sampleKinds[kind]) sampleKinds[kind] = p.code;
+    });
+    Object.keys(sampleKinds).forEach(function (kind) {
+      var code = sampleKinds[kind];
+      var q = questionSample(PARTS[code].section);
+      if (kind.indexOf("-passage") !== -1) {
+        lines.push("- bài đọc " + code + " (mỗi bài 1 phần tử): " + JSON.stringify({ part: code, passage: "", questions: [q] }));
+      } else {
+        lines.push("- câu lẻ " + code + ": " + JSON.stringify(Object.assign({ part: code }, q)) +
+          (parts.some(function (p) { return p.code === "NARABE"; }) && PARTS[code].section === "grammar" ? " (NARABE thêm \"full\": câu hoàn chỉnh)" : ""));
+      }
+    });
+    if (parts.some(function (p) { return p.passages; })) lines.push("Xuống dòng trong passage dùng \\n.");
     if (multi || opts.supplement) {
       lines.push("Chỉ soạn đúng số lượng ở trên, không soạn thêm các dạng khác.");
     }
     return lines.join("\n");
+  }
+
+  /** Mẫu JSON 1 câu hỏi kèm lời giải theo phần (từ vựng: words, ngữ pháp: grammar, đọc hiểu: evidence) */
+  function questionSample(section) {
+    var q = { q: "", options: ["", "", "", ""], answer: "", vi: "", explain: "", wrong: ["", "", ""] };
+    if (section === "vocab") q.words = [{ w: "", r: "", m: "" }];
+    if (section === "grammar") q.grammar = [{ pattern: "", syntax: "", meaning: "", note: "" }];
+    if (section === "reading") q.evidence = "";
+    return q;
   }
 
   // ===================== Đọc data ChatGPT =====================
@@ -558,7 +586,45 @@
     var q = str(obj.q || obj.question);
     if (options.length < 2 || idx === -1) return null;
     if (!q && code !== "BUNSHOU") return null;
-    return { q: q, options: options, answer: idx, explain: str(obj.explain), full: str(obj.full) };
+    return {
+      q: q, options: options, answer: idx, explain: str(obj.explain), full: str(obj.full),
+      vi: str(obj.vi || obj.translation), wrong: parseWrong(obj.wrong), words: parseWords(obj.words || obj.word),
+      grammar: parseGrammar(obj.grammar), evidence: str(obj.evidence)
+    };
+  }
+
+  // Lời giải chi tiết: ChatGPT có thể trả object / chuỗi thay vì mảng → chuẩn hoá, bỏ mục rỗng
+  function asList(v) {
+    if (v == null || v === "") return [];
+    return Array.isArray(v) ? v : [v];
+  }
+  function parseWrong(v) {
+    if (v && typeof v === "object" && !Array.isArray(v)) {
+      return Object.keys(v).map(function (k) { return k + ": " + str(v[k]); }).slice(0, 6);
+    }
+    return asList(v).map(function (x) {
+      if (x && typeof x === "object") return str(x.option || x.answer || "") + ": " + str(x.reason || x.why || x.explain || "");
+      return str(x);
+    }).filter(function (x) { return x && x !== ":"; }).slice(0, 6);
+  }
+  function parseWords(v) {
+    return asList(v).map(function (x) {
+      if (typeof x === "string") return { w: str(x), r: "", m: "" };
+      if (!x || typeof x !== "object") return null;
+      return { w: str(x.w || x.word), r: str(x.r || x.reading), m: str(x.m || x.meaning) };
+    }).filter(function (x) { return x && (x.w || x.m); }).slice(0, 8);
+  }
+  function parseGrammar(v) {
+    return asList(v).map(function (x) {
+      if (typeof x === "string") return { pattern: str(x), syntax: "", meaning: "", note: "" };
+      if (!x || typeof x !== "object") return null;
+      return {
+        pattern: str(x.pattern || x.name || x.grammar),
+        syntax: str(x.syntax || x.structure || x.form),
+        meaning: str(x.meaning || x.m),
+        note: str(x.note || x.usage)
+      };
+    }).filter(function (x) { return x && (x.pattern || x.syntax); }).slice(0, 4);
   }
 
   function parseGroup(obj) {
@@ -778,7 +844,12 @@
               options: order.map(function (i) { return q.options[i]; }),
               answer: order.indexOf(q.answer),
               explain: q.explain,
-              full: q.full
+              full: q.full,
+              vi: q.vi,
+              wrong: q.wrong,
+              words: q.words,
+              grammar: q.grammar,
+              evidence: q.evidence
             };
           })
         };
@@ -1764,10 +1835,82 @@
       opts.appendChild(b);
     });
     box.appendChild(opts);
-    if (chosen == null) box.appendChild(el("div", "ex-explain ex-ng", "Chưa chọn đáp án."));
-    if (q.full) box.appendChild(rich("div", "ex-explain ex-full", "Câu đúng: " + q.full));
-    if (q.explain) box.appendChild(el("div", "ex-explain", q.explain));
+    box.appendChild(buildAnswerDetail(q, chosen));
     return box;
+  }
+
+  /** Lời giải chi tiết: đáp án đúng / đã chọn, dịch câu, mẫu ngữ pháp (cấu trúc), từ vựng, giải thích, vì sao đáp án khác sai */
+  function buildAnswerDetail(q, chosen) {
+    var d = el("div", "ex-detail");
+    var ans = el("div", "ex-detail-answer");
+    ans.appendChild(el("span", "ex-ok", "Đáp án: " + (q.answer + 1) + ". "));
+    ans.appendChild(rich("span", "ex-detail-jp", q.options[q.answer]));
+    if (chosen == null) ans.appendChild(el("span", "ex-ng", " · Chưa chọn đáp án"));
+    else if (chosen !== q.answer) {
+      ans.appendChild(el("span", "ex-ng", " · Bạn chọn: " + (chosen + 1) + ". "));
+      ans.appendChild(rich("span", "ex-detail-jp", q.options[chosen]));
+    }
+    d.appendChild(ans);
+
+    if (q.full) d.appendChild(detailRow("Câu đúng", rich("span", "ex-detail-jp", q.full)));
+    if (q.vi) d.appendChild(detailRow("Dịch", el("span", "", q.vi)));
+
+    (q.grammar || []).forEach(function (g) {
+      var card = el("div", "ex-gram");
+      if (g.pattern) card.appendChild(rich("div", "ex-gram-pattern", g.pattern));
+      if (g.syntax) {
+        var syn = el("div", "ex-gram-line");
+        syn.appendChild(el("span", "ex-gram-label", "Cấu trúc"));
+        syn.appendChild(el("span", "ex-gram-syntax", g.syntax));
+        card.appendChild(syn);
+      }
+      if (g.meaning) {
+        var mean = el("div", "ex-gram-line");
+        mean.appendChild(el("span", "ex-gram-label", "Nghĩa"));
+        mean.appendChild(el("span", "", g.meaning));
+        card.appendChild(mean);
+      }
+      if (g.note) {
+        var note = el("div", "ex-gram-line");
+        note.appendChild(el("span", "ex-gram-label", "Lưu ý"));
+        note.appendChild(el("span", "", g.note));
+        card.appendChild(note);
+      }
+      d.appendChild(card);
+    });
+
+    if (q.words && q.words.length) {
+      var words = el("div", "ex-words");
+      q.words.forEach(function (w) {
+        var row = el("div", "ex-word");
+        row.appendChild(el("span", "ex-word-w", w.w));
+        if (w.r && w.r !== w.w) row.appendChild(el("span", "ex-word-r", "【" + w.r + "】"));
+        if (w.m) row.appendChild(el("span", "ex-word-m", w.m));
+        words.appendChild(row);
+      });
+      d.appendChild(words);
+    }
+
+    if (q.evidence) d.appendChild(detailRow("Căn cứ", rich("span", "ex-detail-jp", "「" + q.evidence.replace(/^「|」$/g, "") + "」")));
+    if (q.explain) d.appendChild(detailRow("Giải thích", el("span", "", q.explain)));
+    if (q.wrong && q.wrong.length) {
+      var wrongBox = el("div", "ex-detail-row");
+      wrongBox.appendChild(el("span", "ex-detail-label", "Đáp án khác"));
+      var ul = el("ul", "ex-wrong-list");
+      q.wrong.forEach(function (w) { ul.appendChild(rich("li", "", w)); });
+      wrongBox.appendChild(ul);
+      d.appendChild(wrongBox);
+    }
+    return d;
+  }
+
+  function detailRow(label, valueNode) {
+    var row = el("div", "ex-detail-row");
+    row.appendChild(el("span", "ex-detail-label", label));
+    var val = el("div", "ex-detail-value");
+    val.appendChild(valueNode);
+    row.appendChild(val);
+    return row;
   }
 
   // ===================== Khởi tạo =====================
