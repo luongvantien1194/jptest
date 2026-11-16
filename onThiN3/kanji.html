@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Ôn Kanji N3</title>
+  <link rel="icon" type="image/png" href="../images/icon.png">
+  <meta name="theme-color" content="#c0392b" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="common.css?v=1">
+  <style>
+    .kchars { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
+
+    .kc {
+      font-family: var(--font-jp);
+      font-size: 26px;
+      line-height: 1;
+      width: 42px;
+      height: 42px;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 9px;
+      border: 1px solid var(--border);
+      background: var(--bg-soft);
+      position: relative;
+    }
+
+    .kc--n3 { border-color: var(--primary); color: var(--primary-dark); background: var(--primary-soft); }
+    .kc--n45 { color: var(--blue); background: var(--blue-soft); border-color: transparent; }
+    .kc--nx { color: var(--violet); background: var(--violet-soft); border-color: transparent; }
+    .kc--known::after {
+      content: "✓";
+      position: absolute;
+      right: -4px;
+      top: -6px;
+      font-size: 11px;
+      font-family: system-ui, sans-serif;
+      background: var(--green);
+      color: #fff;
+      border-radius: 50%;
+      width: 15px;
+      height: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .kitem {
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      gap: 4px 12px;
+      padding: 12px 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .kitem:last-child { border-bottom: none; }
+
+    .kitem__char {
+      font-family: var(--font-jp);
+      font-size: 52px;
+      line-height: 1;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .kitem__lv { text-align: center; margin-top: 6px; }
+
+    .kitem__top {
+      display: flex;
+      align-items: baseline;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .kitem__hv { font-weight: 800; font-size: 16px; letter-spacing: 0.02em; }
+    .kitem__mean { font-size: 15px; }
+    .kitem__read { font-size: 14px; margin-top: 3px; font-family: var(--font-jp); }
+    .kitem__read b { font-family: system-ui, sans-serif; font-size: 11px; color: var(--text-muted); font-weight: 600; margin-right: 3px; }
+    .kitem__memo { font-size: 13px; color: var(--text-muted); margin-top: 4px; line-height: 1.5; }
+    .kitem__right { margin-left: auto; }
+
+    .vocab { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+
+    .vw {
+      font-size: 13px;
+      background: var(--bg-soft);
+      border-radius: 8px;
+      padding: 4px 8px;
+      line-height: 1.45;
+    }
+
+    .vw__w { font-family: var(--font-jp); font-size: 16px; font-weight: 600; }
+    .vw__r { font-family: var(--font-jp); color: var(--text-muted); margin-left: 3px; }
+    .vw__lv { font-size: 10px; font-weight: 700; margin-left: 3px; color: var(--blue); }
+    .vw__lv--n3 { color: var(--primary); }
+
+    .w-n3 { color: var(--primary); cursor: pointer; }
+    .w-n45 { color: var(--blue); cursor: pointer; }
+    .w-nx { color: var(--violet); cursor: pointer; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
+      gap: 8px;
+    }
+
+    .tile {
+      border: 1px solid var(--border);
+      background: var(--bg-card);
+      border-radius: 10px;
+      padding: 8px 4px 6px;
+      text-align: center;
+      cursor: pointer;
+      color: var(--text);
+    }
+
+    .tile__c { font-family: var(--font-jp); font-size: 32px; line-height: 1.1; }
+    .tile__hv { font-size: 11px; color: var(--text-muted); margin-top: 3px; font-weight: 600; }
+    .tile--known { background: var(--green-soft); border-color: transparent; }
+
+    .group-links { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 6px; }
+    .legend { font-size: 12px; color: var(--text-muted); display: flex; gap: 12px; flex-wrap: wrap; margin-bottom: 10px; }
+    .legend span::before { content: "■ "; }
+    .legend .l3::before { color: var(--primary); }
+    .legend .l45::before { color: var(--blue); }
+    .legend .lx::before { color: var(--violet); }
+    .hv-table td:first-child { font-family: system-ui, sans-serif; }
+
+    @media (max-width: 480px) {
+      .kitem { grid-template-columns: 52px 1fr; }
+      .kitem__char { font-size: 42px; }
+      .kc { width: 38px; height: 38px; font-size: 23px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="top">
+    <div class="top__row">
+      <a class="top__back" href="../index.html">← App</a>
+      <h1 class="top__title">漢字 Ôn Kanji N3 <small id="sub"></small></h1>
+      <a class="top__back" href="grammar.html">Ngữ pháp →</a>
+    </div>
+    <div class="progress">
+      <div class="progress__bar"><div class="progress__fill" id="prog-fill"></div></div>
+      <span id="prog-text"></span>
+    </div>
+    <nav class="views" id="views">
+      <button type="button" class="view-btn view-btn--active" data-view="groups">📚 Theo cụm</button>
+      <button type="button" class="view-btn" data-view="all">🈶 328 chữ N3</button>
+      <button type="button" class="view-btn" data-view="tips">💡 Mẹo thi</button>
+      <button type="button" class="view-btn" id="quiz-filtered-btn">🎯 Kiểm tra</button>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <!-- Theo cụm -->
+    <section id="view-groups">
+      <div class="toolbar">
+        <input type="search" class="search" id="g-search" placeholder="Tìm kanji, Hán Việt, nghĩa, âm đọc, từ vựng…">
+      </div>
+      <div class="chips" id="type-chips"></div>
+      <div class="toolbar">
+        <label class="toggle"><input type="checkbox" id="opt-hide"> Che nghĩa & âm (tự kiểm tra)</label>
+        <label class="toggle"><input type="checkbox" id="opt-unknown"> Ẩn cụm đã thuộc hết</label>
+        <button type="button" class="btn btn--ghost btn--sm" id="expand-all">Mở tất cả</button>
+        <button type="button" class="btn btn--ghost btn--sm" id="collapse-all">Thu gọn</button>
+      </div>
+      <div class="legend"><span class="l3">Kanji N3</span><span class="l45">Đã học N4/N5</span><span class="lx">Kanji bổ sung</span><span>✓ = đã thuộc</span></div>
+      <div id="group-list"></div>
+    </section>
+
+    <!-- Tất cả chữ -->
+    <section id="view-all" hidden>
+      <div class="toolbar">
+        <input type="search" class="search" id="a-search" placeholder="Tìm kanji / Hán Việt / nghĩa…">
+      </div>
+      <div class="chips" id="all-chips"></div>
+      <div class="grid" id="all-grid"></div>
+    </section>
+
+    <!-- Mẹo thi -->
+    <section id="view-tips" class="guide" hidden></section>
+  </main>
+
+  <!-- Modal quiz -->
+  <div class="modal" id="quiz-modal">
+    <div class="modal__backdrop"></div>
+    <div class="modal__dialog">
+      <button type="button" class="modal__close" aria-label="Đóng">×</button>
+      <div class="modal__body"></div>
+    </div>
+  </div>
+
+  <!-- Modal chi tiết kanji -->
+  <div class="modal" id="detail-modal">
+    <div class="modal__backdrop"></div>
+    <div class="modal__dialog">
+      <button type="button" class="modal__close" aria-label="Đóng">×</button>
+      <div class="modal__body"></div>
+    </div>
+  </div>
+
+  <script src="../data/kanjiData.js?v=1080"></script>
+  <script src="../data/kanjiData_1.js?v=1080"></script>
+  <script src="../data/kanjiExtra/extra.js?v=1080"></script>
+  <script src="../data/vocabData.js?v=1080"></script>
+  <script src="../data/vocabData_1.js?v=1080"></script>
+  <script src="../data/vocabExtra/extra.js?v=1080"></script>
+  <script src="common.js?v=1"></script>
+  <script src="kanjiGroups.js?v=1"></script>
+  <script src="kanji.js?v=1"></script>
+</body>
+
+</html>
