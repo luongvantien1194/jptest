@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Ôn Ngữ pháp N3</title>
+  <link rel="icon" type="image/png" href="../images/icon.png">
+  <meta name="theme-color" content="#c0392b" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="common.css?v=1">
+  <style>
+    .gitem {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 11px 12px;
+      margin-bottom: 10px;
+      background: var(--bg-card);
+    }
+
+    .gitem--base { background: var(--bg-soft); }
+
+    .gitem__top { display: flex; align-items: flex-start; gap: 8px; flex-wrap: wrap; }
+    .gitem__s { font-family: var(--font-jp); font-size: 18px; font-weight: 700; color: var(--primary-dark); }
+    .gitem--base .gitem__s { color: var(--blue); font-size: 16px; }
+    .gitem__m { font-size: 15px; font-weight: 600; margin-top: 3px; }
+    .gitem__right { margin-left: auto; display: flex; gap: 6px; align-items: center; }
+    .gitem__exp { font-size: 14px; line-height: 1.6; margin-top: 6px; }
+    .gitem__use { font-size: 13.5px; line-height: 1.6; margin-top: 6px; color: var(--text-muted); }
+    .gitem__use b { color: var(--text); }
+
+    .ex {
+      font-family: var(--font-jp);
+      font-size: 16px;
+      line-height: 2;
+      margin-top: 6px;
+      padding-left: 10px;
+      border-left: 3px solid var(--border);
+    }
+
+    .ex__vi { font-family: system-ui, sans-serif; font-size: 13.5px; color: var(--text-muted); line-height: 1.5; }
+
+    .row-list { margin: 0; padding: 0; list-style: none; }
+
+    .row-list li {
+      display: flex;
+      gap: 10px;
+      align-items: baseline;
+      padding: 9px 4px;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+    }
+
+    .row-list .no { width: 30px; color: var(--text-muted); font-size: 12px; flex: none; }
+    .row-list .s { font-family: var(--font-jp); font-weight: 700; min-width: 0; }
+    .row-list .m { color: var(--text-muted); font-size: 14px; flex: 1; min-width: 0; }
+    .row-list .ok { color: var(--green); font-weight: 700; }
+
+    details.base-box > summary {
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--blue);
+      margin: 12px 0 8px;
+      list-style: none;
+    }
+
+    details.base-box > summary::before { content: "▸ "; }
+    details.base-box[open] > summary::before { content: "▾ "; }
+    .blank { display: inline-block; min-width: 4em; border-bottom: 2px solid var(--primary); color: var(--primary); text-align: center; }
+  </style>
+</head>
+
+<body>
+  <header class="top">
+    <div class="top__row">
+      <a class="top__back" href="../index.html">← App</a>
+      <h1 class="top__title">文法 Ôn Ngữ pháp N3 <small id="sub"></small></h1>
+      <a class="top__back" href="kanji.html">Kanji →</a>
+    </div>
+    <div class="progress">
+      <div class="progress__bar"><div class="progress__fill" id="prog-fill"></div></div>
+      <span id="prog-text"></span>
+    </div>
+    <nav class="views" id="views">
+      <button type="button" class="view-btn view-btn--active" data-view="groups">📚 Theo cụm</button>
+      <button type="button" class="view-btn" data-view="list">📋 110 mẫu N3</button>
+      <button type="button" class="view-btn" data-view="tips">💡 Mẹo thi</button>
+      <button type="button" class="view-btn" id="quiz-all-btn">🎯 Kiểm tra</button>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <section id="view-groups">
+      <div class="toolbar">
+        <input type="search" class="search" id="g-search" placeholder="Tìm mẫu ngữ pháp, nghĩa, ví dụ…">
+      </div>
+      <div class="toolbar">
+        <label class="toggle"><input type="checkbox" id="opt-hide"> Che nghĩa (tự kiểm tra)</label>
+        <label class="toggle"><input type="checkbox" id="opt-furi" checked> Furigana</label>
+        <label class="toggle"><input type="checkbox" id="opt-unknown"> Ẩn cụm đã thuộc hết</label>
+        <button type="button" class="btn btn--ghost btn--sm" id="expand-all">Mở tất cả</button>
+        <button type="button" class="btn btn--ghost btn--sm" id="collapse-all">Thu gọn</button>
+      </div>
+      <div id="group-list"></div>
+    </section>
+
+    <section id="view-list" hidden>
+      <div class="toolbar">
+        <input type="search" class="search" id="l-search" placeholder="Tìm trong 110 mẫu…">
+      </div>
+      <div class="chips" id="list-chips"></div>
+      <div class="card"><ul class="row-list" id="list-box"></ul></div>
+    </section>
+
+    <section id="view-tips" class="guide" hidden></section>
+  </main>
+
+  <div class="modal" id="quiz-modal">
+    <div class="modal__backdrop"></div>
+    <div class="modal__dialog">
+      <button type="button" class="modal__close" aria-label="Đóng">×</button>
+      <div class="modal__body"></div>
+    </div>
+  </div>
+
+  <script src="../data/grammarData.js?v=1080"></script>
+  <script src="../data/grammarData_1.js?v=1080"></script>
+  <script src="common.js?v=1"></script>
+  <script src="grammarGroups.js?v=1"></script>
+  <script src="grammar.js?v=1"></script>
+</body>
+
+</html>
