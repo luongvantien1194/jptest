@@ -534,3 +534,52 @@ ruby rt { font-size: 0.55em; color: var(--text-muted); }
 
 /* Trong modal (quiz, chi tiết) không che nội dung */
 .modal .hideable { filter: none !important; }
+
+/* Toast */
+.toast {
+  position: fixed;
+  left: 50%;
+  bottom: max(76px, calc(env(safe-area-inset-bottom) + 60px));
+  transform: translate(-50%, 20px);
+  z-index: 120;
+  background: var(--text);
+  color: var(--bg);
+  padding: 9px 16px;
+  border-radius: 999px;
+  font-size: 14px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s, transform 0.2s;
+  max-width: calc(100% - 32px);
+  text-align: center;
+}
+
+.toast--show { opacity: 1; transform: translate(-50%, 0); }
+
+/* Nhấp nháy khi nhảy tới */
+@keyframes n3flash {
+  0%, 60% { box-shadow: 0 0 0 3px var(--amber); background-color: var(--amber-soft); }
+  100% { box-shadow: 0 0 0 0 transparent; }
+}
+
+.flash { animation: n3flash 1.6s ease-out; border-radius: 10px; }
+
+/* Nút nổi "tới chữ chưa thuộc" */
+.fab-next {
+  position: fixed;
+  right: 16px;
+  bottom: calc(max(16px, env(safe-area-inset-bottom)) + 54px);
+  z-index: 40;
+  border: none;
+  border-radius: 999px;
+  padding: 10px 14px;
+  background: var(--primary);
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+  box-shadow: var(--shadow);
+  cursor: pointer;
+}
+
+html.theme-dark .fab-next { color: #1c1917; }
+.fab-next[hidden] { display: none; }
