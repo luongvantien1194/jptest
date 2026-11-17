@@ -21,6 +21,7 @@
   var known = new N3.KnownSet("n3review_grammar_known");
   var ui = N3.load("n3review_grammar_ui", { hide: false, furi: true, unknown: false, listFilter: "all" });
   var openSet = new Set();
+  var baseOpenSet = new Set(); // cụm đang mở khung "Đã học ở N4/N5"
 
   function md(s) { return esc(s).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>"); }
   function norm(s) { return String(s || "").toLowerCase().normalize("NFC"); }
@@ -49,9 +50,9 @@
     }).join("");
   }
 
-  function n3Item(stt) {
+  function n3Item(stt, gid) {
     var g = N3G[stt], sp = splitExplain(g.Explanation), isK = known.has(stt);
-    var html = '<div class="gitem" id="g3-' + stt + '"><div class="gitem__top"><div style="min-width:0;flex:1">' +
+    var html = '<div class="gitem" id="g3-' + (gid ? gid + "-" : "") + stt + '"' + (gid ? ' data-anchor="g:' + gid + ":" + stt + '"' : "") + '><div class="gitem__top"><div style="min-width:0;flex:1">' +
       '<div class="gitem__s">' + esc(g.Structure) + ' <span class="badge badge--n3">N3 #' + stt + "</span></div>" +
       '<div class="gitem__m hideable">' + esc(g.Meaning) + "</div></div>" +
       '<div class="gitem__right"><button type="button" class="known-btn' + (isK ? " known-btn--on" : "") + '" data-known="' + stt + '">' +
@@ -62,9 +63,10 @@
     return html + "</div>";
   }
 
-  function baseItem(stt) {
+  function baseItem(stt, gid) {
     var g = BASEG[stt];
-    var html = '<div class="gitem gitem--base"><div class="gitem__s">' + esc(g.Structure) +
+    var html = '<div class="gitem gitem--base"' + (gid ? ' data-anchor="b:' + gid + ":" + stt + '"' : "") + ">";
+    html += '<div class="gitem__s">' + esc(g.Structure) +
       ' <span class="badge badge--n45">Minna bài ' + esc(g.Lesson) + "</span></div>" +
       '<div class="gitem__m hideable">' + esc(g.Meaning) + "</div>";
     if (g.Explanation) html += '<div class="gitem__exp hideable">' + esc(g.Explanation) + "</div>";
@@ -104,10 +106,10 @@
     if (g.tips.length) {
       html += '<div class="trap"><b>⚠️ Bẫy đề & mẹo chọn đáp án</b><ul>' + g.tips.map(function (t) { return "<li>" + md(t) + "</li>"; }).join("") + "</ul></div>";
     }
-    html += '<div class="section-label">Mẫu N3 trong cụm</div>' + g.n3.map(n3Item).join("");
+    html += '<div class="section-label">Mẫu N3 trong cụm</div>' + g.n3.map(function (st) { return n3Item(st, g.id); }).join("");
     if (g.base.length || g.extra.length) {
-      html += '<details class="base-box"><summary>Đã học ở N4/N5 – cùng chủ đề, dễ nhầm (' + (g.base.length + g.extra.length) + ")</summary>" +
-        g.extra.map(extraItem).join("") + g.base.map(baseItem).join("") + "</details>";
+      html += '<details class="base-box" data-gid="' + g.id + '"' + (baseOpenSet.has(g.id) ? " open" : "") + '><summary>Đã học ở N4/N5 – cùng chủ đề, dễ nhầm (' + (g.base.length + g.extra.length) + ")</summary>" +
+        g.extra.map(extraItem).join("") + g.base.map(function (st) { return baseItem(st, g.id); }).join("") + "</details>";
     }
     html += '<div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap"><button type="button" class="btn btn--sm" data-quiz="' + g.id + '">🎯 Kiểm tra cụm này</button>' +
       '<button type="button" class="btn btn--ghost btn--sm" data-known-all="' + g.id + '">✓ Đánh dấu thuộc cả cụm</button></div>';
@@ -138,7 +140,7 @@
     if (!list.length) { box.innerHTML = '<div class="empty">Không có cụm nào khớp.</div>'; return; }
     box.innerHTML = list.map(function (g) {
       var open = openSet.has(g.id);
-      return '<article class="card' + (open ? "" : " card--collapsed") + '" id="card-' + g.id + '">' + groupHead(g) +
+      return '<article class="card' + (open ? "" : " card--collapsed") + '" id="card-' + g.id + '" data-anchor="c:' + g.id + '">' + groupHead(g) +
         '<div class="card__body">' + (open ? groupBody(g) : "") + "</div></article>";
     }).join("");
   }
@@ -170,6 +172,7 @@
       card.querySelector(".card__body").innerHTML = groupBody(g);
       card.classList.remove("card--collapsed");
     }
+    if (mem) mem.save();
   }
 
   function updateProgress() {
@@ -197,7 +200,7 @@
     });
     document.getElementById("list-box").innerHTML = items.length ? items.map(function (s) {
       var g = N3G[s], gs = STT_GROUPS[s] || [];
-      return '<li data-goto="' + (gs[0] ? gs[0].id : "") + '" data-stt="' + s + '"><span class="no">' + s + '</span><span class="s">' + esc(g.Structure) +
+      return '<li data-goto="' + (gs[0] ? gs[0].id : "") + '" data-stt="' + s + '" data-anchor="l:' + s + '"><span class="no">' + s + '</span><span class="s">' + esc(g.Structure) +
         '</span><span class="m">' + esc(g.Meaning) + (gs[0] ? " · <i>Cụm " + gs[0].no + "</i>" : "") + "</span>" + (known.has(s) ? '<span class="ok">✓</span>' : "") + "</li>";
     }).join("") : '<li class="empty">Không có mẫu nào.</li>';
   }
@@ -210,8 +213,8 @@
     document.getElementById("opt-unknown").checked = false;
     openSet.add(id);
     renderGroups();
-    var el = (stt && document.getElementById("g3-" + stt)) || document.getElementById("card-" + id);
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "center" });
+    var el = (stt && document.getElementById("g3-" + id + "-" + stt)) || document.getElementById("card-" + id);
+    if (el) { N3.scrollToEl(el); N3.flash(el); }
   }
 
   // ---------- Quiz ----------
@@ -379,13 +382,17 @@
   }
 
   // ---------- Điều hướng & sự kiện ----------
+  var currentView = "groups";
   function switchView(v) {
+    if (["groups", "list", "tips"].indexOf(v) < 0) v = "groups";
+    currentView = v;
     ["groups", "list", "tips"].forEach(function (x) { document.getElementById("view-" + x).hidden = x !== v; });
     document.querySelectorAll(".view-btn[data-view]").forEach(function (b) {
       b.classList.toggle("view-btn--active", b.getAttribute("data-view") === v);
     });
     if (v === "list") renderList();
     if (v === "tips" && !document.getElementById("view-tips").innerHTML) renderTips();
+    if (mem && !mem.lock) mem.save();
   }
 
   function saveUi() { N3.save("n3review_grammar_ui", ui); }
@@ -422,8 +429,18 @@
   document.getElementById("expand-all").addEventListener("click", function () {
     filteredGroups().forEach(function (g) { openSet.add(g.id); });
     renderGroups();
+    mem.save();
   });
-  document.getElementById("collapse-all").addEventListener("click", function () { openSet.clear(); renderGroups(); });
+  document.getElementById("collapse-all").addEventListener("click", function () { openSet.clear(); renderGroups(); mem.save(); });
+
+  // Ghi nhớ khung "Đã học ở N4/N5" đang mở (sự kiện toggle không nổi bọt → bắt ở pha capture)
+  document.addEventListener("toggle", function (e) {
+    var d = e.target;
+    if (!d.matches || !d.matches("details.base-box")) return;
+    var gid = d.getAttribute("data-gid");
+    if (d.open) baseOpenSet.add(gid); else baseOpenSet.delete(gid);
+    if (mem && !mem.lock) mem.save();
+  }, true);
 
   document.getElementById("list-chips").addEventListener("click", function (e) {
     var b = e.target.closest("[data-lf]");
@@ -465,7 +482,17 @@
 
   document.addEventListener("keydown", function (e) { quiz.key(e); });
 
+  // Khởi tạo: khôi phục tab, cụm đang mở và vị trí đã đọc
+  var mem = new N3.ScrollMemory("n3review_grammar_pos", function () {
+    return { view: currentView, open: Array.from(openSet), base: Array.from(baseOpenSet) };
+  });
+  var saved = mem.saved || {};
+  var validId = function (id) { return GROUPS.some(function (g) { return g.id === id; }); };
+  (saved.open || []).filter(validId).forEach(function (id) { openSet.add(id); });
+  (saved.base || []).filter(validId).forEach(function (id) { baseOpenSet.add(id); });
   renderGroups();
   updateProgress();
+  switchView(saved.view || "groups");
   N3.addToTop();
+  mem.restore();
 })();
