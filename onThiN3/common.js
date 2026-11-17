@@ -206,6 +206,107 @@
     document.body.appendChild(b);
   }
 
+  // Thông báo ngắn
+  var toastTimer;
+  function toast(msg) {
+    var el = document.getElementById("n3-toast");
+    if (!el) {
+      el = document.createElement("div");
+      el.id = "n3-toast";
+      el.className = "toast";
+      document.body.appendChild(el);
+    }
+    el.textContent = msg;
+    el.classList.add("toast--show");
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(function () { el.classList.remove("toast--show"); }, 2200);
+  }
+
+  // Chiều cao header dính (để cuộn không bị header che)
+  function headerLine() {
+    var h = document.querySelector(".top");
+    return h ? h.getBoundingClientRect().bottom : 0;
+  }
+
+  function scrollToEl(el, gap) {
+    var y = el.getBoundingClientRect().top + window.scrollY - headerLine() - (gap == null ? 8 : gap);
+    window.scrollTo({ top: Math.max(0, y), behavior: "smooth" });
+  }
+
+  function flash(el) {
+    el.classList.remove("flash");
+    void el.offsetWidth;
+    el.classList.add("flash");
+  }
+
+  // ---------- Ghi nhớ vị trí đọc ----------
+  // Lưu "điểm neo": phần tử [data-anchor] sâu nhất đang nằm ở mép dưới header + độ lệch,
+  // kèm dữ liệu trang (tab, các cụm đang mở) do extra() trả về.
+  // Không lưu scrollY thô vì chiều cao trang đổi khi mở/đóng cụm hoặc khi font tải xong.
+  function ScrollMemory(key, extra) {
+    var self = this;
+    this.key = key;
+    this.extra = extra || function () { return {}; };
+    this.saved = load(key, null);
+    this.lock = true; // khoá lưu cho tới khi restore() xong, tránh ghi đè vị trí cũ lúc trang đang dựng
+    var t;
+    try { history.scrollRestoration = "manual"; } catch (e) { }
+    window.addEventListener("scroll", function () {
+      if (self.lock) return;
+      clearTimeout(t);
+      t = setTimeout(function () { self.save(); }, 250);
+    }, { passive: true });
+    window.addEventListener("pagehide", function () { if (!self.lock) self.save(); });
+    document.addEventListener("visibilitychange", function () { if (document.hidden && !self.lock) self.save(); });
+  }
+
+  ScrollMemory.prototype.anchor = function () {
+    var line = headerLine() + 1, best = null;
+    var list = document.querySelectorAll("[data-anchor]");
+    for (var i = 0; i < list.length; i++) {
+      var el = list[i];
+      if (!el.offsetParent || el.closest(".modal")) continue;
+      var r = el.getBoundingClientRect();
+      if (r.top <= line && r.bottom > line) best = { el: el, top: r.top };
+    }
+    return best;
+  };
+
+  ScrollMemory.prototype.save = function () {
+    var a = this.anchor(), st = this.extra() || {};
+    st.y = window.scrollY;
+    st.a = a ? { id: a.el.getAttribute("data-anchor"), off: headerLine() - a.top } : null;
+    save(this.key, st);
+  };
+
+  // Gọi sau khi trang đã render xong theo trạng thái đã lưu
+  ScrollMemory.prototype.restore = function () {
+    var self = this, s = this.saved;
+    if (!s || (!s.a && !s.y)) { this.lock = false; return; }
+    var userMoved = false;
+    function mark() { userMoved = true; }
+    ["wheel", "touchstart", "keydown", "mousedown"].forEach(function (ev) {
+      window.addEventListener(ev, mark, { once: true, passive: true });
+    });
+    function go() {
+      if (userMoved) return;
+      var el = s.a ? document.querySelector('[data-anchor="' + String(s.a.id).replace(/["\\]/g, "\\$&") + '"]') : null;
+      var y = el ? el.getBoundingClientRect().top + window.scrollY - headerLine() + (s.a.off || 0) : (s.y || 0);
+      window.scrollTo(0, Math.max(0, y));
+    }
+    this.lock = true;
+    go();
+    requestAnimationFrame(go);
+    var unlock = function () { go(); setTimeout(function () { self.lock = false; self.save(); }, 150); };
+    if (document.fonts && document.fonts.ready) {
+      var done = false;
+      document.fonts.ready.then(function () { if (!done) { done = true; unlock(); } });
+      setTimeout(function () { if (!done) { done = true; unlock(); } }, 2500);
+    } else {
+      setTimeout(unlock, 300);
+    }
+  };
+
   // Click vào phần bị che (chế độ ôn) để hiện
   document.addEventListener("click", function (e) {
     var h = e.target.closest(".hide-mode .hideable");
@@ -214,6 +315,7 @@
 
   root.N3 = {
     esc: esc, ruby: ruby, plain: plain, shuffle: shuffle, sample: sample,
-    load: load, save: save, KnownSet: KnownSet, Quiz: Quiz, isKanji: isKanji, addToTop: addToTop
+    load: load, save: save, KnownSet: KnownSet, Quiz: Quiz, isKanji: isKanji, addToTop: addToTop,
+    toast: toast, headerLine: headerLine, scrollToEl: scrollToEl, flash: flash, ScrollMemory: ScrollMemory
   };
 })(window);
