@@ -136,12 +136,12 @@
       "</span>" + lvTxt + ' <span class="hideable">' + esc(x.m) + "</span></span>";
   }
 
-  function kanjiItem(ch) {
+  function kanjiItem(ch, gid) {
     var k = KMAP[ch];
     if (!k) return "";
     var d = k.d, isKnown = known.has(ch);
     var ws = wordsOf(ch, k.lv === "n3" ? 6 : 3);
-    var html = '<div class="kitem">';
+    var html = '<div class="kitem"' + (gid ? ' data-anchor="k:' + gid + ":" + esc(ch) + '"' : "") + ">";
     html += '<div><div class="kitem__char" data-k="' + esc(ch) + '">' + esc(ch) + '</div><div class="kitem__lv">' + lvBadge(k.lv) + "</div></div>";
     html += "<div>";
     html += '<div class="kitem__top"><span class="kitem__hv hideable">' + esc(d.hanviet) + '</span><span class="kitem__mean hideable">' + esc(d.core_meaning) + "</span>";
@@ -184,7 +184,7 @@
 
   function groupBody(g) {
     var html = '<div class="tip">' + (g.tip.length > 1 ? "<ul>" + g.tip.map(function (t) { return "<li>" + md(t) + "</li>"; }).join("") + "</ul>" : md(g.tip[0] || "")) + "</div>";
-    html += g.chars.map(kanjiItem).join("");
+    html += g.chars.map(function (c) { return kanjiItem(c, g.id); }).join("");
     html += '<div style="margin-top:10px;display:flex;gap:8px;flex-wrap:wrap"><button type="button" class="btn btn--sm" data-quiz="' + g.id + '">🎯 Kiểm tra cụm này</button>' +
       '<button type="button" class="btn btn--ghost btn--sm" data-known-all="' + g.id + '">✓ Đánh dấu thuộc cả cụm</button></div>';
     return html;
@@ -227,12 +227,13 @@
   }
 
   function renderGroups() {
+    if (typeof updateNextBtn === "function") setTimeout(updateNextBtn, 0);
     var list = filteredGroups();
     var box = document.getElementById("group-list");
     if (!list.length) { box.innerHTML = '<div class="empty">Không có cụm nào khớp.</div>'; return; }
     box.innerHTML = list.map(function (g) {
       var open = openSet.has(g.id);
-      return '<article class="card' + (open ? "" : " card--collapsed") + '" id="card-' + g.id + '">' + groupHead(g) +
+      return '<article class="card' + (open ? "" : " card--collapsed") + '" id="card-' + g.id + '" data-anchor="c:' + g.id + '">' + groupHead(g) +
         '<div class="card__body">' + (open ? groupBody(g) : "") + "</div></article>";
     }).join("");
   }
@@ -258,6 +259,7 @@
       card.querySelector(".card__body").innerHTML = groupBody(g);
       card.classList.remove("card--collapsed");
     }
+    if (mem) mem.save();
   }
 
   // ---------- Tất cả chữ N3 ----------
@@ -274,8 +276,9 @@
       if (!q) return true;
       return k.kanji === q || [k.hanviet, k.core_meaning, k.on_reading, k.kun_reading].some(function (x) { return norm(x).indexOf(q) >= 0; });
     });
+    setTimeout(updateNextBtn, 0);
     document.getElementById("all-grid").innerHTML = list.length ? list.map(function (k) {
-      return '<button type="button" class="tile' + (known.has(k.kanji) ? " tile--known" : "") + '" data-k="' + esc(k.kanji) + '"><div class="tile__c">' +
+      return '<button type="button" class="tile' + (known.has(k.kanji) ? " tile--known" : "") + '" data-k="' + esc(k.kanji) + '" data-anchor="t:' + esc(k.kanji) + '"><div class="tile__c">' +
         esc(k.kanji) + '</div><div class="tile__hv">' + esc(k.hanviet) + "</div></button>";
     }).join("") : '<div class="empty" style="grid-column:1/-1">Không có chữ nào.</div>';
   }
@@ -317,7 +320,7 @@
     renderChips();
     renderGroups();
     var el = document.getElementById("card-" + id);
-    if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+    if (el) N3.scrollToEl(el);
   }
 
   // ---------- Quiz ----------
@@ -485,19 +488,88 @@
   }
 
   // ---------- Điều hướng ----------
+  var currentView = "groups";
   function switchView(v) {
+    if (["groups", "all", "tips"].indexOf(v) < 0) v = "groups";
+    currentView = v;
     ["groups", "all", "tips"].forEach(function (x) { document.getElementById("view-" + x).hidden = x !== v; });
     document.querySelectorAll(".view-btn[data-view]").forEach(function (b) {
       b.classList.toggle("view-btn--active", b.getAttribute("data-view") === v);
     });
     if (v === "all") renderAll();
     if (v === "tips" && !document.getElementById("view-tips").innerHTML) renderTips();
+    updateNextBtn();
+    if (mem && !mem.lock) mem.save();
   }
+
+  // ---------- Nút "tới chữ chưa thuộc" ----------
+  var nextBtn = document.createElement("button");
+  nextBtn.type = "button";
+  nextBtn.className = "fab-next";
+  nextBtn.title = "Cuộn tới kanji N3 chưa thuộc tiếp theo";
+  document.body.appendChild(nextBtn);
+
+  // Danh sách chữ N3 chưa thuộc theo thứ tự hiển thị (mỗi chữ lấy lần xuất hiện đầu tiên)
+  function unknownTargets() {
+    var out = [], seen = {};
+    if (currentView === "all") {
+      document.querySelectorAll("#all-grid .tile:not(.tile--known)").forEach(function (el) {
+        out.push({ el: el });
+      });
+      return out;
+    }
+    filteredGroups().forEach(function (g) {
+      g.chars.forEach(function (c, idx) {
+        if (lvOf(c) !== "n3" || known.has(c) || seen[c]) return;
+        seen[c] = 1;
+        out.push({ gid: g.id, ch: c, idx: idx });
+      });
+    });
+    return out;
+  }
+
+  function updateNextBtn() {
+    if (currentView === "tips") { nextBtn.hidden = true; return; }
+    var n = unknownTargets().length;
+    nextBtn.hidden = false;
+    nextBtn.textContent = n ? "↓ Chưa thuộc (" + n + ")" : "✓ Đã thuộc hết";
+  }
+
+  function targetEl(t) {
+    if (t.el) return t.el;
+    return document.querySelector('[data-anchor="k:' + t.gid + ":" + t.ch + '"]') || document.getElementById("card-" + t.gid);
+  }
+
+  function goNextUnknown() {
+    var targets = unknownTargets();
+    if (!targets.length) { N3.toast("Đã thuộc hết các chữ N3 trong danh sách đang lọc 🎉"); return; }
+    var line = N3.headerLine() + 14;
+    var pick = null;
+    for (var i = 0; i < targets.length; i++) {
+      var el = targetEl(targets[i]);
+      if (!el) continue;
+      // Chữ trong cụm đang đóng: lấy vị trí đầu cụm (+idx để giữ thứ tự trong cụm)
+      var top = el.getBoundingClientRect().top + (el.classList.contains("card") ? (targets[i].idx || 0) * 0.01 : 0);
+      if (top > line) { pick = targets[i]; break; }
+    }
+    if (!pick) {
+      pick = targets[0];
+      N3.toast("Đã hết chữ chưa thuộc phía dưới – quay lại từ đầu");
+    }
+    if (pick.gid && !openSet.has(pick.gid)) toggleCard(pick.gid);
+    var dest = targetEl(pick);
+    if (!dest) return;
+    N3.scrollToEl(dest);
+    N3.flash(dest);
+  }
+
+  nextBtn.addEventListener("click", goNextUnknown);
 
   function saveUi() { N3.save("n3review_kanji_ui", ui); }
 
   function setKnown(ch) {
     known.toggle(ch);
+    setTimeout(updateNextBtn, 0);
     (CHAR_GROUPS[ch] || []).forEach(function (g) { refreshCard(g.id); });
     updateProgress();
   }
@@ -555,10 +627,12 @@
   document.getElementById("expand-all").addEventListener("click", function () {
     filteredGroups().forEach(function (g) { openSet.add(g.id); });
     renderGroups();
+    mem.save();
   });
   document.getElementById("collapse-all").addEventListener("click", function () {
     openSet.clear();
     renderGroups();
+    mem.save();
   });
 
   document.getElementById("all-chips").addEventListener("click", function (e) {
@@ -581,6 +655,7 @@
       n3.forEach(function (c) { (CHAR_GROUPS[c] || []).forEach(function (gg) { touched[gg.id] = 1; }); });
       Object.keys(touched).forEach(refreshCard);
       updateProgress();
+      updateNextBtn();
       return;
     }
     if ((t = e.target.closest("[data-quiz]"))) {
@@ -606,9 +681,18 @@
     if (!document.getElementById("view-all").hidden) renderAll();
   });
 
-  // ---------- Khởi tạo ----------
+  // ---------- Khởi tạo: khôi phục tab, cụm đang mở và vị trí đã lướt tới ----------
+  var mem = new N3.ScrollMemory("n3review_kanji_pos", function () {
+    return { view: currentView, open: Array.from(openSet) };
+  });
+  var saved = mem.saved || {};
+  (saved.open || []).forEach(function (id) {
+    if (GROUPS.some(function (g) { return g.id === id; })) openSet.add(id);
+  });
   renderChips();
   renderGroups();
   updateProgress();
+  switchView(saved.view || "groups");
   N3.addToTop();
+  mem.restore();
 })();
