@@ -214,6 +214,23 @@
   <script src="common.js?v=1"></script>
   <script src="kanjiGroups.js?v=1"></script>
   <script src="kanji.js?v=1"></script>
+  <script>
+let wakeLock;
+
+async function keepScreenOn() {
+  try {
+    wakeLock = await navigator.wakeLock.request('screen');
+  } catch (e) {}
+}
+
+keepScreenOn();
+
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState === 'visible') {
+    keepScreenOn();
+  }
+});
+</script>
 </body>
 
 </html>
