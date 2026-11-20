@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Từ vựng theo tần suất</title>
+  <link rel="icon" type="image/png" href="../images/icon.png">
+  <meta name="theme-color" content="#c0392b" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="common.css?v=1082">
+  <style>
+    .ftable { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .ftable th {
+      position: sticky;
+      top: var(--head-h, 0px);
+      z-index: 5;
+      background: var(--bg-soft);
+      text-align: left;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 7px 8px;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+    .ftable td { padding: 8px; border-bottom: 1px solid var(--border); vertical-align: top; line-height: 1.45; }
+    .ftable tr.known td { background: var(--green-soft); }
+    .c-rank { width: 64px; text-align: right; font-variant-numeric: tabular-nums; color: var(--text-muted); white-space: nowrap; }
+    .c-rank b { color: var(--text); font-size: 15px; }
+    .c-word { font-family: var(--font-jp); font-size: 20px; font-weight: 600; white-space: nowrap; }
+    .c-read { font-family: var(--font-jp); font-size: 15px; white-space: nowrap; }
+    .c-mean { min-width: 140px; }
+    .c-lv { white-space: nowrap; }
+    .c-ok { width: 44px; text-align: center; }
+    .w-n3 { color: var(--primary); }
+    .w-n45 { color: var(--blue); }
+    .w-nx { color: var(--violet); }
+    .approx { color: var(--amber); font-weight: 700; cursor: help; }
+
+    .ok-box {
+      width: 26px;
+      height: 26px;
+      border-radius: 7px;
+      border: 1.5px solid var(--border);
+      background: var(--bg-card);
+      color: var(--green);
+      font-weight: 800;
+      cursor: pointer;
+    }
+    .ok-box--on { background: var(--green-soft); border-color: var(--green); }
+
+    .band { display: inline-block; width: 8px; height: 8px; border-radius: 50%; margin-right: 4px; vertical-align: middle; }
+    .band--b1 { background: #dc2626; }
+    .band--b2 { background: #ea580c; }
+    .band--b3 { background: #ca8a04; }
+    .band--b4 { background: #16a34a; }
+    .band--b5 { background: #2563eb; }
+    .band--none { background: #a8a29e; }
+
+    .tbl-card { background: var(--bg-card); border: 1px solid var(--border); border-radius: var(--radius); box-shadow: var(--shadow); }
+    .stat { font-size: 13px; color: var(--text-muted); margin-bottom: 10px; }
+    .more { display: block; margin: 14px auto; }
+
+    /* Kanji theo tần suất */
+    .krow {
+      display: grid;
+      grid-template-columns: 52px 56px 1fr auto;
+      gap: 4px 12px;
+      align-items: center;
+      padding: 10px 12px;
+      border-bottom: 1px solid var(--border);
+      cursor: pointer;
+    }
+    .krow:last-child { border-bottom: none; }
+    .krow.known { background: var(--green-soft); }
+    .krow__rank { text-align: right; color: var(--text-muted); font-variant-numeric: tabular-nums; }
+    .krow__rank b { color: var(--text); font-size: 16px; display: block; }
+    .krow__c { font-family: var(--font-jp); font-size: 40px; line-height: 1; text-align: center; }
+    .krow__hv { font-weight: 800; }
+    .krow__words { font-family: var(--font-jp); font-size: 14px; color: var(--text-muted); margin-top: 3px; line-height: 1.6; }
+    .krow__words b { color: var(--text); font-weight: 600; }
+    .krow__all { grid-column: 1 / -1; display: none; }
+    .krow--open .krow__all { display: block; }
+    .krow__all table { margin-top: 6px; }
+
+    @media (max-width: 560px) {
+      .ftable td, .ftable th { padding: 7px 5px; }
+      .c-word { font-size: 18px; white-space: normal; word-break: keep-all; }
+      .c-read { white-space: normal; }
+      .c-mean { min-width: 0; }
+      .c-rank { width: auto; }
+      .c-ok { width: 34px; }
+      .ok-box { width: 24px; height: 24px; }
+      .c-lv { display: none; }
+      .krow { grid-template-columns: 40px 46px 1fr auto; gap: 4px 8px; }
+      .krow__c { font-size: 34px; }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="top">
+    <div class="top__row">
+      <a class="top__back" href="../index.html">← App</a>
+      <h1 class="top__title">頻度 Từ vựng theo tần suất <small id="sub"></small></h1>
+      <a class="top__back" href="kanji.html">Kanji →</a>
+    </div>
+    <div class="progress">
+      <div class="progress__bar"><div class="progress__fill" id="prog-fill"></div></div>
+      <span id="prog-text"></span>
+    </div>
+    <nav class="views" id="views">
+      <button type="button" class="view-btn view-btn--active" data-view="words">📊 Từ vựng</button>
+      <button type="button" class="view-btn" data-view="kanji">漢 Kanji theo tần suất</button>
+      <button type="button" class="view-btn" data-view="info">ℹ️ Cách dùng bảng</button>
+    </nav>
+  </header>
+
+  <main class="wrap">
+    <section id="view-words">
+      <div class="toolbar">
+        <input type="search" class="search" id="w-search" placeholder="Tìm từ, cách đọc, nghĩa, kanji…">
+      </div>
+      <div class="chips" id="lv-chips"></div>
+      <div class="chips" id="band-chips"></div>
+      <div class="toolbar">
+        <label class="toggle"><input type="checkbox" id="opt-hide"> Che cách đọc & nghĩa</label>
+        <label class="toggle"><input type="checkbox" id="opt-n3k"> Chỉ từ có kanji N3</label>
+        <label class="toggle"><input type="checkbox" id="opt-unknown"> Ẩn từ đã thuộc</label>
+      </div>
+      <div class="stat" id="w-stat"></div>
+      <div class="tbl-card">
+        <table class="ftable">
+          <thead><tr><th class="c-rank">Hạng</th><th>Từ</th><th>Cách đọc</th><th>Nghĩa</th><th class="c-lv">Cấp</th><th class="c-ok">Thuộc</th></tr></thead>
+          <tbody id="w-body"></tbody>
+        </table>
+      </div>
+      <button type="button" class="btn btn--ghost more" id="w-more" hidden>Xem thêm</button>
+      <div id="w-sentinel"></div>
+    </section>
+
+    <section id="view-kanji" hidden>
+      <div class="toolbar">
+        <input type="search" class="search" id="k-search" placeholder="Tìm kanji / Hán Việt / nghĩa…">
+      </div>
+      <div class="chips" id="k-chips"></div>
+      <div class="toolbar">
+        <label class="toggle"><input type="checkbox" id="opt-kunknown"> Ẩn kanji đã thuộc</label>
+      </div>
+      <div class="stat" id="k-stat"></div>
+      <div class="card" id="k-list"></div>
+      <button type="button" class="btn btn--ghost more" id="k-more" hidden>Xem thêm</button>
+      <div id="k-sentinel"></div>
+    </section>
+
+    <section id="view-info" class="guide" hidden></section>
+  </main>
+
+  <script src="../data/kanjiData.js?v=1082"></script>
+  <script src="../data/kanjiData_1.js?v=1082"></script>
+  <script src="../data/kanjiExtra/extra.js?v=1082"></script>
+  <script src="../data/vocabData.js?v=1082"></script>
+  <script src="../data/vocabData_1.js?v=1082"></script>
+  <script src="../data/vocabExtra/extra.js?v=1082"></script>
+  <script src="freqData.js?v=1082"></script>
+  <script src="common.js?v=1082"></script>
+  <script src="freq.js?v=1082"></script>
+</body>
+
+</html>
