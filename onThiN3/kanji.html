@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="common.css?v=1">
+  <link rel="stylesheet" href="common.css?v=1082">
   <style>
     .kchars { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 8px; }
 
@@ -205,32 +205,36 @@
     </div>
   </div>
 
-  <script src="../data/kanjiData.js?v=1080"></script>
-  <script src="../data/kanjiData_1.js?v=1080"></script>
-  <script src="../data/kanjiExtra/extra.js?v=1080"></script>
-  <script src="../data/vocabData.js?v=1080"></script>
-  <script src="../data/vocabData_1.js?v=1080"></script>
-  <script src="../data/vocabExtra/extra.js?v=1080"></script>
-  <script src="common.js?v=1"></script>
-  <script src="kanjiGroups.js?v=1"></script>
-  <script src="kanji.js?v=1"></script>
+  <script src="../data/kanjiData.js?v=1082"></script>
+  <script src="../data/kanjiData_1.js?v=1082"></script>
+  <script src="../data/kanjiExtra/extra.js?v=1082"></script>
+  <script src="../data/vocabData.js?v=1082"></script>
+  <script src="../data/vocabData_1.js?v=1082"></script>
+  <script src="../data/vocabExtra/extra.js?v=1082"></script>
+  <script src="common.js?v=1082"></script>
+  <script src="kanjiGroups.js?v=1082"></script>
+  <script src="kanji.js?v=1082"></script>
   <script>
-let wakeLock;
-
-async function keepScreenOn() {
-  try {
-    wakeLock = await navigator.wakeLock.request('screen');
-  } catch (e) {}
-}
-
-keepScreenOn();
-
-document.addEventListener('visibilitychange', () => {
-  if (document.visibilityState === 'visible') {
-    keepScreenOn();
-  }
-});
-</script>
+    // Giữ màn hình luôn sáng khi đang mở trang (Screen Wake Lock API, cần HTTPS hoặc localhost)
+    (function () {
+      if (!('wakeLock' in navigator)) return;
+      var lock = null;
+      function requestLock() {
+        if (lock || document.visibilityState !== 'visible') return;
+        navigator.wakeLock.request('screen').then(function (l) {
+          lock = l;
+          lock.addEventListener('release', function () { lock = null; });
+        }).catch(function () { /* trình duyệt từ chối (pin yếu, chưa tương tác...) */ });
+      }
+      // Trình duyệt tự nhả lock khi chuyển tab / tắt màn hình → xin lại khi quay về trang
+      document.addEventListener('visibilitychange', requestLock);
+      // Một số trình duyệt chỉ cho xin lock sau khi người dùng chạm vào trang
+      ['click', 'touchend'].forEach(function (ev) {
+        document.addEventListener(ev, requestLock, { passive: true });
+      });
+      requestLock();
+    })();
+  </script>
 </body>
 
 </html>
