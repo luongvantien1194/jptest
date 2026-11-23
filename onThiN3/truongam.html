@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="vi">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Trick trường âm kanji</title>
+  <link rel="icon" type="image/png" href="../images/icon.png">
+  <meta name="theme-color" content="#c0392b" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="common.css?v=1083">
+  <style>
+    .rule__head { display: flex; align-items: flex-start; gap: 10px; }
+    .rule__no { flex: none; width: 28px; height: 28px; border-radius: 50%; background: var(--primary); color: #fff; font-weight: 800; display: flex; align-items: center; justify-content: center; font-size: 14px; }
+    html.theme-dark .rule__no { color: #1c1917; }
+    .rule__title { flex: 1; font-size: 16.5px; margin: 2px 0 0; line-height: 1.45; }
+    .rule__pct { flex: none; font-size: 12px; font-weight: 700; padding: 3px 9px; border-radius: 999px; background: var(--bg-soft); color: var(--text-muted); }
+    .rule__pct--hi { background: var(--green-soft); color: var(--green); }
+    .rule__pct--mid { background: var(--amber-soft); color: var(--amber); }
+    .rule__why { font-size: 14.5px; line-height: 1.7; margin: 10px 0 6px; }
+    .rule__ex { font-size: 15px; background: var(--bg-soft); padding: 7px 10px; border-radius: 8px; margin: 6px 0; line-height: 1.8; }
+    .rule__stat { font-size: 12.5px; margin: 6px 0 4px; }
+    .kchips { display: flex; flex-wrap: wrap; gap: 6px; margin: 6px 0; }
+    .kchip { display: inline-flex; align-items: baseline; gap: 5px; border: 1px solid var(--border); border-radius: 9px; padding: 3px 8px; background: var(--bg-card); font-size: 12px; }
+    .kchip b { font-size: 19px; font-weight: 600; }
+    .kchip--n3 b { color: var(--primary); }
+    .kchip--n45 b { color: var(--blue); }
+    .kchip--nx b { color: var(--violet); }
+    .kchip--bad { background: var(--primary-soft); border-color: var(--primary); }
+    .kchip__hv { color: var(--text-muted); font-weight: 600; }
+    .kchip__on { font-size: 13.5px; }
+    details.more > summary { cursor: pointer; font-size: 13px; color: var(--blue); font-weight: 600; margin: 8px 0 4px; }
+    .lk-row { display: flex; gap: 12px; align-items: center; padding: 8px 0; border-bottom: 1px solid var(--border); font-size: 14px; }
+    .lk-row:last-child { border-bottom: none; }
+    .lk-k { font-size: 36px; line-height: 1; flex: none; }
+    .legend { font-size: 12px; color: var(--text-muted); display: flex; gap: 12px; flex-wrap: wrap; margin: 4px 0 12px; }
+    .legend .l3 { color: var(--primary); } .legend .l45 { color: var(--blue); }
+    .cmp td:first-child { font-family: system-ui, sans-serif; white-space: normal; }
+  </style>
+</head>
+
+<body>
+  <header class="top">
+    <div class="top__row">
+      <a class="top__back" href="topics.html">← Chủ đề</a>
+      <h1 class="top__title">長音 Trick trường âm kanji <small id="sub"></small></h1>
+      <button type="button" class="btn btn--sm" id="quiz-btn">🎯 Kiểm tra</button>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <div class="tip">
+      <b>Ý tưởng:</b> âm On của kanji và âm <b>Hán Việt</b> cùng gốc tiếng Hán cổ, nên <b>vần cuối âm Hán Việt</b> gần như cho biết âm On có <b>trường âm</b> (こう, せい, しょう…) hay không (こ, せ, しょ…).
+      Số % bên cạnh mỗi quy tắc là tỉ lệ đúng tính trên toàn bộ dữ liệu kanji của app (N5–N3 + kanji bổ sung); chữ <span style="color:var(--primary)">viền đỏ</span> là ngoại lệ cần nhớ riêng.
+    </div>
+    <div class="legend"><span class="l3">■ Kanji N3</span><span class="l45">■ Kanji N4/N5</span></div>
+
+    <section class="card" data-anchor="lookup"><div class="card__body" style="border-top:none">
+      <h2 style="font-size:16px;margin:0 0 8px">🔎 Tra nhanh</h2>
+      <input type="search" class="search" id="lk-input" placeholder="Nhập kanji (調) hoặc Hán Việt (điệu, kinh…)" style="width:100%">
+      <div id="lk-result" style="margin-top:8px"></div>
+    </div></section>
+
+    <h2 style="font-size:17px;margin:18px 0 10px">📏 Quy tắc theo vần Hán Việt (theo thứ tự ưu tiên)</h2>
+    <div id="rules"></div>
+
+    <section class="card" data-anchor="you"><div class="card__body" style="border-top:none">
+      <h2 style="font-size:16px;margin:0">ょう hay ゅう?</h2>
+      <div id="you-yuu"></div>
+    </div></section>
+
+    <section class="card guide" data-anchor="tsu"><div class="card__body" style="border-top:none">
+      <h2>Mẹo kèm: っ (促音) và ぱ (半濁音) khi ghép từ</h2>
+      <h3>1. Khi nào thêm っ?</h3>
+      <ul>
+        <li><b>Chữ trước kết thúc つ・ち</b> (Hán Việt vần <b>-t</b>) + chữ sau bắt đầu bằng <b>k / s / t / h</b> → gần như luôn thành <b>っ</b>:
+          <span class="jp">一回 いっかい・日記 にっき・結婚 けっこん・出席 しゅっせき・発展 はってん・出発 しゅっぱつ</span>.</li>
+        <li><b>Chữ trước kết thúc く</b> (vần <b>-c</b>) + chữ sau bắt đầu bằng <b>k</b> → thường thành <b>っ</b>:
+          <span class="jp">学校 がっこう・国家 こっか・学期 がっき・作家 さっか</span>. Nhưng く + <b>s / t / h</b> thường <b>giữ く</b>:
+          <span class="jp">学生 がくせい・適当 てきとう・薬品 やくひん</span>.</li>
+        <li>Chữ sau bắt đầu bằng hàng <b>a, n, m, y, r, w, g, z, d, b</b> → <b>không</b> thêm っ:
+          <span class="jp">国語 こくご・学問 がくもん・一年 いちねん・日曜 にちよう・特別 とくべつ</span>.</li>
+      </ul>
+      <h3>2. Khi nào h → p (ぱ・ぴ・ぷ・ぺ・ぽ)?</h3>
+      <ul>
+        <li>Chữ sau bắt đầu bằng <b>h</b> (は・ひ・ふ・へ・ほ) và đứng sau <b>っ</b> hoặc <b>ん</b> → thường thành <b>p</b>.</li>
+        <li class="jp">出発 しゅっ<b>ぱ</b>つ・一杯 いっ<b>ぱ</b>い・散歩 さん<b>ぽ</b>・心配 しん<b>ぱ</b>い・失敗 しっ<b>ぱ</b>い・活発 かっ<b>ぱ</b>つ</li>
+        <li>Sau <b>ん</b> đôi khi thành <b>b</b> thay vì p: 新聞 しん<b>ぶ</b>ん, 三杯 さん<b>ば</b>い → cần nhớ từ cụ thể.</li>
+      </ul>
+      <h3>3. Bẫy 漢字読み hay gặp</h3>
+      <ul>
+        <li>Đề cho 4 đáp án chỉ khác <b>trường âm / っ / ゅ-ょ / dakuten</b>: しょうかい・しょかい・しゅうかい・じょうかい. Áp dụng lần lượt: (1) vần HV → dài hay ngắn, (2) ょう hay ゅう, (3) có っ không, (4) có biến âm (ん + h → b/p) không.</li>
+        <li>Từ quen dễ sai: 雰囲気 <b>ふんいき</b> (không phải ふいんき), 体育 たいいく, 洗濯 せんたく, 原因 げんいん, 先生 せんせい (đọc kéo dài ê nhưng viết い).</li>
+      </ul>
+      <div style="text-align:center;margin-top:14px"><button type="button" class="btn" id="quiz-btn2">🎯 Luyện 15 câu chọn âm On</button></div>
+    </div></section>
+  </main>
+
+  <div class="modal" id="quiz-modal">
+    <div class="modal__backdrop"></div>
+    <div class="modal__dialog">
+      <button type="button" class="modal__close" aria-label="Đóng">×</button>
+      <div class="modal__body"></div>
+    </div>
+  </div>
+
+  <script src="../data/kanjiData.js?v=1083"></script>
+  <script src="../data/kanjiData_1.js?v=1083"></script>
+  <script src="../data/kanjiExtra/extra.js?v=1083"></script>
+  <script src="common.js?v=1083"></script>
+  <script src="truongam.js?v=1083"></script>
+</body>
+
+</html>

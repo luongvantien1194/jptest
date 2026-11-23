@@ -1,0 +1,72 @@
+/* ===== Trang ôn theo chủ đề (topic.js) ===== */
+.gdesc { font-size: 14.5px; line-height: 1.7; margin: 0 0 12px; }
+
+.titems {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 10px;
+}
+
+.titem {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 10px 12px;
+  background: var(--bg-card);
+  min-width: 0;
+}
+
+.titem--known { background: var(--green-soft); border-color: transparent; }
+.titem__top { display: flex; align-items: flex-start; gap: 8px; }
+.titem__head { flex: 1; min-width: 0; }
+.titem__w { font-size: 22px; font-weight: 700; color: var(--primary-dark); line-height: 1.5; }
+.titem__ctx { font-size: 15px; color: var(--text-muted); }
+.titem__badges { display: flex; gap: 4px; flex-wrap: wrap; margin-top: 2px; }
+.titem__badges a.badge { text-decoration: none; }
+.titem__form { font-size: 13.5px; margin-top: 6px; background: var(--bg-soft); border-radius: 7px; padding: 4px 8px; line-height: 1.7; }
+.titem__m { font-size: 15px; font-weight: 600; margin-top: 6px; line-height: 1.5; }
+.titem__pair { font-size: 14px; margin-top: 4px; }
+.titem__pair .jp { font-size: 17px; font-weight: 600; color: var(--blue); }
+.titem__note { font-size: 13px; color: var(--text-muted); margin-top: 6px; line-height: 1.55; }
+.titem__note b { color: var(--text); }
+
+.ex {
+  font-family: var(--font-jp);
+  font-size: 15.5px;
+  line-height: 2;
+  margin-top: 6px;
+  padding-left: 10px;
+  border-left: 3px solid var(--border);
+}
+
+.ex__vi { font-family: system-ui, sans-serif; font-size: 13px; color: var(--text-muted); line-height: 1.5; }
+
+mark.hl { background: var(--amber-soft); color: inherit; border-bottom: 2px solid var(--amber); padding: 0 1px; }
+.blank { display: inline-block; min-width: 3.5em; border-bottom: 2px solid var(--primary); color: var(--primary); text-align: center; }
+.stars { color: var(--amber); font-size: 12px; letter-spacing: 1px; margin-right: 2px; }
+
+.sumt td:first-child { white-space: normal; }
+.sumt tr[data-goto] { cursor: pointer; }
+.sumt tr.known td { background: var(--green-soft); }
+
+.ok-box {
+  width: 26px;
+  height: 26px;
+  border-radius: 7px;
+  border: 1.5px solid var(--border);
+  background: var(--bg-card);
+  color: var(--green);
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.ok-box--on { background: var(--green-soft); border-color: var(--green); }
+
+@media (max-width: 480px) {
+  .titems { grid-template-columns: 1fr; }
+  .titem__w { font-size: 20px; }
+}
+
+@media (max-width: 480px) {
+  .cmp td:first-child { white-space: normal; }
+  .cmp th, .cmp td { padding: 6px 6px; font-size: 13px; }
+}
