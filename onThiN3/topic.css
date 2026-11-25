@@ -70,3 +70,91 @@ mark.hl { background: var(--amber-soft); color: inherit; border-bottom: 2px soli
   .cmp td:first-child { white-space: normal; }
   .cmp th, .cmp td { padding: 6px 6px; font-size: 13px; }
 }
+
+/* ---------- Bảng gọn ---------- */
+.ptable { width: 100%; border-collapse: collapse; font-size: 14px; background: var(--bg-card); border: 1px solid var(--border); border-radius: 10px; overflow: hidden; }
+.ptable th { background: var(--bg-soft); font-size: 12px; font-weight: 700; text-align: left; padding: 6px 8px; color: var(--text-muted); }
+.ptable td { padding: 7px 8px; border-top: 1px solid var(--border); vertical-align: top; }
+.prow { cursor: pointer; }
+.prow:hover td { background: var(--bg-soft); }
+.prow--open td { background: var(--amber-soft); }
+.prow--known td.pw, .prow--known td.pm { background: var(--green-soft); }
+.ptable--pair td { width: 50%; }
+.ptable--pair td.pa, .ptable--pair th.pa { width: 22px; padding: 7px 0; text-align: center; color: var(--text-muted); vertical-align: middle; }
+.pc { display: flex; gap: 6px; align-items: flex-start; border-radius: 7px; }
+.pc--known { background: var(--green-soft); margin: -3px -4px; padding: 3px 4px; }
+.pc__main { flex: 1; min-width: 0; }
+.pc__w { font-size: 17px; font-weight: 700; color: var(--primary-dark); line-height: 1.5; }
+.pc--txt .pc__w { color: var(--blue); font-weight: 600; }
+.pc__ctx { font-size: 12.5px; font-weight: 400; color: var(--text-muted); }
+.pc__m { font-size: 13px; color: var(--text-muted); line-height: 1.45; }
+.pc__form { font-size: 12px; color: var(--text-muted); line-height: 1.6; }
+.ptable td.pw { width: 42%; }
+.ptable td.pm { line-height: 1.5; }
+.ptable .pok, .ptable td.pok { width: 36px; text-align: center; }
+.ok-box--sm { width: 22px; height: 22px; border-radius: 6px; font-size: 13px; flex: none; }
+.pdet td { background: var(--bg-soft); padding: 4px 10px 10px; }
+.pdet__it { margin-top: 6px; font-size: 14px; }
+.pdet__it + .pdet__it { border-top: 1px dashed var(--border); padding-top: 6px; }
+.phint { font-size: 12px; margin-top: 6px; }
+.trap-d > summary { cursor: pointer; list-style: none; }
+.trap-d > summary::before { content: "▸ "; color: var(--primary); }
+.trap-d[open] > summary::before { content: "▾ "; }
+.trap-d:not([open]) { padding-top: 6px; padding-bottom: 6px; }
+
+@media (max-width: 480px) {
+  .ptable td { padding: 6px 5px; }
+  .pc__w { font-size: 16px; }
+  .ptable td.pw { width: 45%; }
+}
+.cmp-d { margin: 0 0 10px; }
+.cmp-d > summary { cursor: pointer; list-style: none; font-size: 13.5px; font-weight: 700; color: var(--blue); padding: 6px 0; }
+.cmp-d > summary::before { content: "▸ "; }
+.cmp-d[open] > summary::before { content: "▾ "; }
+
+/* ---------- Cỡ chữ (--fs do nút A− / A+ đặt, mặc định 1) ---------- */
+.fs-ctl { display: inline-flex; align-items: center; gap: 2px; border: 1px solid var(--border); border-radius: 999px; background: var(--bg-card); padding: 2px; flex: none; }
+.fs-ctl button { border: none; background: transparent; color: var(--text); font-size: 14px; font-weight: 700; width: 34px; height: 28px; border-radius: 999px; cursor: pointer; }
+.fs-ctl button:active { background: var(--bg-soft); }
+.fs-ctl span { font-size: 11px; color: var(--text-muted); min-width: 34px; text-align: center; }
+
+.card__title { font-size: calc(16px * var(--fs, 1)); }
+.card__meta { font-size: calc(12px * var(--fs, 1)); }
+.gdesc { font-size: calc(14.5px * var(--fs, 1)); }
+.wrap .trap, .wrap .tip { font-size: calc(14px * var(--fs, 1)); }
+.cmp-d > summary { font-size: calc(13.5px * var(--fs, 1)); }
+.cmp th { font-size: calc(13px * var(--fs, 1)); }
+.cmp td { font-size: calc(14px * var(--fs, 1)); }
+.titem__w { font-size: calc(22px * var(--fs, 1)); }
+.titem__ctx { font-size: calc(15px * var(--fs, 1)); }
+.titem__form { font-size: calc(13.5px * var(--fs, 1)); }
+.titem__m { font-size: calc(15px * var(--fs, 1)); }
+.titem__pair { font-size: calc(14px * var(--fs, 1)); }
+.titem__pair .jp { font-size: calc(17px * var(--fs, 1)); }
+.titem__note { font-size: calc(13px * var(--fs, 1)); }
+.ex { font-size: calc(15.5px * var(--fs, 1)); }
+.ex__vi { font-size: calc(13px * var(--fs, 1)); }
+.ptable { font-size: calc(14px * var(--fs, 1)); }
+.ptable th { font-size: calc(12px * var(--fs, 1)); }
+.pc__w { font-size: calc(17px * var(--fs, 1)); }
+.pc__ctx { font-size: calc(12.5px * var(--fs, 1)); }
+.pc__m { font-size: calc(13px * var(--fs, 1)); }
+.pc__form { font-size: calc(12px * var(--fs, 1)); }
+.pdet__it { font-size: calc(14px * var(--fs, 1)); }
+.ok-box--sm { width: calc(22px * var(--fs, 1)); height: calc(22px * var(--fs, 1)); font-size: calc(13px * var(--fs, 1)); }
+.phint { font-size: calc(12px * var(--fs, 1)); }
+.guide h2 { font-size: calc(18px * var(--fs, 1)); }
+.guide p, .guide li { font-size: calc(14.5px * var(--fs, 1)); }
+.quiz__kind { font-size: calc(13px * var(--fs, 1)); }
+.quiz__q { font-size: calc(22px * var(--fs, 1)); }
+.quiz__opt { font-size: calc(16px * var(--fs, 1)); }
+.quiz__explain { font-size: calc(14px * var(--fs, 1)); }
+
+@media (max-width: 480px) {
+  .titem__w { font-size: calc(20px * var(--fs, 1)); }
+  .pc__w { font-size: calc(16px * var(--fs, 1)); }
+  .cmp th, .cmp td { font-size: calc(13px * var(--fs, 1)); }
+}
+.pmean { font-size: calc(12.5px * var(--fs, 1)); }
+.pm__pair { margin-top: 2px; font-size: calc(13px * var(--fs, 1)); }
+.pc--txt .pc__w + .pc__m + .pc__w { margin-top: 4px; }

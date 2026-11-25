@@ -34,13 +34,37 @@
   });
 
   var known = new N3.KnownSet(KEY + "_known");
-  var ui = N3.load(KEY + "_ui", { hide: false, furi: true, unknown: false, sumFilter: "all" });
+  var ui = N3.load(KEY + "_ui", { hide: false, furi: true, unknown: false, sumFilter: "all", detail: false, fs: 1 });
   var openSet = new Set();
+  var openRows = new Set(); // các dòng bảng đang mở phần ví dụ
 
   function md(s) { return esc(s).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>"); }
   // Văn bản có furigana + **đậm**
   function rmd(s) { return ruby(s).replace(/\*\*(.+?)\*\*/g, "<b>$1</b>"); }
   function norm(s) { return String(s || "").toLowerCase().normalize("NFC"); }
+
+  // Nghĩa tiếng Việt của từ trái nghĩa: ưu tiên mục cùng chữ trong chủ đề, sau đó bảng T.pairMeans
+  // Tra theo chữ + furigana trước (辛[から]い ≠ 辛[つら]い), rồi bảng pairMeans, cuối cùng theo chữ không furigana
+  var MEAN_RAW = {}, MEAN_PLAIN = {};
+  ITEMS.forEach(function (x) {
+    if (!MEAN_RAW[x.w]) MEAN_RAW[x.w] = x.m;
+    var k = plain(x.w); if (!MEAN_PLAIN[k]) MEAN_PLAIN[k] = x.m;
+  });
+  function pairMean(raw) {
+    var w = plain(raw);
+    // Chỉ tra theo chữ không furigana khi từ trái nghĩa viết toàn kana (tránh lẫn 辛[から]い / 辛[つら]い)
+    return MEAN_RAW[raw] || (T.pairMeans || {})[w] || (raw === w ? MEAN_PLAIN[w] : "") || "";
+  }
+  // "乱暴[らんぼう]・雑[ざつ]" → [{w: "乱暴[らんぼう]", m: "thô bạo…"}, …]
+  function pairParts(pair) {
+    return String(pair || "").split("・").filter(Boolean).map(function (w) { return { w: w, m: pairMean(w) }; });
+  }
+  // HTML: từ + (nghĩa) cho từng từ trái nghĩa; sep = ký tự ngăn cách
+  function pairInline(pair, sep) {
+    return pairParts(pair).map(function (p) {
+      return '<span class="jp">' + ruby(p.w) + "</span>" + (p.m ? ' <span class="muted hideable pmean">' + md(p.m) + "</span>" : "");
+    }).join(sep || "・");
+  }
   function hl(s) { return ruby(s).replace(/｛/g, '<mark class="hl">').replace(/｝/g, "</mark>"); }
   function blank(s) { return ruby(String(s).replace(/｛[^｝]*｝/g, "\u0000")).replace("\u0000", '<span class="blank">　？　</span>'); }
 
@@ -64,7 +88,7 @@
       lvBadge(x.lv) + (x.stt ? '<a class="badge badge--n3" href="grammar.html" title="Xem trong trang Ôn ngữ pháp N3">N3 #' + x.stt + "</a>" : "") + "</div>";
     if (x.form) h += '<div class="titem__form jp">' + rmd(x.form) + "</div>";
     h += '<div class="titem__m hideable">' + md(x.m) + "</div>";
-    if (x.pair) h += '<div class="titem__pair">↔ <span class="jp">' + ruby(x.pair) + "</span>" + (x.pairM ? ' <span class="muted hideable">' + esc(x.pairM) + "</span>" : "") + "</div>";
+    if (x.pair) h += '<div class="titem__pair">↔ ' + pairInline(x.pair, " ・ ") + "</div>";
     if (x.ex) h += '<div class="ex">' + hl(x.ex) + (x.vi ? '<div class="ex__vi hideable">' + esc(x.vi) + "</div>" : "") + "</div>";
     if (x.note) h += '<div class="titem__note">💡 ' + rmd(x.note) + "</div>";
     return h + "</div>";
@@ -95,20 +119,105 @@
     if (g.desc) h += '<p class="gdesc">' + rmd(g.desc) + "</p>";
     if (g.compare.length) {
       var head = g.head || (IS_G ? ["Mẫu", "Ý chính / sắc thái", "Dấu hiệu nhận biết"] : ["Từ", "Sắc thái", "Ví dụ / dấu hiệu"]);
-      h += '<div class="section-label">Bảng phân biệt nhanh</div><div class="table-scroll"><table class="cmp"><tr>' +
+      var tbl = '<div class="table-scroll"><table class="cmp"><tr>' +
         head.map(function (c) { return "<th>" + esc(c) + "</th>"; }).join("") + "</tr>" +
         g.compare.map(function (r) {
           return "<tr>" + r.map(function (c, i) { return "<td" + (i === 1 ? ' class="hideable"' : i > 1 ? ' class="jp"' : "") + ">" + rmd(c) + "</td>"; }).join("") + "</tr>";
         }).join("") + "</table></div>";
+      h += ui.detail ? '<div class="section-label">Bảng phân biệt nhanh</div>' + tbl
+        : '<details class="cmp-d"><summary>📌 Bảng phân biệt nhanh (' + g.compare.length + ")</summary>" + tbl + "</details>";
     }
     if (g.tips.length) {
-      h += '<div class="trap"><b>⚠️ Bẫy đề & mẹo</b><ul>' + g.tips.map(function (t) { return "<li>" + rmd(t) + "</li>"; }).join("") + "</ul></div>";
+      var tl = '<ul>' + g.tips.map(function (t) { return "<li>" + rmd(t) + "</li>"; }).join("") + "</ul>";
+      h += ui.detail ? '<div class="trap"><b>⚠️ Bẫy đề & mẹo</b>' + tl + "</div>"
+        : '<details class="trap trap-d"><summary><b>⚠️ Bẫy đề & mẹo (' + g.tips.length + ")</b></summary>" + tl + "</details>";
     }
     var vis = visibleItems(g);
-    h += vis.length ? '<div class="titems">' + vis.map(itemHtml).join("") + "</div>" : '<div class="empty" style="padding:16px">Đã thuộc hết nhóm này 🎉</div>';
+    if (!vis.length) h += '<div class="empty" style="padding:16px">Đã thuộc hết nhóm này 🎉</div>';
+    else h += ui.detail ? '<div class="titems">' + vis.map(itemHtml).join("") + "</div>" : tableHtml(g);
     h += '<div style="margin-top:12px;display:flex;gap:8px;flex-wrap:wrap"><button type="button" class="btn btn--sm" data-quiz="' + g.id + '">🎯 Kiểm tra nhóm này</button>' +
       '<button type="button" class="btn btn--ghost btn--sm" data-known-all="' + g.id + '">✓ Đánh dấu thuộc cả nhóm</button></div>';
     return h;
+  }
+
+  // ---------- Bảng gọn ----------
+  // Ghép các cặp trong cùng nhóm (A.pair = B và B.pair = A) thành 1 dòng so sánh 2 cột
+  function rowsOf(g) {
+    if (g._rows) return g._rows;
+    var withPair = g.items.filter(function (x) { return x.pair; }).length;
+    g._pairMode = !IS_G && withPair * 2 >= g.items.length;
+    var used = {}, rows = [];
+    g.items.forEach(function (a) {
+      if (used[a.id]) return;
+      used[a.id] = 1;
+      if (!g._pairMode) { rows.push({ key: a.id, items: [a], a: a }); return; }
+      var pa = pairs(a), b = null;
+      g.items.forEach(function (y) {
+        if (!b && !used[y.id] && pa.indexOf(plain(y.w)) >= 0 && pairs(y).indexOf(plain(a.w)) >= 0) b = y;
+      });
+      if (b) used[b.id] = 1;
+      var L = a, R = b, Lt = "", Rt = "";
+      if (a.pos === "vt" || (b && b.pos === "vi")) { L = b; R = a; } // tự động từ luôn ở cột trái
+      if (!L) Lt = a.pair; if (!R) Rt = a.pair;
+      rows.push({ key: a.id, items: [L, R].filter(Boolean), L: L, R: R, Lt: Lt, Rt: Rt });
+    });
+    g._rows = rows;
+    return rows;
+  }
+
+  function okBox(x) {
+    var k = known.has(x.id);
+    return '<button type="button" class="ok-box ok-box--sm' + (k ? " ok-box--on" : "") + '" data-known="' + esc(x.id) + '" aria-label="Đã thuộc">' + (k ? "✓" : "") + "</button>";
+  }
+
+  function cellHtml(x, txt) {
+    if (!x) {
+      if (!txt) return '<div class="pc pc--txt"><div class="pc__w">—</div></div>';
+      return '<div class="pc pc--txt"><div class="pc__main">' + pairParts(txt).map(function (p) {
+        return '<div class="pc__w jp">' + ruby(p.w) + "</div>" + (p.m ? '<div class="pc__m hideable">' + md(p.m) + "</div>" : "");
+      }).join("") + "</div></div>";
+    }
+    return '<div class="pc' + (known.has(x.id) ? " pc--known" : "") + '" id="it-' + esc(x.id) + '"><div class="pc__main">' +
+      '<div class="pc__w jp">' + ruby(x.w) + (x.ctx ? ' <span class="pc__ctx">（' + ruby(x.ctx) + "）</span>" : "") + "</div>" +
+      '<div class="pc__m hideable">' + md(x.m) + "</div></div>" + okBox(x) + "</div>";
+  }
+
+  function detailHtml(row) {
+    return row.items.map(function (x) {
+      return '<div class="pdet__it"><b class="jp">' + ruby(x.w) + "</b>" +
+        (x.ex ? '<div class="ex">' + hl(x.ex) + (x.vi ? '<div class="ex__vi hideable">' + esc(x.vi) + "</div>" : "") + "</div>" : "") +
+        (x.note ? '<div class="titem__note">💡 ' + rmd(x.note) + "</div>" : "") + "</div>";
+    }).join("");
+  }
+
+  function tableHtml(g) {
+    var rows = rowsOf(g).filter(function (r) {
+      return !ui.unknown || r.items.some(function (x) { return !known.has(x.id); });
+    });
+    var pm = g._pairMode, h;
+    if (pm) {
+      var ph = T.pairHead || ["Từ", "Trái nghĩa"];
+      h = '<table class="ptable ptable--pair"><thead><tr><th>' + esc(ph[0]) + '</th><th class="pa"></th><th>' + esc(ph[1]) + "</th></tr></thead><tbody>";
+    } else {
+      h = '<table class="ptable"><thead><tr><th>' + (IS_G ? "Mẫu · cách nối" : "Từ") + "</th><th>Nghĩa</th><th class=\"pok\"></th></tr></thead><tbody>";
+    }
+    rows.forEach(function (r) {
+      var open = openRows.has(r.key);
+      var attrs = ' class="prow' + (open ? " prow--open" : "") + '" data-row="' + esc(r.key) + '" data-gid="' + g.id + '" data-anchor="i:' + esc(r.key) + '"';
+      if (pm) {
+        h += "<tr" + attrs + "><td>" + cellHtml(r.L, r.Lt) + '</td><td class="pa">↔</td><td>' + cellHtml(r.R, r.Rt) + "</td></tr>";
+      } else {
+        var x = r.a, k = known.has(x.id);
+        var left = IS_G
+          ? '<div class="pc__w jp">' + ruby(x.w) + " " + stars(x.star) + "</div>" + (x.form ? '<div class="pc__form jp">' + rmd(x.form) + "</div>" : "")
+          : '<div class="pc__w jp">' + ruby(x.w) + "</div>";
+        h += "<tr" + attrs.replace('class="prow', 'class="prow' + (k ? " prow--known" : "")) + ' id="it-' + esc(x.id) + '"><td class="pw">' + left + "</td>" +
+          '<td class="pm"><span class="hideable">' + md(x.m) + "</span>" + (x.pair ? '<div class="pm__pair">↔ ' + pairInline(x.pair, " ・ ") + "</div>" : "") + "</td>" +
+          '<td class="pok">' + okBox(x) + "</td></tr>";
+      }
+      if (open) h += '<tr class="pdet"><td colspan="3">' + detailHtml(r) + "</td></tr>";
+    });
+    return h + "</tbody></table>" + '<div class="muted phint">Chạm vào một dòng để xem ví dụ & ghi chú.</div>';
   }
 
   function groupText(g) {
@@ -194,7 +303,7 @@
           var k = known.has(x.id);
           return '<tr data-goto="' + esc(x.id) + '"' + (k ? ' class="known"' : "") + "><td>" + ruby(x.w) + (x.ctx ? ' <span class="muted">（' + ruby(x.ctx) + "）</span>" : "") + "</td>" +
             '<td class="hideable">' + md(x.m) + "</td>" +
-            '<td class="jp">' + (IS_G ? rmd(x.form || "") : ruby(x.pair || "")) + "</td>" +
+            '<td>' + (IS_G ? '<span class="jp">' + rmd(x.form || "") + "</span>" : pairInline(x.pair || "", "<br>")) + "</td>" +
             '<td style="text-align:center"><button type="button" class="ok-box' + (k ? " ok-box--on" : "") + '" data-known="' + esc(x.id) + '" aria-label="Đã thuộc">' + (k ? "✓" : "") + "</button></td></tr>";
         }).join("") + "</table></div>";
     });
@@ -265,7 +374,7 @@
 
   function explainOf(x) {
     return '<b class="jp">' + ruby(x.w) + "</b>" + (x.form ? ' <span class="muted jp">' + rmd(x.form) + "</span>" : "") + " – " + md(x.m) +
-      (x.pair ? '<br>↔ <span class="jp">' + ruby(x.pair) + "</span>" : "") +
+      (x.pair ? "<br>↔ " + pairInline(x.pair, " ・ ") : "") +
       (x.ex ? '<div class="ex">' + hl(x.ex) + (x.vi ? '<div class="ex__vi">' + esc(x.vi) + "</div>" : "") + "</div>" : "") +
       (x.note ? '<div class="muted" style="margin-top:6px">💡 ' + rmd(x.note) + "</div>" : "");
   }
@@ -288,11 +397,11 @@
         blank(x.ex), ans, wr, ex, false, T.binary ? 1 : 2));
     }
     // 2) Nghĩa → từ
-    out.push(mkQ(IS_G ? "Mẫu nào mang nghĩa này?" : "Từ nào mang nghĩa này?", '<span style="font-family:system-ui,sans-serif;font-size:19px">' + md(x.m) + "</span>" +
-      (x.ctx ? '<div class="muted" style="font-size:14px">（' + ruby(x.ctx) + "）</div>" : ""),
+    out.push(mkQ(IS_G ? "Mẫu nào mang nghĩa này?" : "Từ nào mang nghĩa này?", '<span style="font-family:system-ui,sans-serif;font-size:0.86em">' + md(x.m) + "</span>" +
+      (x.ctx ? '<div class="muted" style="font-size:0.64em">（' + ruby(x.ctx) + "）</div>" : ""),
       label(x), pickDistractors(x, 3, label, false), ex));
     // 3) Từ → nghĩa
-    var mq = mkQ("Nghĩa đúng là?", '<span class="jp" style="font-size:28px">' + ruby(x.w) + "</span>" + (x.ctx ? '<div class="muted jp" style="font-size:15px">（' + ruby(x.ctx) + "）</div>" : ""),
+    var mq = mkQ("Nghĩa đúng là?", '<span class="jp" style="font-size:1.27em">' + ruby(x.w) + "</span>" + (x.ctx ? '<div class="muted jp" style="font-size:0.68em">（' + ruby(x.ctx) + "）</div>" : ""),
       md(x.m), pickDistractors(x, 3, function (y) { return md(y.m); }, false), ex, true);
     out.push(mq);
     // 4) Trái nghĩa
@@ -312,7 +421,7 @@
           if (l && !seen[l] && wr2.length < 3) { seen[l] = 1; wr2.push(l); }
         });
       });
-      out.push(mkQ(T.pairQ || "Từ trái nghĩa là?", '<span class="jp" style="font-size:26px">' + ruby(x.ctx || x.w) + "</span><div class=\"muted\" style=\"font-size:14px\">⇄ ？</div>",
+      out.push(mkQ(T.pairQ || "Từ trái nghĩa là?", '<span class="jp" style="font-size:1.18em">' + ruby(x.ctx || x.w) + "</span><div class=\"muted\" style=\"font-size:0.64em\">⇄ ？</div>",
         a, wr2, ex));
     }
     return out.filter(Boolean);
@@ -401,7 +510,9 @@
     document.getElementById("app").innerHTML =
       '<header class="top"><div class="top__row">' +
       '<a class="top__back" href="topics.html">← Chủ đề</a>' +
-      '<h1 class="top__title">' + rmd(T.title) + ' <small id="sub"></small></h1></div>' +
+      '<h1 class="top__title">' + rmd(T.title) + ' <small id="sub"></small></h1>' +
+      '<div class="fs-ctl" title="Cỡ chữ"><button type="button" data-fs="-1" aria-label="Giảm cỡ chữ">A−</button>' +
+      '<span id="fs-val">100%</span><button type="button" data-fs="1" aria-label="Tăng cỡ chữ">A+</button></div></div>' +
       '<div class="progress"><div class="progress__bar"><div class="progress__fill" id="prog-fill"></div></div><span id="prog-text"></span></div>' +
       '<nav class="views" id="views">' +
       '<button type="button" class="view-btn view-btn--active" data-view="groups">📚 Theo nhóm</button>' +
@@ -415,6 +526,7 @@
       '<label class="toggle"><input type="checkbox" id="opt-hide"> Che nghĩa (tự kiểm tra)</label>' +
       '<label class="toggle"><input type="checkbox" id="opt-furi"> Furigana</label>' +
       '<label class="toggle"><input type="checkbox" id="opt-unknown"> Ẩn mục đã thuộc</label>' +
+      '<label class="toggle"><input type="checkbox" id="opt-detail"> Dạng thẻ chi tiết</label>' +
       '<button type="button" class="btn btn--ghost btn--sm" id="expand-all">Mở tất cả</button>' +
       '<button type="button" class="btn btn--ghost btn--sm" id="collapse-all">Thu gọn</button></div>' +
       '<div id="group-list"></div></section>' +
@@ -452,6 +564,29 @@
   optFuri.checked = ui.furi !== false;
   document.body.classList.toggle("no-furi", ui.furi === false);
   optFuri.addEventListener("change", function () { ui.furi = optFuri.checked; document.body.classList.toggle("no-furi", !ui.furi); saveUi(); });
+
+  // ---------- Cỡ chữ ----------
+  var FS = [0.85, 1, 1.15, 1.3, 1.5, 1.75, 2];
+  function applyFs() {
+    var v = Number(ui.fs) || 1;
+    if (FS.indexOf(v) < 0) v = 1;
+    ui.fs = v;
+    document.documentElement.style.setProperty("--fs", v);
+    document.getElementById("fs-val").textContent = Math.round(v * 100) + "%";
+  }
+  applyFs();
+  document.querySelector(".fs-ctl").addEventListener("click", function (e) {
+    var b = e.target.closest("[data-fs]");
+    if (!b) return;
+    var i = FS.indexOf(ui.fs) + Number(b.getAttribute("data-fs"));
+    ui.fs = FS[Math.max(0, Math.min(FS.length - 1, i))];
+    applyFs();
+    saveUi();
+  });
+
+  var optDetail = document.getElementById("opt-detail");
+  optDetail.checked = !!ui.detail;
+  optDetail.addEventListener("change", function () { ui.detail = optDetail.checked; saveUi(); renderGroups(); });
 
   var optUnknown = document.getElementById("opt-unknown");
   optUnknown.checked = !!ui.unknown;
@@ -495,6 +630,12 @@
     if ((t = e.target.closest("[data-quiz]"))) {
       var gq = GROUPS.find(function (x) { return x.id === t.getAttribute("data-quiz"); });
       startQuiz(gq.items, gq.no + ". " + plain(gq.title).replace(/\*\*/g, ""));
+      return;
+    }
+    if ((t = e.target.closest("[data-row]"))) {
+      var rk = t.getAttribute("data-row");
+      if (openRows.has(rk)) openRows.delete(rk); else openRows.add(rk);
+      refreshCard(t.getAttribute("data-gid"));
       return;
     }
     if ((t = e.target.closest("[data-goto]"))) { gotoItem(t.getAttribute("data-goto")); return; }
