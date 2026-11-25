@@ -4,6 +4,13 @@ window.N3_TOPIC = {
   short: "Tính cách",
   title: "性格 Từ vựng tính cách",
   kind: "vocab",
+  // Nghĩa của các từ trái nghĩa không có mục riêng trong chủ đề
+  pairMeans: {
+    "暗い": "u ám, trầm (tính cách)", "不親切": "không tử tế, thiếu nhiệt tình", "嘘つき": "kẻ nói dối",
+    "うるさい": "ồn ào, lắm lời", "騒がしい": "ồn ào, náo động", "激しい": "dữ dội, nóng nảy",
+    "雑": "cẩu thả, qua loa", "愚か": "ngu ngốc, dại dột", "温かい": "ấm áp, tốt bụng (người)",
+    "勇敢": "dũng cảm", "大胆": "táo bạo, gan dạ", "後ろ向き": "tiêu cực, thụt lùi (suy nghĩ)", "悲観的": "bi quan"
+  },
   intro: "Từ tính cách xuất hiện nhiều ở **文脈規定** (điền từ theo ngữ cảnh), **言い換え類義** (chọn từ gần nghĩa) và **用法** (chọn câu dùng đúng). Học theo **cặp trái nghĩa** và để ý **trợ từ / cấu trúc đi kèm** (〜に厳しい, 気が〜, 〜っぽい).",
   groups: [
     {

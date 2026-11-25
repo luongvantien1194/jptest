@@ -14,9 +14,14 @@
     short: "Tự / tha động từ",
     title: "自動詞・他動詞 Phân biệt tự / tha động từ",
     kind: "vocab",
+    pairMeans: {
+      "付けてある": "đã được bật sẵn (ai đó cố ý bật)", "並んでいる": "đang xếp hàng / nằm thành hàng",
+      "片付いている": "(phòng) đang gọn gàng, ngăn nắp"
+    },
     fillSurface: true,
     binary: true,
     pairQ: "Động từ cặp (tự ⇄ tha) là?",
+    pairHead: ["自動詞 – Tự (が)", "他動詞 – Tha (を)"],
     intro: "**Tự động từ (自動詞)**: sự việc tự xảy ra, đi với **が** (ドアが開く). **Tha động từ (他動詞)**: ai đó tác động vào vật, đi với **を** (ドアを開ける). Đề N3 hỏi dạng này ở 文法 và 文脈規定 – chỉ cần **nhìn trợ từ** + nhớ **5 quy tắc đuôi** dưới đây là làm được 90%.",
     groups: [
       {

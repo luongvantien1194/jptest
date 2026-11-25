@@ -4,6 +4,15 @@ window.N3_TOPIC = {
   short: "Đối nghĩa",
   title: "対義語 Tính từ & từ đối nghĩa",
   kind: "vocab",
+  // Nghĩa của các từ trái nghĩa không có mục riêng trong chủ đề
+  pairMeans: {
+    "冷たい": "lạnh (vật, đồ uống); lạnh lùng", "涼しい": "mát mẻ", "濃い": "đậm, đặc (vị, màu)",
+    "厳しい": "nghiêm khắc", "安い": "rẻ", "低い": "thấp", "粗い": "thô, to hạt", "大まか": "đại khái, sơ lược",
+    "寒い": "lạnh (thời tiết)", "遅い": "muộn (thời điểm); chậm (tốc độ)", "簡単": "đơn giản, dễ", "不利": "bất lợi",
+    "貧しい": "nghèo, nghèo nàn", "抽象的": "trừu tượng", "主観的": "chủ quan", "楽": "nhàn, thoải mái",
+    "得る": "có được, đạt được", "捨てる": "vứt bỏ", "反対": "phản đối", "失敗": "thất bại", "結果": "kết quả",
+    "短所": "nhược điểm", "輸出": "xuất khẩu", "減少": "sự giảm sút", "現実": "hiện thực", "辛い": "cay"
+  },
   intro: "Đề N3 rất thích đặt **từ trái nghĩa làm đáp án nhiễu** ở phần 文脈規定, và hỏi **1 từ có nhiều từ trái nghĩa** (薄い ↔ 厚い / 濃い). Học theo **cụm từ** (薄いコーヒー, 甘い親) thay vì học từ đơn.",
   groups: [
     {
