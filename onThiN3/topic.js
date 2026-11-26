@@ -56,12 +56,16 @@
     return MEAN_RAW[raw] || (T.pairMeans || {})[w] || (raw === w ? MEAN_PLAIN[w] : "") || "";
   }
   // "乱暴[らんぼう]・雑[ざつ]" → [{w: "乱暴[らんぼう]", m: "thô bạo…"}, …]
-  function pairParts(pair) {
-    return String(pair || "").split("・").filter(Boolean).map(function (w) { return { w: w, m: pairMean(w) }; });
+  // fb: nghĩa dự phòng (x.pm) khi chỉ có 1 từ cặp và không tra được nghĩa
+  function pairParts(pair, fb) {
+    var ps = String(pair || "").split("・").filter(Boolean).map(function (w) { return { w: w, m: pairMean(w) }; });
+    if (fb && ps.length === 1 && !ps[0].m) ps[0].m = fb;
+    return ps;
   }
+  var SYM = T.pairSym || "↔"; // ↔ trái nghĩa / cặp tự-tha; ≈ đồng nghĩa
   // HTML: từ + (nghĩa) cho từng từ trái nghĩa; sep = ký tự ngăn cách
-  function pairInline(pair, sep) {
-    return pairParts(pair).map(function (p) {
+  function pairInline(pair, sep, fb) {
+    return pairParts(pair, fb).map(function (p) {
       return '<span class="jp">' + ruby(p.w) + "</span>" + (p.m ? ' <span class="muted hideable pmean">' + md(p.m) + "</span>" : "");
     }).join(sep || "・");
   }
@@ -88,7 +92,7 @@
       lvBadge(x.lv) + (x.stt ? '<a class="badge badge--n3" href="grammar.html" title="Xem trong trang Ôn ngữ pháp N3">N3 #' + x.stt + "</a>" : "") + "</div>";
     if (x.form) h += '<div class="titem__form jp">' + rmd(x.form) + "</div>";
     h += '<div class="titem__m hideable">' + md(x.m) + "</div>";
-    if (x.pair) h += '<div class="titem__pair">↔ ' + pairInline(x.pair, " ・ ") + "</div>";
+    if (x.pair) h += '<div class="titem__pair">' + SYM + " " + pairInline(x.pair, " ・ ", x.pm) + "</div>";
     if (x.ex) h += '<div class="ex">' + hl(x.ex) + (x.vi ? '<div class="ex__vi hideable">' + esc(x.vi) + "</div>" : "") + "</div>";
     if (x.note) h += '<div class="titem__note">💡 ' + rmd(x.note) + "</div>";
     return h + "</div>";
@@ -159,7 +163,7 @@
       var L = a, R = b, Lt = "", Rt = "";
       if (a.pos === "vt" || (b && b.pos === "vi")) { L = b; R = a; } // tự động từ luôn ở cột trái
       if (!L) Lt = a.pair; if (!R) Rt = a.pair;
-      rows.push({ key: a.id, items: [L, R].filter(Boolean), L: L, R: R, Lt: Lt, Rt: Rt });
+      rows.push({ key: a.id, items: [L, R].filter(Boolean), L: L, R: R, Lt: Lt, Rt: Rt, src: a });
     });
     g._rows = rows;
     return rows;
@@ -170,10 +174,10 @@
     return '<button type="button" class="ok-box ok-box--sm' + (k ? " ok-box--on" : "") + '" data-known="' + esc(x.id) + '" aria-label="Đã thuộc">' + (k ? "✓" : "") + "</button>";
   }
 
-  function cellHtml(x, txt) {
+  function cellHtml(x, txt, src) {
     if (!x) {
       if (!txt) return '<div class="pc pc--txt"><div class="pc__w">—</div></div>';
-      return '<div class="pc pc--txt"><div class="pc__main">' + pairParts(txt).map(function (p) {
+      return '<div class="pc pc--txt"><div class="pc__main">' + pairParts(txt, src && src.pm).map(function (p) {
         return '<div class="pc__w jp">' + ruby(p.w) + "</div>" + (p.m ? '<div class="pc__m hideable">' + md(p.m) + "</div>" : "");
       }).join("") + "</div></div>";
     }
@@ -205,14 +209,14 @@
       var open = openRows.has(r.key);
       var attrs = ' class="prow' + (open ? " prow--open" : "") + '" data-row="' + esc(r.key) + '" data-gid="' + g.id + '" data-anchor="i:' + esc(r.key) + '"';
       if (pm) {
-        h += "<tr" + attrs + "><td>" + cellHtml(r.L, r.Lt) + '</td><td class="pa">↔</td><td>' + cellHtml(r.R, r.Rt) + "</td></tr>";
+        h += "<tr" + attrs + "><td>" + cellHtml(r.L, r.Lt, r.src) + '</td><td class="pa">' + SYM + "</td><td>" + cellHtml(r.R, r.Rt, r.src) + "</td></tr>";
       } else {
         var x = r.a, k = known.has(x.id);
         var left = IS_G
           ? '<div class="pc__w jp">' + ruby(x.w) + " " + stars(x.star) + "</div>" + (x.form ? '<div class="pc__form jp">' + rmd(x.form) + "</div>" : "")
-          : '<div class="pc__w jp">' + ruby(x.w) + "</div>";
+          : '<div class="pc__w jp">' + ruby(x.w) + (x.star ? " " + stars(x.star) : "") + "</div>";
         h += "<tr" + attrs.replace('class="prow', 'class="prow' + (k ? " prow--known" : "")) + ' id="it-' + esc(x.id) + '"><td class="pw">' + left + "</td>" +
-          '<td class="pm"><span class="hideable">' + md(x.m) + "</span>" + (x.pair ? '<div class="pm__pair">↔ ' + pairInline(x.pair, " ・ ") + "</div>" : "") + "</td>" +
+          '<td class="pm"><span class="hideable">' + md(x.m) + "</span>" + (x.pair ? '<div class="pm__pair">' + SYM + " " + pairInline(x.pair, " ・ ", x.pm) + "</div>" : "") + "</td>" +
           '<td class="pok">' + okBox(x) + "</td></tr>";
       }
       if (open) h += '<tr class="pdet"><td colspan="3">' + detailHtml(r) + "</td></tr>";
@@ -303,7 +307,7 @@
           var k = known.has(x.id);
           return '<tr data-goto="' + esc(x.id) + '"' + (k ? ' class="known"' : "") + "><td>" + ruby(x.w) + (x.ctx ? ' <span class="muted">（' + ruby(x.ctx) + "）</span>" : "") + "</td>" +
             '<td class="hideable">' + md(x.m) + "</td>" +
-            '<td>' + (IS_G ? '<span class="jp">' + rmd(x.form || "") + "</span>" : pairInline(x.pair || "", "<br>")) + "</td>" +
+            '<td>' + (IS_G ? '<span class="jp">' + rmd(x.form || "") + "</span>" : pairInline(x.pair || "", "<br>", x.pm)) + "</td>" +
             '<td style="text-align:center"><button type="button" class="ok-box' + (k ? " ok-box--on" : "") + '" data-known="' + esc(x.id) + '" aria-label="Đã thuộc">' + (k ? "✓" : "") + "</button></td></tr>";
         }).join("") + "</table></div>";
     });
@@ -374,7 +378,7 @@
 
   function explainOf(x) {
     return '<b class="jp">' + ruby(x.w) + "</b>" + (x.form ? ' <span class="muted jp">' + rmd(x.form) + "</span>" : "") + " – " + md(x.m) +
-      (x.pair ? "<br>↔ " + pairInline(x.pair, " ・ ") : "") +
+      (x.pair ? "<br>" + SYM + " " + pairInline(x.pair, " ・ ", x.pm) : "") +
       (x.ex ? '<div class="ex">' + hl(x.ex) + (x.vi ? '<div class="ex__vi">' + esc(x.vi) + "</div>" : "") + "</div>" : "") +
       (x.note ? '<div class="muted" style="margin-top:6px">💡 ' + rmd(x.note) + "</div>" : "");
   }
@@ -382,7 +386,7 @@
   function questionsFor(x) {
     var out = [], ex = explainOf(x);
     // 1) Điền vào chỗ trống (文脈規定)
-    if (x.ex && x.ans) {
+    if (x.ex && x.ans && !T.synMode) {
       var surf = IS_G || T.fillSurface;
       var ans = surf ? x.ans : x.base;
       var wr = (x.dis && x.dis.length >= 3) ? x.dis.slice() : (T.binary && x.pa) ? [x.pa] : [];
@@ -395,6 +399,39 @@
       }
       out.push(mkQ(IS_G ? "Chọn mẫu ngữ pháp điền vào chỗ trống" : T.binary ? "Tự hay tha? Nhìn trợ từ が／を và đuôi câu" : "Chọn từ thích hợp điền vào chỗ trống" + (!T.fillSurface && plain(x.ans) !== x.base ? " (đáp án ghi ở dạng gốc)" : ""),
         blank(x.ex), ans, wr, ex, false, T.binary ? 1 : 2));
+    }
+    // 1a) 言い換え類義 (trang đồng nghĩa): câu có phần gạch chân → chọn cách nói gần nghĩa nhất
+    if (T.synMode && x.ex && x.pair) {
+      var sa = pairs(x)[0], sw = [], bad = {};
+      bad[sa] = 1; bad[x.base] = 1;
+      pairs(x).forEach(function (l) { bad[l] = 1; });
+      (x.alt || []).forEach(function (l) { bad[plain(l)] = 1; });
+      [function (y) { return y.gid === x.gid; }, function (y) { return y.pos === x.pos; }, function () { return true; }].forEach(function (f) {
+        N3.shuffle(ITEMS.filter(function (y) { return y !== x && y.pair && !isSyn(x, y) && f(y); })).forEach(function (y) {
+          var l = pairs(y)[0];
+          if (sw.length < 3 && !bad[l]) { bad[l] = 1; sw.push(l); }
+        });
+      });
+      out.push(mkQ("言い換え: chọn cách nói gần nghĩa nhất với phần gạch chân", hl(x.ex), sa, sw, ex));
+    }
+    // 1b) 漢字読み / 表記 (trang động từ đọc âm Kun)
+    if (T.readingQ && x.r) {
+      var oku = plain(x.w).replace(/^[^ぁ-ゖ]+/, "");
+      var near = function (y) { return y !== x && y.r && y.r !== x.r; };
+      var sameEnd = function (y) { return y.r.slice(-1) === x.r.slice(-1) && Math.abs(y.r.length - x.r.length) <= 1; };
+      var rw = [];
+      [function (y) { return near(y) && plain(y.w).replace(/^[^ぁ-ゖ]+/, "") === oku && sameEnd(y); },
+       function (y) { return near(y) && sameEnd(y); }, near].forEach(function (f) {
+        N3.shuffle(ITEMS.filter(f)).forEach(function (y) { if (rw.length < 3 && rw.indexOf(y.r) < 0) rw.push(y.r); });
+      });
+      out.push(mkQ("Cách đọc đúng là? (漢字読み)", '<span class="jp" style="font-size:1.45em">' + esc(plain(x.w)) + "</span>", x.r, rw, ex));
+      // 表記: chọn chữ Hán; không lấy từ cùng cách đọc làm đáp án nhiễu (tránh 2 đáp án đúng)
+      var kw = [];
+      [function (y) { return near(y) && plain(y.w).replace(/^[^ぁ-ゖ]+/, "") === oku; }, near].forEach(function (f) {
+        N3.shuffle(ITEMS.filter(f)).forEach(function (y) { var l = plain(y.w); if (kw.length < 3 && kw.indexOf(l) < 0 && l !== plain(x.w)) kw.push(l); });
+      });
+      out.push(mkQ("Chữ Hán đúng là? (表記)", '<span class="jp" style="font-size:1.3em">' + esc(x.r) + '</span><div class="muted" style="font-size:0.64em">' + md(x.m) + "</div>",
+        plain(x.w), kw, ex));
     }
     // 2) Nghĩa → từ
     out.push(mkQ(IS_G ? "Mẫu nào mang nghĩa này?" : "Từ nào mang nghĩa này?", '<span style="font-family:system-ui,sans-serif;font-size:0.86em">' + md(x.m) + "</span>" +
@@ -421,7 +458,7 @@
           if (l && !seen[l] && wr2.length < 3) { seen[l] = 1; wr2.push(l); }
         });
       });
-      out.push(mkQ(T.pairQ || "Từ trái nghĩa là?", '<span class="jp" style="font-size:1.18em">' + ruby(x.ctx || x.w) + "</span><div class=\"muted\" style=\"font-size:0.64em\">⇄ ？</div>",
+      out.push(mkQ(T.pairQ || "Từ trái nghĩa là?", '<span class="jp" style="font-size:1.18em">' + ruby(x.ctx || x.w) + "</span><div class=\"muted\" style=\"font-size:0.64em\">" + SYM + " ？</div>",
         a, wr2, ex));
     }
     return out.filter(Boolean);
@@ -432,7 +469,7 @@
     N3.shuffle(items).forEach(function (x) {
       var list = questionsFor(x);
       // Mỗi mục 1 câu: ưu tiên điền chỗ trống / trái nghĩa (giống đề thật), đôi khi hỏi nghĩa
-      var pref = list.filter(function (q) { return /chỗ trống|trái nghĩa/.test(q.kind); });
+      var pref = list.filter(function (q) { return /chỗ trống|trái nghĩa|漢字読み|表記|言い換え/.test(q.kind); });
       var pick = (pref.length && Math.random() < 0.75) ? N3.sample(pref, 1)[0] : N3.sample(list, 1)[0];
       if (pick) qs.push(pick);
     });
