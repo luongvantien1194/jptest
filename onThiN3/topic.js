@@ -502,7 +502,8 @@
     if (currentView !== "groups") { nextBtn.hidden = true; return; }
     var n = unknownTargets().length;
     nextBtn.hidden = false;
-    nextBtn.textContent = n ? "↓ Chưa thuộc (" + n + ")" : "✓ Đã thuộc hết";
+    nextBtn.innerHTML = n ? '↓ <span class="fab-long">Chưa thuộc </span>' + n : "✓<span class=\"fab-long\"> Đã thuộc hết</span>";
+    nextBtn.title = n ? "Tới mục chưa thuộc tiếp theo (" + n + ")" : "Đã thuộc hết";
   }
   function goNextUnknown() {
     var targets = unknownTargets();

@@ -225,7 +225,8 @@
   // Chiều cao header dính (để cuộn không bị header che)
   function headerLine() {
     var h = document.querySelector(".top");
-    return h ? h.getBoundingClientRect().bottom : 0;
+    // Header có thể không dính (trang chủ đề trên điện thoại) → khi đã cuộn qua thì mép trên màn hình là 0
+    return h ? Math.max(0, h.getBoundingClientRect().bottom) : 0;
   }
 
   function scrollToEl(el, gap) {

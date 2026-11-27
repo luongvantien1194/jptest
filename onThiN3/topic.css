@@ -158,3 +158,43 @@ mark.hl { background: var(--amber-soft); color: inherit; border-bottom: 2px soli
 .pmean { font-size: calc(12.5px * var(--fs, 1)); }
 .pm__pair { margin-top: 2px; font-size: calc(13px * var(--fs, 1)); }
 .pc--txt .pc__w + .pc__m + .pc__w { margin-top: 4px; }
+
+/* ---------- Điện thoại: dành tối đa chỗ cho nội dung ---------- */
+@media (max-width: 560px) {
+  /* Header không dính, gọn 1 dòng: tiêu đề cắt bớt, A−/A+ cùng hàng */
+  .top { position: relative; padding: 8px 10px 8px; }
+  .top__row { flex-wrap: nowrap; gap: 6px; }
+  .top__back { padding: 5px 8px; font-size: 13px; flex: none; }
+  .top__title { font-size: 15px; min-width: 0; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .top__title small { display: none; }
+  .fs-ctl button { width: 28px; height: 26px; font-size: 13px; }
+  .fs-ctl span { display: none; }
+  .progress { margin-top: 6px; }
+  .views { margin-top: 8px; }
+  .view-btn { padding: 6px 11px; font-size: 13px; }
+
+  /* Lề & đệm nhỏ hơn → cột nội dung rộng hơn */
+  .wrap { padding: 10px 8px; }
+  .card { border-radius: 12px; margin-bottom: 10px; }
+  .card__head { padding: 10px 10px; }
+  .card__body { padding: 10px 8px 12px; }
+  .gdesc { margin-bottom: 8px; }
+  .toolbar { gap: 4px 8px; margin-bottom: 8px; }
+  .ptable td { padding: 6px 4px; }
+  .ptable td.pw { width: 50%; }
+  .ptable td.pok, .ptable .pok { width: 28px; }
+  .ptable--pair td.pa, .ptable--pair th.pa { width: 14px; }
+  .pdet td { padding: 2px 6px 8px; }
+  .ex { padding-left: 7px; }
+
+  /* Nhóm đang mở: ẩn danh sách từ ở đầu nhóm (đã có trong bảng) */
+  .card:not(.card--collapsed) .card__meta.jp { display: none; }
+  /* Gợi ý "chạm vào dòng" chỉ hiện ở nhóm đầu */
+  #group-list .card ~ .card .phint { display: none; }
+
+  /* Nút nổi nhỏ, nền mờ, không che cột ✓ */
+  .fab-next { padding: 7px 11px; font-size: 13px; opacity: 0.88; right: 10px; bottom: calc(max(10px, env(safe-area-inset-bottom)) + 44px); }
+  .fab-long { display: none; }
+  .to-top { width: 36px; height: 36px; font-size: 15px; right: 10px; bottom: max(10px, env(safe-area-inset-bottom)); opacity: 0.88; }
+  body { padding-bottom: 110px; }
+}
